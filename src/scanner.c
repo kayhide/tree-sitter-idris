@@ -131,8 +131,8 @@ static inline void advance(TSLexer *lexer) { lexer->advance(lexer, false); }
 
 static inline void skip(TSLexer *lexer) { lexer->advance(lexer, true); }
 
-bool tree_sitter_agda_external_scanner_scan(void *payload, TSLexer *lexer,
-                                            const bool *valid_symbols) {
+bool tree_sitter_idris_external_scanner_scan(void *payload, TSLexer *lexer,
+                                             const bool *valid_symbols) {
     Scanner *scanner = (Scanner *)payload;
 
     if (QUEUE_EMPTY(scanner->tokens)) {
@@ -219,8 +219,8 @@ bool tree_sitter_agda_external_scanner_scan(void *payload, TSLexer *lexer,
     return true;
 }
 
-unsigned tree_sitter_agda_external_scanner_serialize(void *payload,
-                                                     char *buffer) {
+unsigned tree_sitter_idris_external_scanner_serialize(void *payload,
+                                                      char *buffer) {
     Scanner *scanner = (Scanner *)payload;
 
     if (scanner->indents.len * sizeof(uint16_t) + 1 >
@@ -239,9 +239,9 @@ unsigned tree_sitter_agda_external_scanner_serialize(void *payload,
     return size;
 }
 
-void tree_sitter_agda_external_scanner_deserialize(void *payload,
-                                                   const char *buffer,
-                                                   unsigned length) {
+void tree_sitter_idris_external_scanner_deserialize(void *payload,
+                                                    const char *buffer,
+                                                    unsigned length) {
     Scanner *scanner = (Scanner *)payload;
 
     scanner->queued_dedent_count = 0;
@@ -275,15 +275,15 @@ void tree_sitter_agda_external_scanner_deserialize(void *payload,
     assert(size == length);
 }
 
-void *tree_sitter_agda_external_scanner_create() {
+void *tree_sitter_idris_external_scanner_create() {
     Scanner *scanner = calloc(1, sizeof(Scanner));
     scanner->indents = indent_vec_new();
     scanner->tokens = token_queue_new();
-    tree_sitter_agda_external_scanner_deserialize(scanner, NULL, 0);
+    tree_sitter_idris_external_scanner_deserialize(scanner, NULL, 0);
     return scanner;
 }
 
-void tree_sitter_agda_external_scanner_destroy(void *payload) {
+void tree_sitter_idris_external_scanner_destroy(void *payload) {
     Scanner *scanner = (Scanner *)payload;
     VEC_FREE(scanner->indents);
     QUEUE_FREE(scanner->tokens);
