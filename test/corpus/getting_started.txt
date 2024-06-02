@@ -1,0 +1,35 @@
+================================================================================
+Hello world
+================================================================================
+
+module Main
+
+main : IO ()
+main = putStrLn "Hello world"
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module
+    (module_name
+      (qid)))
+  (function
+    (lhs
+      (function_name
+        (atom
+          (qid))))
+    (rhs
+      (expr
+        (atom
+          (qid))
+        (atom))))
+  (function
+    (lhs
+      (atom
+        (qid)))
+    (rhs
+      (expr
+        (atom
+          (qid))
+        (atom
+          (literal))))))

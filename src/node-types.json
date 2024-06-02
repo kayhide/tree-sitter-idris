@@ -1022,6 +1022,10 @@
           "named": true
         },
         {
+          "type": "partial",
+          "named": true
+        },
+        {
           "type": "rewrite_equations",
           "named": true
         },
@@ -1145,111 +1149,11 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "abstract",
-          "named": true
-        },
-        {
-          "type": "data",
-          "named": true
-        },
-        {
-          "type": "data_signature",
-          "named": true
-        },
-        {
-          "type": "fields",
-          "named": true
-        },
-        {
-          "type": "function",
-          "named": true
-        },
-        {
-          "type": "generalize",
-          "named": true
-        },
-        {
-          "type": "import",
-          "named": true
-        },
-        {
-          "type": "infix",
-          "named": true
-        },
-        {
-          "type": "instance",
-          "named": true
-        },
-        {
-          "type": "macro",
-          "named": true
-        },
-        {
-          "type": "module",
-          "named": true
-        },
-        {
-          "type": "module_macro",
-          "named": true
-        },
-        {
           "type": "module_name",
-          "named": true
-        },
-        {
-          "type": "mutual",
-          "named": true
-        },
-        {
-          "type": "open",
-          "named": true
-        },
-        {
-          "type": "pattern",
-          "named": true
-        },
-        {
-          "type": "postulate",
-          "named": true
-        },
-        {
-          "type": "pragma",
-          "named": true
-        },
-        {
-          "type": "primitive",
-          "named": true
-        },
-        {
-          "type": "private",
-          "named": true
-        },
-        {
-          "type": "record",
-          "named": true
-        },
-        {
-          "type": "record_signature",
-          "named": true
-        },
-        {
-          "type": "syntax",
-          "named": true
-        },
-        {
-          "type": "typed_binding",
-          "named": true
-        },
-        {
-          "type": "unquote_decl",
-          "named": true
-        },
-        {
-          "type": "untyped_binding",
           "named": true
         }
       ]
@@ -2538,10 +2442,6 @@
           "named": true
         },
         {
-          "type": "bid",
-          "named": true
-        },
-        {
           "type": "data",
           "named": true
         },
@@ -2838,6 +2738,10 @@
   {
     "type": "overlap",
     "named": false
+  },
+  {
+    "type": "partial",
+    "named": true
   },
   {
     "type": "pattern",

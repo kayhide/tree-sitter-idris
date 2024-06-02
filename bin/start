@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -eu
+
+BASE_DIR="$(cd "$(dirname "$0")/.." > /dev/null 2>&1 && pwd)"
+cd "$BASE_DIR"
+
+die() {
+  >&2 echo "$1"
+  exit 1
+}
+
+command="${1:-}"
+[[ -z "$command" ]] && die "No command"
+
+case $command in
+  test)
+    set +e
+    while true; do
+      find grammar.js src test| entr -cdr bash -c "tree-sitter test"
+      (( $? == 0 || $? > 128 )) && exit 0
+    done
+    ;;
+  *)
+    die "Unknown command: $command"
+    ;;
+esac
+

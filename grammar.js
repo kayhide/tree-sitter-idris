@@ -4,6 +4,7 @@ const BRACE2 = [['{{', '}}'], ['⦃', '⦄']];
 const IDIOM = [['(|', '|)'], ['⦇', '⦈']];
 const PAREN = [['(', ')']];
 const integer = /\-?(0x[0-9a-fA-F]+|[0-9]+)/;
+const available_symbols = [':', '+', '-', '*', '\/', '=', '.', '?', '|', '&', '>', '<', '!', '@', '$', '%', '^', '~', '#', ];
 
 module.exports = grammar({
   name: "idris",
@@ -119,7 +120,6 @@ module.exports = grammar({
         optional($.attributes),
         alias($.lhs_decl, $.lhs),
         alias(optional($.rhs_decl), $.rhs),
-        optional($.where),
       ),
       seq(
         optional($.attributes),
@@ -131,6 +131,7 @@ module.exports = grammar({
 
     // LHS
     lhs_decl: $ => seq(
+      optional(alias('partial', $.partial)),
       alias($._with_exprs, $.function_name),
       optional($.rewrite_equations),
       optional($.with_expressions),
@@ -153,12 +154,9 @@ module.exports = grammar({
 
     // WhereClause
     where: $ => seq(
-      optional(seq(
-        'module',
-        $.bid,
-      )),
       'where',
-      optional($._declaration_block),
+      $._indent,
+      repeat(seq($._declaration, $._newline)),
     ),
 
     // //////////////////////////////////////////////////////////////////////
@@ -172,8 +170,10 @@ module.exports = grammar({
       $.data_name,
       optional($._typed_untyped_bindings),
       optional(seq(':', $.expr)),
-      'where',
-      optional($._declaration_block),
+      choice(
+        seq('=', $.expr),
+        seq('where', optional($._declaration_block)),
+      ),
     ),
 
     // //////////////////////////////////////////////////////////////////////
@@ -423,9 +423,6 @@ module.exports = grammar({
     module: $ => seq(
       'module',
       alias(choice($._qid, '_'), $.module_name),
-      optional($._typed_untyped_bindings),
-      'where',
-      optional($._declaration_block),
     ),
 
     // //////////////////////////////////////////////////////////////////////
@@ -869,10 +866,12 @@ module.exports = grammar({
     // <0,code> @integer       { literal LitNat }
     // <0,code> @float         { literal LitFloat }
     integer: _ => integer,
-    string: _ => /\".*\"/,
+    // string: _ => /\".*\"/,
+    // char: _ => /\'.*\'/,
     literal: _ => choice(
       integer,
       /\".*\"/,
+      /\'.*\'/,
     ),
 
     // //////////////////////////////////////////////////////////////////////
