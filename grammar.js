@@ -642,6 +642,7 @@ module.exports = grammar({
       'quoteContext',
       'unquote',
       $.PropN,
+      paren($._atoms, '**', $._atoms), // DPair
       brace_double($.expr),
       idiom($.expr),
       seq('(', ')'),

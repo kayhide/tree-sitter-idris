@@ -326,15 +326,12 @@ vec = (2 ** [3, 4])
     (rhs
       (expr
         (atom
-          (expr
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))))))))
+          (atom
+            (qid))
+          (atom
+            (qid))
+          (atom
+            (qid)))))))
 
 ================================================================================
 Dependent Pairs 3
@@ -373,17 +370,14 @@ filter p (x :: xs)
             (qid))
           (expr
             (atom
-              (expr
-                (atom
-                  (qid))
-                (atom
-                  (qid))
-                (atom
-                  (qid))
-                (atom
-                  (qid))
-                (atom
-                  (qid)))))))))
+              (atom
+                (qid))
+              (atom
+                (qid))
+              (atom
+                (qid))
+              (atom
+                (qid))))))))
   (function
     (lhs
       (atom
@@ -395,12 +389,9 @@ filter p (x :: xs)
     (rhs
       (expr
         (atom
-          (expr
-            (atom)
-            (atom
-              (qid))
-            (atom
-              (qid)))))))
+          (atom)
+          (atom
+            (qid))))))
   (function
     (lhs
       (atom
@@ -428,12 +419,9 @@ filter p (x :: xs)
         (atom
           (qid))
         (atom
-          (expr
-            (atom)
-            (atom
-              (qid))
-            (atom
-              (qid))))
+          (atom)
+          (atom
+            (qid)))
         (atom
           (qid))
         (atom
@@ -445,25 +433,19 @@ filter p (x :: xs)
         (atom
           (qid))
         (atom
-          (expr
-            (atom)
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))))
+          (atom)
+          (atom
+            (qid))
+          (atom
+            (qid))
+          (atom
+            (qid)))
         (atom
           (qid))
         (atom
-          (expr
-            (atom)
-            (atom
-              (qid))
-            (atom
-              (qid))))))))
+          (atom)
+          (atom
+            (qid)))))))
 
 ================================================================================
 Records 1
