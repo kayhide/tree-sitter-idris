@@ -1,0 +1,457 @@
+================================================================================
+let bindings 1
+================================================================================
+
+mirror xs = let xs' = reverse xs in
+                xs ++ xs'
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function
+    (lhs
+      (atom
+        (qid))
+      (atom
+        (qid)))
+    (rhs
+      (expr
+        (let
+          (function
+            (lhs
+              (atom
+                (qid)))
+            (rhs
+              (expr
+                (atom
+                  (qid))
+                (atom
+                  (qid)))))
+          (expr
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (qid))))))))
+
+================================================================================
+let bindings 2
+================================================================================
+
+showPerson p = let MkPerson name age = p in
+                   name ++ " is " ++ show age ++ " years old"
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function
+    (lhs
+      (atom
+        (qid))
+      (atom
+        (qid)))
+    (rhs
+      (expr
+        (let
+          (function
+            (lhs
+              (atom
+                (qid))
+              (atom
+                (qid))
+              (atom
+                (qid)))
+            (rhs
+              (expr
+                (atom
+                  (qid)))))
+          (expr
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (literal))))))))
+
+================================================================================
+let bindings 3
+================================================================================
+
+mirror xs = let xs' : List a = reverse xs in
+                xs ++ xs'
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function
+    (lhs
+      (atom
+        (qid))
+      (atom
+        (qid)))
+    (rhs
+      (expr
+        (let
+          (function
+            (lhs
+              (function_name
+                (atom
+                  (qid))))
+            (rhs
+              (expr
+                (atom
+                  (qid))
+                (atom
+                  (qid))
+                (expr
+                  (atom
+                    (qid))
+                  (atom
+                    (qid))))))
+          (expr
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (qid))))))))
+
+================================================================================
+let bindings 4
+================================================================================
+
+Diag v = let ty : Type := v = v in ty
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function
+    (lhs
+      (atom
+        (qid))
+      (atom
+        (qid)))
+    (rhs
+      (expr
+        (let
+          (function
+            (lhs
+              (function_name
+                (atom
+                  (qid))))
+            (rhs
+              (expr
+                (atom
+                  (qid))
+                (atom
+                  (qid))
+                (atom
+                  (qid))
+                (expr
+                  (atom
+                    (qid))))))
+          (expr
+            (atom
+              (qid))))))))
+
+================================================================================
+let bindings 5
+================================================================================
+
+foldMap f = let fo : m -> a -> m
+                fo ac el = ac <+> f el
+             in foldl fo neutral
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function
+    (lhs
+      (atom
+        (qid))
+      (atom
+        (qid)))
+    (rhs
+      (expr
+        (let
+          (function
+            (lhs
+              (function_name
+                (atom
+                  (qid))))
+            (rhs
+              (expr
+                (atom
+                  (qid))
+                (expr
+                  (atom
+                    (qid))
+                  (expr
+                    (atom
+                      (qid)))))))
+          (function
+            (lhs
+              (atom
+                (qid))
+              (atom
+                (qid))
+              (atom
+                (qid)))
+            (rhs
+              (expr
+                (atom
+                  (qid))
+                (atom
+                  (qid))
+                (atom
+                  (qid))
+                (atom
+                  (qid)))))
+          (expr
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (qid))))))))
+
+================================================================================
+let bindings 6
+================================================================================
+
+foldMap f = let fo : m -> a -> m
+                fo ac el = ac <+> f el
+                initial := neutral
+             in foldl fo initial
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function
+    (lhs
+      (atom
+        (qid))
+      (atom
+        (qid)))
+    (rhs
+      (expr
+        (let
+          (function
+            (lhs
+              (function_name
+                (atom
+                  (qid))))
+            (rhs
+              (expr
+                (atom
+                  (qid))
+                (expr
+                  (atom
+                    (qid))
+                  (expr
+                    (atom
+                      (qid)))))))
+          (function
+            (lhs
+              (atom
+                (qid))
+              (atom
+                (qid))
+              (atom
+                (qid)))
+            (rhs
+              (expr
+                (atom
+                  (qid))
+                (atom
+                  (qid))
+                (atom
+                  (qid))
+                (atom
+                  (qid)))))
+          (function
+            (lhs
+              (atom
+                (qid))
+              (atom
+                (qid))
+              (atom
+                (qid))))
+          (expr
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (qid))))))))
+
+================================================================================
+List comprehensions
+================================================================================
+
+pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
+                         x*x + y*y == z*z ]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function
+    (lhs
+      (atom
+        (qid))
+      (atom
+        (qid)))
+    (rhs
+      (expr
+        (atom
+          (qid))
+        (atom
+          (expr
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (qid))))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (atom
+            (atom
+              (qid))))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (atom
+            (atom
+              (qid))))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (atom
+            (atom
+              (qid))))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))))))
+
+================================================================================
+case expressions 1
+================================================================================
+
+splitAt c x = case break (== c) x of
+                  (l, r) => (l, strTail r)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function
+    (lhs
+      (atom
+        (qid))
+      (atom
+        (qid))
+      (atom
+        (qid)))
+    (rhs
+      (expr
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (expr
+            (atom
+              (qid))
+            (atom
+              (qid))))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (expr
+            (atom
+              (qid))
+            (atom
+              (qid))))
+        (atom
+          (qid))
+        (atom
+          (expr
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (qid))))))))
+
+================================================================================
+case expressions 2
+================================================================================
+
+lookup_default i xs def = case list_lookup i xs of
+                              Nothing => def
+                              Just x => x
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function
+    (lhs
+      (atom
+        (qid))
+      (atom
+        (qid))
+      (atom
+        (qid))
+      (atom
+        (qid)))
+    (rhs
+      (expr
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))
+        (atom
+          (qid))))))

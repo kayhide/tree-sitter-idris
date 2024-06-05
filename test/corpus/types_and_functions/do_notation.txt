@@ -1,0 +1,53 @@
+================================================================================
+do notation
+================================================================================
+
+greet : IO ()
+greet = do
+  putStr "What is your name? "
+  name <- getLine
+  putStrLn ("Hello " ++ name)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function
+    (lhs
+      (function_name
+        (atom
+          (qid))))
+    (rhs
+      (expr
+        (atom
+          (qid))
+        (atom))))
+  (function
+    (lhs
+      (atom
+        (qid)))
+    (rhs
+      (expr
+        (do
+          (stmt
+            (atom
+              (qid))
+            (atom
+              (literal)))
+          (stmt
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (qid)))
+          (stmt
+            (atom
+              (qid))
+            (atom
+              (expr
+                (atom
+                  (literal))
+                (atom
+                  (qid))
+                (atom
+                  (qid))))))))))

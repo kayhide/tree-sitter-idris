@@ -1,0 +1,152 @@
+================================================================================
+Dependent Types
+================================================================================
+
+mkSingle : (x : Bool) -> isSingleton x
+mkSingle False = []
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function
+    (lhs
+      (function_name
+        (atom
+          (qid))))
+    (rhs
+      (expr
+        (typed_binding
+          (atom
+            (qid))
+          (expr
+            (atom
+              (qid))))
+        (expr
+          (atom
+            (qid))
+          (atom
+            (qid))))))
+  (function
+    (lhs
+      (atom
+        (qid))
+      (atom
+        (qid)))
+    (rhs
+      (expr
+        (atom
+          (qid))))))
+
+================================================================================
+Implicit Arguments 1
+================================================================================
+
+index : forall a, n. Fin n -> Vect n a -> a
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function
+    (lhs
+      (function_name
+        (atom
+          (qid))))
+    (rhs
+      (expr
+        (forall
+          (untyped_binding
+            (bid))
+          (untyped_binding
+            (bid))
+          (untyped_binding
+            (bid))
+          (untyped_binding
+            (bid))
+          (expr
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (expr
+              (atom
+                (qid)))))))))
+
+================================================================================
+Implicit Arguments 2
+================================================================================
+
+_ = index {a=Int} {n=2} FZ (2 :: 3 :: Nil)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function
+    (lhs
+      (atom))
+    (rhs
+      (expr
+        (atom
+          (qid))
+        (atom
+          (expr
+            (atom
+              (qid))))
+        (atom
+          (expr
+            (atom
+              (qid))))
+        (atom
+          (qid))
+        (atom
+          (expr
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (qid))))))))
+
+================================================================================
+Implicit Arguments 3
+================================================================================
+
+index : (i : Fin n) -> (xs : Vect n a) -> a
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function
+    (lhs
+      (function_name
+        (atom
+          (qid))))
+    (rhs
+      (expr
+        (typed_binding
+          (atom
+            (qid))
+          (expr
+            (atom
+              (qid))
+            (atom
+              (qid))))
+        (expr
+          (typed_binding
+            (atom
+              (qid))
+            (expr
+              (atom
+                (qid))
+              (atom
+                (qid))
+              (atom
+                (qid))))
+          (expr
+            (atom
+              (qid))))))))
