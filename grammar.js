@@ -177,6 +177,22 @@ module.exports = grammar({
     ),
 
     // //////////////////////////////////////////////////////////////////////
+    // Declaration: Interface
+    // //////////////////////////////////////////////////////////////////////
+
+    interface_name: $ => alias($.id, 'interface_name'),
+
+    interface: $ => seq(
+      'interface',
+      $.interface_name,
+      optional($._typed_untyped_bindings),
+      optional(seq(':', $.expr)),
+      choice(
+        seq('where', optional($._declaration_block)),
+      ),
+    ),
+
+    // //////////////////////////////////////////////////////////////////////
     // Declaration: Data Signature
     // //////////////////////////////////////////////////////////////////////
 
