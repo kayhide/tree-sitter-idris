@@ -32,4 +32,5 @@ main = putStrLn "Hello world"
         (atom
           (qid))
         (atom
-          (literal))))))
+          (literal
+            (string)))))))

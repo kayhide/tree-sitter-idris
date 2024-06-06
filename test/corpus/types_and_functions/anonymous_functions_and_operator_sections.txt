@@ -9,7 +9,8 @@ _ = map (\x => x * 2) intVec
 (source_file
   (function
     (lhs
-      (atom))
+      (atom
+        (hole)))
     (rhs
       (expr
         (atom
@@ -41,7 +42,8 @@ _ = map (* 2) intVec
 (source_file
   (function
     (lhs
-      (atom))
+      (atom
+        (hole)))
     (rhs
       (expr
         (atom

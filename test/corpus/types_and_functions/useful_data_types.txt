@@ -54,7 +54,8 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
     (lhs
       (atom
         (qid))
-      (atom)
+      (atom
+        (hole))
       (atom
         (qid)))
     (rhs
@@ -179,7 +180,8 @@ fred = ("Fred", 42)
         (atom
           (expr
             (atom
-              (literal))
+              (literal
+                (string)))
             (atom
               (qid))
             (atom
@@ -219,7 +221,15 @@ jim = ("Jim", 25, "Cambridge")
         (atom
           (expr
             (atom
-              (literal))))))))
+              (literal
+                (string)))
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (literal
+                (string)))))))))
 
 ================================================================================
 Dependent Pairs 1
@@ -389,7 +399,8 @@ filter p (x :: xs)
     (rhs
       (expr
         (atom
-          (atom)
+          (atom
+            (hole))
           (atom
             (qid))))))
   (function
@@ -419,7 +430,8 @@ filter p (x :: xs)
         (atom
           (qid))
         (atom
-          (atom)
+          (atom
+            (hole))
           (atom
             (qid)))
         (atom
@@ -433,7 +445,8 @@ filter p (x :: xs)
         (atom
           (qid))
         (atom
-          (atom)
+          (atom
+            (hole))
           (atom
             (qid))
           (atom
@@ -443,7 +456,8 @@ filter p (x :: xs)
         (atom
           (qid))
         (atom
-          (atom)
+          (atom
+            (hole))
           (atom
             (qid)))))))
 
@@ -516,7 +530,14 @@ fred = MkPerson "Fred" "Joe" "Bloggs" 30
         (atom
           (qid))
         (atom
-          (literal))
+          (literal
+            (string)))
+        (atom
+          (literal
+            (string)))
+        (atom
+          (literal
+            (string)))
         (atom
           (qid))))))
 

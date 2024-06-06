@@ -32,7 +32,8 @@ greet = do
             (atom
               (qid))
             (atom
-              (literal)))
+              (literal
+                (string))))
           (stmt
             (atom
               (qid))
@@ -46,7 +47,8 @@ greet = do
             (atom
               (expr
                 (atom
-                  (literal))
+                  (literal
+                    (string)))
                 (atom
                   (qid))
                 (atom

@@ -46,7 +46,6 @@
   "Prop"
   "quote"
   "renaming"
-  "open"
   "in"
   "hiding"
   "constructor"

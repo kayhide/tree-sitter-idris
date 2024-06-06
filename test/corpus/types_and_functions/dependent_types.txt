@@ -84,7 +84,8 @@ _ = index {a=Int} {n=2} FZ (2 :: 3 :: Nil)
 (source_file
   (function
     (lhs
-      (atom))
+      (atom
+        (hole)))
     (rhs
       (expr
         (atom

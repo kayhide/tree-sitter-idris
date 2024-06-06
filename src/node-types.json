@@ -31,10 +31,6 @@
           "named": true
         },
         {
-          "type": "data_signature",
-          "named": true
-        },
-        {
           "type": "fields",
           "named": true
         },
@@ -59,6 +55,10 @@
           "named": true
         },
         {
+          "type": "interface",
+          "named": true
+        },
+        {
           "type": "macro",
           "named": true
         },
@@ -72,10 +72,6 @@
         },
         {
           "type": "mutual",
-          "named": true
-        },
-        {
-          "type": "open",
           "named": true
         },
         {
@@ -95,15 +91,7 @@
           "named": true
         },
         {
-          "type": "private",
-          "named": true
-        },
-        {
           "type": "record",
-          "named": true
-        },
-        {
-          "type": "record_signature",
           "named": true
         },
         {
@@ -112,6 +100,21 @@
         },
         {
           "type": "unquote_decl",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "as",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "module_name",
           "named": true
         }
       ]
@@ -142,6 +145,10 @@
           "named": true
         },
         {
+          "type": "hole",
+          "named": true
+        },
+        {
           "type": "id",
           "named": true
         },
@@ -151,10 +158,6 @@
         },
         {
           "type": "qid",
-          "named": true
-        },
-        {
-          "type": "record_assignments",
           "named": true
         }
       ]
@@ -170,6 +173,10 @@
       "types": [
         {
           "type": "expr",
+          "named": true
+        },
+        {
+          "type": "hole",
           "named": true
         },
         {
@@ -200,13 +207,28 @@
   },
   {
     "type": "bid",
-    "named": true,
+    "named": false,
     "fields": {}
   },
   {
     "type": "catchall_pragma",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "constructor",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "id",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "data",
@@ -226,10 +248,6 @@
         },
         {
           "type": "data_name",
-          "named": true
-        },
-        {
-          "type": "data_signature",
           "named": true
         },
         {
@@ -261,6 +279,10 @@
           "named": true
         },
         {
+          "type": "interface",
+          "named": true
+        },
+        {
           "type": "macro",
           "named": true
         },
@@ -274,10 +296,6 @@
         },
         {
           "type": "mutual",
-          "named": true
-        },
-        {
-          "type": "open",
           "named": true
         },
         {
@@ -297,15 +315,7 @@
           "named": true
         },
         {
-          "type": "private",
-          "named": true
-        },
-        {
           "type": "record",
-          "named": true
-        },
-        {
-          "type": "record_signature",
           "named": true
         },
         {
@@ -323,6 +333,10 @@
         {
           "type": "untyped_binding",
           "named": true
+        },
+        {
+          "type": "visibility",
+          "named": true
         }
       ]
     }
@@ -331,33 +345,6 @@
     "type": "data_name",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "data_signature",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "data_name",
-          "named": true
-        },
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "typed_binding",
-          "named": true
-        },
-        {
-          "type": "untyped_binding",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "do",
@@ -522,6 +509,10 @@
           "named": true
         },
         {
+          "type": "visibility",
+          "named": true
+        },
+        {
           "type": "where",
           "named": true
         }
@@ -583,6 +574,11 @@
     }
   },
   {
+    "type": "hole",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "hole_name",
     "named": true,
     "fields": {},
@@ -621,11 +617,19 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
+          "type": "as",
+          "named": true
+        },
+        {
           "type": "module_name",
+          "named": true
+        },
+        {
+          "type": "public",
           "named": true
         }
       ]
@@ -665,6 +669,10 @@
         {
           "type": "integer",
           "named": true
+        },
+        {
+          "type": "visibility",
+          "named": true
         }
       ]
     }
@@ -683,10 +691,6 @@
         },
         {
           "type": "data",
-          "named": true
-        },
-        {
-          "type": "data_signature",
           "named": true
         },
         {
@@ -714,6 +718,10 @@
           "named": true
         },
         {
+          "type": "interface",
+          "named": true
+        },
+        {
           "type": "macro",
           "named": true
         },
@@ -727,10 +735,6 @@
         },
         {
           "type": "mutual",
-          "named": true
-        },
-        {
-          "type": "open",
           "named": true
         },
         {
@@ -750,15 +754,7 @@
           "named": true
         },
         {
-          "type": "private",
-          "named": true
-        },
-        {
           "type": "record",
-          "named": true
-        },
-        {
-          "type": "record_signature",
           "named": true
         },
         {
@@ -774,6 +770,126 @@
   },
   {
     "type": "integer",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "interface",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "abstract",
+          "named": true
+        },
+        {
+          "type": "constructor",
+          "named": true
+        },
+        {
+          "type": "data",
+          "named": true
+        },
+        {
+          "type": "expr",
+          "named": true
+        },
+        {
+          "type": "fields",
+          "named": true
+        },
+        {
+          "type": "function",
+          "named": true
+        },
+        {
+          "type": "generalize",
+          "named": true
+        },
+        {
+          "type": "import",
+          "named": true
+        },
+        {
+          "type": "infix",
+          "named": true
+        },
+        {
+          "type": "instance",
+          "named": true
+        },
+        {
+          "type": "interface",
+          "named": true
+        },
+        {
+          "type": "interface_name",
+          "named": true
+        },
+        {
+          "type": "macro",
+          "named": true
+        },
+        {
+          "type": "module",
+          "named": true
+        },
+        {
+          "type": "module_macro",
+          "named": true
+        },
+        {
+          "type": "mutual",
+          "named": true
+        },
+        {
+          "type": "pattern",
+          "named": true
+        },
+        {
+          "type": "postulate",
+          "named": true
+        },
+        {
+          "type": "pragma",
+          "named": true
+        },
+        {
+          "type": "primitive",
+          "named": true
+        },
+        {
+          "type": "record",
+          "named": true
+        },
+        {
+          "type": "syntax",
+          "named": true
+        },
+        {
+          "type": "typed_binding",
+          "named": true
+        },
+        {
+          "type": "unquote_decl",
+          "named": true
+        },
+        {
+          "type": "untyped_binding",
+          "named": true
+        },
+        {
+          "type": "visibility",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "interface_name",
     "named": true,
     "fields": {}
   },
@@ -891,10 +1007,6 @@
           "named": true
         },
         {
-          "type": "data_signature",
-          "named": true
-        },
-        {
           "type": "expr",
           "named": true
         },
@@ -923,6 +1035,10 @@
           "named": true
         },
         {
+          "type": "interface",
+          "named": true
+        },
+        {
           "type": "macro",
           "named": true
         },
@@ -936,10 +1052,6 @@
         },
         {
           "type": "mutual",
-          "named": true
-        },
-        {
-          "type": "open",
           "named": true
         },
         {
@@ -959,15 +1071,7 @@
           "named": true
         },
         {
-          "type": "private",
-          "named": true
-        },
-        {
           "type": "record",
-          "named": true
-        },
-        {
-          "type": "record_signature",
           "named": true
         },
         {
@@ -1039,7 +1143,21 @@
   {
     "type": "literal",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "char",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "macro",
@@ -1055,10 +1173,6 @@
         },
         {
           "type": "data",
-          "named": true
-        },
-        {
-          "type": "data_signature",
           "named": true
         },
         {
@@ -1086,6 +1200,10 @@
           "named": true
         },
         {
+          "type": "interface",
+          "named": true
+        },
+        {
           "type": "macro",
           "named": true
         },
@@ -1099,10 +1217,6 @@
         },
         {
           "type": "mutual",
-          "named": true
-        },
-        {
-          "type": "open",
           "named": true
         },
         {
@@ -1122,15 +1236,7 @@
           "named": true
         },
         {
-          "type": "private",
-          "named": true
-        },
-        {
           "type": "record",
-          "named": true
-        },
-        {
-          "type": "record_signature",
           "named": true
         },
         {
@@ -1238,8 +1344,12 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "hole",
+          "named": true
+        },
         {
           "type": "qid",
           "named": true
@@ -1261,10 +1371,6 @@
         },
         {
           "type": "data",
-          "named": true
-        },
-        {
-          "type": "data_signature",
           "named": true
         },
         {
@@ -1292,6 +1398,10 @@
           "named": true
         },
         {
+          "type": "interface",
+          "named": true
+        },
+        {
           "type": "macro",
           "named": true
         },
@@ -1305,10 +1415,6 @@
         },
         {
           "type": "mutual",
-          "named": true
-        },
-        {
-          "type": "open",
           "named": true
         },
         {
@@ -1328,15 +1434,7 @@
           "named": true
         },
         {
-          "type": "private",
-          "named": true
-        },
-        {
           "type": "record",
-          "named": true
-        },
-        {
-          "type": "record_signature",
           "named": true
         },
         {
@@ -1345,33 +1443,6 @@
         },
         {
           "type": "unquote_decl",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "open",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "atom",
-          "named": true
-        },
-        {
-          "type": "import",
-          "named": true
-        },
-        {
-          "type": "import_directive",
-          "named": true
-        },
-        {
-          "type": "module_name",
           "named": true
         }
       ]
@@ -1421,10 +1492,6 @@
           "named": true
         },
         {
-          "type": "data_signature",
-          "named": true
-        },
-        {
           "type": "fields",
           "named": true
         },
@@ -1449,6 +1516,10 @@
           "named": true
         },
         {
+          "type": "interface",
+          "named": true
+        },
+        {
           "type": "macro",
           "named": true
         },
@@ -1462,10 +1533,6 @@
         },
         {
           "type": "mutual",
-          "named": true
-        },
-        {
-          "type": "open",
           "named": true
         },
         {
@@ -1485,15 +1552,7 @@
           "named": true
         },
         {
-          "type": "private",
-          "named": true
-        },
-        {
           "type": "record",
-          "named": true
-        },
-        {
-          "type": "record_signature",
           "named": true
         },
         {
@@ -1517,109 +1576,6 @@
       "types": [
         {
           "type": "type_signature",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "private",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "abstract",
-          "named": true
-        },
-        {
-          "type": "data",
-          "named": true
-        },
-        {
-          "type": "data_signature",
-          "named": true
-        },
-        {
-          "type": "fields",
-          "named": true
-        },
-        {
-          "type": "function",
-          "named": true
-        },
-        {
-          "type": "generalize",
-          "named": true
-        },
-        {
-          "type": "import",
-          "named": true
-        },
-        {
-          "type": "infix",
-          "named": true
-        },
-        {
-          "type": "instance",
-          "named": true
-        },
-        {
-          "type": "macro",
-          "named": true
-        },
-        {
-          "type": "module",
-          "named": true
-        },
-        {
-          "type": "module_macro",
-          "named": true
-        },
-        {
-          "type": "mutual",
-          "named": true
-        },
-        {
-          "type": "open",
-          "named": true
-        },
-        {
-          "type": "pattern",
-          "named": true
-        },
-        {
-          "type": "postulate",
-          "named": true
-        },
-        {
-          "type": "pragma",
-          "named": true
-        },
-        {
-          "type": "primitive",
-          "named": true
-        },
-        {
-          "type": "private",
-          "named": true
-        },
-        {
-          "type": "record",
-          "named": true
-        },
-        {
-          "type": "record_signature",
-          "named": true
-        },
-        {
-          "type": "syntax",
-          "named": true
-        },
-        {
-          "type": "unquote_decl",
           "named": true
         }
       ]
@@ -1652,56 +1608,9 @@
         {
           "type": "untyped_binding",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "record_assignments",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "PropN",
-          "named": true
         },
         {
-          "type": "SetN",
-          "named": true
-        },
-        {
-          "type": "atom",
-          "named": true
-        },
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "field_assignment",
-          "named": true
-        },
-        {
-          "type": "id",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "module_assignment",
-          "named": true
-        },
-        {
-          "type": "qid",
-          "named": true
-        },
-        {
-          "type": "record_assignments",
+          "type": "visibility",
           "named": true
         }
       ]
@@ -1754,10 +1663,6 @@
           "named": true
         },
         {
-          "type": "data_signature",
-          "named": true
-        },
-        {
           "type": "fields",
           "named": true
         },
@@ -1782,6 +1687,10 @@
           "named": true
         },
         {
+          "type": "interface",
+          "named": true
+        },
+        {
           "type": "macro",
           "named": true
         },
@@ -1798,10 +1707,6 @@
           "named": true
         },
         {
-          "type": "open",
-          "named": true
-        },
-        {
           "type": "pattern",
           "named": true
         },
@@ -1815,10 +1720,6 @@
         },
         {
           "type": "primitive",
-          "named": true
-        },
-        {
-          "type": "private",
           "named": true
         },
         {
@@ -1839,10 +1740,6 @@
         },
         {
           "type": "record_induction",
-          "named": true
-        },
-        {
-          "type": "record_signature",
           "named": true
         },
         {
@@ -1891,6 +1788,10 @@
           "named": true
         },
         {
+          "type": "hole",
+          "named": true
+        },
+        {
           "type": "id",
           "named": true
         },
@@ -1900,37 +1801,6 @@
         },
         {
           "type": "qid",
-          "named": true
-        },
-        {
-          "type": "record_assignments",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "record_signature",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "record_name",
-          "named": true
-        },
-        {
-          "type": "typed_binding",
-          "named": true
-        },
-        {
-          "type": "untyped_binding",
           "named": true
         }
       ]
@@ -2049,10 +1919,6 @@
           "named": true
         },
         {
-          "type": "data_signature",
-          "named": true
-        },
-        {
           "type": "fields",
           "named": true
         },
@@ -2077,6 +1943,10 @@
           "named": true
         },
         {
+          "type": "interface",
+          "named": true
+        },
+        {
           "type": "macro",
           "named": true
         },
@@ -2090,10 +1960,6 @@
         },
         {
           "type": "mutual",
-          "named": true
-        },
-        {
-          "type": "open",
           "named": true
         },
         {
@@ -2113,15 +1979,7 @@
           "named": true
         },
         {
-          "type": "private",
-          "named": true
-        },
-        {
           "type": "record",
-          "named": true
-        },
-        {
-          "type": "record_signature",
           "named": true
         },
         {
@@ -2245,10 +2103,6 @@
           "named": true
         },
         {
-          "type": "data_signature",
-          "named": true
-        },
-        {
           "type": "do",
           "named": true
         },
@@ -2273,6 +2127,10 @@
           "named": true
         },
         {
+          "type": "hole",
+          "named": true
+        },
+        {
           "type": "id",
           "named": true
         },
@@ -2286,6 +2144,10 @@
         },
         {
           "type": "instance",
+          "named": true
+        },
+        {
+          "type": "interface",
           "named": true
         },
         {
@@ -2313,10 +2175,6 @@
           "named": true
         },
         {
-          "type": "open",
-          "named": true
-        },
-        {
           "type": "pattern",
           "named": true
         },
@@ -2333,19 +2191,11 @@
           "named": true
         },
         {
-          "type": "private",
-          "named": true
-        },
-        {
           "type": "qid",
           "named": true
         },
         {
           "type": "record",
-          "named": true
-        },
-        {
-          "type": "record_signature",
           "named": true
         },
         {
@@ -2411,6 +2261,10 @@
           "named": true
         },
         {
+          "type": "hole",
+          "named": true
+        },
+        {
           "type": "id",
           "named": true
         },
@@ -2430,6 +2284,11 @@
     }
   },
   {
+    "type": "visibility",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "where",
     "named": true,
     "fields": {},
@@ -2443,10 +2302,6 @@
         },
         {
           "type": "data",
-          "named": true
-        },
-        {
-          "type": "data_signature",
           "named": true
         },
         {
@@ -2474,6 +2329,10 @@
           "named": true
         },
         {
+          "type": "interface",
+          "named": true
+        },
+        {
           "type": "macro",
           "named": true
         },
@@ -2487,10 +2346,6 @@
         },
         {
           "type": "mutual",
-          "named": true
-        },
-        {
-          "type": "open",
           "named": true
         },
         {
@@ -2510,15 +2365,7 @@
           "named": true
         },
         {
-          "type": "private",
-          "named": true
-        },
-        {
           "type": "record",
-          "named": true
-        },
-        {
-          "type": "record_signature",
           "named": true
         },
         {
@@ -2632,12 +2479,16 @@
     "named": false
   },
   {
+    "type": "as",
+    "named": false
+  },
+  {
     "type": "bid",
     "named": false
   },
   {
-    "type": "codata",
-    "named": false
+    "type": "char",
+    "named": true
   },
   {
     "type": "coinductive",
@@ -2665,6 +2516,10 @@
   },
   {
     "type": "eta-equality",
+    "named": false
+  },
+  {
+    "type": "export",
     "named": false
   },
   {
@@ -2716,6 +2571,14 @@
     "named": false
   },
   {
+    "type": "interface",
+    "named": false
+  },
+  {
+    "type": "interface_name",
+    "named": false
+  },
+  {
     "type": "let",
     "named": false
   },
@@ -2733,10 +2596,6 @@
   },
   {
     "type": "no-eta-equality",
-    "named": false
-  },
-  {
-    "type": "open",
     "named": false
   },
   {
@@ -2766,6 +2625,10 @@
   {
     "type": "private",
     "named": false
+  },
+  {
+    "type": "public",
+    "named": true
   },
   {
     "type": "public",
@@ -2802,6 +2665,10 @@
   {
     "type": "rewrite",
     "named": false
+  },
+  {
+    "type": "string",
+    "named": true
   },
   {
     "type": "syntax",

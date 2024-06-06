@@ -72,7 +72,19 @@ showPerson p = let MkPerson name age = p in
             (atom
               (qid))
             (atom
-              (literal))))))))
+              (literal
+                (string)))
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (qid))
+            (atom
+              (literal
+                (string)))))))))
 
 ================================================================================
 let bindings 3

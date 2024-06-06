@@ -52,7 +52,8 @@ foo = "Sausage machine"
     (rhs
       (expr
         (atom
-          (literal))))))
+          (literal
+            (string)))))))
 
 ================================================================================
 Primitive Types 3
@@ -80,7 +81,8 @@ bar = 'Z'
     (rhs
       (expr
         (atom
-          (literal))))))
+          (literal
+            (char)))))))
 
 ================================================================================
 Primitive Types 4

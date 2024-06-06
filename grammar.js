@@ -53,19 +53,16 @@ module.exports = grammar({
       $.fields,
       $.function,
       $.data,
-      $.data_signature,
+      $.interface,
       $.record,
-      $.record_signature,
       $.infix,
       $.generalize,
       $.mutual,
       $.abstract,
-      $.private,
       $.instance,
       $.macro,
       $.postulate,
       $.primitive,
-      $.open,
       $.import,
       $.module_macro,
       $.module,
@@ -74,6 +71,14 @@ module.exports = grammar({
       $.pattern,
       $.unquote_decl,
     ),
+
+    visibility: _ => repeat1(choice(
+      'private',
+      'public',
+      'export',
+    )),
+
+    constructor: $ => seq('constructor', $.id),
 
     // //////////////////////////////////////////////////////////////////////
     // Declaration: Field
@@ -117,6 +122,7 @@ module.exports = grammar({
     // FunClause
     function: $ => choice(
       seq(
+        optional($.visibility),
         optional($.attributes),
         alias($.lhs_decl, $.lhs),
         alias(optional($.rhs_decl), $.rhs),
@@ -166,7 +172,8 @@ module.exports = grammar({
     data_name: $ => alias($.id, 'data_name'),
 
     data: $ => seq(
-      choice('data', 'codata'),
+      optional($.visibility),
+      'data',
       $.data_name,
       optional($._typed_untyped_bindings),
       optional(seq(':', $.expr)),
@@ -177,15 +184,24 @@ module.exports = grammar({
     ),
 
     // //////////////////////////////////////////////////////////////////////
-    // Declaration: Data Signature
+    // Declaration: Interface
     // //////////////////////////////////////////////////////////////////////
 
-    data_signature: $ => seq(
-      'data',
-      $.data_name,
+    interface_name: $ => alias($.id, 'interface_name'),
+
+    interface: $ => seq(
+      optional($.visibility),
+      'interface',
+      $.interface_name,
       optional($._typed_untyped_bindings),
-      ':',
-      $.expr,
+      optional(seq(':', $.expr)),
+      optional(
+        seq('where', 
+          indent($,
+            repeat(seq(choice($.constructor, $._declaration), $._newline)),
+          ),
+        ),
+      ),
     ),
 
     // //////////////////////////////////////////////////////////////////////
@@ -194,11 +210,12 @@ module.exports = grammar({
 
     // Record
     record: $ => seq(
+      optional($.visibility),
       'record',
-      alias($._atom_no_curly, $.record_name),
+      alias($.atom, $.record_name),
       optional($._typed_untyped_bindings),
       optional(seq(':', $.expr)),
-      $.record_declarations_block,
+      optional($.record_declarations_block),
     ),
 
     // RecordDeclarations
@@ -239,24 +256,12 @@ module.exports = grammar({
       'no-eta-equality',
     ),
 
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Record Signature
-    // //////////////////////////////////////////////////////////////////////
-
-    record_signature: $ => seq(
-      'record',
-      alias($._atom_no_curly, $.record_name),
-      optional($._typed_untyped_bindings),
-      ':',
-      $.expr,
-    ),
-
     // //////////////////////////////////////////////////////////////////////
     // Declaration: Infix
     // //////////////////////////////////////////////////////////////////////
 
     infix: $ => seq(
+      optional($.visibility),
       choice('infix', 'infixl', 'infixr'),
       $.integer,
       repeat1($.bid),
@@ -286,15 +291,6 @@ module.exports = grammar({
 
     abstract: $ => seq(
       'abstract',
-      optional($._declaration_block),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Private
-    // //////////////////////////////////////////////////////////////////////
-
-    private: $ => seq(
-      'private',
       optional($._declaration_block),
     ),
 
@@ -345,18 +341,16 @@ module.exports = grammar({
     ),
 
     // //////////////////////////////////////////////////////////////////////
-    // Declaration: Open
+    // Declaration: Import
     // //////////////////////////////////////////////////////////////////////
 
-
-    open: $ => seq(
-      'open',
-      choice($.import, $.module_name),
-      optional($._atoms),
-      optional($._import_directives),
+    import: $ => seq(
+      'import', 
+      alias(optional('public'), $.public),
+      $.module_name,
+      optional($.as),
     ),
-    import: $ => seq('import', $.module_name),
-
+    as: $ => (seq('as', $.module_name)),
 
     // ModuleName
     module_name: $ => $._qid,
@@ -398,7 +392,6 @@ module.exports = grammar({
     module_macro: $ => seq(
       choice(
         seq('module', alias($._qid, $.module_name)),
-        seq('open', 'module', alias($._qid, $.module_name)),
       ),
       optional($._typed_untyped_bindings),
       '=',
@@ -422,7 +415,7 @@ module.exports = grammar({
     // Module
     module: $ => seq(
       'module',
-      alias(choice($._qid, '_'), $.module_name),
+      $.module_name,
     ),
 
     // //////////////////////////////////////////////////////////////////////
@@ -514,11 +507,14 @@ module.exports = grammar({
         // eslint-disable-next-line max-len
         alias(/(([^\s;\.\"\(\)\{\}@\'\\_]|\\[^\sa-zA-Z]|_[^\s;\.\"\(\)\{\}@])[^\s;\.\"\(\)\{\}@]*\.)*([^\s;\.\"\(\)\{\}@\'\\_]|\\[^\sa-zA-Z]|_[^\s;\.\"\(\)\{\}@])[^\s;\.\"\(\)\{\}@]*/, $.qid),
         alias($.id, $.qid),
+        $.hole,
       ),
     ),
 
+    hole: _ => '_',
+
     // BId
-    bid: $ => alias(choice('_', $.id), 'bid'),
+    bid: $ => alias(choice($.hole, $.id), 'bid'),
 
     // SpaceIds
     _ids: $ => repeat1($.id),
@@ -634,7 +630,6 @@ module.exports = grammar({
     _atom_curly: $ => brace(optional($.expr)),
 
     _atom_no_curly: $ => choice(
-      '_',
       'Prop',
       $.SetN,
       'quote',
@@ -650,8 +645,8 @@ module.exports = grammar({
       seq('⦃', '⦄'),
       seq($.id, '@', $.atom),
       seq('.', $.atom),
-      $.record_assignments,
-      alias($.field_assignments, $.record_assignments),
+      // $.record_assignments,
+      // alias($.field_assignments, $.record_assignments),
       $._ELLIPSIS,
       $._expr_or_attr,
     ),
@@ -833,7 +828,6 @@ module.exports = grammar({
       paren($.attributes, $._application, ':', $.expr),
       brace($.attributes, $._binding_ids_and_absurds, ':', $.expr),
       brace_double($.attributes, $._binding_ids_and_absurds, ':', $.expr),
-      paren($.open),
       paren('let', $._declaration_block),
     ),
 
@@ -861,18 +855,13 @@ module.exports = grammar({
     // Literals
     // //////////////////////////////////////////////////////////////////////
 
-    // -- Literals
-    // <0,code> \'             { litChar }
-    // <0,code,pragma_> \"     { litString }
-    // <0,code> @integer       { literal LitNat }
-    // <0,code> @float         { literal LitFloat }
     integer: _ => integer,
-    // string: _ => /\".*\"/,
-    // char: _ => /\'.*\'/,
-    literal: _ => choice(
+    string: _ => /\"([^\"]|\\\")*\"/,
+    char: _ => /\'([^\']|\\\\')*\'/,
+    literal: $ => choice(
       integer,
-      /\".*\"/,
-      /\'.*\'/,
+      $.string,
+      $.char,
     ),
 
     // //////////////////////////////////////////////////////////////////////
