@@ -10,19 +10,36 @@ die() {
   exit 1
 }
 
+generate() {
+  echo generating...
+  tree-sitter generate && echo generate ok
+}
+
+test() {
+  echo testing...
+  tree-sitter test && echo test ok
+}
+
 command="${1:-}"
 [[ -z "$command" ]] && die "No command"
+shift
 
-case $command in
-  test)
+case "$command" in
+  dev)
     set +e
     while true; do
-      find grammar.js src test| entr -cdr bash -c "tree-sitter test"
+      find grammar.js | entr -cdr bin/start generate &
+      find src test | entr -cdr bin/start test &
+      wait
       (( $? == 0 || $? > 128 )) && exit 0
     done
     ;;
   *)
-    die "Unknown command: $command"
+    if type "$command" > /dev/null; then
+      $command "$@"
+    else
+      die "Unknown command: $command"
+    fi
     ;;
 esac
 
