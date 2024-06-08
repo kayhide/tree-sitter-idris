@@ -1,0 +1,11 @@
+prefix=@PREFIX@
+libdir=@LIBDIR@
+includedir=@INCLUDEDIR@
+
+Name: tree-sitter-idris
+Description: Idris grammar for tree-sitter
+URL: @URL@
+Version: @VERSION@
+Requires: @REQUIRES@
+Libs: -L${libdir} @ADDITIONAL_LIBS@ -ltree-sitter-idris
+Cflags: -I${includedir}
