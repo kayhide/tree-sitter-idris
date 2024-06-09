@@ -1,1066 +1,287 @@
-const BRACE1 = [['{', '}']];
-const BRACE2 = [['{{', '}}'], ['⦃', '⦄']];
-// const BRACES = [...BRACE1, ...BRACE2];
-const IDIOM = [['(|', '|)'], ['⦇', '⦈']];
-const PAREN = [['(', ')']];
-const integer = /\-?(0x[0-9a-fA-F]+|[0-9]+)/;
-const available_symbols = [':', '+', '-', '*', '\/', '=', '.', '?', '|', '&', '>', '<', '!', '@', '$', '%', '^', '~', '#', ];
+const basic = require('./grammar/basic.js')
+const id = require('./grammar/id.js')
+const rows = require('./grammar/rows_and_records.js')
+const type = require('./grammar/type.js')
+const exp = require('./grammar/exp.js')
+const pat = require('./grammar/pat.js')
+const import_ = require('./grammar/import.js')
+const module_ = require('./grammar/module.js')
+const data = require('./grammar/data.js')
+const class_ = require('./grammar/class.js')
+const decl = require('./grammar/decl.js')
+const derive = require('./grammar/derive.js')
+const pattern = require('./grammar/pattern.js')
 
 module.exports = grammar({
-  name: "idris",
+  name: 'idris',
 
-
-  word: $ => $.id,
-
+  /**
+   * These rules may occur anywhere in the grammar and don't have to be specified.
+   */
   extras: $ => [
+    /\p{Zs}/,
+    /\n/,
+    /\r/,
+    $.cpp,
     $.comment,
-    $.pragma,
-    /\s|\\n/,
   ],
 
+  /**
+   * These rules are handled manually by the scanner. Whenever their identifiers are used in the rule tree, the parser
+   * executes the scanner.
+   * Since the newline character is present both here and in `extras`, the scanner will be called before every token.
+   * This makes indentation/layout tracking simpler.
+   */
   externals: $ => [
-    $._newline,
-    $._indent,
-    $._dedent,
+    $._layout_semicolon,
+    $._layout_start,
+    $._layout_end,
+    $._dot,
+    $._arith_dotdot,
+    $.where,
+    // TODO: Splices were removed from the JS grammar but not from the scanner yet.
+    $._splice_dollar,
+    $._varsym,
+    $._consym,
+    $._tyconsym,
+    $.comment,
+    $.cpp,
+    $.comma,
+    // TODO: Quasiquotes were removed from the JS grammar but not from the scanner yet.
+    $.quasiquote_start,
+    $.quasiquote_bar,
+    $.quasiquote_body,
+    $._strict,
+    $._lazy,
+    // TODO: Unboxed types were removed from the JS grammar but not from the scanner yet.
+    $._unboxed_close,
+    '|',
+    'in',
+    /\n/,
+    $.empty_file,
   ],
+
+  inline: $ => [
+    $._number,
+    $._stringly,
+    $._qvarid,
+    $._operator_minus,
+    $._qvarsym,
+    $._qvarsym_nominus,
+    $._var,
+    $._qvar,
+    $._tyvar,
+    $._qconid,
+    $._qconsym,
+    $._con,
+    $._conop,
+    $._qconop,
+    $._op,
+    $._qop_nominus,
+    $._gcon_literal,
+    $._gcon,
+    $._tyconid,
+    $._qtyconid,
+    $._qtyconsym,
+    $._qtycon,
+    $._gtycon,
+    $._simple_tycon,
+    $._simple_tyconop,
+    $._simple_qtyconop,
+    $._quantifiers,
+    $._qualifying_module,
+  ],
+
+  precedences: _ => [
+    [
+      'infix-type',
+      'btype',
+    ],
+    [
+      'function-type',
+      'type',
+    ],
+  ],
+
+  conflicts: $ => [
+    /**
+     * Rows and records conflict with parenthesized types.
+     * Seems to be related to visible type application specifically.
+     */
+    [$._field_name_ty, $._tyvar_no_annotation],
+
+    /**
+     * Record updates `f { x = x }` conflict with function application `f { x: x }`.
+     * In PureScript record updates in fact do have higher precedence than function
+     * application, such that `identity { a: 1 } { a = 2 }` is a valid expression,
+     * but this doesn't work for parsing them correctly.
+     */
+    [$._record_update_lhs, $._aexp_projection],
+    [$._record_update_lhs, $.exp_name],
+
+    /**
+     * Newkind's and data's signatures/declarations are in obvious conflict:
+     *
+     * data A :: Type -> Type
+     * data A a
+     *
+     * vs
+     *
+     * data B :: forall k. k -> Type
+     * data B a = B
+     *
+     * TODO: replace [almost] all distinct kinds of kind/type signatures
+     * with a single `type_signature` node.
+     */
+    [$._data_type_signature, $._newkind_type_signature],
+
+    /**
+     * This could be done with the second named precedence further up, but it somehow overrides symbolic infix
+     * constructors.
+     * Needs more investigation.
+     */
+    [$.type_infix, $._type],
+
+    /*
+     * Wildcards in expression sections and pattern wildcards.
+     * They should be easily disambiguable but currently the grammar isn't capable of this.
+     */
+    [$.exp_section_left, $.pat_wildcard],
+
+    /**
+     * The definition of an infix expression is rather simple and as such
+     * it allows things which wouldn't be possible in reality:
+     *
+     * a ``b`` c
+     * (note the double '`' ticks)
+     */
+    [$.exp_ticked],
+
+    /**
+     * Top-level expression splices fundamentally conflict with decls, and since decls start with either `var` or `pat`,
+     * they cannot be disambiguated.
+     *
+     * function_variable:
+     * func (A a) = a
+     *
+     * function_pattern:
+     * Just 1 = Just 1
+     * a : as = [1, 2, 3]
+     *
+     * splice:
+     * makeLenses ''A
+     *
+     * The disambiguation can clearly be made from the `=`, but my impression is that the conflict check only considers
+     * immediate lookahead.
+     */
+    [$._fun_name, $.pat_name],
+    [$.signature, $.pat_name],
+    [$.exp_name, $._pat_constructor],
+    [$.exp_name, $.pat_name],
+    [$._aexp_projection, $._apat],
+    [$.pat_name, $._q_op],
+    [$.exp_array, $.pat_array],
+
+    /**
+     * For getting a node for function application, and no extra node if the expression only consists of one term.
+     */
+    [$._exp_apply, $._fexp],
+    [$._exp_apply],
+
+    /**
+     * Same as `exp_apply`, but for patterns.
+     */
+    [$.pat_apply, $._apat],
+    [$.pat_apply],
+
+    /**
+     * Same as `exp_apply`, but for types.
+     */
+    [$.type_apply, $._btype],
+    [$.type_apply],
+
+    /**
+     * A weird conflict involving fundeps and type variables in class heads,
+     * despite the fact that fundeps are delimited by `|`.
+     */
+    [$.type_name, $.class_head],
+
+    /**
+     * Type names and class names both alias `$.constructor`.
+     */
+    [$.type_name, $.class_name],
+
+    /**
+     * Same as above, but for operators.
+     */
+    [$.operator, $.type_operator],
+
+    /**
+     * What a `forall` binds to is ambiguous from the parser's POV:
+     *
+     * `t :: forall a. Unit`         ← binds to the single type name
+     * `t :: forall a. Unit → Unit`  ← binds to the whole expression
+     *
+     * This is solvable in theory but likely not under the current
+     * implementation of `type.js`. Although, the costs of a more naive
+     * implementation are small; it'd work fine unless someone decided
+     * to write `t :: forall a. forall b. ...`, in which case it wouldn't
+     * parse the second `forall` correctly.
+     */
+    [$._type,],
+    [$._btype,],
+
+    /**
+     * Ado-notation is currently tricky for two reasons:
+     * 1) It isn't natively supported by layout scanner, unlike do-notation.
+     * 2) It terminates with `in` keyword, which conflicts with `let … in …`-expressions.
+     *    This in turn prevents us from simply using the same rules as for do-notation.
+     * A future ideal solution would be to handle it at the scanner level.
+     */
+    [$.exp_ado],
+
+  ],
+
+  word: $ => $._varid,
 
   rules: {
-    source_file: $ => repeat(seq($._declaration, $._newline)),
-
-
-    // //////////////////////////////////////////////////////////////////////
-    // Constants
-    // //////////////////////////////////////////////////////////////////////
-
-    _FORALL: _ => choice('forall', '∀'),
-    _ARROW: _ => choice('->', '→'),
-    _LAMBDA: _ => choice('\\', 'λ'),
-    _ELLIPSIS: _ => choice('...', '…'),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Top-level Declarations
-    // //////////////////////////////////////////////////////////////////////
-
-    // Declarations
-    // indented, 1 or more declarations
-    _declaration_block: $ => block($, $._declaration),
-
-    // Declarations0: use `optional($._declaration_block)` instead
-    // _declaration_block0: $ => block($, optional($._declaration)),
-
-    // Declaration
-    _declaration: $ => choice(
-      $.fields,
-      $.function,
-      $.data,
-      $.interface,
-      $.record,
-      $.infix,
-      $.generalize,
-      $.mutual,
-      $.abstract,
-      $.instance,
-      $.macro,
-      $.postulate,
-      $.primitive,
-      $.import,
-      $.module_macro,
-      $.module,
-      $.pragma,
-      $.syntax,
-      $.pattern,
-      $.unquote_decl,
-    ),
-
-    visibility: _ => repeat1(choice(
-      'private',
-      'public',
-      'export',
-    )),
-
-    constructor: $ => seq('constructor', $.id),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Field
-    // //////////////////////////////////////////////////////////////////////
-
-    // Fields
-    fields: $ => seq(
-      'field',
-      $._signature_block,
-    ),
-
-    // ArgTypeSignatures
-    _signature_block: $ => block($, $.signature),
-
-    // ArgTypeSigs
-    signature: $ => choice(
-      seq(
-        optional('overlap'),
-        $._modal_arg_ids,
-        ':',
-        $.expr,
-      ),
-      seq(
-        'instance',
-        $._signature_block,
-      ),
-    ),
-
-    // ModalArgIds
-    _modal_arg_ids: $ => seq(repeat($.attribute), $._arg_ids),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Functions
-    // //////////////////////////////////////////////////////////////////////
-
-    // We are splitting FunClause into 2 cases:
-    //  *. function declaration (':')
-    //  *. function definitions ('=')
-    // Doing so we can mark the LHS of a function declaration as 'function_name'
-
-    // FunClause
-    function: $ => choice(
-      seq(
-        optional($.visibility),
-        optional($.attributes),
-        alias($.lhs_decl, $.lhs),
-        alias(optional($.rhs_decl), $.rhs),
-      ),
-      seq(
-        optional($.attributes),
-        alias($.lhs_defn, $.lhs),
-        alias(optional($.rhs_defn), $.rhs),
-        optional($.where),
-      ),
-    ),
-
-    // LHS
-    lhs_decl: $ => seq(
-      optional(alias('partial', $.partial)),
-      alias($._with_exprs, $.function_name),
-      optional($.rewrite_equations),
-      optional($.with_expressions),
-    ),
-    lhs_defn: $ => prec(1, seq(
-      $._with_exprs,
-      optional($.rewrite_equations),
-      optional($.with_expressions),
-    )),
-
-    // RHS
-    rhs_decl: $ => seq(':', $.expr),
-    rhs_defn: $ => seq('=', $.expr),
-
-    // WithExpressions
-    with_expressions: $ => seq('with', $.expr),
-
-    // RewriteEquations
-    rewrite_equations: $ => seq('rewrite', $._with_exprs),
-
-    // WhereClause
-    where: $ => seq(
-      'where',
-      $._indent,
-      repeat(seq($._declaration, $._newline)),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Data
-    // //////////////////////////////////////////////////////////////////////
-
-    data_name: $ => alias($.id, 'data_name'),
-
-    data: $ => seq(
-      optional($.visibility),
-      'data',
-      $.data_name,
-      optional($._typed_untyped_bindings),
-      optional(seq(':', $.expr)),
-      choice(
-        seq('=', $.expr),
-        seq('where', optional($._declaration_block)),
-      ),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Interface
-    // //////////////////////////////////////////////////////////////////////
-
-    interface_name: $ => alias($.id, 'interface_name'),
-
-    interface: $ => seq(
-      optional($.visibility),
-      'interface',
-      $.interface_name,
-      optional($._typed_untyped_bindings),
-      optional(seq(':', $.expr)),
-      optional(
-        seq('where', 
-          indent($,
-            repeat(seq(choice($.constructor, $._declaration), $._newline)),
-          ),
-        ),
-      ),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Record
-    // //////////////////////////////////////////////////////////////////////
-
-    // Record
-    record: $ => seq(
-      optional($.visibility),
-      'record',
-      alias($.atom, $.record_name),
-      optional($._typed_untyped_bindings),
-      optional(seq(':', $.expr)),
-      optional($.record_declarations_block),
-    ),
-
-    // RecordDeclarations
-    record_declarations_block: $ => seq(
-      'where',
-      indent($,
-        // RecordDirectives
-        repeat(seq($._record_directive, $._newline)),
-        repeat(seq($._declaration, $._newline)),
-      ),
-    ),
-
-    // RecordDirective
-    _record_directive: $ => choice(
-      $.record_constructor,
-      $.record_constructor_instance,
-      $.record_induction,
-      $.record_eta,
-    ),
-    // RecordConstructorName
-    record_constructor: $ => seq('constructor', $.id),
-
-    // Declaration of record constructor name.
-    record_constructor_instance: $ => seq(
-      'instance',
-      block($, $.record_constructor),
-    ),
-
-    // RecordInduction
-    record_induction: _ => choice(
-      'inductive',
-      'coinductive',
-    ),
-
-    // RecordEta
-    record_eta: _ => choice(
-      'eta-equality',
-      'no-eta-equality',
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Infix
-    // //////////////////////////////////////////////////////////////////////
-
-    infix: $ => seq(
-      optional($.visibility),
-      choice('infix', 'infixl', 'infixr'),
-      $.integer,
-      repeat1($.bid),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Generalize
-    // //////////////////////////////////////////////////////////////////////
-
-    generalize: $ => seq(
-      'variable',
-      optional($._signature_block),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Mutual
-    // //////////////////////////////////////////////////////////////////////
-
-    mutual: $ => seq(
-      'mutual',
-      optional($._declaration_block),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Abstract
-    // //////////////////////////////////////////////////////////////////////
-
-    abstract: $ => seq(
-      'abstract',
-      optional($._declaration_block),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Instance
-    // //////////////////////////////////////////////////////////////////////
-
-    instance: $ => seq(
-      'instance',
-      optional($._declaration_block),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Macro
-    // //////////////////////////////////////////////////////////////////////
-
-    macro: $ => seq(
-      'macro',
-      optional($._declaration_block),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Postulate
-    // //////////////////////////////////////////////////////////////////////
-
-    postulate: $ => seq(
-      'postulate',
-      optional($._declaration_block),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Primitive
-    // //////////////////////////////////////////////////////////////////////
-
-    primitive: $ => seq(
-      'primitive',
-      optional($._type_signature_block),
-    ),
-
-    // TypeSignatures
-    _type_signature_block: $ => block($, $.type_signature),
-
-    // TypeSigs
-    type_signature: $ => seq(
-      $._field_names,
-      ':',
-      $.expr,
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Import
-    // //////////////////////////////////////////////////////////////////////
-
-    import: $ => seq(
-      'import', 
-      alias(optional('public'), $.public),
-      $.module_name,
-      optional($.as),
-    ),
-    as: $ => (seq('as', $.module_name)),
-
-    // ModuleName
-    module_name: $ => $._qid,
-
-    // ImportDirectives and shit
-    _import_directives: $ => repeat1($.import_directive),
-    import_directive: $ => choice(
-      'public',
-      seq('using', '(', $._comma_import_names, ')'),
-      seq('hiding', '(', $._comma_import_names, ')'),
-      seq('renaming', '(', sepR(';', $.renaming), ')'),
-      seq('using', '(', ')'),
-      seq('hiding', '(', ')'),
-      seq('renaming', '(', ')'),
-    ),
-
-    // CommaImportNames
-    _comma_import_names: $ => sepR(';', $._import_name),
-
-    // Renaming
-    renaming: $ => seq(
-      optional('module'),
-      $.id,
-      'to',
-      $.id,
-    ),
-
-    // ImportName
-    _import_name: $ => seq(
-      optional('module'), $.id,
-    ),
-
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Module Macro
-    // //////////////////////////////////////////////////////////////////////
-
-    // ModuleMacro
-    module_macro: $ => seq(
-      choice(
-        seq('module', alias($._qid, $.module_name)),
-      ),
-      optional($._typed_untyped_bindings),
-      '=',
-      $.module_application,
-      repeat($.import_directive),
-    ),
-
-    // ModuleApplication
-    module_application: $ => seq(
-      $.module_name,
-      choice(
-        prec(1, brace_double($._ELLIPSIS)),
-        optional($._atoms),
-      ),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Module
-    // //////////////////////////////////////////////////////////////////////
-
-    // Module
-    module: $ => seq(
-      'module',
-      $.module_name,
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Pragma
-    // //////////////////////////////////////////////////////////////////////
-
-    // Pragma / DeclarationPragma
-    pragma: _ => token(seq(
-      '{-#',
-      repeat(choice(
-        /[^#]/,
-        /#[^-]/,
-        /#\-[^}]/,
-      )),
-      '#-}',
-    )),
-
-    // CatchallPragma
-    catchall_pragma: _ => seq('{-#', 'CATCHALL', '#-}'),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Syntax
-    // //////////////////////////////////////////////////////////////////////
-
-    syntax: $ => seq(
-      'syntax',
-      $.id,
-      $.hole_names,
-      '=',
-      repeat1($.id),
-    ),
-
-    // HoleNames
-    hole_names: $ => repeat1($.hole_name),
-    hole_name: $ => choice(
-      $._simple_top_hole,
-      brace($._simple_hole),
-      brace_double($._simple_hole),
-      brace($.id, '=', $._simple_hole),
-      brace_double($.id, '=', $._simple_hole),
-    ),
-
-    // SimpleTopHole
-    _simple_top_hole: $ => choice(
-      $.id,
-      paren($._LAMBDA, $.bid, $._ARROW, $.id),
-    ),
-
-    // SimpleHole
-    _simple_hole: $ => choice(
-      $.id,
-      seq($._LAMBDA, $.bid, $._ARROW, $.id),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Pattern Synonym
-    // //////////////////////////////////////////////////////////////////////
-
-    // PatternSyn
-    pattern: $ => seq(
-      'pattern',
-      $.id,
-      optional($._lambda_bindings), // PatternSynArgs
-      '=',
-      $.expr,
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Declaration: Unquoting declarations
-    // //////////////////////////////////////////////////////////////////////
-
-    // UnquoteDecl
-    unquote_decl: $ => choice(
-      seq('unquoteDecl', '=', $.expr),
-      seq('unquoteDecl', $._ids, '=', $.expr),
-      seq('unquoteDef', $._ids, '=', $.expr),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Names
-    // //////////////////////////////////////////////////////////////////////
-
-    // identifier: http://wiki.portal.chalmers.se/agda/pmwiki.php?n=ReferenceManual.Names
-    id: _ => /([^\s\\.\"\(\)\{\}@\'\\_]|\\[^\sa-zA-Z]|_[^\s;\.\"\(\)\{\}@])[^\s;\.\"\(\)\{\}@]*/,
-
-    // qualified identifier: http://wiki.portal.chalmers.se/agda/pmwiki.php?n=ReferenceManual.Names
-    _qid: $ => prec.left(
-      choice(
-        // eslint-disable-next-line max-len
-        alias(/(([^\s;\.\"\(\)\{\}@\'\\_]|\\[^\sa-zA-Z]|_[^\s;\.\"\(\)\{\}@])[^\s;\.\"\(\)\{\}@]*\.)*([^\s;\.\"\(\)\{\}@\'\\_]|\\[^\sa-zA-Z]|_[^\s;\.\"\(\)\{\}@])[^\s;\.\"\(\)\{\}@]*/, $.qid),
-        alias($.id, $.qid),
-        $.hole,
-      ),
-    ),
-
-    hole: _ => '_',
-
-    // BId
-    bid: $ => alias(choice($.hole, $.id), 'bid'),
-
-    // SpaceIds
-    _ids: $ => repeat1($.id),
-
-    _field_name: $ => alias($.id, $.field_name),
-    _field_names: $ => repeat1($._field_name),
-
-    // MaybeDottedId
-    _maybe_dotted_id: $ => maybeDotted($._field_name),
-    _maybe_dotted_ids: $ => repeat1($._maybe_dotted_id),
-
-    // ArgIds
-    _arg_ids: $ => repeat1($._arg_id),
-    _arg_id: $ => choice(
-      $._maybe_dotted_id,
-
-      brace($._maybe_dotted_ids),
-      brace_double($._maybe_dotted_ids),
-
-      seq('.', brace($._field_names)),
-      seq('.', brace_double($._field_names)),
-
-      seq('..', brace($._field_names)),
-      seq('..', brace_double($._field_names)),
-    ),
-
-    // CommaBIds / CommaBIdAndAbsurds
-    _binding_ids_and_absurds: $ => prec(-1, choice(
-      $._application,
-      seq($._qid, '=', $._qid),
-      seq($._qid, '=', '_'),
-      seq('-', '=', $._qid),
-      seq('-', '=', '_'),
-    )),
-
-    // Attribute
-    attribute: $ => seq('@', $._expr_or_attr),
-    attributes: $ => repeat1($.attribute),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Expressions (terms and types)
-    // //////////////////////////////////////////////////////////////////////
-
-    // Expr
-    expr: $ => choice(
-      seq($._typed_bindings, $._ARROW, $.expr),
-      seq(optional($.attributes), $._atoms, $._ARROW, $.expr),
-      seq($._with_exprs, '=', $.expr),
-      prec(-1, $._with_exprs), // lowest precedence
-    ),
-    stmt: $ => choice(
-      seq($._typed_bindings, $._ARROW, $.expr),
-      seq(optional($.attributes), $._atoms, $._ARROW, $.expr),
-      seq($._with_exprs, '=', $.expr),
-      prec(-1, $._with_exprs_stmt), // lowest precedence
-    ),
-
-    // WithExprs/Expr1
-    _with_exprs: $ => seq(
-      repeat(seq($._atoms, '|')),
-      $._application,
-    ),
-    _with_exprs_stmt: $ => seq(
-      repeat(seq($._atoms, '|')),
-      $._application_stmt,
-    ),
-
-    // ExprOrAttr
-    _expr_or_attr: $ => choice(
-      $.literal,
-      $._qid,
-      paren($.expr),
-    ),
-
-    // Application
-    _application: $ => seq(
-      optional($._atoms),
-      $._expr2,
-    ),
-    _application_stmt: $ => seq(
-      optional($._atoms),
-      $._expr2_stmt,
-    ),
-
-    // Expr
-    _expr2_without_let: $ => choice(
-      $.lambda,
-      alias($.lambda_extended_or_absurd, $.lambda),
-      $.forall,
-      $.do,
-      prec(-1, $.atom),
-      seq('quoteGoal', $.id, 'in', $.expr),
-      seq('tactic', $._atoms),
-      seq('tactic', $._atoms, '|', $._with_exprs),
-    ),
-    _expr2: $ => choice(
-      $._expr2_without_let,
-      $.let,
-    ),
-    _expr2_stmt: $ => choice(
-      $._expr2_without_let,
-      alias($.let_in_do, $.let),
-    ),
-
-    // Expr3
-    atom: $ => choice(
-      $._atom_curly,
-      $._atom_no_curly,
-    ),
-    // Application3 / OpenArgs
-    _atoms: $ => repeat1($.atom),
-
-    _atom_curly: $ => brace(optional($.expr)),
-
-    _atom_no_curly: $ => choice(
-      'Prop',
-      $.SetN,
-      'quote',
-      'quoteTerm',
-      'quoteContext',
-      'unquote',
-      $.PropN,
-      paren($._atoms, '**', $._atoms), // DPair
-      brace_double($.expr),
-      idiom($.expr),
-      seq('(', ')'),
-      seq('{{', '}}'),
-      seq('⦃', '⦄'),
-      seq($.id, '@', $.atom),
-      seq('.', $.atom),
-      // $.record_assignments,
-      // alias($.field_assignments, $.record_assignments),
-      $._ELLIPSIS,
-      $._expr_or_attr,
-    ),
-
-    // ForallBindings
-    forall: $ => seq($._FORALL, $._typed_untyped_bindings, $._ARROW, $.expr),
-
-    // LetBody
-    let: $ => prec.right(seq(
-      'let',
-      // declarations
-      optional($._indent),
-      repeat(seq($._declaration, $._newline)),
-      $._declaration,
-      // in case that there's a newline between declarations and $._let_body
-      optional($._newline),
-
-      $._let_body,
-    )),
-
-    // special `let...in` in do statements
-    let_in_do: $ => prec.right(seq(
-      'let',
-      // declarations
-      optional($._indent),
-      repeat(seq($._declaration, $._newline)),
-      $._declaration,
-      //
-      choice(
-        seq($._newline, $._dedent),
-        // covers the newline between declarations and $._let_body
-        seq($._newline, $._let_body),
-        // covers the rest of the cases
-        $._let_body,
-      ),
-    )),
-
-    _let_body: $ => seq(
-      'in',
-      $.expr,
-    ),
-
-    // LamBindings
-    lambda: $ => seq(
-      $._LAMBDA,
-      $._lambda_bindings,
-      $._ARROW,
-      $.expr,
-    ),
-
-    // LamBinds
-    _lambda_bindings: $ => seq(
-      repeat($._typed_untyped_binding),
-      choice(
-        $._typed_untyped_binding,
-        seq('(', ')'),
-        seq('{', '}'),
-        seq('{{', '}}'),
-        seq('⦃', '⦄'),
-      ),
-    ),
-
-    // ExtendedOrAbsurdLam
-    lambda_extended_or_absurd: $ => seq(
-      $._LAMBDA,
-      choice(
-        // LamClauses (single non absurd lambda clause)
-        brace($.lambda_clause),
-        // LamClauses
-        brace($._lambda_clauses),
-        // LamWhereClauses
-        seq('where', $._lambda_clauses),
-        // AbsurdLamBindings
-        $._lambda_bindings,
-      ),
-    ),
-
-    // bunch of `$._lambda_clause_maybe_absurd` sep by ';'
-    _lambda_clauses: $ => prec.left(seq(
-      repeat(seq($._lambda_clause_maybe_absurd, ';')),
-      $._lambda_clause_maybe_absurd,
-    )),
-
-    // AbsurdLamBindings | AbsurdLamClause
-    _lambda_clause_maybe_absurd: $ => prec.left(choice(
-      $.lambda_clause_absurd,
-      $.lambda_clause,
-    )),
-
-    // AbsurdLamClause
-    lambda_clause_absurd: $ => seq(
-      optional($.catchall_pragma),
-      $._application,
-    ),
-
-    // NonAbsurdLamClause
-    lambda_clause: $ => seq(
-      optional($.catchall_pragma),
-      optional($._atoms), // Application3PossiblyEmpty
-      $._ARROW,
-      $.expr,
-    ),
-
-    // DoStmts
-    do: $ => seq('do',
-      block($, $._do_stmt),
-    ),
-
-    // DoStmt
-    _do_stmt: $ => seq(
-      $.stmt,
-      optional($.do_where),
-    ),
-
-    // DoWhere
-    do_where: $ => seq(
-      'where',
-      $._lambda_clauses,
-    ),
-
-    // RecordAssignments
-    record_assignments: $ => seq(
-      'record',
-      brace(optional($._record_assignments)),
-    ),
-
-    field_assignments: $ => seq(
-      'record',
-      $._atom_no_curly,
-      brace(optional($._field_assignments)),
-    ),
-
-    // RecordAssignments1
-    _record_assignments: $ => seq(
-      repeat(seq($._record_assignment, ';')),
-      $._record_assignment,
-    ),
-
-
-    // FieldAssignments1
-    _field_assignments: $ => seq(
-      repeat(seq($.field_assignment, ';')),
-      $.field_assignment,
-    ),
-
-    // RecordAssignment
-    _record_assignment: $ => choice(
-      $.field_assignment,
-      $.module_assignment,
-    ),
-
-    // FieldAssignment
-    field_assignment: $ => seq(
-      alias($.id, $.field_name),
-      '=',
-      $.expr,
-    ),
-
-    // ModuleAssignment
-    module_assignment: $ => seq(
-      $.module_name,
-      optional($._atoms),
-      optional($._import_directives),
-    ),
-
-
-    // //////////////////////////////////////////////////////////////////////
-    // Bindings
-    // //////////////////////////////////////////////////////////////////////
-
-    // TypedBinding
-    _typed_bindings: $ => repeat1($.typed_binding),
-    typed_binding: $ => choice(
-      maybeDotted(choice(
-        paren($._application, ':', $.expr),
-        brace($._binding_ids_and_absurds, ':', $.expr),
-        brace_double($._binding_ids_and_absurds, ':', $.expr),
-      )),
-      paren($.attributes, $._application, ':', $.expr),
-      brace($.attributes, $._binding_ids_and_absurds, ':', $.expr),
-      brace_double($.attributes, $._binding_ids_and_absurds, ':', $.expr),
-      paren('let', $._declaration_block),
-    ),
-
-    // TypedUntypedBindings1
-    _typed_untyped_bindings: $ => repeat1($._typed_untyped_binding),
-    _typed_untyped_binding: $ => choice(
-      $.untyped_binding,
-      $.typed_binding,
-    ),
-
-    // DomainFreeBinding / DomainFreeBindingAbsurd
-    untyped_binding: $ => choice( // 13 variants
-      maybeDotted(choice(
-        $.bid,
-        brace($._binding_ids_and_absurds),
-        brace_double($._binding_ids_and_absurds),
-      )),
-      paren($._binding_ids_and_absurds),
-      paren($.attributes, $._binding_ids_and_absurds),
-      brace($.attributes, $._binding_ids_and_absurds),
-      brace_double($.attributes, $._binding_ids_and_absurds),
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Literals
-    // //////////////////////////////////////////////////////////////////////
-
-    integer: _ => integer,
-    string: _ => /\"([^\"]|\\\")*\"/,
-    char: _ => /\'([^\']|\\\\')*\'/,
-    literal: $ => choice(
-      integer,
-      $.string,
-      $.char,
-    ),
-
-    // //////////////////////////////////////////////////////////////////////
-    // Comment
-    // //////////////////////////////////////////////////////////////////////
-
-    comment: _ => token(choice(
-      prec(100, seq('--', /.*/)),
-      seq('{--}'),
-      seq(
-        '{-',
-        /[^#]/,
-        repeat(choice(
-          /[^-]/, // anything but -
-          /-[^}]/, // - not followed by }
-        )),
-        /-}/,
-      ),
-    )),
-
-    // setN
-    SetN: $ => prec.right(2, seq('Set', optional($.atom))),
-
-
-    // //////////////////////////////////////////////////////////////////////
-    // Unimplemented
-    // //////////////////////////////////////////////////////////////////////
-
-
-    // propN
-    PropN: _ => 'propN',
-
-  },
-});
-
-
-// //////////////////////////////////////////////////////////////////////
-// Generic combinators
-// //////////////////////////////////////////////////////////////////////
-
-/**
- * Creates a rule to match one or more of the rules separated by `sep`.
- *
- * @param {RuleOrLiteral} sep
- *
- * @param {RuleOrLiteral} rule
- *
- * @return {SeqRule}
- *
- */
-function sepR(sep, rule) {
-  return seq(rule, repeat(seq(sep, rule)));
-}
-
-/**
-  * Creates a rule that requires indentation before and dedentation after.
-  *
-  * @param {GrammarSymbols<any>} $
-  *
-  * @param {RuleOrLiteral[]} rule
-  *
-  * @return {SeqRule}
-  *
-  */
-function indent($, ...rule) {
-  return seq(
-    $._indent,
-    ...rule,
-    $._dedent,
-  );
-}
-
-// 1 or more $RULE ending with a NEWLINE
-/**
-  * Creates a rule that uses an indentation block, where each line is a rule.
-  * The indentation is required before and dedentation is required after.
-  *
-  * @param {GrammarSymbols<any>} $
-  *
-  * @param {RuleOrLiteral} rules
-  *
-  * @return {SeqRule}
-  */
-function block($, rules) {
-  return indent($, repeat1(seq(rules, $._newline)));
-}
-
-// //////////////////////////////////////////////////////////////////////
-// Language-specific combinators
-// //////////////////////////////////////////////////////////////////////
-
-/**
-  * Creates a rule that matches a rule with a dot or two dots in front.
-  *
-  * @param {RuleOrLiteral} rule
-  *
-  * @return {ChoiceRule}
-  */
-function maybeDotted(rule) {
-  return choice(
-    rule, // Relevant
-    seq('.', rule), // Irrelevant
-    seq('..', rule), // NonStrict
-  );
-}
-
-/**
-  * Flattens an array of arrays.
-  *
-  * @param {Array<Array<Array<string>>>} arrOfArrs
-  *
-  * @return {Array<Array<string>>}
-  *
-  */
-function flatten(arrOfArrs) {
-  return arrOfArrs.reduce((res, arr) => [...res, ...arr], []);
-}
-
-/**
-  * A callback function that takes a left and right string and returns a rule.
-  * @callback encloseWithCallback
-  * @param {string} left
-  * @param {string} right
-  * @return {RuleOrLiteral}
-  * @see encloseWith
-  * @see enclose
-  */
-
-/**
-  * Creates a rule that matches a sequence of rules enclosed by a pair of strings.
-  *
-  * @param {encloseWithCallback} fn
-  *
-  * @param {Array<Array<Array<string>>>} pairs
-  *
-  * @return {ChoiceRule}
-  *
-  */
-function encloseWith(fn, ...pairs) {
-  return choice(...flatten(pairs).map(([left, right]) => fn(left, right)));
-}
-
-/**
-  *
-  * @param {RuleOrLiteral} expr
-  *
-  * @param {Array<Array<Array<string>>>} pairs
-  *
-  * @return {ChoiceRule}
-  *
-  */
-function enclose(expr, ...pairs) {
-  return encloseWith((left, right) => seq(left, expr, right), ...pairs);
-}
-
-/**
-  * Creates a rule that matches a sequence of rules enclosed by `(` and `)`.
-  *
-  * @param {RuleOrLiteral[]} rules
-  *
-  * @return {ChoiceRule}
-  *
-  */
-function paren(...rules) {
-  return enclose(seq(...rules), PAREN);
-}
-
-/**
-  * Creates a rule that matches a sequence of rules enclosed by `{` and `}`.
-  *
-  * @param {RuleOrLiteral[]} rules
-  *
-  * @return {ChoiceRule}
-  *
-  */
-function brace(...rules) {
-  return enclose(seq(...rules), BRACE1);
-}
-
-/**
-  * Creates a rule that matches a sequence of rules enclosed by `{{` and `}}`.
-  *
-  * @param {RuleOrLiteral[]} rules
-  *
-  * @return {ChoiceRule}
-  *
-  */
-function brace_double(...rules) {
-  return enclose(seq(...rules), BRACE2);
-}
-
-/**
-  * Creates a rule that matches a sequence of rules enclosed by `(|` and `|)`.
-  *
-  * @param {RuleOrLiteral[]} rules
-  *
-  * @return {ChoiceRule}
-  *
-  */
-function idiom(...rules) {
-  return enclose(seq(...rules), IDIOM);
-}
+    idris: $ => choice(
+      $.empty_file,
+      $._decl_module,
+      terminated($, $._topdecl),
+    ),
+
+    _topdecl: $ => choice(
+      alias($.decl_type, $.type_alias),
+      $.type_role_declaration,
+      alias($.decl_data, $.data),
+      alias($.decl_newtype, $.newtype),
+      // TODO: Imports cannot come in random places,
+      // the structure of a module is always `module M [exports] where [imports] …`
+      // should group these together to remove extra parser overhead and simplify it for all other symbols
+      alias($.decl_import, $.import),
+      $.class_declaration,
+      $.class_instance,
+      $._decl_foreign,
+      alias($.decl_derive, $.derive_declaration),
+      $._decl,
+      $.kind_declaration,
+      $.kind_value_declaration,
+      alias($.decl_pattern, $.pattern_synonym),
+    ),
+
+    ...basic,
+    ...id,
+    ...rows,
+    ...type,
+    ...exp,
+    ...pat,
+    ...import_,
+    ...module_,
+    ...data,
+    ...class_,
+    ...decl,
+    ...derive,
+    ...pattern,
+  }
+})
