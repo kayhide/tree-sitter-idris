@@ -156,7 +156,7 @@ module.exports = {
   exp_lambda: $ => seq(
     '\\',
     repeat1($._apat),
-    $._arrow,
+    $._rcarrow,
     $._exp,
   ),
 

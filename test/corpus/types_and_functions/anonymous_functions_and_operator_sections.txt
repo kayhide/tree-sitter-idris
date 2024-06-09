@@ -1,0 +1,49 @@
+================================================================================
+Anonymous functions and operator sections 1
+================================================================================
+
+_ = map (\x => x * 2) intVec
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (pat_wildcard
+      (pat_wildcard))
+    (exp_apply
+      (exp_name
+        (variable))
+      (exp_parens
+        (exp_lambda
+          (pat_name
+            (variable))
+          (exp_infix
+            (exp_name
+              (variable))
+            (operator)
+            (exp_literal
+              (integer)))))
+      (exp_name
+        (variable)))))
+
+================================================================================
+Anonymous functions and operator sections 2
+================================================================================
+
+_ = map (* 2) intVec
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (pat_wildcard
+      (pat_wildcard))
+    (exp_apply
+      (exp_name
+        (variable))
+      (exp_section_left
+        (operator)
+        (exp_literal
+          (integer)))
+      (exp_name
+        (variable)))))
