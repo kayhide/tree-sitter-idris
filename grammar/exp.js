@@ -48,6 +48,10 @@ module.exports = {
 
   exp_array: $ => brackets(sep($.comma, $._exp)),
 
+  // ----- Implicit arguments -------------------------------------------------
+
+  exp_implicit_arg: $ => braces(seq($._var, '=', $._exp)),
+
   // ----- Operator sections --------------------------------------------------
 
   exp_section_left: $ => parens(
@@ -245,6 +249,7 @@ module.exports = {
     $.exp_name,
     $.exp_parens,
     $.exp_array,
+    $.exp_implicit_arg,
     $.record_literal,
     $.record_update,
     $.record_accessor,

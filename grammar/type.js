@@ -32,7 +32,7 @@ module.exports = {
 
   _forall_kw: _ => choice('forall', '∀'),
 
-  _quantifiers: $ => seq($._forall_kw, repeat1($._tyvar), '.'),
+  _quantifiers: $ => seq($._forall_kw, sep1($.comma, $._tyvar), '.'),
 
   // This could be simply `$._quantifiers` but we also handle
   // the edge case of `f :: forall a. forall b. Unit`
@@ -66,6 +66,8 @@ module.exports = {
 
   type_parens: $ => parens(seq(optional($.forall), $._type)),
 
+  type_braces: $ => braces(seq(sep1($.comma, $.type_name), $._type_annotation)),
+
   // This is the parser to be used in signatures for functions, classes, types, newtypes and data.
   _type_annotation: $ =>
     seq(
@@ -89,6 +91,7 @@ module.exports = {
       $.type_name,
       $.type_literal,
       $.type_parens,
+      $.type_braces,
       $.captured_type_operator,
     ),
 

@@ -1,0 +1,181 @@
+================================================================================
+Dependent Types
+================================================================================
+
+mkSingle : (x : Bool) -> isSingleton x
+mkSingle False = []
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_name
+        (annotated_type_variable
+          (type_variable)
+          (type_name
+            (type))))
+      (type_operator)
+      (type_apply
+        (type_name
+          (type_variable))
+        (type_name
+          (type_variable)))))
+  (function
+    (variable)
+    (patterns
+      (pat_name
+        (constructor)))
+    (exp_array)))
+
+================================================================================
+Implicit Arguments 1
+================================================================================
+
+index : forall a, n. Fin n -> Vect n a -> a
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (forall
+        (type_variable)
+        (comma)
+        (type_variable))
+      (type_apply
+        (type_name
+          (type))
+        (type_name
+          (type_variable)))
+      (type_operator)
+      (type_infix
+        (type_apply
+          (type_name
+            (type))
+          (type_name
+            (type_variable))
+          (type_name
+            (type_variable)))
+        (type_operator)
+        (type_name
+          (type_variable))))))
+
+================================================================================
+Implicit Arguments 2
+================================================================================
+
+index : {a : Type} -> {n : Nat} -> Fin n -> Vect n a -> a
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_braces
+        (type_name
+          (type_variable))
+        (type_name
+          (type)))
+      (type_operator)
+      (type_infix
+        (type_braces
+          (type_name
+            (type_variable))
+          (type_name
+            (type)))
+        (type_operator)
+        (type_infix
+          (type_apply
+            (type_name
+              (type))
+            (type_name
+              (type_variable)))
+          (type_operator)
+          (type_infix
+            (type_apply
+              (type_name
+                (type))
+              (type_name
+                (type_variable))
+              (type_name
+                (type_variable)))
+            (type_operator)
+            (type_name
+              (type_variable))))))))
+
+================================================================================
+Implicit Arguments 3
+================================================================================
+
+_ = index {a=Int} {n=2} FZ (2 :: 3 :: Nil)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (pat_wildcard
+      (pat_wildcard))
+    (exp_apply
+      (exp_name
+        (variable))
+      (exp_implicit_arg
+        (variable)
+        (exp_name
+          (constructor)))
+      (exp_implicit_arg
+        (variable)
+        (exp_literal
+          (integer)))
+      (exp_name
+        (constructor))
+      (exp_parens
+        (exp_infix
+          (exp_infix
+            (exp_literal
+              (integer))
+            (operator)
+            (exp_literal
+              (integer)))
+          (operator)
+          (exp_name
+            (constructor)))))))
+
+================================================================================
+Implicit Arguments 4
+================================================================================
+
+index : (i : Fin n) -> (xs : Vect n a) -> a
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_name
+        (annotated_type_variable
+          (type_variable)
+          (type_apply
+            (type_name
+              (type))
+            (type_name
+              (type_variable)))))
+      (type_operator)
+      (type_infix
+        (type_name
+          (annotated_type_variable
+            (type_variable)
+            (type_apply
+              (type_name
+                (type))
+              (type_name
+                (type_variable))
+              (type_name
+                (type_variable)))))
+        (type_operator)
+        (type_name
+          (type_variable))))))
