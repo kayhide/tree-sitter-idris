@@ -6,16 +6,13 @@ data Nat    = Z   | S Nat
 
 --------------------------------------------------------------------------------
 
-(source_file
+(idris
   (data
-    (data_name)
-    (expr
-      (atom
-        (qid))
-      (atom
-        (qid))
-      (atom
-        (qid)))))
+    (type)
+    (constructor)
+    (constructor)
+    (type_name
+      (type))))
 
 ================================================================================
 Data Types 2
@@ -25,23 +22,18 @@ data List a = Nil | (::) a (List a)
 
 --------------------------------------------------------------------------------
 
-(source_file
+(idris
   (data
-    (data_name)
-    (untyped_binding
-      (bid))
-    (expr
-      (atom
-        (qid))
-      (atom
-        (expr
-          (atom
-            (qid))))
-      (atom
-        (qid))
-      (atom
-        (expr
-          (atom
-            (qid))
-          (atom
-            (qid)))))))
+    (type)
+    (type_variable)
+    (constructor)
+    (constructor_operator)
+    (type_apply
+      (type_name
+        (type_variable))
+      (type_parens
+        (type_apply
+          (type_name
+            (type))
+          (type_name
+            (type_variable)))))))

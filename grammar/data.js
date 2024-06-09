@@ -21,7 +21,7 @@ module.exports = {
     'data',
     $._simpletype,
     '=',
-    sep1('|', seq($.constructor, repeat($._type)))
+    sep1('|', seq($._con, repeat($._type))),
   ),
 
   _decl_data_block: $ => seq(

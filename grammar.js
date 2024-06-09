@@ -105,12 +105,6 @@ module.exports = grammar({
 
   conflicts: $ => [
     /**
-     * Rows and records conflict with parenthesized types.
-     * Seems to be related to visible type application specifically.
-     */
-    [$._field_name_ty, $._tyvar_no_annotation],
-
-    /**
      * Record updates `f { x = x }` conflict with function application `f { x: x }`.
      * In PureScript record updates in fact do have higher precedence than function
      * application, such that `identity { a: 1 } { a = 2 }` is a valid expression,
@@ -118,22 +112,6 @@ module.exports = grammar({
      */
     [$._record_update_lhs, $._aexp_projection],
     [$._record_update_lhs, $.exp_name],
-
-    /**
-     * Newkind's and data's signatures/declarations are in obvious conflict:
-     *
-     * data A :: Type -> Type
-     * data A a
-     *
-     * vs
-     *
-     * data B :: forall k. k -> Type
-     * data B a = B
-     *
-     * TODO: replace [almost] all distinct kinds of kind/type signatures
-     * with a single `type_signature` node.
-     */
-    [$._data_type_signature, $._newkind_type_signature],
 
     /**
      * This could be done with the second named precedence further up, but it somehow overrides symbolic infix
@@ -214,7 +192,7 @@ module.exports = grammar({
     /**
      * Same as above, but for operators.
      */
-    [$.operator, $.type_operator],
+    [$.operator, $.constructor_operator],
 
     /**
      * What a `forall` binds to is ambiguous from the parser's POV:

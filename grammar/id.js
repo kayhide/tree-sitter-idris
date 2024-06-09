@@ -50,15 +50,11 @@ module.exports = {
 
   // TODO: should be deleted?
   // `_consym` comes from the scanner.
-  constructor_operator: $ => $._consym,
+  // constructor_operator: $ => $._consym,
+  constructor_operator: $ => $._operator,
   qualified_constructor_operator: $ => qualified($, $.constructor_operator),
   // Qualified or unqualified constructor operator
   _qconsym: $ => choice($.qualified_constructor_operator, $.constructor_operator),
-
-  // Data constructor in "normal" or infix operator form (in parens).
-  _con: $ => choice($.constructor, parens($.constructor_operator)),
-  // Qualified data constructor in "normal" or infix operator form (in parens).
-  _qcon: $ => choice($._qconid, parens($._qconsym)),
 
   // Data constructor in "normal" or infix operator form (in parens).
   _con: $ => choice($.constructor, parens($.constructor_operator)),
