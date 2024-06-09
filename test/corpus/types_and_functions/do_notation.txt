@@ -1,0 +1,45 @@
+================================================================================
+do notation
+================================================================================
+
+greet : IO ()
+greet = do
+  putStr "What is your name? "
+  name <- getLine
+  putStrLn ("Hello " ++ name)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_apply
+      (type_name
+        (type))
+      (row_type)))
+  (function
+    (variable)
+    (exp_do
+      (statement
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_literal
+            (string))))
+      (statement
+        (bind_pattern
+          (pat_name
+            (variable))
+          (exp_name
+            (variable))))
+      (statement
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_parens
+            (exp_infix
+              (exp_literal
+                (string))
+              (operator)
+              (exp_name
+                (variable)))))))))
