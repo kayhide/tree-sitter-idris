@@ -7,24 +7,15 @@ x = 94
 
 --------------------------------------------------------------------------------
 
-(source_file
+(idris
+  (signature
+    (variable)
+    (type_name
+      (type)))
   (function
-    (lhs
-      (function_name
-        (atom
-          (qid))))
-    (rhs
-      (expr
-        (atom
-          (qid)))))
-  (function
-    (lhs
-      (atom
-        (qid)))
-    (rhs
-      (expr
-        (atom
-          (qid))))))
+    (variable)
+    (exp_literal
+      (integer))))
 
 ================================================================================
 Primitive Types 2
@@ -35,25 +26,15 @@ foo = "Sausage machine"
 
 --------------------------------------------------------------------------------
 
-(source_file
+(idris
+  (signature
+    (variable)
+    (type_name
+      (type)))
   (function
-    (lhs
-      (function_name
-        (atom
-          (qid))))
-    (rhs
-      (expr
-        (atom
-          (qid)))))
-  (function
-    (lhs
-      (atom
-        (qid)))
-    (rhs
-      (expr
-        (atom
-          (literal
-            (string)))))))
+    (variable)
+    (exp_literal
+      (string))))
 
 ================================================================================
 Primitive Types 3
@@ -64,25 +45,15 @@ bar = 'Z'
 
 --------------------------------------------------------------------------------
 
-(source_file
+(idris
+  (signature
+    (variable)
+    (type_name
+      (type)))
   (function
-    (lhs
-      (function_name
-        (atom
-          (qid))))
-    (rhs
-      (expr
-        (atom
-          (qid)))))
-  (function
-    (lhs
-      (atom
-        (qid)))
-    (rhs
-      (expr
-        (atom
-          (literal
-            (char)))))))
+    (variable)
+    (exp_literal
+      (char))))
 
 ================================================================================
 Primitive Types 4
@@ -93,21 +64,12 @@ quux = False
 
 --------------------------------------------------------------------------------
 
-(source_file
+(idris
+  (signature
+    (variable)
+    (type_name
+      (type)))
   (function
-    (lhs
-      (function_name
-        (atom
-          (qid))))
-    (rhs
-      (expr
-        (atom
-          (qid)))))
-  (function
-    (lhs
-      (atom
-        (qid)))
-    (rhs
-      (expr
-        (atom
-          (qid))))))
+    (variable)
+    (exp_name
+      (constructor))))
