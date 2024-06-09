@@ -11,13 +11,39 @@ module.exports = {
       $._type_annotation
     ),
 
-  decl_data: $ => seq(
-    optional(alias($._data_type_signature, $.type_signature)),
+  decl_data: $ => choice(
+    $._decl_data_inline,
+    $._decl_data_block,
+  ),
+
+  _decl_data_inline: $ => seq(
+    repeat(choice('private', 'export', 'public')),
     'data',
     $._simpletype,
     '=',
     sep1('|', seq($.constructor, repeat($._type)))
   ),
+
+  _decl_data_block: $ => seq(
+    repeat(choice('private', 'export', 'public')),
+    'data',
+    $._tyconid,
+    optional(alias($._type_annotation, $.type_signature)),
+    $.where,
+    optional($.data_body),
+  ),
+
+  data_body: $ => layouted($, $._data_field_decl),
+
+  _data_field_decl: $ => choice(
+    $.constructor_signature,
+  ),
+
+  constructor_signature: $ => seq(
+    field('name', $._tyconid), 
+    alias($._type_annotation, $.type_signature),
+  ),
+  
 
   // ----- Newtype ------------------------------------------------------------
 

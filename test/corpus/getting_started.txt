@@ -12,17 +12,14 @@ main = putStrLn "Hello world"
 (idris
   (qualified_module
     (module))
+  (signature
+    (variable)
+    (type_apply
+      (type_name
+        (type))
+      (row_type)))
   (function
-    (pat_infix
-      (pat_name
-        (variable))
-      (operator)
-      (pat_apply
-        (pat_name
-          (constructor))
-        (pat_tuple)
-        (pat_name
-          (variable))))
+    (variable)
     (exp_apply
       (exp_name
         (variable))

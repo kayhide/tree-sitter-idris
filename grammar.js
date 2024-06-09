@@ -7,7 +7,7 @@ const pat = require('./grammar/pat.js')
 const import_ = require('./grammar/import.js')
 const module_ = require('./grammar/module.js')
 const data = require('./grammar/data.js')
-const class_ = require('./grammar/class.js')
+const interface = require('./grammar/interface.js')
 const decl = require('./grammar/decl.js')
 const derive = require('./grammar/derive.js')
 const pattern = require('./grammar/pattern.js')
@@ -204,12 +204,12 @@ module.exports = grammar({
      * A weird conflict involving fundeps and type variables in class heads,
      * despite the fact that fundeps are delimited by `|`.
      */
-    [$.type_name, $.class_head],
+    [$.type_name, $.interface_head],
 
     /**
      * Type names and class names both alias `$.constructor`.
      */
-    [$.type_name, $.class_name],
+    [$.type_name, $.interface_name],
 
     /**
      * Same as above, but for operators.
@@ -252,6 +252,7 @@ module.exports = grammar({
 
     _topdecl: $ => choice(
       $._decl_module,
+      alias($._decl_parameters, $.parameters),
       alias($.decl_type, $.type_alias),
       $.type_role_declaration,
       alias($.decl_data, $.data),
@@ -260,8 +261,8 @@ module.exports = grammar({
       // the structure of a module is always `module M [exports] where [imports] …`
       // should group these together to remove extra parser overhead and simplify it for all other symbols
       alias($.decl_import, $.import),
-      $.class_declaration,
-      $.class_instance,
+      $.interface_declaration,
+      $.interface_instance,
       $._decl_foreign,
       alias($.decl_derive, $.derive_declaration),
       $._decl,
@@ -279,7 +280,7 @@ module.exports = grammar({
     ...import_,
     ...module_,
     ...data,
-    ...class_,
+    ...interface,
     ...decl,
     ...derive,
     ...pattern,
