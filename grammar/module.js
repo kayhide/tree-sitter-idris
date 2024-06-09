@@ -30,6 +30,5 @@ module.exports = {
     'module',
     field('name', $.qualified_module),
     field('exports', optional($.exports)),
-    where($, $._topdecl),
   ),
 }

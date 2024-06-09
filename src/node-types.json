@@ -174,11 +174,11 @@
             "named": true
           },
           {
-            "type": "pat_parens",
+            "type": "pat_record",
             "named": true
           },
           {
-            "type": "pat_record",
+            "type": "pat_tuple",
             "named": true
           },
           {
@@ -402,11 +402,11 @@
           "named": true
         },
         {
-          "type": "pat_parens",
+          "type": "pat_record",
           "named": true
         },
         {
-          "type": "pat_record",
+          "type": "pat_tuple",
           "named": true
         },
         {
@@ -910,11 +910,11 @@
             "named": true
           },
           {
-            "type": "pat_parens",
+            "type": "pat_record",
             "named": true
           },
           {
-            "type": "pat_record",
+            "type": "pat_tuple",
             "named": true
           },
           {
@@ -1040,11 +1040,11 @@
             "named": true
           },
           {
-            "type": "pat_parens",
+            "type": "pat_record",
             "named": true
           },
           {
-            "type": "pat_record",
+            "type": "pat_tuple",
             "named": true
           },
           {
@@ -1143,11 +1143,11 @@
           "named": true
         },
         {
-          "type": "pat_parens",
+          "type": "pat_record",
           "named": true
         },
         {
-          "type": "pat_record",
+          "type": "pat_tuple",
           "named": true
         },
         {
@@ -2370,11 +2370,11 @@
           "named": true
         },
         {
-          "type": "pat_parens",
+          "type": "pat_record",
           "named": true
         },
         {
-          "type": "pat_record",
+          "type": "pat_tuple",
           "named": true
         },
         {
@@ -3693,11 +3693,11 @@
             "named": true
           },
           {
-            "type": "pat_parens",
+            "type": "pat_record",
             "named": true
           },
           {
-            "type": "pat_record",
+            "type": "pat_tuple",
             "named": true
           },
           {
@@ -4313,7 +4313,7 @@
     "named": true,
     "fields": {
       "exports": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
@@ -4323,7 +4323,7 @@
         ]
       },
       "name": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
@@ -4335,7 +4335,7 @@
     },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "class_declaration",
@@ -4399,10 +4399,6 @@
         },
         {
           "type": "type_role_declaration",
-          "named": true
-        },
-        {
-          "type": "where",
           "named": true
         }
       ]
@@ -4989,11 +4985,11 @@
           "named": true
         },
         {
-          "type": "pat_parens",
+          "type": "pat_record",
           "named": true
         },
         {
-          "type": "pat_record",
+          "type": "pat_tuple",
           "named": true
         },
         {
@@ -5044,11 +5040,11 @@
           "named": true
         },
         {
-          "type": "pat_parens",
+          "type": "pat_record",
           "named": true
         },
         {
-          "type": "pat_record",
+          "type": "pat_tuple",
           "named": true
         },
         {
@@ -5087,11 +5083,11 @@
             "named": true
           },
           {
-            "type": "pat_parens",
+            "type": "pat_record",
             "named": true
           },
           {
-            "type": "pat_record",
+            "type": "pat_tuple",
             "named": true
           },
           {
@@ -5153,11 +5149,11 @@
           "named": true
         },
         {
-          "type": "pat_parens",
+          "type": "pat_record",
           "named": true
         },
         {
-          "type": "pat_record",
+          "type": "pat_tuple",
           "named": true
         },
         {
@@ -5231,11 +5227,11 @@
           "named": true
         },
         {
-          "type": "pat_parens",
+          "type": "pat_record",
           "named": true
         },
         {
-          "type": "pat_record",
+          "type": "pat_tuple",
           "named": true
         },
         {
@@ -5340,11 +5336,11 @@
           "named": true
         },
         {
-          "type": "pat_parens",
+          "type": "pat_record",
           "named": true
         },
         {
-          "type": "pat_record",
+          "type": "pat_tuple",
           "named": true
         },
         {
@@ -5355,13 +5351,33 @@
     }
   },
   {
-    "type": "pat_parens",
+    "type": "pat_record",
+    "named": true,
+    "fields": {
+      "fields": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pat_fields",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "pat_tuple",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": true,
+      "multiple": true,
+      "required": false,
       "types": [
+        {
+          "type": "comma",
+          "named": true
+        },
         {
           "type": "pat_apply",
           "named": true
@@ -5391,11 +5407,11 @@
           "named": true
         },
         {
-          "type": "pat_parens",
+          "type": "pat_record",
           "named": true
         },
         {
-          "type": "pat_record",
+          "type": "pat_tuple",
           "named": true
         },
         {
@@ -5407,22 +5423,6 @@
           "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "pat_record",
-    "named": true,
-    "fields": {
-      "fields": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "pat_fields",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {
@@ -5462,11 +5462,11 @@
             "named": true
           },
           {
-            "type": "pat_parens",
+            "type": "pat_record",
             "named": true
           },
           {
-            "type": "pat_record",
+            "type": "pat_tuple",
             "named": true
           },
           {
@@ -5651,11 +5651,11 @@
           "named": true
         },
         {
-          "type": "pat_parens",
+          "type": "pat_record",
           "named": true
         },
         {
-          "type": "pat_record",
+          "type": "pat_tuple",
           "named": true
         },
         {
@@ -5721,11 +5721,11 @@
           "named": true
         },
         {
-          "type": "pat_parens",
+          "type": "pat_record",
           "named": true
         },
         {
-          "type": "pat_record",
+          "type": "pat_tuple",
           "named": true
         },
         {

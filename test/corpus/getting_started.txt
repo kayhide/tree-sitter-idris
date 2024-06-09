@@ -1,0 +1,30 @@
+================================================================================
+Hello world
+================================================================================
+
+module Main
+
+main : IO ()
+main = putStrLn "Hello world"
+
+--------------------------------------------------------------------------------
+
+(idris
+  (qualified_module
+    (module))
+  (function
+    (pat_infix
+      (pat_name
+        (variable))
+      (operator)
+      (pat_apply
+        (pat_name
+          (constructor))
+        (pat_tuple)
+        (pat_name
+          (variable))))
+    (exp_apply
+      (exp_name
+        (variable))
+      (exp_literal
+        (string)))))

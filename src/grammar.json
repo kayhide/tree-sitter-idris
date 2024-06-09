@@ -10,10 +10,6 @@
           "name": "empty_file"
         },
         {
-          "type": "SYMBOL",
-          "name": "_decl_module"
-        },
-        {
           "type": "SEQ",
           "members": [
             {
@@ -82,6 +78,10 @@
     "_topdecl": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_decl_module"
+        },
         {
           "type": "ALIAS",
           "content": {
@@ -3730,7 +3730,7 @@
       "named": true,
       "value": "pat_wildcard"
     },
-    "pat_parens": {
+    "pat_tuple": {
       "type": "SEQ",
       "members": [
         {
@@ -3738,8 +3738,37 @@
           "value": "("
         },
         {
-          "type": "SYMBOL",
-          "name": "_typed_pat"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_typed_pat"
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "comma"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "_typed_pat"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -3827,7 +3856,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "pat_parens"
+          "name": "pat_tuple"
         },
         {
           "type": "SYMBOL",
@@ -4532,113 +4561,6 @@
               }
             ]
           }
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "where"
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "SEQ",
-                      "members": [
-                        {
-                          "type": "SYMBOL",
-                          "name": "_layout_start"
-                        },
-                        {
-                          "type": "CHOICE",
-                          "members": [
-                            {
-                              "type": "SEQ",
-                              "members": [
-                                {
-                                  "type": "SEQ",
-                                  "members": [
-                                    {
-                                      "type": "SYMBOL",
-                                      "name": "_topdecl"
-                                    },
-                                    {
-                                      "type": "REPEAT",
-                                      "content": {
-                                        "type": "SEQ",
-                                        "members": [
-                                          {
-                                            "type": "PREC_DYNAMIC",
-                                            "value": 1,
-                                            "content": {
-                                              "type": "CHOICE",
-                                              "members": [
-                                                {
-                                                  "type": "STRING",
-                                                  "value": ";"
-                                                },
-                                                {
-                                                  "type": "SYMBOL",
-                                                  "name": "_layout_semicolon"
-                                                }
-                                              ]
-                                            }
-                                          },
-                                          {
-                                            "type": "SYMBOL",
-                                            "name": "_topdecl"
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "CHOICE",
-                                  "members": [
-                                    {
-                                      "type": "CHOICE",
-                                      "members": [
-                                        {
-                                          "type": "STRING",
-                                          "value": ";"
-                                        },
-                                        {
-                                          "type": "SYMBOL",
-                                          "name": "_layout_semicolon"
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "type": "BLANK"
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "BLANK"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "SYMBOL",
-                          "name": "_layout_end"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            }
-          ]
         }
       ]
     },
