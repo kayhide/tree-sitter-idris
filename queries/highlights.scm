@@ -99,7 +99,7 @@
   (where)
   "let"
   "in"
-  "class"
+  "interface"
   "instance"
   "derive"
   "foreign"
@@ -117,7 +117,7 @@
   "infixr"
 ] @keyword
 
-(class_instance
+(interface_instance
   "else" @keyword)
 
 (type_role_declaration
@@ -169,7 +169,7 @@
 (function
   name: (variable) @function)
 
-(class_instance
+(interface_instance
   (instance_name) @function)
 
 (derive_declaration
