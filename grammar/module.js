@@ -31,5 +31,10 @@ module.exports = {
     optional(alias($._top_declarations, $.parameters_body)),
   ),
 
+  _decl_mutual: $ => seq(
+    'mutual',
+    optional(alias($._top_declarations, $.mutual_body)),
+  ),
+
   _top_declarations: $ => layouted($, $._topdecl),
 }

@@ -1,0 +1,76 @@
+================================================================================
+Declaration Order and mutual blocks
+================================================================================
+
+mutual
+  even : Nat -> Bool
+  even Z = True
+  even (S k) = odd k
+
+  odd : Nat -> Bool
+  odd Z = False
+  odd (S k) = even k
+
+--------------------------------------------------------------------------------
+
+(idris
+  (mutual
+    (mutual_body
+      (signature
+        (variable)
+        (type_infix
+          (type_name
+            (type))
+          (type_operator)
+          (type_name
+            (type))))
+      (function
+        (variable)
+        (patterns
+          (pat_name
+            (constructor)))
+        (exp_name
+          (constructor)))
+      (function
+        (variable)
+        (patterns
+          (pat_tuple
+            (pat_apply
+              (pat_name
+                (constructor))
+              (pat_name
+                (variable)))))
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_name
+            (variable))))
+      (signature
+        (variable)
+        (type_infix
+          (type_name
+            (type))
+          (type_operator)
+          (type_name
+            (type))))
+      (function
+        (variable)
+        (patterns
+          (pat_name
+            (constructor)))
+        (exp_name
+          (constructor)))
+      (function
+        (variable)
+        (patterns
+          (pat_tuple
+            (pat_apply
+              (pat_name
+                (constructor))
+              (pat_name
+                (variable)))))
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_name
+            (variable)))))))

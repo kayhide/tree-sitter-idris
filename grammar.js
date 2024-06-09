@@ -221,6 +221,7 @@ module.exports = grammar({
       $._decl_module,
       alias($._decl_namespace, $.namespace),
       alias($._decl_parameters, $.parameters),
+      alias($._decl_mutual, $.mutual),
       alias($.decl_type, $.type_alias),
       $.type_role_declaration,
       alias($.decl_data, $.data),
