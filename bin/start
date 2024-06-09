@@ -28,7 +28,7 @@ case "$command" in
   dev)
     set +e
     while true; do
-      find grammar.js | entr -cdr bin/start generate &
+      find grammar.js grammar | entr -cdr bin/start generate &
       find src test | entr -cdr bin/start test &
       wait
       (( $? == 0 || $? > 128 )) && exit 0
