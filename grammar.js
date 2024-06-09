@@ -120,12 +120,6 @@ module.exports = grammar({
      */
     [$.type_infix, $._type],
 
-    /*
-     * Wildcards in expression sections and pattern wildcards.
-     * They should be easily disambiguable but currently the grammar isn't capable of this.
-     */
-    [$.exp_section_left, $.pat_wildcard],
-
     /**
      * The definition of an infix expression is rather simple and as such
      * it allows things which wouldn't be possible in reality:
@@ -159,6 +153,9 @@ module.exports = grammar({
     [$._aexp_projection, $._apat],
     [$.pat_name, $._q_op],
     [$.exp_array, $.pat_array],
+    [$.exp_parens, $.pat_tuple],
+    [$._minus, $.exp_negation],
+    [$._minus, $.exp_negation, $.pat_negation],
 
     /**
      * For getting a node for function application, and no extra node if the expression only consists of one term.

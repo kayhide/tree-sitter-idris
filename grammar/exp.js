@@ -39,7 +39,8 @@ module.exports = {
 
   exp_negation: $ => seq('-', $._aexp),
 
-  exp_parens: $ => parens($._exp),
+  // Paren or tupels
+  exp_parens: $ => parens(sep($.comma, $._exp)),
 
   exp_type_application: $ => seq('@', $._atype),
 
@@ -50,7 +51,6 @@ module.exports = {
   // ----- Operator sections --------------------------------------------------
 
   exp_section_left: $ => parens(
-    $.wildcard,
     choice($._q_op, $.exp_ticked),
     $._exp_infix
   ),
@@ -58,7 +58,6 @@ module.exports = {
   exp_section_right: $ => parens(
     $._exp_infix,
     choice($._q_op, $.exp_ticked),
-    $.wildcard
   ),
 
   // ----- Records ------------------------------------------------------------

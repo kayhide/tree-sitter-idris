@@ -18,7 +18,7 @@ module.exports = {
 
   _funrhs: $ => seq(
     choice(
-      seq('=', field('rhs', $._exp)),
+      seq(choice(':=', '='), field('rhs', $._exp)),
       $._fun_guards,
     ),
     optional(seq($.where, $.declarations)),
