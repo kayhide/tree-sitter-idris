@@ -105,15 +105,6 @@ module.exports = grammar({
 
   conflicts: $ => [
     /**
-     * Record updates `f { x = x }` conflict with function application `f { x: x }`.
-     * In PureScript record updates in fact do have higher precedence than function
-     * application, such that `identity { a: 1 } { a = 2 }` is a valid expression,
-     * but this doesn't work for parsing them correctly.
-     */
-    [$._record_update_lhs, $._aexp_projection],
-    [$._record_update_lhs, $.exp_name],
-
-    /**
      * This could be done with the second named precedence further up, but it somehow overrides symbolic infix
      * constructors.
      * Needs more investigation.
@@ -151,6 +142,7 @@ module.exports = grammar({
     [$.exp_name, $._pat_constructor],
     [$.exp_name, $.pat_name],
     [$._aexp_projection, $._apat],
+    [$._aexp_projection, $.pat_wildcard],
     [$.pat_name, $._q_op],
     [$.exp_array, $.pat_array],
     [$.exp_parens, $.pat_tuple],
@@ -233,6 +225,7 @@ module.exports = grammar({
       $.type_role_declaration,
       alias($.decl_data, $.data),
       alias($.decl_newtype, $.newtype),
+      alias($.decl_record, $.record),
       // TODO: Imports cannot come in random places,
       // the structure of a module is always `module M [exports] where [imports] …`
       // should group these together to remove extra parser overhead and simplify it for all other symbols

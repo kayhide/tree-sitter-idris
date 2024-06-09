@@ -64,8 +64,10 @@ module.exports = {
 
   // ----- Aggregation --------------------------------------------------------
 
-  type_parens: $ => parens(seq(optional($.forall), $._type)),
+  // Parens or tuples
+  type_parens: $ => parens(seq(optional($.forall), sep1($.comma, $._type))),
 
+  // Implicit arguments
   type_braces: $ => braces(seq(sep1($.comma, $.type_name), $._type_annotation)),
 
   // This is the parser to be used in signatures for functions, classes, types, newtypes and data.

@@ -33,9 +33,9 @@ module.exports = {
     optional($.data_body),
   ),
 
-  data_body: $ => layouted($, $._data_field_decl),
+  data_body: $ => layouted($, $._data_decl),
 
-  _data_field_decl: $ => choice(
+  _data_decl: $ => choice(
     $.constructor_signature,
   ),
 

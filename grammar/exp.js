@@ -39,7 +39,7 @@ module.exports = {
 
   exp_negation: $ => seq('-', $._aexp),
 
-  // Paren or tupels
+  // Parens or tupels
   exp_parens: $ => parens(sep($.comma, $._exp)),
 
   exp_type_application: $ => seq('@', $._atype),
@@ -89,11 +89,11 @@ module.exports = {
 
   exp_if: $ => seq(
     'if',
-    field('if', choice($.wildcard, $._exp)),
+    field('if', $._exp),
     'then',
-    field('then', choice($.wildcard, $._exp)),
+    field('then', $._exp),
     'else',
-    field('else', choice($.wildcard, $._exp)),
+    field('else', $._exp),
   ),
 
   // ----- Case-of ------------------------------------------------------------
@@ -133,7 +133,7 @@ module.exports = {
   _exp_case_slots: $ =>
     sep1(
       $.comma,
-      field('condition', choice($.wildcard, $._exp))
+      field('condition', $._exp)
     ),
 
   exp_case: $ => seq(
@@ -257,11 +257,11 @@ module.exports = {
     $.exp_section_left,
     $.exp_section_right,
     alias($.literal, $.exp_literal),
+    $.wildcard,
   ),
 
   _aexp: $ => choice(
     $._aexp_projection,
-    $.exp_type_application,
     $._do_or_ado_block
   ),
 

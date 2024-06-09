@@ -1,0 +1,587 @@
+================================================================================
+Maybe 1
+================================================================================
+
+data Maybe a = Just a | Nothing
+
+--------------------------------------------------------------------------------
+
+(idris
+  (data
+    (type)
+    (type_variable)
+    (constructor)
+    (type_name
+      (type_variable))
+    (constructor)))
+
+================================================================================
+Maybe 2
+================================================================================
+
+list_lookup : Nat -> List a -> Maybe a
+list_lookup _     Nil         = Nothing
+list_lookup Z     (x :: xs) = Just x
+list_lookup (S k) (x :: xs) = list_lookup k xs
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_name
+        (type))
+      (type_operator)
+      (type_infix
+        (type_apply
+          (type_name
+            (type))
+          (type_name
+            (type_variable)))
+        (type_operator)
+        (type_apply
+          (type_name
+            (type))
+          (type_name
+            (type_variable))))))
+  (function
+    (variable)
+    (patterns
+      (pat_wildcard
+        (pat_wildcard))
+      (pat_name
+        (constructor)))
+    (exp_name
+      (constructor)))
+  (function
+    (variable)
+    (patterns
+      (pat_name
+        (constructor))
+      (pat_tuple
+        (pat_infix
+          (pat_name
+            (variable))
+          (operator)
+          (pat_name
+            (variable)))))
+    (exp_apply
+      (exp_name
+        (constructor))
+      (exp_name
+        (variable))))
+  (function
+    (variable)
+    (patterns
+      (pat_tuple
+        (pat_apply
+          (pat_name
+            (constructor))
+          (pat_name
+            (variable))))
+      (pat_tuple
+        (pat_infix
+          (pat_name
+            (variable))
+          (operator)
+          (pat_name
+            (variable)))))
+    (exp_apply
+      (exp_name
+        (variable))
+      (exp_name
+        (variable))
+      (exp_name
+        (variable)))))
+
+================================================================================
+Maybe 3
+================================================================================
+
+maybe : Lazy b -> Lazy (a -> b) -> Maybe a -> b
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_apply
+        (type_name
+          (type))
+        (type_name
+          (type_variable)))
+      (type_operator)
+      (type_infix
+        (type_apply
+          (type_name
+            (type))
+          (type_parens
+            (type_infix
+              (type_name
+                (type_variable))
+              (type_operator)
+              (type_name
+                (type_variable)))))
+        (type_operator)
+        (type_infix
+          (type_apply
+            (type_name
+              (type))
+            (type_name
+              (type_variable)))
+          (type_operator)
+          (type_name
+            (type_variable)))))))
+
+================================================================================
+Tuples 1
+================================================================================
+
+fred : (String, Int)
+fred = ("Fred", 42)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_parens
+      (type_name
+        (type))
+      (comma)
+      (type_name
+        (type))))
+  (function
+    (variable)
+    (exp_parens
+      (exp_literal
+        (string))
+      (comma)
+      (exp_literal
+        (integer)))))
+
+================================================================================
+Tuples 2
+================================================================================
+
+jim : (String, Int, String)
+jim = ("Jim", 25, "Cambridge")
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_parens
+      (type_name
+        (type))
+      (comma)
+      (type_name
+        (type))
+      (comma)
+      (type_name
+        (type))))
+  (function
+    (variable)
+    (exp_parens
+      (exp_literal
+        (string))
+      (comma)
+      (exp_literal
+        (integer))
+      (comma)
+      (exp_literal
+        (string)))))
+
+================================================================================
+Dependent Pairs 1
+================================================================================
+
+data DPair : (a : Type) -> (p : a -> Type) -> Type where
+   MkDPair : {p : a -> Type} -> (x : a) -> p x -> DPair a p
+
+--------------------------------------------------------------------------------
+
+(idris
+  (data
+    (type)
+    (type_signature
+      (type_infix
+        (type_name
+          (annotated_type_variable
+            (type_variable)
+            (type_name
+              (type))))
+        (type_operator)
+        (type_infix
+          (type_name
+            (annotated_type_variable
+              (type_variable)
+              (type_infix
+                (type_name
+                  (type_variable))
+                (type_operator)
+                (type_name
+                  (type)))))
+          (type_operator)
+          (type_name
+            (type)))))
+    (where)
+    (data_body
+      (constructor_signature
+        (type)
+        (type_signature
+          (type_infix
+            (type_braces
+              (type_name
+                (type_variable))
+              (type_infix
+                (type_name
+                  (type_variable))
+                (type_operator)
+                (type_name
+                  (type))))
+            (type_operator)
+            (type_infix
+              (type_name
+                (annotated_type_variable
+                  (type_variable)
+                  (type_name
+                    (type_variable))))
+              (type_operator)
+              (type_infix
+                (type_apply
+                  (type_name
+                    (type_variable))
+                  (type_name
+                    (type_variable)))
+                (type_operator)
+                (type_apply
+                  (type_name
+                    (type))
+                  (type_name
+                    (type_variable))
+                  (type_name
+                    (type_variable)))))))))))
+
+================================================================================
+Dependent Pairs 2
+================================================================================
+
+vec : (n : Nat ** Vect n Int)
+vec = (2 ** [3, 4])
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_name
+      (annotated_type_variable
+        (type_variable)
+        (type_infix
+          (type_name
+            (type))
+          (type_operator)
+          (type_apply
+            (type_name
+              (type))
+            (type_name
+              (type_variable))
+            (type_name
+              (type)))))))
+  (function
+    (variable)
+    (exp_parens
+      (exp_infix
+        (exp_literal
+          (integer))
+        (operator)
+        (exp_array
+          (exp_literal
+            (integer))
+          (comma)
+          (exp_literal
+            (integer)))))))
+
+================================================================================
+Dependent Pairs 3
+================================================================================
+
+filter : (a -> Bool) -> Vect n a -> (n' ** Vect n' a)
+filter p Nil = (_ ** [])
+filter p (x :: xs)
+    = case filter p xs of
+           (_ ** xs') => if p x then (_ ** x :: xs')
+                                else (_ ** xs')
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_parens
+        (type_infix
+          (type_name
+            (type_variable))
+          (type_operator)
+          (type_name
+            (type))))
+      (type_operator)
+      (type_infix
+        (type_apply
+          (type_name
+            (type))
+          (type_name
+            (type_variable))
+          (type_name
+            (type_variable)))
+        (type_operator)
+        (type_parens
+          (type_infix
+            (type_name
+              (type_variable))
+            (type_operator)
+            (type_apply
+              (type_name
+                (type))
+              (type_name
+                (type_variable))
+              (type_name
+                (type_variable))))))))
+  (function
+    (variable)
+    (patterns
+      (pat_name
+        (variable))
+      (pat_name
+        (constructor)))
+    (exp_parens
+      (exp_infix
+        (wildcard)
+        (operator)
+        (exp_array))))
+  (function
+    (variable)
+    (patterns
+      (pat_name
+        (variable))
+      (pat_tuple
+        (pat_infix
+          (pat_name
+            (variable))
+          (operator)
+          (pat_name
+            (variable)))))
+    (exp_case
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_name
+          (variable))
+        (exp_name
+          (variable)))
+      (alts
+        (alt
+          (pat_tuple
+            (pat_infix
+              (pat_wildcard
+                (pat_wildcard))
+              (operator)
+              (pat_name
+                (variable))))
+          (exp_if
+            (exp_apply
+              (exp_name
+                (variable))
+              (exp_name
+                (variable)))
+            (exp_parens
+              (exp_infix
+                (exp_infix
+                  (wildcard)
+                  (operator)
+                  (exp_name
+                    (variable)))
+                (operator)
+                (exp_name
+                  (variable))))
+            (exp_parens
+              (exp_infix
+                (wildcard)
+                (operator)
+                (exp_name
+                  (variable))))))))))
+
+================================================================================
+Records 1
+================================================================================
+
+record Person where
+    constructor MkPerson
+    firstName, middleName, lastName : String
+    age : Int
+
+--------------------------------------------------------------------------------
+
+(idris
+  (record
+    (record_name
+      (type))
+    (where)
+    (record_body
+      (constructor)
+      (record_field
+        (variable)
+        (comma)
+        (variable)
+        (comma)
+        (variable)
+        (type_name
+          (type)))
+      (record_field
+        (variable)
+        (type_name
+          (type))))))
+
+================================================================================
+Records 2
+================================================================================
+
+fred : Person
+fred = MkPerson "Fred" "Joe" "Bloggs" 30
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_name
+      (type)))
+  (function
+    (variable)
+    (exp_apply
+      (exp_name
+        (constructor))
+      (exp_literal
+        (string))
+      (exp_literal
+        (string))
+      (exp_literal
+        (string))
+      (exp_literal
+        (integer)))))
+
+================================================================================
+Records 3
+================================================================================
+
+record Class where
+    constructor ClassInfo
+    students : Vect n Person
+    className : String
+
+--------------------------------------------------------------------------------
+
+(idris
+  (record
+    (record_name
+      (type))
+    (where)
+    (record_body
+      (constructor)
+      (record_field
+        (variable)
+        (type_apply
+          (type_name
+            (type))
+          (type_name
+            (type_variable))
+          (type_name
+            (type))))
+      (record_field
+        (variable)
+        (type_name
+          (type))))))
+
+================================================================================
+Records 4
+================================================================================
+
+addStudent : Person -> Class -> Class
+addStudent p c = { students := p :: students c } c
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_name
+        (type))
+      (type_operator)
+      (type_infix
+        (type_name
+          (type))
+        (type_operator)
+        (type_name
+          (type)))))
+  (function
+    (variable)
+    (patterns
+      (pat_name
+        (variable))
+      (pat_name
+        (variable)))
+    (record_update
+      (field_name)
+      (exp_infix
+        (exp_name
+          (variable))
+        (operator)
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_name
+            (variable))))
+      (variable))))
+
+================================================================================
+Records 5
+================================================================================
+
+addStudent' : Person -> Class -> Class
+addStudent' p c = { students $= (p ::) } c
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_name
+        (type))
+      (type_operator)
+      (type_infix
+        (type_name
+          (type))
+        (type_operator)
+        (type_name
+          (type)))))
+  (function
+    (variable)
+    (patterns
+      (pat_name
+        (variable))
+      (pat_name
+        (variable)))
+    (record_update
+      (field_name)
+      (exp_section_right
+        (exp_name
+          (variable))
+        (operator))
+      (variable))))

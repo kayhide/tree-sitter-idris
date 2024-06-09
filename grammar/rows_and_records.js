@@ -1,6 +1,34 @@
 const { parens, braces } = require('./util.js')
 
 module.exports = {
+  // ----- Record -------------------------------------------------------------
+
+  record_name: $ => $._qtyconid,
+
+  decl_record: $ => seq(
+    repeat(choice('private', 'export', 'public')),
+    'record',
+    field('name', $.record_name),
+    $.where,
+    optional($.record_body),
+  ),
+
+  record_body: $ => layouted($, $._record_decl),
+
+  _record_decl: $ => choice(
+    $._record_constructor,
+    alias($._record_field, $.record_field),
+  ),
+
+  _record_constructor: $ => seq(
+    'constructor',
+    field('name', $.constructor), 
+  ),
+    
+  _record_field: $ => seq(
+    sep1($.comma, $._qvar), $._type_annotation
+  ),
+  
   /** Terminology:
    *
    * The left-hand side of a label/value or label/type pair is called "field name". 
@@ -62,7 +90,7 @@ module.exports = {
 
   _field_name: $ =>
     alias(
-      choice($.string, $.triple_quote_string, $.variable),
+      $.variable,
       $.field_name
     ),
 
@@ -96,7 +124,7 @@ module.exports = {
 
     const update_or_nested_update =
       choice(
-        seq('=', choice($.wildcard, $._exp)),
+        seq(choice(':=', '$='), $._exp),
         nested_update
       )
 
@@ -106,7 +134,7 @@ module.exports = {
   // It is easier to construct a specific set of options here:
   // `_aexp` would be too permissive and bring potential problems
   // such as precedence issues
-  _record_update_lhs: $ =>
+  _record_update_rhs: $ =>
     choice(
       $.wildcard,
       $.hole,
@@ -118,8 +146,8 @@ module.exports = {
 
   record_update: $ =>
     seq(
-      $._record_update_lhs,
-      braces(sep($.comma, $._record_field_update))
+      braces(sep($.comma, $._record_field_update)),
+      $._record_update_rhs,
     ),
 
 }
