@@ -1,0 +1,537 @@
+================================================================================
+Functions 1
+================================================================================
+
+plus : Nat -> Nat -> Nat
+plus Z     y = y
+plus (S k) y = S (plus k y)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_name
+        (type))
+      (type_operator)
+      (type_infix
+        (type_name
+          (type))
+        (type_operator)
+        (type_name
+          (type)))))
+  (function
+    (variable)
+    (patterns
+      (pat_name
+        (constructor))
+      (pat_name
+        (variable)))
+    (exp_name
+      (variable)))
+  (function
+    (variable)
+    (patterns
+      (pat_tuple
+        (pat_apply
+          (pat_name
+            (constructor))
+          (pat_name
+            (variable))))
+      (pat_name
+        (variable)))
+    (exp_apply
+      (exp_name
+        (constructor))
+      (exp_parens
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_name
+            (variable))
+          (exp_name
+            (variable)))))))
+
+================================================================================
+Functions 2
+================================================================================
+
+mult : Nat -> Nat -> Nat
+mult Z     y = Z
+mult (S k) y = plus y (mult k y)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_name
+        (type))
+      (type_operator)
+      (type_infix
+        (type_name
+          (type))
+        (type_operator)
+        (type_name
+          (type)))))
+  (function
+    (variable)
+    (patterns
+      (pat_name
+        (constructor))
+      (pat_name
+        (variable)))
+    (exp_name
+      (constructor)))
+  (function
+    (variable)
+    (patterns
+      (pat_tuple
+        (pat_apply
+          (pat_name
+            (constructor))
+          (pat_name
+            (variable))))
+      (pat_name
+        (variable)))
+    (exp_apply
+      (exp_name
+        (variable))
+      (exp_name
+        (variable))
+      (exp_parens
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_name
+            (variable))
+          (exp_name
+            (variable)))))))
+
+================================================================================
+where clauses 1
+================================================================================
+
+reverse : List a -> List a
+reverse xs = revAcc [] xs where
+  revAcc : List a -> List a -> List a
+  revAcc acc [] = acc
+  revAcc acc (x :: xs) = revAcc (x :: acc) xs
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_apply
+        (type_name
+          (type))
+        (type_name
+          (type_variable)))
+      (type_operator)
+      (type_apply
+        (type_name
+          (type))
+        (type_name
+          (type_variable)))))
+  (function
+    (variable)
+    (patterns
+      (pat_name
+        (variable)))
+    (exp_apply
+      (exp_name
+        (variable))
+      (exp_array)
+      (exp_name
+        (variable)))
+    (where)
+    (declarations
+      (signature
+        (variable)
+        (type_infix
+          (type_apply
+            (type_name
+              (type))
+            (type_name
+              (type_variable)))
+          (type_operator)
+          (type_infix
+            (type_apply
+              (type_name
+                (type))
+              (type_name
+                (type_variable)))
+            (type_operator)
+            (type_apply
+              (type_name
+                (type))
+              (type_name
+                (type_variable))))))
+      (function
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_array))
+        (exp_name
+          (variable)))
+      (function
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_tuple
+            (pat_infix
+              (pat_name
+                (variable))
+              (operator)
+              (pat_name
+                (variable)))))
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_parens
+            (exp_infix
+              (exp_name
+                (variable))
+              (operator)
+              (exp_name
+                (variable))))
+          (exp_name
+            (variable)))))))
+
+================================================================================
+where clauses 2
+================================================================================
+
+foo : Int -> Int
+foo x = case isLT of
+            Yes => x*2
+            No => x*4
+    where
+       isLT : MyLT
+       isLT = if x < 20 then Yes else No
+       data MyLT = Yes | No
+
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_name
+        (type))
+      (type_operator)
+      (type_name
+        (type))))
+  (function
+    (variable)
+    (patterns
+      (pat_name
+        (variable)))
+    (exp_case
+      (exp_name
+        (variable))
+      (alts
+        (alt
+          (pat_name
+            (constructor))
+          (exp_infix
+            (exp_name
+              (variable))
+            (operator)
+            (exp_literal
+              (integer))))
+        (alt
+          (pat_name
+            (constructor))
+          (exp_infix
+            (exp_name
+              (variable))
+            (operator)
+            (exp_literal
+              (integer))))))
+    (where)
+    (declarations
+      (signature
+        (variable)
+        (type_name
+          (type)))
+      (function
+        (variable)
+        (exp_if
+          (exp_infix
+            (exp_name
+              (variable))
+            (operator)
+            (exp_literal
+              (integer)))
+          (exp_name
+            (constructor))
+          (exp_name
+            (constructor))))
+      (data
+        (type)
+        (constructor)
+        (constructor)))))
+
+================================================================================
+where clauses 3
+================================================================================
+
+even : Nat -> Bool
+even Z = True
+even (S k) = odd k where
+  odd : Nat -> Bool
+  odd Z = False
+  odd (S k) = even k
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_name
+        (type))
+      (type_operator)
+      (type_name
+        (type))))
+  (function
+    (variable)
+    (patterns
+      (pat_name
+        (constructor)))
+    (exp_name
+      (constructor)))
+  (function
+    (variable)
+    (patterns
+      (pat_tuple
+        (pat_apply
+          (pat_name
+            (constructor))
+          (pat_name
+            (variable)))))
+    (exp_apply
+      (exp_name
+        (variable))
+      (exp_name
+        (variable)))
+    (where)
+    (declarations
+      (signature
+        (variable)
+        (type_infix
+          (type_name
+            (type))
+          (type_operator)
+          (type_name
+            (type))))
+      (function
+        (variable)
+        (patterns
+          (pat_name
+            (constructor)))
+        (exp_name
+          (constructor)))
+      (function
+        (variable)
+        (patterns
+          (pat_tuple
+            (pat_apply
+              (pat_name
+                (constructor))
+              (pat_name
+                (variable)))))
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_name
+            (variable)))))))
+
+================================================================================
+where clauses 4
+================================================================================
+
+test : List Nat
+test = [c (S 1), c Z, d (S Z)]
+  where c : Nat -> Nat
+        c x = 42 + x
+
+        d : Nat -> Nat
+        d y = c (y + 1 + z y)
+              where z : Nat -> Nat
+                    z w = y + w
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_apply
+      (type_name
+        (type))
+      (type_name
+        (type))))
+  (function
+    (variable)
+    (exp_array
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_parens
+          (exp_apply
+            (exp_name
+              (constructor))
+            (exp_literal
+              (integer)))))
+      (comma)
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_name
+          (constructor)))
+      (comma)
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_parens
+          (exp_apply
+            (exp_name
+              (constructor))
+            (exp_name
+              (constructor))))))
+    (where)
+    (declarations
+      (signature
+        (variable)
+        (type_infix
+          (type_name
+            (type))
+          (type_operator)
+          (type_name
+            (type))))
+      (function
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))
+        (exp_infix
+          (exp_literal
+            (integer))
+          (operator)
+          (exp_name
+            (variable))))
+      (signature
+        (variable)
+        (type_infix
+          (type_name
+            (type))
+          (type_operator)
+          (type_name
+            (type))))
+      (function
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_parens
+            (exp_infix
+              (exp_infix
+                (exp_name
+                  (variable))
+                (operator)
+                (exp_literal
+                  (integer)))
+              (operator)
+              (exp_apply
+                (exp_name
+                  (variable))
+                (exp_name
+                  (variable))))))
+        (where)
+        (declarations
+          (signature
+            (variable)
+            (type_infix
+              (type_name
+                (type))
+              (type_operator)
+              (type_name
+                (type))))
+          (function
+            (variable)
+            (patterns
+              (pat_name
+                (variable)))
+            (exp_infix
+              (exp_name
+                (variable))
+              (operator)
+              (exp_name
+                (variable)))))))))
+
+================================================================================
+Totality and Covering
+================================================================================
+
+partial fromMaybe : Maybe a -> a
+fromMaybe (Just x) = x
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_apply
+        (type_name
+          (type))
+        (type_name
+          (type_variable)))
+      (type_operator)
+      (type_name
+        (type_variable))))
+  (function
+    (variable)
+    (patterns
+      (pat_tuple
+        (pat_apply
+          (pat_name
+            (constructor))
+          (pat_name
+            (variable)))))
+    (exp_name
+      (variable))))
+
+================================================================================
+Holes
+================================================================================
+
+main: IO ()
+main = putStrLn ?greeting
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_apply
+      (type_name
+        (type))
+      (row_type)))
+  (function
+    (variable)
+    (exp_apply
+      (exp_name
+        (variable))
+      (hole))))

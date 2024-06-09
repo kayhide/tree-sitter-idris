@@ -46,6 +46,7 @@ module.exports = {
 
   signature: $ => seq(
     repeat(choice('private', 'export', 'public')),
+    optional('partial'),
     field('name', $._var),
     $._type_annotation,
   ),
@@ -69,12 +70,17 @@ module.exports = {
   ),
 
   _decl: $ => choice(
-    alias($._decl_namespace, $.namespace),
     $._gendecl,
     $._decl_fun,
   ),
 
-  declarations: $ => layouted($, $._decl),
+  _where_decl: $ => choice(
+    $._decl,
+    alias($._decl_namespace, $.namespace),
+    alias($.decl_data, $.data),
+  ),
+
+  declarations: $ => layouted($, $._where_decl),
 
   // ------------------------------------------------------------------------
   // Foreign

@@ -114,7 +114,7 @@ module.exports = {
 
   _alt_variants: $ =>
     choice(
-      seq($._arrow, field('exp', $._exp)),
+      seq($._rcarrow, field('exp', $._exp)),
       repeat1($.gdpat),
     ),
 

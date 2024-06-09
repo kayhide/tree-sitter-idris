@@ -230,6 +230,7 @@ module.exports = grammar({
 
     _topdecl: $ => choice(
       $._decl_module,
+      alias($._decl_namespace, $.namespace),
       alias($._decl_parameters, $.parameters),
       alias($.decl_type, $.type_alias),
       $.type_role_declaration,
