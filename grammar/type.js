@@ -69,7 +69,7 @@ module.exports = {
   // This is the parser to be used in signatures for functions, classes, types, newtypes and data.
   _type_annotation: $ =>
     seq(
-      $._colon2,
+      $._colon,
       optional($.forall),
       $._type
     ),

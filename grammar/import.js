@@ -37,6 +37,7 @@ module.exports = {
 
   decl_import: $ => seq(
     'import',
+    optional('public'),
     // optional(alias($.string, $.import_package)),
     field('module', $.qualified_module),
     field('imports', optional($.import_list)),

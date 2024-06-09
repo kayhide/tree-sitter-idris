@@ -11,24 +11,25 @@ module.exports = {
 
   qualified_module: $ => choice($._modid, qualified($, $._modid)),
 
-  export_names: $ => parens(optional(choice(alias('..', $.all_names), sep($.comma, $._name)))),
-
-  export: $ => choice(
-    $._qvar,
-    seq(
-      $._qtycon,
-      optional($.export_names),
-    ),
-    seq('type', parens($._q_op)),
-    seq('class', $.class_name),
-    seq('module', field('module', $.qualified_module)),
-  ),
-
-  exports: $ => parens(sep1($.comma, $.export)),
-
   _decl_module: $ => seq(
     'module',
     field('name', $.qualified_module),
-    field('exports', optional($.exports)),
   ),
+
+  _decl_namespace: $ => seq(
+    'namespace',
+    field('name', $.qualified_module),
+    optional(alias($._top_declarations, $.namespace_body)),
+  ),
+
+  _decl_parameters: $ => seq(
+    'parameters',
+    parens(sep1(
+      $.comma, 
+      seq(field('name', $._var), $._type_annotation),
+    )),
+    optional(alias($._top_declarations, $.parameters_body)),
+  ),
+
+  _top_declarations: $ => layouted($, $._topdecl),
 }

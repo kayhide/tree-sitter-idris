@@ -38,15 +38,14 @@ module.exports = {
   // TODO: I don't see what it has to do with functions.
   // Should be only used in `grammar.js` as a top-level declaration.
   operator_declaration: $ => seq(
+    repeat(choice('private', 'export', 'public')),
     choice('infixl', 'infixr', 'infix'),
     field('precedence', $.integer),
-    optional('type'),
-    choice($._qtyconid, $._qvarid),
-    'as',
     $.operator
   ),
 
   signature: $ => seq(
+    repeat(choice('private', 'export', 'public')),
     field('name', $._var),
     $._type_annotation,
   ),
@@ -70,6 +69,7 @@ module.exports = {
   ),
 
   _decl: $ => choice(
+    alias($._decl_namespace, $.namespace),
     $._gendecl,
     $._decl_fun,
   ),

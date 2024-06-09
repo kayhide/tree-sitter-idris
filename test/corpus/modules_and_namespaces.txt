@@ -6,10 +6,9 @@ module Foo
 
 --------------------------------------------------------------------------------
 
-(source_file
-  (module
-    (module_name
-      (qid))))
+(idris
+  (qualified_module
+    (module)))
 
 ================================================================================
 Module 2
@@ -19,10 +18,10 @@ module Foo.Bar
 
 --------------------------------------------------------------------------------
 
-(source_file
-  (module
-    (module_name
-      (qid))))
+(idris
+  (qualified_module
+    (module)
+    (module)))
 
 ================================================================================
 Export function
@@ -33,17 +32,10 @@ f : _
 
 --------------------------------------------------------------------------------
 
-(source_file
-  (function
-    (visibility)
-    (lhs
-      (function_name
-        (atom
-          (qid))))
-    (rhs
-      (expr
-        (atom
-          (hole))))))
+(idris
+  (signature
+    (variable)
+    (type_wildcard)))
 
 ================================================================================
 Public export function
@@ -54,17 +46,10 @@ f : _
 
 --------------------------------------------------------------------------------
 
-(source_file
-  (function
-    (visibility)
-    (lhs
-      (function_name
-        (atom
-          (qid))))
-    (rhs
-      (expr
-        (atom
-          (hole))))))
+(idris
+  (signature
+    (variable)
+    (type_wildcard)))
 
 ================================================================================
 Export data
@@ -75,13 +60,10 @@ data X = _
 
 --------------------------------------------------------------------------------
 
-(source_file
+(idris
   (data
-    (visibility)
-    (data_name)
-    (expr
-      (atom
-        (hole)))))
+    (type)
+    (constructor)))
 
 ================================================================================
 Public export data
@@ -92,13 +74,10 @@ data X = _
 
 --------------------------------------------------------------------------------
 
-(source_file
+(idris
   (data
-    (visibility)
-    (data_name)
-    (expr
-      (atom
-        (hole)))))
+    (type)
+    (constructor)))
 
 ================================================================================
 Export interface
@@ -109,10 +88,11 @@ interface I
 
 --------------------------------------------------------------------------------
 
-(source_file
-  (interface
-    (visibility)
-    (interface_name)))
+(idris
+  (interface_declaration
+    (interface_head
+      (interface_name
+        (type)))))
 
 ================================================================================
 Public export interface
@@ -123,10 +103,11 @@ interface I
 
 --------------------------------------------------------------------------------
 
-(source_file
-  (interface
-    (visibility)
-    (interface_name)))
+(idris
+  (interface_declaration
+    (interface_head
+      (interface_name
+        (type)))))
 
 ================================================================================
 Private fixity
@@ -137,11 +118,10 @@ infix 5 +
 
 --------------------------------------------------------------------------------
 
-(source_file
-  (infix
-    (visibility)
+(idris
+  (operator_declaration
     (integer)
-    (bid)))
+    (operator)))
 
 ================================================================================
 Export fixity
@@ -152,11 +132,10 @@ infix 6 *
 
 --------------------------------------------------------------------------------
 
-(source_file
-  (infix
-    (visibility)
+(idris
+  (operator_declaration
     (integer)
-    (bid)))
+    (operator)))
 
 ================================================================================
 Public export fixity
@@ -167,11 +146,10 @@ infix 7 ^
 
 --------------------------------------------------------------------------------
 
-(source_file
-  (infix
-    (visibility)
+(idris
+  (operator_declaration
     (integer)
-    (bid)))
+    (operator)))
 
 ================================================================================
 Import
@@ -181,10 +159,10 @@ import B
 
 --------------------------------------------------------------------------------
 
-(source_file
+(idris
   (import
-    (module_name
-      (qid))))
+    (qualified_module
+      (module))))
 
 ================================================================================
 Re-export
@@ -194,11 +172,10 @@ import public C
 
 --------------------------------------------------------------------------------
 
-(source_file
+(idris
   (import
-    (public)
-    (module_name
-      (qid))))
+    (qualified_module
+      (module))))
 
 ================================================================================
 Renaming imports 1
@@ -208,13 +185,12 @@ import Data.List as L
 
 --------------------------------------------------------------------------------
 
-(source_file
+(idris
   (import
-    (module_name
-      (qid))
-    (as
-      (module_name
-        (qid)))))
+    (qualified_module
+      (module)
+      (module))
+    (module)))
 
 ================================================================================
 Renaming imports 2
@@ -224,14 +200,12 @@ import public Books.Hardback as Books
 
 --------------------------------------------------------------------------------
 
-(source_file
+(idris
   (import
-    (public)
-    (module_name
-      (qid))
-    (as
-      (module_name
-        (qid)))))
+    (qualified_module
+      (module)
+      (module))
+    (module)))
 
 ================================================================================
 Explicit Namespaces
@@ -243,25 +217,19 @@ namespace X
 
 --------------------------------------------------------------------------------
 
-(source_file
-  (function
-    (lhs
-      (function_name
-        (atom
-          (qid))
-        (atom
-          (qid))
-        (atom
-          (qid))
-        (atom
-          (qid))))
-    (rhs
-      (expr
-        (atom
-          (qid))
-        (expr
-          (atom
-            (qid)))))))
+(idris
+  (namespace
+    (qualified_module
+      (module))
+    (namespace_body
+      (signature
+        (variable)
+        (type_infix
+          (type_name
+            (type))
+          (type_operator)
+          (type_name
+            (type)))))))
 
 ================================================================================
 Explicit namespaces inside functions
@@ -272,33 +240,23 @@ withNSInside = g where
     export
     g : Nat
 
---------------------------------------------------------------------------------
+----
 
-(source_file
+(idris
   (function
-    (lhs
-      (atom
-        (qid)))
-    (rhs
-      (expr
-        (atom
-          (qid))))
-    (where
-      (function
-        (lhs
-          (function_name
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))))
-        (rhs
-          (expr
-            (atom
-              (qid))))))))
+    (variable)
+    (exp_name
+      (variable))
+    (where)
+    (declarations
+      (namespace
+        (qualified_module
+          (module))
+        (namespace_body
+          (signature
+            (variable)
+            (type_name
+              (type))))))))
 
 ================================================================================
 Parameterised blocks 1
@@ -309,35 +267,24 @@ parameters (x : Nat, y : Nat)
 
 --------------------------------------------------------------------------------
 
-(source_file
-  (function
-    (lhs
-      (function_name
-        (atom
-          (qid))
-        (atom
-          (expr
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))))
-        (atom
-          (qid))))
-    (rhs
-      (expr
-        (atom
-          (qid))
-        (expr
-          (atom
-            (qid)))))))
+(idris
+  (parameters
+    (variable)
+    (type_name
+      (type))
+    (comma)
+    (variable)
+    (type_name
+      (type))
+    (parameters_body
+      (signature
+        (variable)
+        (type_infix
+          (type_name
+            (type))
+          (type_operator)
+          (type_name
+            (type)))))))
 
 ================================================================================
 Parameterised blocks 2
@@ -351,76 +298,67 @@ parameters (y : Nat, xs : Vect x a)
 
 --------------------------------------------------------------------------------
 
-(source_file
-  (function
-    (lhs
-      (function_name
-        (atom
-          (qid))
-        (atom
-          (expr
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))))
-        (atom
-          (qid))
-        (atom
-          (qid))))
-    (rhs
-      (expr
-        (atom
-          (qid))
-        (expr
-          (atom
-            (qid))
-          (atom
-            (qid))
-          (atom
-            (qid))
-          (atom
-            (qid))
-          (atom
-            (qid))
-          (atom
-            (qid))
-          (atom
-            (qid))
-          (expr
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (atom
-              (qid))
-            (expr
-              (atom
-                (qid))
-              (atom
-                (expr
-                  (atom
-                    (qid))
-                  (atom
-                    (qid))
-                  (atom
-                    (qid))))
-              (atom
-                (qid)))))))))
+(idris
+  (parameters
+    (variable)
+    (type_name
+      (type))
+    (comma)
+    (variable)
+    (type_apply
+      (type_name
+        (type))
+      (type_name
+        (type_variable))
+      (type_name
+        (type_variable)))
+    (parameters_body
+      (data
+        (type)
+        (type_signature
+          (type_infix
+            (type_name
+              (type))
+            (type_operator)
+            (type_name
+              (type))))
+        (where)
+        (data_body
+          (constructor_signature
+            (type)
+            (type_signature
+              (type_infix
+                (type_apply
+                  (type_name
+                    (type))
+                  (type_name
+                    (type_variable))
+                  (type_name
+                    (type_variable)))
+                (type_operator)
+                (type_apply
+                  (type_name
+                    (type))
+                  (type_name
+                    (type_variable))))))))
+      (signature
+        (variable)
+        (type_infix
+          (type_apply
+            (type_name
+              (type))
+            (type_name
+              (type_variable)))
+          (type_operator)
+          (type_apply
+            (type_name
+              (type))
+            (type_parens
+              (type_infix
+                (type_name
+                  (type_variable))
+                (type_operator)
+                (type_name
+                  (type_variable))))
+            (type_name
+              (type_variable))))))))

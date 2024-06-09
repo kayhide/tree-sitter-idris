@@ -77,6 +77,8 @@ module.exports = {
 
   _larrow: _ => choice('←', '<-'),
 
+  _colon: _ => ':',
+
   _colon2: _ => choice('∷', '::'),
 
   wildcard: _ => '_',
