@@ -247,11 +247,11 @@ module.exports = grammar({
   rules: {
     idris: $ => choice(
       $.empty_file,
-      $._decl_module,
       terminated($, $._topdecl),
     ),
 
     _topdecl: $ => choice(
+      $._decl_module,
       alias($.decl_type, $.type_alias),
       $.type_role_declaration,
       alias($.decl_data, $.data),
