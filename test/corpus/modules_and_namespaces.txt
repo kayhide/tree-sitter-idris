@@ -325,7 +325,7 @@ parameters (y : Nat, xs : Vect x a)
         (where)
         (data_body
           (constructor_signature
-            (type)
+            (constructor)
             (type_signature
               (type_infix
                 (type_apply

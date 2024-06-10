@@ -37,3 +37,53 @@ data List a = Nil | (::) a (List a)
             (type))
           (type_name
             (type_variable)))))))
+
+================================================================================
+Data Types 3
+================================================================================
+
+data List : Type -> Type where 
+  Nil : List a
+  (::) : a -> List a -> List a
+
+--------------------------------------------------------------------------------
+
+(idris
+  (data
+    (type)
+    (type_signature
+      (type_infix
+        (type_name
+          (type))
+        (type_operator)
+        (type_name
+          (type))))
+    (where)
+    (data_body
+      (constructor_signature
+        (constructor)
+        (type_signature
+          (type_apply
+            (type_name
+              (type))
+            (type_name
+              (type_variable)))))
+      (constructor_signature
+        (constructor_operator)
+        (type_signature
+          (type_infix
+            (type_name
+              (type_variable))
+            (type_operator)
+            (type_infix
+              (type_apply
+                (type_name
+                  (type))
+                (type_name
+                  (type_variable)))
+              (type_operator)
+              (type_apply
+                (type_name
+                  (type))
+                (type_name
+                  (type_variable))))))))))

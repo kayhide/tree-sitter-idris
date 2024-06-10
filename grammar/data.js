@@ -40,7 +40,7 @@ module.exports = {
   ),
 
   constructor_signature: $ => seq(
-    field('name', $._tyconid), 
+    field('name', $._con), 
     alias($._type_annotation, $.type_signature),
   ),
   

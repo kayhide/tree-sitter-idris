@@ -231,7 +231,7 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
     (where)
     (data_body
       (constructor_signature
-        (type)
+        (constructor)
         (type_signature
           (type_infix
             (type_braces

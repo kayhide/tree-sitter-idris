@@ -611,11 +611,23 @@
     "named": true,
     "fields": {
       "name": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "type",
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "constructor",
+            "named": true
+          },
+          {
+            "type": "constructor_operator",
             "named": true
           }
         ]
