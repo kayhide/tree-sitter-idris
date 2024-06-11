@@ -177,6 +177,7 @@ module.exports = grammar({
      * Implementation name confilicts.
      */
     [$.variable, $._implementation_name],
+    [$.constructor, $._implementation_name],
 
     /**
      * A weird conflict involving fundeps and type variables in class heads,

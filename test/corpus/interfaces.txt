@@ -243,3 +243,24 @@ _ = sort @{myord} xs
       (exp_explicit_impl)
       (exp_name
         (variable)))))
+
+================================================================================
+Named Implementations 3
+================================================================================
+
+[PlusNatMonoid] Monoid Nat using PlusNatSemi where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (interface_implementation
+    (implementation_name)
+    (implementation_head
+      (interface_name
+        (type))
+      (type_name
+        (type))
+      (using
+        (implementation_name)))
+    (implementation_body
+      (where))))

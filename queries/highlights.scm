@@ -100,6 +100,7 @@
   "let"
   "in"
   "interface"
+  "using"
   "derive"
   "foreign"
   "data"

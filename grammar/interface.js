@@ -55,13 +55,18 @@ module.exports = {
     seq(
       optional(seq($.constraints, $._rcarrow)),
       $.interface_name,
-      repeat($._type)
+      repeat($._type),
+      optional($.using),
     ),
+
+  using: $ => seq('using', $.implementation_name),
 
   _implementation_name: $ =>
     brackets(
-      alias($._varid, $.implementation_name),
+      alias(choice($._varid, $._conid), $.implementation_name),
     ),
+
+  implementation_name: $ => choice($._varid, $._conid), 
 
   implementation_body: $ => where($, $._decl),
 

@@ -4663,9 +4663,18 @@
         {
           "type": "type_wildcard",
           "named": true
+        },
+        {
+          "type": "using",
+          "named": true
         }
       ]
     }
+  },
+  {
+    "type": "implementation_name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "import",
@@ -7939,6 +7948,21 @@
     "fields": {}
   },
   {
+    "type": "using",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "implementation_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "var_import",
     "named": true,
     "fields": {},
@@ -8144,10 +8168,6 @@
     "named": false
   },
   {
-    "type": "implementation_name",
-    "named": true
-  },
-  {
     "type": "import",
     "named": false
   },
@@ -8261,6 +8281,10 @@
   },
   {
     "type": "type",
+    "named": false
+  },
+  {
+    "type": "using",
     "named": false
   },
   {
