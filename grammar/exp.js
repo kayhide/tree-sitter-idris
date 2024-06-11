@@ -42,8 +42,6 @@ module.exports = {
   // Parens or tupels
   exp_parens: $ => parens(sep($.comma, $._exp)),
 
-  exp_type_application: $ => seq('@', $._atype),
-
   // ----- Arrays -------------------------------------------------------------
 
   exp_array: $ => brackets(sep($.comma, $._exp)),
@@ -51,6 +49,10 @@ module.exports = {
   // ----- Implicit arguments -------------------------------------------------
 
   exp_implicit_arg: $ => braces(seq($._var, '=', $._exp)),
+
+  // ----- Explicit implementation --------------------------------------------
+
+  exp_explicit_impl: $ => seq('@{', $._varid, '}'),
 
   // ----- Operator sections --------------------------------------------------
 
@@ -250,6 +252,7 @@ module.exports = {
     $.exp_parens,
     $.exp_array,
     $.exp_implicit_arg,
+    $.exp_explicit_impl,
     $.record_literal,
     $.record_update,
     $.record_accessor,

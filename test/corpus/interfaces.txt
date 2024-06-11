@@ -1,0 +1,245 @@
+================================================================================
+Interfaces 1
+================================================================================
+
+interface Show a where
+    show : a -> String
+
+--------------------------------------------------------------------------------
+
+(idris
+  (interface_declaration
+    (interface_head
+      (interface_name
+        (type))
+      (type_variable))
+    (interface_body
+      (where)
+      (signature
+        (variable)
+        (type_infix
+          (type_name
+            (type_variable))
+          (type_operator)
+          (type_name
+            (type)))))))
+
+================================================================================
+Interfaces 2
+================================================================================
+
+Show Nat where
+    show Z = "Z"
+
+--------------------------------------------------------------------------------
+
+(idris
+  (interface_implementation
+    (implementation_head
+      (interface_name
+        (type))
+      (type_name
+        (type)))
+    (implementation_body
+      (where)
+      (function
+        (variable)
+        (patterns
+          (pat_name
+            (constructor)))
+        (exp_literal
+          (string))))))
+
+================================================================================
+Default Definitions
+================================================================================
+
+interface Eq a where
+    x /= y = not (x == y)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (interface_declaration
+    (interface_head
+      (interface_name
+        (type))
+      (type_variable))
+    (interface_body
+      (where)
+      (function
+        (pat_infix
+          (pat_name
+            (variable))
+          (operator)
+          (pat_name
+            (variable)))
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_parens
+            (exp_infix
+              (exp_name
+                (variable))
+              (operator)
+              (exp_name
+                (variable)))))))))
+
+================================================================================
+Extending Interfaces 1
+================================================================================
+
+interface Eq a => Ord a where
+    compare : a -> a -> Ordering
+
+--------------------------------------------------------------------------------
+
+(idris
+  (interface_declaration
+    (interface_head
+      (constraints
+        (constraint
+          (interface_name
+            (type))
+          (type_name
+            (type_variable))))
+      (interface_name
+        (type))
+      (type_variable))
+    (interface_body
+      (where)
+      (signature
+        (variable)
+        (type_infix
+          (type_name
+            (type_variable))
+          (type_operator)
+          (type_infix
+            (type_name
+              (type_variable))
+            (type_operator)
+            (type_name
+              (type))))))))
+
+================================================================================
+Extending Interfaces 2
+================================================================================
+
+interface (Ord a, Show a) => OrdShow a where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (interface_declaration
+    (interface_head
+      (constraints
+        (constraint
+          (interface_name
+            (type))
+          (type_name
+            (type_variable)))
+        (comma)
+        (constraint
+          (interface_name
+            (type))
+          (type_name
+            (type_variable))))
+      (interface_name
+        (type))
+      (type_variable))
+    (interface_body
+      (where))))
+
+================================================================================
+Quantities for Parameters 1
+================================================================================
+
+interface Functor (0 f : Type -> Type) where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (interface_declaration
+    (interface_head
+      (interface_name
+        (type))
+      (annotated_type_variable
+        (type_quantity)
+        (type_variable)
+        (type_infix
+          (type_name
+            (type))
+          (type_operator)
+          (type_name
+            (type)))))
+    (interface_body
+      (where))))
+
+================================================================================
+Quantities for Parameters 2
+================================================================================
+
+interface Functor f => Applicative (0 f : Type -> Type) where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (interface_declaration
+    (interface_head
+      (constraints
+        (constraint
+          (interface_name
+            (type))
+          (type_name
+            (type_variable))))
+      (interface_name
+        (type))
+      (annotated_type_variable
+        (type_quantity)
+        (type_variable)
+        (type_infix
+          (type_name
+            (type))
+          (type_operator)
+          (type_name
+            (type)))))
+    (interface_body
+      (where))))
+
+================================================================================
+Named Implementations 1
+================================================================================
+
+[myord] Ord Nat where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (interface_implementation
+    (implementation_name)
+    (implementation_head
+      (interface_name
+        (type))
+      (type_name
+        (type)))
+    (implementation_body
+      (where))))
+
+================================================================================
+Named Implementations 2
+================================================================================
+
+_ = sort @{myord} xs
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (pat_wildcard
+      (pat_wildcard))
+    (exp_apply
+      (exp_name
+        (variable))
+      (exp_explicit_impl)
+      (exp_name
+        (variable)))))

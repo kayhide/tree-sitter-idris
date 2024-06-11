@@ -168,6 +168,17 @@ module.exports = grammar({
     [$.type_apply],
 
     /**
+     * Interface implementation confilicts.
+     */
+    [$.qualified_constructor, $.qualified_type],
+    [$._qcon, $.interface_name],
+
+    /**
+     * Implementation name confilicts.
+     */
+    [$.variable, $._implementation_name],
+
+    /**
      * A weird conflict involving fundeps and type variables in class heads,
      * despite the fact that fundeps are delimited by `|`.
      */
@@ -232,7 +243,7 @@ module.exports = grammar({
       // should group these together to remove extra parser overhead and simplify it for all other symbols
       alias($.decl_import, $.import),
       $.interface_declaration,
-      $.interface_instance,
+      $.interface_implementation,
       $._decl_foreign,
       alias($.decl_derive, $.derive_declaration),
       $._decl,

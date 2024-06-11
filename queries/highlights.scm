@@ -100,7 +100,6 @@
   "let"
   "in"
   "interface"
-  "instance"
   "derive"
   "foreign"
   "data"
@@ -116,9 +115,6 @@
   "infixl"
   "infixr"
 ] @keyword
-
-(interface_instance
-  "else" @keyword)
 
 (type_role_declaration
   "role" @keyword
@@ -169,11 +165,8 @@
 (function
   name: (variable) @function)
 
-(interface_instance
-  (instance_name) @function)
-
-(derive_declaration
-  (instance_name) @function)
+(interface_implementation
+  (implementation_name) @function)
 
 ((variable) @constant.builtin.boolean
   (#match? @constant.builtin.boolean "^(true|false)$"))

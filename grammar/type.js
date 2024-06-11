@@ -4,28 +4,21 @@ module.exports = {
 
   // ----- Type variables -----------------------------------------------------
 
-  // `a`
   type_variable: $ => $._varid,
 
-  // `@a`
-  _visible_type_variable: $ =>
-    seq('@', alias($._immediate_varid, $.type_variable)),
+  type_quantity: _ => choice('0', '1'),
 
-  // `a` or `@a`
-  _tyvar_no_annotation: $ =>
-    choice($.type_variable, $._visible_type_variable),
-
-  // `(a :: Type)` or `(@a :: Type)`
-  _tyvar_annotated: $ =>
+  annotated_type_variable: $ =>
     parens(seq(
-      $._tyvar_no_annotation,
+      optional($.type_quantity),
+      $.type_variable,
       $._type_annotation
     )),
 
   _tyvar: $ =>
     choice(
-      $._tyvar_no_annotation,
-      alias($._tyvar_annotated, $.annotated_type_variable)
+      $.type_variable,
+      $.annotated_type_variable,
     ),
 
   // ----- Quantifiers --------------------------------------------------------

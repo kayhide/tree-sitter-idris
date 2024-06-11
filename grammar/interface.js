@@ -17,8 +17,6 @@ module.exports = {
 
   // ----- Interface ----------------------------------------------------------
 
-  _cdecl: $ => choice($._gendecl, $.function,),
-
   fundep: $ =>
     seq(
       repeat1($.type_variable),
@@ -28,59 +26,50 @@ module.exports = {
 
   fundeps: $ => seq('|', sep1($.comma, $.fundep)),
 
-  interface_body: $ => where($, $._cdecl),
-
-  _interface_kind_declaration: $ =>
-    seq(
-      'interface',
-      alias($._tyconid, $.interface_name),
-      $._type_annotation
-    ),
-
   interface_head: $ =>
     seq(
-      optional(seq($.constraints, $._lcarrow)),
+      optional(seq($.constraints, $._rcarrow)),
       $.interface_name,
       repeat($._tyvar),
       optional($.fundeps)
     ),
 
+  interface_body: $ => where($, $._decl),
+
   interface_declaration: $ =>
     seq(
       repeat(choice('private', 'export', 'public')),
-      optional(alias($._interface_kind_declaration, $.kind_declaration)),
       'interface',
       $.interface_head,
       optional($.interface_body)
     ),
 
-  // ----- Instance -----------------------------------------------------------
+  // ----- Implementation -----------------------------------------------------
 
   _idecl: $ => choice(
     $.function,
     $.signature,
   ),
 
-  instance_head: $ =>
+  implementation_head: $ =>
     seq(
       optional(seq($.constraints, $._rcarrow)),
       $.interface_name,
       repeat($._type)
     ),
 
-  _instance_name: $ =>
-    seq(
-      alias($._varid, $.instance_name),
-      $._colon2
+  _implementation_name: $ =>
+    brackets(
+      alias($._varid, $.implementation_name),
     ),
 
-  interface_instance: $ =>
+  implementation_body: $ => where($, $._decl),
+
+  interface_implementation: $ =>
     seq(
-      optional('else'),
-      'instance',
-      optional($._instance_name),
-      $.instance_head,
-      optional(where($, $._idecl))
+      optional($._implementation_name),
+      $.implementation_head,
+      $.implementation_body,
     ),
 
 }

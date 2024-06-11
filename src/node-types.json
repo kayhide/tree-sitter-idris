@@ -36,6 +36,10 @@
             "named": true
           },
           {
+            "type": "exp_explicit_impl",
+            "named": true
+          },
+          {
             "type": "exp_if",
             "named": true
           },
@@ -283,6 +287,10 @@
           "named": true
         },
         {
+          "type": "type_quantity",
+          "named": true
+        },
+        {
           "type": "type_variable",
           "named": true
         },
@@ -323,6 +331,10 @@
         },
         {
           "type": "exp_do",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
           "named": true
         },
         {
@@ -930,6 +942,10 @@
             "named": true
           },
           {
+            "type": "exp_explicit_impl",
+            "named": true
+          },
+          {
             "type": "exp_if",
             "named": true
           },
@@ -1180,6 +1196,10 @@
             "named": true
           },
           {
+            "type": "exp_explicit_impl",
+            "named": true
+          },
+          {
             "type": "exp_if",
             "named": true
           },
@@ -1330,6 +1350,10 @@
           "named": true
         },
         {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
           "type": "exp_if",
           "named": true
         },
@@ -1426,6 +1450,10 @@
         },
         {
           "type": "exp_do",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
           "named": true
         },
         {
@@ -1576,6 +1604,10 @@
             "named": true
           },
           {
+            "type": "exp_explicit_impl",
+            "named": true
+          },
+          {
             "type": "exp_if",
             "named": true
           },
@@ -1721,6 +1753,11 @@
     }
   },
   {
+    "type": "exp_explicit_impl",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "exp_if",
     "named": true,
     "fields": {
@@ -1754,6 +1791,10 @@
           },
           {
             "type": "exp_do",
+            "named": true
+          },
+          {
+            "type": "exp_explicit_impl",
             "named": true
           },
           {
@@ -1899,6 +1940,10 @@
             "named": true
           },
           {
+            "type": "exp_explicit_impl",
+            "named": true
+          },
+          {
             "type": "exp_if",
             "named": true
           },
@@ -2038,6 +2083,10 @@
           },
           {
             "type": "exp_do",
+            "named": true
+          },
+          {
+            "type": "exp_explicit_impl",
             "named": true
           },
           {
@@ -2182,6 +2231,10 @@
         },
         {
           "type": "exp_do",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
           "named": true
         },
         {
@@ -2332,6 +2385,10 @@
           "named": true
         },
         {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
           "type": "exp_if",
           "named": true
         },
@@ -2444,6 +2501,10 @@
         },
         {
           "type": "exp_do",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
           "named": true
         },
         {
@@ -2619,6 +2680,10 @@
         },
         {
           "type": "exp_do",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
           "named": true
         },
         {
@@ -2827,6 +2892,10 @@
           "named": true
         },
         {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
           "type": "exp_implicit_arg",
           "named": true
         },
@@ -2911,6 +2980,10 @@
         },
         {
           "type": "exp_do",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
           "named": true
         },
         {
@@ -3103,6 +3176,10 @@
           "named": true
         },
         {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
           "type": "exp_if",
           "named": true
         },
@@ -3211,6 +3288,10 @@
         },
         {
           "type": "exp_do",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
           "named": true
         },
         {
@@ -3325,6 +3406,10 @@
           "named": true
         },
         {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
           "type": "exp_if",
           "named": true
         },
@@ -3435,6 +3520,10 @@
         },
         {
           "type": "exp_do",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
           "named": true
         },
         {
@@ -3787,6 +3876,10 @@
             "named": true
           },
           {
+            "type": "exp_explicit_impl",
+            "named": true
+          },
+          {
             "type": "exp_if",
             "named": true
           },
@@ -3983,6 +4076,10 @@
           "named": true
         },
         {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
           "type": "exp_if",
           "named": true
         },
@@ -4126,6 +4223,10 @@
           "named": true
         },
         {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
           "type": "exp_if",
           "named": true
         },
@@ -4230,6 +4331,10 @@
         },
         {
           "type": "exp_do",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
           "named": true
         },
         {
@@ -4414,7 +4519,7 @@
           "named": true
         },
         {
-          "type": "interface_instance",
+          "type": "interface_implementation",
           "named": true
         },
         {
@@ -4463,6 +4568,100 @@
         },
         {
           "type": "type_role_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "implementation_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "function",
+          "named": true
+        },
+        {
+          "type": "operator_declaration",
+          "named": true
+        },
+        {
+          "type": "signature",
+          "named": true
+        },
+        {
+          "type": "where",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "implementation_head",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "captured_type_operator",
+          "named": true
+        },
+        {
+          "type": "constraints",
+          "named": true
+        },
+        {
+          "type": "forall",
+          "named": true
+        },
+        {
+          "type": "hole",
+          "named": true
+        },
+        {
+          "type": "interface_name",
+          "named": true
+        },
+        {
+          "type": "record_type_literal",
+          "named": true
+        },
+        {
+          "type": "row_type",
+          "named": true
+        },
+        {
+          "type": "type_apply",
+          "named": true
+        },
+        {
+          "type": "type_braces",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_literal",
+          "named": true
+        },
+        {
+          "type": "type_name",
+          "named": true
+        },
+        {
+          "type": "type_parens",
+          "named": true
+        },
+        {
+          "type": "type_wildcard",
           "named": true
         }
       ]
@@ -4590,73 +4789,6 @@
     }
   },
   {
-    "type": "instance_head",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "constraints",
-          "named": true
-        },
-        {
-          "type": "forall",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "interface_name",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
-          "named": true
-        },
-        {
-          "type": "type_apply",
-          "named": true
-        },
-        {
-          "type": "type_braces",
-          "named": true
-        },
-        {
-          "type": "type_infix",
-          "named": true
-        },
-        {
-          "type": "type_literal",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "integer",
     "named": true,
     "fields": {}
@@ -4703,10 +4835,6 @@
         {
           "type": "interface_head",
           "named": true
-        },
-        {
-          "type": "kind_declaration",
-          "named": true
         }
       ]
     }
@@ -4743,7 +4871,7 @@
     }
   },
   {
-    "type": "interface_instance",
+    "type": "interface_implementation",
     "named": true,
     "fields": {},
     "children": {
@@ -4751,23 +4879,15 @@
       "required": true,
       "types": [
         {
-          "type": "function",
+          "type": "implementation_body",
           "named": true
         },
         {
-          "type": "instance_head",
+          "type": "implementation_head",
           "named": true
         },
         {
-          "type": "instance_name",
-          "named": true
-        },
-        {
-          "type": "signature",
-          "named": true
-        },
-        {
-          "type": "where",
+          "type": "implementation_name",
           "named": true
         }
       ]
@@ -4798,7 +4918,7 @@
     "fields": {
       "name": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "type",
@@ -4816,63 +4936,11 @@
           "named": true
         },
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "forall",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "interface_name",
-          "named": true
-        },
-        {
           "type": "kind_signature",
           "named": true
         },
         {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
-          "named": true
-        },
-        {
-          "type": "type_apply",
-          "named": true
-        },
-        {
-          "type": "type_braces",
-          "named": true
-        },
-        {
-          "type": "type_infix",
-          "named": true
-        },
-        {
-          "type": "type_literal",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_parens",
-          "named": true
-        },
-        {
           "type": "type_variable",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
           "named": true
         }
       ]
@@ -5098,7 +5166,7 @@
           "named": true
         },
         {
-          "type": "interface_instance",
+          "type": "interface_implementation",
           "named": true
         },
         {
@@ -5222,7 +5290,7 @@
           "named": true
         },
         {
-          "type": "interface_instance",
+          "type": "interface_implementation",
           "named": true
         },
         {
@@ -5530,7 +5598,7 @@
           "named": true
         },
         {
-          "type": "interface_instance",
+          "type": "interface_implementation",
           "named": true
         },
         {
@@ -6199,6 +6267,10 @@
           "named": true
         },
         {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
           "type": "exp_if",
           "named": true
         },
@@ -6827,6 +6899,10 @@
           "named": true
         },
         {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
           "type": "exp_if",
           "named": true
         },
@@ -7207,6 +7283,10 @@
         },
         {
           "type": "exp_do",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
           "named": true
         },
         {
@@ -7750,6 +7830,11 @@
     }
   },
   {
+    "type": "type_quantity",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "type_role",
     "named": true,
     "fields": {}
@@ -7907,6 +7992,14 @@
     "named": false
   },
   {
+    "type": "0",
+    "named": false
+  },
+  {
+    "type": "1",
+    "named": false
+  },
+  {
     "type": ":",
     "named": false
   },
@@ -7940,6 +8033,10 @@
   },
   {
     "type": "@",
+    "named": false
+  },
+  {
+    "type": "@{",
     "named": false
   },
   {
@@ -8045,6 +8142,10 @@
   {
     "type": "if",
     "named": false
+  },
+  {
+    "type": "implementation_name",
+    "named": true
   },
   {
     "type": "import",
