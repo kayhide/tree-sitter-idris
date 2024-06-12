@@ -5916,8 +5916,22 @@
       "type": "FIELD",
       "name": "name",
       "content": {
-        "type": "SYMBOL",
-        "name": "_var"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_var"
+          },
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_conid"
+            },
+            "named": true,
+            "value": "variable"
+          }
+        ]
       }
     },
     "guard_equation": {
@@ -6157,7 +6171,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "_var"
+            "name": "_fun_name"
           }
         },
         {
@@ -6784,10 +6798,6 @@
       "pat_name"
     ],
     [
-      "signature",
-      "pat_name"
-    ],
-    [
       "exp_name",
       "_pat_constructor"
     ],
@@ -6860,6 +6870,10 @@
     [
       "constructor",
       "_implementation_name"
+    ],
+    [
+      "constructor",
+      "_fun_name"
     ],
     [
       "type_name",

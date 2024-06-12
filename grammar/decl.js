@@ -10,7 +10,7 @@ module.exports = {
     $._funrhs,
   ),
 
-  _fun_name: $ => field('name', $._var),
+  _fun_name: $ => field('name', choice($._var, alias($._conid, $.variable))),
 
   guard_equation: $ => seq($.guards, '=', $._exp),
 
@@ -26,7 +26,10 @@ module.exports = {
 
   _fun_patterns: $ => repeat1($._apat),
 
-  _funvar: $ => seq($._fun_name, field('patterns', optional(alias($._fun_patterns, $.patterns)))),
+  _funvar: $ => seq(
+    $._fun_name,
+    field('patterns', optional(alias($._fun_patterns, $.patterns))),
+  ),
 
   _funlhs: $ => prec.dynamic(2, $._funvar),
 
@@ -47,7 +50,7 @@ module.exports = {
   signature: $ => seq(
     repeat(choice('private', 'export', 'public')),
     optional('partial'),
-    field('name', $._var),
+    field('name', $._fun_name),
     $._type_annotation,
   ),
 

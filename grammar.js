@@ -138,7 +138,6 @@ module.exports = grammar({
      * immediate lookahead.
      */
     [$._fun_name, $.pat_name],
-    [$.signature, $.pat_name],
     [$.exp_name, $._pat_constructor],
     [$.exp_name, $.pat_name],
     [$._aexp_projection, $._apat],
@@ -178,6 +177,7 @@ module.exports = grammar({
      */
     [$.variable, $._implementation_name],
     [$.constructor, $._implementation_name],
+    [$.constructor, $._fun_name],
 
     /**
      * A weird conflict involving fundeps and type variables in class heads,

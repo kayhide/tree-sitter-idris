@@ -47,9 +47,8 @@ showPerson p = let MkPerson name age = p in
     (exp_let_in
       (declarations
         (function
-          (pat_apply
-            (pat_name
-              (constructor))
+          (variable)
+          (patterns
             (pat_name
               (variable))
             (pat_name
@@ -122,9 +121,8 @@ Diag v = let ty : Type := v = v in ty
 
 (idris
   (function
-    (pat_apply
-      (pat_name
-        (constructor))
+    (variable)
+    (patterns
       (pat_name
         (variable)))
     (exp_let_in
