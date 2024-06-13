@@ -122,34 +122,4 @@ module.exports = {
 
   _simpletype: $ =>
     seq(field('name', $._tyconid), repeat($._tyvar)),
-
-  // ----- Type role declaration -0--------------------------------------------
-
-  _role: _ => choice('nominal', 'representational', 'phantom'),
-
-  type_role_declaration: $ =>
-    seq(
-      'type',
-      'role',
-      $._tyconid,
-      repeat1(field('role', alias($._role, $.type_role))),
-    ),
-
-  // ----- Type declaration ---------------------------------------------------
-
-  _type_type_signature: $ =>
-    seq(
-      'type',
-      $._tyconid,
-      $._type_annotation
-    ),
-
-  decl_type: $ =>
-    seq(
-      optional(alias($._type_type_signature, $.type_signature)),
-      'type',
-      $._simpletype,
-      '=',
-      $._type
-    ),
 }

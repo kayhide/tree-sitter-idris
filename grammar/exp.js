@@ -83,7 +83,7 @@ module.exports = {
 
   exp_record_access: $ =>
     prec(1, seq(
-      choice($.hole, $.record_literal, $.exp_parens, $._qvarid),
+      choice($.hole, $.exp_parens, $._qvarid),
       repeat1(seq($._immediate_dot, field('field', $._record_access_field)))
     )),
 
@@ -253,7 +253,6 @@ module.exports = {
     $.exp_array,
     $.exp_implicit_arg,
     $.exp_explicit_impl,
-    $.record_literal,
     $.record_update,
     $.record_accessor,
     $.exp_record_access,

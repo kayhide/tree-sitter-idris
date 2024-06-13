@@ -6,7 +6,7 @@ module.exports = {
   record_name: $ => $._qtyconid,
 
   decl_record: $ => seq(
-    repeat(choice('private', 'export', 'public')),
+    optional($.visibility),
     'record',
     field('name', $.record_name),
     $.where,
@@ -112,10 +112,6 @@ module.exports = {
     return choice(field_pun, pair)
   },
 
-  record_literal: $ =>
-    // higher precedence because of the conflict with patterns
-    prec(1, braces(sep($.comma, $.record_field))),
-
   _record_field_update: $ => {
     const nested_update =
       braces(sep($.comma,
@@ -139,7 +135,6 @@ module.exports = {
       $.wildcard,
       $.hole,
       $._qvarid,
-      $.record_literal,
       $.exp_record_access,
       $.exp_parens,
     ),

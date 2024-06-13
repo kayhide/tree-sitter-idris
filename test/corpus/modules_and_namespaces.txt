@@ -34,6 +34,7 @@ f : _
 
 (idris
   (signature
+    (visibility)
     (variable)
     (type_wildcard)))
 
@@ -48,6 +49,7 @@ f : _
 
 (idris
   (signature
+    (visibility)
     (variable)
     (type_wildcard)))
 
@@ -62,6 +64,7 @@ data X = _
 
 (idris
   (data
+    (visibility)
     (type)
     (constructor)))
 
@@ -76,6 +79,7 @@ data X = _
 
 (idris
   (data
+    (visibility)
     (type)
     (constructor)))
 
@@ -90,6 +94,7 @@ interface I
 
 (idris
   (interface_declaration
+    (visibility)
     (interface_head
       (interface_name
         (type)))))
@@ -105,6 +110,7 @@ interface I
 
 (idris
   (interface_declaration
+    (visibility)
     (interface_head
       (interface_name
         (type)))))
@@ -120,6 +126,7 @@ infix 5 +
 
 (idris
   (operator_declaration
+    (visibility)
     (integer)
     (operator)))
 
@@ -134,6 +141,7 @@ infix 6 *
 
 (idris
   (operator_declaration
+    (visibility)
     (integer)
     (operator)))
 
@@ -148,6 +156,7 @@ infix 7 ^
 
 (idris
   (operator_declaration
+    (visibility)
     (integer)
     (operator)))
 
@@ -223,6 +232,7 @@ namespace X
       (module))
     (namespace_body
       (signature
+        (visibility)
         (variable)
         (type_infix
           (type_name
@@ -254,6 +264,7 @@ withNSInside = g where
           (module))
         (namespace_body
           (signature
+            (visibility)
             (variable)
             (type_name
               (type))))))))

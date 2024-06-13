@@ -1,6 +1,6 @@
 const basic = require('./grammar/basic.js')
 const id = require('./grammar/id.js')
-const rows = require('./grammar/rows_and_records.js')
+const record = require('./grammar/record.js')
 const type = require('./grammar/type.js')
 const exp = require('./grammar/exp.js')
 const pat = require('./grammar/pat.js')
@@ -9,8 +9,6 @@ const module_ = require('./grammar/module.js')
 const data = require('./grammar/data.js')
 const interface = require('./grammar/interface.js')
 const decl = require('./grammar/decl.js')
-const derive = require('./grammar/derive.js')
-const pattern = require('./grammar/pattern.js')
 
 module.exports = grammar({
   name: 'idris',
@@ -147,6 +145,7 @@ module.exports = grammar({
     [$.exp_parens, $.pat_tuple],
     [$._minus, $.exp_negation],
     [$._minus, $.exp_negation, $.pat_negation],
+    [$.record_update, $.pat_fields],
 
     /**
      * For getting a node for function application, and no extra node if the expression only consists of one term.
@@ -178,12 +177,6 @@ module.exports = grammar({
     [$.variable, $._implementation_name],
     [$.constructor, $._implementation_name],
     [$.constructor, $._fun_name],
-
-    /**
-     * A weird conflict involving fundeps and type variables in class heads,
-     * despite the fact that fundeps are delimited by `|`.
-     */
-    [$.type_name, $.interface_head],
 
     /**
      * Type names and class names both alias `$.constructor`.
@@ -234,10 +227,7 @@ module.exports = grammar({
       alias($._decl_namespace, $.namespace),
       alias($._decl_parameters, $.parameters),
       alias($._decl_mutual, $.mutual),
-      alias($.decl_type, $.type_alias),
-      $.type_role_declaration,
       alias($.decl_data, $.data),
-      alias($.decl_newtype, $.newtype),
       alias($.decl_record, $.record),
       // TODO: Imports cannot come in random places,
       // the structure of a module is always `module M [exports] where [imports] …`
@@ -245,17 +235,12 @@ module.exports = grammar({
       alias($.decl_import, $.import),
       $.interface_declaration,
       $.interface_implementation,
-      $._decl_foreign,
-      alias($.decl_derive, $.derive_declaration),
       $._decl,
-      $.kind_declaration,
-      $.kind_value_declaration,
-      alias($.decl_pattern, $.pattern_synonym),
     ),
 
     ...basic,
     ...id,
-    ...rows,
+    ...record,
     ...type,
     ...exp,
     ...pat,
@@ -264,7 +249,5 @@ module.exports = grammar({
     ...data,
     ...interface,
     ...decl,
-    ...derive,
-    ...pattern,
   }
 })

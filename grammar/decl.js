@@ -5,6 +5,16 @@ module.exports = {
   // Declarations
   // ------------------------------------------------------------------------
 
+  visibility: _ => choice(
+    'private',
+    'export',
+    seq('public', 'export'),
+  ),
+
+  totality: _ => choice(
+    'partial',
+  ),
+
   _funpat: $ => seq(
     field('pattern', $._typed_pat),
     $._funrhs,
@@ -41,15 +51,15 @@ module.exports = {
   // TODO: I don't see what it has to do with functions.
   // Should be only used in `grammar.js` as a top-level declaration.
   operator_declaration: $ => seq(
-    repeat(choice('private', 'export', 'public')),
+    optional($.visibility),
     choice('infixl', 'infixr', 'infix'),
     field('precedence', $.integer),
     $.operator
   ),
 
   signature: $ => seq(
-    repeat(choice('private', 'export', 'public')),
-    optional('partial'),
+    optional($.visibility),
+    optional($.totality),
     field('name', $._fun_name),
     $._type_annotation,
   ),
@@ -84,45 +94,4 @@ module.exports = {
   ),
 
   declarations: $ => layouted($, $._where_decl),
-
-  // ------------------------------------------------------------------------
-  // Foreign
-  // ------------------------------------------------------------------------
-
-  decl_foreign_import: $ => seq(
-    'foreign',
-    'import',
-    $._fun_name,
-    $._type_annotation
-  ),
-
-  _decl_foreign: $ => alias($.decl_foreign_import, $.foreign_import),
-
-  // ------------------------------------------------------------------------
-  // Kinds and kind values
-  // ------------------------------------------------------------------------
-
-  _newkind_type_signature: $ =>
-    prec.dynamic(1, seq(
-      'data',
-      $._tyconid,
-      $._type_annotation
-    )),
-
-  kind_declaration: $ =>
-    seq(
-      optional(alias($._newkind_type_signature, $.kind_signature)),
-      'data',
-      $._simpletype,
-    ),
-
-  kind_value_declaration: $ =>
-    seq(
-      'foreign',
-      'import',
-      'data',
-      $._simpletype,
-      $._type_annotation
-    ),
-
 }

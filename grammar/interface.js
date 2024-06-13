@@ -38,7 +38,7 @@ module.exports = {
 
   interface_declaration: $ =>
     seq(
-      repeat(choice('private', 'export', 'public')),
+      optional($.visibility),
       'interface',
       $.interface_head,
       optional($.interface_body)

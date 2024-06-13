@@ -491,6 +491,7 @@ fromMaybe (Just x) = x
 
 (idris
   (signature
+    (totality)
     (variable)
     (type_infix
       (type_apply
