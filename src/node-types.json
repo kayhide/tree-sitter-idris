@@ -12,14 +12,6 @@
             "named": false
           },
           {
-            "type": "captured_type_operator",
-            "named": true
-          },
-          {
-            "type": "exp_ado",
-            "named": true
-          },
-          {
             "type": "exp_apply",
             "named": true
           },
@@ -96,23 +88,15 @@
             "named": true
           },
           {
+            "type": "literal",
+            "named": true
+          },
+          {
             "type": "record_accessor",
             "named": true
           },
           {
-            "type": "record_literal",
-            "named": true
-          },
-          {
-            "type": "record_type_literal",
-            "named": true
-          },
-          {
             "type": "record_update",
-            "named": true
-          },
-          {
-            "type": "row_type",
             "named": true
           },
           {
@@ -128,19 +112,11 @@
             "named": true
           },
           {
-            "type": "type_literal",
-            "named": true
-          },
-          {
             "type": "type_name",
             "named": true
           },
           {
             "type": "type_parens",
-            "named": true
-          },
-          {
-            "type": "type_wildcard",
             "named": true
           },
           {
@@ -243,10 +219,6 @@
       "required": true,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
           "type": "forall",
           "named": true
         },
@@ -255,11 +227,7 @@
           "named": true
         },
         {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
+          "type": "literal",
           "named": true
         },
         {
@@ -272,10 +240,6 @@
         },
         {
           "type": "type_infix",
-          "named": true
-        },
-        {
-          "type": "type_literal",
           "named": true
         },
         {
@@ -295,7 +259,7 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -309,14 +273,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "exp_ado",
-          "named": true
-        },
         {
           "type": "exp_apply",
           "named": true
@@ -394,6 +350,10 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "pat_apply",
           "named": true
         },
@@ -442,19 +402,7 @@
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "row_type",
           "named": true
         },
         {
@@ -470,10 +418,6 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
@@ -482,30 +426,7 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
-          "named": true
-        },
-        {
           "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "captured_type_operator",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "qualified_operator",
           "named": true
         }
       ]
@@ -535,10 +456,6 @@
       "required": true,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
           "type": "forall",
           "named": true
         },
@@ -551,11 +468,7 @@
           "named": true
         },
         {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
+          "type": "literal",
           "named": true
         },
         {
@@ -571,10 +484,6 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
@@ -583,7 +492,7 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -662,10 +571,10 @@
     "fields": {
       "name": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
-            "type": "type",
+            "type": "data_name",
             "named": true
           }
         ]
@@ -677,10 +586,6 @@
       "types": [
         {
           "type": "annotated_type_variable",
-          "named": true
-        },
-        {
-          "type": "captured_type_operator",
           "named": true
         },
         {
@@ -704,15 +609,7 @@
           "named": true
         },
         {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
-          "named": true
-        },
-        {
-          "type": "type",
+          "type": "literal",
           "named": true
         },
         {
@@ -725,10 +622,6 @@
         },
         {
           "type": "type_infix",
-          "named": true
-        },
-        {
-          "type": "type_literal",
           "named": true
         },
         {
@@ -748,11 +641,15 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
+          "type": "visibility",
           "named": true
         },
         {
           "type": "where",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -772,6 +669,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "data_name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "declarations",
@@ -805,527 +707,6 @@
     }
   },
   {
-    "type": "derive_declaration",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "constraints",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "instance_name",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
-          "named": true
-        },
-        {
-          "type": "type_braces",
-          "named": true
-        },
-        {
-          "type": "type_literal",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "equation",
-    "named": true,
-    "fields": {
-      "lhs": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "pat_apply",
-            "named": true
-          },
-          {
-            "type": "pat_array",
-            "named": true
-          },
-          {
-            "type": "pat_as",
-            "named": true
-          },
-          {
-            "type": "pat_infix",
-            "named": true
-          },
-          {
-            "type": "pat_literal",
-            "named": true
-          },
-          {
-            "type": "pat_name",
-            "named": true
-          },
-          {
-            "type": "pat_negation",
-            "named": true
-          },
-          {
-            "type": "pat_record",
-            "named": true
-          },
-          {
-            "type": "pat_tuple",
-            "named": true
-          },
-          {
-            "type": "pat_wildcard",
-            "named": true
-          }
-        ]
-      },
-      "rhs": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": ":",
-            "named": false
-          },
-          {
-            "type": "captured_type_operator",
-            "named": true
-          },
-          {
-            "type": "exp_ado",
-            "named": true
-          },
-          {
-            "type": "exp_apply",
-            "named": true
-          },
-          {
-            "type": "exp_array",
-            "named": true
-          },
-          {
-            "type": "exp_case",
-            "named": true
-          },
-          {
-            "type": "exp_do",
-            "named": true
-          },
-          {
-            "type": "exp_explicit_impl",
-            "named": true
-          },
-          {
-            "type": "exp_if",
-            "named": true
-          },
-          {
-            "type": "exp_implicit_arg",
-            "named": true
-          },
-          {
-            "type": "exp_infix",
-            "named": true
-          },
-          {
-            "type": "exp_lambda",
-            "named": true
-          },
-          {
-            "type": "exp_let_in",
-            "named": true
-          },
-          {
-            "type": "exp_literal",
-            "named": true
-          },
-          {
-            "type": "exp_name",
-            "named": true
-          },
-          {
-            "type": "exp_negation",
-            "named": true
-          },
-          {
-            "type": "exp_parens",
-            "named": true
-          },
-          {
-            "type": "exp_record_access",
-            "named": true
-          },
-          {
-            "type": "exp_section_left",
-            "named": true
-          },
-          {
-            "type": "exp_section_right",
-            "named": true
-          },
-          {
-            "type": "forall",
-            "named": true
-          },
-          {
-            "type": "hole",
-            "named": true
-          },
-          {
-            "type": "pat_apply",
-            "named": true
-          },
-          {
-            "type": "pat_array",
-            "named": true
-          },
-          {
-            "type": "pat_as",
-            "named": true
-          },
-          {
-            "type": "pat_infix",
-            "named": true
-          },
-          {
-            "type": "pat_literal",
-            "named": true
-          },
-          {
-            "type": "pat_name",
-            "named": true
-          },
-          {
-            "type": "pat_negation",
-            "named": true
-          },
-          {
-            "type": "pat_record",
-            "named": true
-          },
-          {
-            "type": "pat_tuple",
-            "named": true
-          },
-          {
-            "type": "pat_wildcard",
-            "named": true
-          },
-          {
-            "type": "record_accessor",
-            "named": true
-          },
-          {
-            "type": "record_literal",
-            "named": true
-          },
-          {
-            "type": "record_type_literal",
-            "named": true
-          },
-          {
-            "type": "record_update",
-            "named": true
-          },
-          {
-            "type": "row_type",
-            "named": true
-          },
-          {
-            "type": "type_apply",
-            "named": true
-          },
-          {
-            "type": "type_braces",
-            "named": true
-          },
-          {
-            "type": "type_infix",
-            "named": true
-          },
-          {
-            "type": "type_literal",
-            "named": true
-          },
-          {
-            "type": "type_name",
-            "named": true
-          },
-          {
-            "type": "type_parens",
-            "named": true
-          },
-          {
-            "type": "type_wildcard",
-            "named": true
-          },
-          {
-            "type": "wildcard",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "declarations",
-          "named": true
-        },
-        {
-          "type": "guard_equation",
-          "named": true
-        },
-        {
-          "type": "pat_apply",
-          "named": true
-        },
-        {
-          "type": "pat_array",
-          "named": true
-        },
-        {
-          "type": "pat_as",
-          "named": true
-        },
-        {
-          "type": "pat_infix",
-          "named": true
-        },
-        {
-          "type": "pat_literal",
-          "named": true
-        },
-        {
-          "type": "pat_name",
-          "named": true
-        },
-        {
-          "type": "pat_negation",
-          "named": true
-        },
-        {
-          "type": "pat_record",
-          "named": true
-        },
-        {
-          "type": "pat_tuple",
-          "named": true
-        },
-        {
-          "type": "pat_wildcard",
-          "named": true
-        },
-        {
-          "type": "where",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "exp_ado",
-    "named": true,
-    "fields": {
-      "in": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": ":",
-            "named": false
-          },
-          {
-            "type": ";",
-            "named": false
-          },
-          {
-            "type": "captured_type_operator",
-            "named": true
-          },
-          {
-            "type": "exp_ado",
-            "named": true
-          },
-          {
-            "type": "exp_apply",
-            "named": true
-          },
-          {
-            "type": "exp_array",
-            "named": true
-          },
-          {
-            "type": "exp_case",
-            "named": true
-          },
-          {
-            "type": "exp_do",
-            "named": true
-          },
-          {
-            "type": "exp_explicit_impl",
-            "named": true
-          },
-          {
-            "type": "exp_if",
-            "named": true
-          },
-          {
-            "type": "exp_implicit_arg",
-            "named": true
-          },
-          {
-            "type": "exp_infix",
-            "named": true
-          },
-          {
-            "type": "exp_lambda",
-            "named": true
-          },
-          {
-            "type": "exp_let_in",
-            "named": true
-          },
-          {
-            "type": "exp_literal",
-            "named": true
-          },
-          {
-            "type": "exp_name",
-            "named": true
-          },
-          {
-            "type": "exp_negation",
-            "named": true
-          },
-          {
-            "type": "exp_parens",
-            "named": true
-          },
-          {
-            "type": "exp_record_access",
-            "named": true
-          },
-          {
-            "type": "exp_section_left",
-            "named": true
-          },
-          {
-            "type": "exp_section_right",
-            "named": true
-          },
-          {
-            "type": "forall",
-            "named": true
-          },
-          {
-            "type": "hole",
-            "named": true
-          },
-          {
-            "type": "record_accessor",
-            "named": true
-          },
-          {
-            "type": "record_literal",
-            "named": true
-          },
-          {
-            "type": "record_type_literal",
-            "named": true
-          },
-          {
-            "type": "record_update",
-            "named": true
-          },
-          {
-            "type": "row_type",
-            "named": true
-          },
-          {
-            "type": "type_apply",
-            "named": true
-          },
-          {
-            "type": "type_braces",
-            "named": true
-          },
-          {
-            "type": "type_infix",
-            "named": true
-          },
-          {
-            "type": "type_literal",
-            "named": true
-          },
-          {
-            "type": "type_name",
-            "named": true
-          },
-          {
-            "type": "type_parens",
-            "named": true
-          },
-          {
-            "type": "type_wildcard",
-            "named": true
-          },
-          {
-            "type": "wildcard",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "module",
-          "named": true
-        },
-        {
-          "type": "statement",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "exp_apply",
     "named": true,
     "fields": {},
@@ -1333,10 +714,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "exp_ado",
-          "named": true
-        },
         {
           "type": "exp_array",
           "named": true
@@ -1402,10 +779,6 @@
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
           "named": true
         },
@@ -1425,15 +798,7 @@
       "required": false,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
           "type": "comma",
-          "named": true
-        },
-        {
-          "type": "exp_ado",
           "named": true
         },
         {
@@ -1513,23 +878,15 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "row_type",
           "named": true
         },
         {
@@ -1545,19 +902,11 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
         {
           "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
           "named": true
         },
         {
@@ -1578,14 +927,6 @@
           {
             "type": ":",
             "named": false
-          },
-          {
-            "type": "captured_type_operator",
-            "named": true
-          },
-          {
-            "type": "exp_ado",
-            "named": true
           },
           {
             "type": "exp_apply",
@@ -1664,23 +1005,15 @@
             "named": true
           },
           {
+            "type": "literal",
+            "named": true
+          },
+          {
             "type": "record_accessor",
             "named": true
           },
           {
-            "type": "record_literal",
-            "named": true
-          },
-          {
-            "type": "record_type_literal",
-            "named": true
-          },
-          {
             "type": "record_update",
-            "named": true
-          },
-          {
-            "type": "row_type",
             "named": true
           },
           {
@@ -1696,19 +1029,11 @@
             "named": true
           },
           {
-            "type": "type_literal",
-            "named": true
-          },
-          {
             "type": "type_name",
             "named": true
           },
           {
             "type": "type_parens",
-            "named": true
-          },
-          {
-            "type": "type_wildcard",
             "named": true
           },
           {
@@ -1770,14 +1095,6 @@
             "named": false
           },
           {
-            "type": "captured_type_operator",
-            "named": true
-          },
-          {
-            "type": "exp_ado",
-            "named": true
-          },
-          {
             "type": "exp_apply",
             "named": true
           },
@@ -1854,23 +1171,15 @@
             "named": true
           },
           {
+            "type": "literal",
+            "named": true
+          },
+          {
             "type": "record_accessor",
             "named": true
           },
           {
-            "type": "record_literal",
-            "named": true
-          },
-          {
-            "type": "record_type_literal",
-            "named": true
-          },
-          {
             "type": "record_update",
-            "named": true
-          },
-          {
-            "type": "row_type",
             "named": true
           },
           {
@@ -1886,19 +1195,11 @@
             "named": true
           },
           {
-            "type": "type_literal",
-            "named": true
-          },
-          {
             "type": "type_name",
             "named": true
           },
           {
             "type": "type_parens",
-            "named": true
-          },
-          {
-            "type": "type_wildcard",
             "named": true
           },
           {
@@ -1916,14 +1217,6 @@
             "named": false
           },
           {
-            "type": "captured_type_operator",
-            "named": true
-          },
-          {
-            "type": "exp_ado",
-            "named": true
-          },
-          {
             "type": "exp_apply",
             "named": true
           },
@@ -2000,23 +1293,15 @@
             "named": true
           },
           {
+            "type": "literal",
+            "named": true
+          },
+          {
             "type": "record_accessor",
             "named": true
           },
           {
-            "type": "record_literal",
-            "named": true
-          },
-          {
-            "type": "record_type_literal",
-            "named": true
-          },
-          {
             "type": "record_update",
-            "named": true
-          },
-          {
-            "type": "row_type",
             "named": true
           },
           {
@@ -2032,19 +1317,11 @@
             "named": true
           },
           {
-            "type": "type_literal",
-            "named": true
-          },
-          {
             "type": "type_name",
             "named": true
           },
           {
             "type": "type_parens",
-            "named": true
-          },
-          {
-            "type": "type_wildcard",
             "named": true
           },
           {
@@ -2062,14 +1339,6 @@
             "named": false
           },
           {
-            "type": "captured_type_operator",
-            "named": true
-          },
-          {
-            "type": "exp_ado",
-            "named": true
-          },
-          {
             "type": "exp_apply",
             "named": true
           },
@@ -2146,23 +1415,15 @@
             "named": true
           },
           {
+            "type": "literal",
+            "named": true
+          },
+          {
             "type": "record_accessor",
             "named": true
           },
           {
-            "type": "record_literal",
-            "named": true
-          },
-          {
-            "type": "record_type_literal",
-            "named": true
-          },
-          {
             "type": "record_update",
-            "named": true
-          },
-          {
-            "type": "row_type",
             "named": true
           },
           {
@@ -2178,19 +1439,11 @@
             "named": true
           },
           {
-            "type": "type_literal",
-            "named": true
-          },
-          {
             "type": "type_name",
             "named": true
           },
           {
             "type": "type_parens",
-            "named": true
-          },
-          {
-            "type": "type_wildcard",
             "named": true
           },
           {
@@ -2209,14 +1462,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "exp_ado",
-          "named": true
-        },
         {
           "type": "exp_apply",
           "named": true
@@ -2294,6 +1539,10 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "operator",
           "named": true
         },
@@ -2302,19 +1551,7 @@
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "row_type",
           "named": true
         },
         {
@@ -2330,19 +1567,11 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
         {
           "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
           "named": true
         },
         {
@@ -2364,10 +1593,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "exp_ado",
-          "named": true
-        },
         {
           "type": "exp_apply",
           "named": true
@@ -2457,10 +1682,6 @@
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
           "named": true
         },
@@ -2479,14 +1700,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "exp_ado",
-          "named": true
-        },
         {
           "type": "exp_apply",
           "named": true
@@ -2561,6 +1774,10 @@
         },
         {
           "type": "hole",
+          "named": true
+        },
+        {
+          "type": "literal",
           "named": true
         },
         {
@@ -2596,19 +1813,7 @@
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "row_type",
           "named": true
         },
         {
@@ -2624,19 +1829,11 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
         {
           "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
           "named": true
         },
         {
@@ -2655,15 +1852,7 @@
       "required": true,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
           "type": "declarations",
-          "named": true
-        },
-        {
-          "type": "exp_ado",
           "named": true
         },
         {
@@ -2743,23 +1932,15 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "row_type",
           "named": true
         },
         {
@@ -2775,19 +1956,11 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
         {
           "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
           "named": true
         },
         {
@@ -2880,10 +2053,6 @@
       "required": true,
       "types": [
         {
-          "type": "exp_ado",
-          "named": true
-        },
-        {
           "type": "exp_array",
           "named": true
         },
@@ -2932,10 +2101,6 @@
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
           "named": true
         },
@@ -2955,15 +2120,7 @@
       "required": false,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
           "type": "comma",
-          "named": true
-        },
-        {
-          "type": "exp_ado",
           "named": true
         },
         {
@@ -3043,23 +2200,15 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "row_type",
           "named": true
         },
         {
@@ -3075,19 +2224,11 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
         {
           "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
           "named": true
         },
         {
@@ -3137,10 +2278,6 @@
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
           "type": "variable",
           "named": true
         }
@@ -3155,10 +2292,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "exp_ado",
-          "named": true
-        },
         {
           "type": "exp_apply",
           "named": true
@@ -3245,10 +2378,6 @@
         },
         {
           "type": "record_accessor",
-          "named": true
-        },
-        {
-          "type": "record_literal",
           "named": true
         },
         {
@@ -3271,10 +2400,6 @@
       "required": true,
       "types": [
         {
-          "type": "exp_ado",
-          "named": true
-        },
-        {
           "type": "exp_apply",
           "named": true
         },
@@ -3363,10 +2488,6 @@
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
           "named": true
         },
@@ -3385,10 +2506,6 @@
       "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "exp_ado",
-          "named": true
-        },
         {
           "type": "exp_apply",
           "named": true
@@ -3463,10 +2580,6 @@
         },
         {
           "type": "record_accessor",
-          "named": true
-        },
-        {
-          "type": "record_literal",
           "named": true
         },
         {
@@ -3498,14 +2611,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "exp_ado",
-          "named": true
-        },
         {
           "type": "exp_apply",
           "named": true
@@ -3583,23 +2688,15 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "row_type",
           "named": true
         },
         {
@@ -3615,19 +2712,11 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
         {
           "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
           "named": true
         },
         {
@@ -3670,88 +2759,6 @@
         },
         {
           "type": "type_variable",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "foreign_import",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": "operator",
-            "named": true
-          },
-          {
-            "type": "variable",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "forall",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
-          "named": true
-        },
-        {
-          "type": "type_apply",
-          "named": true
-        },
-        {
-          "type": "type_braces",
-          "named": true
-        },
-        {
-          "type": "type_infix",
-          "named": true
-        },
-        {
-          "type": "type_literal",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
           "named": true
         }
       ]
@@ -3852,14 +2859,6 @@
             "named": false
           },
           {
-            "type": "captured_type_operator",
-            "named": true
-          },
-          {
-            "type": "exp_ado",
-            "named": true
-          },
-          {
             "type": "exp_apply",
             "named": true
           },
@@ -3936,23 +2935,15 @@
             "named": true
           },
           {
+            "type": "literal",
+            "named": true
+          },
+          {
             "type": "record_accessor",
             "named": true
           },
           {
-            "type": "record_literal",
-            "named": true
-          },
-          {
-            "type": "record_type_literal",
-            "named": true
-          },
-          {
             "type": "record_update",
-            "named": true
-          },
-          {
-            "type": "row_type",
             "named": true
           },
           {
@@ -3968,19 +2959,11 @@
             "named": true
           },
           {
-            "type": "type_literal",
-            "named": true
-          },
-          {
             "type": "type_name",
             "named": true
           },
           {
             "type": "type_parens",
-            "named": true
-          },
-          {
-            "type": "type_wildcard",
             "named": true
           },
           {
@@ -4051,14 +3034,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "exp_ado",
-          "named": true
-        },
         {
           "type": "exp_apply",
           "named": true
@@ -4140,23 +3115,15 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "row_type",
           "named": true
         },
         {
@@ -4172,19 +3139,11 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
         {
           "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
           "named": true
         },
         {
@@ -4202,10 +3161,6 @@
       "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "exp_ado",
-          "named": true
-        },
         {
           "type": "exp_apply",
           "named": true
@@ -4287,10 +3242,6 @@
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
           "named": true
         },
@@ -4309,14 +3260,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "exp_ado",
-          "named": true
-        },
         {
           "type": "exp_apply",
           "named": true
@@ -4398,23 +3341,15 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "row_type",
           "named": true
         },
         {
@@ -4430,19 +3365,11 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
         {
           "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
           "named": true
         },
         {
@@ -4495,15 +3422,7 @@
           "named": true
         },
         {
-          "type": "derive_declaration",
-          "named": true
-        },
-        {
           "type": "empty_file",
-          "named": true
-        },
-        {
-          "type": "foreign_import",
           "named": true
         },
         {
@@ -4523,23 +3442,11 @@
           "named": true
         },
         {
-          "type": "kind_declaration",
-          "named": true
-        },
-        {
-          "type": "kind_value_declaration",
-          "named": true
-        },
-        {
           "type": "mutual",
           "named": true
         },
         {
           "type": "namespace",
-          "named": true
-        },
-        {
-          "type": "newtype",
           "named": true
         },
         {
@@ -4551,23 +3458,11 @@
           "named": true
         },
         {
-          "type": "pattern_synonym",
-          "named": true
-        },
-        {
           "type": "record",
           "named": true
         },
         {
           "type": "signature",
-          "named": true
-        },
-        {
-          "type": "type_alias",
-          "named": true
-        },
-        {
-          "type": "type_role_declaration",
           "named": true
         }
       ]
@@ -4609,10 +3504,6 @@
       "required": true,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
           "type": "constraints",
           "named": true
         },
@@ -4629,11 +3520,7 @@
           "named": true
         },
         {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
+          "type": "literal",
           "named": true
         },
         {
@@ -4649,10 +3536,6 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
@@ -4661,11 +3544,11 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
+          "type": "using",
           "named": true
         },
         {
-          "type": "using",
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -4844,6 +3727,10 @@
         {
           "type": "interface_head",
           "named": true
+        },
+        {
+          "type": "visibility",
+          "named": true
         }
       ]
     }
@@ -4905,196 +3792,7 @@
   {
     "type": "interface_name",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "qualified_type",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "kind_declaration",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "type",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "annotated_type_variable",
-          "named": true
-        },
-        {
-          "type": "kind_signature",
-          "named": true
-        },
-        {
-          "type": "type_variable",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "kind_signature",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "forall",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
-        },
-        {
-          "type": "type_apply",
-          "named": true
-        },
-        {
-          "type": "type_braces",
-          "named": true
-        },
-        {
-          "type": "type_infix",
-          "named": true
-        },
-        {
-          "type": "type_literal",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "kind_value_declaration",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "type",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "annotated_type_variable",
-          "named": true
-        },
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "forall",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
-          "named": true
-        },
-        {
-          "type": "type_apply",
-          "named": true
-        },
-        {
-          "type": "type_braces",
-          "named": true
-        },
-        {
-          "type": "type_infix",
-          "named": true
-        },
-        {
-          "type": "type_literal",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_variable",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "let",
@@ -5106,6 +3804,37 @@
       "types": [
         {
           "type": "declarations",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "char",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         }
       ]
@@ -5155,14 +3884,6 @@
           "named": true
         },
         {
-          "type": "derive_declaration",
-          "named": true
-        },
-        {
-          "type": "foreign_import",
-          "named": true
-        },
-        {
           "type": "function",
           "named": true
         },
@@ -5179,23 +3900,11 @@
           "named": true
         },
         {
-          "type": "kind_declaration",
-          "named": true
-        },
-        {
-          "type": "kind_value_declaration",
-          "named": true
-        },
-        {
           "type": "mutual",
           "named": true
         },
         {
           "type": "namespace",
-          "named": true
-        },
-        {
-          "type": "newtype",
           "named": true
         },
         {
@@ -5207,23 +3916,11 @@
           "named": true
         },
         {
-          "type": "pattern_synonym",
-          "named": true
-        },
-        {
           "type": "record",
           "named": true
         },
         {
           "type": "signature",
-          "named": true
-        },
-        {
-          "type": "type_alias",
-          "named": true
-        },
-        {
-          "type": "type_role_declaration",
           "named": true
         }
       ]
@@ -5279,14 +3976,6 @@
           "named": true
         },
         {
-          "type": "derive_declaration",
-          "named": true
-        },
-        {
-          "type": "foreign_import",
-          "named": true
-        },
-        {
           "type": "function",
           "named": true
         },
@@ -5303,23 +3992,11 @@
           "named": true
         },
         {
-          "type": "kind_declaration",
-          "named": true
-        },
-        {
-          "type": "kind_value_declaration",
-          "named": true
-        },
-        {
           "type": "mutual",
           "named": true
         },
         {
           "type": "namespace",
-          "named": true
-        },
-        {
-          "type": "newtype",
           "named": true
         },
         {
@@ -5331,112 +4008,11 @@
           "named": true
         },
         {
-          "type": "pattern_synonym",
-          "named": true
-        },
-        {
           "type": "record",
           "named": true
         },
         {
           "type": "signature",
-          "named": true
-        },
-        {
-          "type": "type_alias",
-          "named": true
-        },
-        {
-          "type": "type_role_declaration",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "newtype",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "type",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "annotated_type_variable",
-          "named": true
-        },
-        {
-          "type": "newtype_constructor",
-          "named": true
-        },
-        {
-          "type": "type_signature",
-          "named": true
-        },
-        {
-          "type": "type_variable",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "newtype_constructor",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "constructor",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
-          "named": true
-        },
-        {
-          "type": "type_braces",
-          "named": true
-        },
-        {
-          "type": "type_literal",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
           "named": true
         }
       ]
@@ -5463,11 +4039,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "operator",
+          "named": true
+        },
+        {
+          "type": "visibility",
           "named": true
         }
       ]
@@ -5505,10 +4085,6 @@
       "required": true,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
           "type": "comma",
           "named": true
         },
@@ -5521,15 +4097,11 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "parameters_body",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
           "named": true
         },
         {
@@ -5545,10 +4117,6 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
@@ -5557,7 +4125,7 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -5587,14 +4155,6 @@
           "named": true
         },
         {
-          "type": "derive_declaration",
-          "named": true
-        },
-        {
-          "type": "foreign_import",
-          "named": true
-        },
-        {
           "type": "function",
           "named": true
         },
@@ -5611,23 +4171,11 @@
           "named": true
         },
         {
-          "type": "kind_declaration",
-          "named": true
-        },
-        {
-          "type": "kind_value_declaration",
-          "named": true
-        },
-        {
           "type": "mutual",
           "named": true
         },
         {
           "type": "namespace",
-          "named": true
-        },
-        {
-          "type": "newtype",
           "named": true
         },
         {
@@ -5639,23 +4187,11 @@
           "named": true
         },
         {
-          "type": "pattern_synonym",
-          "named": true
-        },
-        {
           "type": "record",
           "named": true
         },
         {
           "type": "signature",
-          "named": true
-        },
-        {
-          "type": "type_alias",
-          "named": true
-        },
-        {
-          "type": "type_role_declaration",
           "named": true
         }
       ]
@@ -6182,10 +4718,6 @@
       "required": true,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
           "type": "forall",
           "named": true
         },
@@ -6194,11 +4726,7 @@
           "named": true
         },
         {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
+          "type": "literal",
           "named": true
         },
         {
@@ -6214,10 +4742,6 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
@@ -6226,7 +4750,7 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -6255,10 +4779,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "exp_ado",
-          "named": true
-        },
         {
           "type": "exp_apply",
           "named": true
@@ -6376,34 +4896,11 @@
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
           "named": true
         },
         {
           "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "pattern_synonym",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "equation",
-          "named": true
-        },
-        {
-          "type": "signature",
           "named": true
         }
       ]
@@ -6601,6 +5098,10 @@
           "named": true
         },
         {
+          "type": "visibility",
+          "named": true
+        },
+        {
           "type": "where",
           "named": true
         }
@@ -6676,27 +5177,7 @@
       "required": true,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
           "type": "comma",
-          "named": true
-        },
-        {
-          "type": "field_name",
-          "named": true
-        },
-        {
-          "type": "field_pun",
-          "named": true
-        },
-        {
-          "type": "field_value",
-          "named": true
-        },
-        {
-          "type": "field_wildcard",
           "named": true
         },
         {
@@ -6705,6 +5186,10 @@
         },
         {
           "type": "hole",
+          "named": true
+        },
+        {
+          "type": "literal",
           "named": true
         },
         {
@@ -6720,14 +5205,6 @@
           "named": true
         },
         {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
-          "named": true
-        },
-        {
           "type": "type_apply",
           "named": true
         },
@@ -6740,10 +5217,6 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
@@ -6752,30 +5225,11 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
-          "named": true
-        },
-        {
           "type": "variable",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "record_literal",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "comma",
-          "named": true
         },
         {
-          "type": "record_field",
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -6784,92 +5238,7 @@
   {
     "type": "record_name",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "qualified_type",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "record_type_literal",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "comma",
-          "named": true
-        },
-        {
-          "type": "forall",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_field",
-          "named": true
-        },
-        {
-          "type": "row_type",
-          "named": true
-        },
-        {
-          "type": "type_apply",
-          "named": true
-        },
-        {
-          "type": "type_braces",
-          "named": true
-        },
-        {
-          "type": "type_infix",
-          "named": true
-        },
-        {
-          "type": "type_literal",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_variable",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "record_update",
@@ -6880,15 +5249,7 @@
       "required": true,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
           "type": "comma",
-          "named": true
-        },
-        {
-          "type": "exp_ado",
           "named": true
         },
         {
@@ -6972,6 +5333,10 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "qualified_variable",
           "named": true
         },
@@ -6980,19 +5345,7 @@
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "row_type",
           "named": true
         },
         {
@@ -7008,19 +5361,11 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
         {
           "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
           "named": true
         },
         {
@@ -7043,10 +5388,6 @@
       "required": true,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
           "type": "field_name",
           "named": true
         },
@@ -7059,11 +5400,7 @@
           "named": true
         },
         {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
+          "type": "literal",
           "named": true
         },
         {
@@ -7079,10 +5416,6 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
@@ -7091,78 +5424,7 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "row_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "comma",
-          "named": true
-        },
-        {
-          "type": "forall",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_field",
-          "named": true
-        },
-        {
-          "type": "row_type",
-          "named": true
-        },
-        {
-          "type": "type_apply",
-          "named": true
-        },
-        {
-          "type": "type_braces",
-          "named": true
-        },
-        {
-          "type": "type_infix",
-          "named": true
-        },
-        {
-          "type": "type_literal",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_variable",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -7174,7 +5436,7 @@
     "fields": {
       "name": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "(",
@@ -7200,18 +5462,6 @@
       "required": true,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "constructor",
-          "named": true
-        },
-        {
-          "type": "constructor_operator",
-          "named": true
-        },
-        {
           "type": "forall",
           "named": true
         },
@@ -7220,11 +5470,11 @@
           "named": true
         },
         {
-          "type": "record_type_literal",
+          "type": "literal",
           "named": true
         },
         {
-          "type": "row_type",
+          "type": "totality",
           "named": true
         },
         {
@@ -7240,10 +5490,6 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
@@ -7252,7 +5498,11 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
+          "type": "visibility",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -7268,14 +5518,6 @@
       "types": [
         {
           "type": "bind_pattern",
-          "named": true
-        },
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "exp_ado",
           "named": true
         },
         {
@@ -7355,23 +5597,15 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
         {
-          "type": "record_literal",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
           "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "row_type",
           "named": true
         },
         {
@@ -7387,10 +5621,6 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
@@ -7399,15 +5629,16 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
-          "named": true
-        },
-        {
           "type": "wildcard",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "totality",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "tycon_arrow",
@@ -7420,88 +5651,6 @@
     "fields": {}
   },
   {
-    "type": "type_alias",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "type",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "annotated_type_variable",
-          "named": true
-        },
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
-          "type": "forall",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
-          "named": true
-        },
-        {
-          "type": "type_apply",
-          "named": true
-        },
-        {
-          "type": "type_braces",
-          "named": true
-        },
-        {
-          "type": "type_infix",
-          "named": true
-        },
-        {
-          "type": "type_literal",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "type_signature",
-          "named": true
-        },
-        {
-          "type": "type_variable",
-          "named": true
-        },
-        {
-          "type": "type_wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "type_apply",
     "named": true,
     "fields": {},
@@ -7510,27 +5659,15 @@
       "required": true,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
           "type": "hole",
           "named": true
         },
         {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
+          "type": "literal",
           "named": true
         },
         {
           "type": "type_braces",
-          "named": true
-        },
-        {
-          "type": "type_literal",
           "named": true
         },
         {
@@ -7542,7 +5679,7 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -7557,10 +5694,6 @@
       "required": true,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
           "type": "comma",
           "named": true
         },
@@ -7573,11 +5706,7 @@
           "named": true
         },
         {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
+          "type": "literal",
           "named": true
         },
         {
@@ -7593,10 +5722,6 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
@@ -7605,7 +5730,7 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -7647,10 +5772,6 @@
       "required": true,
       "types": [
         {
-          "type": "captured_type_operator",
-          "named": true
-        },
-        {
           "type": "forall",
           "named": true
         },
@@ -7659,15 +5780,11 @@
           "named": true
         },
         {
-          "type": "qualified_type_operator",
+          "type": "literal",
           "named": true
         },
         {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
+          "type": "operator",
           "named": true
         },
         {
@@ -7683,15 +5800,7 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_operator",
           "named": true
         },
         {
@@ -7699,30 +5808,7 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "type_literal",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "integer",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "triple_quote_string",
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -7734,18 +5820,10 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "annotated_type_variable",
-          "named": true
-        },
-        {
-          "type": "qualified_type",
-          "named": true
-        },
-        {
-          "type": "type",
           "named": true
         },
         {
@@ -7754,11 +5832,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "type_operator",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "type_operator_import",
@@ -7781,12 +5854,8 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
         {
           "type": "comma",
           "named": true
@@ -7800,11 +5869,7 @@
           "named": true
         },
         {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
+          "type": "literal",
           "named": true
         },
         {
@@ -7820,10 +5885,6 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
@@ -7832,7 +5893,7 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -7844,37 +5905,6 @@
     "fields": {}
   },
   {
-    "type": "type_role",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "type_role_declaration",
-    "named": true,
-    "fields": {
-      "role": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "type_role",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "type",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "type_signature",
     "named": true,
     "fields": {},
@@ -7882,10 +5912,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "captured_type_operator",
-          "named": true
-        },
         {
           "type": "forall",
           "named": true
@@ -7895,15 +5921,7 @@
           "named": true
         },
         {
-          "type": "record_type_literal",
-          "named": true
-        },
-        {
-          "type": "row_type",
-          "named": true
-        },
-        {
-          "type": "type",
+          "type": "literal",
           "named": true
         },
         {
@@ -7919,10 +5937,6 @@
           "named": true
         },
         {
-          "type": "type_literal",
-          "named": true
-        },
-        {
           "type": "type_name",
           "named": true
         },
@@ -7931,7 +5945,7 @@
           "named": true
         },
         {
-          "type": "type_wildcard",
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -7939,11 +5953,6 @@
   },
   {
     "type": "type_variable",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "type_wildcard",
     "named": true,
     "fields": {}
   },
@@ -7983,6 +5992,11 @@
   },
   {
     "type": "variable",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "visibility",
     "named": true,
     "fields": {}
   },
@@ -8084,10 +6098,6 @@
     "named": false
   },
   {
-    "type": "ado",
-    "named": false
-  },
-  {
     "type": "all_names",
     "named": true
   },
@@ -8128,10 +6138,6 @@
     "named": false
   },
   {
-    "type": "derive",
-    "named": false
-  },
-  {
     "type": "do",
     "named": false
   },
@@ -8149,10 +6155,6 @@
   },
   {
     "type": "forall",
-    "named": false
-  },
-  {
-    "type": "foreign",
     "named": false
   },
   {
@@ -8188,14 +6190,6 @@
     "named": false
   },
   {
-    "type": "instance",
-    "named": false
-  },
-  {
-    "type": "instance_name",
-    "named": true
-  },
-  {
     "type": "interface",
     "named": false
   },
@@ -8216,14 +6210,6 @@
     "named": false
   },
   {
-    "type": "newtype",
-    "named": false
-  },
-  {
-    "type": "nominal",
-    "named": false
-  },
-  {
     "type": "number",
     "named": true
   },
@@ -8240,14 +6226,6 @@
     "named": false
   },
   {
-    "type": "pattern",
-    "named": false
-  },
-  {
-    "type": "phantom",
-    "named": false
-  },
-  {
     "type": "private",
     "named": false
   },
@@ -8257,14 +6235,6 @@
   },
   {
     "type": "record",
-    "named": false
-  },
-  {
-    "type": "representational",
-    "named": false
-  },
-  {
-    "type": "role",
     "named": false
   },
   {
@@ -8282,6 +6252,10 @@
   {
     "type": "type",
     "named": false
+  },
+  {
+    "type": "type_operator",
+    "named": true
   },
   {
     "type": "using",
