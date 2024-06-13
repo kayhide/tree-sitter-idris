@@ -10,8 +10,7 @@ x = 94
 (idris
   (signature
     (variable)
-    (type_name
-      (type)))
+    (type_name))
   (function
     (variable)
     (exp_literal
@@ -29,8 +28,7 @@ foo = "Sausage machine"
 (idris
   (signature
     (variable)
-    (type_name
-      (type)))
+    (type_name))
   (function
     (variable)
     (exp_literal
@@ -48,8 +46,7 @@ bar = 'Z'
 (idris
   (signature
     (variable)
-    (type_name
-      (type)))
+    (type_name))
   (function
     (variable)
     (exp_literal
@@ -67,8 +64,7 @@ quux = False
 (idris
   (signature
     (variable)
-    (type_name
-      (type)))
+    (type_name))
   (function
     (variable)
     (exp_name

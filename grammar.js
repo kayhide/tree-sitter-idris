@@ -181,7 +181,7 @@ module.exports = grammar({
     /**
      * Type names and class names both alias `$.constructor`.
      */
-    [$.type_name, $.interface_name],
+    [$.type_name, $.interface_head],
 
     /**
      * Same as above, but for operators.

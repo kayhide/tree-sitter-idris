@@ -8,7 +8,7 @@ data Maybe a = Just a | Nothing
 
 (idris
   (data
-    (type)
+    (data_name)
     (type_variable)
     (constructor)
     (type_name
@@ -30,19 +30,16 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
   (signature
     (variable)
     (type_infix
-      (type_name
-        (type))
-      (type_operator)
+      (type_name)
+      (operator)
       (type_infix
         (type_apply
-          (type_name
-            (type))
+          (type_name)
           (type_name
             (type_variable)))
-        (type_operator)
+        (operator)
         (type_apply
-          (type_name
-            (type))
+          (type_name)
           (type_name
             (type_variable))))))
   (function
@@ -108,30 +105,27 @@ maybe : Lazy b -> Lazy (a -> b) -> Maybe a -> b
     (variable)
     (type_infix
       (type_apply
-        (type_name
-          (type))
+        (type_name)
         (type_name
           (type_variable)))
-      (type_operator)
+      (operator)
       (type_infix
         (type_apply
-          (type_name
-            (type))
+          (type_name)
           (type_parens
             (type_infix
               (type_name
                 (type_variable))
-              (type_operator)
+              (operator)
               (type_name
                 (type_variable)))))
-        (type_operator)
+        (operator)
         (type_infix
           (type_apply
-            (type_name
-              (type))
+            (type_name)
             (type_name
               (type_variable)))
-          (type_operator)
+          (operator)
           (type_name
             (type_variable)))))))
 
@@ -148,11 +142,9 @@ fred = ("Fred", 42)
   (signature
     (variable)
     (type_parens
-      (type_name
-        (type))
+      (type_name)
       (comma)
-      (type_name
-        (type))))
+      (type_name)))
   (function
     (variable)
     (exp_parens
@@ -175,14 +167,11 @@ jim = ("Jim", 25, "Cambridge")
   (signature
     (variable)
     (type_parens
-      (type_name
-        (type))
+      (type_name)
       (comma)
-      (type_name
-        (type))
+      (type_name)
       (comma)
-      (type_name
-        (type))))
+      (type_name)))
   (function
     (variable)
     (exp_parens
@@ -206,15 +195,14 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
 
 (idris
   (data
-    (type)
+    (data_name)
     (type_signature
       (type_infix
         (type_name
           (annotated_type_variable
             (type_variable)
-            (type_name
-              (type))))
-        (type_operator)
+            (type_name)))
+        (operator)
         (type_infix
           (type_name
             (annotated_type_variable
@@ -222,12 +210,10 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
               (type_infix
                 (type_name
                   (type_variable))
-                (type_operator)
-                (type_name
-                  (type)))))
-          (type_operator)
-          (type_name
-            (type)))))
+                (operator)
+                (type_name))))
+          (operator)
+          (type_name))))
     (where)
     (data_body
       (constructor_signature
@@ -240,27 +226,25 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
               (type_infix
                 (type_name
                   (type_variable))
-                (type_operator)
-                (type_name
-                  (type))))
-            (type_operator)
+                (operator)
+                (type_name)))
+            (operator)
             (type_infix
               (type_name
                 (annotated_type_variable
                   (type_variable)
                   (type_name
                     (type_variable))))
-              (type_operator)
+              (operator)
               (type_infix
                 (type_apply
                   (type_name
                     (type_variable))
                   (type_name
                     (type_variable)))
-                (type_operator)
+                (operator)
                 (type_apply
-                  (type_name
-                    (type))
+                  (type_name)
                   (type_name
                     (type_variable))
                   (type_name
@@ -282,16 +266,13 @@ vec = (2 ** [3, 4])
       (annotated_type_variable
         (type_variable)
         (type_infix
-          (type_name
-            (type))
-          (type_operator)
+          (type_name)
+          (operator)
           (type_apply
-            (type_name
-              (type))
+            (type_name)
             (type_name
               (type_variable))
-            (type_name
-              (type)))))))
+            (type_name))))))
   (function
     (variable)
     (exp_parens
@@ -327,27 +308,24 @@ filter p (x :: xs)
         (type_infix
           (type_name
             (type_variable))
-          (type_operator)
-          (type_name
-            (type))))
-      (type_operator)
+          (operator)
+          (type_name)))
+      (operator)
       (type_infix
         (type_apply
-          (type_name
-            (type))
+          (type_name)
           (type_name
             (type_variable))
           (type_name
             (type_variable)))
-        (type_operator)
+        (operator)
         (type_parens
           (type_infix
             (type_name
               (type_variable))
-            (type_operator)
+            (operator)
             (type_apply
-              (type_name
-                (type))
+              (type_name)
               (type_name
                 (type_variable))
               (type_name
@@ -429,8 +407,7 @@ record Person where
 
 (idris
   (record
-    (record_name
-      (type))
+    (record_name)
     (where)
     (record_body
       (constructor)
@@ -440,12 +417,10 @@ record Person where
         (variable)
         (comma)
         (variable)
-        (type_name
-          (type)))
+        (type_name))
       (record_field
         (variable)
-        (type_name
-          (type))))))
+        (type_name)))))
 
 ================================================================================
 Records 2
@@ -459,8 +434,7 @@ fred = MkPerson "Fred" "Joe" "Bloggs" 30
 (idris
   (signature
     (variable)
-    (type_name
-      (type)))
+    (type_name))
   (function
     (variable)
     (exp_apply
@@ -488,24 +462,20 @@ record Class where
 
 (idris
   (record
-    (record_name
-      (type))
+    (record_name)
     (where)
     (record_body
       (constructor)
       (record_field
         (variable)
         (type_apply
-          (type_name
-            (type))
+          (type_name)
           (type_name
             (type_variable))
-          (type_name
-            (type))))
+          (type_name)))
       (record_field
         (variable)
-        (type_name
-          (type))))))
+        (type_name)))))
 
 ================================================================================
 Records 4
@@ -520,15 +490,12 @@ addStudent p c = { students := p :: students c } c
   (signature
     (variable)
     (type_infix
-      (type_name
-        (type))
-      (type_operator)
+      (type_name)
+      (operator)
       (type_infix
-        (type_name
-          (type))
-        (type_operator)
-        (type_name
-          (type)))))
+        (type_name)
+        (operator)
+        (type_name))))
   (function
     (variable)
     (patterns
@@ -562,15 +529,12 @@ addStudent' p c = { students $= (p ::) } c
   (signature
     (variable)
     (type_infix
-      (type_name
-        (type))
-      (type_operator)
+      (type_name)
+      (operator)
       (type_infix
-        (type_name
-          (type))
-        (type_operator)
-        (type_name
-          (type)))))
+        (type_name)
+        (operator)
+        (type_name))))
   (function
     (variable)
     (patterns

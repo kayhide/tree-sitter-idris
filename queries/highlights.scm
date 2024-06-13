@@ -101,10 +101,7 @@
   "in"
   "interface"
   "using"
-  "derive"
-  "foreign"
   "data"
-  "newtype"
   "type"
   "as"
   "hiding"
@@ -116,10 +113,6 @@
   "infixl"
   "infixr"
 ] @keyword
-
-(type_role_declaration
-  "role" @keyword
-  role: (type_role) @keyword)
 
 (hole) @label
 
@@ -138,15 +131,6 @@
   (exp_name
     (qualified_variable
       (variable) @function)))
-
-(row_field
-  (field_name) @variable.other.member)
-
-(record_field
-  (field_name) @variable.other.member)
-
-(record_field
-  (field_pun) @variable.other.member)
 
 (record_accessor
   field: [ (variable)

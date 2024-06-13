@@ -3,7 +3,7 @@ const { parens, braces } = require('./util.js')
 module.exports = {
   // ----- Record -------------------------------------------------------------
 
-  record_name: $ => $._qtyconid,
+  record_name: $ => alias($._qtyconid, ''),
 
   decl_record: $ => seq(
     optional($.visibility),

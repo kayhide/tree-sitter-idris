@@ -8,11 +8,10 @@ data Nat    = Z   | S Nat
 
 (idris
   (data
-    (type)
+    (data_name)
     (constructor)
     (constructor)
-    (type_name
-      (type))))
+    (type_name)))
 
 ================================================================================
 Data Types 2
@@ -24,7 +23,7 @@ data List a = Nil | (::) a (List a)
 
 (idris
   (data
-    (type)
+    (data_name)
     (type_variable)
     (constructor)
     (constructor_operator)
@@ -33,8 +32,7 @@ data List a = Nil | (::) a (List a)
         (type_variable))
       (type_parens
         (type_apply
-          (type_name
-            (type))
+          (type_name)
           (type_name
             (type_variable)))))))
 
@@ -50,22 +48,19 @@ data List : Type -> Type where
 
 (idris
   (data
-    (type)
+    (data_name)
     (type_signature
       (type_infix
-        (type_name
-          (type))
-        (type_operator)
-        (type_name
-          (type))))
+        (type_name)
+        (operator)
+        (type_name)))
     (where)
     (data_body
       (constructor_signature
         (constructor)
         (type_signature
           (type_apply
-            (type_name
-              (type))
+            (type_name)
             (type_name
               (type_variable)))))
       (constructor_signature
@@ -74,16 +69,14 @@ data List : Type -> Type where
           (type_infix
             (type_name
               (type_variable))
-            (type_operator)
+            (operator)
             (type_infix
               (type_apply
-                (type_name
-                  (type))
+                (type_name)
                 (type_name
                   (type_variable)))
-              (type_operator)
+              (operator)
               (type_apply
-                (type_name
-                  (type))
+                (type_name)
                 (type_name
                   (type_variable))))))))))

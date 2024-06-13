@@ -10,8 +10,7 @@ interface Show a where
 (idris
   (interface_declaration
     (interface_head
-      (interface_name
-        (type))
+      (interface_name)
       (type_variable))
     (interface_body
       (where)
@@ -20,9 +19,8 @@ interface Show a where
         (type_infix
           (type_name
             (type_variable))
-          (type_operator)
-          (type_name
-            (type)))))))
+          (operator)
+          (type_name))))))
 
 ================================================================================
 Interfaces 2
@@ -36,10 +34,8 @@ Show Nat where
 (idris
   (interface_implementation
     (implementation_head
-      (interface_name
-        (type))
-      (type_name
-        (type)))
+      (interface_name)
+      (type_name))
     (implementation_body
       (where)
       (function
@@ -62,8 +58,7 @@ interface Eq a where
 (idris
   (interface_declaration
     (interface_head
-      (interface_name
-        (type))
+      (interface_name)
       (type_variable))
     (interface_body
       (where)
@@ -99,12 +94,10 @@ interface Eq a => Ord a where
     (interface_head
       (constraints
         (constraint
-          (interface_name
-            (type))
+          (interface_name)
           (type_name
             (type_variable))))
-      (interface_name
-        (type))
+      (interface_name)
       (type_variable))
     (interface_body
       (where)
@@ -113,13 +106,12 @@ interface Eq a => Ord a where
         (type_infix
           (type_name
             (type_variable))
-          (type_operator)
+          (operator)
           (type_infix
             (type_name
               (type_variable))
-            (type_operator)
-            (type_name
-              (type))))))))
+            (operator)
+            (type_name)))))))
 
 ================================================================================
 Extending Interfaces 2
@@ -134,18 +126,15 @@ interface (Ord a, Show a) => OrdShow a where
     (interface_head
       (constraints
         (constraint
-          (interface_name
-            (type))
+          (interface_name)
           (type_name
             (type_variable)))
         (comma)
         (constraint
-          (interface_name
-            (type))
+          (interface_name)
           (type_name
             (type_variable))))
-      (interface_name
-        (type))
+      (interface_name)
       (type_variable))
     (interface_body
       (where))))
@@ -161,17 +150,14 @@ interface Functor (0 f : Type -> Type) where
 (idris
   (interface_declaration
     (interface_head
-      (interface_name
-        (type))
+      (interface_name)
       (annotated_type_variable
         (type_quantity)
         (type_variable)
         (type_infix
-          (type_name
-            (type))
-          (type_operator)
-          (type_name
-            (type)))))
+          (type_name)
+          (operator)
+          (type_name))))
     (interface_body
       (where))))
 
@@ -188,21 +174,17 @@ interface Functor f => Applicative (0 f : Type -> Type) where
     (interface_head
       (constraints
         (constraint
-          (interface_name
-            (type))
+          (interface_name)
           (type_name
             (type_variable))))
-      (interface_name
-        (type))
+      (interface_name)
       (annotated_type_variable
         (type_quantity)
         (type_variable)
         (type_infix
-          (type_name
-            (type))
-          (type_operator)
-          (type_name
-            (type)))))
+          (type_name)
+          (operator)
+          (type_name))))
     (interface_body
       (where))))
 
@@ -218,10 +200,8 @@ Named Implementations 1
   (interface_implementation
     (implementation_name)
     (implementation_head
-      (interface_name
-        (type))
-      (type_name
-        (type)))
+      (interface_name)
+      (type_name))
     (implementation_body
       (where))))
 
@@ -256,10 +236,8 @@ Named Implementations 3
   (interface_implementation
     (implementation_name)
     (implementation_head
-      (interface_name
-        (type))
-      (type_name
-        (type))
+      (interface_name)
+      (type_name)
       (using
         (implementation_name)))
     (implementation_body

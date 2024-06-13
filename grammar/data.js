@@ -4,12 +4,7 @@ module.exports = {
 
   // ----- Data ---------------------------------------------------------------
 
-  _data_type_signature: $ =>
-    seq(
-      'data',
-      $._tyconid,
-      $._type_annotation
-    ),
+  data_name: $ => alias($._qtyconid, ''),
 
   decl_data: $ => choice(
     $._decl_data_inline,
@@ -19,7 +14,8 @@ module.exports = {
   _decl_data_inline: $ => seq(
     optional($.visibility),
     'data',
-    $._simpletype,
+    field('name', $.data_name),
+    repeat($._tyvar),
     '=',
     sep1('|', seq($._con, repeat($._type))),
   ),
@@ -27,7 +23,7 @@ module.exports = {
   _decl_data_block: $ => seq(
     optional($.visibility),
     'data',
-    $._tyconid,
+    field('name', $.data_name),
     optional(alias($._type_annotation, $.type_signature)),
     $.where,
     optional($.data_body),

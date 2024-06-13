@@ -19,11 +19,9 @@ mutual
       (signature
         (variable)
         (type_infix
-          (type_name
-            (type))
-          (type_operator)
-          (type_name
-            (type))))
+          (type_name)
+          (operator)
+          (type_name)))
       (function
         (variable)
         (patterns
@@ -48,11 +46,9 @@ mutual
       (signature
         (variable)
         (type_infix
-          (type_name
-            (type))
-          (type_operator)
-          (type_name
-            (type))))
+          (type_name)
+          (operator)
+          (type_name)))
       (function
         (variable)
         (patterns

@@ -15,9 +15,8 @@ main = putStrLn "Hello world"
   (signature
     (variable)
     (type_apply
-      (type_name
-        (type))
-      (row_type)))
+      (type_name)
+      (type_parens)))
   (function
     (variable)
     (exp_apply

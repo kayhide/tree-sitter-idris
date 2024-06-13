@@ -4,7 +4,7 @@ module.exports = {
 
   // ----- Shared -------------------------------------------------------------
 
-  interface_name: $ => $._qtyconid,
+  interface_name: $ => alias($._qtyconid, ''),
 
   // Technically wrong as it doesn't exclude row types
   constraint: $ => seq($.interface_name, repeat($._type)),

@@ -36,7 +36,7 @@ f : _
   (signature
     (visibility)
     (variable)
-    (type_wildcard)))
+    (wildcard)))
 
 ================================================================================
 Public export function
@@ -51,7 +51,7 @@ f : _
   (signature
     (visibility)
     (variable)
-    (type_wildcard)))
+    (wildcard)))
 
 ================================================================================
 Export data
@@ -65,7 +65,7 @@ data X = _
 (idris
   (data
     (visibility)
-    (type)
+    (data_name)
     (constructor)))
 
 ================================================================================
@@ -80,7 +80,7 @@ data X = _
 (idris
   (data
     (visibility)
-    (type)
+    (data_name)
     (constructor)))
 
 ================================================================================
@@ -96,8 +96,7 @@ interface I
   (interface_declaration
     (visibility)
     (interface_head
-      (interface_name
-        (type)))))
+      (interface_name))))
 
 ================================================================================
 Public export interface
@@ -112,8 +111,7 @@ interface I
   (interface_declaration
     (visibility)
     (interface_head
-      (interface_name
-        (type)))))
+      (interface_name))))
 
 ================================================================================
 Private fixity
@@ -235,11 +233,9 @@ namespace X
         (visibility)
         (variable)
         (type_infix
-          (type_name
-            (type))
-          (type_operator)
-          (type_name
-            (type)))))))
+          (type_name)
+          (operator)
+          (type_name))))))
 
 ================================================================================
 Explicit namespaces inside functions
@@ -266,8 +262,7 @@ withNSInside = g where
           (signature
             (visibility)
             (variable)
-            (type_name
-              (type))))))))
+            (type_name)))))))
 
 ================================================================================
 Parameterised blocks 1
@@ -281,21 +276,17 @@ parameters (x : Nat, y : Nat)
 (idris
   (parameters
     (variable)
-    (type_name
-      (type))
+    (type_name)
     (comma)
     (variable)
-    (type_name
-      (type))
+    (type_name)
     (parameters_body
       (signature
         (variable)
         (type_infix
-          (type_name
-            (type))
-          (type_operator)
-          (type_name
-            (type)))))))
+          (type_name)
+          (operator)
+          (type_name))))))
 
 ================================================================================
 Parameterised blocks 2
@@ -312,27 +303,23 @@ parameters (y : Nat, xs : Vect x a)
 (idris
   (parameters
     (variable)
-    (type_name
-      (type))
+    (type_name)
     (comma)
     (variable)
     (type_apply
-      (type_name
-        (type))
+      (type_name)
       (type_name
         (type_variable))
       (type_name
         (type_variable)))
     (parameters_body
       (data
-        (type)
+        (data_name)
         (type_signature
           (type_infix
-            (type_name
-              (type))
-            (type_operator)
-            (type_name
-              (type))))
+            (type_name)
+            (operator)
+            (type_name)))
         (where)
         (data_body
           (constructor_signature
@@ -340,35 +327,31 @@ parameters (y : Nat, xs : Vect x a)
             (type_signature
               (type_infix
                 (type_apply
-                  (type_name
-                    (type))
+                  (type_name)
                   (type_name
                     (type_variable))
                   (type_name
                     (type_variable)))
-                (type_operator)
+                (operator)
                 (type_apply
-                  (type_name
-                    (type))
+                  (type_name)
                   (type_name
                     (type_variable))))))))
       (signature
         (variable)
         (type_infix
           (type_apply
-            (type_name
-              (type))
+            (type_name)
             (type_name
               (type_variable)))
-          (type_operator)
+          (operator)
           (type_apply
-            (type_name
-              (type))
+            (type_name)
             (type_parens
               (type_infix
                 (type_name
                   (type_variable))
-                (type_operator)
+                (operator)
                 (type_name
                   (type_variable))))
             (type_name

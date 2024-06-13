@@ -35,30 +35,17 @@ module.exports = {
 
   type_name: $ =>
     // conflicts with row types, see comments in that module
-    prec.dynamic(0, choice(
-      $._tyvar,
-      $._qtyconid,
-    )),
-
-  type_wildcard: _ => '_',
-
-  type_operator: $ => $._operator,
-
-  qualified_type_operator: $ => qualified($, $.type_operator),
-
-  _type_qoperator: $ =>
     choice(
-      $.type_operator,
-      $.qualified_type_operator
+      $._tyvar,
+      alias($._qtyconid, ""),
     ),
 
-  captured_type_operator: $ =>
-    parens($._q_op),
+  type_wildcard: _ => '_',
 
   // ----- Aggregation --------------------------------------------------------
 
   // Parens or tuples
-  type_parens: $ => parens(seq(optional($.forall), sep1($.comma, $._type))),
+  type_parens: $ => parens(seq(optional($.forall), optional(sep($.comma, $._type)))),
 
   // Implicit arguments
   type_braces: $ => braces(seq(sep1($.comma, $.type_name), $._type_annotation)),
@@ -80,14 +67,11 @@ module.exports = {
   _atype: $ =>
     choice(
       $.hole,
-      $.type_wildcard,
-      $.row_type,
-      $.record_type_literal,
+      $.wildcard,
       $.type_name,
-      $.type_literal,
+      $.literal,
       $.type_parens,
       $.type_braces,
-      $.captured_type_operator,
     ),
 
   /**
@@ -110,7 +94,7 @@ module.exports = {
   type_infix: $ =>
     seq(
       $._btype,
-      $._type_qoperator,
+      $.operator,
       $._type
     ),
 

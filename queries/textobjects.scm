@@ -3,7 +3,6 @@
 [
   (data)
   (type)
-  (newtype)
 ] @class.around
 
 ((signature)?

@@ -95,8 +95,7 @@ mirror xs = let xs' : List a = reverse xs in
             (pat_name
               (variable))
             (type_apply
-              (type_name
-                (type))
+              (type_name)
               (type_name
                 (type_variable))))
           (exp_apply
@@ -131,8 +130,7 @@ Diag v = let ty : Type := v = v in ty
           (pat_typed
             (pat_name
               (variable))
-            (type_name
-              (type)))
+            (type_name))
           (exp_infix
             (exp_name
               (variable))
@@ -165,11 +163,11 @@ foldMap f = let fo : m -> a -> m
           (type_infix
             (type_name
               (type_variable))
-            (type_operator)
+            (operator)
             (type_infix
               (type_name
                 (type_variable))
-              (type_operator)
+              (operator)
               (type_name
                 (type_variable)))))
         (function
@@ -220,11 +218,11 @@ foldMap f = let fo : m -> a -> m
           (type_infix
             (type_name
               (type_variable))
-            (type_operator)
+            (operator)
             (type_infix
               (type_name
                 (type_variable))
-              (type_operator)
+              (operator)
               (type_name
                 (type_variable)))))
         (function

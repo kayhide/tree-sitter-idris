@@ -14,9 +14,8 @@ mkSingle False = []
       (type_name
         (annotated_type_variable
           (type_variable)
-          (type_name
-            (type))))
-      (type_operator)
+          (type_name)))
+      (operator)
       (type_apply
         (type_name
           (type_variable))
@@ -46,20 +45,18 @@ index : forall a, n. Fin n -> Vect n a -> a
         (comma)
         (type_variable))
       (type_apply
-        (type_name
-          (type))
+        (type_name)
         (type_name
           (type_variable)))
-      (type_operator)
+      (operator)
       (type_infix
         (type_apply
-          (type_name
-            (type))
+          (type_name)
           (type_name
             (type_variable))
           (type_name
             (type_variable)))
-        (type_operator)
+        (operator)
         (type_name
           (type_variable))))))
 
@@ -78,32 +75,28 @@ index : {a : Type} -> {n : Nat} -> Fin n -> Vect n a -> a
       (type_braces
         (type_name
           (type_variable))
-        (type_name
-          (type)))
-      (type_operator)
+        (type_name))
+      (operator)
       (type_infix
         (type_braces
           (type_name
             (type_variable))
-          (type_name
-            (type)))
-        (type_operator)
+          (type_name))
+        (operator)
         (type_infix
           (type_apply
-            (type_name
-              (type))
+            (type_name)
             (type_name
               (type_variable)))
-          (type_operator)
+          (operator)
           (type_infix
             (type_apply
-              (type_name
-                (type))
+              (type_name)
               (type_name
                 (type_variable))
               (type_name
                 (type_variable)))
-            (type_operator)
+            (operator)
             (type_name
               (type_variable))))))))
 
@@ -160,22 +153,20 @@ index : (i : Fin n) -> (xs : Vect n a) -> a
         (annotated_type_variable
           (type_variable)
           (type_apply
-            (type_name
-              (type))
+            (type_name)
             (type_name
               (type_variable)))))
-      (type_operator)
+      (operator)
       (type_infix
         (type_name
           (annotated_type_variable
             (type_variable)
             (type_apply
-              (type_name
-                (type))
+              (type_name)
               (type_name
                 (type_variable))
               (type_name
                 (type_variable)))))
-        (type_operator)
+        (operator)
         (type_name
           (type_variable))))))

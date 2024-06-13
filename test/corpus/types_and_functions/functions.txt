@@ -12,15 +12,12 @@ plus (S k) y = S (plus k y)
   (signature
     (variable)
     (type_infix
-      (type_name
-        (type))
-      (type_operator)
+      (type_name)
+      (operator)
       (type_infix
-        (type_name
-          (type))
-        (type_operator)
-        (type_name
-          (type)))))
+        (type_name)
+        (operator)
+        (type_name))))
   (function
     (variable)
     (patterns
@@ -67,15 +64,12 @@ mult (S k) y = plus y (mult k y)
   (signature
     (variable)
     (type_infix
-      (type_name
-        (type))
-      (type_operator)
+      (type_name)
+      (operator)
       (type_infix
-        (type_name
-          (type))
-        (type_operator)
-        (type_name
-          (type)))))
+        (type_name)
+        (operator)
+        (type_name))))
   (function
     (variable)
     (patterns
@@ -127,14 +121,12 @@ reverse xs = revAcc [] xs where
     (variable)
     (type_infix
       (type_apply
-        (type_name
-          (type))
+        (type_name)
         (type_name
           (type_variable)))
-      (type_operator)
+      (operator)
       (type_apply
-        (type_name
-          (type))
+        (type_name)
         (type_name
           (type_variable)))))
   (function
@@ -154,21 +146,18 @@ reverse xs = revAcc [] xs where
         (variable)
         (type_infix
           (type_apply
-            (type_name
-              (type))
+            (type_name)
             (type_name
               (type_variable)))
-          (type_operator)
+          (operator)
           (type_infix
             (type_apply
-              (type_name
-                (type))
+              (type_name)
               (type_name
                 (type_variable)))
-            (type_operator)
+            (operator)
             (type_apply
-              (type_name
-                (type))
+              (type_name)
               (type_name
                 (type_variable))))))
       (function
@@ -224,11 +213,9 @@ foo x = case isLT of
   (signature
     (variable)
     (type_infix
-      (type_name
-        (type))
-      (type_operator)
-      (type_name
-        (type))))
+      (type_name)
+      (operator)
+      (type_name)))
   (function
     (variable)
     (patterns
@@ -260,8 +247,7 @@ foo x = case isLT of
     (declarations
       (signature
         (variable)
-        (type_name
-          (type)))
+        (type_name))
       (function
         (variable)
         (exp_if
@@ -276,7 +262,7 @@ foo x = case isLT of
           (exp_name
             (constructor))))
       (data
-        (type)
+        (data_name)
         (constructor)
         (constructor)))))
 
@@ -297,11 +283,9 @@ even (S k) = odd k where
   (signature
     (variable)
     (type_infix
-      (type_name
-        (type))
-      (type_operator)
-      (type_name
-        (type))))
+      (type_name)
+      (operator)
+      (type_name)))
   (function
     (variable)
     (patterns
@@ -328,11 +312,9 @@ even (S k) = odd k where
       (signature
         (variable)
         (type_infix
-          (type_name
-            (type))
-          (type_operator)
-          (type_name
-            (type))))
+          (type_name)
+          (operator)
+          (type_name)))
       (function
         (variable)
         (patterns
@@ -375,10 +357,8 @@ test = [c (S 1), c Z, d (S Z)]
   (signature
     (variable)
     (type_apply
-      (type_name
-        (type))
-      (type_name
-        (type))))
+      (type_name)
+      (type_name)))
   (function
     (variable)
     (exp_array
@@ -412,11 +392,9 @@ test = [c (S 1), c Z, d (S Z)]
       (signature
         (variable)
         (type_infix
-          (type_name
-            (type))
-          (type_operator)
-          (type_name
-            (type))))
+          (type_name)
+          (operator)
+          (type_name)))
       (function
         (variable)
         (patterns
@@ -431,11 +409,9 @@ test = [c (S 1), c Z, d (S Z)]
       (signature
         (variable)
         (type_infix
-          (type_name
-            (type))
-          (type_operator)
-          (type_name
-            (type))))
+          (type_name)
+          (operator)
+          (type_name)))
       (function
         (variable)
         (patterns
@@ -463,11 +439,9 @@ test = [c (S 1), c Z, d (S Z)]
           (signature
             (variable)
             (type_infix
-              (type_name
-                (type))
-              (type_operator)
-              (type_name
-                (type))))
+              (type_name)
+              (operator)
+              (type_name)))
           (function
             (variable)
             (patterns
@@ -495,11 +469,10 @@ fromMaybe (Just x) = x
     (variable)
     (type_infix
       (type_apply
-        (type_name
-          (type))
+        (type_name)
         (type_name
           (type_variable)))
-      (type_operator)
+      (operator)
       (type_name
         (type_variable))))
   (function
@@ -527,9 +500,8 @@ main = putStrLn ?greeting
   (signature
     (variable)
     (type_apply
-      (type_name
-        (type))
-      (row_type)))
+      (type_name)
+      (type_parens)))
   (function
     (variable)
     (exp_apply
@@ -551,9 +523,8 @@ Foo : a -> Type
     (type_infix
       (type_name
         (type_variable))
-      (type_operator)
-      (type_name
-        (type)))))
+      (operator)
+      (type_name))))
 
 ================================================================================
 Capitalized function name 2
@@ -584,8 +555,7 @@ Not p = p -> Void
 (idris
   (signature
     (variable)
-    (type_name
-      (type)))
+    (type_name))
   (function
     (variable)
     (patterns
