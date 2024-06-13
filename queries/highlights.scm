@@ -106,7 +106,6 @@
   "as"
   "hiding"
   "do"
-  "ado"
   "forall"
   "∀"
   "infix"

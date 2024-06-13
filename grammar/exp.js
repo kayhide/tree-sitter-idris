@@ -206,21 +206,6 @@ module.exports = {
   _do: $ => choice('do', qualified($, $._do_kw)),
   exp_do: $ => seq($._do, layouted($, $.statement)),
 
-  _ado_kw: _ => 'ado',
-  _ado: $ => choice('ado', qualified($, $._ado_kw)),
-  _ado_in: $ => seq('in', field('in', layouted($, $._exp))),
-
-  exp_ado: $ =>
-    seq(
-      $._ado,
-      $._layout_start,
-      optional(terminated($, $.statement)),
-      $._ado_in,
-      optional($._layout_end)
-    ),
-
-  _do_or_ado_block: $ => choice($.exp_do, $.exp_ado),
-
   // ----- Composite expressions ----------------------------------------------
 
   /**
@@ -264,7 +249,7 @@ module.exports = {
 
   _aexp: $ => choice(
     $._aexp_projection,
-    $._do_or_ado_block
+    $.exp_do
   ),
 
   /**
