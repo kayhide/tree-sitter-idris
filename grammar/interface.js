@@ -29,7 +29,7 @@ module.exports = {
   interface_head: $ =>
     seq(
       optional(seq($.constraints, $._rcarrow)),
-      $.interface_name,
+      field('name', $.interface_name),
       repeat($._tyvar),
       optional($.fundeps)
     ),
@@ -74,7 +74,7 @@ module.exports = {
     seq(
       optional($._implementation_name),
       $.implementation_head,
-      $.implementation_body,
+      optional($.implementation_body),
     ),
 
 }

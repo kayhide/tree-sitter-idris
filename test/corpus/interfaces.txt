@@ -242,3 +242,17 @@ Named Implementations 3
         (implementation_name)))
     (implementation_body
       (where))))
+
+================================================================================
+Empty implementation
+================================================================================
+
+Num Foo
+
+--------------------------------------------------------------------------------
+
+(idris
+  (interface_implementation
+    (implementation_head
+      (interface_name)
+      (type_name))))
