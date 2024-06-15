@@ -1,0 +1,81 @@
+================================================================================
+Linearity 1
+================================================================================
+
+duplicate : (1 x : a) -> (a, a)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_name
+        (annotated_type_variable
+          (type_quantity)
+          (type_variable)
+          (type_name
+            (type_variable))))
+      (operator)
+      (type_parens
+        (type_name
+          (type_variable))
+        (comma)
+        (type_name
+          (type_variable))))))
+
+================================================================================
+Linearity 2
+================================================================================
+
+duplicate : (1 _ : a) -> (a, a)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_name
+        (annotated_type_variable
+          (type_quantity)
+          (type_variable)
+          (type_name
+            (type_variable))))
+      (operator)
+      (type_parens
+        (type_name
+          (type_variable))
+        (comma)
+        (type_name
+          (type_variable))))))
+
+================================================================================
+World type
+================================================================================
+
+MkIORes : (result : a) -> (1 x : %World) -> IORes a
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_name
+        (annotated_type_variable
+          (type_variable)
+          (type_name
+            (type_variable))))
+      (operator)
+      (type_infix
+        (type_name
+          (annotated_type_variable
+            (type_quantity)
+            (type_variable)
+            (world_type)))
+        (operator)
+        (type_apply
+          (type_name)
+          (type_name
+            (type_variable)))))))

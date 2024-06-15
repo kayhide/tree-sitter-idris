@@ -40,6 +40,8 @@ module.exports = {
       alias($._qtyconid, ""),
     ),
 
+  world_type: _ => '%World',
+
   // ----- Aggregation --------------------------------------------------------
 
   // Parens or tuples
@@ -66,8 +68,9 @@ module.exports = {
     choice(
       $.hole,
       $.wildcard,
-      $.type_name,
       $.literal,
+      $.world_type,
+      $.type_name,
       $.type_parens,
       $.type_braces,
     ),
