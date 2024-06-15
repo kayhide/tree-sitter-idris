@@ -455,11 +455,11 @@ test = [c (S 1), c Z, d (S Z)]
                 (variable)))))))))
 
 ================================================================================
-Totality and Covering
+Totality partial
 ================================================================================
 
-partial fromMaybe : Maybe a -> a
-fromMaybe (Just x) = x
+partial
+fromMaybe : Maybe a -> a
 
 --------------------------------------------------------------------------------
 
@@ -474,18 +474,37 @@ fromMaybe (Just x) = x
           (type_variable)))
       (operator)
       (type_name
-        (type_variable))))
-  (function
+        (type_variable)))))
+
+================================================================================
+Totality total
+================================================================================
+
+total
+qsort : Ord a => List a -> List a
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (totality)
     (variable)
-    (patterns
-      (pat_tuple
-        (pat_apply
-          (pat_name
-            (constructor))
-          (pat_name
-            (variable)))))
-    (exp_name
-      (variable))))
+    (type_infix
+      (type_apply
+        (type_name)
+        (type_name
+          (type_variable)))
+      (operator)
+      (type_infix
+        (type_apply
+          (type_name)
+          (type_name
+            (type_variable)))
+        (operator)
+        (type_apply
+          (type_name)
+          (type_name
+            (type_variable)))))))
 
 ================================================================================
 Holes
@@ -508,6 +527,34 @@ main = putStrLn ?greeting
       (exp_name
         (variable))
       (hole))))
+
+================================================================================
+rewrite rule
+================================================================================
+
+helpEven j p = rewrite plusSuccRightSucc j j in p
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (variable)
+    (patterns
+      (pat_name
+        (variable))
+      (pat_name
+        (variable)))
+    (exp_rewrite_in
+      (rewrite_exp
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_name
+            (variable))
+          (exp_name
+            (variable))))
+      (exp_name
+        (variable)))))
 
 ================================================================================
 Capitalized function name 1

@@ -157,6 +157,18 @@ module.exports = {
       $._exp
     ),
 
+  // ----- Rewrite-in ---------------------------------------------------------
+
+  _rewrite_decls: $ => layouted_without_end($, $._decl),
+
+  exp_rewrite_in: $ =>
+    seq(
+      'rewrite',
+      alias($._exp, $.rewrite_exp),
+      'in',
+      $._exp
+    ),
+
   // ----- Lambdas ------------------------------------------------------------
 
   exp_lambda: $ => seq(
@@ -249,7 +261,8 @@ module.exports = {
 
   _aexp: $ => choice(
     $._aexp_projection,
-    $.exp_do
+    $.exp_do,
+    $.exp_rewrite_in,
   ),
 
   /**

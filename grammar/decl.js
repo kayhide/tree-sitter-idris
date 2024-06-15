@@ -12,6 +12,7 @@ module.exports = {
   ),
 
   totality: _ => choice(
+    'total',
     'partial',
   ),
 
