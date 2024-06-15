@@ -69,35 +69,6 @@ module.exports = {
   qualified_type: $ => qualified($, $._tyconid),
   _qtyconid: $ => choice($.qualified_type, $._tyconid),
 
-  // `_tyconsym` comes from the scanner.
-  _type_operator: $ => choice(alias($._tyconsym, $.type_operator), $.constructor_operator),
-  qualified_type_operator: $ => qualified($, alias($._tyconsym, $.type_operator)),
-
-  _qualified_type_operator: $ => choice($.qualified_type_operator, $.qualified_constructor_operator),
-  _qtyconsym: $ => choice($._qualified_type_operator, $._type_operator),
-
-  _simple_tycon: $ => choice($._tyconid, parens($._type_operator)),
-  _simple_qtyconop: $ => choice($._qtyconid, parens($._qtyconsym)),
-
-  // TODO: Should be removed?
-  // Technically it is a 'special' value, but:
-  // 1. Doesn't matter semantically for the grammar
-  // 2. All other type operators behave exactly the same way
-  tycon_arrow: $ => parens($._arrow),
-
-  type_literal: $ => choice(
-    $.integer,
-    $.string,
-    $.triple_quote_string
-  ),
-
-  _qtycon: $ => choice($._qtyconid, parens($._qtyconsym)),
-
-  _gtycon: $ => choice(
-    $._qtycon,
-    $.tycon_arrow,
-  ),
-
   literal: $ => $._literal,
   _name: $ => choice($._var, $._con),
   _qname: $ => choice($._qvar, $._qcon),

@@ -40,8 +40,6 @@ module.exports = {
       alias($._qtyconid, ""),
     ),
 
-  type_wildcard: _ => '_',
-
   // ----- Aggregation --------------------------------------------------------
 
   // Parens or tuples

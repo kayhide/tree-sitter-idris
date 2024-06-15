@@ -55,14 +55,14 @@
 [
   "import"
   "module"
+  "namespace"
+  "parameters"
 ] @keyword.control.import
 
 [
   (operator)
   (constructor_operator)
-  (type_operator)
   (qualified_module) ; grabs the `.` (dot), ex: import System.IO
-  (all_names)
   ; `_` wildcards in if-then-else and case-of expressions,
   ; as well as record updates and operator sections
   (wildcard)
@@ -102,9 +102,7 @@
   "interface"
   "using"
   "data"
-  "type"
   "as"
-  "hiding"
   "do"
   "forall"
   "∀"
@@ -149,26 +147,5 @@
 (function
   name: (variable) @function)
 
-(interface_implementation
-  (implementation_name) @function)
-
-((variable) @constant.builtin.boolean
-  (#match? @constant.builtin.boolean "^(true|false)$"))
-
-; The former one works for `tree-sitter highlight` but not in Helix/Kakoune.
-; The latter two work in Helix (but not Kakoune) and are a good compromise between not highlighting anything at all
-; as an operator and leaving it to the child nodes, and highlighting everything as an operator.
-(exp_ticked
-  (_) @operator)
-
-(exp_ticked
-  (exp_name
-    (variable) @operator))
-
-(exp_ticked
-  (exp_name
-    (qualified_variable
-      (variable) @operator)))
-
-(patterns (pat_as "@" @namespace))
-
+(interface_head
+  name: (interface_name) @type)
