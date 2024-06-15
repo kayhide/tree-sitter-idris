@@ -5,7 +5,7 @@ module.exports = {
   // import
   // ------------------------------------------------------------------------
 
-  decl_import: $ => seq(
+  _decl_import: $ => seq(
     'import',
     optional('public'),
     field('module', $.qualified_module),

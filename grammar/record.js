@@ -5,7 +5,7 @@ module.exports = {
 
   record_name: $ => alias($._qtyconid, ''),
 
-  decl_record: $ => seq(
+  _decl_record: $ => seq(
     optional($.visibility),
     'record',
     field('name', $.record_name),
@@ -66,6 +66,4 @@ module.exports = {
       braces(sep($.comma, $._record_field_update)),
       $._record_update_rhs,
     ),
-
 }
-

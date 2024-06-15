@@ -36,7 +36,7 @@ module.exports = {
 
   interface_body: $ => where($, $._decl),
 
-  interface_declaration: $ =>
+  _decl_interface: $ =>
     seq(
       optional($.visibility),
       'interface',
@@ -70,11 +70,10 @@ module.exports = {
 
   implementation_body: $ => where($, $._decl),
 
-  interface_implementation: $ =>
+  _decl_implementation: $ =>
     seq(
       optional($._implementation_name),
       $.implementation_head,
       optional($.implementation_body),
     ),
-
 }

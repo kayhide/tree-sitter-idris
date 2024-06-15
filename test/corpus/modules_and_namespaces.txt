@@ -93,7 +93,7 @@ interface I
 --------------------------------------------------------------------------------
 
 (idris
-  (interface_declaration
+  (interface
     (visibility)
     (interface_head
       (interface_name))))
@@ -108,7 +108,7 @@ interface I
 --------------------------------------------------------------------------------
 
 (idris
-  (interface_declaration
+  (interface
     (visibility)
     (interface_head
       (interface_name))))

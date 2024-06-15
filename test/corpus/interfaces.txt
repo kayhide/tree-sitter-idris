@@ -8,7 +8,7 @@ interface Show a where
 --------------------------------------------------------------------------------
 
 (idris
-  (interface_declaration
+  (interface
     (interface_head
       (interface_name)
       (type_variable))
@@ -32,7 +32,7 @@ Show Nat where
 --------------------------------------------------------------------------------
 
 (idris
-  (interface_implementation
+  (implementation
     (implementation_head
       (interface_name)
       (type_name))
@@ -56,7 +56,7 @@ interface Eq a where
 --------------------------------------------------------------------------------
 
 (idris
-  (interface_declaration
+  (interface
     (interface_head
       (interface_name)
       (type_variable))
@@ -90,7 +90,7 @@ interface Eq a => Ord a where
 --------------------------------------------------------------------------------
 
 (idris
-  (interface_declaration
+  (interface
     (interface_head
       (constraints
         (constraint
@@ -122,7 +122,7 @@ interface (Ord a, Show a) => OrdShow a where
 --------------------------------------------------------------------------------
 
 (idris
-  (interface_declaration
+  (interface
     (interface_head
       (constraints
         (constraint
@@ -148,7 +148,7 @@ interface Functor (0 f : Type -> Type) where
 --------------------------------------------------------------------------------
 
 (idris
-  (interface_declaration
+  (interface
     (interface_head
       (interface_name)
       (annotated_type_variable
@@ -170,7 +170,7 @@ interface Functor f => Applicative (0 f : Type -> Type) where
 --------------------------------------------------------------------------------
 
 (idris
-  (interface_declaration
+  (interface
     (interface_head
       (constraints
         (constraint
@@ -197,7 +197,7 @@ Named Implementations 1
 --------------------------------------------------------------------------------
 
 (idris
-  (interface_implementation
+  (implementation
     (implementation_name)
     (implementation_head
       (interface_name)
@@ -233,7 +233,7 @@ Named Implementations 3
 --------------------------------------------------------------------------------
 
 (idris
-  (interface_implementation
+  (implementation
     (implementation_name)
     (implementation_head
       (interface_name)
@@ -252,7 +252,7 @@ Num Foo
 --------------------------------------------------------------------------------
 
 (idris
-  (interface_implementation
+  (implementation
     (implementation_head
       (interface_name)
       (type_name))))

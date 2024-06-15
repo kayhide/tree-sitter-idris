@@ -199,17 +199,14 @@ module.exports = grammar({
 
     _topdecl: $ => choice(
       $._decl_module,
+      alias($._decl_import, $.import),
       alias($._decl_namespace, $.namespace),
       alias($._decl_parameters, $.parameters),
       alias($._decl_mutual, $.mutual),
-      alias($.decl_data, $.data),
-      alias($.decl_record, $.record),
-      // TODO: Imports cannot come in random places,
-      // the structure of a module is always `module M [exports] where [imports] …`
-      // should group these together to remove extra parser overhead and simplify it for all other symbols
-      alias($.decl_import, $.import),
-      $.interface_declaration,
-      $.interface_implementation,
+      alias($._decl_data, $.data),
+      alias($._decl_record, $.record),
+      alias($._decl_interface, $.interface),
+      alias($._decl_implementation, $.implementation),
       $._decl,
     ),
 

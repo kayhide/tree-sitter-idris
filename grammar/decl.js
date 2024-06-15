@@ -90,7 +90,7 @@ module.exports = {
   _where_decl: $ => choice(
     $._decl,
     alias($._decl_namespace, $.namespace),
-    alias($.decl_data, $.data),
+    alias($._decl_data, $.data),
   ),
 
   declarations: $ => layouted($, $._where_decl),

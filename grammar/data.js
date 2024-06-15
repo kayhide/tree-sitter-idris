@@ -6,7 +6,7 @@ module.exports = {
 
   data_name: $ => alias($._qtyconid, ''),
 
-  decl_data: $ => choice(
+  _decl_data: $ => choice(
     $._decl_data_inline,
     $._decl_data_block,
   ),
