@@ -6,7 +6,6 @@ module.exports = {
 
   interface_name: $ => alias($._qtyconid, ''),
 
-  // Technically wrong as it doesn't exclude row types
   constraint: $ => seq($.interface_name, repeat($._type)),
 
   constraints: $ =>
@@ -17,25 +16,6 @@ module.exports = {
 
   // ----- Interface ----------------------------------------------------------
 
-  fundep: $ =>
-    seq(
-      repeat1($.type_variable),
-      $._arrow,
-      repeat1($.type_variable)
-    ),
-
-  fundeps: $ => seq('|', sep1($.comma, $.fundep)),
-
-  interface_head: $ =>
-    seq(
-      optional(seq($.constraints, $._rcarrow)),
-      field('name', $.interface_name),
-      repeat($._tyvar),
-      optional($.fundeps)
-    ),
-
-  interface_body: $ => where($, $._decl),
-
   _decl_interface: $ =>
     seq(
       optional($.visibility),
@@ -43,6 +23,29 @@ module.exports = {
       $.interface_head,
       optional($.interface_body)
     ),
+
+  interface_head: $ =>
+    seq(
+      optional(seq($.constraints, $._rcarrow)),
+      field('name', $.interface_name),
+      repeat($._tyvar),
+      optional($.determining_params)
+    ),
+
+  determining_params: $ => seq('|', sep1($.comma, $.type_variable)),
+
+  interface_body: $ => where($, $._interface_decl),
+
+  _interface_decl: $ => choice(
+    $._record_constructor,
+    $._decl,
+  ),
+
+  _interface_constructor: $ => seq(
+    'constructor',
+    field('name', $.constructor), 
+  ),
+    
 
   // ----- Implementation -----------------------------------------------------
 

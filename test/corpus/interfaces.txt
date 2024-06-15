@@ -256,3 +256,56 @@ Num Foo
     (implementation_head
       (interface_name)
       (type_name))))
+
+================================================================================
+Interface Constructors
+================================================================================
+
+interface A t => B t where
+  constructor MkB
+
+--------------------------------------------------------------------------------
+
+(idris
+  (interface
+    (interface_head
+      (constraints
+        (constraint
+          (interface_name)
+          (type_name
+            (type_variable))))
+      (interface_name)
+      (type_variable))
+    (interface_body
+      (where)
+      (constructor))))
+
+================================================================================
+Determining Parameters
+================================================================================
+
+interface Monad m => MonadState s (0 m : Type -> Type) | m where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (interface
+    (interface_head
+      (constraints
+        (constraint
+          (interface_name)
+          (type_name
+            (type_variable))))
+      (interface_name)
+      (type_variable)
+      (annotated_type_variable
+        (type_quantity)
+        (type_variable)
+        (type_infix
+          (type_name)
+          (operator)
+          (type_name)))
+      (determining_params
+        (type_variable)))
+    (interface_body
+      (where))))
