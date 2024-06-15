@@ -22,15 +22,9 @@ module.exports = {
 
   _fun_name: $ => field('name', choice($._var, alias($._conid, $.variable))),
 
-  guard_equation: $ => seq($.guards, '=', $._exp),
-
-  _fun_guards: $ => repeat1($.guard_equation),
-
   _funrhs: $ => seq(
-    choice(
-      seq(choice(':=', '='), field('rhs', $._exp)),
-      $._fun_guards,
-    ),
+    choice(':=', '='),
+    field('rhs', $._exp),
     optional(seq($.where, $.declarations)),
   ),
 
@@ -41,11 +35,23 @@ module.exports = {
     field('patterns', optional(alias($._fun_patterns, $.patterns))),
   ),
 
-  _funlhs: $ => prec.dynamic(2, $._funvar),
+  _with_res: $ => seq('|', alias($._apat, $.with_pat)),
+
+  _funlhs: $ => seq(
+    choice(prec.dynamic(2, $._funvar), $.wildcard),
+    repeat($._with_res),
+  ),
+
+  with: $ => seq(
+    'with',
+    sep1('|', $.exp_parens),
+    '\n',
+    layouted($, $.function),
+  ),
 
   function: $ => seq(
     $._funlhs,
-    $._funrhs,
+    choice($._funrhs, $.with),
   ),
 
   // TODO: I don't see what it has to do with functions.
