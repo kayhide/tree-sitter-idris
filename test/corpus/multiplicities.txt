@@ -12,7 +12,7 @@ duplicate : (1 x : a) -> (a, a)
     (type_infix
       (type_name
         (annotated_type_variable
-          (type_quantity)
+          (quantity)
           (type_variable)
           (type_name
             (type_variable))))
@@ -38,7 +38,7 @@ duplicate : (1 _ : a) -> (a, a)
     (type_infix
       (type_name
         (annotated_type_variable
-          (type_quantity)
+          (quantity)
           (type_variable)
           (type_name
             (type_variable))))
@@ -71,7 +71,7 @@ MkIORes : (result : a) -> (1 x : %World) -> IORes a
       (type_infix
         (type_name
           (annotated_type_variable
-            (type_quantity)
+            (quantity)
             (type_variable)
             (world_type)))
         (operator)

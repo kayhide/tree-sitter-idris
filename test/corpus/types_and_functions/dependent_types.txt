@@ -73,14 +73,16 @@ index : {a : Type} -> {n : Nat} -> Fin n -> Vect n a -> a
     (variable)
     (type_infix
       (type_braces
-        (type_name
-          (type_variable))
+        (implicit_arg
+          (type_name
+            (type_variable)))
         (type_name))
       (operator)
       (type_infix
         (type_braces
-          (type_name
-            (type_variable))
+          (implicit_arg
+            (type_name
+              (type_variable)))
           (type_name))
         (operator)
         (type_infix
@@ -170,3 +172,80 @@ index : (i : Fin n) -> (xs : Vect n a) -> a
         (operator)
         (type_name
           (type_variable))))))
+
+================================================================================
+Auto Implicit Arguments
+================================================================================
+
+head : (xs : List a) -> {auto p : isCons xs = True} -> a
+ 
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_name
+        (annotated_type_variable
+          (type_variable)
+          (type_apply
+            (type_name)
+            (type_name
+              (type_variable)))))
+      (operator)
+      (type_infix
+        (type_braces
+          (implicit_arg
+            (auto)
+            (type_name
+              (type_variable)))
+          (type_infix
+            (type_apply
+              (type_name
+                (type_variable))
+              (type_name
+                (type_variable)))
+            (operator)
+            (type_name)))
+        (operator)
+        (type_name
+          (type_variable))))))
+
+================================================================================
+Default Implicit Arguments
+================================================================================
+
+fibonacci : {default 0 lag : Nat} -> {default 1 lead : Nat} -> (n : Nat) -> Nat
+ 
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (variable)
+    (type_infix
+      (type_braces
+        (implicit_arg
+          (default
+            (exp_literal
+              (integer)))
+          (type_name
+            (type_variable)))
+        (type_name))
+      (operator)
+      (type_infix
+        (type_braces
+          (implicit_arg
+            (default
+              (exp_literal
+                (integer)))
+            (type_name
+              (type_variable)))
+          (type_name))
+        (operator)
+        (type_infix
+          (type_name
+            (annotated_type_variable
+              (type_variable)
+              (type_name)))
+          (operator)
+          (type_name))))))

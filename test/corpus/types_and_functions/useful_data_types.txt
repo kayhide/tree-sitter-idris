@@ -221,8 +221,9 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
         (type_signature
           (type_infix
             (type_braces
-              (type_name
-                (type_variable))
+              (implicit_arg
+                (type_name
+                  (type_variable)))
               (type_infix
                 (type_name
                   (type_variable))

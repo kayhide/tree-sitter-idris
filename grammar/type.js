@@ -6,11 +6,9 @@ module.exports = {
 
   type_variable: $ => $._varid,
 
-  type_quantity: _ => choice('0', '1'),
-
   annotated_type_variable: $ =>
     parens(seq(
-      optional($.type_quantity),
+      optional($.quantity),
       $.type_variable,
       $._type_annotation
     )),
@@ -42,13 +40,36 @@ module.exports = {
 
   world_type: _ => '%World',
 
+  quantity: _ => choice('0', '1'),
+
+  auto: _ => 'auto',
+
+  default: $ => seq(
+    'default',
+    $._aexp,
+  ),
+
+  implicit_arg: $ => seq(
+    optional(
+      choice( 
+        $.quantity,
+        $.auto,
+        $.default,
+      ),
+    ),
+    $.type_name,
+  ),
+
   // ----- Aggregation --------------------------------------------------------
 
   // Parens or tuples
   type_parens: $ => parens(seq(optional($.forall), optional(sep($.comma, $._type)))),
 
   // Implicit arguments
-  type_braces: $ => braces(seq(sep1($.comma, $.type_name), $._type_annotation)),
+  type_braces: $ => braces(seq(
+    sep1($.comma, $.implicit_arg), 
+    $._type_annotation),
+  ),
 
   // This is the parser to be used in signatures for functions, classes, types, newtypes and data.
   _type_annotation: $ =>
