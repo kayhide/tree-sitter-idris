@@ -28,7 +28,7 @@
             buildInputs = with pkgs; [
               app-env
 
-              entr
+              watchexec
               gnumake
             ];
           };

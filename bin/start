@@ -26,13 +26,9 @@ shift
 
 case "$command" in
   dev)
-    set +e
-    while true; do
-      find grammar.js grammar | entr -cdr bin/start generate &
-      find src test | entr -cdr bin/start test &
-      wait
-      (( $? == 0 || $? > 128 )) && exit 0
-    done
+    watchexec -n --exts js bin/start generate &
+    watchexec -n -w src -w test bin/start test &
+    wait
     ;;
   *)
     if type "$command" > /dev/null; then
