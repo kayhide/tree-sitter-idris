@@ -80,3 +80,116 @@ data List : Type -> Type where
                 (type_name)
                 (type_name
                   (type_variable))))))))))
+
+================================================================================
+Search options
+================================================================================
+
+data Elem : (x : a) -> (xs : List a) -> Type where
+     [search x]
+     Here : Elem x (x :: xs)
+     There : Elem x xs -> Elem x (y :: xs)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (data
+    (data_name)
+    (type_signature
+      (type_infix
+        (type_name
+          (annotated_type_variable
+            (type_variable)
+            (type_name
+              (type_variable))))
+        (operator)
+        (type_infix
+          (type_name
+            (annotated_type_variable
+              (type_variable)
+              (type_apply
+                (type_name)
+                (type_name
+                  (type_variable)))))
+          (operator)
+          (type_name))))
+    (where)
+    (data_body
+      (search_option
+        (type_variable))
+      (constructor_signature
+        (constructor)
+        (type_signature
+          (type_apply
+            (type_name)
+            (type_name
+              (type_variable))
+            (type_parens
+              (type_infix
+                (type_name
+                  (type_variable))
+                (operator)
+                (type_name
+                  (type_variable)))))))
+      (constructor_signature
+        (constructor)
+        (type_signature
+          (type_infix
+            (type_apply
+              (type_name)
+              (type_name
+                (type_variable))
+              (type_name
+                (type_variable)))
+            (operator)
+            (type_apply
+              (type_name)
+              (type_name
+                (type_variable))
+              (type_parens
+                (type_infix
+                  (type_name
+                    (type_variable))
+                  (operator)
+                  (type_name
+                    (type_variable)))))))))))
+
+================================================================================
+Search options no hints
+================================================================================
+
+data MyShow : Type -> Type where
+     [noHints]
+     MkMyShow : (myshow : a -> String) -> MyShow a
+
+--------------------------------------------------------------------------------
+
+(idris
+  (data
+    (data_name)
+    (type_signature
+      (type_infix
+        (type_name)
+        (operator)
+        (type_name)))
+    (where)
+    (data_body
+      (search_option
+        (no_hints))
+      (constructor_signature
+        (constructor)
+        (type_signature
+          (type_infix
+            (type_name
+              (annotated_type_variable
+                (type_variable)
+                (type_infix
+                  (type_name
+                    (type_variable))
+                  (operator)
+                  (type_name))))
+            (operator)
+            (type_apply
+              (type_name)
+              (type_name
+                (type_variable)))))))))
