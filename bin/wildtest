@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+set -eu
+
+BASE_DIR="$(cd "$(dirname "$0")/.." > /dev/null 2>&1 && pwd)"
+cd "$BASE_DIR"
+
+WILDTEST_DIR="tmp/wildtest"
+
+die() {
+  >&2 echo "$1"
+  exit 1
+}
+
+fetch() {
+  local repo="$1"
+  local ref="$2"
+  local dst="$3"
+  echo fetching... "$repo"
+  if [[ -d $dst ]]; then
+    echo "Already exists: $dst"
+  else
+    echo "Fetching... : $repo"
+    git clone --depth 1 -b "$ref" "$repo" "$dst"
+  fi
+}
+
+
+if [[ -n ${1:-} && -n ${2:-} ]]; then
+  NAME="$1"
+  REPO="${2%#*}"
+  REF="${2#*\#}"
+  SUBDIR="${3:-}"
+  echo "subdir: ${SUBDIR:+/}"
+  DST="$WILDTEST_DIR/${REPO#*//}/$REF"
+  fetch "$REPO" "$REF" "$DST"
+  TARGET_DIR="$DST${SUBDIR:+/}${SUBDIR:-}"
+  echo $TARGET_DIR
+  tree-sitter parse "$TARGET_DIR/**/*.idr"
+else
+  # "$0" base-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/base
+  # "$0" contrib-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/contrib
+  # "$0" linear-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/linear
+  # "$0" network-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/network
+  # "$0" papers-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/papers
+  "$0" prelude-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/prelude
+  # "$0" test-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/test
+fi
+
+echo ok

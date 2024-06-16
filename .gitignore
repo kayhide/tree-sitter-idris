@@ -1,3 +1,5 @@
+tmp/
+
 # Rust artifacts
 Cargo.lock
 target/
