@@ -16,35 +16,69 @@ fetch() {
   local repo="$1"
   local ref="$2"
   local dst="$3"
-  echo fetching... "$repo"
-  if [[ -d $dst ]]; then
-    echo "Already exists: $dst"
-  else
+  if [[ ! -d $dst ]]; then
     echo "Fetching... : $repo"
     git clone --depth 1 -b "$ref" "$repo" "$dst"
   fi
 }
 
+run() {
+  mkdir -p "$(dirname "$2")"
+  tree-sitter parse "$1" 2>/dev/null > "$2"
+}
+
 
 if [[ -n ${1:-} && -n ${2:-} ]]; then
-  NAME="$1"
-  REPO="${2%#*}"
-  REF="${2#*\#}"
-  SUBDIR="${3:-}"
-  echo "subdir: ${SUBDIR:+/}"
-  DST="$WILDTEST_DIR/${REPO#*//}/$REF"
-  fetch "$REPO" "$REF" "$DST"
-  TARGET_DIR="$DST${SUBDIR:+/}${SUBDIR:-}"
-  echo $TARGET_DIR
-  tree-sitter parse "$TARGET_DIR/**/*.idr"
+  name="$1"
+  repo="${2%#*}"
+  ref="${2#*\#}"
+  subdir="${3:-}"
+  repo_dir="$WILDTEST_DIR/repos/${repo#*//}/$ref"
+  target_dir="$repo_dir${subdir:+/}${subdir:-}"
+
+  results_dir="$WILDTEST_DIR/results/$name"
+  fails_dir="$WILDTEST_DIR/fails/$name"
+
+  rm -rf "$fails_dir"
+  echo "$name:"
+  fetch "$repo" "$ref" "$repo_dir"
+  find "$target_dir" -name "*.idr" | while read -r src; do
+    file="$(realpath -m --relative-to="$target_dir" "$src")"
+    dst="$results_dir/$file.txt"
+
+    if run "$src" "$dst"; then
+      echo "  ✔️ $file"
+    else
+      echo "  ❌ $file"
+      mkdir -p "$(dirname "$fails_dir/$file")"
+      ln -rs "$src" "$fails_dir/$file"
+      ln -rs "$dst" "$fails_dir/$file.txt"
+    fi
+  done
+  if [[ -d $fails_dir ]]; then
+    total="$(find "$results_dir" -name "*.txt"| wc -l)"
+    fails="$(find "$fails_dir" -name "*.txt" | wc -l)"
+    die "Fails: $fails / $total"
+  fi
 else
-  # "$0" base-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/base
-  # "$0" contrib-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/contrib
-  # "$0" linear-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/linear
-  # "$0" network-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/network
-  # "$0" papers-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/papers
-  "$0" prelude-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/prelude
-  # "$0" test-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/test
+  results_dir="$WILDTEST_DIR/results"
+  fails_dir="$WILDTEST_DIR/fails"
+  rm -rf "$results_dir" "$fails_dir"
+  "$0" base-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/base || true
+  "$0" contrib-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/contrib || true
+  "$0" linear-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/linear || true
+  "$0" network-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/network || true
+  "$0" papers-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/papers || true
+  "$0" prelude-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/prelude || true
+  "$0" test-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/test || true
+
+  total="$(find "$results_dir" -name "*.txt"| wc -l)"
+  fails="$(find "$fails_dir" -name "*.txt" | wc -l)"
+  if [[ $fails == 0 ]]; then
+    echo "Total: $total"
+  else
+    die "Total fails: $fails / $total"
+  fi
 fi
 
 echo ok
