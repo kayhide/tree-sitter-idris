@@ -9,6 +9,7 @@ const module_ = require('./grammar/module.js')
 const data = require('./grammar/data.js')
 const interface = require('./grammar/interface.js')
 const decl = require('./grammar/decl.js')
+const pragma = require('./grammar/pragma.js')
 
 module.exports = grammar({
   name: 'idris',
@@ -209,6 +210,7 @@ module.exports = grammar({
       alias($._decl_interface, $.interface),
       alias($._decl_implementation, $.implementation),
       $._decl,
+      $.pragma,
     ),
 
     ...basic,
@@ -222,5 +224,6 @@ module.exports = grammar({
     ...data,
     ...interface,
     ...decl,
+    ...pragma,
   }
 })
