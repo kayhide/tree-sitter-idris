@@ -3520,6 +3520,10 @@
           "named": true
         },
         {
+          "type": "pragma",
+          "named": true
+        },
+        {
           "type": "record",
           "named": true
         },
@@ -3936,6 +3940,10 @@
           "named": true
         },
         {
+          "type": "pragma",
+          "named": true
+        },
+        {
           "type": "record",
           "named": true
         },
@@ -4025,6 +4033,10 @@
         },
         {
           "type": "parameters",
+          "named": true
+        },
+        {
+          "type": "pragma",
           "named": true
         },
         {
@@ -4208,6 +4220,10 @@
         },
         {
           "type": "parameters",
+          "named": true
+        },
+        {
+          "type": "pragma",
           "named": true
         },
         {
@@ -4976,6 +4992,35 @@
         }
       ]
     }
+  },
+  {
+    "type": "pragma",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "pragma_arg",
+          "named": true
+        },
+        {
+          "type": "pragma_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pragma_arg",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "pragma_name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "qualified_constructor",
@@ -6158,6 +6203,10 @@
   },
   {
     "type": "$=",
+    "named": false
+  },
+  {
+    "type": "%",
     "named": false
   },
   {
