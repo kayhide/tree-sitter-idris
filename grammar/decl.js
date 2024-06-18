@@ -61,7 +61,7 @@ module.exports = {
     optional($.visibility),
     choice('infixl', 'infixr', 'infix'),
     field('precedence', $.integer),
-    $.operator
+    sep1($.comma, $.operator),
   ),
 
   signature: $ => seq(
