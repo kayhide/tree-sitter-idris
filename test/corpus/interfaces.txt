@@ -63,10 +63,11 @@ interface Eq a where
     (interface_body
       (where)
       (function
-        (pat_infix
+        (pattern
           (pat_name
-            (variable))
-          (operator)
+            (variable)))
+        (operator)
+        (pattern
           (pat_name
             (variable)))
         (exp_apply

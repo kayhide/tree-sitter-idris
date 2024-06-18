@@ -1,4 +1,4 @@
-const { layouted } = require('./util')
+const { parens, layouted } = require('./util')
 
 module.exports = {
   // ------------------------------------------------------------------------
@@ -29,17 +29,27 @@ module.exports = {
     optional(seq($.where, $.declarations)),
   ),
 
-  _fun_patterns: $ => repeat1($._apat),
+  _fun_patterns: $ => prec(1, repeat1($._apat)),
 
   _funvar: $ => seq(
-    $._fun_name,
+    choice($._fun_name, parens($._funop)),
     field('patterns', optional(alias($._fun_patterns, $.patterns))),
   ),
+
+  _funop: $ => prec(1, seq(
+    field('pattern', alias($._apat, $.pattern)),
+    $.operator,
+    field('pattern', alias($._apat, $.pattern)),
+  )),
 
   _with_res: $ => seq('|', alias($._apat, $.with_pat)),
 
   _funlhs: $ => seq(
-    choice(prec.dynamic(2, $._funvar), $.wildcard),
+    choice(
+      prec.dynamic(3, $._funop),
+      prec.dynamic(2, $._funvar),
+      $.wildcard
+    ),
     repeat($._with_res),
   ),
 
@@ -50,9 +60,11 @@ module.exports = {
     layouted($, $.function),
   ),
 
+  impossible: _ => 'impossible',
+
   function: $ => seq(
     $._funlhs,
-    choice($._funrhs, $.with),
+    choice($._funrhs, $.with, $.impossible),
   ),
 
   // TODO: I don't see what it has to do with functions.
