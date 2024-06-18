@@ -426,3 +426,40 @@ lookup_default i xs def = case list_lookup i xs of
               (variable)))
           (exp_name
             (variable)))))))
+
+================================================================================
+Lambda functions
+================================================================================
+
+on f g = \x, y => g x `f` g y
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (variable)
+    (patterns
+      (pat_name
+        (variable))
+      (pat_name
+        (variable)))
+    (exp_lambda
+      (pat_name
+        (variable))
+      (comma)
+      (pat_name
+        (variable))
+      (exp_infix
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_name
+            (variable)))
+        (exp_ticked
+          (exp_name
+            (variable)))
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_name
+            (variable)))))))
