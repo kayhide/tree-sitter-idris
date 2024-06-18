@@ -550,3 +550,40 @@ addStudent' p c = { students $= (p ::) } c
           (variable))
         (operator))
       (variable))))
+
+================================================================================
+Records 6
+================================================================================
+
+record DPair a (p : a -> Type) where
+  constructor MkDPair
+  fst : a
+  snd : p fst
+
+--------------------------------------------------------------------------------
+
+(idris
+  (record
+    (record_name)
+    (type_variable)
+    (annotated_type_variable
+      (type_variable)
+      (type_infix
+        (type_name
+          (type_variable))
+        (operator)
+        (type_name)))
+    (where)
+    (record_body
+      (constructor)
+      (record_field
+        (variable)
+        (type_name
+          (type_variable)))
+      (record_field
+        (variable)
+        (type_apply
+          (type_name
+            (type_variable))
+          (type_name
+            (type_variable)))))))

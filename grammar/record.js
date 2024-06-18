@@ -9,6 +9,7 @@ module.exports = {
     optional($.visibility),
     'record',
     field('name', $.record_name),
+    repeat($._tyvar),
     $.where,
     optional($.record_body),
   ),
