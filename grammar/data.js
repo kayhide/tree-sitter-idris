@@ -33,6 +33,7 @@ module.exports = {
 
   _data_decl: $ => choice(
     $.search_options,
+    $.external,
     $.constructor_signature,
   ),
 
@@ -42,6 +43,8 @@ module.exports = {
       alias('noHints', $.no_hints),
     ),
   ),
+
+  external: _ => brackets('external'),
 
   constructor_signature: $ => seq(
     field('name', $._con), 

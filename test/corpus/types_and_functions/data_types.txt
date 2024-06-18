@@ -189,3 +189,23 @@ data MyShow : Type -> Type where
               (type_name)
               (type_name
                 (type_variable)))))))))
+
+================================================================================
+External type
+================================================================================
+
+data Ptr : Type -> Type where [external]
+
+--------------------------------------------------------------------------------
+
+(idris
+  (data
+    (data_name)
+    (type_signature
+      (type_infix
+        (type_name)
+        (operator)
+        (type_name)))
+    (where)
+    (data_body
+      (external))))
