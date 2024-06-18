@@ -56,6 +56,7 @@ module.exports = {
 
   implementation_head: $ =>
     seq(
+      optional($.visibility),
       optional(seq($.constraints, $._rcarrow)),
       $.interface_name,
       repeat($._type),

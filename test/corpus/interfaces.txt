@@ -258,6 +258,27 @@ Num Foo
       (type_name))))
 
 ================================================================================
+Implementation with visibility
+================================================================================
+
+export %inline
+Cast Char Nat where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (implementation
+    (implementation_head
+      (visibility)
+      (pragma_inline)
+      (interface_name)
+      (type_apply
+        (type_name)
+        (type_name)))
+    (implementation_body
+      (where))))
+
+================================================================================
 Interface Constructors
 ================================================================================
 
