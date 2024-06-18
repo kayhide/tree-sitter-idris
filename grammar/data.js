@@ -32,13 +32,13 @@ module.exports = {
   data_body: $ => layouted($, $._data_decl),
 
   _data_decl: $ => choice(
-    $.search_option,
+    $.search_options,
     $.constructor_signature,
   ),
 
-  search_option: $ => brackets(
+  search_options: $ => brackets(
     choice(
-      seq('search', $.type_variable),
+      seq('search', repeat1($.type_variable)),
       alias('noHints', $.no_hints),
     ),
   ),

@@ -87,8 +87,6 @@ Search options
 
 data Elem : (x : a) -> (xs : List a) -> Type where
      [search x]
-     Here : Elem x (x :: xs)
-     There : Elem x xs -> Elem x (y :: xs)
 
 --------------------------------------------------------------------------------
 
@@ -115,44 +113,42 @@ data Elem : (x : a) -> (xs : List a) -> Type where
           (type_name))))
     (where)
     (data_body
-      (search_option
-        (type_variable))
-      (constructor_signature
-        (constructor)
-        (type_signature
-          (type_apply
-            (type_name)
-            (type_name
-              (type_variable))
-            (type_parens
-              (type_infix
-                (type_name
-                  (type_variable))
-                (operator)
-                (type_name
-                  (type_variable)))))))
-      (constructor_signature
-        (constructor)
-        (type_signature
-          (type_infix
-            (type_apply
-              (type_name)
-              (type_name
-                (type_variable))
-              (type_name
-                (type_variable)))
-            (operator)
-            (type_apply
-              (type_name)
-              (type_name
-                (type_variable))
-              (type_parens
-                (type_infix
-                  (type_name
-                    (type_variable))
-                  (operator)
-                  (type_name
-                    (type_variable)))))))))))
+      (search_options
+        (type_variable)))))
+
+================================================================================
+Search options multiple
+================================================================================
+
+public export
+data Equal : forall a, b . a -> b -> Type where
+     [search a b]
+
+--------------------------------------------------------------------------------
+
+(idris
+  (data
+    (visibility)
+    (data_name)
+    (type_signature
+      (type_infix
+        (forall
+          (type_variable)
+          (comma)
+          (type_variable))
+        (type_name
+          (type_variable))
+        (operator)
+        (type_infix
+          (type_name
+            (type_variable))
+          (operator)
+          (type_name))))
+    (where)
+    (data_body
+      (search_options
+        (type_variable)
+        (type_variable)))))
 
 ================================================================================
 Search options no hints
@@ -174,7 +170,7 @@ data MyShow : Type -> Type where
         (type_name)))
     (where)
     (data_body
-      (search_option
+      (search_options
         (no_hints))
       (constructor_signature
         (constructor)
