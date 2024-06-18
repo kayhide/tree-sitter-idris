@@ -96,6 +96,14 @@
             "named": true
           },
           {
+            "type": "pragma_search",
+            "named": true
+          },
+          {
+            "type": "pragma_world",
+            "named": true
+          },
+          {
             "type": "record_accessor",
             "named": true
           },
@@ -125,10 +133,6 @@
           },
           {
             "type": "wildcard",
-            "named": true
-          },
-          {
-            "type": "world_type",
             "named": true
           }
         ]
@@ -239,6 +243,10 @@
           "named": true
         },
         {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "quantity",
           "named": true
         },
@@ -268,10 +276,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -414,6 +418,14 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
@@ -444,10 +456,6 @@
         {
           "type": "wildcard",
           "named": true
-        },
-        {
-          "type": "world_type",
-          "named": true
         }
       ]
     }
@@ -460,6 +468,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "annotated_type_variable",
+          "named": true
+        },
         {
           "type": "forall",
           "named": true
@@ -474,6 +486,10 @@
         },
         {
           "type": "literal",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
           "named": true
         },
         {
@@ -498,10 +514,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -622,6 +634,10 @@
           "named": true
         },
         {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "type_apply",
           "named": true
         },
@@ -660,10 +676,6 @@
         {
           "type": "wildcard",
           "named": true
-        },
-        {
-          "type": "world_type",
-          "named": true
         }
       ]
     }
@@ -681,7 +693,11 @@
           "named": true
         },
         {
-          "type": "search_option",
+          "type": "external",
+          "named": true
+        },
+        {
+          "type": "search_options",
           "named": true
         }
       ]
@@ -777,6 +793,10 @@
         },
         {
           "type": "hole",
+          "named": true
+        },
+        {
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -883,6 +903,10 @@
         },
         {
           "type": "hole",
+          "named": true
+        },
+        {
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -997,6 +1021,14 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
@@ -1026,10 +1058,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -1132,6 +1160,14 @@
             "named": true
           },
           {
+            "type": "pragma_search",
+            "named": true
+          },
+          {
+            "type": "pragma_world",
+            "named": true
+          },
+          {
             "type": "record_accessor",
             "named": true
           },
@@ -1161,10 +1197,6 @@
           },
           {
             "type": "wildcard",
-            "named": true
-          },
-          {
-            "type": "world_type",
             "named": true
           }
         ]
@@ -1306,6 +1338,14 @@
             "named": true
           },
           {
+            "type": "pragma_search",
+            "named": true
+          },
+          {
+            "type": "pragma_world",
+            "named": true
+          },
+          {
             "type": "record_accessor",
             "named": true
           },
@@ -1335,10 +1375,6 @@
           },
           {
             "type": "wildcard",
-            "named": true
-          },
-          {
-            "type": "world_type",
             "named": true
           }
         ]
@@ -1436,6 +1472,14 @@
             "named": true
           },
           {
+            "type": "pragma_search",
+            "named": true
+          },
+          {
+            "type": "pragma_world",
+            "named": true
+          },
+          {
             "type": "record_accessor",
             "named": true
           },
@@ -1465,10 +1509,6 @@
           },
           {
             "type": "wildcard",
-            "named": true
-          },
-          {
-            "type": "world_type",
             "named": true
           }
         ]
@@ -1566,6 +1606,14 @@
             "named": true
           },
           {
+            "type": "pragma_search",
+            "named": true
+          },
+          {
+            "type": "pragma_world",
+            "named": true
+          },
+          {
             "type": "record_accessor",
             "named": true
           },
@@ -1595,10 +1643,6 @@
           },
           {
             "type": "wildcard",
-            "named": true
-          },
-          {
-            "type": "world_type",
             "named": true
           }
         ]
@@ -1702,6 +1746,14 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
@@ -1735,10 +1787,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -1837,6 +1885,10 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
           "type": "qualified_operator",
           "named": true
         },
@@ -1863,6 +1915,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "comma",
+          "named": true
+        },
         {
           "type": "exp_apply",
           "named": true
@@ -1976,6 +2032,14 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
@@ -2005,10 +2069,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -2111,6 +2171,14 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
@@ -2140,10 +2208,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -2280,6 +2344,10 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
@@ -2391,6 +2459,14 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
@@ -2420,10 +2496,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -2568,6 +2640,14 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
@@ -2601,10 +2681,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -2700,6 +2776,10 @@
         },
         {
           "type": "operator",
+          "named": true
+        },
+        {
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -2814,6 +2894,10 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
           "type": "qualified_operator",
           "named": true
         },
@@ -2917,6 +3001,10 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
@@ -2930,6 +3018,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "external",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "field_name",
@@ -2986,7 +3079,7 @@
         ]
       },
       "pattern": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
@@ -3031,6 +3124,10 @@
           },
           {
             "type": "pat_wildcard",
+            "named": true
+          },
+          {
+            "type": "pattern",
             "named": true
           }
         ]
@@ -3138,6 +3235,14 @@
             "named": true
           },
           {
+            "type": "pragma_search",
+            "named": true
+          },
+          {
+            "type": "pragma_world",
+            "named": true
+          },
+          {
             "type": "record_accessor",
             "named": true
           },
@@ -3168,10 +3273,6 @@
           {
             "type": "wildcard",
             "named": true
-          },
-          {
-            "type": "world_type",
-            "named": true
           }
         ]
       }
@@ -3182,6 +3283,14 @@
       "types": [
         {
           "type": "declarations",
+          "named": true
+        },
+        {
+          "type": "impossible",
+          "named": true
+        },
+        {
+          "type": "operator",
           "named": true
         },
         {
@@ -3300,6 +3409,14 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
@@ -3329,10 +3446,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -3424,6 +3537,10 @@
         },
         {
           "type": "pattern_guard",
+          "named": true
+        },
+        {
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -3549,10 +3666,6 @@
         {
           "type": "implementation_head",
           "named": true
-        },
-        {
-          "type": "implementation_name",
-          "named": true
         }
       ]
     }
@@ -3605,11 +3718,19 @@
           "named": true
         },
         {
+          "type": "implementation_name",
+          "named": true
+        },
+        {
           "type": "interface_name",
           "named": true
         },
         {
           "type": "literal",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
           "named": true
         },
         {
@@ -3637,11 +3758,11 @@
           "named": true
         },
         {
-          "type": "wildcard",
+          "type": "visibility",
           "named": true
         },
         {
-          "type": "world_type",
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -3650,7 +3771,17 @@
   {
     "type": "implementation_name",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "module",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "implicit_arg",
@@ -4075,6 +4206,10 @@
       "required": true,
       "types": [
         {
+          "type": "comma",
+          "named": true
+        },
+        {
           "type": "operator",
           "named": true
         },
@@ -4137,6 +4272,10 @@
           "named": true
         },
         {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "type_apply",
           "named": true
         },
@@ -4158,10 +4297,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -4770,6 +4905,10 @@
           "named": true
         },
         {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "type_apply",
           "named": true
         },
@@ -4792,10 +4931,6 @@
         {
           "type": "wildcard",
           "named": true
-        },
-        {
-          "type": "world_type",
-          "named": true
         }
       ]
     }
@@ -4808,6 +4943,45 @@
       "multiple": false,
       "required": false,
       "types": [
+        {
+          "type": "pat_wildcard",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pattern",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "pat_array",
+          "named": true
+        },
+        {
+          "type": "pat_as",
+          "named": true
+        },
+        {
+          "type": "pat_literal",
+          "named": true
+        },
+        {
+          "type": "pat_name",
+          "named": true
+        },
+        {
+          "type": "pat_record",
+          "named": true
+        },
+        {
+          "type": "pat_tuple",
+          "named": true
+        },
         {
           "type": "pat_wildcard",
           "named": true
@@ -4940,6 +5114,10 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
@@ -5002,6 +5180,10 @@
       "required": true,
       "types": [
         {
+          "type": "comma",
+          "named": true
+        },
+        {
           "type": "pragma_arg",
           "named": true
         },
@@ -5015,7 +5197,37 @@
   {
     "type": "pragma_arg",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "constructor",
+          "named": true
+        },
+        {
+          "type": "constructor_operator",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "pragma_name",
@@ -5157,7 +5369,15 @@
       "required": true,
       "types": [
         {
+          "type": "annotated_type_variable",
+          "named": true
+        },
+        {
           "type": "record_body",
+          "named": true
+        },
+        {
+          "type": "type_variable",
           "named": true
         },
         {
@@ -5260,6 +5480,10 @@
           "named": true
         },
         {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "qualified_operator",
           "named": true
         },
@@ -5293,10 +5517,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -5408,6 +5628,14 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "qualified_variable",
           "named": true
         },
@@ -5445,10 +5673,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -5547,6 +5771,14 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
@@ -5577,20 +5809,16 @@
         {
           "type": "wildcard",
           "named": true
-        },
-        {
-          "type": "world_type",
-          "named": true
         }
       ]
     }
   },
   {
-    "type": "search_option",
+    "type": "search_options",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -5648,6 +5876,10 @@
           "named": true
         },
         {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "totality",
           "named": true
         },
@@ -5677,10 +5909,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -5783,6 +6011,14 @@
           "named": true
         },
         {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "record_accessor",
           "named": true
         },
@@ -5812,10 +6048,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -5848,6 +6080,10 @@
           "named": true
         },
         {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "type_braces",
           "named": true
         },
@@ -5861,10 +6097,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -5899,6 +6131,10 @@
           "named": true
         },
         {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "type_apply",
           "named": true
         },
@@ -5920,10 +6156,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -5954,6 +6186,10 @@
           "named": true
         },
         {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "type_apply",
           "named": true
         },
@@ -5975,10 +6211,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -6028,6 +6260,10 @@
           "named": true
         },
         {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "type_apply",
           "named": true
         },
@@ -6049,10 +6285,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -6079,6 +6311,10 @@
           "named": true
         },
         {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
           "type": "type_apply",
           "named": true
         },
@@ -6100,10 +6336,6 @@
         },
         {
           "type": "wildcard",
-          "named": true
-        },
-        {
-          "type": "world_type",
           "named": true
         }
       ]
@@ -6350,6 +6582,10 @@
     "named": false
   },
   {
+    "type": "external",
+    "named": false
+  },
+  {
     "type": "forall",
     "named": false
   },
@@ -6364,6 +6600,10 @@
   {
     "type": "import",
     "named": false
+  },
+  {
+    "type": "impossible",
+    "named": true
   },
   {
     "type": "in",
@@ -6422,6 +6662,22 @@
     "named": false
   },
   {
+    "type": "pragma_inline",
+    "named": true
+  },
+  {
+    "type": "pragma_search",
+    "named": true
+  },
+  {
+    "type": "pragma_tcinline",
+    "named": true
+  },
+  {
+    "type": "pragma_world",
+    "named": true
+  },
+  {
     "type": "private",
     "named": false
   },
@@ -6472,10 +6728,6 @@
   {
     "type": "with",
     "named": false
-  },
-  {
-    "type": "world_type",
-    "named": true
   },
   {
     "type": "{",
