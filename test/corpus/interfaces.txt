@@ -199,8 +199,8 @@ Named Implementations 1
 
 (idris
   (implementation
-    (implementation_name)
     (implementation_head
+      (implementation_name)
       (interface_name)
       (type_name))
     (implementation_body
@@ -235,8 +235,8 @@ Named Implementations 3
 
 (idris
   (implementation
-    (implementation_name)
     (implementation_head
+      (implementation_name)
       (interface_name)
       (type_name)
       (using
@@ -276,6 +276,79 @@ Cast Char Nat where
       (type_apply
         (type_name)
         (type_name)))
+    (implementation_body
+      (where))))
+
+================================================================================
+Implementation with constriants
+================================================================================
+
+public export
+[Reverse] (fwd : Ord a) => Ord a where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (implementation
+    (implementation_head
+      (visibility)
+      (implementation_name)
+      (constraints
+        (constraint
+          (annotated_type_variable
+            (type_variable)
+            (type_apply
+              (type_name)
+              (type_name
+                (type_variable))))))
+      (interface_name)
+      (type_name
+        (type_variable)))
+    (implementation_body
+      (where))))
+
+================================================================================
+Implementation with more constriants
+================================================================================
+
+public export
+[Compose] (l : Applicative f) => (r : Applicative g) => Applicative (f . g)
+  using Functor.Compose where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (implementation
+    (implementation_head
+      (visibility)
+      (implementation_name)
+      (constraints
+        (constraint
+          (annotated_type_variable
+            (type_variable)
+            (type_apply
+              (type_name)
+              (type_name
+                (type_variable))))))
+      (constraints
+        (constraint
+          (annotated_type_variable
+            (type_variable)
+            (type_apply
+              (type_name)
+              (type_name
+                (type_variable))))))
+      (interface_name)
+      (type_parens
+        (type_infix
+          (type_name
+            (type_variable))
+          (operator)
+          (type_name
+            (type_variable))))
+      (using
+        (implementation_name
+          (module))))
     (implementation_body
       (where))))
 

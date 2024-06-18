@@ -1,4 +1,4 @@
-const { parens, sep1 } = require("./util");
+const { parens, bracket, sep1 } = require("./util");
 
 module.exports = {
 
@@ -6,7 +6,10 @@ module.exports = {
 
   interface_name: $ => alias($._qtyconid, ''),
 
-  constraint: $ => seq($.interface_name, repeat($._type)),
+  constraint: $ => choice(
+    seq($.interface_name, repeat($._type)),
+    $.annotated_type_variable,
+  ),
 
   constraints: $ =>
     choice(
@@ -26,7 +29,7 @@ module.exports = {
 
   interface_head: $ =>
     seq(
-      optional(seq($.constraints, $._rcarrow)),
+      repeat(seq($.constraints, $._rcarrow)),
       field('name', $.interface_name),
       repeat($._tyvar),
       optional($.determining_params)
@@ -57,7 +60,8 @@ module.exports = {
   implementation_head: $ =>
     seq(
       optional($.visibility),
-      optional(seq($.constraints, $._rcarrow)),
+      optional(brackets($.implementation_name)),
+      repeat(seq($.constraints, $._rcarrow)),
       $.interface_name,
       repeat($._type),
       optional($.using),
@@ -65,18 +69,19 @@ module.exports = {
 
   using: $ => seq('using', $.implementation_name),
 
-  _implementation_name: $ =>
-    brackets(
-      alias(choice($._varid, $._conid), $.implementation_name),
-    ),
+  implementation_name: $ => choice(
+    $._qualified_implementation_name,
+    $._implementation_name,
+  ),
 
-  implementation_name: $ => choice($._varid, $._conid), 
+  _implementation_name: $ => choice($._varid, $._conid), 
+
+  _qualified_implementation_name: $ => qualified($, $._implementation_name),
 
   implementation_body: $ => where($, $._decl),
 
   _decl_implementation: $ =>
     seq(
-      optional($._implementation_name),
       $.implementation_head,
       optional($.implementation_body),
     ),

@@ -167,6 +167,11 @@ module.exports = grammar({
     [$.constructor, $._fun_name],
 
     /**
+     * Implementation constraints conflicts.
+     */
+    [$.variable, $.type_variable],
+
+    /**
      * Type names and class names both alias `$.constructor`.
      */
     [$.type_name, $.interface_head],
@@ -175,6 +180,7 @@ module.exports = grammar({
      * Same as above, but for operators.
      */
     [$.operator, $.constructor_operator],
+
 
     /**
      * What a `forall` binds to is ambiguous from the parser's POV:
