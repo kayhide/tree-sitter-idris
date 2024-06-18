@@ -257,6 +257,7 @@ module.exports = {
     $.exp_section_right,
     alias($.literal, $.exp_literal),
     $.wildcard,
+    $.pragma_search,
   ),
 
   _aexp: $ => choice(

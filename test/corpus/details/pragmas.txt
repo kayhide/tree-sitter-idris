@@ -9,10 +9,11 @@ Pragma default
 (idris
   (pragma
     (pragma_name)
-    (pragma_arg)))
+    (pragma_arg
+      (variable))))
 
 ================================================================================
-Pragma inline
+Pragma inline 1
 ================================================================================
 
 %inline -- %unsafe
@@ -20,9 +21,87 @@ Pragma inline
 --------------------------------------------------------------------------------
 
 (idris
-  (pragma
-    (pragma_name))
-  (comment))
+  (pragma_inline)
+  (comment)
+  (empty_file))
+
+================================================================================
+Pragma inline 2
+================================================================================
+
+public export %inline -- %unsafe
+assert_linear : (1 f : a -> b) -> (1 val : a) -> b
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (visibility)
+    (pragma_inline)
+    (comment)
+    (variable)
+    (type_infix
+      (type_name
+        (annotated_type_variable
+          (quantity)
+          (type_variable)
+          (type_infix
+            (type_name
+              (type_variable))
+            (operator)
+            (type_name
+              (type_variable)))))
+      (operator)
+      (type_infix
+        (type_name
+          (annotated_type_variable
+            (quantity)
+            (type_variable)
+            (type_name
+              (type_variable))))
+        (operator)
+        (type_name
+          (type_variable))))))
+
+================================================================================
+Pragma inline 3
+================================================================================
+
+public export %inline %tcinline
+(.) : (b -> c) -> (a -> b) -> a -> c
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (visibility)
+    (pragma_inline)
+    (pragma_tcinline)
+    (operator)
+    (type_infix
+      (type_parens
+        (type_infix
+          (type_name
+            (type_variable))
+          (operator)
+          (type_name
+            (type_variable))))
+      (operator)
+      (type_infix
+        (type_parens
+          (type_infix
+            (type_name
+              (type_variable))
+            (operator)
+            (type_name
+              (type_variable))))
+        (operator)
+        (type_infix
+          (type_name
+            (type_variable))
+          (operator)
+          (type_name
+            (type_variable)))))))
 
 ================================================================================
 Pragma pair
@@ -35,12 +114,15 @@ Pragma pair
 (idris
   (pragma
     (pragma_name)
-    (pragma_arg)
-    (pragma_arg)
-    (pragma_arg)))
+    (pragma_arg
+      (constructor))
+    (pragma_arg
+      (variable))
+    (pragma_arg
+      (variable))))
 
 ================================================================================
-Pragma name
+Pragma name 1
 ================================================================================
 
 %name Equal prf
@@ -50,5 +132,85 @@ Pragma name
 (idris
   (pragma
     (pragma_name)
-    (pragma_arg)
-    (pragma_arg)))
+    (pragma_arg
+      (constructor))
+    (pragma_arg
+      (variable))))
+
+================================================================================
+Pragma name 2
+================================================================================
+
+%name List xs, ys, zs
+
+--------------------------------------------------------------------------------
+
+(idris
+  (pragma
+    (pragma_name)
+    (pragma_arg
+      (constructor))
+    (pragma_arg
+      (variable))
+    (comma)
+    (pragma_arg
+      (variable))
+    (comma)
+    (pragma_arg
+      (variable))))
+
+================================================================================
+Pragma search
+================================================================================
+
+defaultString = %search
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (variable)
+    (pragma_search)))
+
+================================================================================
+Pragma foreign
+================================================================================
+
+%foreign "C:idris2_isNull, libidris2_support, idris_support.h"
+         "javascript:lambda:x=>x===undefined||x===null?1:0"
+
+--------------------------------------------------------------------------------
+
+(idris
+  (pragma
+    (pragma_name)
+    (pragma_arg
+      (literal
+        (string)))
+    (pragma_arg
+      (literal
+        (string)))))
+
+================================================================================
+Pragma foreign
+================================================================================
+
+%allow_overloads pure
+%allow_overloads (<*)
+%allow_overloads (*>)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (pragma
+    (pragma_name)
+    (pragma_arg
+      (variable)))
+  (pragma
+    (pragma_name)
+    (pragma_arg
+      (operator)))
+  (pragma
+    (pragma_name)
+    (pragma_arg
+      (operator))))

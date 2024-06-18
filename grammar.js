@@ -23,6 +23,8 @@ module.exports = grammar({
     /\r/,
     $.cpp,
     $.comment,
+    $.pragma_inline,
+    $.pragma_tcinline,
   ],
 
   /**

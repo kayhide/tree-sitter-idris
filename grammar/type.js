@@ -38,8 +38,6 @@ module.exports = {
       alias($._qtyconid, ""),
     ),
 
-  world_type: _ => '%World',
-
   quantity: _ => choice('0', '1'),
 
   auto: _ => 'auto',
@@ -90,10 +88,10 @@ module.exports = {
       $.hole,
       $.wildcard,
       $.literal,
-      $.world_type,
       $.type_name,
       $.type_parens,
       $.type_braces,
+      $.pragma_world,
     ),
 
   /**
