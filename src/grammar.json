@@ -543,6 +543,19 @@
         }
       ]
     },
+    "tuple_operator": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "ALIAS",
+        "content": {
+          "type": "SYMBOL",
+          "name": "comma"
+        },
+        "named": false,
+        "value": ""
+      }
+    },
     "_q_op": {
       "type": "CHOICE",
       "members": [
@@ -1759,41 +1772,29 @@
           "value": "("
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_exp"
-                },
-                {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "comma"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "_exp"
-                      }
-                    ]
-                  }
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_exp"
         },
         {
           "type": "STRING",
           "value": ")"
+        }
+      ]
+    },
+    "exp_idiom": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "[|"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_exp"
+        },
+        {
+          "type": "STRING",
+          "value": "|]"
         }
       ]
     },
@@ -1881,8 +1882,17 @@
           "value": "@{"
         },
         {
-          "type": "SYMBOL",
-          "name": "_varid"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "implementation_name"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "pragma_search"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -1941,6 +1951,60 @@
             {
               "type": "SYMBOL",
               "name": "exp_ticked"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "exp_tuple": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "_exp_infix"
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "tuple_operator"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_exp"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             }
           ]
         },
@@ -2953,6 +3017,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "exp_idiom"
+        },
+        {
+          "type": "SYMBOL",
           "name": "exp_array"
         },
         {
@@ -2982,6 +3050,10 @@
         {
           "type": "SYMBOL",
           "name": "exp_section_right"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "exp_tuple"
         },
         {
           "type": "ALIAS",
@@ -3362,7 +3434,7 @@
                     "members": [
                       {
                         "type": "SYMBOL",
-                        "name": "comma"
+                        "name": "tuple_operator"
                       },
                       {
                         "type": "SYMBOL",
@@ -5798,10 +5870,6 @@
     [
       "exp_array",
       "pat_array"
-    ],
-    [
-      "exp_parens",
-      "pat_tuple"
     ],
     [
       "_minus",
