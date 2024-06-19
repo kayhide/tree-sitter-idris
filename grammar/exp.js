@@ -48,7 +48,11 @@ module.exports = {
 
   exp_implicit_arg: $ => braces(seq($._var, '=', $._exp)),
 
-  exp_explicit_impl: $ => seq('@{', $._varid, '}'),
+  exp_explicit_impl: $ => seq(
+    '@{', 
+    choice($.implementation_name, $.pragma_search),
+    '}'
+  ),
 
   // ----- Operator sections --------------------------------------------------
 

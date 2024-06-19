@@ -160,7 +160,7 @@ Pragma name 2
       (variable))))
 
 ================================================================================
-Pragma search
+Pragma search 1
 ================================================================================
 
 defaultString = %search
@@ -171,6 +171,25 @@ defaultString = %search
   (function
     (variable)
     (pragma_search)))
+
+================================================================================
+Pragma search 2
+================================================================================
+
+any = foldMap @{%search} @{Any}
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (variable)
+    (exp_apply
+      (exp_name
+        (variable))
+      (exp_explicit_impl
+        (pragma_search))
+      (exp_explicit_impl
+        (implementation_name)))))
 
 ================================================================================
 Pragma foreign

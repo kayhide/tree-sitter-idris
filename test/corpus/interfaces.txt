@@ -210,25 +210,6 @@ Named Implementations 1
 Named Implementations 2
 ================================================================================
 
-_ = sort @{myord} xs
-
---------------------------------------------------------------------------------
-
-(idris
-  (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_apply
-      (exp_name
-        (variable))
-      (exp_explicit_impl)
-      (exp_name
-        (variable)))))
-
-================================================================================
-Named Implementations 3
-================================================================================
-
 [PlusNatMonoid] Monoid Nat using PlusNatSemi where
 
 --------------------------------------------------------------------------------
@@ -243,6 +224,47 @@ Named Implementations 3
         (implementation_name)))
     (implementation_body
       (where))))
+
+================================================================================
+Explicit arguments 1
+================================================================================
+
+_ = sort @{myord} xs
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (pat_wildcard
+      (pat_wildcard))
+    (exp_apply
+      (exp_name
+        (variable))
+      (exp_explicit_impl
+        (implementation_name))
+      (exp_name
+        (variable)))))
+
+================================================================================
+Explicit arguments 2
+================================================================================
+
+and = force . concat @{All}
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (variable)
+    (exp_infix
+      (exp_name
+        (variable))
+      (operator)
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_explicit_impl
+          (implementation_name))))))
 
 ================================================================================
 Empty implementation
