@@ -42,15 +42,11 @@ module.exports = {
   // Parens or tupels
   exp_parens: $ => parens(sep($.comma, $._exp)),
 
-  // ----- Arrays -------------------------------------------------------------
+  exp_idiom: $ => idiom_brackets($._exp),
 
   exp_array: $ => brackets(sep($.comma, $._exp)),
 
-  // ----- Implicit arguments -------------------------------------------------
-
   exp_implicit_arg: $ => braces(seq($._var, '=', $._exp)),
-
-  // ----- Explicit implementation --------------------------------------------
 
   exp_explicit_impl: $ => seq('@{', $._varid, '}'),
 
@@ -247,6 +243,7 @@ module.exports = {
     $.hole,
     $.exp_name,
     $.exp_parens,
+    $.exp_idiom,
     $.exp_array,
     $.exp_implicit_arg,
     $.exp_explicit_impl,
