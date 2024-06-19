@@ -39,8 +39,7 @@ module.exports = {
 
   exp_negation: $ => seq('-', $._aexp),
 
-  // Parens or tupels
-  exp_parens: $ => parens(sep($.comma, $._exp)),
+  exp_parens: $ => parens($._exp),
 
   exp_idiom: $ => idiom_brackets($._exp),
 
@@ -64,6 +63,20 @@ module.exports = {
   exp_section_right: $ => parens(
     $._exp_infix,
     choice($._q_op, $.exp_ticked),
+  ),
+
+  // ----- Tuples or tuple secions --------------------------------------------
+
+  exp_tuple: $ => parens(
+    seq(
+      repeat1(
+        seq(
+          optional($._exp_infix),
+          $.tuple_operator,
+        ),
+      ),
+      optional($._exp),
+    ),
   ),
 
   // ----- Records ------------------------------------------------------------
@@ -256,6 +269,7 @@ module.exports = {
     $.exp_record_access,
     $.exp_section_left,
     $.exp_section_right,
+    $.exp_tuple,
     alias($.literal, $.exp_literal),
     $.wildcard,
     $.pragma_search,

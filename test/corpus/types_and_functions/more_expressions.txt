@@ -271,13 +271,13 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
     (exp_array
       (exp_infix
         (exp_infix
-          (exp_parens
+          (exp_tuple
             (exp_name
               (variable))
-            (comma)
+            (tuple_operator)
             (exp_name
               (variable))
-            (comma)
+            (tuple_operator)
             (exp_name
               (variable)))
           (operator)
@@ -371,13 +371,13 @@ splitAt c x = case break (== c) x of
           (pat_tuple
             (pat_name
               (variable))
-            (comma)
+            (tuple_operator)
             (pat_name
               (variable)))
-          (exp_parens
+          (exp_tuple
             (exp_name
               (variable))
-            (comma)
+            (tuple_operator)
             (exp_apply
               (exp_name
                 (variable))

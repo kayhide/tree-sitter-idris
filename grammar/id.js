@@ -28,6 +28,9 @@ module.exports = {
   _operator_or_minus: $ => choice($.operator, $._minus),
   qualified_operator: $ => qualified($, $._operator_or_minus),
 
+  // Tuple operator, only available inside parens
+  tuple_operator: $ => prec.right(alias($.comma, '')),
+
   // Qualified or unqualified operator, with and without `-`.
   _q_op: $ => choice($.qualified_operator, $._operator_or_minus),
   _q_op_nominus: $ => choice($.qualified_operator, $.operator),

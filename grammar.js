@@ -130,7 +130,6 @@ module.exports = grammar({
     [$._aexp_projection, $.pat_wildcard],
     [$.pat_name, $._q_op],
     [$.exp_array, $.pat_array],
-    [$.exp_parens, $.pat_tuple],
     [$._minus, $.exp_negation],
     [$._minus, $.exp_negation, $.pat_negation],
     [$.record_update, $.pat_fields],

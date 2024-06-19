@@ -147,10 +147,10 @@ fred = ("Fred", 42)
       (type_name)))
   (function
     (variable)
-    (exp_parens
+    (exp_tuple
       (exp_literal
         (string))
-      (comma)
+      (tuple_operator)
       (exp_literal
         (integer)))))
 
@@ -174,13 +174,13 @@ jim = ("Jim", 25, "Cambridge")
       (type_name)))
   (function
     (variable)
-    (exp_parens
+    (exp_tuple
       (exp_literal
         (string))
-      (comma)
+      (tuple_operator)
       (exp_literal
         (integer))
-      (comma)
+      (tuple_operator)
       (exp_literal
         (string)))))
 

@@ -23,7 +23,7 @@ module.exports = {
 
   pat_wildcard: $ => alias($.wildcard, $.pat_wildcard),
 
-  pat_tuple: $ => parens(sep($.comma, $._typed_pat)),
+  pat_tuple: $ => parens(sep($.tuple_operator, $._typed_pat)),
 
   pat_array: $ => brackets(sep($.comma, $._typed_pat)),
 
