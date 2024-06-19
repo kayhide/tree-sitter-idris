@@ -109,6 +109,9 @@
   "infix"
   "infixl"
   "infixr"
+  (visibility)
+  (totality)
+  (quantity)
 ] @keyword
 
 (hole) @label
