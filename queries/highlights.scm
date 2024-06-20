@@ -102,6 +102,7 @@
   "interface"
   "using"
   "data"
+  "record"
   "as"
   "do"
   "forall"
@@ -149,8 +150,13 @@
 (signature
   name: (variable) @type)
 
+(type_name) @type
+
 (function
   name: (variable) @function)
 
 (interface_head
   name: (interface_name) @type)
+
+(implementation_head
+  (interface_name) @type)
