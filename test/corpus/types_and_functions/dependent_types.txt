@@ -22,11 +22,13 @@ mkSingle False = []
         (type_name
           (type_variable)))))
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (constructor)))
-    (exp_array)))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (constructor))))
+    (rhs
+      (exp_array))))
 
 ================================================================================
 Implicit Arguments 1
@@ -112,30 +114,31 @@ _ = index {a=Int} {n=2} FZ (2 :: 3 :: Nil)
 
 (idris
   (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_apply
-      (exp_name
-        (variable))
-      (exp_implicit_arg
-        (variable)
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_apply
         (exp_name
-          (constructor)))
-      (exp_implicit_arg
-        (variable)
-        (exp_literal
-          (integer)))
-      (exp_name
-        (constructor))
-      (exp_parens
-        (exp_literal
-          (integer))
-        (operator)
-        (exp_literal
-          (integer))
-        (operator)
+          (variable))
+        (exp_implicit_arg
+          (variable)
+          (exp_name
+            (constructor)))
+        (exp_implicit_arg
+          (variable)
+          (exp_literal
+            (integer)))
         (exp_name
-          (constructor))))))
+          (constructor))
+        (exp_parens
+          (exp_literal
+            (integer))
+          (operator)
+          (exp_literal
+            (integer))
+          (operator)
+          (exp_name
+            (constructor)))))))
 
 ================================================================================
 Implicit Arguments 4

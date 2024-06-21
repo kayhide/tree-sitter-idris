@@ -9,24 +9,28 @@ mirror xs = let xs' = reverse xs in
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (exp_apply
-            (exp_name
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (function
+            (lhs
               (variable))
-            (exp_name
-              (variable)))))
-      (exp_name
-        (variable))
-      (operator)
-      (exp_name
-        (variable)))))
+            (rhs
+              (exp_apply
+                (exp_name
+                  (variable))
+                (exp_name
+                  (variable))))))
+        (exp_name
+          (variable))
+        (operator)
+        (exp_name
+          (variable))))))
 
 ================================================================================
 let bindings 2
@@ -39,35 +43,39 @@ showPerson p = let MkPerson name age = p in
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (patterns
-            (pat_name
-              (variable))
-            (pat_name
-              (variable)))
-          (exp_name
-            (variable))))
-      (exp_name
-        (variable))
-      (operator)
-      (exp_literal
-        (string))
-      (operator)
-      (exp_apply
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (function
+            (lhs
+              (variable)
+              (patterns
+                (pat_name
+                  (variable))
+                (pat_name
+                  (variable))))
+            (rhs
+              (exp_name
+                (variable)))))
         (exp_name
           (variable))
-        (exp_name
-          (variable)))
-      (operator)
-      (exp_literal
-        (string)))))
+        (operator)
+        (exp_literal
+          (string))
+        (operator)
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_name
+            (variable)))
+        (operator)
+        (exp_literal
+          (string))))))
 
 ================================================================================
 let bindings 3
@@ -80,30 +88,32 @@ mirror xs = let xs' : List a = reverse xs in
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (pat_typed
-            (pat_name
-              (variable))
-            (type_apply
-              (type_name)
-              (type_name
-                (type_variable))))
-          (exp_apply
-            (exp_name
-              (variable))
-            (exp_name
-              (variable)))))
-      (exp_name
-        (variable))
-      (operator)
-      (exp_name
-        (variable)))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (signature
+            (variable)
+            (type_infix
+              (type_apply
+                (type_name)
+                (type_name
+                  (type_variable)))
+              (operator)
+              (type_apply
+                (type_name
+                  (type_variable))
+                (type_name
+                  (type_variable))))))
+        (exp_name
+          (variable))
+        (operator)
+        (exp_name
+          (variable))))))
 
 ================================================================================
 let bindings 4
@@ -115,24 +125,27 @@ Diag v = let ty : Type := v = v in ty
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (pat_typed
-            (pat_name
-              (variable))
-            (type_name))
-          (exp_name
-            (variable))
-          (operator)
-          (exp_name
-            (variable))))
-      (exp_name
-        (variable)))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (signature
+            (variable)
+            (type_infix
+              (type_name)
+              (operator)
+              (type_infix
+                (type_name
+                  (type_variable))
+                (operator)
+                (type_name
+                  (type_variable))))))
+        (exp_name
+          (variable))))))
 
 ================================================================================
 let bindings 5
@@ -146,46 +159,50 @@ foldMap f = let fo : m -> a -> m
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (signature
-          (variable)
-          (type_infix
-            (type_name
-              (type_variable))
-            (operator)
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (signature
+            (variable)
             (type_infix
               (type_name
                 (type_variable))
               (operator)
-              (type_name
-                (type_variable)))))
-        (function
-          (variable)
-          (patterns
-            (pat_name
-              (variable))
-            (pat_name
-              (variable)))
+              (type_infix
+                (type_name
+                  (type_variable))
+                (operator)
+                (type_name
+                  (type_variable)))))
+          (function
+            (lhs
+              (variable)
+              (patterns
+                (pat_name
+                  (variable))
+                (pat_name
+                  (variable))))
+            (rhs
+              (exp_name
+                (variable))
+              (operator)
+              (exp_apply
+                (exp_name
+                  (variable))
+                (exp_name
+                  (variable))))))
+        (exp_apply
           (exp_name
             (variable))
-          (operator)
-          (exp_apply
-            (exp_name
-              (variable))
-            (exp_name
-              (variable)))))
-      (exp_apply
-        (exp_name
-          (variable))
-        (exp_name
-          (variable))
-        (exp_name
-          (variable))))))
+          (exp_name
+            (variable))
+          (exp_name
+            (variable)))))))
 
 ================================================================================
 let bindings 6
@@ -200,50 +217,56 @@ foldMap f = let fo : m -> a -> m
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (signature
-          (variable)
-          (type_infix
-            (type_name
-              (type_variable))
-            (operator)
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (signature
+            (variable)
             (type_infix
               (type_name
                 (type_variable))
               (operator)
-              (type_name
-                (type_variable)))))
-        (function
-          (variable)
-          (patterns
-            (pat_name
+              (type_infix
+                (type_name
+                  (type_variable))
+                (operator)
+                (type_name
+                  (type_variable)))))
+          (function
+            (lhs
+              (variable)
+              (patterns
+                (pat_name
+                  (variable))
+                (pat_name
+                  (variable))))
+            (rhs
+              (exp_name
+                (variable))
+              (operator)
+              (exp_apply
+                (exp_name
+                  (variable))
+                (exp_name
+                  (variable)))))
+          (function
+            (lhs
               (variable))
-            (pat_name
-              (variable)))
+            (rhs
+              (exp_name
+                (variable)))))
+        (exp_apply
           (exp_name
             (variable))
-          (operator)
-          (exp_apply
-            (exp_name
-              (variable))
-            (exp_name
-              (variable))))
-        (function
-          (variable)
           (exp_name
-            (variable))))
-      (exp_apply
-        (exp_name
-          (variable))
-        (exp_name
-          (variable))
-        (exp_name
-          (variable))))))
+            (variable))
+          (exp_name
+            (variable)))))))
 
 ================================================================================
 List comprehensions
@@ -256,68 +279,70 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_array
-      (exp_tuple
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_array
+        (exp_tuple
+          (exp_name
+            (variable))
+          (tuple_operator)
+          (exp_name
+            (variable))
+          (tuple_operator)
+          (exp_name
+            (variable)))
+        (operator)
         (exp_name
           (variable))
-        (tuple_operator)
+        (operator)
+        (exp_array
+          (exp_literal
+            (integer))
+          (operator)
+          (exp_name
+            (variable)))
+        (comma)
         (exp_name
           (variable))
-        (tuple_operator)
+        (operator)
+        (exp_array
+          (exp_literal
+            (integer))
+          (operator)
+          (exp_name
+            (variable)))
+        (comma)
         (exp_name
-          (variable)))
-      (operator)
-      (exp_name
-        (variable))
-      (operator)
-      (exp_array
-        (exp_literal
-          (integer))
+          (variable))
+        (operator)
+        (exp_array
+          (exp_literal
+            (integer))
+          (operator)
+          (exp_name
+            (variable)))
+        (comma)
+        (exp_name
+          (variable))
         (operator)
         (exp_name
-          (variable)))
-      (comma)
-      (exp_name
-        (variable))
-      (operator)
-      (exp_array
-        (exp_literal
-          (integer))
+          (variable))
         (operator)
         (exp_name
-          (variable)))
-      (comma)
-      (exp_name
-        (variable))
-      (operator)
-      (exp_array
-        (exp_literal
-          (integer))
+          (variable))
         (operator)
         (exp_name
-          (variable)))
-      (comma)
-      (exp_name
-        (variable))
-      (operator)
-      (exp_name
-        (variable))
-      (operator)
-      (exp_name
-        (variable))
-      (operator)
-      (exp_name
-        (variable))
-      (operator)
-      (exp_name
-        (variable))
-      (operator)
-      (exp_name
-        (variable)))))
+          (variable))
+        (operator)
+        (exp_name
+          (variable))
+        (operator)
+        (exp_name
+          (variable))))))
 
 ================================================================================
 case expressions 1
@@ -330,39 +355,41 @@ splitAt c x = case break (== c) x of
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable))
-      (pat_name
-        (variable)))
-    (exp_case
-      (exp_apply
-        (exp_name
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
           (variable))
-        (exp_section_left
-          (operator)
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_case
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_section_left
+            (operator)
+            (exp_name
+              (variable)))
           (exp_name
             (variable)))
-        (exp_name
-          (variable)))
-      (alts
-        (alt
-          (pat_tuple
-            (pat_name
-              (variable))
-            (tuple_operator)
-            (pat_name
-              (variable)))
-          (exp_tuple
-            (exp_name
-              (variable))
-            (tuple_operator)
-            (exp_apply
+        (alts
+          (alt
+            (pat_tuple
+              (pat_name
+                (variable))
+              (tuple_operator)
+              (pat_name
+                (variable)))
+            (exp_tuple
               (exp_name
                 (variable))
-              (exp_name
-                (variable)))))))))
+              (tuple_operator)
+              (exp_apply
+                (exp_name
+                  (variable))
+                (exp_name
+                  (variable))))))))))
 
 ================================================================================
 case expressions 2
@@ -376,36 +403,38 @@ lookup_default i xs def = case list_lookup i xs of
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable))
-      (pat_name
-        (variable))
-      (pat_name
-        (variable)))
-    (exp_case
-      (exp_apply
-        (exp_name
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
           (variable))
-        (exp_name
+        (pat_name
           (variable))
-        (exp_name
-          (variable)))
-      (alts
-        (alt
-          (pat_name
-            (constructor))
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_case
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_name
+            (variable))
           (exp_name
             (variable)))
-        (alt
-          (pat_apply
+        (alts
+          (alt
             (pat_name
               (constructor))
-            (pat_name
+            (exp_name
               (variable)))
-          (exp_name
-            (variable)))))))
+          (alt
+            (pat_apply
+              (pat_name
+                (constructor))
+              (pat_name
+                (variable)))
+            (exp_name
+              (variable))))))))
 
 ================================================================================
 Lambda functions
@@ -417,31 +446,33 @@ on f g = \x, y => g x `f` g y
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable))
-      (pat_name
-        (variable)))
-    (exp_lambda
-      (pat_name
-        (variable))
-      (comma)
-      (pat_name
-        (variable))
-      (exp_apply
-        (exp_name
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
           (variable))
-        (exp_name
-          (variable)))
-      (exp_ticked
-        (exp_name
-          (variable)))
-      (exp_apply
-        (exp_name
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_lambda
+        (pat_name
           (variable))
-        (exp_name
-          (variable))))))
+        (comma)
+        (pat_name
+          (variable))
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_name
+            (variable)))
+        (exp_ticked
+          (exp_name
+            (variable)))
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_name
+            (variable)))))))
 
 ================================================================================
 Idiom brackets
@@ -453,19 +484,21 @@ fun <*> x = [| fun <*> x |]
 
 (idris
   (function
-    (pattern
-      (pat_name
-        (variable)))
-    (operator)
-    (pattern
-      (pat_name
-        (variable)))
-    (exp_idiom
-      (exp_name
-        (variable))
+    (lhs
+      (pattern
+        (pat_name
+          (variable)))
       (operator)
-      (exp_name
-        (variable)))))
+      (pattern
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_idiom
+        (exp_name
+          (variable))
+        (operator)
+        (exp_name
+          (variable))))))
 
 ================================================================================
 !-notation 1
@@ -477,23 +510,25 @@ m_add x y = pure (!x + !y)
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable))
-      (pat_name
-        (variable)))
-    (exp_apply
-      (exp_name
-        (variable))
-      (exp_parens
-        (exp_name
-          (bang)
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
           (variable))
-        (operator)
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_apply
         (exp_name
-          (bang)
-          (variable))))))
+          (variable))
+        (exp_parens
+          (exp_name
+            (bang)
+            (variable))
+          (operator)
+          (exp_name
+            (bang)
+            (variable)))))))
 
 ================================================================================
 !-notation 2
@@ -505,29 +540,32 @@ _ = let y = 94 in f !(g !(print y) !x)
 
 (idris
   (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (exp_literal
-            (integer))))
-      (exp_apply
-        (exp_name
-          (variable))
-        (exp_parens
-          (bang)
-          (exp_apply
-            (exp_name
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_let_in
+        (declarations
+          (function
+            (lhs
               (variable))
-            (exp_parens
-              (bang)
-              (exp_apply
-                (exp_name
-                  (variable))
-                (exp_name
-                  (variable))))
-            (exp_name
-              (bang)
-              (variable))))))))
+            (rhs
+              (exp_literal
+                (integer)))))
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_parens
+            (bang)
+            (exp_apply
+              (exp_name
+                (variable))
+              (exp_parens
+                (bang)
+                (exp_apply
+                  (exp_name
+                    (variable))
+                  (exp_name
+                    (variable))))
+              (exp_name
+                (bang)
+                (variable)))))))))

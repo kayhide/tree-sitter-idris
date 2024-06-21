@@ -43,54 +43,60 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
           (type_name
             (type_variable))))))
   (function
-    (variable)
-    (patterns
-      (pat_wildcard
-        (pat_wildcard))
-      (pat_name
-        (constructor)))
-    (exp_name
-      (constructor)))
+    (lhs
+      (variable)
+      (patterns
+        (pat_wildcard
+          (pat_wildcard))
+        (pat_name
+          (constructor))))
+    (rhs
+      (exp_name
+        (constructor))))
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (constructor))
-      (pat_tuple
-        (pat_infix
-          (pat_name
-            (variable))
-          (operator)
-          (pat_name
-            (variable)))))
-    (exp_apply
-      (exp_name
-        (constructor))
-      (exp_name
-        (variable))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (constructor))
+        (pat_tuple
+          (pat_infix
+            (pat_name
+              (variable))
+            (operator)
+            (pat_name
+              (variable))))))
+    (rhs
+      (exp_apply
+        (exp_name
+          (constructor))
+        (exp_name
+          (variable)))))
   (function
-    (variable)
-    (patterns
-      (pat_tuple
-        (pat_apply
-          (pat_name
-            (constructor))
-          (pat_name
-            (variable))))
-      (pat_tuple
-        (pat_infix
-          (pat_name
-            (variable))
-          (operator)
-          (pat_name
-            (variable)))))
-    (exp_apply
-      (exp_name
-        (variable))
-      (exp_name
-        (variable))
-      (exp_name
-        (variable)))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_tuple
+          (pat_apply
+            (pat_name
+              (constructor))
+            (pat_name
+              (variable))))
+        (pat_tuple
+          (pat_infix
+            (pat_name
+              (variable))
+            (operator)
+            (pat_name
+              (variable))))))
+    (rhs
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_name
+          (variable))
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Maybe 3
@@ -146,13 +152,15 @@ fred = ("Fred", 42)
       (comma)
       (type_name)))
   (function
-    (variable)
-    (exp_tuple
-      (exp_literal
-        (string))
-      (tuple_operator)
-      (exp_literal
-        (integer)))))
+    (lhs
+      (variable))
+    (rhs
+      (exp_tuple
+        (exp_literal
+          (string))
+        (tuple_operator)
+        (exp_literal
+          (integer))))))
 
 ================================================================================
 Tuples 2
@@ -173,16 +181,18 @@ jim = ("Jim", 25, "Cambridge")
       (comma)
       (type_name)))
   (function
-    (variable)
-    (exp_tuple
-      (exp_literal
-        (string))
-      (tuple_operator)
-      (exp_literal
-        (integer))
-      (tuple_operator)
-      (exp_literal
-        (string)))))
+    (lhs
+      (variable))
+    (rhs
+      (exp_tuple
+        (exp_literal
+          (string))
+        (tuple_operator)
+        (exp_literal
+          (integer))
+        (tuple_operator)
+        (exp_literal
+          (string))))))
 
 ================================================================================
 Dependent Pairs 1
@@ -275,17 +285,19 @@ vec = (2 ** [3, 4])
               (type_variable))
             (type_name))))))
   (function
-    (variable)
-    (exp_parens
-      (exp_literal
-        (integer))
-      (operator)
-      (exp_array
+    (lhs
+      (variable))
+    (rhs
+      (exp_parens
         (exp_literal
           (integer))
-        (comma)
-        (exp_literal
-          (integer))))))
+        (operator)
+        (exp_array
+          (exp_literal
+            (integer))
+          (comma)
+          (exp_literal
+            (integer)))))))
 
 ================================================================================
 Dependent Pairs 3
@@ -331,64 +343,68 @@ filter p (x :: xs)
               (type_name
                 (type_variable))))))))
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable))
-      (pat_name
-        (constructor)))
-    (exp_parens
-      (wildcard)
-      (operator)
-      (exp_array)))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))
+        (pat_name
+          (constructor))))
+    (rhs
+      (exp_parens
+        (wildcard)
+        (operator)
+        (exp_array))))
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable))
-      (pat_tuple
-        (pat_infix
-          (pat_name
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))
+        (pat_tuple
+          (pat_infix
+            (pat_name
+              (variable))
+            (operator)
+            (pat_name
+              (variable))))))
+    (rhs
+      (exp_case
+        (exp_apply
+          (exp_name
             (variable))
-          (operator)
-          (pat_name
-            (variable)))))
-    (exp_case
-      (exp_apply
-        (exp_name
-          (variable))
-        (exp_name
-          (variable))
-        (exp_name
-          (variable)))
-      (alts
-        (alt
-          (pat_tuple
-            (pat_infix
-              (pat_wildcard
-                (pat_wildcard))
-              (operator)
-              (pat_name
-                (variable))))
-          (exp_if
-            (exp_apply
-              (exp_name
-                (variable))
-              (exp_name
-                (variable)))
-            (exp_parens
-              (wildcard)
-              (operator)
-              (exp_name
-                (variable))
-              (operator)
-              (exp_name
-                (variable)))
-            (exp_parens
-              (wildcard)
-              (operator)
-              (exp_name
-                (variable)))))))))
+          (exp_name
+            (variable))
+          (exp_name
+            (variable)))
+        (alts
+          (alt
+            (pat_tuple
+              (pat_infix
+                (pat_wildcard
+                  (pat_wildcard))
+                (operator)
+                (pat_name
+                  (variable))))
+            (exp_if
+              (exp_apply
+                (exp_name
+                  (variable))
+                (exp_name
+                  (variable)))
+              (exp_parens
+                (wildcard)
+                (operator)
+                (exp_name
+                  (variable))
+                (operator)
+                (exp_name
+                  (variable)))
+              (exp_parens
+                (wildcard)
+                (operator)
+                (exp_name
+                  (variable))))))))))
 
 ================================================================================
 Records 1
@@ -432,18 +448,20 @@ fred = MkPerson "Fred" "Joe" "Bloggs" 30
     (variable)
     (type_name))
   (function
-    (variable)
-    (exp_apply
-      (exp_name
-        (constructor))
-      (exp_literal
-        (string))
-      (exp_literal
-        (string))
-      (exp_literal
-        (string))
-      (exp_literal
-        (integer)))))
+    (lhs
+      (variable))
+    (rhs
+      (exp_apply
+        (exp_name
+          (constructor))
+        (exp_literal
+          (string))
+        (exp_literal
+          (string))
+        (exp_literal
+          (string))
+        (exp_literal
+          (integer))))))
 
 ================================================================================
 Records 3
@@ -493,23 +511,25 @@ addStudent p c = { students := p :: students c } c
         (operator)
         (type_name))))
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable))
-      (pat_name
-        (variable)))
-    (record_update
-      (field_name)
-      (exp_name
-        (variable))
-      (operator)
-      (exp_apply
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))
+        (pat_name
+          (variable))))
+    (rhs
+      (record_update
+        (field_name)
         (exp_name
           (variable))
-        (exp_name
-          (variable)))
-      (variable))))
+        (operator)
+        (exp_apply
+          (exp_name
+            (variable))
+          (exp_name
+            (variable)))
+        (variable)))))
 
 ================================================================================
 Records 5
@@ -531,19 +551,21 @@ addStudent' p c = { students $= (p ::) } c
         (operator)
         (type_name))))
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable))
-      (pat_name
-        (variable)))
-    (record_update
-      (field_name)
-      (exp_section_right
-        (exp_name
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
           (variable))
-        (operator))
-      (variable))))
+        (pat_name
+          (variable))))
+    (rhs
+      (record_update
+        (field_name)
+        (exp_section_right
+          (exp_name
+            (variable))
+          (operator))
+        (variable)))))
 
 ================================================================================
 Records 6

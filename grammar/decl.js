@@ -16,17 +16,11 @@ module.exports = {
     'partial',
   ),
 
-  _funpat: $ => seq(
-    field('pattern', $._typed_pat),
-    $._funrhs,
-  ),
-
   _fun_name: $ => field('name', choice($._var, alias($._conid, $.variable))),
 
   _funrhs: $ => seq(
     choice(':=', '='),
-    field('rhs', $._exp),
-    optional(seq($.where, $.declarations)),
+    $._exp,
   ),
 
   _fun_patterns: $ => prec(1, repeat1($._apat)),
@@ -63,8 +57,13 @@ module.exports = {
   impossible: _ => 'impossible',
 
   function: $ => seq(
-    $._funlhs,
-    choice($._funrhs, $.with, $.impossible),
+    alias($._funlhs, $.lhs),
+    choice(
+      alias($._funrhs, $.rhs), 
+      $.with, 
+      $.impossible
+    ),
+    optional(seq($.where, $.declarations)),
   ),
 
   // TODO: I don't see what it has to do with functions.
@@ -88,18 +87,7 @@ module.exports = {
     $.operator_declaration,
   ),
 
-  /**
-    * In the reference, `apat` is a choice in `lpat`, but this creates a conflict:
-    * `decl` allows the lhs to be a `pat`, as in:
-    * let Just 5 = prog
-    * let a = prog
-    * Since patterns can be `variable`s, the `funpat` lhs of the second example cannot be distinguished from a `funvar`.
-    * The precedences here and in `_funlhs` solve this.
-    */
-  _decl_fun: $ => choice(
-    $.function,
-    prec.dynamic(1, alias($._funpat, $.function)),
-  ),
+  _decl_fun: $ => $.function,
 
   _decl: $ => choice(
     $._gendecl,

@@ -18,9 +18,11 @@ main = putStrLn "Hello world"
       (type_name)
       (type_parens)))
   (function
-    (variable)
-    (exp_apply
-      (exp_name
-        (variable))
-      (exp_literal
-        (string)))))
+    (lhs
+      (variable))
+    (rhs
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_literal
+          (string))))))

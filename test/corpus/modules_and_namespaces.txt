@@ -250,9 +250,11 @@ withNSInside = g where
 
 (idris
   (function
-    (variable)
-    (exp_name
+    (lhs
       (variable))
+    (rhs
+      (exp_name
+        (variable)))
     (where)
     (declarations
       (namespace

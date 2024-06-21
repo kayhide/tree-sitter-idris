@@ -115,8 +115,6 @@ module.exports = grammar({
      * The disambiguation can clearly be made from the `=`, but my impression is that the conflict check only considers
      * immediate lookahead.
      */
-    [$._fun_name, $.pat_name],
-    [$._funlhs, $.pat_wildcard],
     [$.exp_name, $._pat_constructor],
     [$.exp_name, $.pat_name],
     [$._aexp_projection, $._apat],

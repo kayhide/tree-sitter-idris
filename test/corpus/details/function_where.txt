@@ -9,18 +9,22 @@ f x = y
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_name
         (variable)))
-    (exp_name
-      (variable))
     (where)
     (declarations
       (function
-        (variable)
-        (exp_name
-          (variable))))))
+        (lhs
+          (variable))
+        (rhs
+          (exp_name
+            (variable)))))))
 
 ================================================================================
 Simple line (indent)
@@ -34,18 +38,22 @@ f x = y
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_name
         (variable)))
-    (exp_name
-      (variable))
     (where)
     (declarations
       (function
-        (variable)
-        (exp_name
-          (variable))))))
+        (lhs
+          (variable))
+        (rhs
+          (exp_name
+            (variable)))))))
 
 ================================================================================
 Single line (on the same line)
@@ -57,18 +65,22 @@ f x = y where y = x
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_name
         (variable)))
-    (exp_name
-      (variable))
     (where)
     (declarations
       (function
-        (variable)
-        (exp_name
-          (variable))))))
+        (lhs
+          (variable))
+        (rhs
+          (exp_name
+            (variable)))))))
 
 ================================================================================
 Multiline (no indent)
@@ -82,21 +94,25 @@ f x = y
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_name
         (variable)))
-    (exp_name
-      (variable))
     (where)
     (declarations
       (signature
         (variable)
         (type_name))
       (function
-        (variable)
-        (exp_name
-          (variable))))))
+        (lhs
+          (variable))
+        (rhs
+          (exp_name
+            (variable)))))))
 
 ================================================================================
 Multiline (indent)
@@ -111,21 +127,25 @@ f x = y
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_name
         (variable)))
-    (exp_name
-      (variable))
     (where)
     (declarations
       (signature
         (variable)
         (type_name))
       (function
-        (variable)
-        (exp_name
-          (variable))))))
+        (lhs
+          (variable))
+        (rhs
+          (exp_name
+            (variable)))))))
 
 ================================================================================
 Telescope single line I
@@ -137,24 +157,30 @@ f x = z where z = y where y = z
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_name
         (variable)))
-    (exp_name
-      (variable))
     (where)
     (declarations
       (function
-        (variable)
-        (exp_name
+        (lhs
           (variable))
+        (rhs
+          (exp_name
+            (variable)))
         (where)
         (declarations
           (function
-            (variable)
-            (exp_name
-              (variable))))))))
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable)))))))))
 
 ================================================================================
 Telescope single line II
@@ -167,25 +193,31 @@ f x = z where z = y
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_name
         (variable)))
-    (exp_name
-      (variable))
     (where)
     (declarations
       (function
-        (variable)
-        (exp_name
-          (variable)))))
+        (lhs
+          (variable))
+        (rhs
+          (exp_name
+            (variable))))))
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_name
-      (variable))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_name
+        (variable)))))
 
 ================================================================================
 Telescope multi line I
@@ -200,25 +232,31 @@ f x = z
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_name
         (variable)))
-    (exp_name
-      (variable))
     (where)
     (declarations
       (signature
         (variable)
         (type_name))
       (function
-        (variable)
-        (exp_name
-          (variable)))))
+        (lhs
+          (variable))
+        (rhs
+          (exp_name
+            (variable))))))
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_name
-      (variable))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_name
+        (variable)))))

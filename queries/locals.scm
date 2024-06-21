@@ -2,7 +2,8 @@
   name: (variable)) @local.definition
 
 (function
-  name: (variable)) @local.definition
+  (lhs
+    name: (variable))) @local.definition
 
 (pat_name
   (variable)) @local.definition

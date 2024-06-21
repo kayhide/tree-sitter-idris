@@ -8,14 +8,15 @@ _ = (x, y)
 
 (idris
   (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_tuple
-      (exp_name
-        (variable))
-      (tuple_operator)
-      (exp_name
-        (variable)))))
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_tuple
+        (exp_name
+          (variable))
+        (tuple_operator)
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Tuples x _
@@ -27,12 +28,13 @@ _ = (x,)
 
 (idris
   (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_tuple
-      (exp_name
-        (variable))
-      (tuple_operator))))
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_tuple
+        (exp_name
+          (variable))
+        (tuple_operator)))))
 
 ================================================================================
 Tuples _ y
@@ -44,12 +46,13 @@ _ = (, y)
 
 (idris
   (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_tuple
-      (tuple_operator)
-      (exp_name
-        (variable)))))
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_tuple
+        (tuple_operator)
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Tuples x y z
@@ -61,17 +64,18 @@ _ = (x, y, z)
 
 (idris
   (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_tuple
-      (exp_name
-        (variable))
-      (tuple_operator)
-      (exp_name
-        (variable))
-      (tuple_operator)
-      (exp_name
-        (variable)))))
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_tuple
+        (exp_name
+          (variable))
+        (tuple_operator)
+        (exp_name
+          (variable))
+        (tuple_operator)
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Tuples x y _
@@ -83,15 +87,16 @@ _ = (x, y,)
 
 (idris
   (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_tuple
-      (exp_name
-        (variable))
-      (tuple_operator)
-      (exp_name
-        (variable))
-      (tuple_operator))))
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_tuple
+        (exp_name
+          (variable))
+        (tuple_operator)
+        (exp_name
+          (variable))
+        (tuple_operator)))))
 
 ================================================================================
 Tuples x _ z
@@ -103,15 +108,16 @@ _ = (x, , z)
 
 (idris
   (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_tuple
-      (exp_name
-        (variable))
-      (tuple_operator)
-      (tuple_operator)
-      (exp_name
-        (variable)))))
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_tuple
+        (exp_name
+          (variable))
+        (tuple_operator)
+        (tuple_operator)
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Tuples _ y z
@@ -123,15 +129,16 @@ _ = (, y, z)
 
 (idris
   (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_tuple
-      (tuple_operator)
-      (exp_name
-        (variable))
-      (tuple_operator)
-      (exp_name
-        (variable)))))
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_tuple
+        (tuple_operator)
+        (exp_name
+          (variable))
+        (tuple_operator)
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Tuples x _ _
@@ -143,13 +150,14 @@ _ = (x,,)
 
 (idris
   (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_tuple
-      (exp_name
-        (variable))
-      (tuple_operator)
-      (tuple_operator))))
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_tuple
+        (exp_name
+          (variable))
+        (tuple_operator)
+        (tuple_operator)))))
 
 ================================================================================
 Tuples _ y _
@@ -161,13 +169,14 @@ _ = (, y,)
 
 (idris
   (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_tuple
-      (tuple_operator)
-      (exp_name
-        (variable))
-      (tuple_operator))))
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_tuple
+        (tuple_operator)
+        (exp_name
+          (variable))
+        (tuple_operator)))))
 
 ================================================================================
 Tuples _ _ z
@@ -179,13 +188,14 @@ _ = (,, z)
 
 (idris
   (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_tuple
-      (tuple_operator)
-      (tuple_operator)
-      (exp_name
-        (variable)))))
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_tuple
+        (tuple_operator)
+        (tuple_operator)
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Tuples _ _ _
@@ -197,8 +207,9 @@ _ = (,,)
 
 (idris
   (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_tuple
-      (tuple_operator)
-      (tuple_operator))))
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_tuple
+        (tuple_operator)
+        (tuple_operator)))))

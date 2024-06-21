@@ -17,27 +17,29 @@ greet = do
       (type_name)
       (type_parens)))
   (function
-    (variable)
-    (exp_do
-      (statement
-        (exp_apply
-          (exp_name
-            (variable))
-          (exp_literal
-            (string))))
-      (statement
-        (bind_pattern
-          (pat_name
-            (variable))
-          (exp_name
-            (variable))))
-      (statement
-        (exp_apply
-          (exp_name
-            (variable))
-          (exp_parens
-            (exp_literal
-              (string))
-            (operator)
+    (lhs
+      (variable))
+    (rhs
+      (exp_do
+        (statement
+          (exp_apply
             (exp_name
-              (variable))))))))
+              (variable))
+            (exp_literal
+              (string))))
+        (statement
+          (bind_pattern
+            (pat_name
+              (variable))
+            (exp_name
+              (variable))))
+        (statement
+          (exp_apply
+            (exp_name
+              (variable))
+            (exp_parens
+              (exp_literal
+                (string))
+              (operator)
+              (exp_name
+                (variable)))))))))

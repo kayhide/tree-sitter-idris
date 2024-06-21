@@ -153,7 +153,8 @@
 (type_name) @type
 
 (function
-  name: (variable) @function)
+  (lhs
+    name: (variable) @function))
 
 (interface_head
   name: (interface_name) @type)

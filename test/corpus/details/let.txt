@@ -10,18 +10,22 @@ f x = let
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (exp_name
-            (variable))))
-      (exp_name
-        (variable)))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (function
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable)))))
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Simple line (indent only)
@@ -34,18 +38,22 @@ f x = let
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (exp_name
-            (variable))))
-      (exp_name
-        (variable)))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (function
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable)))))
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Simple line (dedent only)
@@ -58,18 +66,22 @@ f x = let y = x
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (exp_name
-            (variable))))
-      (exp_name
-        (variable)))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (function
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable)))))
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Single line (on the same line)
@@ -81,18 +93,22 @@ f x = let y = x in y
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (exp_name
-            (variable))))
-      (exp_name
-        (variable)))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (function
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable)))))
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Single line (dangling tail)
@@ -105,18 +121,22 @@ f x = let y = x in
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (exp_name
-            (variable))))
-      (exp_name
-        (variable)))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (function
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable)))))
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Multiline (indent and dedent)
@@ -131,22 +151,28 @@ f x = let
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (exp_name
-            (variable)))
-        (function
-          (variable)
-          (exp_name
-            (variable))))
-      (exp_name
-        (variable)))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (function
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable))))
+          (function
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable)))))
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Multiline (indent only)
@@ -160,22 +186,28 @@ f x = let
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (exp_name
-            (variable)))
-        (function
-          (variable)
-          (exp_name
-            (variable))))
-      (exp_name
-        (variable)))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (function
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable))))
+          (function
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable)))))
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Multiline (dedent only)
@@ -189,22 +221,28 @@ f x = let y = x
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (exp_name
-            (variable)))
-        (function
-          (variable)
-          (exp_name
-            (variable))))
-      (exp_name
-        (variable)))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (function
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable))))
+          (function
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable)))))
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Multiline (dangling tail)
@@ -218,22 +256,28 @@ f x = let y = x
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (exp_name
-            (variable)))
-        (function
-          (variable)
-          (exp_name
-            (variable))))
-      (exp_name
-        (variable)))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_let_in
+        (declarations
+          (function
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable))))
+          (function
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable)))))
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Telescope single line I
@@ -245,24 +289,30 @@ f x = let y = x in let y = x in y
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (exp_name
-            (variable))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
       (exp_let_in
         (declarations
           (function
-            (variable)
-            (exp_name
-              (variable))))
-        (exp_name
-          (variable))))))
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable)))))
+        (exp_let_in
+          (declarations
+            (function
+              (lhs
+                (variable))
+              (rhs
+                (exp_name
+                  (variable)))))
+          (exp_name
+            (variable)))))))
 
 ================================================================================
 Telescope single line II
@@ -275,24 +325,30 @@ f x = let y = x in
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (exp_name
-            (variable))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
       (exp_let_in
         (declarations
           (function
-            (variable)
-            (exp_name
-              (variable))))
-        (exp_name
-          (variable))))))
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable)))))
+        (exp_let_in
+          (declarations
+            (function
+              (lhs
+                (variable))
+              (rhs
+                (exp_name
+                  (variable)))))
+          (exp_name
+            (variable)))))))
 
 ================================================================================
 Telescope multi line I
@@ -306,28 +362,36 @@ f x = let y = x
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_let_in
-      (declarations
-        (function
-          (variable)
-          (exp_name
-            (variable)))
-        (function
-          (variable)
-          (exp_name
-            (variable))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
       (exp_let_in
         (declarations
           (function
-            (variable)
-            (exp_name
-              (variable))))
-        (exp_name
-          (variable))))))
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable))))
+          (function
+            (lhs
+              (variable))
+            (rhs
+              (exp_name
+                (variable)))))
+        (exp_let_in
+          (declarations
+            (function
+              (lhs
+                (variable))
+              (rhs
+                (exp_name
+                  (variable)))))
+          (exp_name
+            (variable)))))))
 
 ================================================================================
 Single line without body
@@ -340,18 +404,22 @@ f x = do
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_do
-      (statement
-        (let
-          (declarations
-            (function
-              (variable)
-              (exp_name
-                (variable)))))))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_do
+        (statement
+          (let
+            (declarations
+              (function
+                (lhs
+                  (variable))
+                (rhs
+                  (exp_name
+                    (variable)))))))))))
 
 ================================================================================
 Single line without body (indent)
@@ -365,18 +433,22 @@ f x = do
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_do
-      (statement
-        (let
-          (declarations
-            (function
-              (variable)
-              (exp_name
-                (variable)))))))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_do
+        (statement
+          (let
+            (declarations
+              (function
+                (lhs
+                  (variable))
+                (rhs
+                  (exp_name
+                    (variable)))))))))))
 
 ================================================================================
 Multiline without body
@@ -389,22 +461,28 @@ f x = do let y = x
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_do
-      (statement
-        (let
-          (declarations
-            (function
-              (variable)
-              (exp_name
-                (variable)))
-            (function
-              (variable)
-              (exp_name
-                (variable)))))))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_do
+        (statement
+          (let
+            (declarations
+              (function
+                (lhs
+                  (variable))
+                (rhs
+                  (exp_name
+                    (variable))))
+              (function
+                (lhs
+                  (variable))
+                (rhs
+                  (exp_name
+                    (variable)))))))))))
 
 ================================================================================
 Multiline without body (indent)
@@ -419,19 +497,25 @@ f x = do
 
 (idris
   (function
-    (variable)
-    (patterns
-      (pat_name
-        (variable)))
-    (exp_do
-      (statement
-        (let
-          (declarations
-            (function
-              (variable)
-              (exp_name
-                (variable)))
-            (function
-              (variable)
-              (exp_name
-                (variable)))))))))
+    (lhs
+      (variable)
+      (patterns
+        (pat_name
+          (variable))))
+    (rhs
+      (exp_do
+        (statement
+          (let
+            (declarations
+              (function
+                (lhs
+                  (variable))
+                (rhs
+                  (exp_name
+                    (variable))))
+              (function
+                (lhs
+                  (variable))
+                (rhs
+                  (exp_name
+                    (variable)))))))))))

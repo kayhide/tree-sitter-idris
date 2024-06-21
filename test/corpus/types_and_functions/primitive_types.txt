@@ -12,9 +12,11 @@ x = 94
     (variable)
     (type_name))
   (function
-    (variable)
-    (exp_literal
-      (integer))))
+    (lhs
+      (variable))
+    (rhs
+      (exp_literal
+        (integer)))))
 
 ================================================================================
 Primitive Types 2
@@ -30,9 +32,11 @@ foo = "Sausage machine"
     (variable)
     (type_name))
   (function
-    (variable)
-    (exp_literal
-      (string))))
+    (lhs
+      (variable))
+    (rhs
+      (exp_literal
+        (string)))))
 
 ================================================================================
 Primitive Types 3
@@ -48,9 +52,11 @@ bar = 'Z'
     (variable)
     (type_name))
   (function
-    (variable)
-    (exp_literal
-      (char))))
+    (lhs
+      (variable))
+    (rhs
+      (exp_literal
+        (char)))))
 
 ================================================================================
 Primitive Types 4
@@ -66,6 +72,8 @@ quux = False
     (variable)
     (type_name))
   (function
-    (variable)
-    (exp_name
-      (constructor))))
+    (lhs
+      (variable))
+    (rhs
+      (exp_name
+        (constructor)))))

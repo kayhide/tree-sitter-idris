@@ -23,26 +23,30 @@ mutual
           (operator)
           (type_name)))
       (function
-        (variable)
-        (patterns
-          (pat_name
-            (constructor)))
-        (exp_name
-          (constructor)))
+        (lhs
+          (variable)
+          (patterns
+            (pat_name
+              (constructor))))
+        (rhs
+          (exp_name
+            (constructor))))
       (function
-        (variable)
-        (patterns
-          (pat_tuple
-            (pat_apply
-              (pat_name
-                (constructor))
-              (pat_name
-                (variable)))))
-        (exp_apply
-          (exp_name
-            (variable))
-          (exp_name
-            (variable))))
+        (lhs
+          (variable)
+          (patterns
+            (pat_tuple
+              (pat_apply
+                (pat_name
+                  (constructor))
+                (pat_name
+                  (variable))))))
+        (rhs
+          (exp_apply
+            (exp_name
+              (variable))
+            (exp_name
+              (variable)))))
       (signature
         (variable)
         (type_infix
@@ -50,23 +54,27 @@ mutual
           (operator)
           (type_name)))
       (function
-        (variable)
-        (patterns
-          (pat_name
-            (constructor)))
-        (exp_name
-          (constructor)))
+        (lhs
+          (variable)
+          (patterns
+            (pat_name
+              (constructor))))
+        (rhs
+          (exp_name
+            (constructor))))
       (function
-        (variable)
-        (patterns
-          (pat_tuple
-            (pat_apply
-              (pat_name
-                (constructor))
-              (pat_name
-                (variable)))))
-        (exp_apply
-          (exp_name
-            (variable))
-          (exp_name
-            (variable)))))))
+        (lhs
+          (variable)
+          (patterns
+            (pat_tuple
+              (pat_apply
+                (pat_name
+                  (constructor))
+                (pat_name
+                  (variable))))))
+        (rhs
+          (exp_apply
+            (exp_name
+              (variable))
+            (exp_name
+              (variable))))))))

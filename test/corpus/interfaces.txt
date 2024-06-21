@@ -39,12 +39,14 @@ Show Nat where
     (implementation_body
       (where)
       (function
-        (variable)
-        (patterns
-          (pat_name
-            (constructor)))
-        (exp_literal
-          (string))))))
+        (lhs
+          (variable)
+          (patterns
+            (pat_name
+              (constructor))))
+        (rhs
+          (exp_literal
+            (string)))))))
 
 ================================================================================
 Default Definitions
@@ -63,22 +65,24 @@ interface Eq a where
     (interface_body
       (where)
       (function
-        (pattern
-          (pat_name
-            (variable)))
-        (operator)
-        (pattern
-          (pat_name
-            (variable)))
-        (exp_apply
-          (exp_name
-            (variable))
-          (exp_parens
+        (lhs
+          (pattern
+            (pat_name
+              (variable)))
+          (operator)
+          (pattern
+            (pat_name
+              (variable))))
+        (rhs
+          (exp_apply
             (exp_name
               (variable))
-            (operator)
-            (exp_name
-              (variable))))))))
+            (exp_parens
+              (exp_name
+                (variable))
+              (operator)
+              (exp_name
+                (variable)))))))))
 
 ================================================================================
 Extending Interfaces 1
@@ -234,15 +238,16 @@ _ = sort @{myord} xs
 
 (idris
   (function
-    (pat_wildcard
-      (pat_wildcard))
-    (exp_apply
-      (exp_name
-        (variable))
-      (exp_explicit_impl
-        (implementation_name))
-      (exp_name
-        (variable)))))
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_explicit_impl
+          (implementation_name))
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Explicit arguments 2
@@ -254,15 +259,17 @@ and = force . concat @{All}
 
 (idris
   (function
-    (variable)
-    (exp_name
+    (lhs
       (variable))
-    (operator)
-    (exp_apply
+    (rhs
       (exp_name
         (variable))
-      (exp_explicit_impl
-        (implementation_name)))))
+      (operator)
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_explicit_impl
+          (implementation_name))))))
 
 ================================================================================
 Empty implementation
