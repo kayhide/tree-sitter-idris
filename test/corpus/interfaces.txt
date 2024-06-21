@@ -74,12 +74,11 @@ interface Eq a where
           (exp_name
             (variable))
           (exp_parens
-            (exp_infix
-              (exp_name
-                (variable))
-              (operator)
-              (exp_name
-                (variable)))))))))
+            (exp_name
+              (variable))
+            (operator)
+            (exp_name
+              (variable))))))))
 
 ================================================================================
 Extending Interfaces 1
@@ -256,15 +255,14 @@ and = force . concat @{All}
 (idris
   (function
     (variable)
-    (exp_infix
+    (exp_name
+      (variable))
+    (operator)
+    (exp_apply
       (exp_name
         (variable))
-      (operator)
-      (exp_apply
-        (exp_name
-          (variable))
-        (exp_explicit_impl
-          (implementation_name))))))
+      (exp_explicit_impl
+        (implementation_name)))))
 
 ================================================================================
 Empty implementation

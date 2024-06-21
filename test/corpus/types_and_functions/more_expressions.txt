@@ -22,12 +22,11 @@ mirror xs = let xs' = reverse xs in
               (variable))
             (exp_name
               (variable)))))
-      (exp_infix
-        (exp_name
-          (variable))
-        (operator)
-        (exp_name
-          (variable))))))
+      (exp_name
+        (variable))
+      (operator)
+      (exp_name
+        (variable)))))
 
 ================================================================================
 let bindings 2
@@ -55,23 +54,20 @@ showPerson p = let MkPerson name age = p in
               (variable)))
           (exp_name
             (variable))))
-      (exp_infix
-        (exp_infix
-          (exp_infix
-            (exp_name
-              (variable))
-            (operator)
-            (exp_literal
-              (string)))
-          (operator)
-          (exp_apply
-            (exp_name
-              (variable))
-            (exp_name
-              (variable))))
-        (operator)
-        (exp_literal
-          (string))))))
+      (exp_name
+        (variable))
+      (operator)
+      (exp_literal
+        (string))
+      (operator)
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_name
+          (variable)))
+      (operator)
+      (exp_literal
+        (string)))))
 
 ================================================================================
 let bindings 3
@@ -103,12 +99,11 @@ mirror xs = let xs' : List a = reverse xs in
               (variable))
             (exp_name
               (variable)))))
-      (exp_infix
-        (exp_name
-          (variable))
-        (operator)
-        (exp_name
-          (variable))))))
+      (exp_name
+        (variable))
+      (operator)
+      (exp_name
+        (variable)))))
 
 ================================================================================
 let bindings 4
@@ -131,12 +126,11 @@ Diag v = let ty : Type := v = v in ty
             (pat_name
               (variable))
             (type_name))
-          (exp_infix
-            (exp_name
-              (variable))
-            (operator)
-            (exp_name
-              (variable)))))
+          (exp_name
+            (variable))
+          (operator)
+          (exp_name
+            (variable))))
       (exp_name
         (variable)))))
 
@@ -177,15 +171,14 @@ foldMap f = let fo : m -> a -> m
               (variable))
             (pat_name
               (variable)))
-          (exp_infix
+          (exp_name
+            (variable))
+          (operator)
+          (exp_apply
             (exp_name
               (variable))
-            (operator)
-            (exp_apply
-              (exp_name
-                (variable))
-              (exp_name
-                (variable))))))
+            (exp_name
+              (variable)))))
       (exp_apply
         (exp_name
           (variable))
@@ -232,15 +225,14 @@ foldMap f = let fo : m -> a -> m
               (variable))
             (pat_name
               (variable)))
-          (exp_infix
+          (exp_name
+            (variable))
+          (operator)
+          (exp_apply
             (exp_name
               (variable))
-            (operator)
-            (exp_apply
-              (exp_name
-                (variable))
-              (exp_name
-                (variable)))))
+            (exp_name
+              (variable))))
         (function
           (variable)
           (exp_name
@@ -269,75 +261,63 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
       (pat_name
         (variable)))
     (exp_array
-      (exp_infix
-        (exp_infix
-          (exp_tuple
-            (exp_name
-              (variable))
-            (tuple_operator)
-            (exp_name
-              (variable))
-            (tuple_operator)
-            (exp_name
-              (variable)))
-          (operator)
-          (exp_name
-            (variable)))
-        (operator)
-        (exp_array
-          (exp_infix
-            (exp_literal
-              (integer))
-            (operator)
-            (exp_name
-              (variable)))))
-      (comma)
-      (exp_infix
+      (exp_tuple
         (exp_name
           (variable))
-        (operator)
-        (exp_array
-          (exp_infix
-            (exp_literal
-              (integer))
-            (operator)
-            (exp_name
-              (variable)))))
-      (comma)
-      (exp_infix
+        (tuple_operator)
         (exp_name
           (variable))
-        (operator)
-        (exp_array
-          (exp_infix
-            (exp_literal
-              (integer))
-            (operator)
-            (exp_name
-              (variable)))))
-      (comma)
-      (exp_infix
-        (exp_infix
-          (exp_infix
-            (exp_infix
-              (exp_infix
-                (exp_name
-                  (variable))
-                (operator)
-                (exp_name
-                  (variable)))
-              (operator)
-              (exp_name
-                (variable)))
-            (operator)
-            (exp_name
-              (variable)))
-          (operator)
-          (exp_name
-            (variable)))
+        (tuple_operator)
+        (exp_name
+          (variable)))
+      (operator)
+      (exp_name
+        (variable))
+      (operator)
+      (exp_array
+        (exp_literal
+          (integer))
         (operator)
         (exp_name
-          (variable))))))
+          (variable)))
+      (comma)
+      (exp_name
+        (variable))
+      (operator)
+      (exp_array
+        (exp_literal
+          (integer))
+        (operator)
+        (exp_name
+          (variable)))
+      (comma)
+      (exp_name
+        (variable))
+      (operator)
+      (exp_array
+        (exp_literal
+          (integer))
+        (operator)
+        (exp_name
+          (variable)))
+      (comma)
+      (exp_name
+        (variable))
+      (operator)
+      (exp_name
+        (variable))
+      (operator)
+      (exp_name
+        (variable))
+      (operator)
+      (exp_name
+        (variable))
+      (operator)
+      (exp_name
+        (variable))
+      (operator)
+      (exp_name
+        (variable)))))
 
 ================================================================================
 case expressions 1
@@ -449,20 +429,19 @@ on f g = \x, y => g x `f` g y
       (comma)
       (pat_name
         (variable))
-      (exp_infix
-        (exp_apply
-          (exp_name
-            (variable))
-          (exp_name
-            (variable)))
-        (exp_ticked
-          (exp_name
-            (variable)))
-        (exp_apply
-          (exp_name
-            (variable))
-          (exp_name
-            (variable)))))))
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_name
+          (variable)))
+      (exp_ticked
+        (exp_name
+          (variable)))
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Idiom brackets
@@ -482,9 +461,8 @@ fun <*> x = [| fun <*> x |]
       (pat_name
         (variable)))
     (exp_idiom
-      (exp_infix
-        (exp_name
-          (variable))
-        (operator)
-        (exp_name
-          (variable))))))
+      (exp_name
+        (variable))
+      (operator)
+      (exp_name
+        (variable)))))

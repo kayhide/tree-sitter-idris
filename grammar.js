@@ -90,13 +90,6 @@ module.exports = grammar({
 
   conflicts: $ => [
     /**
-     * This could be done with the second named precedence further up, but it somehow overrides symbolic infix
-     * constructors.
-     * Needs more investigation.
-     */
-    [$.type_infix, $._type],
-
-    /**
      * The definition of an infix expression is rather simple and as such
      * it allows things which wouldn't be possible in reality:
      *

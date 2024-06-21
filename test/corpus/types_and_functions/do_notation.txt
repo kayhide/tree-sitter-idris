@@ -36,9 +36,8 @@ greet = do
           (exp_name
             (variable))
           (exp_parens
-            (exp_infix
-              (exp_literal
-                (string))
-              (operator)
-              (exp_name
-                (variable)))))))))
+            (exp_literal
+              (string))
+            (operator)
+            (exp_name
+              (variable))))))))

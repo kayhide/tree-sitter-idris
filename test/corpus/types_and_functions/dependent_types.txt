@@ -128,16 +128,14 @@ _ = index {a=Int} {n=2} FZ (2 :: 3 :: Nil)
       (exp_name
         (constructor))
       (exp_parens
-        (exp_infix
-          (exp_infix
-            (exp_literal
-              (integer))
-            (operator)
-            (exp_literal
-              (integer)))
-          (operator)
-          (exp_name
-            (constructor)))))))
+        (exp_literal
+          (integer))
+        (operator)
+        (exp_literal
+          (integer))
+        (operator)
+        (exp_name
+          (constructor))))))
 
 ================================================================================
 Implicit Arguments 4

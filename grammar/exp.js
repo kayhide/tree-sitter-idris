@@ -35,7 +35,7 @@ module.exports = {
     $._qcon,
   ),
 
-  exp_ticked: $ => ticked($._exp_infix),
+  exp_ticked: $ => ticked($._exp),
 
   exp_negation: $ => seq('-', $._aexp),
 
@@ -57,11 +57,11 @@ module.exports = {
 
   exp_section_left: $ => parens(
     choice($._q_op, $.exp_ticked),
-    $._exp_infix
+    $._exp
   ),
 
   exp_section_right: $ => parens(
-    $._exp_infix,
+    $._exp,
     choice($._q_op, $.exp_ticked),
   ),
 
@@ -71,7 +71,7 @@ module.exports = {
     seq(
       repeat1(
         seq(
-          optional($._exp_infix),
+          optional($._exp),
           $.tuple_operator,
         ),
       ),
@@ -117,13 +117,13 @@ module.exports = {
     seq(
       $._pat,
       $._larrow,
-      $._exp_infix,
+      $._exp,
     ),
 
   guard: $ =>
     choice(
       $.pattern_guard,
-      $._exp_infix,
+      $._exp,
     ),
 
   guards: $ => seq('|', sep1($.comma, $.guard)),
@@ -162,25 +162,23 @@ module.exports = {
 
   _let_decls: $ => layouted_without_end($, $._decl),
 
-  exp_let_in: $ =>
-    seq(
-      'let',
-      alias($._let_decls, $.declarations),
-      'in',
-      $._exp
-    ),
+  exp_let_in: $ => seq(
+    'let',
+    alias($._let_decls, $.declarations),
+    'in',
+    $._exp
+  ),
 
   // ----- Rewrite-in ---------------------------------------------------------
 
   _rewrite_decls: $ => layouted_without_end($, $._decl),
 
-  exp_rewrite_in: $ =>
-    seq(
-      'rewrite',
-      alias($._exp, $.rewrite_exp),
-      'in',
-      $._exp
-    ),
+  exp_rewrite_in: $ => seq(
+    'rewrite',
+    alias($._exp, $.rewrite_exp),
+    'in',
+    $._exp
+  ),
 
   // ----- Lambdas ------------------------------------------------------------
 
@@ -227,8 +225,7 @@ module.exports = {
       $.let,
     ),
 
-  _do_kw: _ => 'do',
-  _do: $ => choice('do', qualified($, $._do_kw)),
+  _do: $ => choice('do', qualified($, 'do')),
   exp_do: $ => seq($._do, layouted($, $.statement)),
 
   // ----- Composite expressions ----------------------------------------------
@@ -309,28 +306,8 @@ module.exports = {
 
   _lexp: $ => __lexp($, $.exp_let_in),
 
-  /**
-   * This is left-associative, although in reality this would depend on the fixity declaration for the operator.
-   * The default is left, even though the reference specifies it the other way around.
-   * In any case, this seems to be more stable.
-   */
-  exp_infix: $ => seq(
-    $._exp_infix,
-    choice($._q_op, $.exp_ticked),
-    $._lexp
-  ),
-
-  _exp_infix: $ => choice(
-    $.exp_infix,
+  _exp: $ => choice(
     $._lexp,
+    prec(1, seq($._exp, choice($._q_op, $.exp_ticked), $._lexp)),
   ),
-
-  /**
-   * `prec.right` because:
-   *
-   * let x = 1 in x :: Int
-   *
-   * here the type annotation binds to `x`, not the entire expression
-   */
-  _exp: $ => prec.right(seq($._exp_infix, optional($._type_annotation))),
 }

@@ -184,12 +184,11 @@ reverse xs = revAcc [] xs where
           (exp_name
             (variable))
           (exp_parens
-            (exp_infix
-              (exp_name
-                (variable))
-              (operator)
-              (exp_name
-                (variable))))
+            (exp_name
+              (variable))
+            (operator)
+            (exp_name
+              (variable)))
           (exp_name
             (variable)))))))
 
@@ -228,21 +227,19 @@ foo x = case isLT of
         (alt
           (pat_name
             (constructor))
-          (exp_infix
-            (exp_name
-              (variable))
-            (operator)
-            (exp_literal
-              (integer))))
+          (exp_name
+            (variable))
+          (operator)
+          (exp_literal
+            (integer)))
         (alt
           (pat_name
             (constructor))
-          (exp_infix
-            (exp_name
-              (variable))
-            (operator)
-            (exp_literal
-              (integer))))))
+          (exp_name
+            (variable))
+          (operator)
+          (exp_literal
+            (integer)))))
     (where)
     (declarations
       (signature
@@ -251,12 +248,11 @@ foo x = case isLT of
       (function
         (variable)
         (exp_if
-          (exp_infix
-            (exp_name
-              (variable))
-            (operator)
-            (exp_literal
-              (integer)))
+          (exp_name
+            (variable))
+          (operator)
+          (exp_literal
+            (integer))
           (exp_name
             (constructor))
           (exp_name
@@ -400,12 +396,11 @@ test = [c (S 1), c Z, d (S Z)]
         (patterns
           (pat_name
             (variable)))
-        (exp_infix
-          (exp_literal
-            (integer))
-          (operator)
-          (exp_name
-            (variable))))
+        (exp_literal
+          (integer))
+        (operator)
+        (exp_name
+          (variable)))
       (signature
         (variable)
         (type_infix
@@ -421,19 +416,17 @@ test = [c (S 1), c Z, d (S Z)]
           (exp_name
             (variable))
           (exp_parens
-            (exp_infix
-              (exp_infix
-                (exp_name
-                  (variable))
-                (operator)
-                (exp_literal
-                  (integer)))
-              (operator)
-              (exp_apply
-                (exp_name
-                  (variable))
-                (exp_name
-                  (variable))))))
+            (exp_name
+              (variable))
+            (operator)
+            (exp_literal
+              (integer))
+            (operator)
+            (exp_apply
+              (exp_name
+                (variable))
+              (exp_name
+                (variable)))))
         (where)
         (declarations
           (signature
@@ -447,12 +440,11 @@ test = [c (S 1), c Z, d (S Z)]
             (patterns
               (pat_name
                 (variable)))
-            (exp_infix
-              (exp_name
-                (variable))
-              (operator)
-              (exp_name
-                (variable)))))))))
+            (exp_name
+              (variable))
+            (operator)
+            (exp_name
+              (variable))))))))
 
 ================================================================================
 Totality partial
@@ -608,12 +600,11 @@ Not p = p -> Void
     (patterns
       (pat_name
         (variable)))
-    (exp_infix
-      (exp_name
-        (variable))
-      (operator)
-      (exp_name
-        (constructor)))))
+    (exp_name
+      (variable))
+    (operator)
+    (exp_name
+      (constructor))))
 
 ================================================================================
 Operator 1
@@ -675,18 +666,17 @@ Operator 3
     (patterns
       (pat_name
         (variable)))
-    (exp_infix
-      (exp_apply
-        (exp_name
-          (variable))
-        (exp_name
-          (variable)))
-      (operator)
-      (exp_apply
-        (exp_name
-          (variable))
-        (exp_name
-          (variable))))))
+    (exp_apply
+      (exp_name
+        (variable))
+      (exp_name
+        (variable)))
+    (operator)
+    (exp_apply
+      (exp_name
+        (variable))
+      (exp_name
+        (variable)))))
 
 ================================================================================
 Operator 4

@@ -116,12 +116,11 @@ foo n m with (n + 1)
         (variable)))
     (with
       (exp_parens
-        (exp_infix
-          (exp_name
-            (variable))
-          (operator)
-          (exp_literal
-            (integer))))
+        (exp_name
+          (variable))
+        (operator)
+        (exp_literal
+          (integer)))
       (function
         (variable)
         (patterns
@@ -134,12 +133,11 @@ foo n m with (n + 1)
             (integer)))
         (with
           (exp_parens
-            (exp_infix
-              (exp_name
-                (variable))
-              (operator)
-              (exp_literal
-                (integer))))
+            (exp_name
+              (variable))
+            (operator)
+            (exp_literal
+              (integer)))
           (function
             (variable)
             (patterns
@@ -203,19 +201,17 @@ foo n m with (n + 1) | (m + 1)
         (variable)))
     (with
       (exp_parens
-        (exp_infix
-          (exp_name
-            (variable))
-          (operator)
-          (exp_literal
-            (integer))))
+        (exp_name
+          (variable))
+        (operator)
+        (exp_literal
+          (integer)))
       (exp_parens
-        (exp_infix
-          (exp_name
-            (variable))
-          (operator)
-          (exp_literal
-            (integer))))
+        (exp_name
+          (variable))
+        (operator)
+        (exp_literal
+          (integer)))
       (function
         (wildcard)
         (with_pat

@@ -277,16 +277,15 @@ vec = (2 ** [3, 4])
   (function
     (variable)
     (exp_parens
-      (exp_infix
+      (exp_literal
+        (integer))
+      (operator)
+      (exp_array
         (exp_literal
           (integer))
-        (operator)
-        (exp_array
-          (exp_literal
-            (integer))
-          (comma)
-          (exp_literal
-            (integer)))))))
+        (comma)
+        (exp_literal
+          (integer))))))
 
 ================================================================================
 Dependent Pairs 3
@@ -339,10 +338,9 @@ filter p (x :: xs)
       (pat_name
         (constructor)))
     (exp_parens
-      (exp_infix
-        (wildcard)
-        (operator)
-        (exp_array))))
+      (wildcard)
+      (operator)
+      (exp_array)))
   (function
     (variable)
     (patterns
@@ -379,21 +377,18 @@ filter p (x :: xs)
               (exp_name
                 (variable)))
             (exp_parens
-              (exp_infix
-                (exp_infix
-                  (wildcard)
-                  (operator)
-                  (exp_name
-                    (variable)))
-                (operator)
-                (exp_name
-                  (variable))))
+              (wildcard)
+              (operator)
+              (exp_name
+                (variable))
+              (operator)
+              (exp_name
+                (variable)))
             (exp_parens
-              (exp_infix
-                (wildcard)
-                (operator)
-                (exp_name
-                  (variable))))))))))
+              (wildcard)
+              (operator)
+              (exp_name
+                (variable)))))))))
 
 ================================================================================
 Records 1
@@ -506,15 +501,14 @@ addStudent p c = { students := p :: students c } c
         (variable)))
     (record_update
       (field_name)
-      (exp_infix
+      (exp_name
+        (variable))
+      (operator)
+      (exp_apply
         (exp_name
           (variable))
-        (operator)
-        (exp_apply
-          (exp_name
-            (variable))
-          (exp_name
-            (variable))))
+        (exp_name
+          (variable)))
       (variable))))
 
 ================================================================================

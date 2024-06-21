@@ -17,12 +17,11 @@ _ = map (\x => x * 2) intVec
         (exp_lambda
           (pat_name
             (variable))
-          (exp_infix
-            (exp_name
-              (variable))
-            (operator)
-            (exp_literal
-              (integer)))))
+          (exp_name
+            (variable))
+          (operator)
+          (exp_literal
+            (integer))))
       (exp_name
         (variable)))))
 
