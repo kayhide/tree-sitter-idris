@@ -25,6 +25,7 @@ module.exports = grammar({
     $.comment,
     $.pragma_inline,
     $.pragma_tcinline,
+    $.pragma_extern,
   ],
 
   /**

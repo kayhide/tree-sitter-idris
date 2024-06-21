@@ -22,6 +22,8 @@ module.exports = {
 
   pragma_tcinline: _ => '%tcinline',
 
+  pragma_extern: _ => '%extern',
+
   pragma_search: _ => '%search',
 
   pragma_world: _ => '%World',

@@ -117,7 +117,15 @@
 
 (hole) @label
 
-(pragma_name) @label
+[
+  (pragma_name)
+  (pragma_inline)
+  (pragma_tcinline)
+  (pragma_extern)
+  (pragma_search)
+  (pragma_world)
+] @label
+
 
 ; ------------------------------------------------------------------------------
 ; Functions and variables

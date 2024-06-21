@@ -104,6 +104,29 @@ public export %inline %tcinline
             (type_variable)))))))
 
 ================================================================================
+Pragma extern
+================================================================================
+
+%extern prim__getChar : (1 x : %World) -> IORes Char
+
+--------------------------------------------------------------------------------
+
+(idris
+  (pragma_extern)
+  (signature
+    (variable)
+    (type_infix
+      (type_name
+        (annotated_type_variable
+          (quantity)
+          (type_variable)
+          (pragma_world)))
+      (operator)
+      (type_apply
+        (type_name)
+        (type_name)))))
+
+================================================================================
 Pragma pair
 ================================================================================
 
