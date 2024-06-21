@@ -710,7 +710,6 @@ Operator 1
 
 (idris
   (signature
-    (operator)
     (type_infix
       (type_name
         (type_variable))
@@ -734,7 +733,6 @@ Operator 2
   (function
     (lhs
       (funvar
-        (operator)
         (patterns
           (pat_name
             (variable))

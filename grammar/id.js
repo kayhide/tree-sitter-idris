@@ -22,11 +22,7 @@ module.exports = {
   // https://github.com/natefaubion/purescript-language-cst-parser/blob/bf5623e08e1f43f923d4ff3c29cafbda25128768/src/PureScript/CST/Lexer.purs#L503
   _operator: _ => /(?:[:!#$%&*+./<=>?@\\^|~-]|\p{S})+/,
   operator: $ => $._operator,
-  _minus: $ => alias('-', $.operator),
-
-  // Any operator including `-`
-  _operator_or_minus: $ => choice($.operator, $._minus),
-  qualified_operator: $ => qualified($, $._operator_or_minus),
+  qualified_operator: $ => qualified($, parens($._operator)),
 
   // Tuple operator, only available inside parens
   tuple_operator: $ => prec.right(alias($.comma, '')),
@@ -34,13 +30,13 @@ module.exports = {
   // Ticked operator
   ticked_operator: $=> ticked(alias($._qvarid, '')),
 
-  // Qualified or unqualified operator, with and without `-`.
-  _q_op: $ => choice($.qualified_operator, $._operator_or_minus),
-  _q_op_nominus: $ => choice($.qualified_operator, $.operator),
-
   // Qualified and unqualified identifier or operator in parens.
-  _var: $ => choice($.variable, parens($._operator_or_minus)),
-  _qvar: $ => choice($._qvarid, parens($._q_op)),
+  _var: $ => choice($.variable, parens($._operator)),
+  _qvar: $ => choice(
+    $._var,
+    $.qualified_variable,
+    $.qualified_operator,
+  ),
 
   // ------------------------------------------------------------------------
   // Data constructors
@@ -51,21 +47,14 @@ module.exports = {
   constructor: $ => choice($._conid, $.pragma_mkworld),
 
   qualified_constructor: $ => qualified($, $.constructor),
-  // Qualified or unqualified data constructor.
   _qconid: $ => choice($.qualified_constructor, $.constructor),
 
-  // TODO: should be deleted?
-  // `_consym` comes from the scanner.
-  // constructor_operator: $ => $._consym,
-  constructor_operator: $ => $._operator,
-  qualified_constructor_operator: $ => qualified($, $.constructor_operator),
-  // Qualified or unqualified constructor operator
-  _qconsym: $ => choice($.qualified_constructor_operator, $.constructor_operator),
-
-  // Data constructor in "normal" or infix operator form (in parens).
-  _con: $ => choice($.constructor, parens($.constructor_operator)),
-  // Qualified data constructor in "normal" or infix operator form (in parens).
-  _qcon: $ => choice($._qconid, parens($._qconsym)),
+  _con: $ => choice($.constructor, parens($.operator)),
+  _qcon: $ => choice(
+    $._con,
+    $.qualified_constructor,
+    $.qualified_operator,
+  ),
 
   // ------------------------------------------------------------------------
   // Type constructors
@@ -73,6 +62,7 @@ module.exports = {
 
   _tyconid: $ => alias($.constructor, $.type),
   qualified_type: $ => qualified($, $._tyconid),
+
   _qtyconid: $ => choice($.qualified_type, $._tyconid),
 
   literal: $ => $._literal,

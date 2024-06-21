@@ -4,15 +4,29 @@ module.exports = {
   // ------------------------------------------------------------------------
   // pragma
 
-  pragma: $ => seq(
-    alias($._pragma_entry, $.pragma_name),
-    repeat(choice($.pragma_arg, $.comma)),
+  _pragma: $ => choice(
+    prec(1, $.pragma_transform),
+    alias($._pragma_general, $.pragma),
   ),
 
   _pragma_entry: $ => seq('%', $._immediate_varid),
 
+  _pragma_general: $ => seq(
+    alias($._pragma_entry, $.pragma_name),
+    repeat(choice($.pragma_arg, $.comma)),
+  ),
+
+  pragma_transform: $ => seq(
+    '%transform',
+    $.literal,
+    $._qvar,
+    repeat($.exp_implicit_arg),
+    '=',
+    $._qvar,
+  ),
+
   pragma_arg: $ => choice(
-    $._var,
+    $._qvar,
     $._con,
     $.literal,
     $.wildcard,

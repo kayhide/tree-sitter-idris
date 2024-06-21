@@ -77,7 +77,6 @@ public export %inline %tcinline
     (visibility)
     (pragma_inline)
     (pragma_tcinline)
-    (operator)
     (type_infix
       (type_parens
         (type_infix
@@ -125,6 +124,47 @@ Pragma extern
       (type_apply
         (type_name)
         (type_name)))))
+
+================================================================================
+Pragma transform 1
+================================================================================
+
+%transform "tailRecAppendSnocList" SnocList.(++) = SnocList.tailRecAppend
+
+--------------------------------------------------------------------------------
+
+(idris
+  (pragma_transform
+    (literal
+      (string))
+    (qualified_operator
+      (module))
+    (qualified_variable
+      (module)
+      (variable))))
+
+================================================================================
+Pragma transform 2
+================================================================================
+
+%transform "fastConcat" concat {t = List} {a = String} = fastConcat
+
+--------------------------------------------------------------------------------
+
+(idris
+  (pragma_transform
+    (literal
+      (string))
+    (variable)
+    (exp_implicit_arg
+      (variable)
+      (exp_name
+        (constructor)))
+    (exp_implicit_arg
+      (variable)
+      (exp_name
+        (constructor)))
+    (variable)))
 
 ================================================================================
 Pragma pair
@@ -256,12 +296,10 @@ Pragma allow_overloads
       (variable)))
   (pragma
     (pragma_name)
-    (pragma_arg
-      (operator)))
+    (pragma_arg))
   (pragma
     (pragma_name)
-    (pragma_arg
-      (operator))))
+    (pragma_arg)))
 
 ================================================================================
 Pragma World 1

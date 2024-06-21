@@ -70,7 +70,6 @@ module.exports = grammar({
     $._qvar,
     $._tyvar,
     $._qconid,
-    $._qconsym,
     $._con,
     $._tyconid,
     $._qtyconid,
@@ -120,10 +119,7 @@ module.exports = grammar({
     [$.exp_name, $.pat_name],
     [$._fun_name, $.pat_name],
     [$._aexp_projection, $._apat],
-    [$.pat_name, $._q_op],
     [$.exp_list, $.pat_list],
-    [$._minus, $.exp_negation],
-    [$._minus, $.exp_negation, $.pat_negation],
 
     /**
      * For getting a node for function application, and no extra node if the expression only consists of one term.
@@ -135,7 +131,6 @@ module.exports = grammar({
      * Same as `exp_apply`, but for patterns.
      */
     [$.pat_apply, $._apat],
-    [$.pat_apply],
 
     /**
      * Same as `exp_apply`, but for types.
@@ -167,9 +162,14 @@ module.exports = grammar({
     [$.type_name, $.interface_head],
 
     /**
-     * Same as above, but for operators.
+     * Operator conflicts.
      */
-    [$.operator, $.constructor_operator],
+    [$._qcon, $.exp_name],
+    [$.operator, $.pat_name, $._fun_name],
+    [$.operator, $.pat_name, $.exp_name],
+    [$.operator, $.pat_name],
+    [$.operator, $.pragma_arg],
+    [$.operator, $.exp_name],
 
     /**
      * RHS of operator def.
@@ -212,7 +212,7 @@ module.exports = grammar({
       alias($._decl_interface, $.interface),
       alias($._decl_implementation, $.implementation),
       $._decl,
-      $.pragma,
+      $._pragma,
     ),
 
     ...basic,

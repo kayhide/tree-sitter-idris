@@ -58,13 +58,13 @@ module.exports = {
   // ----- Operator sections --------------------------------------------------
 
   exp_section_left: $ => parens(
-    choice($._q_op, $.exp_ticked),
+    choice($.operator, $.exp_ticked),
     $._exp
   ),
 
   exp_section_right: $ => parens(
     $._exp,
-    choice($._q_op, $.exp_ticked),
+    choice($.operator, $.exp_ticked),
   ),
 
   // ----- Tuples or tuple secions --------------------------------------------
@@ -175,7 +175,7 @@ module.exports = {
   __statement_exp_infix: $ =>
     seq(
       $._statement_exp_infix,
-      choice($._q_op, $.exp_ticked),
+      choice($.operator, $.exp_ticked),
       $._lexp
     ),
 
@@ -295,6 +295,6 @@ module.exports = {
 
   _exp: $ => choice(
     $._lexp,
-    prec(1, seq($._exp, choice($._q_op, $.exp_ticked), $._lexp)),
+    prec(1, seq($._exp, choice($.operator, $.exp_ticked), $._lexp)),
   ),
 }

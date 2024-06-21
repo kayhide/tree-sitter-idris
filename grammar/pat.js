@@ -52,7 +52,7 @@ module.exports = {
     $.pat_apply,
   ),
 
-  pat_infix: $ => seq($._lpat, $._q_op, $._pat),
+  pat_infix: $ => seq($._lpat, $.operator, $._pat),
 
   /**
    * Without the precs, a conflict is needed.
