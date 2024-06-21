@@ -31,9 +31,9 @@ module.exports = {
   ),
 
   _funop: $ => prec(1, seq(
-    field('pattern', alias($._apat, $.pattern)),
+    field('patterns', alias($._fun_patterns, $.patterns)),
     $.operator,
-    field('pattern', alias($._apat, $.pattern)),
+    field('patterns', alias($._fun_patterns, $.patterns)),
   )),
 
   _with_res: $ => seq('|', alias($._apat, $.with_pat)),

@@ -72,44 +72,46 @@ _ = do
               (pat_name
                 (variable)))
             (exp_name
-              (variable)))))
-      (operator)
-      (exp_name
-        (constructor))
-      (operator)
-      (exp_apply
-        (exp_name
-          (variable))
-        (exp_name
-          (constructor))
-        (exp_name
-          (constructor))
-        (exp_name
-          (variable)))
-      (operator)
-      (exp_name
-        (variable))
-      (operator)
-      (exp_name
-        (constructor))
-      (operator)
-      (exp_apply
-        (exp_name
-          (variable))
-        (exp_name
-          (constructor))
-        (exp_name
-          (variable))
-        (exp_parens
+              (variable))
+            (bind_alt
+              (pat_name
+                (constructor))
+              (exp_apply
+                (exp_name
+                  (variable))
+                (exp_name
+                  (constructor))))))
+        (statement
+          (bind_pattern
+            (pat_apply
+              (pat_name
+                (constructor))
+              (pat_name
+                (variable)))
+            (exp_name
+              (variable))
+            (bind_alt
+              (pat_name
+                (constructor))
+              (exp_apply
+                (exp_name
+                  (variable))
+                (exp_name
+                  (constructor))))))
+        (statement
           (exp_apply
             (exp_name
-              (constructor))
-            (exp_tuple
-              (exp_name
-                (variable))
-              (tuple_operator)
-              (exp_name
-                (variable)))))))))
+              (variable))
+            (exp_parens
+              (exp_apply
+                (exp_name
+                  (constructor))
+                (exp_tuple
+                  (exp_name
+                    (variable))
+                  (tuple_operator)
+                  (exp_name
+                    (variable)))))))))))
 
 ================================================================================
 Pattern matching bind 2
@@ -139,17 +141,18 @@ _ = do
                       (variable))))
                 (rhs
                   (exp_name
-                    (variable))))))))
-      (operator)
-      (exp_name
-        (constructor))
-      (operator)
-      (exp_apply
-        (exp_name
-          (variable))
-        (exp_name
-          (constructor))
-        (exp_name
-          (variable))
-        (exp_name
-          (variable))))))
+                    (variable)))))
+            (bind_alt
+              (pat_name
+                (constructor))
+              (exp_apply
+                (exp_name
+                  (variable))
+                (exp_name
+                  (constructor))))))
+        (statement
+          (exp_apply
+            (exp_name
+              (variable))
+            (exp_name
+              (variable))))))))

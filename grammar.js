@@ -118,13 +118,12 @@ module.exports = grammar({
      */
     [$.exp_name, $._pat_constructor],
     [$.exp_name, $.pat_name],
+    [$._fun_name, $.pat_name],
     [$._aexp_projection, $._apat],
-    [$._aexp_projection, $.pat_wildcard],
     [$.pat_name, $._q_op],
     [$.exp_array, $.pat_array],
     [$._minus, $.exp_negation],
     [$._minus, $.exp_negation, $.pat_negation],
-    [$.record_update, $.pat_fields],
 
     /**
      * For getting a node for function application, and no extra node if the expression only consists of one term.
@@ -172,6 +171,10 @@ module.exports = grammar({
      */
     [$.operator, $.constructor_operator],
 
+    /**
+     * RHS of operator def.
+     */
+    [$._lpat, $._fun_patterns],
 
     /**
      * What a `forall` binds to is ambiguous from the parser's POV:

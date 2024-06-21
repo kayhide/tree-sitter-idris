@@ -66,11 +66,11 @@ interface Eq a where
       (where)
       (function
         (lhs
-          (pattern
+          (patterns
             (pat_name
               (variable)))
           (operator)
-          (pattern
+          (patterns
             (pat_name
               (variable))))
         (rhs

@@ -701,11 +701,11 @@ Operator 3
 (idris
   (function
     (lhs
-      (pattern
+      (patterns
         (pat_name
           (variable)))
       (operator)
-      (pattern
+      (patterns
         (pat_name
           (variable)))
       (patterns
@@ -735,13 +735,11 @@ _ == _ impossible
 (idris
   (function
     (lhs
-      (pattern
-        (pat_wildcard
-          (pat_wildcard)))
+      (patterns
+        (pat_wildcard))
       (operator)
-      (pattern
-        (pat_wildcard
-          (pat_wildcard))))
+      (patterns
+        (pat_wildcard)))
     (impossible)))
 
 ================================================================================

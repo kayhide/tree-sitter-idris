@@ -485,11 +485,11 @@ fun <*> x = [| fun <*> x |]
 (idris
   (function
     (lhs
-      (pattern
+      (patterns
         (pat_name
           (variable)))
       (operator)
-      (pattern
+      (patterns
         (pat_name
           (variable))))
     (rhs

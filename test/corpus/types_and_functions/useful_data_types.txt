@@ -46,8 +46,7 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
     (lhs
       (variable)
       (patterns
-        (pat_wildcard
-          (pat_wildcard))
+        (pat_wildcard)
         (pat_name
           (constructor))))
     (rhs
@@ -381,8 +380,7 @@ filter p (x :: xs)
           (alt
             (pat_tuple
               (pat_infix
-                (pat_wildcard
-                  (pat_wildcard))
+                (pat_wildcard)
                 (operator)
                 (pat_name
                   (variable))))

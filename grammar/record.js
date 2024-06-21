@@ -64,7 +64,7 @@ module.exports = {
 
   record_update: $ =>
     seq(
-      braces(sep($.comma, $._record_field_update)),
+      braces(sep1($.comma, $._record_field_update)),
       $._record_update_rhs,
     ),
 }
