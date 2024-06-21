@@ -32,7 +32,7 @@ module.exports = {
 
   _funop: $ => prec(1, seq(
     field('patterns', alias($._fun_patterns, $.patterns)),
-    $.operator,
+    choice($.operator, $.tuple_operator),
     field('patterns', alias($._fun_patterns, $.patterns)),
   )),
 

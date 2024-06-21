@@ -394,6 +394,36 @@ f x = let y = x
             (variable)))))))
 
 ================================================================================
+Pattern match
+================================================================================
+
+_ = let (a, b) = x in b
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_let_in
+        (declarations
+          (function
+            (lhs
+              (patterns
+                (pat_name
+                  (variable)))
+              (tuple_operator)
+              (patterns
+                (pat_name
+                  (variable))))
+            (rhs
+              (exp_name
+                (variable)))))
+        (exp_name
+          (variable))))))
+
+================================================================================
 Single line without body
 ================================================================================
 
@@ -516,6 +546,38 @@ f x = do
               (function
                 (lhs
                   (variable))
+                (rhs
+                  (exp_name
+                    (variable)))))))))))
+
+================================================================================
+Pattern match without without body
+================================================================================
+
+_ = do
+  let
+    (a, b) = x
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_do
+        (statement
+          (let
+            (declarations
+              (function
+                (lhs
+                  (patterns
+                    (pat_name
+                      (variable)))
+                  (tuple_operator)
+                  (patterns
+                    (pat_name
+                      (variable))))
                 (rhs
                   (exp_name
                     (variable)))))))))))

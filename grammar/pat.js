@@ -12,8 +12,6 @@ module.exports = {
 
   pat_name: $ => $._var,
 
-  pat_as: $ => seq(field('var', $.variable), token.immediate('@'), field('pat', $._apat)),
-
   /**
    * Needed non-inlined for conflict definition.
    */
@@ -27,7 +25,6 @@ module.exports = {
 
   _apat: $ => choice(
     $.pat_name,
-    $.pat_as,
     $._pat_constructor,
     $.pat_record,
     alias($.literal, $.pat_literal),

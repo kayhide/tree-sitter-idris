@@ -149,8 +149,6 @@ module.exports = {
 
   // ----- Rewrite-in ---------------------------------------------------------
 
-  _rewrite_decls: $ => layouted_without_end($, $._decl),
-
   exp_rewrite_in: $ => seq(
     'rewrite',
     alias($._exp, $.rewrite_exp),
