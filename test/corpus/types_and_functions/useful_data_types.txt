@@ -44,27 +44,29 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
             (type_variable))))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_wildcard)
-        (pat_name
-          (constructor))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_wildcard)
+          (pat_name
+            (constructor)))))
     (rhs
       (exp_name
         (constructor))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (constructor))
-        (pat_tuple
-          (pat_infix
-            (pat_name
-              (variable))
-            (operator)
-            (pat_name
-              (variable))))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (constructor))
+          (pat_tuple
+            (pat_infix
+              (pat_name
+                (variable))
+              (operator)
+              (pat_name
+                (variable)))))))
     (rhs
       (exp_apply
         (exp_name
@@ -73,21 +75,22 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
           (variable)))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_tuple
-          (pat_apply
-            (pat_name
-              (constructor))
-            (pat_name
-              (variable))))
-        (pat_tuple
-          (pat_infix
-            (pat_name
-              (variable))
-            (operator)
-            (pat_name
-              (variable))))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_tuple
+            (pat_apply
+              (pat_name
+                (constructor))
+              (pat_name
+                (variable))))
+          (pat_tuple
+            (pat_infix
+              (pat_name
+                (variable))
+              (operator)
+              (pat_name
+                (variable)))))))
     (rhs
       (exp_apply
         (exp_name
@@ -152,7 +155,8 @@ fred = ("Fred", 42)
       (type_name)))
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_tuple
         (exp_literal
@@ -181,7 +185,8 @@ jim = ("Jim", 25, "Cambridge")
       (type_name)))
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_tuple
         (exp_literal
@@ -285,7 +290,8 @@ vec = (2 ** [3, 4])
             (type_name))))))
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_parens
         (exp_literal
@@ -343,12 +349,13 @@ filter p (x :: xs)
                 (type_variable))))))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))
-        (pat_name
-          (constructor))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_name
+            (constructor)))))
     (rhs
       (exp_parens
         (wildcard)
@@ -356,17 +363,18 @@ filter p (x :: xs)
         (exp_array))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))
-        (pat_tuple
-          (pat_infix
-            (pat_name
-              (variable))
-            (operator)
-            (pat_name
-              (variable))))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_tuple
+            (pat_infix
+              (pat_name
+                (variable))
+              (operator)
+              (pat_name
+                (variable)))))))
     (rhs
       (exp_case
         (exp_apply
@@ -447,7 +455,8 @@ fred = MkPerson "Fred" "Joe" "Bloggs" 30
     (type_name))
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_apply
         (exp_name
@@ -510,12 +519,13 @@ addStudent p c = { students := p :: students c } c
         (type_name))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_name
+            (variable)))))
     (rhs
       (record_update
         (field_name)
@@ -550,12 +560,13 @@ addStudent' p c = { students $= (p ::) } c
         (type_name))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_name
+            (variable)))))
     (rhs
       (record_update
         (field_name)

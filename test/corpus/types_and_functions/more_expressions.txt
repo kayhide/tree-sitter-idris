@@ -10,16 +10,18 @@ mirror xs = let xs' = reverse xs in
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
-              (variable))
+              (funvar
+                (variable)))
             (rhs
               (exp_apply
                 (exp_name
@@ -44,21 +46,23 @@ showPerson p = let MkPerson name age = p in
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
-              (variable)
-              (patterns
-                (pat_name
-                  (variable))
-                (pat_name
-                  (variable))))
+              (funvar
+                (variable)
+                (patterns
+                  (pat_name
+                    (variable))
+                  (pat_name
+                    (variable)))))
             (rhs
               (exp_name
                 (variable)))))
@@ -89,10 +93,11 @@ mirror xs = let xs' : List a = reverse xs in
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_let_in
         (declarations
@@ -126,10 +131,11 @@ Diag v = let ty : Type := v = v in ty
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_let_in
         (declarations
@@ -160,10 +166,11 @@ foldMap f = let fo : m -> a -> m
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_let_in
         (declarations
@@ -181,12 +188,13 @@ foldMap f = let fo : m -> a -> m
                   (type_variable)))))
           (function
             (lhs
-              (variable)
-              (patterns
-                (pat_name
-                  (variable))
-                (pat_name
-                  (variable))))
+              (funvar
+                (variable)
+                (patterns
+                  (pat_name
+                    (variable))
+                  (pat_name
+                    (variable)))))
             (rhs
               (exp_name
                 (variable))
@@ -218,10 +226,11 @@ foldMap f = let fo : m -> a -> m
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_let_in
         (declarations
@@ -239,12 +248,13 @@ foldMap f = let fo : m -> a -> m
                   (type_variable)))))
           (function
             (lhs
-              (variable)
-              (patterns
-                (pat_name
-                  (variable))
-                (pat_name
-                  (variable))))
+              (funvar
+                (variable)
+                (patterns
+                  (pat_name
+                    (variable))
+                  (pat_name
+                    (variable)))))
             (rhs
               (exp_name
                 (variable))
@@ -256,7 +266,8 @@ foldMap f = let fo : m -> a -> m
                   (variable)))))
           (function
             (lhs
-              (variable))
+              (funvar
+                (variable)))
             (rhs
               (exp_name
                 (variable)))))
@@ -280,10 +291,11 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_array
         (exp_tuple
@@ -356,12 +368,13 @@ splitAt c x = case break (== c) x of
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_name
+            (variable)))))
     (rhs
       (exp_case
         (exp_apply
@@ -404,14 +417,15 @@ lookup_default i xs def = case list_lookup i xs of
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))
-        (pat_name
-          (variable))
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_name
+            (variable))
+          (pat_name
+            (variable)))))
     (rhs
       (exp_case
         (exp_apply
@@ -447,12 +461,13 @@ on f g = \x, y => g x `f` g y
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_name
+            (variable)))))
     (rhs
       (exp_lambda
         (pat_name
@@ -485,13 +500,14 @@ fun <*> x = [| fun <*> x |]
 (idris
   (function
     (lhs
-      (patterns
-        (pat_name
-          (variable)))
-      (operator)
-      (patterns
-        (pat_name
-          (variable))))
+      (funop
+        (patterns
+          (pat_name
+            (variable)))
+        (operator)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_idiom
         (exp_name
@@ -511,12 +527,13 @@ m_add x y = pure (!x + !y)
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_name
+            (variable)))))
     (rhs
       (exp_apply
         (exp_name
@@ -547,7 +564,8 @@ _ = let y = 94 in f !(g !(print y) !x)
         (declarations
           (function
             (lhs
-              (variable))
+              (funvar
+                (variable)))
             (rhs
               (exp_literal
                 (integer)))))

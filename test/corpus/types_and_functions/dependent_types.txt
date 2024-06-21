@@ -23,10 +23,11 @@ mkSingle False = []
           (type_variable)))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (constructor))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (constructor)))))
     (rhs
       (exp_array))))
 

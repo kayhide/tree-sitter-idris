@@ -40,10 +40,11 @@ Show Nat where
       (where)
       (function
         (lhs
-          (variable)
-          (patterns
-            (pat_name
-              (constructor))))
+          (funvar
+            (variable)
+            (patterns
+              (pat_name
+                (constructor)))))
         (rhs
           (exp_literal
             (string)))))))
@@ -66,13 +67,14 @@ interface Eq a where
       (where)
       (function
         (lhs
-          (patterns
-            (pat_name
-              (variable)))
-          (operator)
-          (patterns
-            (pat_name
-              (variable))))
+          (funop
+            (patterns
+              (pat_name
+                (variable)))
+            (operator)
+            (patterns
+              (pat_name
+                (variable)))))
         (rhs
           (exp_apply
             (exp_name
@@ -260,7 +262,8 @@ and = force . concat @{All}
 (idris
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_name
         (variable))

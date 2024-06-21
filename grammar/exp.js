@@ -252,6 +252,7 @@ module.exports = {
     $.exp_tuple,
     alias($.literal, $.exp_literal),
     $.wildcard,
+    $.unit,
     $.pragma_search,
   ),
 

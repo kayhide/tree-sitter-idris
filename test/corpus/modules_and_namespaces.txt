@@ -251,7 +251,8 @@ withNSInside = g where
 (idris
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_name
         (variable)))

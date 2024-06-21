@@ -10,17 +10,18 @@ filter p (x :: xs) with (filter p xs)
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))
-        (pat_tuple
-          (pat_infix
-            (pat_name
-              (variable))
-            (operator)
-            (pat_name
-              (variable))))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_tuple
+            (pat_infix
+              (pat_name
+                (variable))
+              (operator)
+              (pat_name
+                (variable)))))))
     (with
       (exp_parens
         (exp_apply
@@ -32,26 +33,25 @@ filter p (x :: xs) with (filter p xs)
             (variable))))
       (function
         (lhs
-          (patterns
-            (pat_name
-              (variable))
-            (pat_name
-              (variable))
-            (pat_tuple
-              (pat_infix
-                (pat_name
-                  (variable))
-                (operator)
-                (pat_name
-                  (variable)))))
-          (operator)
-          (patterns
-            (pat_tuple
-              (pat_infix
-                (pat_wildcard)
-                (operator)
-                (pat_name
-                  (variable))))))
+          (funvar
+            (variable)
+            (patterns
+              (pat_name
+                (variable))
+              (pat_tuple
+                (pat_infix
+                  (pat_name
+                    (variable))
+                  (operator)
+                  (pat_name
+                    (variable)))))))
+        (with_pat
+          (pat_tuple
+            (pat_infix
+              (pat_wildcard)
+              (operator)
+              (pat_name
+                (variable)))))
         (rhs
           (wildcard))))))
 
@@ -67,17 +67,18 @@ filter p (x :: xs) with (filter p xs)
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))
-        (pat_tuple
-          (pat_infix
-            (pat_name
-              (variable))
-            (operator)
-            (pat_name
-              (variable))))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_tuple
+            (pat_infix
+              (pat_name
+                (variable))
+              (operator)
+              (pat_name
+                (variable)))))))
     (with
       (exp_parens
         (exp_apply
@@ -89,14 +90,14 @@ filter p (x :: xs) with (filter p xs)
             (variable))))
       (function
         (lhs
-          (wildcard)
-          (with_pat
-            (pat_tuple
-              (pat_infix
-                (pat_wildcard)
-                (operator)
-                (pat_name
-                  (variable))))))
+          (wildcard))
+        (with_pat
+          (pat_tuple
+            (pat_infix
+              (pat_wildcard)
+              (operator)
+              (pat_name
+                (variable)))))
         (rhs
           (wildcard))))))
 
@@ -115,12 +116,13 @@ foo n m with (n + 1)
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_name
+            (variable)))))
     (with
       (exp_parens
         (exp_name
@@ -130,16 +132,15 @@ foo n m with (n + 1)
           (integer)))
       (function
         (lhs
-          (patterns
-            (pat_name
-              (variable))
-            (pat_wildcard)
-            (pat_name
-              (variable)))
-          (operator)
-          (patterns
-            (pat_literal
-              (integer))))
+          (funvar
+            (variable)
+            (patterns
+              (pat_wildcard)
+              (pat_name
+                (variable)))))
+        (with_pat
+          (pat_literal
+            (integer)))
         (with
           (exp_parens
             (exp_name
@@ -149,47 +150,44 @@ foo n m with (n + 1)
               (integer)))
           (function
             (lhs
-              (patterns
-                (pat_name
-                  (variable))
-                (pat_wildcard)
-                (pat_wildcard))
-              (operator)
-              (patterns
-                (pat_literal
-                  (integer)))
-              (with_pat
-                (pat_literal
-                  (integer))))
+              (funvar
+                (variable)
+                (patterns
+                  (pat_wildcard)
+                  (pat_wildcard))))
+            (with_pat
+              (pat_literal
+                (integer)))
+            (with_pat
+              (pat_literal
+                (integer)))
             (rhs
               (exp_name
                 (constructor))))
           (function
             (lhs
-              (patterns
-                (pat_name
-                  (variable))
-                (pat_wildcard)
-                (pat_wildcard))
-              (operator)
-              (patterns
-                (pat_literal
-                  (integer)))
-              (with_pat
-                (pat_wildcard)))
+              (funvar
+                (variable)
+                (patterns
+                  (pat_wildcard)
+                  (pat_wildcard))))
+            (with_pat
+              (pat_literal
+                (integer)))
+            (with_pat
+              (pat_wildcard))
             (rhs
               (exp_name
                 (constructor))))))
       (function
         (lhs
-          (patterns
-            (pat_name
-              (variable))
-            (pat_wildcard)
-            (pat_wildcard))
-          (operator)
-          (patterns
-            (pat_wildcard)))
+          (funvar
+            (variable)
+            (patterns
+              (pat_wildcard)
+              (pat_wildcard))))
+        (with_pat
+          (pat_wildcard))
         (rhs
           (exp_name
             (constructor)))))))
@@ -207,47 +205,45 @@ foo n m with (n + 1) | (m + 1)
 (idris
   (function
     (lhs
-      (patterns
-        (pat_name
-          (variable))
-        (pat_name
-          (variable))
-        (pat_name
-          (variable))
-        (pat_name
-          (variable))
-        (pat_tuple
-          (pat_infix
-            (pat_name
-              (variable))
-            (operator)
-            (pat_literal
-              (integer)))))
-      (operator)
-      (patterns
-        (pat_tuple
-          (pat_infix
-            (pat_name
-              (variable))
-            (operator)
-            (pat_literal
-              (integer))))
-        (pat_wildcard))
-      (with_pat
-        (pat_literal
-          (integer)))
-      (with_pat
-        (pat_literal
-          (integer))))
-    (rhs
-      (exp_apply
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_name
+            (variable)))))
+    (with
+      (exp_parens
         (exp_name
-          (constructor))
-        (wildcard))
-      (operator)
-      (wildcard)
-      (operator)
-      (wildcard)
-      (operator)
-      (exp_name
-        (constructor)))))
+          (variable))
+        (operator)
+        (exp_literal
+          (integer)))
+      (exp_parens
+        (exp_name
+          (variable))
+        (operator)
+        (exp_literal
+          (integer)))
+      (function
+        (lhs
+          (wildcard))
+        (with_pat
+          (pat_literal
+            (integer)))
+        (with_pat
+          (pat_literal
+            (integer)))
+        (rhs
+          (exp_name
+            (constructor))))
+      (function
+        (lhs
+          (wildcard))
+        (with_pat
+          (pat_wildcard))
+        (with_pat
+          (pat_wildcard))
+        (rhs
+          (exp_name
+            (constructor)))))))

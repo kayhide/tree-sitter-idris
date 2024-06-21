@@ -3,7 +3,8 @@
 
 (function
   (lhs
-    name: (variable))) @local.definition
+    (funvar
+      name: (variable)))) @local.definition
 
 (pat_name
   (variable)) @local.definition

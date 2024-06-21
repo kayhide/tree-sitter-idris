@@ -20,27 +20,29 @@ plus (S k) y = S (plus k y)
         (type_name))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (constructor))
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (constructor))
+          (pat_name
+            (variable)))))
     (rhs
       (exp_name
         (variable))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_tuple
-          (pat_apply
-            (pat_name
-              (constructor))
-            (pat_name
-              (variable))))
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_tuple
+            (pat_apply
+              (pat_name
+                (constructor))
+              (pat_name
+                (variable))))
+          (pat_name
+            (variable)))))
     (rhs
       (exp_apply
         (exp_name
@@ -76,27 +78,29 @@ mult (S k) y = plus y (mult k y)
         (type_name))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (constructor))
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (constructor))
+          (pat_name
+            (variable)))))
     (rhs
       (exp_name
         (constructor))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_tuple
-          (pat_apply
-            (pat_name
-              (constructor))
-            (pat_name
-              (variable))))
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_tuple
+            (pat_apply
+              (pat_name
+                (constructor))
+              (pat_name
+                (variable))))
+          (pat_name
+            (variable)))))
     (rhs
       (exp_apply
         (exp_name
@@ -139,10 +143,11 @@ reverse xs = revAcc [] xs where
           (type_variable)))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_apply
         (exp_name
@@ -172,27 +177,29 @@ reverse xs = revAcc [] xs where
                 (type_variable))))))
       (function
         (lhs
-          (variable)
-          (patterns
-            (pat_name
-              (variable))
-            (pat_array)))
+          (funvar
+            (variable)
+            (patterns
+              (pat_name
+                (variable))
+              (pat_array))))
         (rhs
           (exp_name
             (variable))))
       (function
         (lhs
-          (variable)
-          (patterns
-            (pat_name
-              (variable))
-            (pat_tuple
-              (pat_infix
-                (pat_name
-                  (variable))
-                (operator)
-                (pat_name
-                  (variable))))))
+          (funvar
+            (variable)
+            (patterns
+              (pat_name
+                (variable))
+              (pat_tuple
+                (pat_infix
+                  (pat_name
+                    (variable))
+                  (operator)
+                  (pat_name
+                    (variable)))))))
         (rhs
           (exp_apply
             (exp_name
@@ -231,10 +238,11 @@ foo x = case isLT of
       (type_name)))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_case
         (exp_name
@@ -263,7 +271,8 @@ foo x = case isLT of
         (type_name))
       (function
         (lhs
-          (variable))
+          (funvar
+            (variable)))
         (rhs
           (exp_if
             (exp_name
@@ -302,23 +311,25 @@ even (S k) = odd k where
       (type_name)))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (constructor))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (constructor)))))
     (rhs
       (exp_name
         (constructor))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_tuple
-          (pat_apply
-            (pat_name
-              (constructor))
-            (pat_name
-              (variable))))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_tuple
+            (pat_apply
+              (pat_name
+                (constructor))
+              (pat_name
+                (variable)))))))
     (rhs
       (exp_apply
         (exp_name
@@ -335,23 +346,25 @@ even (S k) = odd k where
           (type_name)))
       (function
         (lhs
-          (variable)
-          (patterns
-            (pat_name
-              (constructor))))
+          (funvar
+            (variable)
+            (patterns
+              (pat_name
+                (constructor)))))
         (rhs
           (exp_name
             (constructor))))
       (function
         (lhs
-          (variable)
-          (patterns
-            (pat_tuple
-              (pat_apply
-                (pat_name
-                  (constructor))
-                (pat_name
-                  (variable))))))
+          (funvar
+            (variable)
+            (patterns
+              (pat_tuple
+                (pat_apply
+                  (pat_name
+                    (constructor))
+                  (pat_name
+                    (variable)))))))
         (rhs
           (exp_apply
             (exp_name
@@ -383,7 +396,8 @@ test = [c (S 1), c Z, d (S Z)]
       (type_name)))
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_array
         (exp_apply
@@ -421,10 +435,11 @@ test = [c (S 1), c Z, d (S Z)]
           (type_name)))
       (function
         (lhs
-          (variable)
-          (patterns
-            (pat_name
-              (variable))))
+          (funvar
+            (variable)
+            (patterns
+              (pat_name
+                (variable)))))
         (rhs
           (exp_literal
             (integer))
@@ -439,10 +454,11 @@ test = [c (S 1), c Z, d (S Z)]
           (type_name)))
       (function
         (lhs
-          (variable)
-          (patterns
-            (pat_name
-              (variable))))
+          (funvar
+            (variable)
+            (patterns
+              (pat_name
+                (variable)))))
         (rhs
           (exp_apply
             (exp_name
@@ -469,16 +485,48 @@ test = [c (S 1), c Z, d (S Z)]
               (type_name)))
           (function
             (lhs
-              (variable)
-              (patterns
-                (pat_name
-                  (variable))))
+              (funvar
+                (variable)
+                (patterns
+                  (pat_name
+                    (variable)))))
             (rhs
               (exp_name
                 (variable))
               (operator)
               (exp_name
                 (variable)))))))))
+
+================================================================================
+At braces
+================================================================================
+
+uninhabited (x, _) @{Left  _} = uninhabited x
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (variable)
+        (patterns
+          (pat_tuple
+            (pat_name
+              (variable))
+            (tuple_operator)
+            (pat_wildcard))
+          (pat_at_braces
+            (pat_apply
+              (pat_name
+                (constructor))
+              (pat_wildcard))))))
+    (rhs
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_name
+          (variable))))))
 
 ================================================================================
 Totality partial
@@ -549,7 +597,8 @@ main = putStrLn ?greeting
       (type_parens)))
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_apply
         (exp_name
@@ -567,12 +616,13 @@ helpEven j p = rewrite plusSuccRightSucc j j in p
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_name
+            (variable)))))
     (rhs
       (exp_rewrite_in
         (rewrite_exp
@@ -614,10 +664,11 @@ Foo a = 3
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_literal
         (integer)))))
@@ -637,10 +688,11 @@ Not p = p -> Void
     (type_name))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_name
         (variable))
@@ -681,12 +733,13 @@ Operator 2
 (idris
   (function
     (lhs
-      (operator)
-      (patterns
-        (pat_name
-          (variable))
-        (pat_name
-          (variable))))
+      (funvar
+        (operator)
+        (patterns
+          (pat_name
+            (variable))
+          (pat_name
+            (variable)))))
     (rhs
       (wildcard))))
 
@@ -701,16 +754,17 @@ Operator 3
 (idris
   (function
     (lhs
-      (patterns
-        (pat_name
-          (variable)))
-      (operator)
-      (patterns
-        (pat_name
-          (variable)))
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (patterns
+          (pat_name
+            (variable)))
+        (operator)
+        (patterns
+          (pat_name
+            (variable)))
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_apply
         (exp_name
@@ -735,12 +789,41 @@ _ == _ impossible
 (idris
   (function
     (lhs
-      (patterns
-        (pat_wildcard))
-      (operator)
-      (patterns
-        (pat_wildcard)))
+      (funop
+        (patterns
+          (pat_wildcard))
+        (operator)
+        (patterns
+          (pat_wildcard))))
     (impossible)))
+
+================================================================================
+Operator 5
+================================================================================
+
+x :: xs == y :: ys = _
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funop
+        (patterns
+          (pat_name
+            (variable))
+          (operator)
+          (pat_name
+            (variable)))
+        (operator)
+        (patterns
+          (pat_name
+            (variable))
+          (operator)
+          (pat_name
+            (variable)))))
+    (rhs
+      (wildcard))))
 
 ================================================================================
 Operator infix 1

@@ -19,7 +19,8 @@ main = putStrLn "Hello world"
       (type_parens)))
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_apply
         (exp_name

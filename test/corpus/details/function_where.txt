@@ -10,10 +10,11 @@ f x = y
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_name
         (variable)))
@@ -21,7 +22,8 @@ f x = y
     (declarations
       (function
         (lhs
-          (variable))
+          (funvar
+            (variable)))
         (rhs
           (exp_name
             (variable)))))))
@@ -39,10 +41,11 @@ f x = y
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_name
         (variable)))
@@ -50,7 +53,8 @@ f x = y
     (declarations
       (function
         (lhs
-          (variable))
+          (funvar
+            (variable)))
         (rhs
           (exp_name
             (variable)))))))
@@ -66,10 +70,11 @@ f x = y where y = x
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_name
         (variable)))
@@ -77,7 +82,8 @@ f x = y where y = x
     (declarations
       (function
         (lhs
-          (variable))
+          (funvar
+            (variable)))
         (rhs
           (exp_name
             (variable)))))))
@@ -95,10 +101,11 @@ f x = y
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_name
         (variable)))
@@ -109,7 +116,8 @@ f x = y
         (type_name))
       (function
         (lhs
-          (variable))
+          (funvar
+            (variable)))
         (rhs
           (exp_name
             (variable)))))))
@@ -128,10 +136,11 @@ f x = y
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_name
         (variable)))
@@ -142,7 +151,8 @@ f x = y
         (type_name))
       (function
         (lhs
-          (variable))
+          (funvar
+            (variable)))
         (rhs
           (exp_name
             (variable)))))))
@@ -158,10 +168,11 @@ f x = z where z = y where y = z
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_name
         (variable)))
@@ -169,7 +180,8 @@ f x = z where z = y where y = z
     (declarations
       (function
         (lhs
-          (variable))
+          (funvar
+            (variable)))
         (rhs
           (exp_name
             (variable)))
@@ -177,7 +189,8 @@ f x = z where z = y where y = z
         (declarations
           (function
             (lhs
-              (variable))
+              (funvar
+                (variable)))
             (rhs
               (exp_name
                 (variable)))))))))
@@ -194,10 +207,11 @@ f x = z where z = y
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_name
         (variable)))
@@ -205,16 +219,18 @@ f x = z where z = y
     (declarations
       (function
         (lhs
-          (variable))
+          (funvar
+            (variable)))
         (rhs
           (exp_name
             (variable))))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_name
         (variable)))))
@@ -233,10 +249,11 @@ f x = z
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_name
         (variable)))
@@ -247,16 +264,18 @@ f x = z
         (type_name))
       (function
         (lhs
-          (variable))
+          (funvar
+            (variable)))
         (rhs
           (exp_name
             (variable))))))
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_name
         (variable)))))

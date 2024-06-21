@@ -18,7 +18,8 @@ greet = do
       (type_parens)))
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_do
         (statement
@@ -135,10 +136,11 @@ _ = do
             (declarations
               (function
                 (lhs
-                  (variable)
-                  (patterns
-                    (pat_name
-                      (variable))))
+                  (funvar
+                    (variable)
+                    (patterns
+                      (pat_name
+                        (variable)))))
                 (rhs
                   (exp_name
                     (variable)))))

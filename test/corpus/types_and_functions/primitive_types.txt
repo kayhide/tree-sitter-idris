@@ -13,7 +13,8 @@ x = 94
     (type_name))
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_literal
         (integer)))))
@@ -33,7 +34,8 @@ foo = "Sausage machine"
     (type_name))
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_literal
         (string)))))
@@ -53,7 +55,8 @@ bar = 'Z'
     (type_name))
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_literal
         (char)))))
@@ -73,7 +76,8 @@ quux = False
     (type_name))
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_name
         (constructor)))))

@@ -30,21 +30,20 @@ module.exports = {
     field('patterns', optional(alias($._fun_patterns, $.patterns))),
   ),
 
-  _funop: $ => prec(1, seq(
-    field('patterns', alias($._fun_patterns, $.patterns)),
+  _funop: $ => prec(5, seq(
+    field('patterns', alias(choice($._fun_patterns, $.pat_infix), $.patterns)),
     choice($.operator, $.tuple_operator),
-    field('patterns', alias($._fun_patterns, $.patterns)),
+    field('patterns', alias(choice($._fun_patterns, $.pat_infix), $.patterns)),
   )),
 
   _with_res: $ => seq('|', alias($._apat, $.with_pat)),
 
   _funlhs: $ => seq(
     choice(
-      prec.dynamic(3, $._funop),
-      prec.dynamic(2, $._funvar),
+      prec.dynamic(1, alias($._funop, $.funop)),
+      prec.dynamic(2, alias($._funvar, $.funvar)),
       $.wildcard
     ),
-    repeat($._with_res),
   ),
 
   with: $ => seq(
@@ -58,6 +57,7 @@ module.exports = {
 
   function: $ => seq(
     alias($._funlhs, $.lhs),
+    repeat($._with_res),
     choice(
       alias($._funrhs, $.rhs), 
       $.with, 

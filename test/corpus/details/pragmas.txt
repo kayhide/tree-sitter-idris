@@ -193,7 +193,8 @@ defaultString = %search
 (idris
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (pragma_search))))
 
@@ -208,7 +209,8 @@ any = foldMap @{%search} @{Any}
 (idris
   (function
     (lhs
-      (variable))
+      (funvar
+        (variable)))
     (rhs
       (exp_apply
         (exp_name
@@ -302,10 +304,11 @@ unsafeCreateWorld f = f %MkWorld
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (variable)))))
     (rhs
       (exp_apply
         (exp_name
@@ -325,13 +328,14 @@ unsafeDestroyWorld %MkWorld x = x
 (idris
   (function
     (lhs
-      (variable)
-      (patterns
-        (pat_name
-          (constructor
-            (pragma_mkworld)))
-        (pat_name
-          (variable))))
+      (funvar
+        (variable)
+        (patterns
+          (pat_name
+            (constructor
+              (pragma_mkworld)))
+          (pat_name
+            (variable)))))
     (rhs
       (exp_name
         (variable)))))

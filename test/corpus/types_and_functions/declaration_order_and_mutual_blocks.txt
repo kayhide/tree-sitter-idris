@@ -24,23 +24,25 @@ mutual
           (type_name)))
       (function
         (lhs
-          (variable)
-          (patterns
-            (pat_name
-              (constructor))))
+          (funvar
+            (variable)
+            (patterns
+              (pat_name
+                (constructor)))))
         (rhs
           (exp_name
             (constructor))))
       (function
         (lhs
-          (variable)
-          (patterns
-            (pat_tuple
-              (pat_apply
-                (pat_name
-                  (constructor))
-                (pat_name
-                  (variable))))))
+          (funvar
+            (variable)
+            (patterns
+              (pat_tuple
+                (pat_apply
+                  (pat_name
+                    (constructor))
+                  (pat_name
+                    (variable)))))))
         (rhs
           (exp_apply
             (exp_name
@@ -55,23 +57,25 @@ mutual
           (type_name)))
       (function
         (lhs
-          (variable)
-          (patterns
-            (pat_name
-              (constructor))))
+          (funvar
+            (variable)
+            (patterns
+              (pat_name
+                (constructor)))))
         (rhs
           (exp_name
             (constructor))))
       (function
         (lhs
-          (variable)
-          (patterns
-            (pat_tuple
-              (pat_apply
-                (pat_name
-                  (constructor))
-                (pat_name
-                  (variable))))))
+          (funvar
+            (variable)
+            (patterns
+              (pat_tuple
+                (pat_apply
+                  (pat_name
+                    (constructor))
+                  (pat_name
+                    (variable)))))))
         (rhs
           (exp_apply
             (exp_name

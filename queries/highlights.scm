@@ -162,7 +162,8 @@
 
 (function
   (lhs
-    name: (variable) @function))
+    (funvar
+      name: (variable) @function)))
 
 (interface_head
   name: (interface_name) @type)
