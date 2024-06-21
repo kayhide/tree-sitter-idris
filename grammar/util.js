@@ -10,6 +10,8 @@ idiom_brackets = (...rule) => seq('[|', ...rule, '|]')
 
 ticked = (...rule) => seq('`', ...rule, '`')
 
+prefixable = (pre, ...rule) => seq(optional(pre), ...rule)
+
 quote = '\''
 
 qualified = ($, id) => seq($._qualifying_module, id)
@@ -72,6 +74,7 @@ module.exports = {
   layouted,
   layouted_without_end,
   parens,
+  prefixable,
   qualified,
   quote,
   sep,

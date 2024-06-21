@@ -1,4 +1,4 @@
-const { brackets, layouted, layouted_without_end, parens, qualified, sep, sep1, ticked, terminated } = require('./util.js')
+const { brackets, layouted, layouted_without_end, parens, prefixable, qualified, sep, sep1, ticked, terminated } = require('./util.js')
 
 /* ----- Composite expressions shared between do/ado and regular notation -----
 
@@ -30,16 +30,15 @@ module.exports = {
 
   // ----- Identifiers and modifiers ------------------------------------------
 
-  exp_name: $ => choice(
-    $._qvar,
-    $._qcon,
-  ),
+  bang: _ =>  '!',
+
+  exp_name: $ => prefixable($.bang, choice($._qvar, $._qcon)),
 
   exp_ticked: $ => ticked($._exp),
 
   exp_negation: $ => seq('-', $._aexp),
 
-  exp_parens: $ => parens($._exp),
+  exp_parens: $ => prefixable($.bang, parens($._exp)),
 
   exp_idiom: $ => idiom_brackets($._exp),
 

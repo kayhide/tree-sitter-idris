@@ -466,3 +466,68 @@ fun <*> x = [| fun <*> x |]
       (operator)
       (exp_name
         (variable)))))
+
+================================================================================
+!-notation 1
+================================================================================
+
+m_add x y = pure (!x + !y)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (variable)
+    (patterns
+      (pat_name
+        (variable))
+      (pat_name
+        (variable)))
+    (exp_apply
+      (exp_name
+        (variable))
+      (exp_parens
+        (exp_name
+          (bang)
+          (variable))
+        (operator)
+        (exp_name
+          (bang)
+          (variable))))))
+
+================================================================================
+!-notation 2
+================================================================================
+
+_ = let y = 94 in f !(g !(print y) !x)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (pat_wildcard
+      (pat_wildcard))
+    (exp_let_in
+      (declarations
+        (function
+          (variable)
+          (exp_literal
+            (integer))))
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_parens
+          (bang)
+          (exp_apply
+            (exp_name
+              (variable))
+            (exp_parens
+              (bang)
+              (exp_apply
+                (exp_name
+                  (variable))
+                (exp_name
+                  (variable))))
+            (exp_name
+              (bang)
+              (variable))))))))
