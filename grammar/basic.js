@@ -83,6 +83,8 @@ module.exports = {
 
   wildcard: _ => '_',
 
+  unit: _ => '()',
+
   /**
    * Same as varid_pattern except it's preceded by `?`, plus `'` and `_` are allowed
    * to be the first and only characters after `?`.
