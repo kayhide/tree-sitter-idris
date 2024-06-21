@@ -31,6 +31,9 @@ module.exports = {
   // Tuple operator, only available inside parens
   tuple_operator: $ => prec.right(alias($.comma, '')),
 
+  // Ticked operator
+  ticked_operator: $=> ticked(alias($._qvarid, '')),
+
   // Qualified or unqualified operator, with and without `-`.
   _q_op: $ => choice($.qualified_operator, $._operator_or_minus),
   _q_op_nominus: $ => choice($.qualified_operator, $.operator),
