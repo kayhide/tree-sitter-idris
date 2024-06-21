@@ -27,4 +27,6 @@ module.exports = {
   pragma_search: _ => '%search',
 
   pragma_world: _ => '%World',
+
+  pragma_mkworld: _ => '%MkWorld',
 }

@@ -48,7 +48,7 @@ module.exports = {
 
   // Same as the varid pattern except this one would have to start with a capital letter.
   _conid: _ => /[\p{Lu}_][\p{L}0-9_']*/,
-  constructor: $ => $._conid,
+  constructor: $ => choice($._conid, $.pragma_mkworld),
 
   qualified_constructor: $ => qualified($, $.constructor),
   // Qualified or unqualified data constructor.
