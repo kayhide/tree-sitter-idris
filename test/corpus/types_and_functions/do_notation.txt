@@ -137,7 +137,7 @@ _ = do
               (function
                 (lhs
                   (funvar
-                    (variable)
+                    (constructor)
                     (patterns
                       (pat_name
                         (variable)))))

@@ -57,7 +57,7 @@ showPerson p = let MkPerson name age = p in
           (function
             (lhs
               (funvar
-                (variable)
+                (constructor)
                 (patterns
                   (pat_name
                     (variable))
@@ -132,7 +132,7 @@ Diag v = let ty : Type := v = v in ty
   (function
     (lhs
       (funvar
-        (variable)
+        (constructor)
         (patterns
           (pat_name
             (variable)))))

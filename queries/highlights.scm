@@ -25,8 +25,10 @@
   "("
   ")"
   "{"
+  "@{"
   "}"
   "["
+  "[<"
   "]"
 ] @punctuation.bracket
 
@@ -61,7 +63,6 @@
 
 [
   (operator)
-  (constructor_operator)
   (qualified_module) ; grabs the `.` (dot), ex: import System.IO
   ; `_` wildcards in if-then-else and case-of expressions,
   ; as well as record updates and operator sections

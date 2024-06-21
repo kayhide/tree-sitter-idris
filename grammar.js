@@ -117,7 +117,7 @@ module.exports = grammar({
      */
     [$.exp_name, $._pat_constructor],
     [$.exp_name, $.pat_name],
-    [$._fun_name, $.pat_name],
+    [$._name, $.pat_name],
     [$._aexp_projection, $._apat],
     [$.exp_list, $.pat_list],
 
@@ -149,7 +149,6 @@ module.exports = grammar({
      */
     [$.variable, $._implementation_name],
     [$.constructor, $._implementation_name],
-    [$.constructor, $._fun_name],
 
     /**
      * Implementation constraints conflicts.
@@ -162,14 +161,15 @@ module.exports = grammar({
     [$.type_name, $.interface_head],
 
     /**
-     * Operator conflicts.
+     * Constructor conflicts.
      */
+    [$._qcon, $._name, $.interface_name],
+    [$._qcon, $._name, $.pat_name],
+    [$._qcon, $._name],
+    [$._qcon, $.pat_name],
+    [$._qcon, $.exp_name, $.pat_name],
     [$._qcon, $.exp_name],
-    [$.operator, $.pat_name, $._fun_name],
-    [$.operator, $.pat_name, $.exp_name],
-    [$.operator, $.pat_name],
-    [$.operator, $.pragma_arg],
-    [$.operator, $.exp_name],
+
 
     /**
      * RHS of operator def.

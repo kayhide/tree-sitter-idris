@@ -21,7 +21,7 @@ module.exports = {
   // Look-around isn't allowed, so this is slightly modified.
   // https://github.com/natefaubion/purescript-language-cst-parser/blob/bf5623e08e1f43f923d4ff3c29cafbda25128768/src/PureScript/CST/Lexer.purs#L503
   _operator: _ => /(?:[:!#$%&*+./<=>?@\\^|~-]|\p{S})+/,
-  operator: $ => $._operator,
+  operator: $ => choice($._operator, '-'),
   qualified_operator: $ => qualified($, parens($._operator)),
 
   // Tuple operator, only available inside parens
@@ -30,13 +30,8 @@ module.exports = {
   // Ticked operator
   ticked_operator: $=> ticked(alias($._qvarid, '')),
 
-  // Qualified and unqualified identifier or operator in parens.
-  _var: $ => choice($.variable, parens($._operator)),
-  _qvar: $ => choice(
-    $._var,
-    $.qualified_variable,
-    $.qualified_operator,
-  ),
+  _var: $ => choice($.variable, parens($.operator)),
+  _qvar: $ => choice($._var, $.qualified_variable, $.qualified_operator),
 
   // ------------------------------------------------------------------------
   // Data constructors
@@ -50,11 +45,7 @@ module.exports = {
   _qconid: $ => choice($.qualified_constructor, $.constructor),
 
   _con: $ => choice($.constructor, parens($.operator)),
-  _qcon: $ => choice(
-    $._con,
-    $.qualified_constructor,
-    $.qualified_operator,
-  ),
+  _qcon: $ => choice($._con, $.qualified_constructor, $.qualified_operator),
 
   // ------------------------------------------------------------------------
   // Type constructors
@@ -62,10 +53,9 @@ module.exports = {
 
   _tyconid: $ => alias($.constructor, $.type),
   qualified_type: $ => qualified($, $._tyconid),
-
   _qtyconid: $ => choice($.qualified_type, $._tyconid),
 
   literal: $ => $._literal,
-  _name: $ => choice($._var, $._con),
-  _qname: $ => choice($._qvar, $._qcon),
+  _name: $ => choice($.variable, $.constructor, parens($.operator)),
+  _qname: $ => choice($._name, $.qualified_variable, $.qualified_constructor, $.qualified_operator),
 }

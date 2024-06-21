@@ -77,6 +77,7 @@ public export %inline %tcinline
     (visibility)
     (pragma_inline)
     (pragma_tcinline)
+    (operator)
     (type_infix
       (type_parens
         (type_infix
@@ -296,10 +297,12 @@ Pragma allow_overloads
       (variable)))
   (pragma
     (pragma_name)
-    (pragma_arg))
+    (pragma_arg
+      (operator)))
   (pragma
     (pragma_name)
-    (pragma_arg)))
+    (pragma_arg
+      (operator))))
 
 ================================================================================
 Pragma World 1
@@ -311,7 +314,7 @@ MkIORes : (result : a) -> (1 x : %World) -> IORes a
 
 (idris
   (signature
-    (variable)
+    (constructor)
     (type_infix
       (type_name
         (annotated_type_variable

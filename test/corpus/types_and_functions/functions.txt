@@ -581,6 +581,38 @@ qsort : Ord a => List a -> List a
             (type_variable)))))))
 
 ================================================================================
+Totality covering
+================================================================================
+
+covering
+takeUntil : (n -> Bool) -> Stream n -> List n
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (totality)
+    (variable)
+    (type_infix
+      (type_parens
+        (type_infix
+          (type_name
+            (type_variable))
+          (operator)
+          (type_name)))
+      (operator)
+      (type_infix
+        (type_apply
+          (type_name)
+          (type_name
+            (type_variable)))
+        (operator)
+        (type_apply
+          (type_name)
+          (type_name
+            (type_variable)))))))
+
+================================================================================
 Holes
 ================================================================================
 
@@ -646,7 +678,7 @@ Foo : a -> Type
 
 (idris
   (signature
-    (variable)
+    (constructor)
     (type_infix
       (type_name
         (type_variable))
@@ -665,7 +697,7 @@ Foo a = 3
   (function
     (lhs
       (funvar
-        (variable)
+        (constructor)
         (patterns
           (pat_name
             (variable)))))
@@ -684,12 +716,12 @@ Not p = p -> Void
 
 (idris
   (signature
-    (variable)
+    (constructor)
     (type_name))
   (function
     (lhs
       (funvar
-        (variable)
+        (constructor)
         (patterns
           (pat_name
             (variable)))))
@@ -710,6 +742,7 @@ Operator 1
 
 (idris
   (signature
+    (operator)
     (type_infix
       (type_name
         (type_variable))
@@ -725,6 +758,28 @@ Operator 1
 Operator 2
 ================================================================================
 
+(-) : a -> a -> a
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (operator)
+    (type_infix
+      (type_name
+        (type_variable))
+      (operator)
+      (type_infix
+        (type_name
+          (type_variable))
+        (operator)
+        (type_name
+          (type_variable))))))
+
+================================================================================
+Operator 3
+================================================================================
+
 (+) x y = _
 
 --------------------------------------------------------------------------------
@@ -733,6 +788,7 @@ Operator 2
   (function
     (lhs
       (funvar
+        (operator)
         (patterns
           (pat_name
             (variable))
@@ -742,7 +798,7 @@ Operator 2
       (wildcard))))
 
 ================================================================================
-Operator 3
+Operator 4
 ================================================================================
 
 (f <+> g) x = f x <+> g x
@@ -777,7 +833,7 @@ Operator 3
           (variable))))))
 
 ================================================================================
-Operator 4
+Operator 5
 ================================================================================
 
 _ == _ impossible
@@ -796,7 +852,7 @@ _ == _ impossible
     (impossible)))
 
 ================================================================================
-Operator 5
+Operator 6
 ================================================================================
 
 x :: xs == y :: ys = _

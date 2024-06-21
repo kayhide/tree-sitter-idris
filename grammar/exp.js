@@ -36,7 +36,7 @@ module.exports = {
 
   exp_ticked: $ => ticked($._exp),
 
-  exp_negation: $ => seq('-', $._aexp),
+  exp_negation: $ => prec(1, seq('-', $._aexp)),
 
   exp_parens: $ => prefixable($.bang, parens($._exp)),
 

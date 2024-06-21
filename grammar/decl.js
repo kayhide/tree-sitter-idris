@@ -14,9 +14,10 @@ module.exports = {
   totality: _ => choice(
     'total',
     'partial',
+    'covering',
   ),
 
-  _fun_name: $ => field('name', choice($._var, alias($._conid, $.variable))),
+  _fun_name: $ => field('name', $._name),
 
   _funrhs: $ => seq(
     choice(':=', '='),
