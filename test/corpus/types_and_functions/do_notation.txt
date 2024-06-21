@@ -43,3 +43,113 @@ greet = do
               (operator)
               (exp_name
                 (variable)))))))))
+
+================================================================================
+Pattern matching bind 1
+================================================================================
+
+_ = do 
+  Just x_ok <- readNumber
+    | Nothing => pure Nothing
+  Just y_ok <- readNumber
+    | Nothing => pure Nothing
+  pure (Just (x_ok, y_ok))
+
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_do
+        (statement
+          (bind_pattern
+            (pat_apply
+              (pat_name
+                (constructor))
+              (pat_name
+                (variable)))
+            (exp_name
+              (variable)))))
+      (operator)
+      (exp_name
+        (constructor))
+      (operator)
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_name
+          (constructor))
+        (exp_name
+          (constructor))
+        (exp_name
+          (variable)))
+      (operator)
+      (exp_name
+        (variable))
+      (operator)
+      (exp_name
+        (constructor))
+      (operator)
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_name
+          (constructor))
+        (exp_name
+          (variable))
+        (exp_parens
+          (exp_apply
+            (exp_name
+              (constructor))
+            (exp_tuple
+              (exp_name
+                (variable))
+              (tuple_operator)
+              (exp_name
+                (variable)))))))))
+
+================================================================================
+Pattern matching bind 2
+================================================================================
+
+_ = do
+  let Just x = f
+    | Nothing => pure Nothing
+  pure x
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_do
+        (statement
+          (let
+            (declarations
+              (function
+                (lhs
+                  (variable)
+                  (patterns
+                    (pat_name
+                      (variable))))
+                (rhs
+                  (exp_name
+                    (variable))))))))
+      (operator)
+      (exp_name
+        (constructor))
+      (operator)
+      (exp_apply
+        (exp_name
+          (variable))
+        (exp_name
+          (constructor))
+        (exp_name
+          (variable))
+        (exp_name
+          (variable))))))

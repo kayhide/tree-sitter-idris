@@ -112,28 +112,7 @@ module.exports = {
 
   // ----- Case-of ------------------------------------------------------------
 
-  pattern_guard: $ =>
-    seq(
-      $._pat,
-      $._larrow,
-      $._exp,
-    ),
-
-  guard: $ =>
-    choice(
-      $.pattern_guard,
-      $._exp,
-    ),
-
-  guards: $ => seq('|', sep1($.comma, $.guard)),
-
-  gdpat: $ => seq($.guards, $._arrow, $._exp),
-
-  _alt_variants: $ =>
-    choice(
-      seq($._rcarrow, field('exp', $._exp)),
-      repeat1($.gdpat),
-    ),
+  _alt_variants: $ => seq($._rcarrow, field('exp', $._exp)),
 
   alt: $ =>
     seq(
@@ -208,14 +187,21 @@ module.exports = {
   _statement_exp: $ =>
     prec.right(seq($._statement_exp_infix, optional($._type_annotation))),
 
-  bind_pattern: $ =>
-    seq(
-      $._typed_pat,
-      $._larrow,
-      $._exp,
-    ),
+  bind_pattern: $ => seq(
+    $._typed_pat,
+    $._larrow,
+    $._exp,
+    optional(layouted($, $.bind_alt)),
+  ),
 
-  let: $ => seq('let', $.declarations),
+  let: $ => seq(
+    'let', 
+    $.declarations,
+    optional(layouted($, $.bind_alt)),
+  ),
+
+  bind_alt: $ => seq('|', $._typed_pat, $._rcarrow, $._exp),
+
 
   statement: $ =>
     choice(
