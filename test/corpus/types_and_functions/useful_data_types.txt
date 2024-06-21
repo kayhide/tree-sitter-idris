@@ -587,3 +587,20 @@ record DPair a (p : a -> Type) where
             (type_variable))
           (type_name
             (type_variable)))))))
+
+================================================================================
+Records 7
+================================================================================
+
+record (<=>) (a, b : Type) where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (record
+    (operator)
+    (annotated_type_variable
+      (type_variable)
+      (type_variable)
+      (type_name))
+    (where)))

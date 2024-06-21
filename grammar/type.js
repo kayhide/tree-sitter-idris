@@ -9,13 +9,15 @@ module.exports = {
   annotated_type_variable: $ =>
     parens(seq(
       optional($.quantity),
-      $.type_variable,
+      $._type_variables,
       $._type_annotation
     )),
 
+  _type_variables: $ => prec.left(sep1(alias($.comma, ''), $.type_variable)),
+
   _tyvar: $ =>
     choice(
-      $.type_variable,
+      $._type_variables,
       $.annotated_type_variable,
     ),
 

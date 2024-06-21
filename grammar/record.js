@@ -8,7 +8,7 @@ module.exports = {
   _decl_record: $ => seq(
     optional($.visibility),
     'record',
-    field('name', $.record_name),
+    field('name', choice($.record_name, parens($.operator))),
     repeat($._tyvar),
     $.where,
     optional($.record_body),
