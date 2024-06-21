@@ -6,6 +6,8 @@ braces = (...rule) => seq('{', ...rule, '}')
 
 brackets = (...rule) => seq('[', ...rule, ']')
 
+snoc_brackets = (...rule) => seq('[<', ...rule, ']')
+
 idiom_brackets = (...rule) => seq('[|', ...rule, '|]')
 
 ticked = (...rule) => seq('`', ...rule, '`')

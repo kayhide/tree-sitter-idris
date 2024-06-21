@@ -297,7 +297,7 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
           (pat_name
             (variable)))))
     (rhs
-      (exp_array
+      (exp_list
         (exp_tuple
           (exp_name
             (variable))
@@ -311,7 +311,7 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
         (exp_name
           (variable))
         (operator)
-        (exp_array
+        (exp_list
           (exp_literal
             (integer))
           (operator)
@@ -321,7 +321,7 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
         (exp_name
           (variable))
         (operator)
-        (exp_array
+        (exp_list
           (exp_literal
             (integer))
           (operator)
@@ -331,7 +331,7 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
         (exp_name
           (variable))
         (operator)
-        (exp_array
+        (exp_list
           (exp_literal
             (integer))
           (operator)

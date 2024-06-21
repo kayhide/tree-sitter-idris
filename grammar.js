@@ -121,7 +121,7 @@ module.exports = grammar({
     [$._fun_name, $.pat_name],
     [$._aexp_projection, $._apat],
     [$.pat_name, $._q_op],
-    [$.exp_array, $.pat_array],
+    [$.exp_list, $.pat_list],
     [$._minus, $.exp_negation],
     [$._minus, $.exp_negation, $.pat_negation],
 

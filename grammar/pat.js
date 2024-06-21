@@ -21,7 +21,10 @@ module.exports = {
 
   pat_tuple: $ => parens(sep($.tuple_operator, $._typed_pat)),
 
-  pat_array: $ => brackets(sep($.comma, $._typed_pat)),
+  pat_list: $ => choice(
+    brackets(sep($.comma, $._typed_pat)),
+    snoc_brackets(sep($.comma, $._typed_pat)),
+  ),
 
   pat_at_braces: $ => seq('@{', $.pat_apply, '}'),
 
@@ -32,7 +35,7 @@ module.exports = {
     alias($.literal, $.pat_literal),
     alias($.wildcard, $.pat_wildcard),
     $.pat_tuple,
-    $.pat_array,
+    $.pat_list,
     $.pat_at_braces,
   ),
 

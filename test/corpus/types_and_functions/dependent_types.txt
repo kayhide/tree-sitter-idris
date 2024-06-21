@@ -29,7 +29,7 @@ mkSingle False = []
           (pat_name
             (constructor)))))
     (rhs
-      (exp_array))))
+      (exp_list))))
 
 ================================================================================
 Implicit Arguments 1

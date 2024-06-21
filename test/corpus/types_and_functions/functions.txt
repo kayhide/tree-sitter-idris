@@ -152,7 +152,7 @@ reverse xs = revAcc [] xs where
       (exp_apply
         (exp_name
           (variable))
-        (exp_array)
+        (exp_list)
         (exp_name
           (variable))))
     (where)
@@ -182,7 +182,7 @@ reverse xs = revAcc [] xs where
             (patterns
               (pat_name
                 (variable))
-              (pat_array))))
+              (pat_list))))
         (rhs
           (exp_name
             (variable))))
@@ -399,7 +399,7 @@ test = [c (S 1), c Z, d (S Z)]
       (funvar
         (variable)))
     (rhs
-      (exp_array
+      (exp_list
         (exp_apply
           (exp_name
             (variable))

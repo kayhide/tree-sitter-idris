@@ -297,7 +297,7 @@ vec = (2 ** [3, 4])
         (exp_literal
           (integer))
         (operator)
-        (exp_array
+        (exp_list
           (exp_literal
             (integer))
           (comma)
@@ -360,7 +360,7 @@ filter p (x :: xs)
       (exp_parens
         (wildcard)
         (operator)
-        (exp_array))))
+        (exp_list))))
   (function
     (lhs
       (funvar

@@ -42,7 +42,10 @@ module.exports = {
 
   exp_idiom: $ => idiom_brackets($._exp),
 
-  exp_array: $ => brackets(sep($.comma, $._exp)),
+  exp_list: $ => choice(
+    brackets(sep($.comma, $._exp)),
+    snoc_brackets(sep($.comma, $._exp)),
+  ),
 
   exp_implicit_arg: $ => braces(seq($._var, '=', $._exp)),
 
@@ -241,7 +244,7 @@ module.exports = {
     $.exp_name,
     $.exp_parens,
     $.exp_idiom,
-    $.exp_array,
+    $.exp_list,
     $.exp_implicit_arg,
     $.exp_explicit_impl,
     $.record_update,
