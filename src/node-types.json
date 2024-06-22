@@ -1,5 +1,32 @@
 [
   {
+    "type": "",
+    "named": false,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "caname",
+          "named": true
+        },
+        {
+          "type": "loname",
+          "named": true
+        },
+        {
+          "type": "qualified_caname",
+          "named": true
+        },
+        {
+          "type": "qualified_loname",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "alt",
     "named": true,
     "fields": {
@@ -96,11 +123,11 @@
             "named": true
           },
           {
-            "type": "pragma_search",
+            "type": "pragma_mkworld",
             "named": true
           },
           {
-            "type": "record_accessor",
+            "type": "pragma_search",
             "named": true
           },
           {
@@ -159,6 +186,10 @@
           },
           {
             "type": "pat_wildcard",
+            "named": true
+          },
+          {
+            "type": "pragma_mkworld",
             "named": true
           }
         ]
@@ -398,11 +429,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -565,11 +596,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -586,6 +617,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "caname",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "constraint",
@@ -666,21 +702,6 @@
     }
   },
   {
-    "type": "constructor",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "pragma_mkworld",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "constructor_signature",
     "named": true,
     "fields": {
@@ -697,7 +718,7 @@
             "named": false
           },
           {
-            "type": "constructor",
+            "type": "caname",
             "named": true
           },
           {
@@ -742,7 +763,7 @@
           "named": true
         },
         {
-          "type": "constructor",
+          "type": "caname",
           "named": true
         },
         {
@@ -936,11 +957,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -971,7 +992,7 @@
           "named": true
         },
         {
-          "type": "type_variable",
+          "type": "loname",
           "named": true
         }
       ]
@@ -1058,11 +1079,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -1177,11 +1198,11 @@
             "named": true
           },
           {
-            "type": "pragma_search",
+            "type": "pragma_mkworld",
             "named": true
           },
           {
-            "type": "record_accessor",
+            "type": "pragma_search",
             "named": true
           },
           {
@@ -1349,11 +1370,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -1468,11 +1489,11 @@
             "named": true
           },
           {
-            "type": "pragma_search",
+            "type": "pragma_mkworld",
             "named": true
           },
           {
-            "type": "record_accessor",
+            "type": "pragma_search",
             "named": true
           },
           {
@@ -1582,11 +1603,11 @@
             "named": true
           },
           {
-            "type": "pragma_search",
+            "type": "pragma_mkworld",
             "named": true
           },
           {
-            "type": "record_accessor",
+            "type": "pragma_search",
             "named": true
           },
           {
@@ -1696,11 +1717,11 @@
             "named": true
           },
           {
-            "type": "pragma_search",
+            "type": "pragma_mkworld",
             "named": true
           },
           {
-            "type": "record_accessor",
+            "type": "pragma_search",
             "named": true
           },
           {
@@ -1816,11 +1837,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -1829,10 +1850,6 @@
         },
         {
           "type": "unit",
-          "named": true
-        },
-        {
-          "type": "variable",
           "named": true
         },
         {
@@ -1943,11 +1960,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -2094,11 +2111,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -2217,11 +2234,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -2340,11 +2357,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -2406,7 +2423,11 @@
           "named": true
         },
         {
-          "type": "constructor",
+          "type": "caname",
+          "named": true
+        },
+        {
+          "type": "loname",
           "named": true
         },
         {
@@ -2414,19 +2435,15 @@
           "named": true
         },
         {
-          "type": "qualified_constructor",
+          "type": "qualified_caname",
+          "named": true
+        },
+        {
+          "type": "qualified_loname",
           "named": true
         },
         {
           "type": "qualified_operator",
-          "named": true
-        },
-        {
-          "type": "qualified_variable",
-          "named": true
-        },
-        {
-          "type": "variable",
           "named": true
         }
       ]
@@ -2497,11 +2514,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -2620,11 +2637,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -2645,26 +2662,7 @@
   {
     "type": "exp_record_access",
     "named": true,
-    "fields": {
-      "field": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "triple_quote_string",
-            "named": true
-          },
-          {
-            "type": "variable",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": false,
       "required": true,
@@ -2678,11 +2676,11 @@
           "named": true
         },
         {
-          "type": "qualified_variable",
+          "type": "loname",
           "named": true
         },
         {
-          "type": "variable",
+          "type": "qualified_loname",
           "named": true
         }
       ]
@@ -2785,11 +2783,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -2908,11 +2906,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -3027,11 +3025,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -3146,11 +3144,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -3265,11 +3263,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -3376,30 +3374,40 @@
             "named": true
           }
         ]
+      },
+      "subject": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "operator",
+            "named": true
+          },
+          {
+            "type": "tuple_operator",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "tuple_operator",
-          "named": true
-        }
-      ]
     }
   },
   {
     "type": "funvar",
     "named": true,
     "fields": {
-      "name": {
-        "multiple": true,
+      "patterns": {
+        "multiple": false,
         "required": false,
+        "types": [
+          {
+            "type": "patterns",
+            "named": true
+          }
+        ]
+      },
+      "subject": {
+        "multiple": true,
+        "required": true,
         "types": [
           {
             "type": "(",
@@ -3410,43 +3418,19 @@
             "named": false
           },
           {
-            "type": "constructor",
+            "type": "caname",
+            "named": true
+          },
+          {
+            "type": "loname",
             "named": true
           },
           {
             "type": "operator",
             "named": true
-          },
-          {
-            "type": "variable",
-            "named": true
-          }
-        ]
-      },
-      "patterns": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "patterns",
-            "named": true
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "tuple_operator",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -3576,10 +3560,21 @@
   {
     "type": "implementation_head",
     "named": true,
-    "fields": {},
+    "fields": {
+      "subject": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "interface_name",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "constraints",
@@ -3595,10 +3590,6 @@
         },
         {
           "type": "implementation_name",
-          "named": true
-        },
-        {
-          "type": "interface_name",
           "named": true
         },
         {
@@ -3650,8 +3641,16 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "caname",
+          "named": true
+        },
+        {
+          "type": "loname",
+          "named": true
+        },
         {
           "type": "module",
           "named": true
@@ -3753,7 +3752,7 @@
         "required": false,
         "types": [
           {
-            "type": "constructor",
+            "type": "caname",
             "named": true
           }
         ]
@@ -3899,19 +3898,9 @@
     }
   },
   {
-    "type": "module",
+    "type": "loname",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "pragma_mkworld",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "mutual",
@@ -4162,11 +4151,11 @@
             "named": false
           },
           {
-            "type": "operator",
+            "type": "loname",
             "named": true
           },
           {
-            "type": "variable",
+            "type": "operator",
             "named": true
           }
         ]
@@ -4310,6 +4299,10 @@
       "required": true,
       "types": [
         {
+          "type": "caname",
+          "named": true
+        },
+        {
           "type": "pat_at_braces",
           "named": true
         },
@@ -4335,6 +4328,14 @@
         },
         {
           "type": "pat_wildcard",
+          "named": true
+        },
+        {
+          "type": "pragma_mkworld",
+          "named": true
+        },
+        {
+          "type": "qualified_caname",
           "named": true
         }
       ]
@@ -4410,6 +4411,10 @@
         {
           "type": "pat_wildcard",
           "named": true
+        },
+        {
+          "type": "pragma_mkworld",
+          "named": true
         }
       ]
     }
@@ -4484,6 +4489,10 @@
         {
           "type": "pat_wildcard",
           "named": true
+        },
+        {
+          "type": "pragma_mkworld",
+          "named": true
         }
       ]
     }
@@ -4543,6 +4552,10 @@
         {
           "type": "pat_wildcard",
           "named": true
+        },
+        {
+          "type": "pragma_mkworld",
+          "named": true
         }
       ]
     }
@@ -4587,23 +4600,11 @@
       "required": true,
       "types": [
         {
-          "type": "constructor",
+          "type": "caname",
           "named": true
         },
         {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "qualified_constructor",
-          "named": true
-        },
-        {
-          "type": "qualified_operator",
-          "named": true
-        },
-        {
-          "type": "variable",
+          "type": "loname",
           "named": true
         }
       ]
@@ -4643,6 +4644,10 @@
         },
         {
           "type": "pat_wildcard",
+          "named": true
+        },
+        {
+          "type": "pragma_mkworld",
           "named": true
         }
       ]
@@ -4717,6 +4722,10 @@
           "named": true
         },
         {
+          "type": "pragma_mkworld",
+          "named": true
+        },
+        {
           "type": "tuple_operator",
           "named": true
         }
@@ -4769,6 +4778,10 @@
           },
           {
             "type": "pat_wildcard",
+            "named": true
+          },
+          {
+            "type": "pragma_mkworld",
             "named": true
           }
         ]
@@ -4872,6 +4885,10 @@
         {
           "type": "pat_wildcard",
           "named": true
+        },
+        {
+          "type": "pragma_mkworld",
+          "named": true
         }
       ]
     }
@@ -4908,7 +4925,7 @@
       "required": true,
       "types": [
         {
-          "type": "constructor",
+          "type": "caname",
           "named": true
         },
         {
@@ -4916,19 +4933,23 @@
           "named": true
         },
         {
+          "type": "loname",
+          "named": true
+        },
+        {
           "type": "operator",
           "named": true
         },
         {
+          "type": "qualified_caname",
+          "named": true
+        },
+        {
+          "type": "qualified_loname",
+          "named": true
+        },
+        {
           "type": "qualified_operator",
-          "named": true
-        },
-        {
-          "type": "qualified_variable",
-          "named": true
-        },
-        {
-          "type": "variable",
           "named": true
         },
         {
@@ -4960,26 +4981,26 @@
           "named": true
         },
         {
+          "type": "loname",
+          "named": true
+        },
+        {
           "type": "operator",
           "named": true
         },
         {
+          "type": "qualified_loname",
+          "named": true
+        },
+        {
           "type": "qualified_operator",
-          "named": true
-        },
-        {
-          "type": "qualified_variable",
-          "named": true
-        },
-        {
-          "type": "variable",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "qualified_constructor",
+    "type": "qualified_caname",
     "named": true,
     "fields": {},
     "children": {
@@ -4987,7 +5008,26 @@
       "required": true,
       "types": [
         {
-          "type": "constructor",
+          "type": "caname",
+          "named": true
+        },
+        {
+          "type": "module",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "qualified_loname",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "loname",
           "named": true
         },
         {
@@ -5022,44 +5062,6 @@
       "types": [
         {
           "type": "module",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "qualified_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "module",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "qualified_variable",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "module",
-          "named": true
-        },
-        {
-          "type": "variable",
           "named": true
         }
       ]
@@ -5125,40 +5127,6 @@
     }
   },
   {
-    "type": "record_accessor",
-    "named": true,
-    "fields": {
-      "field": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "triple_quote_string",
-            "named": true
-          },
-          {
-            "type": "variable",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "record_body",
     "named": true,
     "fields": {
@@ -5167,7 +5135,7 @@
         "required": false,
         "types": [
           {
-            "type": "constructor",
+            "type": "caname",
             "named": true
           }
         ]
@@ -5209,7 +5177,7 @@
           "named": true
         },
         {
-          "type": "operator",
+          "type": "loname",
           "named": true
         },
         {
@@ -5217,11 +5185,7 @@
           "named": true
         },
         {
-          "type": "qualified_operator",
-          "named": true
-        },
-        {
-          "type": "qualified_variable",
+          "type": "qualified_loname",
           "named": true
         },
         {
@@ -5245,10 +5209,6 @@
           "named": true
         },
         {
-          "type": "variable",
-          "named": true
-        },
-        {
           "type": "wildcard",
           "named": true
         }
@@ -5268,6 +5228,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "caname",
+          "named": true
+        },
         {
           "type": "comma",
           "named": true
@@ -5361,7 +5325,15 @@
           "named": true
         },
         {
+          "type": "loname",
+          "named": true
+        },
+        {
           "type": "operator",
+          "named": true
+        },
+        {
+          "type": "pragma_mkworld",
           "named": true
         },
         {
@@ -5369,11 +5341,11 @@
           "named": true
         },
         {
-          "type": "qualified_variable",
+          "type": "qualified_caname",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "qualified_loname",
           "named": true
         },
         {
@@ -5382,10 +5354,6 @@
         },
         {
           "type": "unit",
-          "named": true
-        },
-        {
-          "type": "variable",
           "named": true
         },
         {
@@ -5492,11 +5460,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -5611,11 +5579,11 @@
           "named": true
         },
         {
-          "type": "pragma_search",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "record_accessor",
+          "type": "pragma_search",
           "named": true
         },
         {
@@ -5642,11 +5610,15 @@
       "required": true,
       "types": [
         {
-          "type": "no_hints",
+          "type": "caname",
           "named": true
         },
         {
-          "type": "type_variable",
+          "type": "loname",
+          "named": true
+        },
+        {
+          "type": "no_hints",
           "named": true
         }
       ]
@@ -5669,15 +5641,15 @@
             "named": false
           },
           {
-            "type": "constructor",
+            "type": "caname",
+            "named": true
+          },
+          {
+            "type": "loname",
             "named": true
           },
           {
             "type": "operator",
-            "named": true
-          },
-          {
-            "type": "variable",
             "named": true
           }
         ]
@@ -5843,15 +5815,15 @@
           "named": true
         },
         {
+          "type": "pragma_mkworld",
+          "named": true
+        },
+        {
           "type": "pragma_search",
           "named": true
         },
         {
           "type": "pragma_world",
-          "named": true
-        },
-        {
-          "type": "record_accessor",
           "named": true
         },
         {
@@ -5903,21 +5875,6 @@
     "type": "tuple_operator",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "pragma_mkworld",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "type_apply",
@@ -6077,15 +6034,23 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
-          "type": "annotated_type_variable",
+          "type": "caname",
           "named": true
         },
         {
-          "type": "type_variable",
+          "type": "loname",
+          "named": true
+        },
+        {
+          "type": "qualified_caname",
+          "named": true
+        },
+        {
+          "type": "qualified_loname",
           "named": true
         }
       ]
@@ -6198,16 +6163,11 @@
     }
   },
   {
-    "type": "type_variable",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "using",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -6216,11 +6176,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "variable",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "visibility",
@@ -6280,6 +6235,10 @@
         },
         {
           "type": "pat_wildcard",
+          "named": true
+        },
+        {
+          "type": "pragma_mkworld",
           "named": true
         }
       ]
@@ -6510,6 +6469,10 @@
     "named": false
   },
   {
+    "type": "module",
+    "named": true
+  },
+  {
     "type": "mutual",
     "named": false
   },
@@ -6599,6 +6562,10 @@
   },
   {
     "type": "triple_quote_string",
+    "named": true
+  },
+  {
+    "type": "type_variable",
     "named": true
   },
   {
