@@ -69,12 +69,12 @@ _ = [f x, y + 1, let z = f x in z]
       (exp_list
         (exp_apply
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (variable)))
+            (loname)))
         (comma)
         (exp_name
-          (variable))
+          (loname))
         (operator)
         (exp_literal
           (integer))
@@ -84,15 +84,15 @@ _ = [f x, y + 1, let z = f x in z]
             (function
               (lhs
                 (funvar
-                  (variable)))
+                  (loname)))
               (rhs
                 (exp_apply
                   (exp_name
-                    (variable))
+                    (loname))
                   (exp_name
-                    (variable))))))
+                    (loname))))))
           (exp_name
-            (variable)))))))
+            (loname)))))))
 
 ================================================================================
 SnocList 1

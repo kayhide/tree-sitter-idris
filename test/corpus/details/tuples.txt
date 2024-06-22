@@ -28,10 +28,10 @@ _ = (x, y)
     (rhs
       (exp_tuple
         (exp_name
-          (variable))
+          (loname))
         (tuple_operator)
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Tuples x _
@@ -48,7 +48,7 @@ _ = (x,)
     (rhs
       (exp_tuple
         (exp_name
-          (variable))
+          (loname))
         (tuple_operator)))))
 
 ================================================================================
@@ -67,7 +67,7 @@ _ = (, y)
       (exp_tuple
         (tuple_operator)
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Tuples x y z
@@ -84,13 +84,13 @@ _ = (x, y, z)
     (rhs
       (exp_tuple
         (exp_name
-          (variable))
+          (loname))
         (tuple_operator)
         (exp_name
-          (variable))
+          (loname))
         (tuple_operator)
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Tuples x y _
@@ -107,10 +107,10 @@ _ = (x, y,)
     (rhs
       (exp_tuple
         (exp_name
-          (variable))
+          (loname))
         (tuple_operator)
         (exp_name
-          (variable))
+          (loname))
         (tuple_operator)))))
 
 ================================================================================
@@ -128,11 +128,11 @@ _ = (x, , z)
     (rhs
       (exp_tuple
         (exp_name
-          (variable))
+          (loname))
         (tuple_operator)
         (tuple_operator)
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Tuples _ y z
@@ -150,10 +150,10 @@ _ = (, y, z)
       (exp_tuple
         (tuple_operator)
         (exp_name
-          (variable))
+          (loname))
         (tuple_operator)
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Tuples x _ _
@@ -170,7 +170,7 @@ _ = (x,,)
     (rhs
       (exp_tuple
         (exp_name
-          (variable))
+          (loname))
         (tuple_operator)
         (tuple_operator)))))
 
@@ -190,7 +190,7 @@ _ = (, y,)
       (exp_tuple
         (tuple_operator)
         (exp_name
-          (variable))
+          (loname))
         (tuple_operator)))))
 
 ================================================================================
@@ -210,7 +210,7 @@ _ = (,, z)
         (tuple_operator)
         (tuple_operator)
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Tuples _ _ _

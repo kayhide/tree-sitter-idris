@@ -4,7 +4,7 @@ module.exports = {
 
   // ----- Shared -------------------------------------------------------------
 
-  interface_name: $ => alias($._qtyconid, ''),
+  interface_name: $ => alias($._q_caname, ''),
 
   constraint: $ => choice(
     seq($.interface_name, repeat($._type)),
@@ -35,7 +35,7 @@ module.exports = {
       optional($.determining_params)
     ),
 
-  determining_params: $ => seq('|', sep1($.comma, $.type_variable)),
+  determining_params: $ => seq('|', sep1($.comma, $.loname)),
 
   interface_body: $ => where($, $._interface_decl),
 
@@ -46,7 +46,7 @@ module.exports = {
 
   _interface_constructor: $ => seq(
     'constructor',
-    field('name', $.constructor), 
+    field('name', $.caname), 
   ),
     
 
@@ -62,19 +62,19 @@ module.exports = {
       optional($.visibility),
       optional(brackets($.implementation_name)),
       repeat(seq($.constraints, $._rcarrow)),
-      $.interface_name,
+      field('subject', $.interface_name),
       repeat($._type),
       optional($.using),
     ),
 
-  using: $ => seq('using', $.implementation_name),
+  using: $ => seq('using', repeat1($.implementation_name)),
 
   implementation_name: $ => choice(
     $._qualified_implementation_name,
     $._implementation_name,
   ),
 
-  _implementation_name: $ => choice($._varid, $._conid), 
+  _implementation_name: $ => $._name, 
 
   _qualified_implementation_name: $ => qualified($, $._implementation_name),
 

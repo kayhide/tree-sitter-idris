@@ -2,7 +2,7 @@
 
 [
   (data)
-  (type)
+  (annotated_type_variable)
 ] @class.around
 
 ((signature)?

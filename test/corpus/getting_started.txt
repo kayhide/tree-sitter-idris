@@ -13,17 +13,18 @@ main = putStrLn "Hello world"
   (qualified_module
     (module))
   (signature
-    (variable)
+    (loname)
     (type_apply
-      (type_name)
+      (type_name
+        (caname))
       (type_parens)))
   (function
     (lhs
       (funvar
-        (variable)))
+        (loname)))
     (rhs
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (exp_literal
           (string))))))

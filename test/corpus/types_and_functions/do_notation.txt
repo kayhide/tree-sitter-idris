@@ -12,38 +12,39 @@ greet = do
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_apply
-      (type_name)
+      (type_name
+        (caname))
       (type_parens)))
   (function
     (lhs
       (funvar
-        (variable)))
+        (loname)))
     (rhs
       (exp_do
         (statement
           (exp_apply
             (exp_name
-              (variable))
+              (loname))
             (exp_literal
               (string))))
         (statement
           (bind_pattern
             (pat_name
-              (variable))
+              (loname))
             (exp_name
-              (variable))))
+              (loname))))
         (statement
           (exp_apply
             (exp_name
-              (variable))
+              (loname))
             (exp_parens
               (exp_literal
                 (string))
               (operator)
               (exp_name
-                (variable)))))))))
+                (loname)))))))))
 
 ================================================================================
 Pattern matching bind 1
@@ -68,51 +69,49 @@ _ = do
         (statement
           (bind_pattern
             (pat_apply
+              (caname)
               (pat_name
-                (constructor))
-              (pat_name
-                (variable)))
+                (loname)))
             (exp_name
-              (variable))
+              (loname))
             (bind_alt
               (pat_name
-                (constructor))
+                (caname))
               (exp_apply
                 (exp_name
-                  (variable))
+                  (loname))
                 (exp_name
-                  (constructor))))))
+                  (caname))))))
         (statement
           (bind_pattern
             (pat_apply
+              (caname)
               (pat_name
-                (constructor))
-              (pat_name
-                (variable)))
+                (loname)))
             (exp_name
-              (variable))
+              (loname))
             (bind_alt
               (pat_name
-                (constructor))
+                (caname))
               (exp_apply
                 (exp_name
-                  (variable))
+                  (loname))
                 (exp_name
-                  (constructor))))))
+                  (caname))))))
         (statement
           (exp_apply
             (exp_name
-              (variable))
+              (loname))
             (exp_parens
               (exp_apply
                 (exp_name
-                  (constructor))
+                  (caname))
                 (exp_tuple
                   (exp_name
-                    (variable))
+                    (loname))
                   (tuple_operator)
                   (exp_name
-                    (variable)))))))))))
+                    (loname)))))))))))
 
 ================================================================================
 Pattern matching bind 2
@@ -137,24 +136,24 @@ _ = do
               (function
                 (lhs
                   (funvar
-                    (constructor)
+                    (caname)
                     (patterns
                       (pat_name
-                        (variable)))))
+                        (loname)))))
                 (rhs
                   (exp_name
-                    (variable)))))
+                    (loname)))))
             (bind_alt
               (pat_name
-                (constructor))
+                (caname))
               (exp_apply
                 (exp_name
-                  (variable))
+                  (loname))
                 (exp_name
-                  (constructor))))))
+                  (caname))))))
         (statement
           (exp_apply
             (exp_name
-              (variable))
+              (loname))
             (exp_name
-              (variable))))))))
+              (loname))))))))

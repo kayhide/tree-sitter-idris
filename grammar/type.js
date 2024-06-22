@@ -2,9 +2,8 @@ const { parens, qualified } = require('./util.js')
 
 module.exports = {
 
-  // ----- Type variables -----------------------------------------------------
-
-  type_variable: $ => $._varid,
+  // --------------------------------------------------------------------------
+  // Type variables
 
   annotated_type_variable: $ =>
     parens(seq(
@@ -13,7 +12,10 @@ module.exports = {
       $._type_annotation
     )),
 
-  _type_variables: $ => prec.left(sep1(alias($.comma, ''), $.type_variable)),
+  _type_variables: $ => prec.left(sep1(
+    alias($.comma, ''), 
+    alias($._loname, $.type_variable)
+  )),
 
   _tyvar: $ =>
     choice(
@@ -33,13 +35,6 @@ module.exports = {
 
   // ----- Misc ---------------------------------------------------------------
 
-  type_name: $ =>
-    // conflicts with row types, see comments in that module
-    choice(
-      $._tyvar,
-      alias($._qtyconid, ""),
-    ),
-
   quantity: _ => choice('0', '1'),
 
   auto: _ => 'auto',
@@ -57,7 +52,7 @@ module.exports = {
         $.default,
       ),
     ),
-    $.type_name,
+    alias($._q_name, $.type_name),
   ),
 
   // ----- Aggregation --------------------------------------------------------
@@ -81,7 +76,7 @@ module.exports = {
 
   _fun_signature: $ =>
     seq(
-      field('name', $._varid),
+      field('name', $._loname),
       $._type_annotation
     ),
 
@@ -90,7 +85,7 @@ module.exports = {
       $.hole,
       $.wildcard,
       $.literal,
-      $.type_name,
+      alias($._q_name, $.type_name),
       $.type_parens,
       $.type_braces,
       $.pragma_world,
@@ -127,5 +122,5 @@ module.exports = {
     ),
 
   _simpletype: $ =>
-    seq(field('name', $._tyconid), repeat($._tyvar)),
+    seq(field('name', $._caname), repeat($._loname)),
 }

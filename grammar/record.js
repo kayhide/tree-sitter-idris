@@ -3,7 +3,7 @@ const { parens, braces } = require('./util.js')
 module.exports = {
   // ----- Record -------------------------------------------------------------
 
-  record_name: $ => alias($._qtyconid, ''),
+  record_name: $ => alias($._q_caname, ''),
 
   _decl_record: $ => seq(
     optional($.visibility),
@@ -23,17 +23,17 @@ module.exports = {
 
   _record_constructor: $ => seq(
     'constructor',
-    field('name', $.constructor), 
+    field('name', $.caname), 
   ),
     
   _record_field: $ => seq(
-    sep1($.comma, $._qvar), $._type_annotation
+    sep1($.comma, $._q_loname), $._type_annotation
   ),
   
   // -----------------------------------------------------------------
   // Value-level
 
-  _field_name: $ => alias($.variable, $.field_name),
+  _field_name: $ => alias($.loname, $.field_name),
 
   _record_field_update: $ => {
     const nested_update =
@@ -57,7 +57,7 @@ module.exports = {
     choice(
       $.wildcard,
       $.hole,
-      $._qvarid,
+      $._q_name,
       $.exp_record_access,
       $.exp_parens,
     ),

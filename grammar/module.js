@@ -5,7 +5,7 @@ module.exports = {
   // module
   // ------------------------------------------------------------------------
 
-  _modid: $ => alias($.constructor, $.module),
+  _modid: $ => alias($._caname, $.module),
 
   _qualifying_module: $ => repeat1(seq($._modid, $._dot)),
 
@@ -26,7 +26,7 @@ module.exports = {
     'parameters',
     parens(sep1(
       $.comma, 
-      seq(field('name', $._var), $._type_annotation),
+      seq(field('name', $._loname_op), $._type_annotation),
     )),
     optional(alias($._top_declarations, $.parameters_body)),
   ),

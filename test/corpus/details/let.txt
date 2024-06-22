@@ -12,22 +12,22 @@ f x = let
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Simple line (indent only)
@@ -42,22 +42,22 @@ f x = let
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Simple line (dedent only)
@@ -72,22 +72,22 @@ f x = let y = x
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Single line (on the same line)
@@ -101,22 +101,22 @@ f x = let y = x in y
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Single line (dangling tail)
@@ -131,22 +131,22 @@ f x = let y = x in
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Multiline (indent and dedent)
@@ -163,29 +163,29 @@ f x = let
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable))))
+                (loname))))
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Multiline (indent only)
@@ -201,29 +201,29 @@ f x = let
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable))))
+                (loname))))
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Multiline (dedent only)
@@ -239,29 +239,29 @@ f x = let y = x
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable))))
+                (loname))))
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Multiline (dangling tail)
@@ -277,29 +277,29 @@ f x = let y = x
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable))))
+                (loname))))
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Telescope single line I
@@ -313,31 +313,31 @@ f x = let y = x in let y = x in y
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_let_in
           (declarations
             (function
               (lhs
                 (funvar
-                  (variable)))
+                  (loname)))
               (rhs
                 (exp_name
-                  (variable)))))
+                  (loname)))))
           (exp_name
-            (variable)))))))
+            (loname)))))))
 
 ================================================================================
 Telescope single line II
@@ -352,31 +352,31 @@ f x = let y = x in
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_let_in
           (declarations
             (function
               (lhs
                 (funvar
-                  (variable)))
+                  (loname)))
               (rhs
                 (exp_name
-                  (variable)))))
+                  (loname)))))
           (exp_name
-            (variable)))))))
+            (loname)))))))
 
 ================================================================================
 Telescope multi line I
@@ -392,38 +392,38 @@ f x = let y = x
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable))))
+                (loname))))
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_let_in
           (declarations
             (function
               (lhs
                 (funvar
-                  (variable)))
+                  (loname)))
               (rhs
                 (exp_name
-                  (variable)))))
+                  (loname)))))
           (exp_name
-            (variable)))))))
+            (loname)))))))
 
 ================================================================================
 Pattern match
@@ -442,19 +442,19 @@ _ = let (a, b) = x in b
         (declarations
           (function
             (lhs
-              (funvar
+              (funop
                 (patterns
                   (pat_name
-                    (variable)))
+                    (loname)))
                 (tuple_operator)
                 (patterns
                   (pat_name
-                    (variable)))))
+                    (loname)))))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Single line without body
@@ -469,10 +469,10 @@ f x = do
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_do
         (statement
@@ -481,10 +481,10 @@ f x = do
               (function
                 (lhs
                   (funvar
-                    (variable)))
+                    (loname)))
                 (rhs
                   (exp_name
-                    (variable)))))))))))
+                    (loname)))))))))))
 
 ================================================================================
 Single line without body (indent)
@@ -500,10 +500,10 @@ f x = do
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_do
         (statement
@@ -512,10 +512,10 @@ f x = do
               (function
                 (lhs
                   (funvar
-                    (variable)))
+                    (loname)))
                 (rhs
                   (exp_name
-                    (variable)))))))))))
+                    (loname)))))))))))
 
 ================================================================================
 Multiline without body
@@ -530,10 +530,10 @@ f x = do let y = x
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_do
         (statement
@@ -542,17 +542,17 @@ f x = do let y = x
               (function
                 (lhs
                   (funvar
-                    (variable)))
+                    (loname)))
                 (rhs
                   (exp_name
-                    (variable))))
+                    (loname))))
               (function
                 (lhs
                   (funvar
-                    (variable)))
+                    (loname)))
                 (rhs
                   (exp_name
-                    (variable)))))))))))
+                    (loname)))))))))))
 
 ================================================================================
 Multiline without body (indent)
@@ -569,10 +569,10 @@ f x = do
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_do
         (statement
@@ -581,17 +581,17 @@ f x = do
               (function
                 (lhs
                   (funvar
-                    (variable)))
+                    (loname)))
                 (rhs
                   (exp_name
-                    (variable))))
+                    (loname))))
               (function
                 (lhs
                   (funvar
-                    (variable)))
+                    (loname)))
                 (rhs
                   (exp_name
-                    (variable)))))))))))
+                    (loname)))))))))))
 
 ================================================================================
 Pattern match without without body
@@ -614,14 +614,14 @@ _ = do
             (declarations
               (function
                 (lhs
-                  (funvar
+                  (funop
                     (patterns
                       (pat_name
-                        (variable)))
+                        (loname)))
                     (tuple_operator)
                     (patterns
                       (pat_name
-                        (variable)))))
+                        (loname)))))
                 (rhs
                   (exp_name
-                    (variable)))))))))))
+                    (loname)))))))))))

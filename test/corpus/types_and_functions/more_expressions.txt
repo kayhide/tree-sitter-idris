@@ -11,28 +11,28 @@ mirror xs = let xs' = reverse xs in
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_apply
                 (exp_name
-                  (variable))
+                  (loname))
                 (exp_name
-                  (variable))))))
+                  (loname))))))
         (exp_name
-          (variable))
+          (loname))
         (operator)
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 let bindings 2
@@ -47,36 +47,36 @@ showPerson p = let MkPerson name age = p in
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (function
             (lhs
               (funvar
-                (constructor)
+                (caname)
                 (patterns
                   (pat_name
-                    (variable))
+                    (loname))
                   (pat_name
-                    (variable)))))
+                    (loname)))))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_name
-          (variable))
+          (loname))
         (operator)
         (exp_literal
           (string))
         (operator)
         (exp_apply
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (variable)))
+            (loname)))
         (operator)
         (exp_literal
           (string))))))
@@ -94,31 +94,32 @@ mirror xs = let xs' : List a = reverse xs in
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (signature
-            (variable)
+            (loname)
             (type_infix
               (type_apply
-                (type_name)
                 (type_name
-                  (type_variable)))
+                  (caname))
+                (type_name
+                  (loname)))
               (operator)
               (type_apply
                 (type_name
-                  (type_variable))
+                  (loname))
                 (type_name
-                  (type_variable))))))
+                  (loname))))))
         (exp_name
-          (variable))
+          (loname))
         (operator)
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 let bindings 4
@@ -132,26 +133,27 @@ Diag v = let ty : Type := v = v in ty
   (function
     (lhs
       (funvar
-        (constructor)
+        (caname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (signature
-            (variable)
+            (loname)
             (type_infix
-              (type_name)
+              (type_name
+                (caname))
               (operator)
               (type_infix
                 (type_name
-                  (type_variable))
+                  (loname))
                 (operator)
                 (type_name
-                  (type_variable))))))
+                  (loname))))))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 let bindings 5
@@ -167,50 +169,50 @@ foldMap f = let fo : m -> a -> m
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (signature
-            (variable)
+            (loname)
             (type_infix
               (type_name
-                (type_variable))
+                (loname))
               (operator)
               (type_infix
                 (type_name
-                  (type_variable))
+                  (loname))
                 (operator)
                 (type_name
-                  (type_variable)))))
+                  (loname)))))
           (function
             (lhs
               (funvar
-                (variable)
+                (loname)
                 (patterns
                   (pat_name
-                    (variable))
+                    (loname))
                   (pat_name
-                    (variable)))))
+                    (loname)))))
             (rhs
               (exp_name
-                (variable))
+                (loname))
               (operator)
               (exp_apply
                 (exp_name
-                  (variable))
+                  (loname))
                 (exp_name
-                  (variable))))))
+                  (loname))))))
         (exp_apply
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (variable)))))))
+            (loname)))))))
 
 ================================================================================
 let bindings 6
@@ -227,57 +229,57 @@ foldMap f = let fo : m -> a -> m
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_let_in
         (declarations
           (signature
-            (variable)
+            (loname)
             (type_infix
               (type_name
-                (type_variable))
+                (loname))
               (operator)
               (type_infix
                 (type_name
-                  (type_variable))
+                  (loname))
                 (operator)
                 (type_name
-                  (type_variable)))))
+                  (loname)))))
           (function
             (lhs
               (funvar
-                (variable)
+                (loname)
                 (patterns
                   (pat_name
-                    (variable))
+                    (loname))
                   (pat_name
-                    (variable)))))
+                    (loname)))))
             (rhs
               (exp_name
-                (variable))
+                (loname))
               (operator)
               (exp_apply
                 (exp_name
-                  (variable))
+                  (loname))
                 (exp_name
-                  (variable)))))
+                  (loname)))))
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable)))))
+                (loname)))))
         (exp_apply
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (variable)))))))
+            (loname)))))))
 
 ================================================================================
 List comprehensions
@@ -292,69 +294,69 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_list
         (exp_tuple
           (exp_name
-            (variable))
+            (loname))
           (tuple_operator)
           (exp_name
-            (variable))
+            (loname))
           (tuple_operator)
           (exp_name
-            (variable)))
+            (loname)))
         (operator)
         (exp_name
-          (variable))
-        (operator)
-        (exp_list
-          (exp_literal
-            (integer))
-          (operator)
-          (exp_name
-            (variable)))
-        (comma)
-        (exp_name
-          (variable))
+          (loname))
         (operator)
         (exp_list
           (exp_literal
             (integer))
           (operator)
           (exp_name
-            (variable)))
+            (loname)))
         (comma)
         (exp_name
-          (variable))
+          (loname))
         (operator)
         (exp_list
           (exp_literal
             (integer))
           (operator)
           (exp_name
-            (variable)))
+            (loname)))
         (comma)
         (exp_name
-          (variable))
+          (loname))
+        (operator)
+        (exp_list
+          (exp_literal
+            (integer))
+          (operator)
+          (exp_name
+            (loname)))
+        (comma)
+        (exp_name
+          (loname))
         (operator)
         (exp_name
-          (variable))
+          (loname))
         (operator)
         (exp_name
-          (variable))
+          (loname))
         (operator)
         (exp_name
-          (variable))
+          (loname))
         (operator)
         (exp_name
-          (variable))
+          (loname))
         (operator)
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 case expressions 1
@@ -369,40 +371,40 @@ splitAt c x = case break (== c) x of
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable))
+            (loname))
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_case
         (exp_apply
           (exp_name
-            (variable))
+            (loname))
           (exp_section_left
             (operator)
             (exp_name
-              (variable)))
+              (loname)))
           (exp_name
-            (variable)))
+            (loname)))
         (alts
           (alt
             (pat_tuple
               (pat_name
-                (variable))
+                (loname))
               (tuple_operator)
               (pat_name
-                (variable)))
+                (loname)))
             (exp_tuple
               (exp_name
-                (variable))
+                (loname))
               (tuple_operator)
               (exp_apply
                 (exp_name
-                  (variable))
+                  (loname))
                 (exp_name
-                  (variable))))))))))
+                  (loname))))))))))
 
 ================================================================================
 case expressions 2
@@ -418,37 +420,36 @@ lookup_default i xs def = case list_lookup i xs of
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable))
+            (loname))
           (pat_name
-            (variable))
+            (loname))
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_case
         (exp_apply
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (variable)))
+            (loname)))
         (alts
           (alt
             (pat_name
-              (constructor))
+              (caname))
             (exp_name
-              (variable)))
+              (loname)))
           (alt
             (pat_apply
+              (caname)
               (pat_name
-                (constructor))
-              (pat_name
-                (variable)))
+                (loname)))
             (exp_name
-              (variable))))))))
+              (loname))))))))
 
 ================================================================================
 Lambda functions
@@ -462,32 +463,32 @@ on f g = \x, y => g x `f` g y
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable))
+            (loname))
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_lambda
         (pat_name
-          (variable))
+          (loname))
         (comma)
         (pat_name
-          (variable))
+          (loname))
         (exp_apply
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (variable)))
+            (loname)))
         (exp_ticked
           (exp_name
-            (variable)))
+            (loname)))
         (exp_apply
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (variable)))))))
+            (loname)))))))
 
 ================================================================================
 Idiom brackets
@@ -503,18 +504,18 @@ fun <*> x = [| fun <*> x |]
       (funop
         (patterns
           (pat_name
-            (variable)))
+            (loname)))
         (operator)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_idiom
         (exp_name
-          (variable))
+          (loname))
         (operator)
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 !-notation 1
@@ -528,24 +529,24 @@ m_add x y = pure (!x + !y)
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable))
+            (loname))
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (exp_parens
           (exp_name
             (bang)
-            (variable))
+            (loname))
           (operator)
           (exp_name
             (bang)
-            (variable)))))))
+            (loname)))))))
 
 ================================================================================
 !-notation 2
@@ -565,25 +566,25 @@ _ = let y = 94 in f !(g !(print y) !x)
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_literal
                 (integer)))))
         (exp_apply
           (exp_name
-            (variable))
+            (loname))
           (exp_parens
             (bang)
             (exp_apply
               (exp_name
-                (variable))
+                (loname))
               (exp_parens
                 (bang)
                 (exp_apply
                   (exp_name
-                    (variable))
+                    (loname))
                   (exp_name
-                    (variable))))
+                    (loname))))
               (exp_name
                 (bang)
-                (variable)))))))))
+                (loname)))))))))

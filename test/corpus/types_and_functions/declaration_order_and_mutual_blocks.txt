@@ -17,68 +17,70 @@ mutual
   (mutual
     (mutual_body
       (signature
-        (variable)
+        (loname)
         (type_infix
-          (type_name)
+          (type_name
+            (caname))
           (operator)
-          (type_name)))
+          (type_name
+            (caname))))
       (function
         (lhs
           (funvar
-            (variable)
+            (loname)
             (patterns
               (pat_name
-                (constructor)))))
+                (caname)))))
         (rhs
           (exp_name
-            (constructor))))
+            (caname))))
       (function
         (lhs
           (funvar
-            (variable)
+            (loname)
             (patterns
               (pat_tuple
                 (pat_apply
+                  (caname)
                   (pat_name
-                    (constructor))
-                  (pat_name
-                    (variable)))))))
+                    (loname)))))))
         (rhs
           (exp_apply
             (exp_name
-              (variable))
+              (loname))
             (exp_name
-              (variable)))))
+              (loname)))))
       (signature
-        (variable)
+        (loname)
         (type_infix
-          (type_name)
+          (type_name
+            (caname))
           (operator)
-          (type_name)))
+          (type_name
+            (caname))))
       (function
         (lhs
           (funvar
-            (variable)
+            (loname)
             (patterns
               (pat_name
-                (constructor)))))
+                (caname)))))
         (rhs
           (exp_name
-            (constructor))))
+            (caname))))
       (function
         (lhs
           (funvar
-            (variable)
+            (loname)
             (patterns
               (pat_tuple
                 (pat_apply
+                  (caname)
                   (pat_name
-                    (constructor))
-                  (pat_name
-                    (variable)))))))
+                    (loname)))))))
         (rhs
           (exp_apply
             (exp_name
-              (variable))
+              (loname))
             (exp_name
-              (variable))))))))
+              (loname))))))))

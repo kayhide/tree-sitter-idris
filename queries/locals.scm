@@ -1,14 +1,28 @@
 (signature
-  name: (variable)) @local.definition
+  name: (loname)) @local.definition
+
+(signature
+  name: (caname)) @local.definition
 
 (function
   (lhs
     (funvar
-      name: (variable)))) @local.definition
+      subject: (loname)))) @local.definition
+
+(function
+  (lhs
+    (funvar
+      subject: (caname)))) @local.definition
 
 (pat_name
-  (variable)) @local.definition
+  (loname)) @local.definition
+
+(pat_name
+  (caname)) @local.definition
 
 (exp_name
-  (variable)) @local.reference
+  (loname)) @local.reference
+
+(exp_name
+  (caname)) @local.reference
 

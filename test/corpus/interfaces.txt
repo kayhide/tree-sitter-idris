@@ -15,12 +15,13 @@ interface Show a where
     (interface_body
       (where)
       (signature
-        (variable)
+        (loname)
         (type_infix
           (type_name
-            (type_variable))
+            (loname))
           (operator)
-          (type_name))))))
+          (type_name
+            (caname)))))))
 
 ================================================================================
 Interfaces 2
@@ -35,16 +36,17 @@ Show Nat where
   (implementation
     (implementation_head
       (interface_name)
-      (type_name))
+      (type_name
+        (caname)))
     (implementation_body
       (where)
       (function
         (lhs
           (funvar
-            (variable)
+            (loname)
             (patterns
               (pat_name
-                (constructor)))))
+                (caname)))))
         (rhs
           (exp_literal
             (string)))))))
@@ -70,21 +72,21 @@ interface Eq a where
           (funop
             (patterns
               (pat_name
-                (variable)))
+                (loname)))
             (operator)
             (patterns
               (pat_name
-                (variable)))))
+                (loname)))))
         (rhs
           (exp_apply
             (exp_name
-              (variable))
+              (loname))
             (exp_parens
               (exp_name
-                (variable))
+                (loname))
               (operator)
               (exp_name
-                (variable)))))))))
+                (loname)))))))))
 
 ================================================================================
 Extending Interfaces 1
@@ -102,22 +104,23 @@ interface Eq a => Ord a where
         (constraint
           (interface_name)
           (type_name
-            (type_variable))))
+            (loname))))
       (interface_name)
       (type_variable))
     (interface_body
       (where)
       (signature
-        (variable)
+        (loname)
         (type_infix
           (type_name
-            (type_variable))
+            (loname))
           (operator)
           (type_infix
             (type_name
-              (type_variable))
+              (loname))
             (operator)
-            (type_name)))))))
+            (type_name
+              (caname))))))))
 
 ================================================================================
 Extending Interfaces 2
@@ -134,12 +137,12 @@ interface (Ord a, Show a) => OrdShow a where
         (constraint
           (interface_name)
           (type_name
-            (type_variable)))
+            (loname)))
         (comma)
         (constraint
           (interface_name)
           (type_name
-            (type_variable))))
+            (loname))))
       (interface_name)
       (type_variable))
     (interface_body
@@ -161,9 +164,11 @@ interface Functor (0 f : Type -> Type) where
         (quantity)
         (type_variable)
         (type_infix
-          (type_name)
+          (type_name
+            (caname))
           (operator)
-          (type_name))))
+          (type_name
+            (caname)))))
     (interface_body
       (where))))
 
@@ -182,15 +187,17 @@ interface Functor f => Applicative (0 f : Type -> Type) where
         (constraint
           (interface_name)
           (type_name
-            (type_variable))))
+            (loname))))
       (interface_name)
       (annotated_type_variable
         (quantity)
         (type_variable)
         (type_infix
-          (type_name)
+          (type_name
+            (caname))
           (operator)
-          (type_name))))
+          (type_name
+            (caname)))))
     (interface_body
       (where))))
 
@@ -205,9 +212,11 @@ Named Implementations 1
 (idris
   (implementation
     (implementation_head
-      (implementation_name)
+      (implementation_name
+        (loname))
       (interface_name)
-      (type_name))
+      (type_name
+        (caname)))
     (implementation_body
       (where))))
 
@@ -222,11 +231,14 @@ Named Implementations 2
 (idris
   (implementation
     (implementation_head
-      (implementation_name)
+      (implementation_name
+        (caname))
       (interface_name)
-      (type_name)
+      (type_name
+        (caname))
       (using
-        (implementation_name)))
+        (implementation_name
+          (caname))))
     (implementation_body
       (where))))
 
@@ -245,11 +257,12 @@ _ = sort @{myord} xs
     (rhs
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (exp_explicit_impl
-          (implementation_name))
+          (implementation_name
+            (loname)))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Explicit arguments 2
@@ -263,16 +276,17 @@ and = force . concat @{All}
   (function
     (lhs
       (funvar
-        (variable)))
+        (loname)))
     (rhs
       (exp_name
-        (variable))
+        (loname))
       (operator)
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (exp_explicit_impl
-          (implementation_name))))))
+          (implementation_name
+            (caname)))))))
 
 ================================================================================
 Empty implementation
@@ -286,7 +300,8 @@ Num Foo
   (implementation
     (implementation_head
       (interface_name)
-      (type_name))))
+      (type_name
+        (caname)))))
 
 ================================================================================
 Implementation with visibility
@@ -304,8 +319,10 @@ Cast Char Nat where
       (pragma_inline)
       (interface_name)
       (type_apply
-        (type_name)
-        (type_name)))
+        (type_name
+          (caname))
+        (type_name
+          (caname))))
     (implementation_body
       (where))))
 
@@ -322,18 +339,20 @@ public export
   (implementation
     (implementation_head
       (visibility)
-      (implementation_name)
+      (implementation_name
+        (caname))
       (constraints
         (constraint
           (annotated_type_variable
             (type_variable)
             (type_apply
-              (type_name)
               (type_name
-                (type_variable))))))
+                (caname))
+              (type_name
+                (loname))))))
       (interface_name)
       (type_name
-        (type_variable)))
+        (loname)))
     (implementation_body
       (where))))
 
@@ -351,34 +370,38 @@ public export
   (implementation
     (implementation_head
       (visibility)
-      (implementation_name)
+      (implementation_name
+        (caname))
       (constraints
         (constraint
           (annotated_type_variable
             (type_variable)
             (type_apply
-              (type_name)
               (type_name
-                (type_variable))))))
+                (caname))
+              (type_name
+                (loname))))))
       (constraints
         (constraint
           (annotated_type_variable
             (type_variable)
             (type_apply
-              (type_name)
               (type_name
-                (type_variable))))))
+                (caname))
+              (type_name
+                (loname))))))
       (interface_name)
       (type_parens
         (type_infix
           (type_name
-            (type_variable))
+            (loname))
           (operator)
           (type_name
-            (type_variable))))
+            (loname))))
       (using
         (implementation_name
-          (module))))
+          (module)
+          (caname))))
     (implementation_body
       (where))))
 
@@ -398,12 +421,12 @@ interface A t => B t where
         (constraint
           (interface_name)
           (type_name
-            (type_variable))))
+            (loname))))
       (interface_name)
       (type_variable))
     (interface_body
       (where)
-      (constructor))))
+      (caname))))
 
 ================================================================================
 Determining Parameters
@@ -420,17 +443,19 @@ interface Monad m => MonadState s (0 m : Type -> Type) | m where
         (constraint
           (interface_name)
           (type_name
-            (type_variable))))
+            (loname))))
       (interface_name)
       (type_variable)
       (annotated_type_variable
         (quantity)
         (type_variable)
         (type_infix
-          (type_name)
+          (type_name
+            (caname))
           (operator)
-          (type_name)))
+          (type_name
+            (caname))))
       (determining_params
-        (type_variable)))
+        (loname)))
     (interface_body
       (where))))

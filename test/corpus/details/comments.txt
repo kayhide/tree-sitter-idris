@@ -34,9 +34,9 @@ x : a -- Comment
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_name
-      (type_variable)))
+      (loname)))
   (comment))
 
 ================================================================================
@@ -78,19 +78,19 @@ x : a {- comment 1 -} -> a {- comment 2 -} -> a
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_infix
       (type_name
-        (type_variable))
+        (loname))
       (comment)
       (operator)
       (type_infix
         (type_name
-          (type_variable))
+          (loname))
         (comment)
         (operator)
         (type_name
-          (type_variable))))))
+          (loname))))))
 
 ================================================================================
 Inline documentation

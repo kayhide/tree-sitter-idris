@@ -10,13 +10,6 @@ module.exports = {
 
   pat_fields: $ => braces(sep($.comma, $.pat_field)),
 
-  pat_name: $ => $._var,
-
-  /**
-   * Needed non-inlined for conflict definition.
-   */
-  _pat_constructor: $ => alias($._qcon, $.pat_name),
-
   pat_record: $ => field('fields', $.pat_fields),
 
   pat_tuple: $ => parens(sep($.tuple_operator, $._typed_pat)),
@@ -29,14 +22,14 @@ module.exports = {
   pat_at_braces: $ => seq('@{', $.pat_apply, '}'),
 
   _apat: $ => choice(
-    $.pat_name,
-    $._pat_constructor,
+    alias($._name, $.pat_name),
     $.pat_record,
     alias($.literal, $.pat_literal),
     alias($.wildcard, $.pat_wildcard),
     $.pat_tuple,
     $.pat_list,
     $.pat_at_braces,
+    $.pragma_mkworld,
   ),
 
   pat_negation: $ => seq('-', $._apat),
@@ -44,7 +37,7 @@ module.exports = {
   /**
    * In patterns, application is only legal if the first element is a con.
    */
-  pat_apply: $ => seq($._pat_constructor, repeat1($._apat)),
+  pat_apply: $ => seq($._q_caname, repeat1($._apat)),
 
   _lpat: $ => choice(
     $._apat,

@@ -9,7 +9,7 @@ module.exports = {
     alias($._pragma_general, $.pragma),
   ),
 
-  _pragma_entry: $ => seq('%', $._immediate_varid),
+  _pragma_entry: $ => seq('%', $._immediate_loname),
 
   _pragma_general: $ => seq(
     alias($._pragma_entry, $.pragma_name),
@@ -19,15 +19,14 @@ module.exports = {
   pragma_transform: $ => seq(
     '%transform',
     $.literal,
-    $._qvar,
+    $._q_loname_op,
     repeat($.exp_implicit_arg),
     '=',
-    $._qvar,
+    $._q_loname_op,
   ),
 
   pragma_arg: $ => choice(
-    $._qvar,
-    $._con,
+    $. _q_name_op,
     $.literal,
     $.wildcard,
   ),

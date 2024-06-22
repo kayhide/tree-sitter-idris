@@ -10,7 +10,7 @@ Pragma default
   (pragma
     (pragma_name)
     (pragma_arg
-      (variable))))
+      (loname))))
 
 ================================================================================
 Pragma inline 1
@@ -39,29 +39,37 @@ assert_linear : (1 f : a -> b) -> (1 val : a) -> b
     (visibility)
     (pragma_inline)
     (comment)
-    (variable)
+    (loname)
     (type_infix
-      (type_name
-        (annotated_type_variable
-          (quantity)
-          (type_variable)
+      (type_parens
+        (type_infix
+          (type_apply
+            (literal
+              (integer))
+            (type_name
+              (loname)))
+          (operator)
           (type_infix
             (type_name
-              (type_variable))
+              (loname))
             (operator)
             (type_name
-              (type_variable)))))
+              (loname)))))
       (operator)
       (type_infix
-        (type_name
-          (annotated_type_variable
-            (quantity)
-            (type_variable)
+        (type_parens
+          (type_infix
+            (type_apply
+              (literal
+                (integer))
+              (type_name
+                (loname)))
+            (operator)
             (type_name
-              (type_variable))))
+              (loname))))
         (operator)
         (type_name
-          (type_variable))))))
+          (loname))))))
 
 ================================================================================
 Pragma inline 3
@@ -82,26 +90,26 @@ public export %inline %tcinline
       (type_parens
         (type_infix
           (type_name
-            (type_variable))
+            (loname))
           (operator)
           (type_name
-            (type_variable))))
+            (loname))))
       (operator)
       (type_infix
         (type_parens
           (type_infix
             (type_name
-              (type_variable))
+              (loname))
             (operator)
             (type_name
-              (type_variable))))
+              (loname))))
         (operator)
         (type_infix
           (type_name
-            (type_variable))
+            (loname))
           (operator)
           (type_name
-            (type_variable)))))))
+            (loname)))))))
 
 ================================================================================
 Pragma extern
@@ -114,17 +122,23 @@ Pragma extern
 (idris
   (pragma_extern)
   (signature
-    (variable)
+    (loname)
     (type_infix
-      (type_name
-        (annotated_type_variable
-          (quantity)
-          (type_variable)
+      (type_parens
+        (type_infix
+          (type_apply
+            (literal
+              (integer))
+            (type_name
+              (loname)))
+          (operator)
           (pragma_world)))
       (operator)
       (type_apply
-        (type_name)
-        (type_name)))))
+        (type_name
+          (caname))
+        (type_name
+          (caname))))))
 
 ================================================================================
 Pragma transform 1
@@ -140,9 +154,9 @@ Pragma transform 1
       (string))
     (qualified_operator
       (module))
-    (qualified_variable
+    (qualified_loname
       (module)
-      (variable))))
+      (loname))))
 
 ================================================================================
 Pragma transform 2
@@ -156,16 +170,14 @@ Pragma transform 2
   (pragma_transform
     (literal
       (string))
-    (variable)
+    (loname)
     (exp_implicit_arg
-      (variable)
       (exp_name
-        (constructor)))
+        (caname)))
     (exp_implicit_arg
-      (variable)
       (exp_name
-        (constructor)))
-    (variable)))
+        (caname)))
+    (loname)))
 
 ================================================================================
 Pragma pair
@@ -179,11 +191,11 @@ Pragma pair
   (pragma
     (pragma_name)
     (pragma_arg
-      (constructor))
+      (caname))
     (pragma_arg
-      (variable))
+      (loname))
     (pragma_arg
-      (variable))))
+      (loname))))
 
 ================================================================================
 Pragma name 1
@@ -197,9 +209,9 @@ Pragma name 1
   (pragma
     (pragma_name)
     (pragma_arg
-      (constructor))
+      (caname))
     (pragma_arg
-      (variable))))
+      (loname))))
 
 ================================================================================
 Pragma name 2
@@ -213,15 +225,15 @@ Pragma name 2
   (pragma
     (pragma_name)
     (pragma_arg
-      (constructor))
+      (caname))
     (pragma_arg
-      (variable))
+      (loname))
     (comma)
     (pragma_arg
-      (variable))
+      (loname))
     (comma)
     (pragma_arg
-      (variable))))
+      (loname))))
 
 ================================================================================
 Pragma search 1
@@ -235,7 +247,7 @@ defaultString = %search
   (function
     (lhs
       (funvar
-        (variable)))
+        (loname)))
     (rhs
       (pragma_search))))
 
@@ -251,15 +263,16 @@ any = foldMap @{%search} @{Any}
   (function
     (lhs
       (funvar
-        (variable)))
+        (loname)))
     (rhs
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (exp_explicit_impl
           (pragma_search))
         (exp_explicit_impl
-          (implementation_name))))))
+          (implementation_name
+            (caname)))))))
 
 ================================================================================
 Pragma foreign
@@ -294,7 +307,7 @@ Pragma allow_overloads
   (pragma
     (pragma_name)
     (pragma_arg
-      (variable)))
+      (loname)))
   (pragma
     (pragma_name)
     (pragma_arg
@@ -314,25 +327,32 @@ MkIORes : (result : a) -> (1 x : %World) -> IORes a
 
 (idris
   (signature
-    (constructor)
+    (caname)
     (type_infix
-      (type_name
-        (annotated_type_variable
-          (type_variable)
+      (type_parens
+        (type_infix
           (type_name
-            (type_variable))))
+            (loname))
+          (operator)
+          (type_name
+            (loname))))
       (operator)
       (type_infix
-        (type_name
-          (annotated_type_variable
-            (quantity)
-            (type_variable)
+        (type_parens
+          (type_infix
+            (type_apply
+              (literal
+                (integer))
+              (type_name
+                (loname)))
+            (operator)
             (pragma_world)))
         (operator)
         (type_apply
-          (type_name)
           (type_name
-            (type_variable)))))))
+            (caname))
+          (type_name
+            (loname)))))))
 
 ================================================================================
 Pragma World 2
@@ -346,17 +366,15 @@ unsafeCreateWorld f = f %MkWorld
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_apply
         (exp_name
-          (variable))
-        (exp_name
-          (constructor
-            (pragma_mkworld)))))))
+          (loname))
+        (pragma_mkworld)))))
 
 ================================================================================
 Pragma World 3
@@ -370,13 +388,11 @@ unsafeDestroyWorld %MkWorld x = x
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
+          (pragma_mkworld)
           (pat_name
-            (constructor
-              (pragma_mkworld)))
-          (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_name
-        (variable)))))
+        (loname)))))

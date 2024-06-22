@@ -11,22 +11,22 @@ f x = y
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_name
-        (variable)))
+        (loname)))
     (where)
     (declarations
       (function
         (lhs
           (funvar
-            (variable)))
+            (loname)))
         (rhs
           (exp_name
-            (variable)))))))
+            (loname)))))))
 
 ================================================================================
 Simple line (indent)
@@ -42,22 +42,22 @@ f x = y
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_name
-        (variable)))
+        (loname)))
     (where)
     (declarations
       (function
         (lhs
           (funvar
-            (variable)))
+            (loname)))
         (rhs
           (exp_name
-            (variable)))))))
+            (loname)))))))
 
 ================================================================================
 Single line (on the same line)
@@ -71,22 +71,22 @@ f x = y where y = x
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_name
-        (variable)))
+        (loname)))
     (where)
     (declarations
       (function
         (lhs
           (funvar
-            (variable)))
+            (loname)))
         (rhs
           (exp_name
-            (variable)))))))
+            (loname)))))))
 
 ================================================================================
 Multiline (no indent)
@@ -102,25 +102,26 @@ f x = y
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_name
-        (variable)))
+        (loname)))
     (where)
     (declarations
       (signature
-        (variable)
-        (type_name))
+        (loname)
+        (type_name
+          (caname)))
       (function
         (lhs
           (funvar
-            (variable)))
+            (loname)))
         (rhs
           (exp_name
-            (variable)))))))
+            (loname)))))))
 
 ================================================================================
 Multiline (indent)
@@ -137,25 +138,26 @@ f x = y
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_name
-        (variable)))
+        (loname)))
     (where)
     (declarations
       (signature
-        (variable)
-        (type_name))
+        (loname)
+        (type_name
+          (caname)))
       (function
         (lhs
           (funvar
-            (variable)))
+            (loname)))
         (rhs
           (exp_name
-            (variable)))))))
+            (loname)))))))
 
 ================================================================================
 Telescope single line I
@@ -169,31 +171,31 @@ f x = z where z = y where y = z
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_name
-        (variable)))
+        (loname)))
     (where)
     (declarations
       (function
         (lhs
           (funvar
-            (variable)))
+            (loname)))
         (rhs
           (exp_name
-            (variable)))
+            (loname)))
         (where)
         (declarations
           (function
             (lhs
               (funvar
-                (variable)))
+                (loname)))
             (rhs
               (exp_name
-                (variable)))))))))
+                (loname)))))))))
 
 ================================================================================
 Telescope single line II
@@ -208,32 +210,32 @@ f x = z where z = y
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_name
-        (variable)))
+        (loname)))
     (where)
     (declarations
       (function
         (lhs
           (funvar
-            (variable)))
+            (loname)))
         (rhs
           (exp_name
-            (variable))))))
+            (loname))))))
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_name
-        (variable)))))
+        (loname)))))
 
 ================================================================================
 Telescope multi line I
@@ -250,32 +252,33 @@ f x = z
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_name
-        (variable)))
+        (loname)))
     (where)
     (declarations
       (signature
-        (variable)
-        (type_name))
+        (loname)
+        (type_name
+          (caname)))
       (function
         (lhs
           (funvar
-            (variable)))
+            (loname)))
         (rhs
           (exp_name
-            (variable))))))
+            (loname))))))
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_name
-        (variable)))))
+        (loname)))))

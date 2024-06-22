@@ -17,7 +17,7 @@ module.exports = {
     'covering',
   ),
 
-  _fun_name: $ => field('name', $._name),
+  _fun_name: $ => field('name', $._name_op),
 
   _funrhs: $ => seq(
     choice(':=', '='),
@@ -27,15 +27,21 @@ module.exports = {
   _fun_patterns: $ => prec(1, repeat1($._apat)),
 
   _funvar: $ => seq(
-    choice($._fun_name, parens($._funop)),
+    field('subject', $._name_op),
     field('patterns', optional(alias($._fun_patterns, $.patterns))),
   ),
 
-  _funop: $ => prec(5, seq(
-    field('patterns', alias(choice($._fun_patterns, $.pat_infix), $.patterns)),
-    choice($.operator, $.tuple_operator),
-    field('patterns', alias(choice($._fun_patterns, $.pat_infix), $.patterns)),
-  )),
+  _funop: $ => choice(
+      seq(
+        field('patterns', alias(choice($._fun_patterns, $.pat_infix), $.patterns)),
+        field('subject', choice($.operator, $.tuple_operator)),
+        field('patterns', alias(choice($._fun_patterns, $.pat_infix), $.patterns)),
+      ),
+      seq(
+        parens($._funop),
+        field('patterns', optional(alias($._fun_patterns, $.patterns))),
+      ),
+  ),
 
   _with_res: $ => seq('|', alias($._apat, $.with_pat)),
 

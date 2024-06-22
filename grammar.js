@@ -65,14 +65,12 @@ module.exports = grammar({
 
   inline: $ => [
     $._stringly,
-    $._qvarid,
-    $._var,
-    $._qvar,
-    $._tyvar,
-    $._qconid,
-    $._con,
-    $._tyconid,
-    $._qtyconid,
+    $._loname_op,
+    $._q_loname,
+    $._q_loname_op,
+    $._caname_op,
+    $._q_caname,
+    $._q_caname_op,
     $._quantifiers,
     $._qualifying_module,
   ],
@@ -115,11 +113,23 @@ module.exports = grammar({
      * The disambiguation can clearly be made from the `=`, but my impression is that the conflict check only considers
      * immediate lookahead.
      */
-    [$.exp_name, $._pat_constructor],
-    [$.exp_name, $.pat_name],
-    [$._name, $.pat_name],
     [$._aexp_projection, $._apat],
     [$.exp_list, $.pat_list],
+
+    /**
+     * Names.
+     */
+    [$._type_variables, $.loname],
+    [$._name, $.pat_apply],
+    [$._name, $.pat_apply, $.interface_name],
+    [$._name, $.interface_name],
+    [$.pat_apply, $.interface_name],
+    [$._apat, $._implementation_name],
+    [$._name, $._name_op],
+    [$._name, $._name_op, $.pat_apply],
+    [$._name, $._name_op, $.pat_apply, $.interface_name],
+    [$._name_op, $.pat_apply],
+    [$._q_name_op, $.pat_apply],
 
     /**
      * For getting a node for function application, and no extra node if the expression only consists of one term.
@@ -128,48 +138,10 @@ module.exports = grammar({
     [$._exp_apply],
 
     /**
-     * Same as `exp_apply`, but for patterns.
-     */
-    [$.pat_apply, $._apat],
-
-    /**
      * Same as `exp_apply`, but for types.
      */
     [$.type_apply, $._btype],
     [$.type_apply],
-
-    /**
-     * Interface implementation confilicts.
-     */
-    [$.qualified_constructor, $.qualified_type],
-    [$._qcon, $.interface_name],
-
-    /**
-     * Implementation name confilicts.
-     */
-    [$.variable, $._implementation_name],
-    [$.constructor, $._implementation_name],
-
-    /**
-     * Implementation constraints conflicts.
-     */
-    [$.variable, $.type_variable],
-
-    /**
-     * Type names and class names both alias `$.constructor`.
-     */
-    [$.type_name, $.interface_head],
-
-    /**
-     * Constructor conflicts.
-     */
-    [$._qcon, $._name, $.interface_name],
-    [$._qcon, $._name, $.pat_name],
-    [$._qcon, $._name],
-    [$._qcon, $.pat_name],
-    [$._qcon, $.exp_name, $.pat_name],
-    [$._qcon, $.exp_name],
-
 
     /**
      * RHS of operator def.
@@ -192,8 +164,6 @@ module.exports = grammar({
     [$._btype,],
 
   ],
-
-  word: $ => $._varid,
 
   rules: {
     idris: $ => choice(

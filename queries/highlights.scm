@@ -37,9 +37,9 @@
 ; ------------------------------------------------------------------------------
 ; Types
 
-(type) @type
+(type_variable) @type
 
-(constructor) @constructor
+(caname) @constructor
 
 ; ------------------------------------------------------------------------------
 ; Keywords, operators, imports
@@ -86,10 +86,13 @@
 (qualified_module
   (module) @constructor)
 
-(qualified_type
+(qualified_loname
   (module) @namespace)
 
-(qualified_variable
+(qualified_caname
+  (module) @namespace)
+
+(qualified_operator
   (module) @namespace)
 
 (import
@@ -131,40 +134,30 @@
 ; ------------------------------------------------------------------------------
 ; Functions and variables
 
-(variable) @variable
+(loname) @variable
 
 (exp_apply
   .
   (exp_name
-    (variable) @function))
+    (loname) @function))
 
 (exp_apply
   .
   (exp_name
-    (qualified_variable
-      (variable) @function)))
-
-(record_accessor
-  field: [ (variable)
-           (string)
-           (triple_quote_string)
-         ] @variable.other.member)
+    (qualified_loname) @function))
 
 (exp_record_access
-  field: [ (variable)
-           (string)
-           (triple_quote_string)
-         ] @variable.other.member)
+  field: (_) @variable.other.member)
 
 (signature
-  name: (variable) @type)
+  name: (caname) @type)
 
 (type_name) @type
 
 (function
   (lhs
     (funvar
-      name: (variable) @function)))
+      subject: [(loname) (caname)] @function)))
 
 (interface_head
   name: (interface_name) @type)

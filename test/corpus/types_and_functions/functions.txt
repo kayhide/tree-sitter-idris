@@ -10,51 +10,53 @@ plus (S k) y = S (plus k y)
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_infix
-      (type_name)
+      (type_name
+        (caname))
       (operator)
       (type_infix
-        (type_name)
+        (type_name
+          (caname))
         (operator)
-        (type_name))))
+        (type_name
+          (caname)))))
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (constructor))
+            (caname))
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_name
-        (variable))))
+        (loname))))
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_tuple
             (pat_apply
+              (caname)
               (pat_name
-                (constructor))
-              (pat_name
-                (variable))))
+                (loname))))
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_apply
         (exp_name
-          (constructor))
+          (caname))
         (exp_parens
           (exp_apply
             (exp_name
-              (variable))
+              (loname))
             (exp_name
-              (variable))
+              (loname))
             (exp_name
-              (variable))))))))
+              (loname))))))))
 
 ================================================================================
 Functions 2
@@ -68,53 +70,55 @@ mult (S k) y = plus y (mult k y)
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_infix
-      (type_name)
+      (type_name
+        (caname))
       (operator)
       (type_infix
-        (type_name)
+        (type_name
+          (caname))
         (operator)
-        (type_name))))
+        (type_name
+          (caname)))))
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (constructor))
+            (caname))
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_name
-        (constructor))))
+        (caname))))
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_tuple
             (pat_apply
+              (caname)
               (pat_name
-                (constructor))
-              (pat_name
-                (variable))))
+                (loname))))
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (exp_name
-          (variable))
+          (loname))
         (exp_parens
           (exp_apply
             (exp_name
-              (variable))
+              (loname))
             (exp_name
-              (variable))
+              (loname))
             (exp_name
-              (variable))))))))
+              (loname))))))))
 
 ================================================================================
 where clauses 1
@@ -130,88 +134,93 @@ reverse xs = revAcc [] xs where
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_infix
       (type_apply
-        (type_name)
         (type_name
-          (type_variable)))
+          (caname))
+        (type_name
+          (loname)))
       (operator)
       (type_apply
-        (type_name)
         (type_name
-          (type_variable)))))
+          (caname))
+        (type_name
+          (loname)))))
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (exp_list)
         (exp_name
-          (variable))))
+          (loname))))
     (where)
     (declarations
       (signature
-        (variable)
+        (loname)
         (type_infix
           (type_apply
-            (type_name)
             (type_name
-              (type_variable)))
+              (caname))
+            (type_name
+              (loname)))
           (operator)
           (type_infix
             (type_apply
-              (type_name)
               (type_name
-                (type_variable)))
+                (caname))
+              (type_name
+                (loname)))
             (operator)
             (type_apply
-              (type_name)
               (type_name
-                (type_variable))))))
+                (caname))
+              (type_name
+                (loname))))))
       (function
         (lhs
           (funvar
-            (variable)
+            (loname)
             (patterns
               (pat_name
-                (variable))
+                (loname))
               (pat_list))))
         (rhs
           (exp_name
-            (variable))))
+            (loname))))
       (function
         (lhs
           (funvar
-            (variable)
+            (loname)
             (patterns
               (pat_name
-                (variable))
+                (loname))
               (pat_tuple
                 (pat_infix
                   (pat_name
-                    (variable))
+                    (loname))
                   (operator)
                   (pat_name
-                    (variable)))))))
+                    (loname)))))))
         (rhs
           (exp_apply
             (exp_name
-              (variable))
+              (loname))
             (exp_parens
               (exp_name
-                (variable))
+                (loname))
               (operator)
               (exp_name
-                (variable)))
+                (loname)))
             (exp_name
-              (variable))))))))
+              (loname))))))))
 
 ================================================================================
 where clauses 2
@@ -231,63 +240,66 @@ foo x = case isLT of
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_infix
-      (type_name)
+      (type_name
+        (caname))
       (operator)
-      (type_name)))
+      (type_name
+        (caname))))
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_case
         (exp_name
-          (variable))
+          (loname))
         (alts
           (alt
             (pat_name
-              (constructor))
+              (caname))
             (exp_name
-              (variable))
+              (loname))
             (operator)
             (exp_literal
               (integer)))
           (alt
             (pat_name
-              (constructor))
+              (caname))
             (exp_name
-              (variable))
+              (loname))
             (operator)
             (exp_literal
               (integer))))))
     (where)
     (declarations
       (signature
-        (variable)
-        (type_name))
+        (loname)
+        (type_name
+          (caname)))
       (function
         (lhs
           (funvar
-            (variable)))
+            (loname)))
         (rhs
           (exp_if
             (exp_name
-              (variable))
+              (loname))
             (operator)
             (exp_literal
               (integer))
             (exp_name
-              (constructor))
+              (caname))
             (exp_name
-              (constructor)))))
+              (caname)))))
       (data
         (data_name)
-        (constructor)
-        (constructor)))))
+        (caname)
+        (caname)))))
 
 ================================================================================
 where clauses 3
@@ -304,73 +316,75 @@ even (S k) = odd k where
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_infix
-      (type_name)
+      (type_name
+        (caname))
       (operator)
-      (type_name)))
+      (type_name
+        (caname))))
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (constructor)))))
+            (caname)))))
     (rhs
       (exp_name
-        (constructor))))
+        (caname))))
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_tuple
             (pat_apply
+              (caname)
               (pat_name
-                (constructor))
-              (pat_name
-                (variable)))))))
+                (loname)))))))
     (rhs
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (exp_name
-          (variable))))
+          (loname))))
     (where)
     (declarations
       (signature
-        (variable)
+        (loname)
         (type_infix
-          (type_name)
+          (type_name
+            (caname))
           (operator)
-          (type_name)))
+          (type_name
+            (caname))))
       (function
         (lhs
           (funvar
-            (variable)
+            (loname)
             (patterns
               (pat_name
-                (constructor)))))
+                (caname)))))
         (rhs
           (exp_name
-            (constructor))))
+            (caname))))
       (function
         (lhs
           (funvar
-            (variable)
+            (loname)
             (patterns
               (pat_tuple
                 (pat_apply
+                  (caname)
                   (pat_name
-                    (constructor))
-                  (pat_name
-                    (variable)))))))
+                    (loname)))))))
         (rhs
           (exp_apply
             (exp_name
-              (variable))
+              (loname))
             (exp_name
-              (variable))))))))
+              (loname))))))))
 
 ================================================================================
 where clauses 4
@@ -390,112 +404,120 @@ test = [c (S 1), c Z, d (S Z)]
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_apply
-      (type_name)
-      (type_name)))
+      (type_name
+        (caname))
+      (type_name
+        (caname))))
   (function
     (lhs
       (funvar
-        (variable)))
+        (loname)))
     (rhs
       (exp_list
         (exp_apply
           (exp_name
-            (variable))
+            (loname))
           (exp_parens
             (exp_apply
               (exp_name
-                (constructor))
+                (caname))
               (exp_literal
                 (integer)))))
         (comma)
         (exp_apply
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (constructor)))
+            (caname)))
         (comma)
         (exp_apply
           (exp_name
-            (variable))
+            (loname))
           (exp_parens
             (exp_apply
               (exp_name
-                (constructor))
+                (caname))
               (exp_name
-                (constructor)))))))
+                (caname)))))))
     (where)
     (declarations
       (signature
-        (variable)
+        (loname)
         (type_infix
-          (type_name)
+          (type_name
+            (caname))
           (operator)
-          (type_name)))
+          (type_name
+            (caname))))
       (function
         (lhs
           (funvar
-            (variable)
+            (loname)
             (patterns
               (pat_name
-                (variable)))))
+                (loname)))))
         (rhs
           (exp_literal
             (integer))
           (operator)
           (exp_name
-            (variable))))
+            (loname))))
       (signature
-        (variable)
+        (loname)
         (type_infix
-          (type_name)
+          (type_name
+            (caname))
           (operator)
-          (type_name)))
+          (type_name
+            (caname))))
       (function
         (lhs
           (funvar
-            (variable)
+            (loname)
             (patterns
               (pat_name
-                (variable)))))
+                (loname)))))
         (rhs
           (exp_apply
             (exp_name
-              (variable))
+              (loname))
             (exp_parens
               (exp_name
-                (variable))
+                (loname))
               (operator)
               (exp_literal
                 (integer))
               (operator)
               (exp_apply
                 (exp_name
-                  (variable))
+                  (loname))
                 (exp_name
-                  (variable))))))
+                  (loname))))))
         (where)
         (declarations
           (signature
-            (variable)
+            (loname)
             (type_infix
-              (type_name)
+              (type_name
+                (caname))
               (operator)
-              (type_name)))
+              (type_name
+                (caname))))
           (function
             (lhs
               (funvar
-                (variable)
+                (loname)
                 (patterns
                   (pat_name
-                    (variable)))))
+                    (loname)))))
             (rhs
               (exp_name
-                (variable))
+                (loname))
               (operator)
               (exp_name
-                (variable)))))))))
+                (loname)))))))))
 
 ================================================================================
 At braces
@@ -509,24 +531,23 @@ uninhabited (x, _) @{Left  _} = uninhabited x
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_tuple
             (pat_name
-              (variable))
+              (loname))
             (tuple_operator)
             (pat_wildcard))
           (pat_at_braces
             (pat_apply
-              (pat_name
-                (constructor))
+              (caname)
               (pat_wildcard))))))
     (rhs
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Totality partial
@@ -540,15 +561,16 @@ fromMaybe : Maybe a -> a
 (idris
   (signature
     (totality)
-    (variable)
+    (loname)
     (type_infix
       (type_apply
-        (type_name)
         (type_name
-          (type_variable)))
+          (caname))
+        (type_name
+          (loname)))
       (operator)
       (type_name
-        (type_variable)))))
+        (loname)))))
 
 ================================================================================
 Totality total
@@ -562,23 +584,26 @@ qsort : Ord a => List a -> List a
 (idris
   (signature
     (totality)
-    (variable)
+    (loname)
     (type_infix
       (type_apply
-        (type_name)
         (type_name
-          (type_variable)))
+          (caname))
+        (type_name
+          (loname)))
       (operator)
       (type_infix
         (type_apply
-          (type_name)
           (type_name
-            (type_variable)))
+            (caname))
+          (type_name
+            (loname)))
         (operator)
         (type_apply
-          (type_name)
           (type_name
-            (type_variable)))))))
+            (caname))
+          (type_name
+            (loname)))))))
 
 ================================================================================
 Totality covering
@@ -592,25 +617,28 @@ takeUntil : (n -> Bool) -> Stream n -> List n
 (idris
   (signature
     (totality)
-    (variable)
+    (loname)
     (type_infix
       (type_parens
         (type_infix
           (type_name
-            (type_variable))
+            (loname))
           (operator)
-          (type_name)))
+          (type_name
+            (caname))))
       (operator)
       (type_infix
         (type_apply
-          (type_name)
           (type_name
-            (type_variable)))
+            (caname))
+          (type_name
+            (loname)))
         (operator)
         (type_apply
-          (type_name)
           (type_name
-            (type_variable)))))))
+            (caname))
+          (type_name
+            (loname)))))))
 
 ================================================================================
 Holes
@@ -623,18 +651,19 @@ main = putStrLn ?greeting
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_apply
-      (type_name)
+      (type_name
+        (caname))
       (type_parens)))
   (function
     (lhs
       (funvar
-        (variable)))
+        (loname)))
     (rhs
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (hole)))))
 
 ================================================================================
@@ -649,24 +678,24 @@ helpEven j p = rewrite plusSuccRightSucc j j in p
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable))
+            (loname))
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_rewrite_in
         (rewrite_exp
           (exp_apply
             (exp_name
-              (variable))
+              (loname))
             (exp_name
-              (variable))
+              (loname))
             (exp_name
-              (variable))))
+              (loname))))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Capitalized function name 1
@@ -678,12 +707,13 @@ Foo : a -> Type
 
 (idris
   (signature
-    (constructor)
+    (caname)
     (type_infix
       (type_name
-        (type_variable))
+        (loname))
       (operator)
-      (type_name))))
+      (type_name
+        (caname)))))
 
 ================================================================================
 Capitalized function name 2
@@ -697,10 +727,10 @@ Foo a = 3
   (function
     (lhs
       (funvar
-        (constructor)
+        (caname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_literal
         (integer)))))
@@ -716,21 +746,22 @@ Not p = p -> Void
 
 (idris
   (signature
-    (constructor)
-    (type_name))
+    (caname)
+    (type_name
+      (caname)))
   (function
     (lhs
       (funvar
-        (constructor)
+        (caname)
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_name
-        (variable))
+        (loname))
       (operator)
       (exp_name
-        (constructor)))))
+        (caname)))))
 
 ================================================================================
 Operator 1
@@ -745,14 +776,14 @@ Operator 1
     (operator)
     (type_infix
       (type_name
-        (type_variable))
+        (loname))
       (operator)
       (type_infix
         (type_name
-          (type_variable))
+          (loname))
         (operator)
         (type_name
-          (type_variable))))))
+          (loname))))))
 
 ================================================================================
 Operator 2
@@ -767,14 +798,14 @@ Operator 2
     (operator)
     (type_infix
       (type_name
-        (type_variable))
+        (loname))
       (operator)
       (type_infix
         (type_name
-          (type_variable))
+          (loname))
         (operator)
         (type_name
-          (type_variable))))))
+          (loname))))))
 
 ================================================================================
 Operator 3
@@ -791,9 +822,9 @@ Operator 3
         (operator)
         (patterns
           (pat_name
-            (variable))
+            (loname))
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (wildcard))))
 
@@ -808,29 +839,29 @@ Operator 4
 (idris
   (function
     (lhs
-      (funvar
+      (funop
         (patterns
           (pat_name
-            (variable)))
+            (loname)))
         (operator)
         (patterns
           (pat_name
-            (variable)))
+            (loname)))
         (patterns
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (exp_name
-          (variable)))
+          (loname)))
       (operator)
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Operator 5
@@ -865,17 +896,17 @@ x :: xs == y :: ys = _
       (funop
         (patterns
           (pat_name
-            (variable))
+            (loname))
           (operator)
           (pat_name
-            (variable)))
+            (loname)))
         (operator)
         (patterns
           (pat_name
-            (variable))
+            (loname))
           (operator)
           (pat_name
-            (variable)))))
+            (loname)))))
     (rhs
       (wildcard))))
 
@@ -905,6 +936,8 @@ infixl 9 `div`, `mod`
 (idris
   (operator_declaration
     (integer)
-    (ticked_operator)
+    (ticked_operator
+      (loname))
     (comma)
-    (ticked_operator)))
+    (ticked_operator
+      (loname))))

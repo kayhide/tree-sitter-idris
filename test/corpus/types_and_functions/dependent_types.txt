@@ -9,25 +9,28 @@ mkSingle False = []
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_infix
-      (type_name
-        (annotated_type_variable
-          (type_variable)
-          (type_name)))
+      (type_parens
+        (type_infix
+          (type_name
+            (loname))
+          (operator)
+          (type_name
+            (caname))))
       (operator)
       (type_apply
         (type_name
-          (type_variable))
+          (loname))
         (type_name
-          (type_variable)))))
+          (loname)))))
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (constructor)))))
+            (caname)))))
     (rhs
       (exp_list))))
 
@@ -41,27 +44,29 @@ index : forall a, n. Fin n -> Vect n a -> a
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_infix
       (forall
         (type_variable)
         (comma)
         (type_variable))
       (type_apply
-        (type_name)
         (type_name
-          (type_variable)))
+          (caname))
+        (type_name
+          (loname)))
       (operator)
       (type_infix
         (type_apply
-          (type_name)
           (type_name
-            (type_variable))
+            (caname))
           (type_name
-            (type_variable)))
+            (loname))
+          (type_name
+            (loname)))
         (operator)
         (type_name
-          (type_variable))))))
+          (loname))))))
 
 ================================================================================
 Implicit Arguments 2
@@ -73,37 +78,41 @@ index : {a : Type} -> {n : Nat} -> Fin n -> Vect n a -> a
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_infix
       (type_braces
         (implicit_arg
           (type_name
-            (type_variable)))
-        (type_name))
+            (loname)))
+        (type_name
+          (caname)))
       (operator)
       (type_infix
         (type_braces
           (implicit_arg
             (type_name
-              (type_variable)))
-          (type_name))
+              (loname)))
+          (type_name
+            (caname)))
         (operator)
         (type_infix
           (type_apply
-            (type_name)
             (type_name
-              (type_variable)))
+              (caname))
+            (type_name
+              (loname)))
           (operator)
           (type_infix
             (type_apply
-              (type_name)
               (type_name
-                (type_variable))
+                (caname))
               (type_name
-                (type_variable)))
+                (loname))
+              (type_name
+                (loname)))
             (operator)
             (type_name
-              (type_variable))))))))
+              (loname))))))))
 
 ================================================================================
 Implicit Arguments 3
@@ -120,17 +129,15 @@ _ = index {a=Int} {n=2} FZ (2 :: 3 :: Nil)
     (rhs
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (exp_implicit_arg
-          (variable)
           (exp_name
-            (constructor)))
+            (caname)))
         (exp_implicit_arg
-          (variable)
           (exp_literal
             (integer)))
         (exp_name
-          (constructor))
+          (caname))
         (exp_parens
           (exp_literal
             (integer))
@@ -139,7 +146,7 @@ _ = index {a=Int} {n=2} FZ (2 :: 3 :: Nil)
             (integer))
           (operator)
           (exp_name
-            (constructor)))))))
+            (caname)))))))
 
 ================================================================================
 Implicit Arguments 4
@@ -151,29 +158,35 @@ index : (i : Fin n) -> (xs : Vect n a) -> a
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_infix
-      (type_name
-        (annotated_type_variable
-          (type_variable)
+      (type_parens
+        (type_infix
+          (type_name
+            (loname))
+          (operator)
           (type_apply
-            (type_name)
             (type_name
-              (type_variable)))))
+              (caname))
+            (type_name
+              (loname)))))
       (operator)
       (type_infix
-        (type_name
-          (annotated_type_variable
-            (type_variable)
+        (type_parens
+          (type_infix
+            (type_name
+              (loname))
+            (operator)
             (type_apply
-              (type_name)
               (type_name
-                (type_variable))
+                (caname))
               (type_name
-                (type_variable)))))
+                (loname))
+              (type_name
+                (loname)))))
         (operator)
         (type_name
-          (type_variable))))))
+          (loname))))))
 
 ================================================================================
 Auto Implicit Arguments
@@ -185,33 +198,37 @@ head : (xs : List a) -> {auto p : isCons xs = True} -> a
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_infix
-      (type_name
-        (annotated_type_variable
-          (type_variable)
+      (type_parens
+        (type_infix
+          (type_name
+            (loname))
+          (operator)
           (type_apply
-            (type_name)
             (type_name
-              (type_variable)))))
+              (caname))
+            (type_name
+              (loname)))))
       (operator)
       (type_infix
         (type_braces
           (implicit_arg
             (auto)
             (type_name
-              (type_variable)))
+              (loname)))
           (type_infix
             (type_apply
               (type_name
-                (type_variable))
+                (loname))
               (type_name
-                (type_variable)))
+                (loname)))
             (operator)
-            (type_name)))
+            (type_name
+              (caname))))
         (operator)
         (type_name
-          (type_variable))))))
+          (loname))))))
 
 ================================================================================
 Default Implicit Arguments
@@ -223,7 +240,7 @@ fibonacci : {default 0 lag : Nat} -> {default 1 lead : Nat} -> (n : Nat) -> Nat
 
 (idris
   (signature
-    (variable)
+    (loname)
     (type_infix
       (type_braces
         (implicit_arg
@@ -231,8 +248,9 @@ fibonacci : {default 0 lag : Nat} -> {default 1 lead : Nat} -> (n : Nat) -> Nat
             (exp_literal
               (integer)))
           (type_name
-            (type_variable)))
-        (type_name))
+            (loname)))
+        (type_name
+          (caname)))
       (operator)
       (type_infix
         (type_braces
@@ -241,13 +259,18 @@ fibonacci : {default 0 lag : Nat} -> {default 1 lead : Nat} -> (n : Nat) -> Nat
               (exp_literal
                 (integer)))
             (type_name
-              (type_variable)))
-          (type_name))
+              (loname)))
+          (type_name
+            (caname)))
         (operator)
         (type_infix
-          (type_name
-            (annotated_type_variable
-              (type_variable)
-              (type_name)))
+          (type_parens
+            (type_infix
+              (type_name
+                (loname))
+              (operator)
+              (type_name
+                (caname))))
           (operator)
-          (type_name))))))
+          (type_name
+            (caname)))))))

@@ -11,47 +11,47 @@ filter p (x :: xs) with (filter p xs)
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable))
+            (loname))
           (pat_tuple
             (pat_infix
               (pat_name
-                (variable))
+                (loname))
               (operator)
               (pat_name
-                (variable)))))))
+                (loname)))))))
     (with
       (exp_parens
         (exp_apply
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (variable))))
+            (loname))))
       (function
         (lhs
           (funvar
-            (variable)
+            (loname)
             (patterns
               (pat_name
-                (variable))
+                (loname))
               (pat_tuple
                 (pat_infix
                   (pat_name
-                    (variable))
+                    (loname))
                   (operator)
                   (pat_name
-                    (variable)))))))
+                    (loname)))))))
         (with_pat
           (pat_tuple
             (pat_infix
               (pat_wildcard)
               (operator)
               (pat_name
-                (variable)))))
+                (loname)))))
         (rhs
           (wildcard))))))
 
@@ -68,26 +68,26 @@ filter p (x :: xs) with (filter p xs)
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable))
+            (loname))
           (pat_tuple
             (pat_infix
               (pat_name
-                (variable))
+                (loname))
               (operator)
               (pat_name
-                (variable)))))))
+                (loname)))))))
     (with
       (exp_parens
         (exp_apply
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (variable))
+            (loname))
           (exp_name
-            (variable))))
+            (loname))))
       (function
         (lhs
           (wildcard))
@@ -97,7 +97,7 @@ filter p (x :: xs) with (filter p xs)
               (pat_wildcard)
               (operator)
               (pat_name
-                (variable)))))
+                (loname)))))
         (rhs
           (wildcard))))))
 
@@ -117,41 +117,41 @@ foo n m with (n + 1)
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable))
+            (loname))
           (pat_name
-            (variable)))))
+            (loname)))))
     (with
       (exp_parens
         (exp_name
-          (variable))
+          (loname))
         (operator)
         (exp_literal
           (integer)))
       (function
         (lhs
           (funvar
-            (variable)
+            (loname)
             (patterns
               (pat_wildcard)
               (pat_name
-                (variable)))))
+                (loname)))))
         (with_pat
           (pat_literal
             (integer)))
         (with
           (exp_parens
             (exp_name
-              (variable))
+              (loname))
             (operator)
             (exp_literal
               (integer)))
           (function
             (lhs
               (funvar
-                (variable)
+                (loname)
                 (patterns
                   (pat_wildcard)
                   (pat_wildcard))))
@@ -163,11 +163,11 @@ foo n m with (n + 1)
                 (integer)))
             (rhs
               (exp_name
-                (constructor))))
+                (caname))))
           (function
             (lhs
               (funvar
-                (variable)
+                (loname)
                 (patterns
                   (pat_wildcard)
                   (pat_wildcard))))
@@ -178,11 +178,11 @@ foo n m with (n + 1)
               (pat_wildcard))
             (rhs
               (exp_name
-                (constructor))))))
+                (caname))))))
       (function
         (lhs
           (funvar
-            (variable)
+            (loname)
             (patterns
               (pat_wildcard)
               (pat_wildcard))))
@@ -190,7 +190,7 @@ foo n m with (n + 1)
           (pat_wildcard))
         (rhs
           (exp_name
-            (constructor)))))))
+            (caname)))))))
 
 ================================================================================
 with rule 4
@@ -206,22 +206,22 @@ foo n m with (n + 1) | (m + 1)
   (function
     (lhs
       (funvar
-        (variable)
+        (loname)
         (patterns
           (pat_name
-            (variable))
+            (loname))
           (pat_name
-            (variable)))))
+            (loname)))))
     (with
       (exp_parens
         (exp_name
-          (variable))
+          (loname))
         (operator)
         (exp_literal
           (integer)))
       (exp_parens
         (exp_name
-          (variable))
+          (loname))
         (operator)
         (exp_literal
           (integer)))
@@ -236,7 +236,7 @@ foo n m with (n + 1) | (m + 1)
             (integer)))
         (rhs
           (exp_name
-            (constructor))))
+            (caname))))
       (function
         (lhs
           (wildcard))
@@ -246,4 +246,4 @@ foo n m with (n + 1) | (m + 1)
           (pat_wildcard))
         (rhs
           (exp_name
-            (constructor)))))))
+            (caname)))))))

@@ -13,18 +13,18 @@ _ = map (\x => x * 2) intVec
     (rhs
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (exp_parens
           (exp_lambda
             (pat_name
-              (variable))
+              (loname))
             (exp_name
-              (variable))
+              (loname))
             (operator)
             (exp_literal
               (integer))))
         (exp_name
-          (variable))))))
+          (loname))))))
 
 ================================================================================
 Anonymous functions and operator sections 2
@@ -41,10 +41,10 @@ _ = map (* 2) intVec
     (rhs
       (exp_apply
         (exp_name
-          (variable))
+          (loname))
         (exp_section_left
           (operator)
           (exp_literal
             (integer)))
         (exp_name
-          (variable))))))
+          (loname))))))

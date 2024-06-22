@@ -4,7 +4,7 @@ module.exports = {
 
   // ----- Data ---------------------------------------------------------------
 
-  data_name: $ => alias($._qtyconid, ''),
+  data_name: $ => alias($._q_caname_op, ''),
 
   _decl_data: $ => choice(
     $._decl_data_inline,
@@ -17,7 +17,7 @@ module.exports = {
     field('name', $.data_name),
     repeat($._tyvar),
     '=',
-    sep1('|', seq($._con, repeat($._type))),
+    sep1('|', seq($._caname_op, repeat($._type))),
   ),
 
   _decl_data_block: $ => seq(
@@ -39,7 +39,7 @@ module.exports = {
 
   search_options: $ => brackets(
     choice(
-      seq('search', repeat1($.type_variable)),
+      seq('search', repeat1($._name)),
       alias('noHints', $.no_hints),
     ),
   ),
@@ -47,7 +47,7 @@ module.exports = {
   external: _ => brackets('external'),
 
   constructor_signature: $ => seq(
-    field('name', $._con), 
+    field('name', $._caname_op), 
     alias($._type_annotation, $.type_signature),
   ),
 }

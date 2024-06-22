@@ -32,7 +32,7 @@ module.exports = {
 
   bang: _ =>  '!',
 
-  exp_name: $ => prefixable($.bang, choice($._qvar, $._qcon)),
+  exp_name: $ => prefixable($.bang, $._q_name_op),
 
   exp_ticked: $ => ticked($._exp),
 
@@ -47,7 +47,7 @@ module.exports = {
     snoc_brackets(sep($.comma, $._exp)),
   ),
 
-  exp_implicit_arg: $ => braces(seq($._var, '=', $._exp)),
+  exp_implicit_arg: $ => braces(seq($._loname, '=', $._exp)),
 
   exp_explicit_impl: $ => seq(
     '@{', 
@@ -83,22 +83,11 @@ module.exports = {
 
   // ----- Records ------------------------------------------------------------
 
-  _record_access_field: $ =>
-    choice(
-      $._immediate_variable,
-      $.string,
-      $.triple_quote_string
-    ),
-
-  record_accessor: $ =>
-    prec.left(seq(
-      $.wildcard,
-      repeat1(seq($._immediate_dot, field('field', $._record_access_field)))
-    )),
+  _record_access_field: $ => $._immediate_loname,
 
   exp_record_access: $ =>
     prec(1, seq(
-      choice($.hole, $.exp_parens, $._qvarid),
+      choice($.hole, $.exp_parens, $._q_loname),
       repeat1(seq($._immediate_dot, field('field', $._record_access_field)))
     )),
 
@@ -141,11 +130,11 @@ module.exports = {
 
   // ----- Let-in -------------------------------------------------------------
 
-  _let_decls: $ => layouted_without_end($, $._decl),
+  _let_in_decls: $ => layouted_without_end($, $._decl),
 
   exp_let_in: $ => seq(
     'let',
-    alias($._let_decls, $.declarations),
+    alias($._let_in_decls, $.declarations),
     'in',
     $._exp
   ),
@@ -195,9 +184,11 @@ module.exports = {
     optional(layouted($, $.bind_alt)),
   ),
 
+  _let_decls: $ => layouted($, $._decl),
+
   let: $ => seq(
     'let', 
-    $.declarations,
+    alias($._let_decls, $.declarations),
     optional(layouted($, $.bind_alt)),
   ),
 
@@ -248,7 +239,6 @@ module.exports = {
     $.exp_implicit_arg,
     $.exp_explicit_impl,
     $.record_update,
-    $.record_accessor,
     $.exp_record_access,
     $.exp_section_left,
     $.exp_section_right,
@@ -256,6 +246,7 @@ module.exports = {
     alias($.literal, $.exp_literal),
     $.wildcard,
     $.unit,
+    $.pragma_mkworld,
     $.pragma_search,
   ),
 
