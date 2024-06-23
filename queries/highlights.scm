@@ -102,6 +102,7 @@
   (where)
   "let"
   "in"
+  "rewrite"
   "interface"
   "using"
   "data"
@@ -116,6 +117,7 @@
   (visibility)
   (totality)
   (quantity)
+  (impossible)
 ] @keyword
 
 (hole) @label
@@ -134,30 +136,29 @@
 ; ------------------------------------------------------------------------------
 ; Functions and variables
 
-(loname) @variable
+(exp_apply
+  .
+  (exp_name
+    [(loname) (qualified_loname)] @function))
 
 (exp_apply
   .
   (exp_name
-    (loname) @function))
-
-(exp_apply
-  .
-  (exp_name
-    (qualified_loname) @function))
+    [(caname) (qualified_caname)] @constructor))
 
 (exp_record_access
   field: (_) @variable.other.member)
 
 (signature
-  name: (caname) @type)
-
-(type_name) @type
+  name: [(loname) (caname)] @function)
 
 (function
   (lhs
     (funvar
       subject: [(loname) (caname)] @function)))
+
+(data
+  name: (data_name) @type)
 
 (interface_head
   name: (interface_name) @type)
