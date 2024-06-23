@@ -5676,6 +5676,10 @@
           "named": true
         },
         {
+          "type": "quantity",
+          "named": true
+        },
+        {
           "type": "totality",
           "named": true
         },
