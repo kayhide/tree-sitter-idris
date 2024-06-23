@@ -85,6 +85,7 @@ module.exports = {
   signature: $ => seq(
     optional($.visibility),
     optional($.totality),
+    optional($.quantity),
     field('name', $._fun_name),
     $._type_annotation,
   ),
