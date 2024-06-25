@@ -19,7 +19,15 @@ module.exports = {
     snoc_brackets(sep($.comma, $._typed_pat)),
   ),
 
-  pat_at_braces: $ => seq('@{', $.pat_apply, '}'),
+  pat_braces: $ => seq(
+    '{', 
+    $._name, 
+    '=',
+    $._lpat,
+    '}'
+  ),
+
+  pat_at_braces: $ => seq('@{', $._lpat, '}'),
 
   _apat: $ => choice(
     alias($._name, $.pat_name),
@@ -28,6 +36,7 @@ module.exports = {
     alias($.wildcard, $.pat_wildcard),
     $.pat_tuple,
     $.pat_list,
+    $.pat_braces,
     $.pat_at_braces,
     $.pragma_mkworld,
   ),

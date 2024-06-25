@@ -131,9 +131,11 @@ _ = index {a=Int} {n=2} FZ (2 :: 3 :: Nil)
         (exp_name
           (loname))
         (exp_implicit_arg
+          (loname)
           (exp_name
             (caname)))
         (exp_implicit_arg
+          (loname)
           (exp_literal
             (integer)))
         (exp_name

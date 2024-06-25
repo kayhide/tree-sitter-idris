@@ -130,6 +130,7 @@ module.exports = grammar({
     [$._name, $._name_op, $.pat_apply, $.interface_name],
     [$._name_op, $.pat_apply],
     [$._q_name_op, $.pat_apply],
+    [$._name, $._field_name],
 
     /**
      * For getting a node for function application, and no extra node if the expression only consists of one term.

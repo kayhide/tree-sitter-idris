@@ -45,7 +45,7 @@ module.exports = {
   ),
 
   implicit_arg: $ => seq(
-    optional(
+    repeat(
       choice( 
         $.quantity,
         $.auto,

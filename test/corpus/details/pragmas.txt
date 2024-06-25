@@ -172,9 +172,11 @@ Pragma transform 2
       (string))
     (loname)
     (exp_implicit_arg
+      (loname)
       (exp_name
         (caname)))
     (exp_implicit_arg
+      (loname)
       (exp_name
         (caname)))
     (loname)))

@@ -235,7 +235,6 @@ foo x = case isLT of
        isLT = if x < 20 then Yes else No
        data MyLT = Yes | No
 
-
 --------------------------------------------------------------------------------
 
 (idris
@@ -520,7 +519,138 @@ test = [c (S 1), c Z, d (S Z)]
                 (loname)))))))))
 
 ================================================================================
-At braces
+Implicit args 1
+================================================================================
+
+reflexive {x = Z} = LTEZero
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_braces
+            (loname)
+            (pat_name
+              (caname))))))
+    (rhs
+      (exp_name
+        (caname)))))
+
+================================================================================
+Implicit args 2
+================================================================================
+
+reflexive {x = S _} = LTESucc $ reflexive
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_braces
+            (loname)
+            (pat_apply
+              (caname)
+              (pat_wildcard))))))
+    (rhs
+      (exp_name
+        (caname))
+      (operator)
+      (exp_name
+        (loname)))))
+
+================================================================================
+Implicit args 3
+================================================================================
+
+lteAddRight (S k) {m} = LTESucc (lteAddRight {m} k)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_tuple
+            (pat_apply
+              (caname)
+              (pat_name
+                (loname))))
+          (pat_record
+            (pat_fields
+              (pat_field
+                (field_name)))))))
+    (rhs
+      (exp_apply
+        (exp_name
+          (caname))
+        (exp_parens
+          (exp_apply
+            (exp_name
+              (loname))
+            (exp_implicit_arg
+              (loname))
+            (exp_name
+              (loname))))))))
+
+================================================================================
+Implicit args 4
+================================================================================
+
+gcd : (a: Nat) -> (b: Nat) -> {auto 0 ok: NotBothZero a b} -> Nat
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (loname)
+    (type_infix
+      (type_parens
+        (type_infix
+          (type_name
+            (loname))
+          (operator)
+          (type_name
+            (caname))))
+      (operator)
+      (type_infix
+        (type_parens
+          (type_infix
+            (type_name
+              (loname))
+            (operator)
+            (type_name
+              (caname))))
+        (operator)
+        (type_infix
+          (type_braces
+            (implicit_arg
+              (auto)
+              (quantity)
+              (type_name
+                (loname)))
+            (type_apply
+              (type_name
+                (caname))
+              (type_name
+                (loname))
+              (type_name
+                (loname))))
+          (operator)
+          (type_name
+            (caname)))))))
+
+================================================================================
+At braces 1
 ================================================================================
 
 uninhabited (x, _) @{Left  _} = uninhabited x
@@ -548,6 +678,35 @@ uninhabited (x, _) @{Left  _} = uninhabited x
           (loname))
         (exp_name
           (loname))))))
+
+================================================================================
+At braces 2
+================================================================================
+
+uninhabited Refl @{ab} = uninhabited @{ab} Refl
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (caname))
+          (pat_at_braces
+            (pat_name
+              (loname))))))
+    (rhs
+      (exp_apply
+        (exp_name
+          (loname))
+        (exp_explicit_impl
+          (implementation_name
+            (loname)))
+        (exp_name
+          (caname))))))
 
 ================================================================================
 Totality partial
