@@ -33,7 +33,7 @@ module.exports = {
 
   exp_name: $ => prefixable($.bang, $._q_name_op),
 
-  exp_ticked: $ => ticked($._exp),
+  exp_ticked: $ => ticked($._fexp),
 
   exp_parens: $ => prefixable($.bang, parens($._exp)),
 

@@ -305,6 +305,69 @@ Num Foo
         (caname)))))
 
 ================================================================================
+Implementation with deeply nested exp
+================================================================================
+
+FiniteBits Bits16 where
+  popCount x0 =
+    let x1 = (x0 .&. 0x5555) + ((x0 `shiftR` 1) .&. 0x5555)
+     in cast x1
+
+--------------------------------------------------------------------------------
+
+(idris
+  (implementation
+    (implementation_head
+      (interface_name)
+      (type_name
+        (caname)))
+    (implementation_body
+      (where)
+      (function
+        (lhs
+          (funvar
+            (loname)
+            (patterns
+              (pat_name
+                (loname)))))
+        (rhs
+          (exp_let_in
+            (declarations
+              (function
+                (lhs
+                  (funvar
+                    (loname)))
+                (rhs
+                  (exp_apply
+                    (exp_parens
+                      (exp_apply
+                        (exp_name
+                          (loname))
+                        (exp_op)
+                        (exp_literal
+                          (integer))))
+                    (exp_op)
+                    (exp_parens
+                      (exp_apply
+                        (exp_parens
+                          (exp_apply
+                            (exp_name
+                              (loname))
+                            (exp_ticked
+                              (exp_name
+                                (loname)))
+                            (exp_literal
+                              (integer))))
+                        (exp_op)
+                        (exp_literal
+                          (integer))))))))
+            (exp_apply
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))))))))
+
+================================================================================
 Implementation with visibility
 ================================================================================
 
