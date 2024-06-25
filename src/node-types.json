@@ -31,7 +31,7 @@
     "named": true,
     "fields": {
       "exp": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
@@ -83,7 +83,7 @@
             "named": true
           },
           {
-            "type": "exp_negation",
+            "type": "exp_op",
             "named": true
           },
           {
@@ -99,14 +99,6 @@
             "named": true
           },
           {
-            "type": "exp_section_left",
-            "named": true
-          },
-          {
-            "type": "exp_section_right",
-            "named": true
-          },
-          {
             "type": "exp_ticked",
             "named": true
           },
@@ -116,10 +108,6 @@
           },
           {
             "type": "hole",
-            "named": true
-          },
-          {
-            "type": "operator",
             "named": true
           },
           {
@@ -157,6 +145,10 @@
             "named": true
           },
           {
+            "type": "pat_braces",
+            "named": true
+          },
+          {
             "type": "pat_infix",
             "named": true
           },
@@ -170,10 +162,6 @@
           },
           {
             "type": "pat_name",
-            "named": true
-          },
-          {
-            "type": "pat_negation",
             "named": true
           },
           {
@@ -345,7 +333,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -361,14 +349,6 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
           "type": "exp_ticked",
           "named": true
         },
@@ -381,15 +361,15 @@
           "named": true
         },
         {
-          "type": "operator",
-          "named": true
-        },
-        {
           "type": "pat_apply",
           "named": true
         },
         {
           "type": "pat_at_braces",
+          "named": true
+        },
+        {
+          "type": "pat_braces",
           "named": true
         },
         {
@@ -406,10 +386,6 @@
         },
         {
           "type": "pat_name",
-          "named": true
-        },
-        {
-          "type": "pat_negation",
           "named": true
         },
         {
@@ -512,7 +488,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -528,14 +504,6 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
           "type": "exp_ticked",
           "named": true
         },
@@ -548,15 +516,15 @@
           "named": true
         },
         {
-          "type": "operator",
-          "named": true
-        },
-        {
           "type": "pat_apply",
           "named": true
         },
         {
           "type": "pat_at_braces",
+          "named": true
+        },
+        {
+          "type": "pat_braces",
           "named": true
         },
         {
@@ -573,10 +541,6 @@
         },
         {
           "type": "pat_name",
-          "named": true
-        },
-        {
-          "type": "pat_negation",
           "named": true
         },
         {
@@ -929,6 +893,10 @@
           "named": true
         },
         {
+          "type": "exp_op",
+          "named": true
+        },
+        {
           "type": "exp_parens",
           "named": true
         },
@@ -941,11 +909,7 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
+          "type": "exp_ticked",
           "named": true
         },
         {
@@ -1051,6 +1015,10 @@
           "named": true
         },
         {
+          "type": "exp_op",
+          "named": true
+        },
+        {
           "type": "exp_parens",
           "named": true
         },
@@ -1063,11 +1031,7 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
+          "type": "exp_ticked",
           "named": true
         },
         {
@@ -1158,7 +1122,7 @@
             "named": true
           },
           {
-            "type": "exp_negation",
+            "type": "exp_op",
             "named": true
           },
           {
@@ -1174,14 +1138,6 @@
             "named": true
           },
           {
-            "type": "exp_section_left",
-            "named": true
-          },
-          {
-            "type": "exp_section_right",
-            "named": true
-          },
-          {
             "type": "exp_ticked",
             "named": true
           },
@@ -1191,10 +1147,6 @@
           },
           {
             "type": "hole",
-            "named": true
-          },
-          {
-            "type": "operator",
             "named": true
           },
           {
@@ -1278,7 +1230,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -1330,7 +1282,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -1346,14 +1298,6 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
           "type": "exp_ticked",
           "named": true
         },
@@ -1363,10 +1307,6 @@
         },
         {
           "type": "hole",
-          "named": true
-        },
-        {
-          "type": "operator",
           "named": true
         },
         {
@@ -1397,7 +1337,7 @@
     "named": true,
     "fields": {
       "else": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
@@ -1449,7 +1389,7 @@
             "named": true
           },
           {
-            "type": "exp_negation",
+            "type": "exp_op",
             "named": true
           },
           {
@@ -1465,14 +1405,6 @@
             "named": true
           },
           {
-            "type": "exp_section_left",
-            "named": true
-          },
-          {
-            "type": "exp_section_right",
-            "named": true
-          },
-          {
             "type": "exp_ticked",
             "named": true
           },
@@ -1482,10 +1414,6 @@
           },
           {
             "type": "hole",
-            "named": true
-          },
-          {
-            "type": "operator",
             "named": true
           },
           {
@@ -1511,7 +1439,7 @@
         ]
       },
       "if": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
@@ -1563,7 +1491,7 @@
             "named": true
           },
           {
-            "type": "exp_negation",
+            "type": "exp_op",
             "named": true
           },
           {
@@ -1579,14 +1507,6 @@
             "named": true
           },
           {
-            "type": "exp_section_left",
-            "named": true
-          },
-          {
-            "type": "exp_section_right",
-            "named": true
-          },
-          {
             "type": "exp_ticked",
             "named": true
           },
@@ -1596,10 +1516,6 @@
           },
           {
             "type": "hole",
-            "named": true
-          },
-          {
-            "type": "operator",
             "named": true
           },
           {
@@ -1625,7 +1541,7 @@
         ]
       },
       "then": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
@@ -1677,7 +1593,7 @@
             "named": true
           },
           {
-            "type": "exp_negation",
+            "type": "exp_op",
             "named": true
           },
           {
@@ -1693,14 +1609,6 @@
             "named": true
           },
           {
-            "type": "exp_section_left",
-            "named": true
-          },
-          {
-            "type": "exp_section_right",
-            "named": true
-          },
-          {
             "type": "exp_ticked",
             "named": true
           },
@@ -1710,10 +1618,6 @@
           },
           {
             "type": "hole",
-            "named": true
-          },
-          {
-            "type": "operator",
             "named": true
           },
           {
@@ -1743,120 +1647,123 @@
   {
     "type": "exp_implicit_arg",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "exp_apply",
-          "named": true
-        },
-        {
-          "type": "exp_case",
-          "named": true
-        },
-        {
-          "type": "exp_do",
-          "named": true
-        },
-        {
-          "type": "exp_explicit_impl",
-          "named": true
-        },
-        {
-          "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
-          "named": true
-        },
-        {
-          "type": "exp_lambda",
-          "named": true
-        },
-        {
-          "type": "exp_let_in",
-          "named": true
-        },
-        {
-          "type": "exp_list",
-          "named": true
-        },
-        {
-          "type": "exp_literal",
-          "named": true
-        },
-        {
-          "type": "exp_name",
-          "named": true
-        },
-        {
-          "type": "exp_negation",
-          "named": true
-        },
-        {
-          "type": "exp_parens",
-          "named": true
-        },
-        {
-          "type": "exp_record_access",
-          "named": true
-        },
-        {
-          "type": "exp_rewrite_in",
-          "named": true
-        },
-        {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
-          "type": "exp_ticked",
-          "named": true
-        },
-        {
-          "type": "exp_tuple",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "pragma_mkworld",
-          "named": true
-        },
-        {
-          "type": "pragma_search",
-          "named": true
-        },
-        {
-          "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
+    "fields": {
+      "object": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "exp_apply",
+            "named": true
+          },
+          {
+            "type": "exp_case",
+            "named": true
+          },
+          {
+            "type": "exp_do",
+            "named": true
+          },
+          {
+            "type": "exp_explicit_impl",
+            "named": true
+          },
+          {
+            "type": "exp_idiom",
+            "named": true
+          },
+          {
+            "type": "exp_if",
+            "named": true
+          },
+          {
+            "type": "exp_implicit_arg",
+            "named": true
+          },
+          {
+            "type": "exp_lambda",
+            "named": true
+          },
+          {
+            "type": "exp_let_in",
+            "named": true
+          },
+          {
+            "type": "exp_list",
+            "named": true
+          },
+          {
+            "type": "exp_literal",
+            "named": true
+          },
+          {
+            "type": "exp_name",
+            "named": true
+          },
+          {
+            "type": "exp_op",
+            "named": true
+          },
+          {
+            "type": "exp_parens",
+            "named": true
+          },
+          {
+            "type": "exp_record_access",
+            "named": true
+          },
+          {
+            "type": "exp_rewrite_in",
+            "named": true
+          },
+          {
+            "type": "exp_ticked",
+            "named": true
+          },
+          {
+            "type": "exp_tuple",
+            "named": true
+          },
+          {
+            "type": "hole",
+            "named": true
+          },
+          {
+            "type": "pragma_mkworld",
+            "named": true
+          },
+          {
+            "type": "pragma_search",
+            "named": true
+          },
+          {
+            "type": "record_update",
+            "named": true
+          },
+          {
+            "type": "unit",
+            "named": true
+          },
+          {
+            "type": "wildcard",
+            "named": true
+          }
+        ]
+      },
+      "subject": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "caname",
+            "named": true
+          },
+          {
+            "type": "loname",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1920,7 +1827,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -1933,14 +1840,6 @@
         },
         {
           "type": "exp_rewrite_in",
-          "named": true
-        },
-        {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
           "named": true
         },
         {
@@ -2043,7 +1942,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -2059,14 +1958,6 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
           "type": "exp_ticked",
           "named": true
         },
@@ -2079,11 +1970,11 @@
           "named": true
         },
         {
-          "type": "operator",
+          "type": "pat_at_braces",
           "named": true
         },
         {
-          "type": "pat_at_braces",
+          "type": "pat_braces",
           "named": true
         },
         {
@@ -2194,7 +2085,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -2210,14 +2101,6 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
           "type": "exp_ticked",
           "named": true
         },
@@ -2227,10 +2110,6 @@
         },
         {
           "type": "hole",
-          "named": true
-        },
-        {
-          "type": "operator",
           "named": true
         },
         {
@@ -2317,7 +2196,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -2333,14 +2212,6 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
           "type": "exp_ticked",
           "named": true
         },
@@ -2350,10 +2221,6 @@
         },
         {
           "type": "hole",
-          "named": true
-        },
-        {
-          "type": "operator",
           "named": true
         },
         {
@@ -2450,91 +2317,9 @@
     }
   },
   {
-    "type": "exp_negation",
+    "type": "exp_op",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "exp_do",
-          "named": true
-        },
-        {
-          "type": "exp_explicit_impl",
-          "named": true
-        },
-        {
-          "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
-          "named": true
-        },
-        {
-          "type": "exp_list",
-          "named": true
-        },
-        {
-          "type": "exp_literal",
-          "named": true
-        },
-        {
-          "type": "exp_name",
-          "named": true
-        },
-        {
-          "type": "exp_parens",
-          "named": true
-        },
-        {
-          "type": "exp_record_access",
-          "named": true
-        },
-        {
-          "type": "exp_rewrite_in",
-          "named": true
-        },
-        {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
-          "type": "exp_tuple",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "pragma_mkworld",
-          "named": true
-        },
-        {
-          "type": "pragma_search",
-          "named": true
-        },
-        {
-          "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "exp_parens",
@@ -2597,7 +2382,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -2613,14 +2398,6 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
           "type": "exp_ticked",
           "named": true
         },
@@ -2630,10 +2407,6 @@
         },
         {
           "type": "hole",
-          "named": true
-        },
-        {
-          "type": "operator",
           "named": true
         },
         {
@@ -2743,7 +2516,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -2759,14 +2532,6 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
           "type": "exp_ticked",
           "named": true
         },
@@ -2776,10 +2541,6 @@
         },
         {
           "type": "hole",
-          "named": true
-        },
-        {
-          "type": "operator",
           "named": true
         },
         {
@@ -2810,257 +2571,15 @@
     }
   },
   {
-    "type": "exp_section_left",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "exp_apply",
-          "named": true
-        },
-        {
-          "type": "exp_case",
-          "named": true
-        },
-        {
-          "type": "exp_do",
-          "named": true
-        },
-        {
-          "type": "exp_explicit_impl",
-          "named": true
-        },
-        {
-          "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
-          "named": true
-        },
-        {
-          "type": "exp_lambda",
-          "named": true
-        },
-        {
-          "type": "exp_let_in",
-          "named": true
-        },
-        {
-          "type": "exp_list",
-          "named": true
-        },
-        {
-          "type": "exp_literal",
-          "named": true
-        },
-        {
-          "type": "exp_name",
-          "named": true
-        },
-        {
-          "type": "exp_negation",
-          "named": true
-        },
-        {
-          "type": "exp_parens",
-          "named": true
-        },
-        {
-          "type": "exp_record_access",
-          "named": true
-        },
-        {
-          "type": "exp_rewrite_in",
-          "named": true
-        },
-        {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
-          "type": "exp_ticked",
-          "named": true
-        },
-        {
-          "type": "exp_tuple",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "pragma_mkworld",
-          "named": true
-        },
-        {
-          "type": "pragma_search",
-          "named": true
-        },
-        {
-          "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "exp_section_right",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "exp_apply",
-          "named": true
-        },
-        {
-          "type": "exp_case",
-          "named": true
-        },
-        {
-          "type": "exp_do",
-          "named": true
-        },
-        {
-          "type": "exp_explicit_impl",
-          "named": true
-        },
-        {
-          "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
-          "named": true
-        },
-        {
-          "type": "exp_lambda",
-          "named": true
-        },
-        {
-          "type": "exp_let_in",
-          "named": true
-        },
-        {
-          "type": "exp_list",
-          "named": true
-        },
-        {
-          "type": "exp_literal",
-          "named": true
-        },
-        {
-          "type": "exp_name",
-          "named": true
-        },
-        {
-          "type": "exp_negation",
-          "named": true
-        },
-        {
-          "type": "exp_parens",
-          "named": true
-        },
-        {
-          "type": "exp_record_access",
-          "named": true
-        },
-        {
-          "type": "exp_rewrite_in",
-          "named": true
-        },
-        {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
-          "type": "exp_ticked",
-          "named": true
-        },
-        {
-          "type": "exp_tuple",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "pragma_mkworld",
-          "named": true
-        },
-        {
-          "type": "pragma_search",
-          "named": true
-        },
-        {
-          "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "exp_ticked",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
           "type": "exp_apply",
-          "named": true
-        },
-        {
-          "type": "exp_case",
           "named": true
         },
         {
@@ -3076,19 +2595,7 @@
           "named": true
         },
         {
-          "type": "exp_if",
-          "named": true
-        },
-        {
           "type": "exp_implicit_arg",
-          "named": true
-        },
-        {
-          "type": "exp_lambda",
-          "named": true
-        },
-        {
-          "type": "exp_let_in",
           "named": true
         },
         {
@@ -3104,7 +2611,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -3120,14 +2627,6 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
           "type": "exp_ticked",
           "named": true
         },
@@ -3137,10 +2636,6 @@
         },
         {
           "type": "hole",
-          "named": true
-        },
-        {
-          "type": "operator",
           "named": true
         },
         {
@@ -3223,7 +2718,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -3239,14 +2734,6 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
           "type": "exp_ticked",
           "named": true
         },
@@ -3256,10 +2743,6 @@
         },
         {
           "type": "hole",
-          "named": true
-        },
-        {
-          "type": "operator",
           "named": true
         },
         {
@@ -4307,6 +3790,10 @@
           "named": true
         },
         {
+          "type": "pat_braces",
+          "named": true
+        },
+        {
           "type": "pat_list",
           "named": true
         },
@@ -4352,6 +3839,101 @@
         {
           "type": "pat_apply",
           "named": true
+        },
+        {
+          "type": "pat_at_braces",
+          "named": true
+        },
+        {
+          "type": "pat_braces",
+          "named": true
+        },
+        {
+          "type": "pat_list",
+          "named": true
+        },
+        {
+          "type": "pat_literal",
+          "named": true
+        },
+        {
+          "type": "pat_name",
+          "named": true
+        },
+        {
+          "type": "pat_record",
+          "named": true
+        },
+        {
+          "type": "pat_tuple",
+          "named": true
+        },
+        {
+          "type": "pat_wildcard",
+          "named": true
+        },
+        {
+          "type": "pragma_mkworld",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pat_braces",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "caname",
+          "named": true
+        },
+        {
+          "type": "loname",
+          "named": true
+        },
+        {
+          "type": "pat_apply",
+          "named": true
+        },
+        {
+          "type": "pat_at_braces",
+          "named": true
+        },
+        {
+          "type": "pat_braces",
+          "named": true
+        },
+        {
+          "type": "pat_list",
+          "named": true
+        },
+        {
+          "type": "pat_literal",
+          "named": true
+        },
+        {
+          "type": "pat_name",
+          "named": true
+        },
+        {
+          "type": "pat_record",
+          "named": true
+        },
+        {
+          "type": "pat_tuple",
+          "named": true
+        },
+        {
+          "type": "pat_wildcard",
+          "named": true
+        },
+        {
+          "type": "pragma_mkworld",
+          "named": true
         }
       ]
     }
@@ -4377,6 +3959,10 @@
           "named": true
         },
         {
+          "type": "pat_braces",
+          "named": true
+        },
+        {
           "type": "pat_infix",
           "named": true
         },
@@ -4390,10 +3976,6 @@
         },
         {
           "type": "pat_name",
-          "named": true
-        },
-        {
-          "type": "pat_negation",
           "named": true
         },
         {
@@ -4459,6 +4041,10 @@
           "named": true
         },
         {
+          "type": "pat_braces",
+          "named": true
+        },
+        {
           "type": "pat_infix",
           "named": true
         },
@@ -4472,10 +4058,6 @@
         },
         {
           "type": "pat_name",
-          "named": true
-        },
-        {
-          "type": "pat_negation",
           "named": true
         },
         {
@@ -4518,6 +4100,10 @@
           "named": true
         },
         {
+          "type": "pat_braces",
+          "named": true
+        },
+        {
           "type": "pat_infix",
           "named": true
         },
@@ -4531,10 +4117,6 @@
         },
         {
           "type": "pat_name",
-          "named": true
-        },
-        {
-          "type": "pat_negation",
           "named": true
         },
         {
@@ -4611,49 +4193,6 @@
     }
   },
   {
-    "type": "pat_negation",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_list",
-          "named": true
-        },
-        {
-          "type": "pat_literal",
-          "named": true
-        },
-        {
-          "type": "pat_name",
-          "named": true
-        },
-        {
-          "type": "pat_record",
-          "named": true
-        },
-        {
-          "type": "pat_tuple",
-          "named": true
-        },
-        {
-          "type": "pat_wildcard",
-          "named": true
-        },
-        {
-          "type": "pragma_mkworld",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "pat_record",
     "named": true,
     "fields": {
@@ -4686,6 +4225,10 @@
           "named": true
         },
         {
+          "type": "pat_braces",
+          "named": true
+        },
+        {
           "type": "pat_infix",
           "named": true
         },
@@ -4699,10 +4242,6 @@
         },
         {
           "type": "pat_name",
-          "named": true
-        },
-        {
-          "type": "pat_negation",
           "named": true
         },
         {
@@ -4749,6 +4288,10 @@
             "named": true
           },
           {
+            "type": "pat_braces",
+            "named": true
+          },
+          {
             "type": "pat_infix",
             "named": true
           },
@@ -4762,10 +4305,6 @@
           },
           {
             "type": "pat_name",
-            "named": true
-          },
-          {
-            "type": "pat_negation",
             "named": true
           },
           {
@@ -4855,6 +4394,10 @@
           "named": true
         },
         {
+          "type": "pat_braces",
+          "named": true
+        },
+        {
           "type": "pat_infix",
           "named": true
         },
@@ -4868,10 +4411,6 @@
         },
         {
           "type": "pat_name",
-          "named": true
-        },
-        {
-          "type": "pat_negation",
           "named": true
         },
         {
@@ -5285,7 +4824,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -5298,14 +4837,6 @@
         },
         {
           "type": "exp_rewrite_in",
-          "named": true
-        },
-        {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
           "named": true
         },
         {
@@ -5326,10 +4857,6 @@
         },
         {
           "type": "loname",
-          "named": true
-        },
-        {
-          "type": "operator",
           "named": true
         },
         {
@@ -5368,7 +4895,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -5420,7 +4947,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -5436,14 +4963,6 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
           "type": "exp_ticked",
           "named": true
         },
@@ -5453,10 +4972,6 @@
         },
         {
           "type": "hole",
-          "named": true
-        },
-        {
-          "type": "operator",
           "named": true
         },
         {
@@ -5487,7 +5002,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -5539,7 +5054,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -5555,14 +5070,6 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
-          "named": true
-        },
-        {
           "type": "exp_ticked",
           "named": true
         },
@@ -5572,10 +5079,6 @@
         },
         {
           "type": "hole",
-          "named": true
-        },
-        {
-          "type": "operator",
           "named": true
         },
         {
@@ -5775,7 +5278,7 @@
           "named": true
         },
         {
-          "type": "exp_negation",
+          "type": "exp_op",
           "named": true
         },
         {
@@ -5791,11 +5294,7 @@
           "named": true
         },
         {
-          "type": "exp_section_left",
-          "named": true
-        },
-        {
-          "type": "exp_section_right",
+          "type": "exp_ticked",
           "named": true
         },
         {
@@ -6218,6 +5717,10 @@
           "named": true
         },
         {
+          "type": "pat_braces",
+          "named": true
+        },
+        {
           "type": "pat_list",
           "named": true
         },
@@ -6470,11 +5973,11 @@
   },
   {
     "type": "module",
-    "named": false
+    "named": true
   },
   {
     "type": "module",
-    "named": true
+    "named": false
   },
   {
     "type": "mutual",
@@ -6602,6 +6105,10 @@
   },
   {
     "type": "|]",
+    "named": false
+  },
+  {
+    "type": "|~",
     "named": false
   },
   {
