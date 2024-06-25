@@ -125,11 +125,12 @@ foo n m with (n + 1)
             (loname)))))
     (with
       (exp_parens
-        (exp_name
-          (loname))
-        (operator)
-        (exp_literal
-          (integer)))
+        (exp_apply
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_literal
+            (integer))))
       (function
         (lhs
           (funvar
@@ -143,11 +144,12 @@ foo n m with (n + 1)
             (integer)))
         (with
           (exp_parens
-            (exp_name
-              (loname))
-            (operator)
-            (exp_literal
-              (integer)))
+            (exp_apply
+              (exp_name
+                (loname))
+              (exp_op)
+              (exp_literal
+                (integer))))
           (function
             (lhs
               (funvar
@@ -214,17 +216,19 @@ foo n m with (n + 1) | (m + 1)
             (loname)))))
     (with
       (exp_parens
-        (exp_name
-          (loname))
-        (operator)
-        (exp_literal
-          (integer)))
+        (exp_apply
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_literal
+            (integer))))
       (exp_parens
-        (exp_name
-          (loname))
-        (operator)
-        (exp_literal
-          (integer)))
+        (exp_apply
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_literal
+            (integer))))
       (function
         (lhs
           (wildcard))

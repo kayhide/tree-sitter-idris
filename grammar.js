@@ -88,15 +88,6 @@ module.exports = grammar({
 
   conflicts: $ => [
     /**
-     * The definition of an infix expression is rather simple and as such
-     * it allows things which wouldn't be possible in reality:
-     *
-     * a ``b`` c
-     * (note the double '`' ticks)
-     */
-    [$.exp_ticked],
-
-    /**
      * Top-level expression splices fundamentally conflict with decls, and since decls start with either `var` or `pat`,
      * they cannot be disambiguated.
      *
@@ -128,9 +119,10 @@ module.exports = grammar({
     [$._name, $._name_op],
     [$._name, $._name_op, $.pat_apply],
     [$._name, $._name_op, $.pat_apply, $.interface_name],
-    [$._name_op, $.pat_apply],
-    [$._q_name_op, $.pat_apply],
     [$._name, $._field_name],
+    [$._name_op, $.pat_apply],
+    [$._name_op, $._aexp_projection],
+    [$._q_name_op, $.pat_apply],
 
     /**
      * For getting a node for function application, and no extra node if the expression only consists of one term.

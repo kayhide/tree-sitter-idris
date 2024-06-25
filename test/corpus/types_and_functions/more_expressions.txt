@@ -28,11 +28,12 @@ mirror xs = let xs' = reverse xs in
                   (loname))
                 (exp_name
                   (loname))))))
-        (exp_name
-          (loname))
-        (operator)
-        (exp_name
-          (loname))))))
+        (exp_apply
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 let bindings 2
@@ -66,20 +67,20 @@ showPerson p = let MkPerson name age = p in
             (rhs
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))
-        (operator)
-        (exp_literal
-          (string))
-        (operator)
         (exp_apply
           (exp_name
             (loname))
+          (exp_op)
+          (exp_literal
+            (string))
+          (exp_op)
           (exp_name
-            (loname)))
-        (operator)
-        (exp_literal
-          (string))))))
+            (loname))
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_literal
+            (string)))))))
 
 ================================================================================
 let bindings 3
@@ -115,11 +116,12 @@ mirror xs = let xs' : List a = reverse xs in
                   (loname))
                 (type_name
                   (loname))))))
-        (exp_name
-          (loname))
-        (operator)
-        (exp_name
-          (loname))))))
+        (exp_apply
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 let bindings 4
@@ -198,10 +200,10 @@ foldMap f = let fo : m -> a -> m
                   (pat_name
                     (loname)))))
             (rhs
-              (exp_name
-                (loname))
-              (operator)
               (exp_apply
+                (exp_name
+                  (loname))
+                (exp_op)
                 (exp_name
                   (loname))
                 (exp_name
@@ -258,10 +260,10 @@ foldMap f = let fo : m -> a -> m
                   (pat_name
                     (loname)))))
             (rhs
-              (exp_name
-                (loname))
-              (operator)
               (exp_apply
+                (exp_name
+                  (loname))
+                (exp_op)
                 (exp_name
                   (loname))
                 (exp_name
@@ -300,63 +302,70 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
             (loname)))))
     (rhs
       (exp_list
-        (exp_tuple
+        (exp_apply
+          (exp_tuple
+            (exp_name
+              (loname))
+            (tuple_operator)
+            (exp_name
+              (loname))
+            (tuple_operator)
+            (exp_name
+              (loname)))
+          (exp_op)
           (exp_name
             (loname))
-          (tuple_operator)
+          (exp_op)
+          (exp_list
+            (exp_apply
+              (exp_literal
+                (integer))
+              (exp_op)
+              (exp_name
+                (loname)))))
+        (comma)
+        (exp_apply
           (exp_name
             (loname))
-          (tuple_operator)
-          (exp_name
-            (loname)))
-        (operator)
-        (exp_name
-          (loname))
-        (operator)
-        (exp_list
-          (exp_literal
-            (integer))
-          (operator)
-          (exp_name
-            (loname)))
+          (exp_op)
+          (exp_list
+            (exp_apply
+              (exp_literal
+                (integer))
+              (exp_op)
+              (exp_name
+                (loname)))))
         (comma)
-        (exp_name
-          (loname))
-        (operator)
-        (exp_list
-          (exp_literal
-            (integer))
-          (operator)
+        (exp_apply
           (exp_name
-            (loname)))
+            (loname))
+          (exp_op)
+          (exp_list
+            (exp_apply
+              (exp_literal
+                (integer))
+              (exp_op)
+              (exp_name
+                (loname)))))
         (comma)
-        (exp_name
-          (loname))
-        (operator)
-        (exp_list
-          (exp_literal
-            (integer))
-          (operator)
+        (exp_apply
           (exp_name
-            (loname)))
-        (comma)
-        (exp_name
-          (loname))
-        (operator)
-        (exp_name
-          (loname))
-        (operator)
-        (exp_name
-          (loname))
-        (operator)
-        (exp_name
-          (loname))
-        (operator)
-        (exp_name
-          (loname))
-        (operator)
-        (exp_name
-          (loname))))))
+            (loname))
+          (exp_op)
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 case expressions 1
@@ -382,10 +391,11 @@ splitAt c x = case break (== c) x of
         (exp_apply
           (exp_name
             (loname))
-          (exp_section_left
-            (operator)
-            (exp_name
-              (loname)))
+          (exp_parens
+            (exp_apply
+              (exp_op)
+              (exp_name
+                (loname))))
           (exp_name
             (loname)))
         (alts
@@ -480,11 +490,10 @@ on f g = \x, y => g x `f` g y
           (exp_name
             (loname))
           (exp_name
-            (loname)))
-        (exp_ticked
-          (exp_name
-            (loname)))
-        (exp_apply
+            (loname))
+          (exp_ticked
+            (exp_name
+              (loname)))
           (exp_name
             (loname))
           (exp_name
@@ -511,11 +520,12 @@ fun <*> x = [| fun <*> x |]
             (loname)))))
     (rhs
       (exp_idiom
-        (exp_name
-          (loname))
-        (operator)
-        (exp_name
-          (loname))))))
+        (exp_apply
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 !-notation 1
@@ -540,13 +550,14 @@ m_add x y = pure (!x + !y)
         (exp_name
           (loname))
         (exp_parens
-          (exp_name
-            (bang)
-            (loname))
-          (operator)
-          (exp_name
-            (bang)
-            (loname)))))))
+          (exp_apply
+            (exp_name
+              (bang)
+              (loname))
+            (exp_op)
+            (exp_name
+              (bang)
+              (loname))))))))
 
 ================================================================================
 !-notation 2

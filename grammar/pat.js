@@ -41,8 +41,6 @@ module.exports = {
     $.pragma_mkworld,
   ),
 
-  pat_negation: $ => seq('-', $._apat),
-
   /**
    * In patterns, application is only legal if the first element is a con.
    */
@@ -50,7 +48,6 @@ module.exports = {
 
   _lpat: $ => choice(
     $._apat,
-    $.pat_negation,
     $.pat_apply,
   ),
 

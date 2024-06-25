@@ -18,11 +18,12 @@ _ = map (\x => x * 2) intVec
           (exp_lambda
             (pat_name
               (loname))
-            (exp_name
-              (loname))
-            (operator)
-            (exp_literal
-              (integer))))
+            (exp_apply
+              (exp_name
+                (loname))
+              (exp_op)
+              (exp_literal
+                (integer)))))
         (exp_name
           (loname))))))
 
@@ -42,9 +43,10 @@ _ = map (* 2) intVec
       (exp_apply
         (exp_name
           (loname))
-        (exp_section_left
-          (operator)
-          (exp_literal
-            (integer)))
+        (exp_parens
+          (exp_apply
+            (exp_op)
+            (exp_literal
+              (integer))))
         (exp_name
           (loname))))))

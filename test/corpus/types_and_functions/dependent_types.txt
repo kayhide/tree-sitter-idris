@@ -141,14 +141,15 @@ _ = index {a=Int} {n=2} FZ (2 :: 3 :: Nil)
         (exp_name
           (caname))
         (exp_parens
-          (exp_literal
-            (integer))
-          (operator)
-          (exp_literal
-            (integer))
-          (operator)
-          (exp_name
-            (caname)))))))
+          (exp_apply
+            (exp_literal
+              (integer))
+            (exp_op)
+            (exp_literal
+              (integer))
+            (exp_op)
+            (exp_name
+              (caname))))))))
 
 ================================================================================
 Implicit Arguments 4

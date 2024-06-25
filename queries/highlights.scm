@@ -3,7 +3,6 @@
 
 [
   (integer)
-  (exp_negation)
 ] @constant.numeric.integer
 
 (exp_literal
@@ -75,7 +74,7 @@
   "⇒"
   "<="
   "⇐"
-  "->"
+  ; "->" ;; somehow, this causes invalid node type '-'
   "→"
   "<-"
   "←"

@@ -20,7 +20,6 @@ const __lexp = ($, ...rule) =>
   choice(
     $.exp_if,
     $.exp_case,
-    $.exp_negation,
     $.exp_lambda,
     $._fexp,
     ...rule
@@ -35,8 +34,6 @@ module.exports = {
   exp_name: $ => prefixable($.bang, $._q_name_op),
 
   exp_ticked: $ => ticked($._exp),
-
-  exp_negation: $ => prec(1, seq('-', $._aexp)),
 
   exp_parens: $ => prefixable($.bang, parens($._exp)),
 
@@ -58,18 +55,6 @@ module.exports = {
     '@{', 
     choice($.implementation_name, $.pragma_search),
     '}'
-  ),
-
-  // ----- Operator sections --------------------------------------------------
-
-  exp_section_left: $ => parens(
-    choice($.operator, $.exp_ticked),
-    $._exp
-  ),
-
-  exp_section_right: $ => parens(
-    $._exp,
-    choice($.operator, $.exp_ticked),
   ),
 
   // ----- Tuples or tuple secions --------------------------------------------
@@ -170,7 +155,7 @@ module.exports = {
     seq(
       $._statement_exp_infix,
       choice($.operator, $.exp_ticked),
-      $._lexp
+      $._exp
     ),
 
   _statement_exp_infix: $ =>
@@ -238,6 +223,8 @@ module.exports = {
   _aexp_projection: $ => choice(
     $.hole,
     $.exp_name,
+    alias($.operator, $.exp_op),
+    $.exp_ticked,
     $.exp_parens,
     $.exp_idiom,
     $.exp_list,
@@ -245,8 +232,6 @@ module.exports = {
     $.exp_explicit_impl,
     $.record_update,
     $.exp_record_access,
-    $.exp_section_left,
-    $.exp_section_right,
     $.exp_tuple,
     alias($.literal, $.exp_literal),
     $.wildcard,
@@ -287,10 +272,5 @@ module.exports = {
     alias($._exp_apply, $.exp_apply),
   ),
 
-  _lexp: $ => __lexp($, $.exp_let_in),
-
-  _exp: $ => choice(
-    $._lexp,
-    prec(1, seq($._exp, choice($.operator, $.exp_ticked), $._lexp)),
-  ),
+  _exp: $ => __lexp($, $.exp_let_in),
 }

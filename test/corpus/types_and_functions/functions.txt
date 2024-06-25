@@ -214,11 +214,12 @@ reverse xs = revAcc [] xs where
             (exp_name
               (loname))
             (exp_parens
-              (exp_name
-                (loname))
-              (operator)
-              (exp_name
-                (loname)))
+              (exp_apply
+                (exp_name
+                  (loname))
+                (exp_op)
+                (exp_name
+                  (loname))))
             (exp_name
               (loname))))))))
 
@@ -261,19 +262,21 @@ foo x = case isLT of
           (alt
             (pat_name
               (caname))
-            (exp_name
-              (loname))
-            (operator)
-            (exp_literal
-              (integer)))
+            (exp_apply
+              (exp_name
+                (loname))
+              (exp_op)
+              (exp_literal
+                (integer))))
           (alt
             (pat_name
               (caname))
-            (exp_name
-              (loname))
-            (operator)
-            (exp_literal
-              (integer))))))
+            (exp_apply
+              (exp_name
+                (loname))
+              (exp_op)
+              (exp_literal
+                (integer)))))))
     (where)
     (declarations
       (signature
@@ -286,11 +289,12 @@ foo x = case isLT of
             (loname)))
         (rhs
           (exp_if
-            (exp_name
-              (loname))
-            (operator)
-            (exp_literal
-              (integer))
+            (exp_apply
+              (exp_name
+                (loname))
+              (exp_op)
+              (exp_literal
+                (integer)))
             (exp_name
               (caname))
             (exp_name
@@ -458,11 +462,12 @@ test = [c (S 1), c Z, d (S Z)]
               (pat_name
                 (loname)))))
         (rhs
-          (exp_literal
-            (integer))
-          (operator)
-          (exp_name
-            (loname))))
+          (exp_apply
+            (exp_literal
+              (integer))
+            (exp_op)
+            (exp_name
+              (loname)))))
       (signature
         (loname)
         (type_infix
@@ -483,13 +488,13 @@ test = [c (S 1), c Z, d (S Z)]
             (exp_name
               (loname))
             (exp_parens
-              (exp_name
-                (loname))
-              (operator)
-              (exp_literal
-                (integer))
-              (operator)
               (exp_apply
+                (exp_name
+                  (loname))
+                (exp_op)
+                (exp_literal
+                  (integer))
+                (exp_op)
                 (exp_name
                   (loname))
                 (exp_name
@@ -512,11 +517,12 @@ test = [c (S 1), c Z, d (S Z)]
                   (pat_name
                     (loname)))))
             (rhs
-              (exp_name
-                (loname))
-              (operator)
-              (exp_name
-                (loname)))))))))
+              (exp_apply
+                (exp_name
+                  (loname))
+                (exp_op)
+                (exp_name
+                  (loname))))))))))
 
 ================================================================================
 Implicit args 1
@@ -560,11 +566,12 @@ reflexive {x = S _} = LTESucc $ reflexive
               (caname)
               (pat_wildcard))))))
     (rhs
-      (exp_name
-        (caname))
-      (operator)
-      (exp_name
-        (loname)))))
+      (exp_apply
+        (exp_name
+          (caname))
+        (exp_op)
+        (exp_name
+          (loname))))))
 
 ================================================================================
 Implicit args 3
@@ -935,11 +942,12 @@ Not p = p -> Void
           (pat_name
             (loname)))))
     (rhs
-      (exp_name
-        (loname))
-      (operator)
-      (exp_name
-        (caname)))))
+      (exp_apply
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_name
+          (caname))))))
 
 ================================================================================
 Operator 1
@@ -1033,9 +1041,8 @@ Operator 4
         (exp_name
           (loname))
         (exp_name
-          (loname)))
-      (operator)
-      (exp_apply
+          (loname))
+        (exp_op)
         (exp_name
           (loname))
         (exp_name
