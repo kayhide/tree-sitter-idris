@@ -79,18 +79,16 @@ x : a {- comment 1 -} -> a {- comment 2 -} -> a
 (idris
   (signature
     (loname)
-    (type_infix
-      (type_name
-        (loname))
-      (comment)
-      (operator)
-      (type_infix
-        (type_name
-          (loname))
-        (comment)
-        (operator)
-        (type_name
-          (loname))))))
+    (type_name
+      (loname))
+    (comment)
+    (operator)
+    (type_name
+      (loname))
+    (comment)
+    (operator)
+    (type_name
+      (loname))))
 
 ================================================================================
 Inline documentation

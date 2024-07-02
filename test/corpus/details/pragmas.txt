@@ -40,36 +40,29 @@ assert_linear : (1 f : a -> b) -> (1 val : a) -> b
     (pragma_inline)
     (comment)
     (loname)
-    (type_infix
-      (type_parens
-        (type_infix
-          (type_apply
-            (literal
-              (integer))
-            (type_name
-              (loname)))
-          (operator)
-          (type_infix
-            (type_name
-              (loname))
-            (operator)
-            (type_name
-              (loname)))))
+    (type_parens
+      (literal
+        (integer))
+      (type_name
+        (loname))
       (operator)
-      (type_infix
-        (type_parens
-          (type_infix
-            (type_apply
-              (literal
-                (integer))
-              (type_name
-                (loname)))
-            (operator)
-            (type_name
-              (loname))))
-        (operator)
-        (type_name
-          (loname))))))
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (loname)))
+    (operator)
+    (type_parens
+      (literal
+        (integer))
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (loname)))
+    (operator)
+    (type_name
+      (loname))))
 
 ================================================================================
 Pragma inline 3
@@ -86,30 +79,25 @@ public export %inline %tcinline
     (pragma_inline)
     (pragma_tcinline)
     (operator)
-    (type_infix
-      (type_parens
-        (type_infix
-          (type_name
-            (loname))
-          (operator)
-          (type_name
-            (loname))))
+    (type_parens
+      (type_name
+        (loname))
       (operator)
-      (type_infix
-        (type_parens
-          (type_infix
-            (type_name
-              (loname))
-            (operator)
-            (type_name
-              (loname))))
-        (operator)
-        (type_infix
-          (type_name
-            (loname))
-          (operator)
-          (type_name
-            (loname)))))))
+      (type_name
+        (loname)))
+    (operator)
+    (type_parens
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (loname)))
+    (operator)
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (loname))))
 
 ================================================================================
 Pragma extern
@@ -123,22 +111,18 @@ Pragma extern
   (pragma_extern)
   (signature
     (loname)
-    (type_infix
-      (type_parens
-        (type_infix
-          (type_apply
-            (literal
-              (integer))
-            (type_name
-              (loname)))
-          (operator)
-          (pragma_world)))
+    (type_parens
+      (literal
+        (integer))
+      (type_name
+        (loname))
       (operator)
-      (type_apply
-        (type_name
-          (caname))
-        (type_name
-          (caname))))))
+      (pragma_world))
+    (operator)
+    (type_name
+      (caname))
+    (type_name
+      (caname))))
 
 ================================================================================
 Pragma transform 1
@@ -330,31 +314,25 @@ MkIORes : (result : a) -> (1 x : %World) -> IORes a
 (idris
   (signature
     (caname)
-    (type_infix
-      (type_parens
-        (type_infix
-          (type_name
-            (loname))
-          (operator)
-          (type_name
-            (loname))))
+    (type_parens
+      (type_name
+        (loname))
       (operator)
-      (type_infix
-        (type_parens
-          (type_infix
-            (type_apply
-              (literal
-                (integer))
-              (type_name
-                (loname)))
-            (operator)
-            (pragma_world)))
-        (operator)
-        (type_apply
-          (type_name
-            (caname))
-          (type_name
-            (loname)))))))
+      (type_name
+        (loname)))
+    (operator)
+    (type_parens
+      (literal
+        (integer))
+      (type_name
+        (loname))
+      (operator)
+      (pragma_world))
+    (operator)
+    (type_name
+      (caname))
+    (type_name
+      (loname))))
 
 ================================================================================
 Pragma World 2

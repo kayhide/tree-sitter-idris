@@ -9,24 +9,21 @@ duplicate : (1 x : a) -> (a, a)
 (idris
   (signature
     (loname)
-    (type_infix
-      (type_parens
-        (type_infix
-          (type_apply
-            (literal
-              (integer))
-            (type_name
-              (loname)))
-          (operator)
-          (type_name
-            (loname))))
+    (type_parens
+      (literal
+        (integer))
+      (type_name
+        (loname))
       (operator)
-      (type_parens
-        (type_name
-          (loname))
-        (comma)
-        (type_name
-          (loname))))))
+      (type_name
+        (loname)))
+    (operator)
+    (type_parens
+      (type_name
+        (loname))
+      (comma)
+      (type_name
+        (loname)))))
 
 ================================================================================
 Linearity 2
@@ -39,20 +36,17 @@ duplicate : (1 _ : a) -> (a, a)
 (idris
   (signature
     (loname)
-    (type_infix
-      (type_parens
-        (type_infix
-          (type_apply
-            (literal
-              (integer))
-            (wildcard))
-          (operator)
-          (type_name
-            (loname))))
+    (type_parens
+      (literal
+        (integer))
+      (wildcard)
       (operator)
-      (type_parens
-        (type_name
-          (loname))
-        (comma)
-        (type_name
-          (loname))))))
+      (type_name
+        (loname)))
+    (operator)
+    (type_parens
+      (type_name
+        (loname))
+      (comma)
+      (type_name
+        (loname)))))

@@ -77,10 +77,6 @@ module.exports = grammar({
 
   precedences: _ => [
     [
-      'infix-type',
-      'btype',
-    ],
-    [
       'function-type',
       'type',
     ],
@@ -131,12 +127,6 @@ module.exports = grammar({
     [$._exp_apply],
 
     /**
-     * Same as `exp_apply`, but for types.
-     */
-    [$.type_apply, $._btype],
-    [$.type_apply],
-
-    /**
      * RHS of operator def.
      */
     [$._lpat, $._fun_patterns],
@@ -154,7 +144,6 @@ module.exports = grammar({
      * parse the second `forall` correctly.
      */
     [$._type,],
-    [$._btype,],
 
   ],
 

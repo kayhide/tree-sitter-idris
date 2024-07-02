@@ -16,12 +16,11 @@ interface Show a where
       (where)
       (signature
         (loname)
-        (type_infix
-          (type_name
-            (loname))
-          (operator)
-          (type_name
-            (caname)))))))
+        (type_name
+          (loname))
+        (operator)
+        (type_name
+          (caname))))))
 
 ================================================================================
 Interfaces 2
@@ -112,16 +111,14 @@ interface Eq a => Ord a where
       (where)
       (signature
         (loname)
-        (type_infix
-          (type_name
-            (loname))
-          (operator)
-          (type_infix
-            (type_name
-              (loname))
-            (operator)
-            (type_name
-              (caname))))))))
+        (type_name
+          (loname))
+        (operator)
+        (type_name
+          (loname))
+        (operator)
+        (type_name
+          (caname))))))
 
 ================================================================================
 Extending Interfaces 2
@@ -164,12 +161,11 @@ interface Functor (0 f : Type -> Type) where
       (annotated_type_variable
         (quantity)
         (type_variable)
-        (type_infix
-          (type_name
-            (caname))
-          (operator)
-          (type_name
-            (caname)))))
+        (type_name
+          (caname))
+        (operator)
+        (type_name
+          (caname))))
     (interface_body
       (where))))
 
@@ -193,12 +189,11 @@ interface Functor f => Applicative (0 f : Type -> Type) where
       (annotated_type_variable
         (quantity)
         (type_variable)
-        (type_infix
-          (type_name
-            (caname))
-          (operator)
-          (type_name
-            (caname)))))
+        (type_name
+          (caname))
+        (operator)
+        (type_name
+          (caname))))
     (interface_body
       (where))))
 
@@ -382,11 +377,10 @@ Cast Char Nat where
       (visibility)
       (pragma_inline)
       (interface_name)
-      (type_apply
-        (type_name
-          (caname))
-        (type_name
-          (caname))))
+      (type_name
+        (caname))
+      (type_name
+        (caname)))
     (implementation_body
       (where))))
 
@@ -409,11 +403,10 @@ public export
         (constraint
           (annotated_type_variable
             (type_variable)
-            (type_apply
-              (type_name
-                (caname))
-              (type_name
-                (loname))))))
+            (type_name
+              (caname))
+            (type_name
+              (loname)))))
       (interface_name)
       (type_name
         (loname)))
@@ -440,28 +433,25 @@ public export
         (constraint
           (annotated_type_variable
             (type_variable)
-            (type_apply
-              (type_name
-                (caname))
-              (type_name
-                (loname))))))
+            (type_name
+              (caname))
+            (type_name
+              (loname)))))
       (constraints
         (constraint
           (annotated_type_variable
             (type_variable)
-            (type_apply
-              (type_name
-                (caname))
-              (type_name
-                (loname))))))
+            (type_name
+              (caname))
+            (type_name
+              (loname)))))
       (interface_name)
       (type_parens
-        (type_infix
-          (type_name
-            (loname))
-          (operator)
-          (type_name
-            (loname))))
+        (type_name
+          (loname))
+        (operator)
+        (type_name
+          (loname)))
       (using
         (implementation_name
           (module)
@@ -513,12 +503,11 @@ interface Monad m => MonadState s (0 m : Type -> Type) | m where
       (annotated_type_variable
         (quantity)
         (type_variable)
-        (type_infix
-          (type_name
-            (caname))
-          (operator)
-          (type_name
-            (caname))))
+        (type_name
+          (caname))
+        (operator)
+        (type_name
+          (caname)))
       (determining_params
         (loname)))
     (interface_body

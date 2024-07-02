@@ -11,16 +11,14 @@ plus (S k) y = S (plus k y)
 (idris
   (signature
     (loname)
-    (type_infix
-      (type_name
-        (caname))
-      (operator)
-      (type_infix
-        (type_name
-          (caname))
-        (operator)
-        (type_name
-          (caname)))))
+    (type_name
+      (caname))
+    (operator)
+    (type_name
+      (caname))
+    (operator)
+    (type_name
+      (caname)))
   (function
     (lhs
       (funvar
@@ -71,16 +69,14 @@ mult (S k) y = plus y (mult k y)
 (idris
   (signature
     (loname)
-    (type_infix
-      (type_name
-        (caname))
-      (operator)
-      (type_infix
-        (type_name
-          (caname))
-        (operator)
-        (type_name
-          (caname)))))
+    (type_name
+      (caname))
+    (operator)
+    (type_name
+      (caname))
+    (operator)
+    (type_name
+      (caname)))
   (function
     (lhs
       (funvar
@@ -135,18 +131,15 @@ reverse xs = revAcc [] xs where
 (idris
   (signature
     (loname)
-    (type_infix
-      (type_apply
-        (type_name
-          (caname))
-        (type_name
-          (loname)))
-      (operator)
-      (type_apply
-        (type_name
-          (caname))
-        (type_name
-          (loname)))))
+    (type_name
+      (caname))
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (caname))
+    (type_name
+      (loname)))
   (function
     (lhs
       (funvar
@@ -165,25 +158,20 @@ reverse xs = revAcc [] xs where
     (declarations
       (signature
         (loname)
-        (type_infix
-          (type_apply
-            (type_name
-              (caname))
-            (type_name
-              (loname)))
-          (operator)
-          (type_infix
-            (type_apply
-              (type_name
-                (caname))
-              (type_name
-                (loname)))
-            (operator)
-            (type_apply
-              (type_name
-                (caname))
-              (type_name
-                (loname))))))
+        (type_name
+          (caname))
+        (type_name
+          (loname))
+        (operator)
+        (type_name
+          (caname))
+        (type_name
+          (loname))
+        (operator)
+        (type_name
+          (caname))
+        (type_name
+          (loname)))
       (function
         (lhs
           (funvar
@@ -241,12 +229,11 @@ foo x = case isLT of
 (idris
   (signature
     (loname)
-    (type_infix
-      (type_name
-        (caname))
-      (operator)
-      (type_name
-        (caname))))
+    (type_name
+      (caname))
+    (operator)
+    (type_name
+      (caname)))
   (function
     (lhs
       (funvar
@@ -320,12 +307,11 @@ even (S k) = odd k where
 (idris
   (signature
     (loname)
-    (type_infix
-      (type_name
-        (caname))
-      (operator)
-      (type_name
-        (caname))))
+    (type_name
+      (caname))
+    (operator)
+    (type_name
+      (caname)))
   (function
     (lhs
       (funvar
@@ -356,12 +342,11 @@ even (S k) = odd k where
     (declarations
       (signature
         (loname)
-        (type_infix
-          (type_name
-            (caname))
-          (operator)
-          (type_name
-            (caname))))
+        (type_name
+          (caname))
+        (operator)
+        (type_name
+          (caname)))
       (function
         (lhs
           (funvar
@@ -408,11 +393,10 @@ test = [c (S 1), c Z, d (S Z)]
 (idris
   (signature
     (loname)
-    (type_apply
-      (type_name
-        (caname))
-      (type_name
-        (caname))))
+    (type_name
+      (caname))
+    (type_name
+      (caname)))
   (function
     (lhs
       (funvar
@@ -448,12 +432,11 @@ test = [c (S 1), c Z, d (S Z)]
     (declarations
       (signature
         (loname)
-        (type_infix
-          (type_name
-            (caname))
-          (operator)
-          (type_name
-            (caname))))
+        (type_name
+          (caname))
+        (operator)
+        (type_name
+          (caname)))
       (function
         (lhs
           (funvar
@@ -470,12 +453,11 @@ test = [c (S 1), c Z, d (S Z)]
               (loname)))))
       (signature
         (loname)
-        (type_infix
-          (type_name
-            (caname))
-          (operator)
-          (type_name
-            (caname))))
+        (type_name
+          (caname))
+        (operator)
+        (type_name
+          (caname)))
       (function
         (lhs
           (funvar
@@ -503,12 +485,11 @@ test = [c (S 1), c Z, d (S Z)]
         (declarations
           (signature
             (loname)
-            (type_infix
-              (type_name
-                (caname))
-              (operator)
-              (type_name
-                (caname))))
+            (type_name
+              (caname))
+            (operator)
+            (type_name
+              (caname)))
           (function
             (lhs
               (funvar
@@ -620,41 +601,66 @@ gcd : (a: Nat) -> (b: Nat) -> {auto 0 ok: NotBothZero a b} -> Nat
 (idris
   (signature
     (loname)
-    (type_infix
-      (type_parens
-        (type_infix
-          (type_name
-            (loname))
-          (operator)
-          (type_name
-            (caname))))
+    (type_parens
+      (type_name
+        (loname))
       (operator)
-      (type_infix
-        (type_parens
-          (type_infix
-            (type_name
-              (loname))
-            (operator)
-            (type_name
-              (caname))))
-        (operator)
-        (type_infix
-          (type_braces
-            (implicit_arg
-              (auto)
-              (quantity)
-              (type_name
-                (loname)))
-            (type_apply
-              (type_name
-                (caname))
-              (type_name
-                (loname))
-              (type_name
-                (loname))))
-          (operator)
+      (type_name
+        (caname)))
+    (operator)
+    (type_parens
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (caname)))
+    (operator)
+    (type_braces
+      (implicit_arg
+        (auto)
+        (quantity)
+        (type_name
+          (loname)))
+      (type_name
+        (caname))
+      (type_name
+        (loname))
+      (type_name
+        (loname)))
+    (operator)
+    (type_name
+      (caname))))
+
+================================================================================
+Type signature braces
+================================================================================
+
+asBitVector : FiniteBits a => a -> Vect (bitSize {a}) Bool
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (loname)
+    (type_name
+      (caname))
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (caname))
+    (type_parens
+      (type_name
+        (loname))
+      (type_braces
+        (implicit_arg
           (type_name
-            (caname)))))))
+            (loname)))))
+    (type_name
+      (caname))))
 
 ================================================================================
 At braces 1
@@ -728,15 +734,13 @@ fromMaybe : Maybe a -> a
   (signature
     (totality)
     (loname)
-    (type_infix
-      (type_apply
-        (type_name
-          (caname))
-        (type_name
-          (loname)))
-      (operator)
-      (type_name
-        (loname)))))
+    (type_name
+      (caname))
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (loname))))
 
 ================================================================================
 Totality total
@@ -751,25 +755,20 @@ qsort : Ord a => List a -> List a
   (signature
     (totality)
     (loname)
-    (type_infix
-      (type_apply
-        (type_name
-          (caname))
-        (type_name
-          (loname)))
-      (operator)
-      (type_infix
-        (type_apply
-          (type_name
-            (caname))
-          (type_name
-            (loname)))
-        (operator)
-        (type_apply
-          (type_name
-            (caname))
-          (type_name
-            (loname)))))))
+    (type_name
+      (caname))
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (caname))
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (caname))
+    (type_name
+      (loname))))
 
 ================================================================================
 Totality covering
@@ -784,27 +783,22 @@ takeUntil : (n -> Bool) -> Stream n -> List n
   (signature
     (totality)
     (loname)
-    (type_infix
-      (type_parens
-        (type_infix
-          (type_name
-            (loname))
-          (operator)
-          (type_name
-            (caname))))
+    (type_parens
+      (type_name
+        (loname))
       (operator)
-      (type_infix
-        (type_apply
-          (type_name
-            (caname))
-          (type_name
-            (loname)))
-        (operator)
-        (type_apply
-          (type_name
-            (caname))
-          (type_name
-            (loname)))))))
+      (type_name
+        (caname)))
+    (operator)
+    (type_name
+      (caname))
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (caname))
+    (type_name
+      (loname))))
 
 ================================================================================
 Quantity
@@ -818,12 +812,11 @@ Quantity
   (signature
     (quantity)
     (caname)
-    (type_infix
-      (type_name
-        (caname))
-      (operator)
-      (type_name
-        (caname)))))
+    (type_name
+      (caname))
+    (operator)
+    (type_name
+      (caname))))
 
 ================================================================================
 Holes
@@ -837,10 +830,9 @@ main = putStrLn ?greeting
 (idris
   (signature
     (loname)
-    (type_apply
-      (type_name
-        (caname))
-      (type_parens)))
+    (type_name
+      (caname))
+    (type_parens))
   (function
     (lhs
       (funvar
@@ -893,12 +885,11 @@ Foo : a -> Type
 (idris
   (signature
     (caname)
-    (type_infix
-      (type_name
-        (loname))
-      (operator)
-      (type_name
-        (caname)))))
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (caname))))
 
 ================================================================================
 Capitalized function name 2
@@ -960,16 +951,14 @@ Operator 1
 (idris
   (signature
     (operator)
-    (type_infix
-      (type_name
-        (loname))
-      (operator)
-      (type_infix
-        (type_name
-          (loname))
-        (operator)
-        (type_name
-          (loname))))))
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (loname))))
 
 ================================================================================
 Operator 2
@@ -982,16 +971,14 @@ Operator 2
 (idris
   (signature
     (operator)
-    (type_infix
-      (type_name
-        (loname))
-      (operator)
-      (type_infix
-        (type_name
-          (loname))
-        (operator)
-        (type_name
-          (loname))))))
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (loname))))
 
 ================================================================================
 Operator 3

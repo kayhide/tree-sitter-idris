@@ -18,12 +18,11 @@ mutual
     (mutual_body
       (signature
         (loname)
-        (type_infix
-          (type_name
-            (caname))
-          (operator)
-          (type_name
-            (caname))))
+        (type_name
+          (caname))
+        (operator)
+        (type_name
+          (caname)))
       (function
         (lhs
           (funvar
@@ -52,12 +51,11 @@ mutual
               (loname)))))
       (signature
         (loname)
-        (type_infix
-          (type_name
-            (caname))
-          (operator)
-          (type_name
-            (caname))))
+        (type_name
+          (caname))
+        (operator)
+        (type_name
+          (caname)))
       (function
         (lhs
           (funvar

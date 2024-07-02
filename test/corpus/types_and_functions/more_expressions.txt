@@ -104,18 +104,15 @@ mirror xs = let xs' : List a = reverse xs in
         (declarations
           (signature
             (loname)
-            (type_infix
-              (type_apply
-                (type_name
-                  (caname))
-                (type_name
-                  (loname)))
-              (operator)
-              (type_apply
-                (type_name
-                  (loname))
-                (type_name
-                  (loname))))))
+            (type_name
+              (caname))
+            (type_name
+              (loname))
+            (operator)
+            (type_name
+              (loname))
+            (type_name
+              (loname))))
         (exp_apply
           (exp_name
             (loname))
@@ -144,16 +141,14 @@ Diag v = let ty : Type := v = v in ty
         (declarations
           (signature
             (loname)
-            (type_infix
-              (type_name
-                (caname))
-              (operator)
-              (type_infix
-                (type_name
-                  (loname))
-                (operator)
-                (type_name
-                  (loname))))))
+            (type_name
+              (caname))
+            (operator)
+            (type_name
+              (loname))
+            (operator)
+            (type_name
+              (loname))))
         (exp_name
           (loname))))))
 
@@ -180,16 +175,14 @@ foldMap f = let fo : m -> a -> m
         (declarations
           (signature
             (loname)
-            (type_infix
-              (type_name
-                (loname))
-              (operator)
-              (type_infix
-                (type_name
-                  (loname))
-                (operator)
-                (type_name
-                  (loname)))))
+            (type_name
+              (loname))
+            (operator)
+            (type_name
+              (loname))
+            (operator)
+            (type_name
+              (loname)))
           (function
             (lhs
               (funvar
@@ -240,16 +233,14 @@ foldMap f = let fo : m -> a -> m
         (declarations
           (signature
             (loname)
-            (type_infix
-              (type_name
-                (loname))
-              (operator)
-              (type_infix
-                (type_name
-                  (loname))
-                (operator)
-                (type_name
-                  (loname)))))
+            (type_name
+              (loname))
+            (operator)
+            (type_name
+              (loname))
+            (operator)
+            (type_name
+              (loname)))
           (function
             (lhs
               (funvar

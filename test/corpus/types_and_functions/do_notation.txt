@@ -13,10 +13,9 @@ greet = do
 (idris
   (signature
     (loname)
-    (type_apply
-      (type_name
-        (caname))
-      (type_parens)))
+    (type_name
+      (caname))
+    (type_parens))
   (function
     (lhs
       (funvar

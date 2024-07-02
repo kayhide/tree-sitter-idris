@@ -29,22 +29,18 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
 (idris
   (signature
     (loname)
-    (type_infix
-      (type_name
-        (caname))
-      (operator)
-      (type_infix
-        (type_apply
-          (type_name
-            (caname))
-          (type_name
-            (loname)))
-        (operator)
-        (type_apply
-          (type_name
-            (caname))
-          (type_name
-            (loname))))))
+    (type_name
+      (caname))
+    (operator)
+    (type_name
+      (caname))
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (caname))
+    (type_name
+      (loname)))
   (function
     (lhs
       (funvar
@@ -113,34 +109,27 @@ maybe : Lazy b -> Lazy (a -> b) -> Maybe a -> b
 (idris
   (signature
     (loname)
-    (type_infix
-      (type_apply
-        (type_name
-          (caname))
-        (type_name
-          (loname)))
+    (type_name
+      (caname))
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (caname))
+    (type_parens
+      (type_name
+        (loname))
       (operator)
-      (type_infix
-        (type_apply
-          (type_name
-            (caname))
-          (type_parens
-            (type_infix
-              (type_name
-                (loname))
-              (operator)
-              (type_name
-                (loname)))))
-        (operator)
-        (type_infix
-          (type_apply
-            (type_name
-              (caname))
-            (type_name
-              (loname)))
-          (operator)
-          (type_name
-            (loname)))))))
+      (type_name
+        (loname)))
+    (operator)
+    (type_name
+      (caname))
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (loname))))
 
 ================================================================================
 Tuples 1
@@ -221,70 +210,58 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
   (data
     (data_name)
     (type_signature
-      (type_infix
-        (type_parens
-          (type_infix
-            (type_name
-              (loname))
-            (operator)
-            (type_name
-              (caname))))
+      (type_parens
+        (type_name
+          (loname))
         (operator)
-        (type_infix
-          (type_parens
-            (type_infix
-              (type_name
-                (loname))
-              (operator)
-              (type_infix
-                (type_name
-                  (loname))
-                (operator)
-                (type_name
-                  (caname)))))
-          (operator)
-          (type_name
-            (caname)))))
+        (type_name
+          (caname)))
+      (operator)
+      (type_parens
+        (type_name
+          (loname))
+        (operator)
+        (type_name
+          (loname))
+        (operator)
+        (type_name
+          (caname)))
+      (operator)
+      (type_name
+        (caname)))
     (where)
     (data_body
       (constructor_signature
         (caname)
         (type_signature
-          (type_infix
-            (type_braces
-              (implicit_arg
-                (type_name
-                  (loname)))
-              (type_infix
-                (type_name
-                  (loname))
-                (operator)
-                (type_name
-                  (caname))))
+          (type_braces
+            (implicit_arg
+              (type_name
+                (loname)))
+            (type_name
+              (loname))
             (operator)
-            (type_infix
-              (type_parens
-                (type_infix
-                  (type_name
-                    (loname))
-                  (operator)
-                  (type_name
-                    (loname))))
-              (operator)
-              (type_infix
-                (type_apply
-                  (type_name
-                    (loname))
-                  (type_name
-                    (loname)))
-                (operator)
-                (type_apply
-                  (type_name
-                    (caname))
-                  (type_name
-                    (loname))
-                  (type_name
-                    (loname)))))))))))
+            (type_name
+              (caname)))
+          (operator)
+          (type_parens
+            (type_name
+              (loname))
+            (operator)
+            (type_name
+              (loname)))
+          (operator)
+          (type_name
+            (loname))
+          (type_name
+            (loname))
+          (operator)
+          (type_name
+            (caname))
+          (type_name
+            (loname))
+          (type_name
+            (loname)))))))
 
 ================================================================================
 Dependent Pairs 2
@@ -299,21 +276,18 @@ vec = (2 ** [3, 4])
   (signature
     (loname)
     (type_parens
-      (type_infix
-        (type_name
-          (loname))
-        (operator)
-        (type_infix
-          (type_name
-            (caname))
-          (operator)
-          (type_apply
-            (type_name
-              (caname))
-            (type_name
-              (loname))
-            (type_name
-              (caname)))))))
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (caname))
+      (operator)
+      (type_name
+        (caname))
+      (type_name
+        (loname))
+      (type_name
+        (caname))))
   (function
     (lhs
       (funvar
@@ -347,36 +321,30 @@ filter p (x :: xs)
 (idris
   (signature
     (loname)
-    (type_infix
-      (type_parens
-        (type_infix
-          (type_name
-            (loname))
-          (operator)
-          (type_name
-            (caname))))
+    (type_parens
+      (type_name
+        (loname))
       (operator)
-      (type_infix
-        (type_apply
-          (type_name
-            (caname))
-          (type_name
-            (loname))
-          (type_name
-            (loname)))
-        (operator)
-        (type_parens
-          (type_infix
-            (type_name
-              (loname))
-            (operator)
-            (type_apply
-              (type_name
-                (caname))
-              (type_name
-                (loname))
-              (type_name
-                (loname))))))))
+      (type_name
+        (caname)))
+    (operator)
+    (type_name
+      (caname))
+    (type_name
+      (loname))
+    (type_name
+      (loname))
+    (operator)
+    (type_parens
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (caname))
+      (type_name
+        (loname))
+      (type_name
+        (loname))))
   (function
     (lhs
       (funvar
@@ -525,13 +493,12 @@ record Class where
       (caname)
       (record_field
         (loname)
-        (type_apply
-          (type_name
-            (caname))
-          (type_name
-            (loname))
-          (type_name
-            (caname))))
+        (type_name
+          (caname))
+        (type_name
+          (loname))
+        (type_name
+          (caname)))
       (record_field
         (loname)
         (type_name
@@ -549,16 +516,14 @@ addStudent p c = { students := p :: students c } c
 (idris
   (signature
     (loname)
-    (type_infix
-      (type_name
-        (caname))
-      (operator)
-      (type_infix
-        (type_name
-          (caname))
-        (operator)
-        (type_name
-          (caname)))))
+    (type_name
+      (caname))
+    (operator)
+    (type_name
+      (caname))
+    (operator)
+    (type_name
+      (caname)))
   (function
     (lhs
       (funvar
@@ -593,16 +558,14 @@ addStudent' p c = { students $= (p ::) } c
 (idris
   (signature
     (loname)
-    (type_infix
-      (type_name
-        (caname))
-      (operator)
-      (type_infix
-        (type_name
-          (caname))
-        (operator)
-        (type_name
-          (caname)))))
+    (type_name
+      (caname))
+    (operator)
+    (type_name
+      (caname))
+    (operator)
+    (type_name
+      (caname)))
   (function
     (lhs
       (funvar
@@ -639,12 +602,11 @@ record DPair a (p : a -> Type) where
     (type_variable)
     (annotated_type_variable
       (type_variable)
-      (type_infix
-        (type_name
-          (loname))
-        (operator)
-        (type_name
-          (caname))))
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (caname)))
     (where)
     (record_body
       (caname)
@@ -654,11 +616,10 @@ record DPair a (p : a -> Type) where
           (loname)))
       (record_field
         (loname)
-        (type_apply
-          (type_name
-            (loname))
-          (type_name
-            (loname)))))))
+        (type_name
+          (loname))
+        (type_name
+          (loname))))))
 
 ================================================================================
 Records 7

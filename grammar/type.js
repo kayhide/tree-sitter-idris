@@ -58,19 +58,20 @@ module.exports = {
   // ----- Aggregation --------------------------------------------------------
 
   // Parens or tuples
-  type_parens: $ => parens(seq(optional($.forall), optional(sep($.comma, $._type)))),
+  type_parens: $ => parens(sep($.comma, $._type)),
 
   // Implicit arguments
-  type_braces: $ => braces(seq(
-    sep1($.comma, $.implicit_arg), 
-    $._type_annotation),
+  type_braces: $ => braces(
+    seq(
+      sep1($.comma, $.implicit_arg), 
+      optional($._type_annotation),
+    ),
   ),
 
   // This is the parser to be used in signatures for functions, classes, types, newtypes and data.
   _type_annotation: $ =>
     seq(
       $._colon,
-      optional($.forall),
       $._type
     ),
 
@@ -86,40 +87,16 @@ module.exports = {
       $.wildcard,
       $.literal,
       alias($._q_name, $.type_name),
+      $.operator,
       $.type_parens,
       $.type_braces,
       $.pragma_world,
     ),
 
-  /**
-   * Type application, as in `Either e (Int, Text)` or `TypeRep @Int`.
-   */
-   type_apply: $ => seq($._atype, repeat1($._atype)),
-
-  /**
-   * The point of this `choice` is to get a node for type application only if there is more than one atype present.
-   */
-  _btype: $ =>
-    seq(
-      optional($.forall),
-      choice(
-        $._atype,
-        $.type_apply
-      ),
-    ),
-
-  type_infix: $ =>
-    seq(
-      $._btype,
-      $.operator,
-      $._type
-    ),
-
-  _type: $ =>
-    seq(
-      optional($.forall),
-      choice($.type_infix, $._btype),
-    ),
+  _type: $ => seq(
+    optional($.forall),
+    repeat1($._atype),
+  ),
 
   _simpletype: $ =>
     seq(field('name', $._caname), repeat($._loname)),

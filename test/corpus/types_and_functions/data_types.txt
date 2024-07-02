@@ -28,15 +28,13 @@ data List a = Nil | (::) a (List a)
     (type_variable)
     (caname)
     (operator)
-    (type_apply
+    (type_name
+      (loname))
+    (type_parens
       (type_name
-        (loname))
-      (type_parens
-        (type_apply
-          (type_name
-            (caname))
-          (type_name
-            (loname)))))))
+        (caname))
+      (type_name
+        (loname)))))
 
 ================================================================================
 Data Types 3
@@ -52,41 +50,35 @@ data List : Type -> Type where
   (data
     (data_name)
     (type_signature
-      (type_infix
-        (type_name
-          (caname))
-        (operator)
-        (type_name
-          (caname))))
+      (type_name
+        (caname))
+      (operator)
+      (type_name
+        (caname)))
     (where)
     (data_body
       (constructor_signature
         (caname)
         (type_signature
-          (type_apply
-            (type_name
-              (caname))
-            (type_name
-              (loname)))))
+          (type_name
+            (caname))
+          (type_name
+            (loname))))
       (constructor_signature
         (operator)
         (type_signature
-          (type_infix
-            (type_name
-              (loname))
-            (operator)
-            (type_infix
-              (type_apply
-                (type_name
-                  (caname))
-                (type_name
-                  (loname)))
-              (operator)
-              (type_apply
-                (type_name
-                  (caname))
-                (type_name
-                  (loname))))))))))
+          (type_name
+            (loname))
+          (operator)
+          (type_name
+            (caname))
+          (type_name
+            (loname))
+          (operator)
+          (type_name
+            (caname))
+          (type_name
+            (loname)))))))
 
 ================================================================================
 Search options
@@ -101,29 +93,24 @@ data Elem : (x : a) -> (xs : List a) -> Type where
   (data
     (data_name)
     (type_signature
-      (type_infix
-        (type_parens
-          (type_infix
-            (type_name
-              (loname))
-            (operator)
-            (type_name
-              (loname))))
+      (type_parens
+        (type_name
+          (loname))
         (operator)
-        (type_infix
-          (type_parens
-            (type_infix
-              (type_name
-                (loname))
-              (operator)
-              (type_apply
-                (type_name
-                  (caname))
-                (type_name
-                  (loname)))))
-          (operator)
-          (type_name
-            (caname)))))
+        (type_name
+          (loname)))
+      (operator)
+      (type_parens
+        (type_name
+          (loname))
+        (operator)
+        (type_name
+          (caname))
+        (type_name
+          (loname)))
+      (operator)
+      (type_name
+        (caname)))
     (where)
     (data_body
       (search_options
@@ -144,20 +131,18 @@ data Equal : forall a, b . a -> b -> Type where
     (visibility)
     (data_name)
     (type_signature
-      (type_infix
-        (forall
-          (type_variable)
-          (comma)
-          (type_variable))
-        (type_name
-          (loname))
-        (operator)
-        (type_infix
-          (type_name
-            (loname))
-          (operator)
-          (type_name
-            (caname)))))
+      (forall
+        (type_variable)
+        (comma)
+        (type_variable))
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (caname)))
     (where)
     (data_body
       (search_options
@@ -178,12 +163,11 @@ data MyShow : Type -> Type where
   (data
     (data_name)
     (type_signature
-      (type_infix
-        (type_name
-          (caname))
-        (operator)
-        (type_name
-          (caname))))
+      (type_name
+        (caname))
+      (operator)
+      (type_name
+        (caname)))
     (where)
     (data_body
       (search_options
@@ -191,24 +175,20 @@ data MyShow : Type -> Type where
       (constructor_signature
         (caname)
         (type_signature
-          (type_infix
-            (type_parens
-              (type_infix
-                (type_name
-                  (loname))
-                (operator)
-                (type_infix
-                  (type_name
-                    (loname))
-                  (operator)
-                  (type_name
-                    (caname)))))
+          (type_parens
+            (type_name
+              (loname))
             (operator)
-            (type_apply
-              (type_name
-                (caname))
-              (type_name
-                (loname)))))))))
+            (type_name
+              (loname))
+            (operator)
+            (type_name
+              (caname)))
+          (operator)
+          (type_name
+            (caname))
+          (type_name
+            (loname)))))))
 
 ================================================================================
 External type
@@ -222,12 +202,11 @@ data Ptr : Type -> Type where [external]
   (data
     (data_name)
     (type_signature
-      (type_infix
-        (type_name
-          (caname))
-        (operator)
-        (type_name
-          (caname))))
+      (type_name
+        (caname))
+      (operator)
+      (type_name
+        (caname)))
     (where)
     (data_body
       (external))))
