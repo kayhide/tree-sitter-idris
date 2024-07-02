@@ -196,6 +196,30 @@ interface Functor f => Applicative (0 f : Type -> Type) where
       (where))))
 
 ================================================================================
+Implimentation with empty list
+================================================================================
+
+Uninhabited (Data.Colist.InBounds k []) where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (implementation
+    (implementation_head
+      (interface_name)
+      (type_parens
+        (type_name
+          (qualified_caname
+            (module)
+            (module)
+            (caname)))
+        (type_name
+          (loname))
+        (type_list)))
+    (implementation_body
+      (where))))
+
+================================================================================
 Named Implementations 1
 ================================================================================
 

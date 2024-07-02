@@ -60,6 +60,11 @@ module.exports = {
   // Parens or tuples
   type_parens: $ => parens(sep($.comma, $._type)),
 
+  type_list: $ => choice(
+    brackets(sep($.comma, $._type)),
+    snoc_brackets(sep($.comma, $._type)),
+  ),
+
   // Implicit arguments
   type_braces: $ => braces(
     seq(
@@ -89,6 +94,7 @@ module.exports = {
       alias($._q_name, $.type_name),
       $.operator,
       $.type_parens,
+      $.type_list,
       $.type_braces,
       $.pragma_world,
     ),
