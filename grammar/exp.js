@@ -154,7 +154,7 @@ module.exports = {
   bind_pattern: $ => seq(
     $._typed_pat,
     $._larrow,
-    alias($._exp, $.bind_exp),
+    alias(repeat1($._aexp), $.bind_exp),
     optional(seq('\n', $.bind_alts)),
   ),
 
