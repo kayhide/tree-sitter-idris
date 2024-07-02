@@ -845,8 +845,9 @@ helpEven j p = rewrite plusSuccRightSucc j j in p
             (loname))
           (exp_name
             (loname)))
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 Capitalized function name 1

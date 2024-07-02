@@ -89,8 +89,9 @@ _ = [f x, y + 1, let z = f x in z]
                   (loname))
                 (exp_name
                   (loname)))))
-          (exp_name
-            (loname)))))))
+          (in
+            (exp_name
+              (loname))))))))
 
 ================================================================================
 SnocList 1

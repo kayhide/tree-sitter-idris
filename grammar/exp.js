@@ -126,16 +126,16 @@ module.exports = {
     'let',
     alias($._let_in_decls, $.declarations),
     'in',
-    $._exp
+    alias($._exp, $.in),
   ),
 
   // ----- Rewrite-in ---------------------------------------------------------
 
   exp_rewrite_in: $ => seq(
     'rewrite',
-    alias($._exp, $.rewrite_exp),
+    alias($._aexps, $.rewrite_exp),
     'in',
-    $._exp
+    alias($._exp, $.in),
   ),
 
   // ----- Lambdas ------------------------------------------------------------
@@ -210,20 +210,16 @@ module.exports = {
     $.pragma_search,
   ),
 
-  _fexp: $ => prec.right(seq(
-    $._aexp,
-    optional($._exp),
-  )),
+  _aexps: $ => repeat1($._aexp),
 
-  _exp: $ =>
-    choice(
-      $._fexp,
-      $.exp_lambda,
-      $.exp_if,
-      $.exp_case,
-      $.exp_lambda_case,
-      $.exp_let_in,
-      $.exp_do,
-      $.exp_rewrite_in,
-    ),
+  _exp: $ => choice(
+    $._aexps,
+    $.exp_lambda,
+    $.exp_if,
+    $.exp_case,
+    $.exp_lambda_case,
+    $.exp_let_in,
+    $.exp_do,
+    $.exp_rewrite_in,
+  ),
 }

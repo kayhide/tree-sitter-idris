@@ -245,3 +245,79 @@ foo n m with (n + 1) | (m + 1)
         (rhs
           (exp_name
             (caname)))))))
+
+================================================================================
+FIXME with rule and rewrite
+================================================================================
+
+mapMaybeAppend f (x::xs) ys with (f x)
+  _ | Nothing  = rewrite mapMaybeAppend f xs ys in Refl
+  _ | (Just y) = rewrite mapMaybeAppend f xs ys in Refl
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname))
+          (pat_tuple
+            (pat_infix
+              (pat_name
+                (loname))
+              (operator)
+              (pat_name
+                (loname))))
+          (pat_name
+            (loname)))))
+    (ERROR
+      (with
+        (exp_parens
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))
+        (function
+          (lhs
+            (wildcard))
+          (with_pat
+            (pat_name
+              (caname)))
+          (rhs
+            (exp_rewrite_in
+              (rewrite_exp
+                (exp_name
+                  (loname))
+                (exp_name
+                  (loname))
+                (exp_name
+                  (loname))
+                (exp_name
+                  (loname)))
+              (in
+                (exp_name
+                  (caname))
+                (wildcard)))))))
+    (with_pat
+      (pat_tuple
+        (pat_apply
+          (caname)
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_rewrite_in
+        (rewrite_exp
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))
+        (in
+          (exp_name
+            (caname)))))))

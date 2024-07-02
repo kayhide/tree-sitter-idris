@@ -372,10 +372,11 @@ FiniteBits Bits16 where
                     (exp_op)
                     (exp_literal
                       (integer))))))
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))))))))
+            (in
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))))))))
 
 ================================================================================
 Implementation with visibility

@@ -27,11 +27,12 @@ mirror xs = let xs' = reverse xs in
                 (loname))
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))
-        (exp_op)
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 let bindings 2
@@ -65,19 +66,20 @@ showPerson p = let MkPerson name age = p in
             (rhs
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))
-        (exp_op)
-        (exp_literal
-          (string))
-        (exp_op)
-        (exp_name
-          (loname))
-        (exp_name
-          (loname))
-        (exp_op)
-        (exp_literal
-          (string))))))
+        (in
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_literal
+            (string))
+          (exp_op)
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_literal
+            (string)))))))
 
 ================================================================================
 let bindings 3
@@ -110,11 +112,12 @@ mirror xs = let xs' : List a = reverse xs in
               (loname))
             (type_name
               (loname))))
-        (exp_name
-          (loname))
-        (exp_op)
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname))
+          (exp_op)
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 let bindings 4
@@ -145,8 +148,9 @@ Diag v = let ty : Type := v = v in ty
             (operator)
             (type_name
               (loname))))
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 let bindings 5
@@ -196,12 +200,13 @@ foldMap f = let fo : m -> a -> m
                 (loname))
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))
-        (exp_name
-          (loname))
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 let bindings 6
@@ -259,12 +264,13 @@ foldMap f = let fo : m -> a -> m
             (rhs
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))
-        (exp_name
-          (loname))
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 List comprehensions
@@ -491,36 +497,37 @@ decompress = concatMap $ \case
       (exp_name
         (loname))
       (exp_op)
-      (exp_lambda_case
-        (alts
-          (alt
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname)))
-            (exp_name
-              (loname))
-            (exp_name
-              (caname))
-            (exp_op)
-            (exp_name
-              (loname))
-            (exp_name
-              (loname)))
-          (alt
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname)))
-            (exp_name
-              (loname))
-            (exp_name
-              (caname))
-            (exp_op)
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))))))))
+      (exp_op)
+      (exp_name
+        (loname))
+      (exp_name
+        (caname))
+      (exp_name
+        (loname))
+      (exp_op)
+      (exp_name
+        (loname))
+      (exp_name
+        (caname))
+      (exp_op)
+      (exp_name
+        (loname))
+      (exp_name
+        (loname))
+      (exp_name
+        (caname))
+      (exp_name
+        (loname))
+      (exp_op)
+      (exp_name
+        (loname))
+      (exp_name
+        (caname))
+      (exp_op)
+      (exp_name
+        (loname))
+      (exp_name
+        (loname)))))
 
 ================================================================================
 Idiom brackets
@@ -601,18 +608,19 @@ _ = let y = 94 in f !(g !(print y) !x)
             (rhs
               (exp_literal
                 (integer)))))
-        (exp_name
-          (loname))
-        (exp_parens
-          (bang)
+        (in
           (exp_name
             (loname))
           (exp_parens
             (bang)
             (exp_name
               (loname))
+            (exp_parens
+              (bang)
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))
             (exp_name
-              (loname)))
-          (exp_name
-            (bang)
-            (loname)))))))
+              (bang)
+              (loname))))))))

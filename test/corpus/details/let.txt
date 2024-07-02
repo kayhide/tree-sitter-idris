@@ -26,8 +26,9 @@ f x = let
             (rhs
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 Simple line (indent only)
@@ -56,8 +57,9 @@ f x = let
             (rhs
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 Simple line (dedent only)
@@ -86,8 +88,9 @@ f x = let y = x
             (rhs
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 Single line (on the same line)
@@ -115,8 +118,9 @@ f x = let y = x in y
             (rhs
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 Single line (dangling tail)
@@ -145,8 +149,9 @@ f x = let y = x in
             (rhs
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 Multiline (indent and dedent)
@@ -184,8 +189,9 @@ f x = let
             (rhs
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 Multiline (indent only)
@@ -222,8 +228,9 @@ f x = let
             (rhs
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 Multiline (dedent only)
@@ -260,8 +267,9 @@ f x = let y = x
             (rhs
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 Multiline (dangling tail)
@@ -298,8 +306,9 @@ f x = let y = x
             (rhs
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 Telescope single line I
@@ -327,17 +336,19 @@ f x = let y = x in let y = x in y
             (rhs
               (exp_name
                 (loname)))))
-        (exp_let_in
-          (declarations
-            (function
-              (lhs
-                (funvar
-                  (loname)))
-              (rhs
-                (exp_name
-                  (loname)))))
-          (exp_name
-            (loname)))))))
+        (in
+          (exp_let_in
+            (declarations
+              (function
+                (lhs
+                  (funvar
+                    (loname)))
+                (rhs
+                  (exp_name
+                    (loname)))))
+            (in
+              (exp_name
+                (loname)))))))))
 
 ================================================================================
 Telescope single line II
@@ -366,17 +377,19 @@ f x = let y = x in
             (rhs
               (exp_name
                 (loname)))))
-        (exp_let_in
-          (declarations
-            (function
-              (lhs
-                (funvar
-                  (loname)))
-              (rhs
-                (exp_name
-                  (loname)))))
-          (exp_name
-            (loname)))))))
+        (in
+          (exp_let_in
+            (declarations
+              (function
+                (lhs
+                  (funvar
+                    (loname)))
+                (rhs
+                  (exp_name
+                    (loname)))))
+            (in
+              (exp_name
+                (loname)))))))))
 
 ================================================================================
 Telescope multi line I
@@ -413,17 +426,19 @@ f x = let y = x
             (rhs
               (exp_name
                 (loname)))))
-        (exp_let_in
-          (declarations
-            (function
-              (lhs
-                (funvar
-                  (loname)))
-              (rhs
-                (exp_name
-                  (loname)))))
-          (exp_name
-            (loname)))))))
+        (in
+          (exp_let_in
+            (declarations
+              (function
+                (lhs
+                  (funvar
+                    (loname)))
+                (rhs
+                  (exp_name
+                    (loname)))))
+            (in
+              (exp_name
+                (loname)))))))))
 
 ================================================================================
 Pattern match
@@ -453,8 +468,9 @@ _ = let (a, b) = x in b
             (rhs
               (exp_name
                 (loname)))))
-        (exp_name
-          (loname))))))
+        (in
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 Single line without body
