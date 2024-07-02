@@ -23,28 +23,26 @@ greet = do
     (rhs
       (exp_do
         (statement
-          (exp_apply
-            (exp_name
-              (loname))
-            (exp_literal
-              (string))))
+          (exp_name
+            (loname))
+          (exp_literal
+            (string)))
         (statement
           (bind_pattern
             (pat_name
               (loname))
-            (exp_name
-              (loname))))
+            (bind_exp
+              (exp_name
+                (loname)))))
         (statement
-          (exp_apply
+          (exp_name
+            (loname))
+          (exp_parens
+            (exp_literal
+              (string))
+            (exp_op)
             (exp_name
-              (loname))
-            (exp_parens
-              (exp_apply
-                (exp_literal
-                  (string))
-                (exp_op)
-                (exp_name
-                  (loname))))))))))
+              (loname))))))))
 
 ================================================================================
 Pattern matching bind 1
@@ -72,12 +70,13 @@ _ = do
               (caname)
               (pat_name
                 (loname)))
-            (exp_name
-              (loname))
-            (bind_alt
-              (pat_name
-                (caname))
-              (exp_apply
+            (bind_exp
+              (exp_name
+                (loname)))
+            (bind_alts
+              (bind_alt
+                (pat_name
+                  (caname))
                 (exp_name
                   (loname))
                 (exp_name
@@ -88,30 +87,29 @@ _ = do
               (caname)
               (pat_name
                 (loname)))
-            (exp_name
-              (loname))
-            (bind_alt
-              (pat_name
-                (caname))
-              (exp_apply
+            (bind_exp
+              (exp_name
+                (loname)))
+            (bind_alts
+              (bind_alt
+                (pat_name
+                  (caname))
                 (exp_name
                   (loname))
                 (exp_name
                   (caname))))))
         (statement
-          (exp_apply
+          (exp_name
+            (loname))
+          (exp_parens
             (exp_name
-              (loname))
-            (exp_parens
-              (exp_apply
-                (exp_name
-                  (caname))
-                (exp_tuple
-                  (exp_name
-                    (loname))
-                  (tuple_operator)
-                  (exp_name
-                    (loname)))))))))))
+              (caname))
+            (exp_tuple
+              (exp_name
+                (loname))
+              (tuple_operator)
+              (exp_name
+                (loname)))))))))
 
 ================================================================================
 Pattern matching bind 2
@@ -143,17 +141,16 @@ _ = do
                 (rhs
                   (exp_name
                     (loname)))))
-            (bind_alt
-              (pat_name
-                (caname))
-              (exp_apply
+            (bind_alts
+              (bind_alt
+                (pat_name
+                  (caname))
                 (exp_name
                   (loname))
                 (exp_name
                   (caname))))))
         (statement
-          (exp_apply
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))))))))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))))))

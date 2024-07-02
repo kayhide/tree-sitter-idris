@@ -44,11 +44,10 @@ mutual
                   (pat_name
                     (loname)))))))
         (rhs
-          (exp_apply
-            (exp_name
-              (loname))
-            (exp_name
-              (loname)))))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))))
       (signature
         (loname)
         (type_name
@@ -77,8 +76,7 @@ mutual
                   (pat_name
                     (loname)))))))
         (rhs
-          (exp_apply
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))))))))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))))))

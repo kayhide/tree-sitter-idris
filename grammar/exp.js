@@ -33,7 +33,7 @@ module.exports = {
 
   exp_name: $ => prefixable($.bang, $._q_name_op),
 
-  exp_ticked: $ => ticked($._fexp),
+  exp_ticked: $ => ticked($._aexp),
 
   exp_parens: $ => prefixable($.bang, parens($._exp)),
 
@@ -87,9 +87,9 @@ module.exports = {
     'if',
     field('if', $._exp),
     'then',
-    field('then', $._exp),
+    field('then', alias($._exp, $.exp_then)),
     'else',
-    field('else', $._exp),
+    field('else', alias($._exp, $.exp_else)),
   ),
 
   // ----- Case-of ------------------------------------------------------------
@@ -142,36 +142,20 @@ module.exports = {
 
   exp_lambda: $ => seq(
     '\\',
-    sep1($.comma, $._apat),
+    $.lambda_args,
     $._rcarrow,
-    $._exp,
+    alias($._exp, $.lambda_exp),
   ),
 
+  lambda_args: $ => sep1($.comma, $._apat),
+
   // ----- do and ado notation ------------------------------------------------
-
-  _statement_lexp: $ => __lexp($),
-
-  __statement_exp_infix: $ =>
-    seq(
-      $._statement_exp_infix,
-      choice($.operator, $.exp_ticked),
-      $._exp
-    ),
-
-  _statement_exp_infix: $ =>
-    choice(
-      alias($.__statement_exp_infix, $.exp_infix),
-      $._statement_lexp
-    ),
-
-  _statement_exp: $ =>
-    prec.right(seq($._statement_exp_infix, optional($._type_annotation))),
 
   bind_pattern: $ => seq(
     $._typed_pat,
     $._larrow,
-    $._exp,
-    optional(layouted($, $.bind_alt)),
+    alias($._exp, $.bind_exp),
+    optional(seq('\n', $.bind_alts)),
   ),
 
   _let_decls: $ => layouted($, $._decl),
@@ -179,15 +163,17 @@ module.exports = {
   let: $ => seq(
     'let', 
     alias($._let_decls, $.declarations),
-    optional(layouted($, $.bind_alt)),
+    optional($.bind_alts),
   ),
+
+  bind_alts: $ => layouted($, $.bind_alt),
 
   bind_alt: $ => seq('|', $._typed_pat, $._rcarrow, $._exp),
 
 
   statement: $ =>
     choice(
-      $._statement_exp,
+      $._exp,
       $.bind_pattern,
       $.let,
     ),
@@ -197,30 +183,7 @@ module.exports = {
 
   // ----- Composite expressions ----------------------------------------------
 
-  /**
-   * The Report lists for `aexp` only expressions that don't have any unbracketed whitespace, except for record
-   * construction/update.
-   * The GHC parser, however, includes lambdas, let/in and extensions like lambda case in it.
-   *
-   * Dot-syntax projection works only with simple `aexp`s. For example, these are valid:
-   *
-   * - `(a <> b).name`
-   * - `[a, b].name`
-   * - `(,).name`
-   * - `[e|a|].name`
-   * - `Animal {name = "cat"}.name`
-   * - `(.name).name`
-   * - `(# 1, 2 #).name` (doesn't typecheck, but might in the future?)
-   *
-   * Some are clear parse errors:
-   *
-   * - `@Int.name`
-   *
-   * Others simply don't make sense since they bind the projection into a subexpression, (lambda case and do), even
-   * though the grammar works fine if they are included here.
-   * We simply keep them out to reduce complexity.
-   */
-  _aexp_projection: $ => choice(
+  _aexp: $ => choice(
     $.hole,
     $.exp_name,
     alias($.operator, $.exp_op),
@@ -240,37 +203,19 @@ module.exports = {
     $.pragma_search,
   ),
 
-  _aexp: $ => choice(
-    $._aexp_projection,
-    $.exp_do,
-    $.exp_rewrite_in,
-  ),
-
-  /**
-   * Function application.
-   *
-   * This convoluted rule is necessary because of BlockArguments with lambda – if `exp_lambda` is in `lexp` as is stated
-   * in the reference, it can only occur after an infix operator; if it is in `aexp`, it causes lots of problems.
-   * Furthermore, the strange way the recursion is done here is to avoid local conflicts.
-   */
-  _exp_apply: $ =>
-    choice(
-      $._aexp,
-      seq($._aexp, $._exp_apply),
-      seq($._aexp, $.exp_lambda),
-      seq($._aexp, $.exp_if),
-      seq($._aexp, $.exp_case),
-      seq($._aexp, $.exp_let_in),
-    ),
-
-  /**
-   * The point of this `choice` is to get a node for function application only if there is more than one expression
-   * present.
-   */
-  _fexp: $ => choice(
+  _fexp: $ => prec.right(seq(
     $._aexp,
-    alias($._exp_apply, $.exp_apply),
-  ),
+    optional($._exp),
+  )),
 
-  _exp: $ => __lexp($, $.exp_let_in),
+  _exp: $ =>
+    choice(
+      $._fexp,
+      $.exp_lambda,
+      $.exp_if,
+      $.exp_case,
+      $.exp_let_in,
+      $.exp_do,
+      $.exp_rewrite_in,
+    ),
 }

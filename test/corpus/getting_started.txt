@@ -22,8 +22,7 @@ main = putStrLn "Hello world"
       (funvar
         (loname)))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (exp_literal
-          (string))))))
+      (exp_name
+        (loname))
+      (exp_literal
+        (string)))))

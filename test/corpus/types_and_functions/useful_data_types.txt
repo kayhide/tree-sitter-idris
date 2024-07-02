@@ -67,11 +67,10 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
               (pat_name
                 (loname)))))))
     (rhs
-      (exp_apply
-        (exp_name
-          (caname))
-        (exp_name
-          (loname)))))
+      (exp_name
+        (caname))
+      (exp_name
+        (loname))))
   (function
     (lhs
       (funvar
@@ -90,13 +89,12 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
               (pat_name
                 (loname)))))))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (exp_name
-          (loname))
-        (exp_name
-          (loname))))))
+      (exp_name
+        (loname))
+      (exp_name
+        (loname))
+      (exp_name
+        (loname)))))
 
 ================================================================================
 Maybe 3
@@ -294,16 +292,15 @@ vec = (2 ** [3, 4])
         (loname)))
     (rhs
       (exp_parens
-        (exp_apply
+        (exp_literal
+          (integer))
+        (exp_op)
+        (exp_list
           (exp_literal
             (integer))
-          (exp_op)
-          (exp_list
-            (exp_literal
-              (integer))
-            (comma)
-            (exp_literal
-              (integer))))))))
+          (comma)
+          (exp_literal
+            (integer)))))))
 
 ================================================================================
 Dependent Pairs 3
@@ -356,10 +353,9 @@ filter p (x :: xs)
             (caname)))))
     (rhs
       (exp_parens
-        (exp_apply
-          (wildcard)
-          (exp_op)
-          (exp_list)))))
+        (wildcard)
+        (exp_op)
+        (exp_list))))
   (function
     (lhs
       (funvar
@@ -376,13 +372,12 @@ filter p (x :: xs)
                 (loname)))))))
     (rhs
       (exp_case
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_name
-            (loname))
-          (exp_name
-            (loname)))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))
         (alts
           (alt
             (pat_tuple
@@ -392,13 +387,12 @@ filter p (x :: xs)
                 (pat_name
                   (loname))))
             (exp_if
-              (exp_apply
-                (exp_name
-                  (loname))
-                (exp_name
-                  (loname)))
-              (exp_parens
-                (exp_apply
+              (exp_name
+                (loname))
+              (exp_name
+                (loname))
+              (exp_then
+                (exp_parens
                   (wildcard)
                   (exp_op)
                   (exp_name
@@ -406,8 +400,8 @@ filter p (x :: xs)
                   (exp_op)
                   (exp_name
                     (loname))))
-              (exp_parens
-                (exp_apply
+              (exp_else
+                (exp_parens
                   (wildcard)
                   (exp_op)
                   (exp_name
@@ -462,17 +456,16 @@ fred = MkPerson "Fred" "Joe" "Bloggs" 30
       (funvar
         (loname)))
     (rhs
-      (exp_apply
-        (exp_name
-          (caname))
-        (exp_literal
-          (string))
-        (exp_literal
-          (string))
-        (exp_literal
-          (string))
-        (exp_literal
-          (integer))))))
+      (exp_name
+        (caname))
+      (exp_literal
+        (string))
+      (exp_literal
+        (string))
+      (exp_literal
+        (string))
+      (exp_literal
+        (integer)))))
 
 ================================================================================
 Records 3
@@ -536,14 +529,13 @@ addStudent p c = { students := p :: students c } c
     (rhs
       (record_update
         (field_name)
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_op)
-          (exp_name
-            (loname))
-          (exp_name
-            (loname)))
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))
         (loname)))))
 
 ================================================================================
@@ -579,10 +571,9 @@ addStudent' p c = { students $= (p ::) } c
       (record_update
         (field_name)
         (exp_parens
-          (exp_apply
-            (exp_name
-              (loname))
-            (exp_op)))
+          (exp_name
+            (loname))
+          (exp_op))
         (loname)))))
 
 ================================================================================

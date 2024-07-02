@@ -133,15 +133,11 @@
 ; ------------------------------------------------------------------------------
 ; Functions and variables
 
-(exp_apply
-  .
-  (exp_name
-    [(loname) (qualified_loname)] @function))
+(exp_name
+  [(loname) (qualified_loname)] @function)
 
-(exp_apply
-  .
-  (exp_name
-    [(caname) (qualified_caname)] @constructor))
+(exp_name
+  [(caname) (qualified_caname)] @constructor)
 
 (exp_record_access
   field: (_) @variable.other.member)

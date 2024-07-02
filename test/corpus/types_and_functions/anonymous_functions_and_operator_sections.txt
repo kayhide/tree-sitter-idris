@@ -11,21 +11,21 @@ _ = map (\x => x * 2) intVec
     (lhs
       (wildcard))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (exp_parens
-          (exp_lambda
+      (exp_name
+        (loname))
+      (exp_parens
+        (exp_lambda
+          (lambda_args
             (pat_name
+              (loname)))
+          (lambda_exp
+            (exp_name
               (loname))
-            (exp_apply
-              (exp_name
-                (loname))
-              (exp_op)
-              (exp_literal
-                (integer)))))
-        (exp_name
-          (loname))))))
+            (exp_op)
+            (exp_literal
+              (integer)))))
+      (exp_name
+        (loname)))))
 
 ================================================================================
 Anonymous functions and operator sections 2
@@ -40,13 +40,11 @@ _ = map (* 2) intVec
     (lhs
       (wildcard))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (exp_parens
-          (exp_apply
-            (exp_op)
-            (exp_literal
-              (integer))))
-        (exp_name
-          (loname))))))
+      (exp_name
+        (loname))
+      (exp_parens
+        (exp_op)
+        (exp_literal
+          (integer)))
+      (exp_name
+        (loname)))))

@@ -114,29 +114,27 @@ _ = index {a=Int} {n=2} FZ (2 :: 3 :: Nil)
     (lhs
       (wildcard))
     (rhs
-      (exp_apply
+      (exp_name
+        (loname))
+      (exp_implicit_arg
+        (loname)
         (exp_name
-          (loname))
-        (exp_implicit_arg
-          (loname)
-          (exp_name
-            (caname)))
-        (exp_implicit_arg
-          (loname)
-          (exp_literal
-            (integer)))
+          (caname)))
+      (exp_implicit_arg
+        (loname)
+        (exp_literal
+          (integer)))
+      (exp_name
+        (caname))
+      (exp_parens
+        (exp_literal
+          (integer))
+        (exp_op)
+        (exp_literal
+          (integer))
+        (exp_op)
         (exp_name
-          (caname))
-        (exp_parens
-          (exp_apply
-            (exp_literal
-              (integer))
-            (exp_op)
-            (exp_literal
-              (integer))
-            (exp_op)
-            (exp_name
-              (caname))))))))
+          (caname))))))
 
 ================================================================================
 Implicit Arguments 4

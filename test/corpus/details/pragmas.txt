@@ -251,14 +251,13 @@ any = foldMap @{%search} @{Any}
       (funvar
         (loname)))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (exp_explicit_impl
-          (pragma_search))
-        (exp_explicit_impl
-          (implementation_name
-            (caname)))))))
+      (exp_name
+        (loname))
+      (exp_explicit_impl
+        (pragma_search))
+      (exp_explicit_impl
+        (implementation_name
+          (caname))))))
 
 ================================================================================
 Pragma foreign
@@ -351,10 +350,9 @@ unsafeCreateWorld f = f %MkWorld
           (pat_name
             (loname)))))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (pragma_mkworld)))))
+      (exp_name
+        (loname))
+      (pragma_mkworld))))
 
 ================================================================================
 Pragma World 3

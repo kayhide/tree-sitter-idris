@@ -77,16 +77,14 @@ interface Eq a where
               (pat_name
                 (loname)))))
         (rhs
-          (exp_apply
+          (exp_name
+            (loname))
+          (exp_parens
             (exp_name
               (loname))
-            (exp_parens
-              (exp_apply
-                (exp_name
-                  (loname))
-                (exp_op)
-                (exp_name
-                  (loname))))))))))
+            (exp_op)
+            (exp_name
+              (loname))))))))
 
 ================================================================================
 Extending Interfaces 1
@@ -251,14 +249,13 @@ _ = sort @{myord} xs
     (lhs
       (wildcard))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (exp_explicit_impl
-          (implementation_name
-            (loname)))
-        (exp_name
-          (loname))))))
+      (exp_name
+        (loname))
+      (exp_explicit_impl
+        (implementation_name
+          (loname)))
+      (exp_name
+        (loname)))))
 
 ================================================================================
 Explicit arguments 2
@@ -274,15 +271,14 @@ and = force . concat @{All}
       (funvar
         (loname)))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (exp_op)
-        (exp_name
-          (loname))
-        (exp_explicit_impl
-          (implementation_name
-            (caname)))))))
+      (exp_name
+        (loname))
+      (exp_op)
+      (exp_name
+        (loname))
+      (exp_explicit_impl
+        (implementation_name
+          (caname))))))
 
 ================================================================================
 Empty implementation
@@ -333,34 +329,29 @@ FiniteBits Bits16 where
                   (funvar
                     (loname)))
                 (rhs
-                  (exp_apply
-                    (exp_parens
-                      (exp_apply
-                        (exp_name
-                          (loname))
-                        (exp_op)
-                        (exp_literal
-                          (integer))))
+                  (exp_parens
+                    (exp_name
+                      (loname))
                     (exp_op)
+                    (exp_literal
+                      (integer)))
+                  (exp_op)
+                  (exp_parens
                     (exp_parens
-                      (exp_apply
-                        (exp_parens
-                          (exp_apply
-                            (exp_name
-                              (loname))
-                            (exp_ticked
-                              (exp_name
-                                (loname)))
-                            (exp_literal
-                              (integer))))
-                        (exp_op)
-                        (exp_literal
-                          (integer))))))))
-            (exp_apply
-              (exp_name
-                (loname))
-              (exp_name
-                (loname)))))))))
+                      (exp_name
+                        (loname))
+                      (exp_ticked
+                        (exp_name
+                          (loname)))
+                      (exp_literal
+                        (integer)))
+                    (exp_op)
+                    (exp_literal
+                      (integer))))))
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))))))))
 
 ================================================================================
 Implementation with visibility

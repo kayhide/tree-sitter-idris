@@ -100,8 +100,8 @@ module.exports = grammar({
      * The disambiguation can clearly be made from the `=`, but my impression is that the conflict check only considers
      * immediate lookahead.
      */
-    [$._aexp_projection, $._apat],
     [$.exp_list, $.pat_list],
+    [$._aexp, $._apat],
 
     /**
      * Names.
@@ -116,15 +116,9 @@ module.exports = grammar({
     [$._name, $._name_op, $.pat_apply],
     [$._name, $._name_op, $.pat_apply, $.interface_name],
     [$._name, $._field_name],
+    [$._name_op, $._aexp],
     [$._name_op, $.pat_apply],
-    [$._name_op, $._aexp_projection],
     [$._q_name_op, $.pat_apply],
-
-    /**
-     * For getting a node for function application, and no extra node if the expression only consists of one term.
-     */
-    [$._exp_apply, $._fexp],
-    [$._exp_apply],
 
     /**
      * RHS of operator def.

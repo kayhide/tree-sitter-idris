@@ -44,17 +44,15 @@ plus (S k) y = S (plus k y)
           (pat_name
             (loname)))))
     (rhs
-      (exp_apply
+      (exp_name
+        (caname))
+      (exp_parens
         (exp_name
-          (caname))
-        (exp_parens
-          (exp_apply
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))))))))
+          (loname))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))))))
 
 ================================================================================
 Functions 2
@@ -102,19 +100,17 @@ mult (S k) y = plus y (mult k y)
           (pat_name
             (loname)))))
     (rhs
-      (exp_apply
+      (exp_name
+        (loname))
+      (exp_name
+        (loname))
+      (exp_parens
         (exp_name
           (loname))
         (exp_name
           (loname))
-        (exp_parens
-          (exp_apply
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))))))))
+        (exp_name
+          (loname))))))
 
 ================================================================================
 where clauses 1
@@ -148,12 +144,11 @@ reverse xs = revAcc [] xs where
           (pat_name
             (loname)))))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (exp_list)
-        (exp_name
-          (loname))))
+      (exp_name
+        (loname))
+      (exp_list)
+      (exp_name
+        (loname)))
     (where)
     (declarations
       (signature
@@ -198,18 +193,16 @@ reverse xs = revAcc [] xs where
                   (pat_name
                     (loname)))))))
         (rhs
-          (exp_apply
+          (exp_name
+            (loname))
+          (exp_parens
             (exp_name
               (loname))
-            (exp_parens
-              (exp_apply
-                (exp_name
-                  (loname))
-                (exp_op)
-                (exp_name
-                  (loname))))
+            (exp_op)
             (exp_name
-              (loname))))))))
+              (loname)))
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 where clauses 2
@@ -249,21 +242,19 @@ foo x = case isLT of
           (alt
             (pat_name
               (caname))
-            (exp_apply
-              (exp_name
-                (loname))
-              (exp_op)
-              (exp_literal
-                (integer))))
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_literal
+              (integer)))
           (alt
             (pat_name
               (caname))
-            (exp_apply
-              (exp_name
-                (loname))
-              (exp_op)
-              (exp_literal
-                (integer)))))))
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_literal
+              (integer))))))
     (where)
     (declarations
       (signature
@@ -276,16 +267,17 @@ foo x = case isLT of
             (loname)))
         (rhs
           (exp_if
-            (exp_apply
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_literal
+              (integer))
+            (exp_then
               (exp_name
-                (loname))
-              (exp_op)
-              (exp_literal
-                (integer)))
-            (exp_name
-              (caname))
-            (exp_name
-              (caname)))))
+                (caname)))
+            (exp_else
+              (exp_name
+                (caname))))))
       (data
         (data_name)
         (caname)
@@ -333,11 +325,10 @@ even (S k) = odd k where
               (pat_name
                 (loname)))))))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (exp_name
-          (loname))))
+      (exp_name
+        (loname))
+      (exp_name
+        (loname)))
     (where)
     (declarations
       (signature
@@ -368,11 +359,10 @@ even (S k) = odd k where
                   (pat_name
                     (loname)))))))
         (rhs
-          (exp_apply
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))))))))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 where clauses 4
@@ -403,31 +393,26 @@ test = [c (S 1), c Z, d (S Z)]
         (loname)))
     (rhs
       (exp_list
-        (exp_apply
+        (exp_name
+          (loname))
+        (exp_parens
           (exp_name
-            (loname))
-          (exp_parens
-            (exp_apply
-              (exp_name
-                (caname))
-              (exp_literal
-                (integer)))))
+            (caname))
+          (exp_literal
+            (integer)))
         (comma)
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_name
-            (caname)))
+        (exp_name
+          (loname))
+        (exp_name
+          (caname))
         (comma)
-        (exp_apply
+        (exp_name
+          (loname))
+        (exp_parens
           (exp_name
-            (loname))
-          (exp_parens
-            (exp_apply
-              (exp_name
-                (caname))
-              (exp_name
-                (caname)))))))
+            (caname))
+          (exp_name
+            (caname)))))
     (where)
     (declarations
       (signature
@@ -445,12 +430,11 @@ test = [c (S 1), c Z, d (S Z)]
               (pat_name
                 (loname)))))
         (rhs
-          (exp_apply
-            (exp_literal
-              (integer))
-            (exp_op)
-            (exp_name
-              (loname)))))
+          (exp_literal
+            (integer))
+          (exp_op)
+          (exp_name
+            (loname))))
       (signature
         (loname)
         (type_name
@@ -466,21 +450,19 @@ test = [c (S 1), c Z, d (S Z)]
               (pat_name
                 (loname)))))
         (rhs
-          (exp_apply
+          (exp_name
+            (loname))
+          (exp_parens
             (exp_name
               (loname))
-            (exp_parens
-              (exp_apply
-                (exp_name
-                  (loname))
-                (exp_op)
-                (exp_literal
-                  (integer))
-                (exp_op)
-                (exp_name
-                  (loname))
-                (exp_name
-                  (loname))))))
+            (exp_op)
+            (exp_literal
+              (integer))
+            (exp_op)
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))))
         (where)
         (declarations
           (signature
@@ -498,12 +480,11 @@ test = [c (S 1), c Z, d (S Z)]
                   (pat_name
                     (loname)))))
             (rhs
-              (exp_apply
-                (exp_name
-                  (loname))
-                (exp_op)
-                (exp_name
-                  (loname))))))))))
+              (exp_name
+                (loname))
+              (exp_op)
+              (exp_name
+                (loname)))))))))
 
 ================================================================================
 Implicit args 1
@@ -547,12 +528,11 @@ reflexive {x = S _} = LTESucc $ reflexive
               (caname)
               (pat_wildcard))))))
     (rhs
-      (exp_apply
-        (exp_name
-          (caname))
-        (exp_op)
-        (exp_name
-          (loname))))))
+      (exp_name
+        (caname))
+      (exp_op)
+      (exp_name
+        (loname)))))
 
 ================================================================================
 Implicit args 3
@@ -578,17 +558,15 @@ lteAddRight (S k) {m} = LTESucc (lteAddRight {m} k)
               (pat_field
                 (field_name)))))))
     (rhs
-      (exp_apply
+      (exp_name
+        (caname))
+      (exp_parens
         (exp_name
-          (caname))
-        (exp_parens
-          (exp_apply
-            (exp_name
-              (loname))
-            (exp_implicit_arg
-              (loname))
-            (exp_name
-              (loname))))))))
+          (loname))
+        (exp_implicit_arg
+          (loname))
+        (exp_name
+          (loname))))))
 
 ================================================================================
 Implicit args 4
@@ -686,11 +664,10 @@ uninhabited (x, _) @{Left  _} = uninhabited x
               (caname)
               (pat_wildcard))))))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (exp_name
-          (loname))))))
+      (exp_name
+        (loname))
+      (exp_name
+        (loname)))))
 
 ================================================================================
 At braces 2
@@ -712,14 +689,13 @@ uninhabited Refl @{ab} = uninhabited @{ab} Refl
             (pat_name
               (loname))))))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (exp_explicit_impl
-          (implementation_name
-            (loname)))
-        (exp_name
-          (caname))))))
+      (exp_name
+        (loname))
+      (exp_explicit_impl
+        (implementation_name
+          (loname)))
+      (exp_name
+        (caname)))))
 
 ================================================================================
 Totality partial
@@ -838,10 +814,9 @@ main = putStrLn ?greeting
       (funvar
         (loname)))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (hole)))))
+      (exp_name
+        (loname))
+      (hole))))
 
 ================================================================================
 rewrite rule
@@ -864,13 +839,12 @@ helpEven j p = rewrite plusSuccRightSucc j j in p
     (rhs
       (exp_rewrite_in
         (rewrite_exp
-          (exp_apply
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))
         (exp_name
           (loname))))))
 
@@ -933,12 +907,11 @@ Not p = p -> Void
           (pat_name
             (loname)))))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (exp_op)
-        (exp_name
-          (caname))))))
+      (exp_name
+        (loname))
+      (exp_op)
+      (exp_name
+        (caname)))))
 
 ================================================================================
 Operator 1
@@ -1024,16 +997,15 @@ Operator 4
           (pat_name
             (loname)))))
     (rhs
-      (exp_apply
-        (exp_name
-          (loname))
-        (exp_name
-          (loname))
-        (exp_op)
-        (exp_name
-          (loname))
-        (exp_name
-          (loname))))))
+      (exp_name
+        (loname))
+      (exp_name
+        (loname))
+      (exp_op)
+      (exp_name
+        (loname))
+      (exp_name
+        (loname)))))
 
 ================================================================================
 Operator 5

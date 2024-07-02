@@ -24,13 +24,12 @@ filter p (x :: xs) with (filter p xs)
                 (loname)))))))
     (with
       (exp_parens
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_name
-            (loname))
-          (exp_name
-            (loname))))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname)))
       (function
         (lhs
           (funvar
@@ -81,13 +80,12 @@ filter p (x :: xs) with (filter p xs)
                 (loname)))))))
     (with
       (exp_parens
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_name
-            (loname))
-          (exp_name
-            (loname))))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname)))
       (function
         (lhs
           (wildcard))
@@ -125,12 +123,11 @@ foo n m with (n + 1)
             (loname)))))
     (with
       (exp_parens
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_op)
-          (exp_literal
-            (integer))))
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_literal
+          (integer)))
       (function
         (lhs
           (funvar
@@ -144,12 +141,11 @@ foo n m with (n + 1)
             (integer)))
         (with
           (exp_parens
-            (exp_apply
-              (exp_name
-                (loname))
-              (exp_op)
-              (exp_literal
-                (integer))))
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_literal
+              (integer)))
           (function
             (lhs
               (funvar
@@ -216,19 +212,17 @@ foo n m with (n + 1) | (m + 1)
             (loname)))))
     (with
       (exp_parens
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_op)
-          (exp_literal
-            (integer))))
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_literal
+          (integer)))
       (exp_parens
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_op)
-          (exp_literal
-            (integer))))
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_literal
+          (integer)))
       (function
         (lhs
           (wildcard))

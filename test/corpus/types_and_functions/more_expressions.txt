@@ -23,17 +23,15 @@ mirror xs = let xs' = reverse xs in
               (funvar
                 (loname)))
             (rhs
-              (exp_apply
-                (exp_name
-                  (loname))
-                (exp_name
-                  (loname))))))
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_op)
-          (exp_name
-            (loname)))))))
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))))
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_name
+          (loname))))))
 
 ================================================================================
 let bindings 2
@@ -67,20 +65,19 @@ showPerson p = let MkPerson name age = p in
             (rhs
               (exp_name
                 (loname)))))
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_op)
-          (exp_literal
-            (string))
-          (exp_op)
-          (exp_name
-            (loname))
-          (exp_name
-            (loname))
-          (exp_op)
-          (exp_literal
-            (string)))))))
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_literal
+          (string))
+        (exp_op)
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_literal
+          (string))))))
 
 ================================================================================
 let bindings 3
@@ -113,12 +110,11 @@ mirror xs = let xs' : List a = reverse xs in
               (loname))
             (type_name
               (loname))))
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_op)
-          (exp_name
-            (loname)))))))
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_name
+          (loname))))))
 
 ================================================================================
 let bindings 4
@@ -193,21 +189,19 @@ foldMap f = let fo : m -> a -> m
                   (pat_name
                     (loname)))))
             (rhs
-              (exp_apply
-                (exp_name
-                  (loname))
-                (exp_op)
-                (exp_name
-                  (loname))
-                (exp_name
-                  (loname))))))
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_name
-            (loname))
-          (exp_name
-            (loname)))))))
+              (exp_name
+                (loname))
+              (exp_op)
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))))))
 
 ================================================================================
 let bindings 6
@@ -251,14 +245,13 @@ foldMap f = let fo : m -> a -> m
                   (pat_name
                     (loname)))))
             (rhs
-              (exp_apply
-                (exp_name
-                  (loname))
-                (exp_op)
-                (exp_name
-                  (loname))
-                (exp_name
-                  (loname)))))
+              (exp_name
+                (loname))
+              (exp_op)
+              (exp_name
+                (loname))
+              (exp_name
+                (loname))))
           (function
             (lhs
               (funvar
@@ -266,13 +259,12 @@ foldMap f = let fo : m -> a -> m
             (rhs
               (exp_name
                 (loname)))))
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_name
-            (loname))
-          (exp_name
-            (loname)))))))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))))))
 
 ================================================================================
 List comprehensions
@@ -293,70 +285,63 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
             (loname)))))
     (rhs
       (exp_list
-        (exp_apply
-          (exp_tuple
-            (exp_name
-              (loname))
-            (tuple_operator)
-            (exp_name
-              (loname))
-            (tuple_operator)
-            (exp_name
-              (loname)))
-          (exp_op)
+        (exp_tuple
           (exp_name
             (loname))
+          (tuple_operator)
+          (exp_name
+            (loname))
+          (tuple_operator)
+          (exp_name
+            (loname)))
+        (exp_op)
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_list
+          (exp_literal
+            (integer))
           (exp_op)
-          (exp_list
-            (exp_apply
-              (exp_literal
-                (integer))
-              (exp_op)
-              (exp_name
-                (loname)))))
+          (exp_name
+            (loname)))
         (comma)
-        (exp_apply
-          (exp_name
-            (loname))
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_list
+          (exp_literal
+            (integer))
           (exp_op)
-          (exp_list
-            (exp_apply
-              (exp_literal
-                (integer))
-              (exp_op)
-              (exp_name
-                (loname)))))
+          (exp_name
+            (loname)))
         (comma)
-        (exp_apply
-          (exp_name
-            (loname))
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_list
+          (exp_literal
+            (integer))
           (exp_op)
-          (exp_list
-            (exp_apply
-              (exp_literal
-                (integer))
-              (exp_op)
-              (exp_name
-                (loname)))))
+          (exp_name
+            (loname)))
         (comma)
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_op)
-          (exp_name
-            (loname))
-          (exp_op)
-          (exp_name
-            (loname))
-          (exp_op)
-          (exp_name
-            (loname))
-          (exp_op)
-          (exp_name
-            (loname))
-          (exp_op)
-          (exp_name
-            (loname)))))))
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_name
+          (loname))))))
 
 ================================================================================
 case expressions 1
@@ -379,16 +364,14 @@ splitAt c x = case break (== c) x of
             (loname)))))
     (rhs
       (exp_case
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_parens
-            (exp_apply
-              (exp_op)
-              (exp_name
-                (loname))))
+        (exp_name
+          (loname))
+        (exp_parens
+          (exp_op)
           (exp_name
             (loname)))
+        (exp_name
+          (loname))
         (alts
           (alt
             (pat_tuple
@@ -401,11 +384,10 @@ splitAt c x = case break (== c) x of
               (exp_name
                 (loname))
               (tuple_operator)
-              (exp_apply
-                (exp_name
-                  (loname))
-                (exp_name
-                  (loname))))))))))
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))))))))
 
 ================================================================================
 case expressions 2
@@ -431,13 +413,12 @@ lookup_default i xs def = case list_lookup i xs of
             (loname)))))
     (rhs
       (exp_case
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_name
-            (loname))
-          (exp_name
-            (loname)))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))
         (alts
           (alt
             (pat_name
@@ -472,12 +453,13 @@ on f g = \x, y => g x `f` g y
             (loname)))))
     (rhs
       (exp_lambda
-        (pat_name
-          (loname))
-        (comma)
-        (pat_name
-          (loname))
-        (exp_apply
+        (lambda_args
+          (pat_name
+            (loname))
+          (comma)
+          (pat_name
+            (loname)))
+        (lambda_exp
           (exp_name
             (loname))
           (exp_name
@@ -511,12 +493,11 @@ fun <*> x = [| fun <*> x |]
             (loname)))))
     (rhs
       (exp_idiom
-        (exp_apply
-          (exp_name
-            (loname))
-          (exp_op)
-          (exp_name
-            (loname)))))))
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_name
+          (loname))))))
 
 ================================================================================
 !-notation 1
@@ -537,18 +518,16 @@ m_add x y = pure (!x + !y)
           (pat_name
             (loname)))))
     (rhs
-      (exp_apply
+      (exp_name
+        (loname))
+      (exp_parens
         (exp_name
+          (bang)
           (loname))
-        (exp_parens
-          (exp_apply
-            (exp_name
-              (bang)
-              (loname))
-            (exp_op)
-            (exp_name
-              (bang)
-              (loname))))))))
+        (exp_op)
+        (exp_name
+          (bang)
+          (loname))))))
 
 ================================================================================
 !-notation 2
@@ -572,21 +551,18 @@ _ = let y = 94 in f !(g !(print y) !x)
             (rhs
               (exp_literal
                 (integer)))))
-        (exp_apply
+        (exp_name
+          (loname))
+        (exp_parens
+          (bang)
           (exp_name
             (loname))
           (exp_parens
             (bang)
-            (exp_apply
-              (exp_name
-                (loname))
-              (exp_parens
-                (bang)
-                (exp_apply
-                  (exp_name
-                    (loname))
-                  (exp_name
-                    (loname))))
-              (exp_name
-                (bang)
-                (loname)))))))))
+            (exp_name
+              (loname))
+            (exp_name
+              (loname)))
+          (exp_name
+            (bang)
+            (loname)))))))
