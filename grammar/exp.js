@@ -149,6 +149,13 @@ module.exports = {
 
   lambda_args: $ => sep1($.comma, $._apat),
 
+  // ----- Lambda case  -------------------------------------------------------
+
+  exp_lambda_case: $ => seq(
+    '\\case',
+    $.alts
+  ),
+
   // ----- do and ado notation ------------------------------------------------
 
   bind_pattern: $ => seq(
@@ -214,6 +221,7 @@ module.exports = {
       $.exp_lambda,
       $.exp_if,
       $.exp_case,
+      $.exp_lambda_case,
       $.exp_let_in,
       $.exp_do,
       $.exp_rewrite_in,

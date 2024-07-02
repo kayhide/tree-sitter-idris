@@ -473,6 +473,56 @@ on f g = \x, y => g x `f` g y
             (loname)))))))
 
 ================================================================================
+Lambda cases
+================================================================================
+
+decompress = concatMap $ \case
+  Left  as => map Left  $ forget as
+  Right bs => map Right $ forget bs
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)))
+    (rhs
+      (exp_name
+        (loname))
+      (exp_op)
+      (exp_lambda_case
+        (alts
+          (alt
+            (pat_apply
+              (caname)
+              (pat_name
+                (loname)))
+            (exp_name
+              (loname))
+            (exp_name
+              (caname))
+            (exp_op)
+            (exp_name
+              (loname))
+            (exp_name
+              (loname)))
+          (alt
+            (pat_apply
+              (caname)
+              (pat_name
+                (loname)))
+            (exp_name
+              (loname))
+            (exp_name
+              (caname))
+            (exp_op)
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))))))))
+
+================================================================================
 Idiom brackets
 ================================================================================
 
