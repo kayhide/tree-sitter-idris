@@ -641,6 +641,50 @@ asBitVector : FiniteBits a => a -> Vect (bitSize {a}) Bool
       (caname))))
 
 ================================================================================
+Type signature with apply exp
+================================================================================
+
+0 lemma : {x : Integer} -> So (integerLessThanNat x n) -> So (fromInteger {ty=Nat} x < n)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (quantity)
+    (loname)
+    (type_braces
+      (implicit_arg
+        (type_name
+          (loname)))
+      (type_name
+        (caname)))
+    (operator)
+    (type_name
+      (caname))
+    (type_parens
+      (type_name
+        (loname))
+      (type_name
+        (loname))
+      (type_name
+        (loname)))
+    (operator)
+    (type_name
+      (caname))
+    (type_parens
+      (type_name
+        (loname))
+      (exp_implicit_arg
+        (loname)
+        (exp_name
+          (caname)))
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (loname)))))
+
+================================================================================
 At braces 1
 ================================================================================
 

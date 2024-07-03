@@ -112,6 +112,7 @@ module.exports = grammar({
     [$._name, $.interface_name],
     [$.pat_apply, $.interface_name],
     [$._apat, $._implementation_name],
+    [$._name, $._q_name],
     [$._name, $._name_op],
     [$._name, $._name_op, $.pat_apply],
     [$._name, $._name_op, $.pat_apply, $.interface_name],

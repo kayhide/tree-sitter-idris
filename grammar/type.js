@@ -97,6 +97,7 @@ module.exports = {
       $.type_list,
       $.type_braces,
       $.pragma_world,
+      $.exp_implicit_arg,
     ),
 
   _type: $ => seq(
