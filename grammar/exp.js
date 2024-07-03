@@ -94,12 +94,11 @@ module.exports = {
 
   // ----- Case-of ------------------------------------------------------------
 
-  _alt_variants: $ => seq($._rcarrow, field('exp', $._exp)),
-
   alt: $ =>
     seq(
       sep1($.comma, field('pat', $._pat)),
-      $._alt_variants,
+      $._rcarrow, 
+      field('exp', $._exp),
       optional(seq($.where, $.declarations))
     ),
 
@@ -133,7 +132,7 @@ module.exports = {
 
   exp_rewrite_in: $ => seq(
     'rewrite',
-    alias($._aexps, $.rewrite_exp),
+    layouted_without_end($, alias($._aexps, $.rewrite_exp)),
     'in',
     alias($._exp, $.in),
   ),
@@ -210,9 +209,9 @@ module.exports = {
     $.pragma_search,
   ),
 
-  _aexps: $ => repeat1($._aexp),
+  _aexps: $ => prec.right(repeat1($._aexp)),
 
-  _sexp: $ => choice(
+  _sexp: $ => prec.right(choice(
     $.exp_lambda,
     $.exp_if,
     $.exp_case,
@@ -220,7 +219,7 @@ module.exports = {
     $.exp_let_in,
     $.exp_do,
     $.exp_rewrite_in,
-  ),
+  )),
 
   _exp: $ => choice(
     $._aexps,

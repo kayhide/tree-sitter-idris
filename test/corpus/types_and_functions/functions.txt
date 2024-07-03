@@ -777,6 +777,45 @@ takeUntil : (n -> Bool) -> Stream n -> List n
       (loname))))
 
 ================================================================================
+Totality and visibility
+================================================================================
+
+covering
+public export
+iterate : (f : a -> Maybe a) -> (x : a) -> List a
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (totality)
+    (visibility)
+    (loname)
+    (type_parens
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (caname))
+      (type_name
+        (loname)))
+    (operator)
+    (type_parens
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (loname)))
+    (operator)
+    (type_name
+      (caname))
+    (type_name
+      (loname))))
+
+================================================================================
 Quantity
 ================================================================================
 

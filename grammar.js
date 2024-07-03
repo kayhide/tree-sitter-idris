@@ -126,6 +126,11 @@ module.exports = grammar({
     [$._lpat, $._fun_patterns],
 
     /**
+     * Visibilities conflict.
+     */
+    [$.implementation_head, $.signature],
+
+    /**
      * What a `forall` binds to is ambiguous from the parser's POV:
      *
      * `t :: forall a. Unit`         ← binds to the single type name

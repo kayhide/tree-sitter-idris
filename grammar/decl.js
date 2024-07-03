@@ -66,8 +66,8 @@ module.exports = {
     alias($._funlhs, $.lhs),
     repeat($._with_res),
     choice(
-      alias($._funrhs, $.rhs), 
-      $.with, 
+      alias($._funrhs, $.rhs),
+      $.with,
       $.impossible
     ),
     optional(seq($.where, $.declarations)),
@@ -83,9 +83,13 @@ module.exports = {
   ),
 
   signature: $ => seq(
-    optional($.visibility),
-    optional($.totality),
-    optional($.quantity),
+    repeat(
+      choice(
+        $.visibility,
+        $.totality,
+        $.quantity,
+      )
+    ),
     field('name', $._fun_name),
     $._type_annotation,
   ),
