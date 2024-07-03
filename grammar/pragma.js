@@ -22,7 +22,7 @@ module.exports = {
     $._q_loname_op,
     repeat($.exp_implicit_arg),
     '=',
-    $._q_loname_op,
+    repeat1($._q_name_op),
   ),
 
   pragma_arg: $ => choice(
