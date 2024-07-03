@@ -17,8 +17,8 @@ module.exports = {
 
   // ------------------------------------------------------------------------
   // Operators
-  _operator: _ => /(?:[:!#$%&*+./<=>?@\\^|~-]|\p{S})+/,
-  operator: $ => choice($._operator, '-', '|~'),
+  _operator: _ => choice(/(?:[:!#$%&*+./<=>?@\\^|~-]|\p{S})+/, '-', '|~'),
+  operator: $ => $._operator,
   qualified_operator: $ => qualified($, parens($._operator)),
 
   // Tuple operator, only available inside parens

@@ -29,7 +29,9 @@ module.exports = {
 
   interface_head: $ =>
     seq(
-      repeat(seq($.constraints, $._rcarrow)),
+      repeat(
+        seq($.constraints, $._rcarrow),
+      ),
       field('name', $.interface_name),
       repeat($._tyvar),
       optional($.determining_params)
@@ -61,9 +63,20 @@ module.exports = {
     seq(
       optional($.visibility),
       optional(brackets($.implementation_name)),
-      repeat(seq($.constraints, $._rcarrow)),
+      repeat(
+        choice(
+          seq($.constraints, $._rcarrow),
+          seq($.type_braces, $._arrow),
+        ),
+      ),
       field('subject', $.interface_name),
-      repeat($._type),
+      repeat(
+        choice(
+          $._type, 
+          $._q_name_op
+        ),
+      ),
+      // repeat(choice($._type)),
       optional($.using),
     ),
 

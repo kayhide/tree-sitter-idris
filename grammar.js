@@ -117,6 +117,7 @@ module.exports = grammar({
     [$._name, $._name_op, $.pat_apply, $.interface_name],
     [$._name, $._field_name],
     [$._name_op, $._aexp],
+    [$._name_op, $._atype],
     [$._name_op, $.pat_apply],
     [$._q_name_op, $.pat_apply],
 
@@ -129,6 +130,18 @@ module.exports = grammar({
      * Visibilities conflict.
      */
     [$.implementation_head, $.signature],
+    [$.implementation_head, $.constraint],
+
+    /**
+     * Braces
+     */
+    [$._q_name, $._field_name],
+
+    /**
+     * Interfaces and implementations
+     */
+    [$._q_name, $._name_op],
+    [$._q_name, $._q_name_op],
 
     /**
      * What a `forall` binds to is ambiguous from the parser's POV:

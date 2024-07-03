@@ -35,8 +35,7 @@ Show Nat where
   (implementation
     (implementation_head
       (interface_name)
-      (type_name
-        (caname)))
+      (caname))
     (implementation_body
       (where)
       (function
@@ -220,6 +219,83 @@ Uninhabited (Data.Colist.InBounds k []) where
       (where))))
 
 ================================================================================
+Implementation with implicit arguments
+================================================================================
+
+{0 xs : List a} -> 
+Either (Uninhabited $ x === y) (Uninhabited $ xs === ys) => 
+Uninhabited (x::xs = y::ys) where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (implementation
+    (implementation_head
+      (type_braces
+        (implicit_arg
+          (quantity)
+          (type_name
+            (loname)))
+        (type_name
+          (caname))
+        (type_name
+          (loname)))
+      (interface_name)
+      (type_parens
+        (type_name
+          (caname))
+        (operator)
+        (type_name
+          (loname))
+        (operator)
+        (type_name
+          (loname)))
+      (type_parens
+        (type_name
+          (caname))
+        (operator)
+        (type_name
+          (loname))
+        (operator)
+        (type_name
+          (loname)))
+      (operator)))
+  (implementation
+    (implementation_head
+      (interface_name)
+      (type_parens
+        (type_name
+          (loname))
+        (operator)
+        (type_name
+          (loname))
+        (operator)
+        (type_name
+          (loname))
+        (operator)
+        (type_name
+          (loname))))
+    (implementation_body
+      (where))))
+
+================================================================================
+Implementation with qualified operator
+================================================================================
+
+Biinjective Prelude.(::) where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (implementation
+    (implementation_head
+      (interface_name)
+      (qualified_operator
+        (module)))
+    (implementation_body
+      (where))))
+
+================================================================================
 Named Implementations 1
 ================================================================================
 
@@ -233,8 +309,7 @@ Named Implementations 1
       (implementation_name
         (loname))
       (interface_name)
-      (type_name
-        (caname)))
+      (caname))
     (implementation_body
       (where))))
 
@@ -252,8 +327,7 @@ Named Implementations 2
       (implementation_name
         (caname))
       (interface_name)
-      (type_name
-        (caname))
+      (caname)
       (using
         (implementation_name
           (caname))))
@@ -316,8 +390,7 @@ Num Foo
   (implementation
     (implementation_head
       (interface_name)
-      (type_name
-        (caname)))))
+      (caname))))
 
 ================================================================================
 Implementation with deeply nested exp
@@ -334,8 +407,7 @@ FiniteBits Bits16 where
   (implementation
     (implementation_head
       (interface_name)
-      (type_name
-        (caname)))
+      (caname))
     (implementation_body
       (where)
       (function
@@ -393,10 +465,8 @@ Cast Char Nat where
       (visibility)
       (pragma_inline)
       (interface_name)
-      (type_name
-        (caname))
-      (type_name
-        (caname)))
+      (caname)
+      (caname))
     (implementation_body
       (where))))
 
@@ -424,8 +494,7 @@ public export
             (type_name
               (loname)))))
       (interface_name)
-      (type_name
-        (loname)))
+      (loname))
     (implementation_body
       (where))))
 
