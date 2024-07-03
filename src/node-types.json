@@ -226,6 +226,10 @@
       "required": true,
       "types": [
         {
+          "type": "exp_implicit_arg",
+          "named": true
+        },
+        {
           "type": "forall",
           "named": true
         },
@@ -606,6 +610,10 @@
           "named": true
         },
         {
+          "type": "exp_implicit_arg",
+          "named": true
+        },
+        {
           "type": "forall",
           "named": true
         },
@@ -738,6 +746,10 @@
         },
         {
           "type": "data_body",
+          "named": true
+        },
+        {
+          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -1103,7 +1115,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "exp_case",
@@ -1229,7 +1241,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "exp_case",
@@ -1825,7 +1837,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "bang",
@@ -1982,7 +1994,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "exp_case",
@@ -2561,7 +2573,15 @@
       "required": false,
       "types": [
         {
+          "type": "caname",
+          "named": true
+        },
+        {
           "type": "constraints",
+          "named": true
+        },
+        {
+          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -2581,11 +2601,27 @@
           "named": true
         },
         {
+          "type": "loname",
+          "named": true
+        },
+        {
           "type": "operator",
           "named": true
         },
         {
           "type": "pragma_world",
+          "named": true
+        },
+        {
+          "type": "qualified_caname",
+          "named": true
+        },
+        {
+          "type": "qualified_loname",
+          "named": true
+        },
+        {
+          "type": "qualified_operator",
           "named": true
         },
         {
@@ -2705,7 +2741,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "exp_case",
@@ -2972,7 +3008,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "exp_case",
@@ -3416,6 +3452,10 @@
       "types": [
         {
           "type": "comma",
+          "named": true
+        },
+        {
+          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -4097,6 +4137,10 @@
       "required": false,
       "types": [
         {
+          "type": "exp_implicit_arg",
+          "named": true
+        },
+        {
           "type": "forall",
           "named": true
         },
@@ -4278,6 +4322,10 @@
       "required": true,
       "types": [
         {
+          "type": "caname",
+          "named": true
+        },
+        {
           "type": "exp_implicit_arg",
           "named": true
         },
@@ -4291,6 +4339,10 @@
         },
         {
           "type": "operator",
+          "named": true
+        },
+        {
+          "type": "qualified_caname",
           "named": true
         },
         {
@@ -4467,6 +4519,10 @@
       "types": [
         {
           "type": "comma",
+          "named": true
+        },
+        {
+          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -4741,7 +4797,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "exp_case",
@@ -4901,6 +4957,10 @@
       "required": false,
       "types": [
         {
+          "type": "exp_implicit_arg",
+          "named": true
+        },
+        {
           "type": "forall",
           "named": true
         },
@@ -4961,7 +5021,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "bind_pattern",
@@ -5098,6 +5158,10 @@
           "named": true
         },
         {
+          "type": "exp_implicit_arg",
+          "named": true
+        },
+        {
           "type": "forall",
           "named": true
         },
@@ -5154,6 +5218,10 @@
       "types": [
         {
           "type": "comma",
+          "named": true
+        },
+        {
+          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -5239,6 +5307,10 @@
           "named": true
         },
         {
+          "type": "exp_implicit_arg",
+          "named": true
+        },
+        {
           "type": "forall",
           "named": true
         },
@@ -5289,6 +5361,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "exp_implicit_arg",
+          "named": true
+        },
         {
           "type": "forall",
           "named": true
