@@ -212,8 +212,7 @@ module.exports = {
 
   _aexps: $ => repeat1($._aexp),
 
-  _exp: $ => choice(
-    $._aexps,
+  _sexp: $ => choice(
     $.exp_lambda,
     $.exp_if,
     $.exp_case,
@@ -221,5 +220,11 @@ module.exports = {
     $.exp_let_in,
     $.exp_do,
     $.exp_rewrite_in,
+  ),
+
+  _exp: $ => choice(
+    $._aexps,
+    $._sexp,
+    seq($._aexps, $._sexp),
   ),
 }

@@ -497,37 +497,36 @@ decompress = concatMap $ \case
       (exp_name
         (loname))
       (exp_op)
-      (exp_op)
-      (exp_name
-        (loname))
-      (exp_name
-        (caname))
-      (exp_name
-        (loname))
-      (exp_op)
-      (exp_name
-        (loname))
-      (exp_name
-        (caname))
-      (exp_op)
-      (exp_name
-        (loname))
-      (exp_name
-        (loname))
-      (exp_name
-        (caname))
-      (exp_name
-        (loname))
-      (exp_op)
-      (exp_name
-        (loname))
-      (exp_name
-        (caname))
-      (exp_op)
-      (exp_name
-        (loname))
-      (exp_name
-        (loname)))))
+      (exp_lambda_case
+        (alts
+          (alt
+            (pat_apply
+              (caname)
+              (pat_name
+                (loname)))
+            (exp_name
+              (loname))
+            (exp_name
+              (caname))
+            (exp_op)
+            (exp_name
+              (loname))
+            (exp_name
+              (loname)))
+          (alt
+            (pat_apply
+              (caname)
+              (pat_name
+                (loname)))
+            (exp_name
+              (loname))
+            (exp_name
+              (caname))
+            (exp_op)
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))))))))
 
 ================================================================================
 Idiom brackets
