@@ -1169,3 +1169,34 @@ infixl 9 `div`, `mod`
     (comma)
     (ticked_operator
       (loname))))
+
+================================================================================
+Dot operator
+================================================================================
+
+(.unVal) : Singleton {a} x -> a
+(.unVal) = unVal
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (dot_operator)
+    (type_name
+      (caname))
+    (type_braces
+      (implicit_arg
+        (type_name
+          (loname))))
+    (type_name
+      (loname))
+    (operator)
+    (type_name
+      (loname)))
+  (function
+    (lhs
+      (funvar
+        (dot_operator)))
+    (rhs
+      (exp_name
+        (loname)))))
