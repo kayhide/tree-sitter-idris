@@ -629,3 +629,32 @@ record (<=>) (a, b : Type) where
       (type_name
         (caname)))
     (where)))
+
+================================================================================
+Record with operator constructor
+================================================================================
+
+record List1 a where
+  constructor (:::)
+  head : a
+  tail : List a
+
+--------------------------------------------------------------------------------
+
+(idris
+  (record
+    (record_name)
+    (type_variable)
+    (where)
+    (record_body
+      (operator)
+      (record_field
+        (loname)
+        (type_name
+          (loname)))
+      (record_field
+        (loname)
+        (type_name
+          (caname))
+        (type_name
+          (loname))))))

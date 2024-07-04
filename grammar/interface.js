@@ -45,11 +45,6 @@ module.exports = {
     $._record_constructor,
     $._decl,
   ),
-
-  _interface_constructor: $ => seq(
-    'constructor',
-    field('name', $.caname), 
-  ),
     
 
   // ----- Implementation -----------------------------------------------------

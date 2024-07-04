@@ -23,7 +23,7 @@ module.exports = {
 
   _record_constructor: $ => seq(
     'constructor',
-    field('name', $.caname), 
+    field('name', $._caname_op), 
   ),
     
   _record_field: $ => seq(
