@@ -282,3 +282,92 @@ f x = z
     (rhs
       (exp_name
         (loname)))))
+
+================================================================================
+FIXME Non-indented where keyword
+================================================================================
+
+public export
+Zippable List1 where
+  zipWith f (x ::: xs) (y ::: ys) = f x y ::: zipWith' xs ys
+  where
+      zipWith' : List a -> List b -> List c
+      zipWith' [] _ = []
+
+--------------------------------------------------------------------------------
+
+(idris
+  (ERROR
+    (implementation
+      (implementation_head
+        (visibility)
+        (interface_name)
+        (caname))
+      (implementation_body
+        (where)
+        (function
+          (lhs
+            (funvar
+              (loname)
+              (patterns
+                (pat_name
+                  (loname))
+                (pat_tuple
+                  (pat_infix
+                    (pat_name
+                      (loname))
+                    (operator)
+                    (pat_name
+                      (loname))))
+                (pat_tuple
+                  (pat_infix
+                    (pat_name
+                      (loname))
+                    (operator)
+                    (pat_name
+                      (loname)))))))
+          (rhs
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))
+            (exp_name
+              (loname)))))))
+  (function
+    (lhs
+      (funop
+        (patterns
+          (pat_name
+            (loname))
+          (pat_name
+            (loname)))
+        (operator)
+        (patterns
+          (pat_apply
+            (caname)
+            (pat_name
+              (loname)))
+          (operator)
+          (pat_infix
+            (pat_apply
+              (caname)
+              (pat_name
+                (loname)))
+            (operator)
+            (pat_apply
+              (caname)
+              (pat_name
+                (loname))
+              (pat_name
+                (loname))
+              (pat_list)
+              (pat_wildcard))))))
+    (rhs
+      (exp_list))))
