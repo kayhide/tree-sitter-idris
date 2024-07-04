@@ -908,7 +908,6 @@ static Result newline_where(uint32_t indent, State *state) {
     if (token("where", state)) {
       return end_or_semicolon("newline_where", state);
     }
-    return res_fail;
   }
   return res_cont;
 }

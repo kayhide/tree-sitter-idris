@@ -155,7 +155,12 @@ module.exports = {
     $.alts
   ),
 
-  // ----- do and ado notation ------------------------------------------------
+  // ----- do notation --------------------------------------------------------
+
+  exp_do: $ => seq(
+    choice('do', qualified($, 'do')),
+    layouted($, $.statement)
+  ),
 
   bind_pattern: $ => seq(
     $._typed_pat,
@@ -183,9 +188,6 @@ module.exports = {
       $.bind_pattern,
       $.let,
     ),
-
-  _do: $ => choice('do', qualified($, 'do')),
-  exp_do: $ => seq($._do, layouted($, $.statement)),
 
   // ----- Composite expressions ----------------------------------------------
 
