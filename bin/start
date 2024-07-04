@@ -17,7 +17,11 @@ generate() {
 
 test() {
   echo testing...
-  tree-sitter test && echo test ok
+  if grep -qr FOCUS test/corpus; then
+    tree-sitter test --filter FOCUS && echo test ok
+  else
+    tree-sitter test && echo test ok
+  fi
 }
 
 command="${1:-}"
