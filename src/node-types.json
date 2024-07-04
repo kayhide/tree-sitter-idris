@@ -700,6 +700,10 @@
             "named": true
           },
           {
+            "type": "dot_operator",
+            "named": true
+          },
+          {
             "type": "operator",
             "named": true
           }
@@ -746,6 +750,10 @@
         },
         {
           "type": "data_body",
+          "named": true
+        },
+        {
+          "type": "dot_operator",
           "named": true
         },
         {
@@ -967,6 +975,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "dot_operator",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "exp_case",
@@ -1804,6 +1817,10 @@
           "named": true
         },
         {
+          "type": "dot_operator",
+          "named": true
+        },
+        {
           "type": "loname",
           "named": true
         },
@@ -1813,6 +1830,10 @@
         },
         {
           "type": "qualified_caname",
+          "named": true
+        },
+        {
+          "type": "qualified_dot_operator",
           "named": true
         },
         {
@@ -2418,6 +2439,10 @@
             "named": true
           },
           {
+            "type": "dot_operator",
+            "named": true
+          },
+          {
             "type": "loname",
             "named": true
           },
@@ -2581,6 +2606,10 @@
           "named": true
         },
         {
+          "type": "dot_operator",
+          "named": true
+        },
+        {
           "type": "exp_implicit_arg",
           "named": true
         },
@@ -2614,6 +2643,10 @@
         },
         {
           "type": "qualified_caname",
+          "named": true
+        },
+        {
+          "type": "qualified_dot_operator",
           "named": true
         },
         {
@@ -2879,7 +2912,23 @@
         "required": false,
         "types": [
           {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
             "type": "caname",
+            "named": true
+          },
+          {
+            "type": "dot_operator",
+            "named": true
+          },
+          {
+            "type": "operator",
             "named": true
           }
         ]
@@ -3434,6 +3483,10 @@
           {
             "type": ")",
             "named": false
+          },
+          {
+            "type": "dot_operator",
+            "named": true
           },
           {
             "type": "loname",
@@ -4278,6 +4331,10 @@
           "named": true
         },
         {
+          "type": "dot_operator",
+          "named": true
+        },
+        {
           "type": "literal",
           "named": true
         },
@@ -4291,6 +4348,10 @@
         },
         {
           "type": "qualified_caname",
+          "named": true
+        },
+        {
+          "type": "qualified_dot_operator",
           "named": true
         },
         {
@@ -4322,7 +4383,11 @@
       "required": true,
       "types": [
         {
-          "type": "caname",
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
+          "type": "exp_idiom",
           "named": true
         },
         {
@@ -4330,27 +4395,63 @@
           "named": true
         },
         {
+          "type": "exp_list",
+          "named": true
+        },
+        {
+          "type": "exp_literal",
+          "named": true
+        },
+        {
+          "type": "exp_name",
+          "named": true
+        },
+        {
+          "type": "exp_op",
+          "named": true
+        },
+        {
+          "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_ticked",
+          "named": true
+        },
+        {
+          "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "hole",
+          "named": true
+        },
+        {
           "type": "literal",
           "named": true
         },
         {
-          "type": "loname",
+          "type": "pragma_mkworld",
           "named": true
         },
         {
-          "type": "operator",
+          "type": "pragma_search",
           "named": true
         },
         {
-          "type": "qualified_caname",
+          "type": "record_update",
           "named": true
         },
         {
-          "type": "qualified_loname",
+          "type": "unit",
           "named": true
         },
         {
-          "type": "qualified_operator",
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -4368,6 +4469,21 @@
           "type": "caname",
           "named": true
         },
+        {
+          "type": "module",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "qualified_dot_operator",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
         {
           "type": "module",
           "named": true
@@ -4492,7 +4608,23 @@
         "required": false,
         "types": [
           {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
             "type": "caname",
+            "named": true
+          },
+          {
+            "type": "dot_operator",
+            "named": true
+          },
+          {
+            "type": "operator",
             "named": true
           }
         ]
@@ -4939,6 +5071,10 @@
           },
           {
             "type": "caname",
+            "named": true
+          },
+          {
+            "type": "dot_operator",
             "named": true
           },
           {
