@@ -19,10 +19,9 @@ module.exports = {
   pragma_transform: $ => seq(
     '%transform',
     $.literal,
-    $._q_loname_op,
-    repeat($.exp_implicit_arg),
+    $._aexps,
     '=',
-    repeat1($._q_name_op),
+    $._aexps,
   ),
 
   pragma_arg: $ => choice(

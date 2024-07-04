@@ -136,11 +136,13 @@ Pragma transform 1
   (pragma_transform
     (literal
       (string))
-    (qualified_operator
-      (module))
-    (qualified_loname
-      (module)
-      (loname))))
+    (exp_name
+      (qualified_operator
+        (module)))
+    (exp_name
+      (qualified_loname
+        (module)
+        (loname)))))
 
 ================================================================================
 Pragma transform 2
@@ -154,7 +156,8 @@ Pragma transform 2
   (pragma_transform
     (literal
       (string))
-    (loname)
+    (exp_name
+      (loname))
     (exp_implicit_arg
       (loname)
       (exp_name
@@ -163,7 +166,8 @@ Pragma transform 2
       (loname)
       (exp_name
         (caname)))
-    (loname)))
+    (exp_name
+      (loname))))
 
 ================================================================================
 Pragma transform 3
@@ -177,13 +181,44 @@ Pragma transform 3
   (pragma_transform
     (literal
       (string))
-    (qualified_loname
-      (module)
+    (exp_name
+      (qualified_loname
+        (module)
+        (loname)))
+    (exp_name
+      (qualified_loname
+        (module)
+        (loname)))
+    (exp_name
+      (caname))))
+
+================================================================================
+Pragma transform 4
+================================================================================
+
+%transform "fastConcat" concat {t = SnocList} {a = String} = fastConcat . cast
+
+--------------------------------------------------------------------------------
+
+(idris
+  (pragma_transform
+    (literal
+      (string))
+    (exp_name
       (loname))
-    (qualified_loname
-      (module)
+    (exp_implicit_arg
+      (loname)
+      (exp_name
+        (caname)))
+    (exp_implicit_arg
+      (loname)
+      (exp_name
+        (caname)))
+    (exp_name
       (loname))
-    (caname)))
+    (exp_op)
+    (exp_name
+      (loname))))
 
 ================================================================================
 Pragma pair
