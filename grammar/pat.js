@@ -14,7 +14,12 @@ module.exports = {
 
   pat_at_wildcard: _ => '@_',
 
-  pat_parens: $ => parens(sep($.tuple_operator, $._typed_pat)),
+  pat_parens: $ => parens(
+    choice(
+      sep($.tuple_operator, $._typed_pat),
+      $._aexps,
+    ),
+  ),
 
   pat_at_parens: $ => seq(
     '@(', 

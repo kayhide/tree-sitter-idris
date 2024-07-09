@@ -101,6 +101,7 @@ module.exports = grammar({
      * immediate lookahead.
      */
     [$.exp_list, $.pat_list],
+    [$._exp, $.pat_parens],
     [$._aexp, $._apat],
 
     /**
@@ -108,9 +109,12 @@ module.exports = grammar({
      */
     [$._type_variables, $.loname],
     [$._name, $.pat_apply],
-    [$._name, $.pat_apply, $.interface_name],
     [$._name, $.interface_name],
+    [$._name_op, $.interface_name],
+    [$._name, $._name_op, $.interface_name],
     [$.pat_apply, $.interface_name],
+    [$._q_name_op, $.interface_name],
+    [$._q_name_op, $.pat_apply, $.interface_name],
     [$._apat, $._implementation_name],
     [$._name, $._q_name],
     [$._name, $._name_op],

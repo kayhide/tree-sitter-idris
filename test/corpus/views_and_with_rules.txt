@@ -16,12 +16,11 @@ filter p (x :: xs) with (filter p xs)
           (pat_name
             (loname))
           (pat_parens
-            (pat_infix
-              (pat_name
-                (loname))
-              (operator)
-              (pat_name
-                (loname)))))))
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_name
+              (loname))))))
     (with
       (exp_parens
         (exp_name
@@ -38,19 +37,17 @@ filter p (x :: xs) with (filter p xs)
               (pat_name
                 (loname))
               (pat_parens
-                (pat_infix
-                  (pat_name
-                    (loname))
-                  (operator)
-                  (pat_name
-                    (loname)))))))
+                (exp_name
+                  (loname))
+                (exp_op)
+                (exp_name
+                  (loname))))))
         (with_pat
           (pat_parens
-            (pat_infix
-              (pat_wildcard)
-              (operator)
-              (pat_name
-                (loname)))))
+            (wildcard)
+            (exp_op)
+            (exp_name
+              (loname))))
         (rhs
           (wildcard))))))
 
@@ -72,12 +69,11 @@ filter p (x :: xs) with (filter p xs)
           (pat_name
             (loname))
           (pat_parens
-            (pat_infix
-              (pat_name
-                (loname))
-              (operator)
-              (pat_name
-                (loname)))))))
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_name
+              (loname))))))
     (with
       (exp_parens
         (exp_name
@@ -91,11 +87,10 @@ filter p (x :: xs) with (filter p xs)
           (wildcard))
         (with_pat
           (pat_parens
-            (pat_infix
-              (pat_wildcard)
-              (operator)
-              (pat_name
-                (loname)))))
+            (wildcard)
+            (exp_op)
+            (exp_name
+              (loname))))
         (rhs
           (wildcard))))))
 
@@ -265,12 +260,11 @@ mapMaybeAppend f (x::xs) ys with (f x)
           (pat_name
             (loname))
           (pat_parens
-            (pat_infix
-              (pat_name
-                (loname))
-              (operator)
-              (pat_name
-                (loname))))
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_name
+              (loname)))
           (pat_name
             (loname)))))
     (with
@@ -304,10 +298,10 @@ mapMaybeAppend f (x::xs) ys with (f x)
           (wildcard))
         (with_pat
           (pat_parens
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname)))))
+            (exp_name
+              (caname))
+            (exp_name
+              (loname))))
         (rhs
           (exp_rewrite_in
             (rewrite_exp

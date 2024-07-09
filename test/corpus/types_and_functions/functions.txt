@@ -37,10 +37,10 @@ plus (S k) y = S (plus k y)
         (loname)
         (patterns
           (pat_parens
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname))))
+            (exp_name
+              (caname))
+            (exp_name
+              (loname)))
           (pat_name
             (loname)))))
     (rhs
@@ -93,10 +93,10 @@ mult (S k) y = plus y (mult k y)
         (loname)
         (patterns
           (pat_parens
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname))))
+            (exp_name
+              (caname))
+            (exp_name
+              (loname)))
           (pat_name
             (loname)))))
     (rhs
@@ -186,12 +186,11 @@ reverse xs = revAcc [] xs where
               (pat_name
                 (loname))
               (pat_parens
-                (pat_infix
-                  (pat_name
-                    (loname))
-                  (operator)
-                  (pat_name
-                    (loname)))))))
+                (exp_name
+                  (loname))
+                (exp_op)
+                (exp_name
+                  (loname))))))
         (rhs
           (exp_name
             (loname))
@@ -320,10 +319,10 @@ even (S k) = odd k where
         (loname)
         (patterns
           (pat_parens
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname)))))))
+            (exp_name
+              (caname))
+            (exp_name
+              (loname))))))
     (rhs
       (exp_name
         (loname))
@@ -354,10 +353,10 @@ even (S k) = odd k where
             (loname)
             (patterns
               (pat_parens
-                (pat_apply
-                  (caname)
-                  (pat_name
-                    (loname)))))))
+                (exp_name
+                  (caname))
+                (exp_name
+                  (loname))))))
         (rhs
           (exp_name
             (loname))
@@ -508,7 +507,39 @@ ltrim str@_ = str
         (loname)))))
 
 ================================================================================
-Function arg with function decomposition
+Function arg with function decomposition 1
+================================================================================
+
+parsePosTrimmed (strCons '+' xs) | (StrCons '+' xs) = _
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_parens
+            (exp_name
+              (loname))
+            (exp_literal
+              (char))
+            (exp_name
+              (loname))))))
+    (with_pat
+      (pat_parens
+        (exp_name
+          (caname))
+        (exp_literal
+          (char))
+        (exp_name
+          (loname))))
+    (rhs
+      (wildcard))))
+
+================================================================================
+Function arg with function decomposition 2
 ================================================================================
 
 asList str@(strCons x xs) = x :: xs
@@ -600,10 +631,10 @@ lteAddRight (S k) {m} = LTESucc (lteAddRight {m} k)
         (loname)
         (patterns
           (pat_parens
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname))))
+            (exp_name
+              (caname))
+            (exp_name
+              (loname)))
           (pat_record
             (pat_fields
               (pat_field

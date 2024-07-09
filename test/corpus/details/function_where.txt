@@ -313,19 +313,17 @@ Zippable List1 where
                 (pat_name
                   (loname))
                 (pat_parens
-                  (pat_infix
-                    (pat_name
-                      (loname))
-                    (operator)
-                    (pat_name
-                      (loname))))
+                  (exp_name
+                    (loname))
+                  (exp_op)
+                  (exp_name
+                    (loname)))
                 (pat_parens
-                  (pat_infix
-                    (pat_name
-                      (loname))
-                    (operator)
-                    (pat_name
-                      (loname)))))))
+                  (exp_name
+                    (loname))
+                  (exp_op)
+                  (exp_name
+                    (loname))))))
           (rhs
             (exp_name
               (loname))

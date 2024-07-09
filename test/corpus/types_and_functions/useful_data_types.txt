@@ -60,12 +60,11 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
           (pat_name
             (caname))
           (pat_parens
-            (pat_infix
-              (pat_name
-                (loname))
-              (operator)
-              (pat_name
-                (loname)))))))
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_name
+              (loname))))))
     (rhs
       (exp_name
         (caname))
@@ -77,17 +76,16 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
         (loname)
         (patterns
           (pat_parens
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname))))
+            (exp_name
+              (caname))
+            (exp_name
+              (loname)))
           (pat_parens
-            (pat_infix
-              (pat_name
-                (loname))
-              (operator)
-              (pat_name
-                (loname)))))))
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_name
+              (loname))))))
     (rhs
       (exp_name
         (loname))
@@ -364,12 +362,11 @@ filter p (x :: xs)
           (pat_name
             (loname))
           (pat_parens
-            (pat_infix
-              (pat_name
-                (loname))
-              (operator)
-              (pat_name
-                (loname)))))))
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_name
+              (loname))))))
     (rhs
       (exp_case
         (exp_name
@@ -381,11 +378,10 @@ filter p (x :: xs)
         (alts
           (alt
             (pat_parens
-              (pat_infix
-                (pat_wildcard)
-                (operator)
-                (pat_name
-                  (loname))))
+              (wildcard)
+              (exp_op)
+              (exp_name
+                (loname)))
             (exp_if
               (exp_name
                 (loname))
