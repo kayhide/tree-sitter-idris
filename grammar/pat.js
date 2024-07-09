@@ -12,6 +12,8 @@ module.exports = {
 
   pat_record: $ => field('fields', $.pat_fields),
 
+  pat_at_wildcard: _ => '@_',
+
   pat_parens: $ => parens(sep($.tuple_operator, $._typed_pat)),
 
   pat_at_parens: $ => seq(
@@ -42,6 +44,7 @@ module.exports = {
     $.pat_record,
     alias($.literal, $.pat_literal),
     alias($.wildcard, $.pat_wildcard),
+    $.pat_at_wildcard,
     $.pat_parens,
     $.pat_at_parens,
     $.pat_list,
