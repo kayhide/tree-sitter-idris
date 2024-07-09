@@ -302,7 +302,8 @@ Zippable List1 where
       (implementation_head
         (visibility)
         (interface_name)
-        (caname))
+        (type_name
+          (caname)))
       (implementation_body
         (where)
         (function

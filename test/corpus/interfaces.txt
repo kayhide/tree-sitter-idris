@@ -35,7 +35,8 @@ Show Nat where
   (implementation
     (implementation_head
       (interface_name)
-      (caname))
+      (type_name
+        (caname)))
     (implementation_body
       (where)
       (function
@@ -215,6 +216,33 @@ implementation Functor (SortedMap k) where
       (where))))
 
 ================================================================================
+Implimentation with qualified op in parens
+================================================================================
+
+{x : a} -> Injective (Vect.(::) x) where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (implementation
+    (implementation_head
+      (type_braces
+        (implicit_arg
+          (type_name
+            (loname)))
+        (type_name
+          (loname)))
+      (interface_name)
+      (type_parens
+        (type_name
+          (qualified_operator
+            (module)))
+        (type_name
+          (loname))))
+    (implementation_body
+      (where))))
+
+================================================================================
 Implimentation with empty list
 ================================================================================
 
@@ -260,28 +288,27 @@ Uninhabited (x::xs = y::ys) where
           (caname))
         (type_name
           (loname)))
-      (interface_name)
-      (type_parens
-        (type_name
-          (caname))
-        (operator)
-        (type_name
-          (loname))
-        (operator)
-        (type_name
-          (loname)))
-      (type_parens
-        (type_name
-          (caname))
-        (operator)
-        (type_name
-          (loname))
-        (operator)
-        (type_name
-          (loname)))
-      (operator)))
-  (implementation
-    (implementation_head
+      (constraints
+        (constraint
+          (interface_name)
+          (type_parens
+            (type_name
+              (caname))
+            (operator)
+            (type_name
+              (loname))
+            (operator)
+            (type_name
+              (loname)))
+          (type_parens
+            (type_name
+              (caname))
+            (operator)
+            (type_name
+              (loname))
+            (operator)
+            (type_name
+              (loname)))))
       (interface_name)
       (type_parens
         (type_name
@@ -310,8 +337,9 @@ Biinjective Prelude.(::) where
   (implementation
     (implementation_head
       (interface_name)
-      (qualified_operator
-        (module)))
+      (type_name
+        (qualified_operator
+          (module))))
     (implementation_body
       (where))))
 
@@ -329,7 +357,8 @@ Named Implementations 1
       (implementation_name
         (loname))
       (interface_name)
-      (caname))
+      (type_name
+        (caname)))
     (implementation_body
       (where))))
 
@@ -347,7 +376,8 @@ Named Implementations 2
       (implementation_name
         (caname))
       (interface_name)
-      (caname)
+      (type_name
+        (caname))
       (using
         (implementation_name
           (caname))))
@@ -410,7 +440,8 @@ Num Foo
   (implementation
     (implementation_head
       (interface_name)
-      (caname))))
+      (type_name
+        (caname)))))
 
 ================================================================================
 Implementation with deeply nested exp
@@ -427,7 +458,8 @@ FiniteBits Bits16 where
   (implementation
     (implementation_head
       (interface_name)
-      (caname))
+      (type_name
+        (caname)))
     (implementation_body
       (where)
       (function
@@ -485,8 +517,10 @@ Cast Char Nat where
       (visibility)
       (pragma_inline)
       (interface_name)
-      (caname)
-      (caname))
+      (type_name
+        (caname))
+      (type_name
+        (caname)))
     (implementation_body
       (where))))
 
@@ -514,7 +548,8 @@ public export
             (type_name
               (loname)))))
       (interface_name)
-      (loname))
+      (type_name
+        (loname)))
     (implementation_body
       (where))))
 

@@ -91,7 +91,7 @@ module.exports = {
       $.hole,
       $.wildcard,
       $.literal,
-      alias($._q_name, $.type_name),
+      alias($._q_name_op, $.type_name),
       $.operator,
       $.type_parens,
       $.type_list,

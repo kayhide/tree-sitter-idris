@@ -133,18 +133,11 @@ module.exports = grammar({
      * Visibilities conflict.
      */
     [$.implementation_head, $.signature],
-    [$.implementation_head, $.constraint],
 
     /**
      * Braces
      */
     [$._q_name, $._field_name],
-
-    /**
-     * Interfaces and implementations
-     */
-    [$._q_name, $._name_op],
-    [$._q_name, $._q_name_op],
 
     /**
      * Parens perator

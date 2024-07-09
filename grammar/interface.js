@@ -66,13 +66,7 @@ module.exports = {
         ),
       ),
       field('subject', $.interface_name),
-      repeat(
-        choice(
-          $._type, 
-          $._q_name_op
-        ),
-      ),
-      // repeat(choice($._type)),
+      repeat($._type),
       optional($.using),
     ),
 
