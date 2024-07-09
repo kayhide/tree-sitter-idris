@@ -380,7 +380,7 @@ splitAt c x = case break (== c) x of
           (loname))
         (alts
           (alt
-            (pat_tuple
+            (pat_parens
               (pat_name
                 (loname))
               (tuple_operator)

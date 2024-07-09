@@ -12,7 +12,15 @@ module.exports = {
 
   pat_record: $ => field('fields', $.pat_fields),
 
-  pat_tuple: $ => parens(sep($.tuple_operator, $._typed_pat)),
+  pat_parens: $ => parens(sep($.tuple_operator, $._typed_pat)),
+
+  pat_at_parens: $ => seq(
+    '@(', 
+    choice(
+      $._pat, 
+      $._aexps,
+    ),
+    ')'),
 
   pat_list: $ => choice(
     brackets(sep($.comma, $._typed_pat)),
@@ -34,7 +42,8 @@ module.exports = {
     $.pat_record,
     alias($.literal, $.pat_literal),
     alias($.wildcard, $.pat_wildcard),
-    $.pat_tuple,
+    $.pat_parens,
+    $.pat_at_parens,
     $.pat_list,
     $.pat_braces,
     $.pat_at_braces,

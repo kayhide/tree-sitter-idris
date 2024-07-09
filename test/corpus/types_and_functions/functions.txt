@@ -36,7 +36,7 @@ plus (S k) y = S (plus k y)
       (funvar
         (loname)
         (patterns
-          (pat_tuple
+          (pat_parens
             (pat_apply
               (caname)
               (pat_name
@@ -92,7 +92,7 @@ mult (S k) y = plus y (mult k y)
       (funvar
         (loname)
         (patterns
-          (pat_tuple
+          (pat_parens
             (pat_apply
               (caname)
               (pat_name
@@ -185,7 +185,7 @@ reverse xs = revAcc [] xs where
             (patterns
               (pat_name
                 (loname))
-              (pat_tuple
+              (pat_parens
                 (pat_infix
                   (pat_name
                     (loname))
@@ -319,7 +319,7 @@ even (S k) = odd k where
       (funvar
         (loname)
         (patterns
-          (pat_tuple
+          (pat_parens
             (pat_apply
               (caname)
               (pat_name
@@ -353,7 +353,7 @@ even (S k) = odd k where
           (funvar
             (loname)
             (patterns
-              (pat_tuple
+              (pat_parens
                 (pat_apply
                   (caname)
                   (pat_name
@@ -487,6 +487,36 @@ test = [c (S 1), c Z, d (S Z)]
                 (loname)))))))))
 
 ================================================================================
+Function arg with function decomposition
+================================================================================
+
+asList str@(strCons x xs) = x :: xs
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname))
+          (pat_at_parens
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))))))
+    (rhs
+      (exp_name
+        (loname))
+      (exp_op)
+      (exp_name
+        (loname)))))
+
+================================================================================
 Implicit args 1
 ================================================================================
 
@@ -548,7 +578,7 @@ lteAddRight (S k) {m} = LTESucc (lteAddRight {m} k)
       (funvar
         (loname)
         (patterns
-          (pat_tuple
+          (pat_parens
             (pat_apply
               (caname)
               (pat_name
@@ -698,7 +728,7 @@ uninhabited (x, _) @{Left  _} = uninhabited x
       (funvar
         (loname)
         (patterns
-          (pat_tuple
+          (pat_parens
             (pat_name
               (loname))
             (tuple_operator)

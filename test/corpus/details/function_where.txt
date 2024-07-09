@@ -312,14 +312,14 @@ Zippable List1 where
               (patterns
                 (pat_name
                   (loname))
-                (pat_tuple
+                (pat_parens
                   (pat_infix
                     (pat_name
                       (loname))
                     (operator)
                     (pat_name
                       (loname))))
-                (pat_tuple
+                (pat_parens
                   (pat_infix
                     (pat_name
                       (loname))

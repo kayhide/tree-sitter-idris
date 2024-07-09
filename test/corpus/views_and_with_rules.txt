@@ -15,7 +15,7 @@ filter p (x :: xs) with (filter p xs)
         (patterns
           (pat_name
             (loname))
-          (pat_tuple
+          (pat_parens
             (pat_infix
               (pat_name
                 (loname))
@@ -37,7 +37,7 @@ filter p (x :: xs) with (filter p xs)
             (patterns
               (pat_name
                 (loname))
-              (pat_tuple
+              (pat_parens
                 (pat_infix
                   (pat_name
                     (loname))
@@ -45,7 +45,7 @@ filter p (x :: xs) with (filter p xs)
                   (pat_name
                     (loname)))))))
         (with_pat
-          (pat_tuple
+          (pat_parens
             (pat_infix
               (pat_wildcard)
               (operator)
@@ -71,7 +71,7 @@ filter p (x :: xs) with (filter p xs)
         (patterns
           (pat_name
             (loname))
-          (pat_tuple
+          (pat_parens
             (pat_infix
               (pat_name
                 (loname))
@@ -90,7 +90,7 @@ filter p (x :: xs) with (filter p xs)
         (lhs
           (wildcard))
         (with_pat
-          (pat_tuple
+          (pat_parens
             (pat_infix
               (pat_wildcard)
               (operator)
@@ -264,7 +264,7 @@ mapMaybeAppend f (x::xs) ys with (f x)
         (patterns
           (pat_name
             (loname))
-          (pat_tuple
+          (pat_parens
             (pat_infix
               (pat_name
                 (loname))
@@ -303,7 +303,7 @@ mapMaybeAppend f (x::xs) ys with (f x)
         (lhs
           (wildcard))
         (with_pat
-          (pat_tuple
+          (pat_parens
             (pat_apply
               (caname)
               (pat_name

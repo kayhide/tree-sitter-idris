@@ -38,7 +38,7 @@ mutual
           (funvar
             (loname)
             (patterns
-              (pat_tuple
+              (pat_parens
                 (pat_apply
                   (caname)
                   (pat_name
@@ -70,7 +70,7 @@ mutual
           (funvar
             (loname)
             (patterns
-              (pat_tuple
+              (pat_parens
                 (pat_apply
                   (caname)
                   (pat_name
