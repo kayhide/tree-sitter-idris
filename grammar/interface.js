@@ -57,6 +57,7 @@ module.exports = {
   implementation_head: $ =>
     seq(
       optional($.visibility),
+      optional('implementation'),
       optional(brackets($.implementation_name)),
       repeat(
         choice(

@@ -195,6 +195,26 @@ interface Functor f => Applicative (0 f : Type -> Type) where
       (where))))
 
 ================================================================================
+Implimentation keyword
+================================================================================
+
+implementation Functor (SortedMap k) where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (implementation
+    (implementation_head
+      (interface_name)
+      (type_parens
+        (type_name
+          (caname))
+        (type_name
+          (loname))))
+    (implementation_body
+      (where))))
+
+================================================================================
 Implimentation with empty list
 ================================================================================
 
