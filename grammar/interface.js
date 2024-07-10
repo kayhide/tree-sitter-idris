@@ -42,7 +42,7 @@ module.exports = {
   interface_body: $ => where($, $._interface_decl),
 
   _interface_decl: $ => choice(
-    $._record_constructor,
+    $._constructor,
     $._decl,
   ),
     

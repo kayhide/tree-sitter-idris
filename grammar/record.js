@@ -9,7 +9,7 @@ module.exports = {
     optional($.visibility),
     'record',
     field('name', choice($.record_name, parens($.operator))),
-    repeat($._tyvar),
+    repeat($._atype),
     $.where,
     optional($.record_body),
   ),
@@ -17,16 +17,17 @@ module.exports = {
   record_body: $ => layouted($, $._record_decl),
 
   _record_decl: $ => choice(
-    $._record_constructor,
+    $._constructor,
     alias($._record_field, $.record_field),
   ),
 
-  _record_constructor: $ => seq(
+  _constructor: $ => seq(
     'constructor',
     field('name', $._caname_op), 
   ),
     
   _record_field: $ => seq(
+    optional($.quantity),
     sep1($.comma, $._q_loname), $._type_annotation
   ),
   

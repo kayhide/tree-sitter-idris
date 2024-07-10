@@ -586,9 +586,12 @@ record DPair a (p : a -> Type) where
 (idris
   (record
     (record_name)
-    (type_variable)
-    (annotated_type_variable
-      (type_variable)
+    (type_name
+      (loname))
+    (type_parens
+      (type_name
+        (loname))
+      (operator)
       (type_name
         (loname))
       (operator)
@@ -619,12 +622,54 @@ record (<=>) (a, b : Type) where
 (idris
   (record
     (operator)
-    (annotated_type_variable
-      (type_variable)
-      (type_variable)
+    (type_parens
+      (type_name
+        (loname))
+      (comma)
+      (type_name
+        (loname))
+      (operator)
       (type_name
         (caname)))
     (where)))
+
+================================================================================
+Record with operator constructor
+================================================================================
+
+record Exists {0 type : Type} this where
+  constructor Evidence
+  0 fst : type
+  snd : this fst
+
+--------------------------------------------------------------------------------
+
+(idris
+  (record
+    (record_name)
+    (type_braces
+      (implicit_arg
+        (quantity)
+        (type_name
+          (loname)))
+      (type_name
+        (caname)))
+    (type_name
+      (loname))
+    (where)
+    (record_body
+      (caname)
+      (record_field
+        (quantity)
+        (loname)
+        (type_name
+          (loname)))
+      (record_field
+        (loname)
+        (type_name
+          (loname))
+        (type_name
+          (loname))))))
 
 ================================================================================
 Record with operator constructor
@@ -640,7 +685,8 @@ record List1 a where
 (idris
   (record
     (record_name)
-    (type_variable)
+    (type_name
+      (loname))
     (where)
     (record_body
       (operator)
