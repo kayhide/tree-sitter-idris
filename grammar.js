@@ -108,21 +108,20 @@ module.exports = grammar({
      * Names.
      */
     [$._type_variables, $.loname],
-    [$._name, $.pat_apply],
     [$._name, $.interface_name],
     [$._name_op, $.interface_name],
     [$._name, $._name_op, $.interface_name],
-    [$.pat_apply, $.interface_name],
     [$._q_name_op, $.interface_name],
-    [$._q_name_op, $.pat_apply, $.interface_name],
     [$._apat, $._implementation_name],
     [$._name, $._q_name],
     [$._name, $._name_op],
-    [$._name, $._name_op, $.pat_apply],
-    [$._name, $._name_op, $.pat_apply, $.interface_name],
+    [$._name, $._q_name, $._name_op],
+    [$._name, $._q_name, $._name_op, $.interface_name],
+    [$._q_name, $._q_name_op, $.interface_name],
+    [$._q_name, $._q_name_op],
+    [$._q_name, $._name_op],
+    [$._q_name,  $.interface_name],
     [$._name, $._field_name],
-    [$._name_op, $.pat_apply],
-    [$._q_name_op, $.pat_apply],
 
     /**
      * RHS of operator def.

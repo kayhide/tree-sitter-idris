@@ -555,12 +555,12 @@ asList str@(strCons x xs) = x :: xs
           (pat_name
             (loname))
           (pat_at_parens
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))))))
+            (pat_apply
+              (loname)
+              (pat_name
+                (loname))
+              (pat_name
+                (loname)))))))
     (rhs
       (exp_name
         (loname))
@@ -690,6 +690,40 @@ gcd : (a: Nat) -> (b: Nat) -> {auto 0 ok: NotBothZero a b} -> Nat
     (operator)
     (type_name
       (caname))))
+
+================================================================================
+Implicit args 5
+================================================================================
+
+imapProperty i f @{ix :: ixs} (x :: xs) = _
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname))
+          (pat_name
+            (loname))
+          (pat_at_braces
+            (pat_infix
+              (pat_name
+                (loname))
+              (operator)
+              (pat_name
+                (loname))))
+          (pat_parens
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_name
+              (loname))))))
+    (rhs
+      (wildcard))))
 
 ================================================================================
 Type signature braces

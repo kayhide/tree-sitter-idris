@@ -297,20 +297,20 @@ Zippable List1 where
 --------------------------------------------------------------------------------
 
 (idris
-  (ERROR
-    (implementation
-      (implementation_head
-        (visibility)
-        (interface_name)
-        (type_name
-          (caname)))
-      (implementation_body
-        (where)
-        (function
-          (lhs
-            (funvar
-              (loname)
-              (patterns
+  (implementation
+    (implementation_head
+      (visibility)
+      (interface_name)
+      (type_name
+        (caname)))
+    (implementation_body
+      (where)
+      (function
+        (lhs
+          (funop
+            (patterns
+              (pat_apply
+                (loname)
                 (pat_name
                   (loname))
                 (pat_parens
@@ -324,49 +324,46 @@ Zippable List1 where
                     (loname))
                   (exp_op)
                   (exp_name
-                    (loname))))))
-          (rhs
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))
-            (exp_op)
-            (exp_name
-              (loname))
-            (exp_name
-              (loname))
-            (exp_name
-              (loname)))))))
-  (function
-    (lhs
-      (funop
-        (patterns
-          (pat_name
-            (loname))
-          (pat_name
-            (loname)))
-        (operator)
-        (patterns
-          (pat_apply
-            (caname)
-            (pat_name
-              (loname)))
-          (operator)
-          (pat_infix
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname)))
+                    (loname))))
+              (operator)
+              (pat_apply
+                (loname)
+                (pat_name
+                  (loname))
+                (pat_name
+                  (loname))))
             (operator)
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname))
-              (pat_name
-                (loname))
-              (pat_list)
-              (pat_wildcard))))))
-    (rhs
-      (exp_list))))
+            (patterns
+              (pat_apply
+                (loname)
+                (pat_name
+                  (loname))
+                (pat_name
+                  (loname))
+                (pat_name
+                  (loname))
+                (pat_name
+                  (loname)))
+              (operator)
+              (pat_infix
+                (pat_apply
+                  (caname)
+                  (pat_name
+                    (loname)))
+                (operator)
+                (pat_infix
+                  (pat_apply
+                    (caname)
+                    (pat_name
+                      (loname)))
+                  (operator)
+                  (pat_apply
+                    (caname)
+                    (pat_name
+                      (loname))
+                    (pat_name
+                      (loname))
+                    (pat_list)
+                    (pat_wildcard)))))))
+        (rhs
+          (exp_list))))))

@@ -25,7 +25,7 @@ module.exports = {
     '@(', 
     choice(
       $._pat, 
-      $._aexps,
+      // $._aexps,
     ),
     ')'),
 
@@ -42,7 +42,14 @@ module.exports = {
     '}'
   ),
 
-  pat_at_braces: $ => seq('@{', $._lpat, '}'),
+  pat_at_braces: $ => seq(
+    '@{', 
+    choice(
+      $._pat, 
+      // $._aexps,
+    ),
+    '}'
+  ),
 
   _apat: $ => choice(
     alias($._name, $.pat_name),
@@ -61,7 +68,7 @@ module.exports = {
   /**
    * In patterns, application is only legal if the first element is a con.
    */
-  pat_apply: $ => seq($._q_caname, repeat1($._apat)),
+  pat_apply: $ => seq($._q_name, repeat1($._apat)),
 
   _lpat: $ => choice(
     $._apat,
