@@ -137,10 +137,6 @@
         "required": true,
         "types": [
           {
-            "type": "pat_apply",
-            "named": true
-          },
-          {
             "type": "pat_at_braces",
             "named": true
           },
@@ -157,10 +153,6 @@
             "named": true
           },
           {
-            "type": "pat_infix",
-            "named": true
-          },
-          {
             "type": "pat_list",
             "named": true
           },
@@ -170,6 +162,10 @@
           },
           {
             "type": "pat_name",
+            "named": true
+          },
+          {
+            "type": "pat_op",
             "named": true
           },
           {
@@ -373,10 +369,6 @@
           "named": true
         },
         {
-          "type": "pat_apply",
-          "named": true
-        },
-        {
           "type": "pat_at_braces",
           "named": true
         },
@@ -393,10 +385,6 @@
           "named": true
         },
         {
-          "type": "pat_infix",
-          "named": true
-        },
-        {
           "type": "pat_list",
           "named": true
         },
@@ -406,6 +394,10 @@
         },
         {
           "type": "pat_name",
+          "named": true
+        },
+        {
+          "type": "pat_op",
           "named": true
         },
         {
@@ -558,10 +550,6 @@
           "named": true
         },
         {
-          "type": "pat_apply",
-          "named": true
-        },
-        {
           "type": "pat_at_braces",
           "named": true
         },
@@ -578,10 +566,6 @@
           "named": true
         },
         {
-          "type": "pat_infix",
-          "named": true
-        },
-        {
           "type": "pat_list",
           "named": true
         },
@@ -591,6 +575,10 @@
         },
         {
           "type": "pat_name",
+          "named": true
+        },
+        {
+          "type": "pat_op",
           "named": true
         },
         {
@@ -3037,6 +3025,10 @@
           "named": true
         },
         {
+          "type": "pat_op",
+          "named": true
+        },
+        {
           "type": "pat_parens",
           "named": true
         },
@@ -3637,7 +3629,7 @@
     }
   },
   {
-    "type": "pat_apply",
+    "type": "pat_at_braces",
     "named": true,
     "fields": {},
     "children": {
@@ -3645,10 +3637,6 @@
       "required": true,
       "types": [
         {
-          "type": "caname",
-          "named": true
-        },
-        {
           "type": "pat_at_braces",
           "named": true
         },
@@ -3677,66 +3665,7 @@
           "named": true
         },
         {
-          "type": "pat_parens",
-          "named": true
-        },
-        {
-          "type": "pat_record",
-          "named": true
-        },
-        {
-          "type": "pat_wildcard",
-          "named": true
-        },
-        {
-          "type": "pragma_mkworld",
-          "named": true
-        },
-        {
-          "type": "qualified_caname",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "pat_at_braces",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "pat_apply",
-          "named": true
-        },
-        {
-          "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_at_parens",
-          "named": true
-        },
-        {
-          "type": "pat_at_wildcard",
-          "named": true
-        },
-        {
-          "type": "pat_braces",
-          "named": true
-        },
-        {
-          "type": "pat_list",
-          "named": true
-        },
-        {
-          "type": "pat_literal",
-          "named": true
-        },
-        {
-          "type": "pat_name",
+          "type": "pat_op",
           "named": true
         },
         {
@@ -3764,60 +3693,8 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
-        {
-          "type": "exp_explicit_impl",
-          "named": true
-        },
-        {
-          "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
-          "named": true
-        },
-        {
-          "type": "exp_list",
-          "named": true
-        },
-        {
-          "type": "exp_literal",
-          "named": true
-        },
-        {
-          "type": "exp_name",
-          "named": true
-        },
-        {
-          "type": "exp_op",
-          "named": true
-        },
-        {
-          "type": "exp_parens",
-          "named": true
-        },
-        {
-          "type": "exp_record_access",
-          "named": true
-        },
-        {
-          "type": "exp_ticked",
-          "named": true
-        },
-        {
-          "type": "exp_tuple",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "pat_apply",
-          "named": true
-        },
         {
           "type": "pat_at_braces",
           "named": true
@@ -3835,10 +3712,6 @@
           "named": true
         },
         {
-          "type": "pat_infix",
-          "named": true
-        },
-        {
           "type": "pat_list",
           "named": true
         },
@@ -3848,6 +3721,10 @@
         },
         {
           "type": "pat_name",
+          "named": true
+        },
+        {
+          "type": "pat_op",
           "named": true
         },
         {
@@ -3864,22 +3741,6 @@
         },
         {
           "type": "pragma_mkworld",
-          "named": true
-        },
-        {
-          "type": "pragma_search",
-          "named": true
-        },
-        {
-          "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "wildcard",
           "named": true
         }
       ]
@@ -3902,10 +3763,6 @@
           "named": true
         },
         {
-          "type": "pat_apply",
-          "named": true
-        },
-        {
           "type": "pat_at_braces",
           "named": true
         },
@@ -3931,6 +3788,10 @@
         },
         {
           "type": "pat_name",
+          "named": true
+        },
+        {
+          "type": "pat_op",
           "named": true
         },
         {
@@ -3965,10 +3826,6 @@
           "named": true
         },
         {
-          "type": "pat_apply",
-          "named": true
-        },
-        {
           "type": "pat_at_braces",
           "named": true
         },
@@ -3985,10 +3842,6 @@
           "named": true
         },
         {
-          "type": "pat_infix",
-          "named": true
-        },
-        {
           "type": "pat_list",
           "named": true
         },
@@ -3998,6 +3851,10 @@
         },
         {
           "type": "pat_name",
+          "named": true
+        },
+        {
+          "type": "pat_op",
           "named": true
         },
         {
@@ -4043,73 +3900,6 @@
     }
   },
   {
-    "type": "pat_infix",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "pat_apply",
-          "named": true
-        },
-        {
-          "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_at_parens",
-          "named": true
-        },
-        {
-          "type": "pat_at_wildcard",
-          "named": true
-        },
-        {
-          "type": "pat_braces",
-          "named": true
-        },
-        {
-          "type": "pat_infix",
-          "named": true
-        },
-        {
-          "type": "pat_list",
-          "named": true
-        },
-        {
-          "type": "pat_literal",
-          "named": true
-        },
-        {
-          "type": "pat_name",
-          "named": true
-        },
-        {
-          "type": "pat_parens",
-          "named": true
-        },
-        {
-          "type": "pat_record",
-          "named": true
-        },
-        {
-          "type": "pat_wildcard",
-          "named": true
-        },
-        {
-          "type": "pragma_mkworld",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "pat_list",
     "named": true,
     "fields": {},
@@ -4122,10 +3912,6 @@
           "named": true
         },
         {
-          "type": "pat_apply",
-          "named": true
-        },
-        {
           "type": "pat_at_braces",
           "named": true
         },
@@ -4142,10 +3928,6 @@
           "named": true
         },
         {
-          "type": "pat_infix",
-          "named": true
-        },
-        {
           "type": "pat_list",
           "named": true
         },
@@ -4155,6 +3937,10 @@
         },
         {
           "type": "pat_name",
+          "named": true
+        },
+        {
+          "type": "pat_op",
           "named": true
         },
         {
@@ -4231,6 +4017,11 @@
     }
   },
   {
+    "type": "pat_op",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "pat_parens",
     "named": true,
     "fields": {},
@@ -4238,58 +4029,6 @@
       "multiple": true,
       "required": false,
       "types": [
-        {
-          "type": "exp_explicit_impl",
-          "named": true
-        },
-        {
-          "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
-          "named": true
-        },
-        {
-          "type": "exp_list",
-          "named": true
-        },
-        {
-          "type": "exp_literal",
-          "named": true
-        },
-        {
-          "type": "exp_name",
-          "named": true
-        },
-        {
-          "type": "exp_op",
-          "named": true
-        },
-        {
-          "type": "exp_parens",
-          "named": true
-        },
-        {
-          "type": "exp_record_access",
-          "named": true
-        },
-        {
-          "type": "exp_ticked",
-          "named": true
-        },
-        {
-          "type": "exp_tuple",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "pat_apply",
-          "named": true
-        },
         {
           "type": "pat_at_braces",
           "named": true
@@ -4307,10 +4046,6 @@
           "named": true
         },
         {
-          "type": "pat_infix",
-          "named": true
-        },
-        {
           "type": "pat_list",
           "named": true
         },
@@ -4320,6 +4055,10 @@
         },
         {
           "type": "pat_name",
+          "named": true
+        },
+        {
+          "type": "pat_op",
           "named": true
         },
         {
@@ -4343,23 +4082,7 @@
           "named": true
         },
         {
-          "type": "pragma_search",
-          "named": true
-        },
-        {
-          "type": "record_update",
-          "named": true
-        },
-        {
           "type": "tuple_operator",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "wildcard",
           "named": true
         }
       ]
@@ -4386,13 +4109,9 @@
     "named": true,
     "fields": {
       "pattern": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
-          {
-            "type": "pat_apply",
-            "named": true
-          },
           {
             "type": "pat_at_braces",
             "named": true
@@ -4410,10 +4129,6 @@
             "named": true
           },
           {
-            "type": "pat_infix",
-            "named": true
-          },
-          {
             "type": "pat_list",
             "named": true
           },
@@ -4423,6 +4138,10 @@
           },
           {
             "type": "pat_name",
+            "named": true
+          },
+          {
+            "type": "pat_op",
             "named": true
           },
           {
@@ -4504,14 +4223,6 @@
       "required": true,
       "types": [
         {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "pat_apply",
-          "named": true
-        },
-        {
           "type": "pat_at_braces",
           "named": true
         },
@@ -4528,10 +4239,6 @@
           "named": true
         },
         {
-          "type": "pat_infix",
-          "named": true
-        },
-        {
           "type": "pat_list",
           "named": true
         },
@@ -4541,6 +4248,10 @@
         },
         {
           "type": "pat_name",
+          "named": true
+        },
+        {
+          "type": "pat_op",
           "named": true
         },
         {
@@ -4844,7 +4555,23 @@
       "required": true,
       "types": [
         {
-          "type": "annotated_type_variable",
+          "type": "exp_implicit_arg",
+          "named": true
+        },
+        {
+          "type": "hole",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
           "named": true
         },
         {
@@ -4852,7 +4579,19 @@
           "named": true
         },
         {
-          "type": "type_variable",
+          "type": "type_braces",
+          "named": true
+        },
+        {
+          "type": "type_list",
+          "named": true
+        },
+        {
+          "type": "type_name",
+          "named": true
+        },
+        {
+          "type": "type_parens",
           "named": true
         },
         {
@@ -4861,6 +4600,10 @@
         },
         {
           "type": "where",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -4950,6 +4693,10 @@
         },
         {
           "type": "qualified_loname",
+          "named": true
+        },
+        {
+          "type": "quantity",
           "named": true
         },
         {
@@ -5903,6 +5650,10 @@
           "named": true
         },
         {
+          "type": "pat_op",
+          "named": true
+        },
+        {
           "type": "pat_parens",
           "named": true
         },
@@ -5947,6 +5698,10 @@
   },
   {
     "type": ")",
+    "named": false
+  },
+  {
+    "type": "**",
     "named": false
   },
   {
@@ -6155,11 +5910,11 @@
   },
   {
     "type": "module",
-    "named": true
+    "named": false
   },
   {
     "type": "module",
-    "named": false
+    "named": true
   },
   {
     "type": "mutual",

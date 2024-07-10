@@ -524,6 +524,10 @@
         {
           "type": "STRING",
           "value": "."
+        },
+        {
+          "type": "STRING",
+          "value": "**"
         }
       ]
     },
@@ -885,7 +889,7 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "_tyvar"
+            "name": "_atype"
           }
         },
         {
@@ -1001,7 +1005,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_record_constructor"
+          "name": "_constructor"
         },
         {
           "type": "ALIAS",
@@ -1014,7 +1018,7 @@
         }
       ]
     },
-    "_record_constructor": {
+    "_constructor": {
       "type": "SEQ",
       "members": [
         {
@@ -1034,6 +1038,18 @@
     "_record_field": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "quantity"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
         {
           "type": "SEQ",
           "members": [
@@ -3384,41 +3400,32 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "CHOICE",
+              "type": "SEQ",
               "members": [
                 {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "_typed_pat"
-                    },
-                    {
-                      "type": "REPEAT",
-                      "content": {
-                        "type": "SEQ",
-                        "members": [
-                          {
-                            "type": "SYMBOL",
-                            "name": "tuple_operator"
-                          },
-                          {
-                            "type": "SYMBOL",
-                            "name": "_typed_pat"
-                          }
-                        ]
-                      }
-                    }
-                  ]
+                  "type": "SYMBOL",
+                  "name": "_typed_pat"
                 },
                 {
-                  "type": "BLANK"
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "tuple_operator"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "_typed_pat"
+                      }
+                    ]
+                  }
                 }
               ]
             },
             {
-              "type": "SYMBOL",
-              "name": "_aexps"
+              "type": "BLANK"
             }
           ]
         },
@@ -3436,17 +3443,8 @@
           "value": "@("
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_pat"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_aexps"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_pat"
         },
         {
           "type": "STRING",
@@ -3568,7 +3566,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_lpat"
+          "name": "_pat"
         },
         {
           "type": "STRING",
@@ -3585,7 +3583,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_lpat"
+          "name": "_pat"
         },
         {
           "type": "STRING",
@@ -3604,6 +3602,15 @@
           },
           "named": true,
           "value": "pat_name"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "operator"
+          },
+          "named": true,
+          "value": "pat_op"
         },
         {
           "type": "SYMBOL",
@@ -3657,72 +3664,20 @@
         }
       ]
     },
-    "pat_apply": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_q_caname"
-        },
-        {
-          "type": "REPEAT1",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_apat"
-          }
-        }
-      ]
-    },
-    "_lpat": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_apat"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "pat_apply"
-        }
-      ]
-    },
-    "pat_infix": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_lpat"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "operator"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_pat"
-        }
-      ]
+    "_apats": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_apat"
+      }
     },
     "_pat": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "PREC",
-          "value": 2,
-          "content": {
-            "type": "SYMBOL",
-            "name": "pat_infix"
-          }
-        },
-        {
-          "type": "PREC",
-          "value": 1,
-          "content": {
-            "type": "SYMBOL",
-            "name": "_lpat"
-          }
-        }
-      ]
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SYMBOL",
+        "name": "_apats"
+      }
     },
     "pat_typed": {
       "type": "SEQ",
@@ -3742,17 +3697,21 @@
       ]
     },
     "_typed_pat": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_pat"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "pat_typed"
-        }
-      ]
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_pat"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "pat_typed"
+          }
+        ]
+      }
     },
     "_decl_import": {
       "type": "SEQ",
@@ -3928,8 +3887,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "parameters"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "parameters"
+            },
+            {
+              "type": "STRING",
+              "value": "using"
+            }
+          ]
         },
         {
           "type": "SEQ",
@@ -4804,7 +4772,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_record_constructor"
+          "name": "_constructor"
         },
         {
           "type": "SYMBOL",
@@ -5244,17 +5212,8 @@
               "content": {
                 "type": "ALIAS",
                 "content": {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "_fun_patterns"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "pat_infix"
-                    }
-                  ]
+                  "type": "SYMBOL",
+                  "name": "_pat"
                 },
                 "named": true,
                 "value": "patterns"
@@ -5283,17 +5242,8 @@
               "content": {
                 "type": "ALIAS",
                 "content": {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "_fun_patterns"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "pat_infix"
-                    }
-                  ]
+                  "type": "SYMBOL",
+                  "name": "_pat"
                 },
                 "named": true,
                 "value": "patterns"
@@ -6041,10 +5991,6 @@
       "pat_list"
     ],
     [
-      "_exp",
-      "pat_parens"
-    ],
-    [
       "_aexp",
       "_apat"
     ],
@@ -6054,32 +6000,11 @@
     ],
     [
       "_name",
-      "pat_apply"
-    ],
-    [
-      "_name",
-      "interface_name"
-    ],
-    [
-      "_name_op",
       "interface_name"
     ],
     [
       "_name",
       "_name_op",
-      "interface_name"
-    ],
-    [
-      "pat_apply",
-      "interface_name"
-    ],
-    [
-      "_q_name_op",
-      "interface_name"
-    ],
-    [
-      "_q_name_op",
-      "pat_apply",
       "interface_name"
     ],
     [
@@ -6096,30 +6021,7 @@
     ],
     [
       "_name",
-      "_name_op",
-      "pat_apply"
-    ],
-    [
-      "_name",
-      "_name_op",
-      "pat_apply",
-      "interface_name"
-    ],
-    [
-      "_name",
       "_field_name"
-    ],
-    [
-      "_name_op",
-      "pat_apply"
-    ],
-    [
-      "_q_name_op",
-      "pat_apply"
-    ],
-    [
-      "_lpat",
-      "_fun_patterns"
     ],
     [
       "implementation_head",
@@ -6136,6 +6038,15 @@
     [
       "_parens_operator",
       "_aexp"
+    ],
+    [
+      "_parens_operator",
+      "_apat"
+    ],
+    [
+      "_parens_operator",
+      "_aexp",
+      "_apat"
     ],
     [
       "_type"
