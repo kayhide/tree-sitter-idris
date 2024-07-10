@@ -309,61 +309,59 @@ Zippable List1 where
         (lhs
           (funop
             (patterns
-              (pat_apply
-                (loname)
+              (pat_name
+                (loname))
+              (pat_name
+                (loname))
+              (pat_parens
                 (pat_name
                   (loname))
-                (pat_parens
-                  (exp_name
-                    (loname))
-                  (exp_op)
-                  (exp_name
-                    (loname)))
-                (pat_parens
-                  (exp_name
-                    (loname))
-                  (exp_op)
-                  (exp_name
-                    (loname))))
-              (operator)
-              (pat_apply
-                (loname)
+                (pat_op)
+                (pat_name
+                  (loname)))
+              (pat_parens
                 (pat_name
                   (loname))
+                (pat_op)
                 (pat_name
                   (loname))))
             (operator)
             (patterns
-              (pat_apply
-                (loname)
-                (pat_name
-                  (loname))
-                (pat_name
-                  (loname))
-                (pat_name
-                  (loname))
-                (pat_name
-                  (loname)))
-              (operator)
-              (pat_infix
-                (pat_apply
-                  (caname)
-                  (pat_name
-                    (loname)))
-                (operator)
-                (pat_infix
-                  (pat_apply
-                    (caname)
-                    (pat_name
-                      (loname)))
-                  (operator)
-                  (pat_apply
-                    (caname)
-                    (pat_name
-                      (loname))
-                    (pat_name
-                      (loname))
-                    (pat_list)
-                    (pat_wildcard)))))))
+              (pat_name
+                (loname))
+              (pat_name
+                (loname))
+              (pat_name
+                (loname))
+              (pat_op)
+              (pat_name
+                (loname))
+              (pat_name
+                (loname))
+              (pat_name
+                (loname))
+              (pat_name
+                (loname))
+              (pat_name
+                (loname))
+              (pat_op)
+              (pat_name
+                (caname))
+              (pat_name
+                (loname))
+              (pat_op)
+              (pat_name
+                (caname))
+              (pat_name
+                (loname))
+              (pat_op)
+              (pat_name
+                (caname))
+              (pat_name
+                (loname))
+              (pat_name
+                (loname))
+              (pat_list)
+              (pat_wildcard))))
         (rhs
           (exp_list))))))

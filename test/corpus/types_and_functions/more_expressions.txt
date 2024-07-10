@@ -432,10 +432,10 @@ lookup_default i xs def = case list_lookup i xs of
             (exp_name
               (loname)))
           (alt
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname)))
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
             (exp_name
               (loname))))))))
 
@@ -500,10 +500,10 @@ decompress = concatMap $ \case
       (exp_lambda_case
         (alts
           (alt
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname)))
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
             (exp_name
               (loname))
             (exp_name
@@ -514,10 +514,10 @@ decompress = concatMap $ \case
             (exp_name
               (loname)))
           (alt
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname)))
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
             (exp_name
               (loname))
             (exp_name
@@ -539,12 +539,10 @@ fun <*> x = [| fun <*> x |]
 (idris
   (function
     (lhs
-      (funop
+      (funvar
+        (loname)
         (patterns
-          (pat_name
-            (loname)))
-        (operator)
-        (patterns
+          (pat_op)
           (pat_name
             (loname)))))
     (rhs

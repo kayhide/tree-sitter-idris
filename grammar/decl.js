@@ -33,9 +33,9 @@ module.exports = {
 
   _funop: $ => choice(
       seq(
-        field('patterns', alias(choice($._fun_patterns, $.pat_infix), $.patterns)),
+        field('patterns', alias($._pat, $.patterns)),
         field('subject', choice($.operator, $.tuple_operator)),
-        field('patterns', alias(choice($._fun_patterns, $.pat_infix), $.patterns)),
+        field('patterns', alias($._pat, $.patterns)),
       ),
       seq(
         parens($._funop),

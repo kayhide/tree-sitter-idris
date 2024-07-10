@@ -37,9 +37,9 @@ plus (S k) y = S (plus k y)
         (loname)
         (patterns
           (pat_parens
-            (exp_name
+            (pat_name
               (caname))
-            (exp_name
+            (pat_name
               (loname)))
           (pat_name
             (loname)))))
@@ -93,9 +93,9 @@ mult (S k) y = plus y (mult k y)
         (loname)
         (patterns
           (pat_parens
-            (exp_name
+            (pat_name
               (caname))
-            (exp_name
+            (pat_name
               (loname)))
           (pat_name
             (loname)))))
@@ -186,10 +186,10 @@ reverse xs = revAcc [] xs where
               (pat_name
                 (loname))
               (pat_parens
-                (exp_name
+                (pat_name
                   (loname))
-                (exp_op)
-                (exp_name
+                (pat_op)
+                (pat_name
                   (loname))))))
         (rhs
           (exp_name
@@ -319,9 +319,9 @@ even (S k) = odd k where
         (loname)
         (patterns
           (pat_parens
-            (exp_name
+            (pat_name
               (caname))
-            (exp_name
+            (pat_name
               (loname))))))
     (rhs
       (exp_name
@@ -353,9 +353,9 @@ even (S k) = odd k where
             (loname)
             (patterns
               (pat_parens
-                (exp_name
+                (pat_name
                   (caname))
-                (exp_name
+                (pat_name
                   (loname))))))
         (rhs
           (exp_name
@@ -521,19 +521,19 @@ parsePosTrimmed (strCons '+' xs) | (StrCons '+' xs) = _
         (loname)
         (patterns
           (pat_parens
-            (exp_name
+            (pat_name
               (loname))
-            (exp_literal
+            (pat_literal
               (char))
-            (exp_name
+            (pat_name
               (loname))))))
     (with_pat
       (pat_parens
-        (exp_name
+        (pat_name
           (caname))
-        (exp_literal
+        (pat_literal
           (char))
-        (exp_name
+        (pat_name
           (loname))))
     (rhs
       (wildcard))))
@@ -555,12 +555,12 @@ asList str@(strCons x xs) = x :: xs
           (pat_name
             (loname))
           (pat_at_parens
-            (pat_apply
-              (loname)
-              (pat_name
-                (loname))
-              (pat_name
-                (loname)))))))
+            (pat_name
+              (loname))
+            (pat_name
+              (loname))
+            (pat_name
+              (loname))))))
     (rhs
       (exp_name
         (loname))
@@ -606,9 +606,9 @@ reflexive {x = S _} = LTESucc $ reflexive
         (patterns
           (pat_braces
             (loname)
-            (pat_apply
-              (caname)
-              (pat_wildcard))))))
+            (pat_name
+              (caname))
+            (pat_wildcard)))))
     (rhs
       (exp_name
         (caname))
@@ -631,9 +631,9 @@ lteAddRight (S k) {m} = LTESucc (lteAddRight {m} k)
         (loname)
         (patterns
           (pat_parens
-            (exp_name
+            (pat_name
               (caname))
-            (exp_name
+            (pat_name
               (loname)))
           (pat_record
             (pat_fields
@@ -710,17 +710,16 @@ imapProperty i f @{ix :: ixs} (x :: xs) = _
           (pat_name
             (loname))
           (pat_at_braces
-            (pat_infix
-              (pat_name
-                (loname))
-              (operator)
-              (pat_name
-                (loname))))
-          (pat_parens
-            (exp_name
+            (pat_name
               (loname))
-            (exp_op)
-            (exp_name
+            (pat_op)
+            (pat_name
+              (loname)))
+          (pat_parens
+            (pat_name
+              (loname))
+            (pat_op)
+            (pat_name
               (loname))))))
     (rhs
       (wildcard))))
@@ -820,9 +819,9 @@ uninhabited (x, _) @{Left  _} = uninhabited x
             (tuple_operator)
             (pat_wildcard))
           (pat_at_braces
-            (pat_apply
-              (caname)
-              (pat_wildcard))))))
+            (pat_name
+              (caname))
+            (pat_wildcard)))))
     (rhs
       (exp_name
         (loname))
@@ -1237,18 +1236,16 @@ x :: xs == y :: ys = _
 (idris
   (function
     (lhs
-      (funop
+      (funvar
+        (loname)
         (patterns
+          (pat_op)
           (pat_name
             (loname))
-          (operator)
-          (pat_name
-            (loname)))
-        (operator)
-        (patterns
+          (pat_op)
           (pat_name
             (loname))
-          (operator)
+          (pat_op)
           (pat_name
             (loname)))))
     (rhs

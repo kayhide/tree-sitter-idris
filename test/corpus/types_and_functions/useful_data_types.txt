@@ -60,10 +60,10 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
           (pat_name
             (caname))
           (pat_parens
-            (exp_name
+            (pat_name
               (loname))
-            (exp_op)
-            (exp_name
+            (pat_op)
+            (pat_name
               (loname))))))
     (rhs
       (exp_name
@@ -76,15 +76,15 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
         (loname)
         (patterns
           (pat_parens
-            (exp_name
+            (pat_name
               (caname))
-            (exp_name
+            (pat_name
               (loname)))
           (pat_parens
-            (exp_name
+            (pat_name
               (loname))
-            (exp_op)
-            (exp_name
+            (pat_op)
+            (pat_name
               (loname))))))
     (rhs
       (exp_name
@@ -362,10 +362,10 @@ filter p (x :: xs)
           (pat_name
             (loname))
           (pat_parens
-            (exp_name
+            (pat_name
               (loname))
-            (exp_op)
-            (exp_name
+            (pat_op)
+            (pat_name
               (loname))))))
     (rhs
       (exp_case
@@ -378,9 +378,9 @@ filter p (x :: xs)
         (alts
           (alt
             (pat_parens
-              (wildcard)
-              (exp_op)
-              (exp_name
+              (pat_wildcard)
+              (pat_op)
+              (pat_name
                 (loname)))
             (exp_if
               (exp_name

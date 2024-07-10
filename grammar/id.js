@@ -18,7 +18,7 @@ module.exports = {
   // ------------------------------------------------------------------------
   // Operators
   // Because of scanner, some chars are not captured by regex
-  _operator: _ => choice(/(?:[:!#$%&*+./<=>?@\\^|~-]|\p{S})+/, '-', '|~', '.'),
+  _operator: _ => choice(/(?:[:!#$%&*+./<=>?@\\^|~-]|\p{S})+/, '-', '|~', '.', '**'),
   operator: $ => $._operator,
   qualified_operator: $ => qualified($, parens($._operator)),
 

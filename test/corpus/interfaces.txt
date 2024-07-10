@@ -68,12 +68,10 @@ interface Eq a where
       (where)
       (function
         (lhs
-          (funop
+          (funvar
+            (loname)
             (patterns
-              (pat_name
-                (loname)))
-            (operator)
-            (patterns
+              (pat_op)
               (pat_name
                 (loname)))))
         (rhs

@@ -39,9 +39,9 @@ mutual
             (loname)
             (patterns
               (pat_parens
-                (exp_name
+                (pat_name
                   (caname))
-                (exp_name
+                (pat_name
                   (loname))))))
         (rhs
           (exp_name
@@ -71,9 +71,9 @@ mutual
             (loname)
             (patterns
               (pat_parens
-                (exp_name
+                (pat_name
                   (caname))
-                (exp_name
+                (pat_name
                   (loname))))))
         (rhs
           (exp_name

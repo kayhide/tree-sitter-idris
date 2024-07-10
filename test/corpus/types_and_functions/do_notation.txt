@@ -145,10 +145,10 @@ _ = do
       (exp_do
         (statement
           (bind_pattern
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname)))
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
             (bind_exp
               (exp_name
                 (loname)))
@@ -162,10 +162,10 @@ _ = do
                   (caname))))))
         (statement
           (bind_pattern
-            (pat_apply
-              (caname)
-              (pat_name
-                (loname)))
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
             (bind_exp
               (exp_name
                 (loname)))

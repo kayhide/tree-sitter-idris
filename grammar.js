@@ -101,7 +101,6 @@ module.exports = grammar({
      * immediate lookahead.
      */
     [$.exp_list, $.pat_list],
-    [$._exp, $.pat_parens],
     [$._aexp, $._apat],
 
     /**
@@ -109,24 +108,11 @@ module.exports = grammar({
      */
     [$._type_variables, $.loname],
     [$._name, $.interface_name],
-    [$._name_op, $.interface_name],
     [$._name, $._name_op, $.interface_name],
-    [$._q_name_op, $.interface_name],
     [$._apat, $._implementation_name],
     [$._name, $._q_name],
     [$._name, $._name_op],
-    [$._name, $._q_name, $._name_op],
-    [$._name, $._q_name, $._name_op, $.interface_name],
-    [$._q_name, $._q_name_op, $.interface_name],
-    [$._q_name, $._q_name_op],
-    [$._q_name, $._name_op],
-    [$._q_name,  $.interface_name],
     [$._name, $._field_name],
-
-    /**
-     * RHS of operator def.
-     */
-    [$._lpat, $._fun_patterns],
 
     /**
      * Visibilities conflict.
@@ -143,6 +129,8 @@ module.exports = grammar({
      */
     [$._parens_operator, $._atype],
     [$._parens_operator, $._aexp],
+    [$._parens_operator, $._apat],
+    [$._parens_operator, $._aexp, $._apat],
 
     /**
      * What a `forall` binds to is ambiguous from the parser's POV:

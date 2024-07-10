@@ -16,10 +16,10 @@ filter p (x :: xs) with (filter p xs)
           (pat_name
             (loname))
           (pat_parens
-            (exp_name
+            (pat_name
               (loname))
-            (exp_op)
-            (exp_name
+            (pat_op)
+            (pat_name
               (loname))))))
     (with
       (exp_parens
@@ -37,16 +37,16 @@ filter p (x :: xs) with (filter p xs)
               (pat_name
                 (loname))
               (pat_parens
-                (exp_name
+                (pat_name
                   (loname))
-                (exp_op)
-                (exp_name
+                (pat_op)
+                (pat_name
                   (loname))))))
         (with_pat
           (pat_parens
-            (wildcard)
-            (exp_op)
-            (exp_name
+            (pat_wildcard)
+            (pat_op)
+            (pat_name
               (loname))))
         (rhs
           (wildcard))))))
@@ -69,10 +69,10 @@ filter p (x :: xs) with (filter p xs)
           (pat_name
             (loname))
           (pat_parens
-            (exp_name
+            (pat_name
               (loname))
-            (exp_op)
-            (exp_name
+            (pat_op)
+            (pat_name
               (loname))))))
     (with
       (exp_parens
@@ -87,9 +87,9 @@ filter p (x :: xs) with (filter p xs)
           (wildcard))
         (with_pat
           (pat_parens
-            (wildcard)
-            (exp_op)
-            (exp_name
+            (pat_wildcard)
+            (pat_op)
+            (pat_name
               (loname))))
         (rhs
           (wildcard))))))
@@ -260,10 +260,10 @@ mapMaybeAppend f (x::xs) ys with (f x)
           (pat_name
             (loname))
           (pat_parens
-            (exp_name
+            (pat_name
               (loname))
-            (exp_op)
-            (exp_name
+            (pat_op)
+            (pat_name
               (loname)))
           (pat_name
             (loname)))))
@@ -298,9 +298,9 @@ mapMaybeAppend f (x::xs) ys with (f x)
           (wildcard))
         (with_pat
           (pat_parens
-            (exp_name
+            (pat_name
               (caname))
-            (exp_name
+            (pat_name
               (loname))))
         (rhs
           (exp_rewrite_in
