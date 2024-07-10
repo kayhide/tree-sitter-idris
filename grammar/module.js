@@ -23,7 +23,10 @@ module.exports = {
   ),
 
   _decl_parameters: $ => seq(
-    'parameters',
+    choice(
+      'parameters',
+      'using',
+    ),
     parens(sep1(
       $.comma, 
       seq(field('name', $._loname_op), $._type_annotation),
