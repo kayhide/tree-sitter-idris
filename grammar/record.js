@@ -19,6 +19,7 @@ module.exports = {
   _record_decl: $ => choice(
     $._constructor,
     alias($._record_field, $.record_field),
+    alias($._implicit_record_field, $.implicit_record_field),
   ),
 
   _constructor: $ => seq(
@@ -29,6 +30,13 @@ module.exports = {
   _record_field: $ => seq(
     optional($.quantity),
     sep1($.comma, $._q_loname), $._type_annotation
+  ),
+
+  _implicit_record_field: $ => braces(
+    seq(
+      optional($.auto),
+      $._record_field,
+    )
   ),
   
   // -----------------------------------------------------------------

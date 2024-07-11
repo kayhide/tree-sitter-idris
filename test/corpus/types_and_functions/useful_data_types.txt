@@ -700,3 +700,61 @@ record List1 a where
           (caname))
         (type_name
           (loname))))))
+
+================================================================================
+Recrod with implicit fields
+================================================================================
+
+record Split {a : Type} (p : a -> Type) (xys : List a) where
+  {ayes, naws : List a}
+  {auto interleaving : Interleaving ayes naws xys}
+
+--------------------------------------------------------------------------------
+
+(idris
+  (record
+    (record_name)
+    (type_braces
+      (implicit_arg
+        (type_name
+          (loname)))
+      (type_name
+        (caname)))
+    (type_parens
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (caname)))
+    (type_parens
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (caname))
+      (type_name
+        (loname)))
+    (where)
+    (record_body
+      (implicit_record_field
+        (loname)
+        (comma)
+        (loname)
+        (type_name
+          (caname))
+        (type_name
+          (loname)))
+      (implicit_record_field
+        (auto)
+        (loname)
+        (type_name
+          (caname))
+        (type_name
+          (loname))
+        (type_name
+          (loname))
+        (type_name
+          (loname))))))
