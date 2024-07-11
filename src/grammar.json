@@ -5307,7 +5307,7 @@
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "_apat"
+            "name": "_apats"
           },
           "named": true,
           "value": "with_pat"
