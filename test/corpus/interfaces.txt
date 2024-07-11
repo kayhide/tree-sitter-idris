@@ -324,6 +324,104 @@ Uninhabited (x::xs = y::ys) where
       (where))))
 
 ================================================================================
+Implementation with implicit arguments inside constraints
+================================================================================
+
+({x : k} -> Semigroup (v x)) => Monoid (SortedDMap k v) where
+  neutral = empty
+
+--------------------------------------------------------------------------------
+
+(idris
+  (implementation
+    (implementation_head
+      (constraints
+        (type_braces
+          (implicit_arg
+            (type_name
+              (loname)))
+          (type_name
+            (loname)))
+        (constraint
+          (interface_name)
+          (type_parens
+            (type_name
+              (loname))
+            (type_name
+              (loname)))))
+      (interface_name)
+      (type_parens
+        (type_name
+          (caname))
+        (type_name
+          (loname))
+        (type_name
+          (loname))))
+    (implementation_body
+      (where)
+      (function
+        (lhs
+          (funvar
+            (loname)))
+        (rhs
+          (exp_name
+            (loname)))))))
+
+================================================================================
+Implementation with implicit arguments inside constraint tuples
+================================================================================
+
+(DecEq k, {x : k} -> Eq (v x)) => Eq (SortedDMap k v) where
+  (==) = (==) `on` toList
+
+--------------------------------------------------------------------------------
+
+(idris
+  (implementation
+    (implementation_head
+      (constraints
+        (constraint
+          (interface_name)
+          (type_name
+            (loname)))
+        (comma)
+        (type_braces
+          (implicit_arg
+            (type_name
+              (loname)))
+          (type_name
+            (loname)))
+        (constraint
+          (interface_name)
+          (type_parens
+            (type_name
+              (loname))
+            (type_name
+              (loname)))))
+      (interface_name)
+      (type_parens
+        (type_name
+          (caname))
+        (type_name
+          (loname))
+        (type_name
+          (loname))))
+    (implementation_body
+      (where)
+      (function
+        (lhs
+          (funvar
+            (operator)))
+        (rhs
+          (exp_name
+            (operator))
+          (exp_ticked
+            (exp_name
+              (loname)))
+          (exp_name
+            (loname)))))))
+
+================================================================================
 Implementation with qualified operator
 ================================================================================
 

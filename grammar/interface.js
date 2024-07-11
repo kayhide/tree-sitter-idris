@@ -7,14 +7,24 @@ module.exports = {
   interface_name: $ => alias($._q_caname, ''),
 
   constraint: $ => choice(
-    seq($.interface_name, repeat($._type)),
+    seq(
+      $.interface_name, 
+      repeat($._type)
+    ),
     $.annotated_type_variable,
   ),
 
   constraints: $ =>
     choice(
       $.constraint,
-      parens(sep1($.comma, $.constraint))
+      parens(
+        sep1($.comma, 
+          seq(
+            repeat(seq($.type_braces, $._arrow)),
+            $.constraint
+          ),
+        ),
+      ),
     ),
 
   // ----- Interface ----------------------------------------------------------
