@@ -440,21 +440,6 @@
     }
   },
   {
-    "type": "bind_alts",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "bind_alt",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "bind_exp",
     "named": true,
     "fields": {},
@@ -542,7 +527,7 @@
       "required": true,
       "types": [
         {
-          "type": "bind_alts",
+          "type": "bind_alt",
           "named": true
         },
         {
@@ -686,6 +671,10 @@
         },
         {
           "type": "constraint",
+          "named": true
+        },
+        {
+          "type": "type_braces",
           "named": true
         }
       ]
@@ -2723,6 +2712,81 @@
     }
   },
   {
+    "type": "implicit_record_field",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "auto",
+          "named": true
+        },
+        {
+          "type": "comma",
+          "named": true
+        },
+        {
+          "type": "exp_implicit_arg",
+          "named": true
+        },
+        {
+          "type": "forall",
+          "named": true
+        },
+        {
+          "type": "hole",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "loname",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
+          "type": "qualified_loname",
+          "named": true
+        },
+        {
+          "type": "quantity",
+          "named": true
+        },
+        {
+          "type": "type_braces",
+          "named": true
+        },
+        {
+          "type": "type_list",
+          "named": true
+        },
+        {
+          "type": "type_name",
+          "named": true
+        },
+        {
+          "type": "type_parens",
+          "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "import",
     "named": true,
     "fields": {
@@ -3163,7 +3227,7 @@
       "required": true,
       "types": [
         {
-          "type": "bind_alts",
+          "type": "bind_alt",
           "named": true
         },
         {
@@ -4645,6 +4709,10 @@
       "required": false,
       "types": [
         {
+          "type": "implicit_record_field",
+          "named": true
+        },
+        {
           "type": "record_field",
           "named": true
         }
@@ -5910,11 +5978,11 @@
   },
   {
     "type": "module",
-    "named": false
+    "named": true
   },
   {
     "type": "module",
-    "named": true
+    "named": false
   },
   {
     "type": "mutual",
@@ -5954,6 +6022,10 @@
   },
   {
     "type": "pragma_extern",
+    "named": true
+  },
+  {
+    "type": "pragma_hint",
     "named": true
   },
   {
