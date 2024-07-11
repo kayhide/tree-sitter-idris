@@ -166,7 +166,7 @@ module.exports = {
     $._typed_pat,
     $._larrow,
     alias(repeat1($._aexp), $.bind_exp),
-    optional(seq('\n', $.bind_alts)),
+    repeat($.bind_alt),
   ),
 
   _let_decls: $ => layouted($, $._decl),
@@ -174,10 +174,8 @@ module.exports = {
   let: $ => seq(
     'let', 
     alias($._let_decls, $.declarations),
-    optional($.bind_alts),
+    repeat($.bind_alt),
   ),
-
-  bind_alts: $ => layouted($, $.bind_alt),
 
   bind_alt: $ => seq('|', $._typed_pat, $._rcarrow, $._exp),
 

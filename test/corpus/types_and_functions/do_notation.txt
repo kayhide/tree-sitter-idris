@@ -152,14 +152,13 @@ _ = do
             (bind_exp
               (exp_name
                 (loname)))
-            (bind_alts
-              (bind_alt
-                (pat_name
-                  (caname))
-                (exp_name
-                  (loname))
-                (exp_name
-                  (caname))))))
+            (bind_alt
+              (pat_name
+                (caname))
+              (exp_name
+                (loname))
+              (exp_name
+                (caname)))))
         (statement
           (bind_pattern
             (pat_name
@@ -169,14 +168,13 @@ _ = do
             (bind_exp
               (exp_name
                 (loname)))
-            (bind_alts
-              (bind_alt
-                (pat_name
-                  (caname))
-                (exp_name
-                  (loname))
-                (exp_name
-                  (caname))))))
+            (bind_alt
+              (pat_name
+                (caname))
+              (exp_name
+                (loname))
+              (exp_name
+                (caname)))))
         (statement
           (exp_name
             (loname))
@@ -220,14 +218,63 @@ _ = do
                 (rhs
                   (exp_name
                     (loname)))))
-            (bind_alts
-              (bind_alt
-                (pat_name
-                  (caname))
-                (exp_name
-                  (loname))
-                (exp_name
-                  (caname))))))
+            (bind_alt
+              (pat_name
+                (caname))
+              (exp_name
+                (loname))
+              (exp_name
+                (caname)))))
+        (statement
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))))))
+
+================================================================================
+Pattern matching bind 3
+================================================================================
+
+MkMaybeT x <+> MkMaybeT y = MkMaybeT $ do
+  r@(Just _) <- x | Nothing => y
+  pure r
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (caname)
+        (patterns
+          (pat_name
+            (loname))
+          (pat_op)
+          (pat_name
+            (caname))
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_name
+        (caname))
+      (exp_op)
+      (exp_do
+        (statement
+          (bind_pattern
+            (pat_name
+              (loname))
+            (pat_at_parens
+              (pat_name
+                (caname))
+              (pat_wildcard))
+            (bind_exp
+              (exp_name
+                (loname)))
+            (bind_alt
+              (pat_name
+                (caname))
+              (exp_name
+                (loname)))))
         (statement
           (exp_name
             (loname))
