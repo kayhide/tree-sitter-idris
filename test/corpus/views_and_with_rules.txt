@@ -242,6 +242,50 @@ foo n m with (n + 1) | (m + 1)
             (caname)))))))
 
 ================================================================================
+with rule 5
+================================================================================
+
+pushOutInInverse (Element x p :: xs) | subprf | Element ss ps = 
+  rewrite subprf in Refl
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_parens
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
+            (pat_name
+              (loname))
+            (pat_op)
+            (pat_name
+              (loname))))))
+    (with_pat
+      (pat_name
+        (loname)))
+    (with_pat
+      (pat_name
+        (caname))
+      (pat_name
+        (loname))
+      (pat_name
+        (loname)))
+    (rhs
+      (exp_rewrite_in
+        (rewrite_exp
+          (exp_name
+            (loname)))
+        (in
+          (exp_name
+            (caname)))))))
+
+================================================================================
 with rule and rewrite
 ================================================================================
 

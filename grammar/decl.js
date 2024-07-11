@@ -43,7 +43,7 @@ module.exports = {
       ),
   ),
 
-  _with_res: $ => seq('|', alias($._apat, $.with_pat)),
+  _with_res: $ => seq('|', alias($._apats, $.with_pat)),
 
   _funlhs: $ => seq(
     choice(
