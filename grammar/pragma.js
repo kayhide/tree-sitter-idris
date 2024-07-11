@@ -30,6 +30,8 @@ module.exports = {
     $.wildcard,
   ),
 
+  pragma_hint : _ => '%hint',
+
   pragma_inline: _ => '%inline',
 
   pragma_tcinline: _ => '%tcinline',
