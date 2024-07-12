@@ -19,13 +19,12 @@ f x = let
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname)))))))
@@ -50,13 +49,12 @@ f x = let
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname)))))))
@@ -81,13 +79,12 @@ f x = let y = x
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname)))))))
@@ -111,13 +108,12 @@ f x = let y = x in y
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname)))))))
@@ -142,13 +138,12 @@ f x = let y = x in
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname)))))))
@@ -175,20 +170,18 @@ f x = let
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname))))
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname)))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname)))))))
@@ -214,20 +207,18 @@ f x = let
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname))))
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname)))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname)))))))
@@ -253,20 +244,18 @@ f x = let y = x
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname))))
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname)))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname)))))))
@@ -292,20 +281,18 @@ f x = let y = x
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname))))
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname)))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname)))))))
@@ -329,23 +316,21 @@ f x = let y = x in let y = x in y
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_let_in
             (declarations
-              (function
-                (lhs
-                  (funvar
-                    (loname)))
-                (rhs
-                  (exp_name
-                    (loname)))))
+              (lhs
+                (pat_name
+                  (loname)))
+              (rhs
+                (exp_name
+                  (loname))))
             (in
               (exp_name
                 (loname)))))))))
@@ -370,23 +355,21 @@ f x = let y = x in
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_let_in
             (declarations
-              (function
-                (lhs
-                  (funvar
-                    (loname)))
-                (rhs
-                  (exp_name
-                    (loname)))))
+              (lhs
+                (pat_name
+                  (loname)))
+              (rhs
+                (exp_name
+                  (loname))))
             (in
               (exp_name
                 (loname)))))))))
@@ -412,30 +395,27 @@ f x = let y = x
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname))))
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname)))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_let_in
             (declarations
-              (function
-                (lhs
-                  (funvar
-                    (loname)))
-                (rhs
-                  (exp_name
-                    (loname)))))
+              (lhs
+                (pat_name
+                  (loname)))
+              (rhs
+                (exp_name
+                  (loname))))
             (in
               (exp_name
                 (loname)))))))))
@@ -455,19 +435,16 @@ _ = let (a, b) = x in b
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funop
-                (patterns
-                  (pat_name
-                    (loname)))
-                (tuple_operator)
-                (patterns
-                  (pat_name
-                    (loname)))))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_parens
+              (pat_name
+                (loname))
+              (tuple_operator)
+              (pat_name
+                (loname))))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname)))))))
@@ -494,13 +471,12 @@ f x = do
         (statement
           (let
             (declarations
-              (function
-                (lhs
-                  (funvar
-                    (loname)))
-                (rhs
-                  (exp_name
-                    (loname)))))))))))
+              (lhs
+                (pat_name
+                  (loname)))
+              (rhs
+                (exp_name
+                  (loname))))))))))
 
 ================================================================================
 Single line without body (indent)
@@ -525,13 +501,12 @@ f x = do
         (statement
           (let
             (declarations
-              (function
-                (lhs
-                  (funvar
-                    (loname)))
-                (rhs
-                  (exp_name
-                    (loname)))))))))))
+              (lhs
+                (pat_name
+                  (loname)))
+              (rhs
+                (exp_name
+                  (loname))))))))))
 
 ================================================================================
 Multiline without body
@@ -555,20 +530,18 @@ f x = do let y = x
         (statement
           (let
             (declarations
-              (function
-                (lhs
-                  (funvar
-                    (loname)))
-                (rhs
-                  (exp_name
-                    (loname))))
-              (function
-                (lhs
-                  (funvar
-                    (loname)))
-                (rhs
-                  (exp_name
-                    (loname)))))))))))
+              (lhs
+                (pat_name
+                  (loname)))
+              (rhs
+                (exp_name
+                  (loname)))
+              (lhs
+                (pat_name
+                  (loname)))
+              (rhs
+                (exp_name
+                  (loname))))))))))
 
 ================================================================================
 Multiline without body (indent)
@@ -594,20 +567,18 @@ f x = do
         (statement
           (let
             (declarations
-              (function
-                (lhs
-                  (funvar
-                    (loname)))
-                (rhs
-                  (exp_name
-                    (loname))))
-              (function
-                (lhs
-                  (funvar
-                    (loname)))
-                (rhs
-                  (exp_name
-                    (loname)))))))))))
+              (lhs
+                (pat_name
+                  (loname)))
+              (rhs
+                (exp_name
+                  (loname)))
+              (lhs
+                (pat_name
+                  (loname)))
+              (rhs
+                (exp_name
+                  (loname))))))))))
 
 ================================================================================
 Pattern match without body
@@ -628,16 +599,13 @@ _ = do
         (statement
           (let
             (declarations
-              (function
-                (lhs
-                  (funop
-                    (patterns
-                      (pat_name
-                        (loname)))
-                    (tuple_operator)
-                    (patterns
-                      (pat_name
-                        (loname)))))
-                (rhs
-                  (exp_name
-                    (loname)))))))))))
+              (lhs
+                (pat_parens
+                  (pat_name
+                    (loname))
+                  (tuple_operator)
+                  (pat_name
+                    (loname))))
+              (rhs
+                (exp_name
+                  (loname))))))))))

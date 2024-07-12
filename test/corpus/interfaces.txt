@@ -568,30 +568,29 @@ FiniteBits Bits16 where
         (rhs
           (exp_let_in
             (declarations
-              (function
-                (lhs
-                  (funvar
-                    (loname)))
-                (rhs
+              (lhs
+                (pat_name
+                  (loname)))
+              (rhs
+                (exp_parens
+                  (exp_name
+                    (loname))
+                  (exp_op)
+                  (exp_literal
+                    (integer)))
+                (exp_op)
+                (exp_parens
                   (exp_parens
                     (exp_name
                       (loname))
-                    (exp_op)
+                    (exp_ticked
+                      (exp_name
+                        (loname)))
                     (exp_literal
                       (integer)))
                   (exp_op)
-                  (exp_parens
-                    (exp_parens
-                      (exp_name
-                        (loname))
-                      (exp_ticked
-                        (exp_name
-                          (loname)))
-                      (exp_literal
-                        (integer)))
-                    (exp_op)
-                    (exp_literal
-                      (integer))))))
+                  (exp_literal
+                    (integer)))))
             (in
               (exp_name
                 (loname))

@@ -18,15 +18,14 @@ mirror xs = let xs' = reverse xs in
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname))
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname))
@@ -54,18 +53,16 @@ showPerson p = let MkPerson name age = p in
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (caname)
-                (patterns
-                  (pat_name
-                    (loname))
-                  (pat_name
-                    (loname)))))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname))
@@ -183,23 +180,21 @@ foldMap f = let fo : m -> a -> m
             (operator)
             (type_name
               (loname)))
-          (function
-            (lhs
-              (funvar
-                (loname)
-                (patterns
-                  (pat_name
-                    (loname))
-                  (pat_name
-                    (loname)))))
-            (rhs
-              (exp_name
-                (loname))
-              (exp_op)
-              (exp_name
-                (loname))
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname))
+            (pat_name
+              (loname))
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname))
@@ -240,30 +235,27 @@ foldMap f = let fo : m -> a -> m
             (operator)
             (type_name
               (loname)))
-          (function
-            (lhs
-              (funvar
-                (loname)
-                (patterns
-                  (pat_name
-                    (loname))
-                  (pat_name
-                    (loname)))))
-            (rhs
-              (exp_name
-                (loname))
-              (exp_op)
-              (exp_name
-                (loname))
-              (exp_name
-                (loname))))
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_name
-                (loname)))))
+          (lhs
+            (pat_name
+              (loname))
+            (pat_name
+              (loname))
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_name
+              (loname))
+            (exp_name
+              (loname)))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname))
@@ -529,6 +521,69 @@ decompress = concatMap $ \case
               (loname))))))))
 
 ================================================================================
+Lambda and let in
+================================================================================
+
+_ = MkRWST $ \r,s,w => let (a, s', w') = f r s
+                         in Id (a, s', w <+> w')
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_name
+        (caname))
+      (exp_op)
+      (exp_lambda
+        (lambda_args
+          (pat_name
+            (loname))
+          (comma)
+          (pat_name
+            (loname))
+          (comma)
+          (pat_name
+            (loname)))
+        (lambda_exp
+          (exp_let_in
+            (declarations
+              (lhs
+                (pat_parens
+                  (pat_name
+                    (loname))
+                  (tuple_operator)
+                  (pat_name
+                    (loname))
+                  (tuple_operator)
+                  (pat_name
+                    (loname))))
+              (rhs
+                (exp_name
+                  (loname))
+                (exp_name
+                  (loname))
+                (exp_name
+                  (loname))))
+            (in
+              (exp_name
+                (caname))
+              (exp_tuple
+                (exp_name
+                  (loname))
+                (tuple_operator)
+                (exp_name
+                  (loname))
+                (tuple_operator)
+                (exp_name
+                  (loname))
+                (exp_op)
+                (exp_name
+                  (loname))))))))))
+
+================================================================================
 Idiom brackets
 ================================================================================
 
@@ -598,13 +653,12 @@ _ = let y = 94 in f !(g !(print y) !x)
     (rhs
       (exp_let_in
         (declarations
-          (function
-            (lhs
-              (funvar
-                (loname)))
-            (rhs
-              (exp_literal
-                (integer)))))
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (exp_literal
+              (integer))))
         (in
           (exp_name
             (loname))

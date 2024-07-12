@@ -32,15 +32,15 @@ module.exports = {
   ),
 
   _funop: $ => choice(
-      seq(
-        field('patterns', alias($._pat, $.patterns)),
-        field('subject', choice($.operator, $.tuple_operator)),
-        field('patterns', alias($._pat, $.patterns)),
-      ),
-      seq(
-        parens($._funop),
-        field('patterns', optional(alias($._fun_patterns, $.patterns))),
-      ),
+    seq(
+      field('patterns', alias($._pat, $.patterns)),
+      field('subject', choice($.operator, $.tuple_operator)),
+      field('patterns', alias($._pat, $.patterns)),
+    ),
+    seq(
+      parens($._funop),
+      field('patterns', optional(alias($._fun_patterns, $.patterns))),
+    ),
   ),
 
   _with_res: $ => seq('|', alias($._apats, $.with_pat)),

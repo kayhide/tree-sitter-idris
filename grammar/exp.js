@@ -46,13 +46,13 @@ module.exports = {
 
   exp_implicit_arg: $ => braces(seq(
     field('subject', $._name),
-    optional(seq('=', 
+    optional(seq('=',
       field('object', $._exp)
     )),
   )),
 
   exp_explicit_impl: $ => seq(
-    '@{', 
+    '@{',
     choice($.implementation_name, $.pragma_search),
     '}'
   ),
@@ -97,7 +97,7 @@ module.exports = {
   alt: $ =>
     seq(
       sep1($.comma, field('pat', $._pat)),
-      $._rcarrow, 
+      $._rcarrow,
       field('exp', $._exp),
       optional(seq($.where, $.declarations))
     ),
@@ -119,7 +119,15 @@ module.exports = {
 
   // ----- Let-in -------------------------------------------------------------
 
-  _let_in_decls: $ => layouted_without_end($, $._decl),
+  _let_decl: $ => choice(
+    $._gendecl,
+    seq(
+      alias($._pat, $.lhs),
+      alias($._funrhs, $.rhs),
+    ),
+  ),
+
+  _let_in_decls: $ => layouted_without_end($, $._let_decl),
 
   exp_let_in: $ => seq(
     'let',
@@ -169,10 +177,10 @@ module.exports = {
     repeat($.bind_alt),
   ),
 
-  _let_decls: $ => layouted($, $._decl),
+  _let_decls: $ => layouted($, $._let_decl),
 
   let: $ => seq(
-    'let', 
+    'let',
     alias($._let_decls, $.declarations),
     repeat($.bind_alt),
   ),

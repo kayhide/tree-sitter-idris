@@ -208,16 +208,14 @@ _ = do
         (statement
           (let
             (declarations
-              (function
-                (lhs
-                  (funvar
-                    (caname)
-                    (patterns
-                      (pat_name
-                        (loname)))))
-                (rhs
-                  (exp_name
-                    (loname)))))
+              (lhs
+                (pat_name
+                  (caname))
+                (pat_name
+                  (loname)))
+              (rhs
+                (exp_name
+                  (loname))))
             (bind_alt
               (pat_name
                 (caname))
