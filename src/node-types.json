@@ -91,6 +91,10 @@
             "named": true
           },
           {
+            "type": "exp_quasiquotation",
+            "named": true
+          },
+          {
             "type": "exp_record_access",
             "named": true
           },
@@ -349,6 +353,10 @@
           "named": true
         },
         {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
           "type": "exp_record_access",
           "named": true
         },
@@ -477,6 +485,10 @@
         },
         {
           "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
           "named": true
         },
         {
@@ -865,11 +877,19 @@
           "named": true
         },
         {
+          "type": "lhs",
+          "named": true
+        },
+        {
           "type": "namespace",
           "named": true
         },
         {
           "type": "operator_declaration",
+          "named": true
+        },
+        {
+          "type": "rhs",
           "named": true
         },
         {
@@ -917,6 +937,10 @@
         },
         {
           "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
           "named": true
         },
         {
@@ -1044,6 +1068,10 @@
           },
           {
             "type": "exp_parens",
+            "named": true
+          },
+          {
+            "type": "exp_quasiquotation",
             "named": true
           },
           {
@@ -1188,6 +1216,10 @@
           "named": true
         },
         {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
           "type": "exp_record_access",
           "named": true
         },
@@ -1314,6 +1346,10 @@
           "named": true
         },
         {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
           "type": "exp_record_access",
           "named": true
         },
@@ -1428,6 +1464,10 @@
           },
           {
             "type": "exp_parens",
+            "named": true
+          },
+          {
+            "type": "exp_quasiquotation",
             "named": true
           },
           {
@@ -1546,6 +1586,10 @@
           },
           {
             "type": "exp_parens",
+            "named": true
+          },
+          {
+            "type": "exp_quasiquotation",
             "named": true
           },
           {
@@ -1725,6 +1769,10 @@
         },
         {
           "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
           "named": true
         },
         {
@@ -1922,6 +1970,10 @@
           "named": true
         },
         {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
           "type": "exp_record_access",
           "named": true
         },
@@ -1951,6 +2003,137 @@
         },
         {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "unit",
+          "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "exp_quasiquotation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "caname",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
+          "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_implicit_arg",
+          "named": true
+        },
+        {
+          "type": "exp_list",
+          "named": true
+        },
+        {
+          "type": "exp_literal",
+          "named": true
+        },
+        {
+          "type": "exp_name",
+          "named": true
+        },
+        {
+          "type": "exp_op",
+          "named": true
+        },
+        {
+          "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
+          "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_ticked",
+          "named": true
+        },
+        {
+          "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "forall",
+          "named": true
+        },
+        {
+          "type": "hole",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "loname",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "pragma_mkworld",
+          "named": true
+        },
+        {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
+          "type": "qualified_caname",
+          "named": true
+        },
+        {
+          "type": "qualified_loname",
+          "named": true
+        },
+        {
+          "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "type_braces",
+          "named": true
+        },
+        {
+          "type": "type_list",
+          "named": true
+        },
+        {
+          "type": "type_name",
+          "named": true
+        },
+        {
+          "type": "type_parens",
           "named": true
         },
         {
@@ -2075,6 +2258,10 @@
           "named": true
         },
         {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
           "type": "exp_record_access",
           "named": true
         },
@@ -2155,6 +2342,10 @@
         },
         {
           "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
           "named": true
         },
         {
@@ -2258,6 +2449,10 @@
         },
         {
           "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
           "named": true
         },
         {
@@ -2881,6 +3076,10 @@
           "named": true
         },
         {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
           "type": "exp_record_access",
           "named": true
         },
@@ -3176,6 +3375,10 @@
           "named": true
         },
         {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
           "type": "exp_record_access",
           "named": true
         },
@@ -3242,7 +3445,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -3251,6 +3454,54 @@
         },
         {
           "type": "funvar",
+          "named": true
+        },
+        {
+          "type": "pat_at_braces",
+          "named": true
+        },
+        {
+          "type": "pat_at_parens",
+          "named": true
+        },
+        {
+          "type": "pat_at_wildcard",
+          "named": true
+        },
+        {
+          "type": "pat_braces",
+          "named": true
+        },
+        {
+          "type": "pat_list",
+          "named": true
+        },
+        {
+          "type": "pat_literal",
+          "named": true
+        },
+        {
+          "type": "pat_name",
+          "named": true
+        },
+        {
+          "type": "pat_op",
+          "named": true
+        },
+        {
+          "type": "pat_parens",
+          "named": true
+        },
+        {
+          "type": "pat_record",
+          "named": true
+        },
+        {
+          "type": "pat_wildcard",
+          "named": true
+        },
+        {
+          "type": "pragma_mkworld",
           "named": true
         },
         {
@@ -4457,6 +4708,10 @@
           "named": true
         },
         {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
           "type": "exp_record_access",
           "named": true
         },
@@ -4804,10 +5059,6 @@
       "required": true,
       "types": [
         {
-          "type": "caname",
-          "named": true
-        },
-        {
           "type": "comma",
           "named": true
         },
@@ -4868,6 +5119,10 @@
           "named": true
         },
         {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
           "type": "exp_record_access",
           "named": true
         },
@@ -4892,23 +5147,11 @@
           "named": true
         },
         {
-          "type": "loname",
-          "named": true
-        },
-        {
           "type": "pragma_mkworld",
           "named": true
         },
         {
           "type": "pragma_search",
-          "named": true
-        },
-        {
-          "type": "qualified_caname",
-          "named": true
-        },
-        {
-          "type": "qualified_loname",
           "named": true
         },
         {
@@ -4964,6 +5207,10 @@
         },
         {
           "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
           "named": true
         },
         {
@@ -5067,6 +5314,10 @@
         },
         {
           "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
           "named": true
         },
         {
@@ -5299,6 +5550,10 @@
         },
         {
           "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
           "named": true
         },
         {
@@ -5861,6 +6116,18 @@
     "named": false
   },
   {
+    "type": "`(",
+    "named": false
+  },
+  {
+    "type": "`{",
+    "named": false
+  },
+  {
+    "type": "`{{",
+    "named": false
+  },
+  {
     "type": "as",
     "named": false
   },
@@ -6126,6 +6393,14 @@
   },
   {
     "type": "}",
+    "named": false
+  },
+  {
+    "type": "}}",
+    "named": false
+  },
+  {
+    "type": "~",
     "named": false
   },
   {

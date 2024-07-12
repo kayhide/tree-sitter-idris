@@ -1225,75 +1225,41 @@
         }
       ]
     },
-    "_record_update_rhs": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "wildcard"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "hole"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_q_name"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "exp_record_access"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "exp_parens"
-        }
-      ]
-    },
     "record_update": {
       "type": "SEQ",
       "members": [
         {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "{"
+              "type": "SYMBOL",
+              "name": "_record_field_update"
             },
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_record_field_update"
-                },
-                {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "comma"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "_record_field_update"
-                      }
-                    ]
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "comma"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_record_field_update"
                   }
-                }
-              ]
-            },
-            {
-              "type": "STRING",
-              "value": "}"
+                ]
+              }
             }
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "_record_update_rhs"
+          "type": "STRING",
+          "value": "}"
         }
       ]
     },
@@ -2477,6 +2443,38 @@
         }
       ]
     },
+    "_let_decl": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_gendecl"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_pat"
+              },
+              "named": true,
+              "value": "lhs"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_funrhs"
+              },
+              "named": true,
+              "value": "rhs"
+            }
+          ]
+        }
+      ]
+    },
     "_let_in_decls": {
       "type": "CHOICE",
       "members": [
@@ -2498,7 +2496,7 @@
                       "members": [
                         {
                           "type": "SYMBOL",
-                          "name": "_decl"
+                          "name": "_let_decl"
                         },
                         {
                           "type": "REPEAT",
@@ -2524,7 +2522,7 @@
                               },
                               {
                                 "type": "SYMBOL",
-                                "name": "_decl"
+                                "name": "_let_decl"
                               }
                             ]
                           }
@@ -2946,7 +2944,7 @@
                       "members": [
                         {
                           "type": "SYMBOL",
-                          "name": "_decl"
+                          "name": "_let_decl"
                         },
                         {
                           "type": "REPEAT",
@@ -2972,7 +2970,7 @@
                               },
                               {
                                 "type": "SYMBOL",
-                                "name": "_decl"
+                                "name": "_let_decl"
                               }
                             ]
                           }
@@ -3078,6 +3076,87 @@
         }
       ]
     },
+    "exp_quasiquotation": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "`{{"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_q_name"
+            },
+            {
+              "type": "STRING",
+              "value": "}}"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "`{"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_q_name"
+            },
+            {
+              "type": "STRING",
+              "value": "}"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "`("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_aexp"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_type"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "~"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_q_name"
+            }
+          ]
+        }
+      ]
+    },
     "_aexp": {
       "type": "CHOICE",
       "members": [
@@ -3133,6 +3212,10 @@
         {
           "type": "SYMBOL",
           "name": "exp_tuple"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "exp_quasiquotation"
         },
         {
           "type": "ALIAS",
