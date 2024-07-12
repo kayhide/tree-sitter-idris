@@ -531,7 +531,8 @@ addStudent p c = { students := p :: students c } c
         (exp_name
           (loname))
         (exp_name
-          (loname))
+          (loname)))
+      (exp_name
         (loname)))))
 
 ================================================================================
@@ -569,7 +570,8 @@ addStudent' p c = { students $= (p ::) } c
         (exp_parens
           (exp_name
             (loname))
-          (exp_op))
+          (exp_op)))
+      (exp_name
         (loname)))))
 
 ================================================================================
@@ -758,3 +760,32 @@ record Split {a : Type} (p : a -> Type) (xys : List a) where
           (loname))
         (type_name
           (loname))))))
+
+================================================================================
+Record updates
+================================================================================
+
+_ = { conArgTypes $= ((rig, arg) ::) } <$> constructorView b
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (record_update
+        (field_name)
+        (exp_parens
+          (exp_tuple
+            (exp_name
+              (loname))
+            (tuple_operator)
+            (exp_name
+              (loname)))
+          (exp_op)))
+      (exp_op)
+      (exp_name
+        (loname))
+      (exp_name
+        (loname)))))

@@ -44,36 +44,15 @@ module.exports = {
 
   _field_name: $ => alias($.loname, $.field_name),
 
-  _record_field_update: $ => {
-    const nested_update =
+  _record_field_update: $ => seq(
+    $._field_name, 
+    choice(
+      seq(choice(':=', '$='), $._exp),
       braces(sep($.comma,
         alias($._record_field_update, $.record_update)
       ))
-
-    const update_or_nested_update =
-      choice(
-        seq(choice(':=', '$='), $._exp),
-        nested_update
-      )
-
-    return seq($._field_name, update_or_nested_update)
-  },
-
-  // It is easier to construct a specific set of options here:
-  // `_aexp` would be too permissive and bring potential problems
-  // such as precedence issues
-  _record_update_rhs: $ =>
-    choice(
-      $.wildcard,
-      $.hole,
-      $._q_name,
-      $.exp_record_access,
-      $.exp_parens,
     ),
+  ),
 
-  record_update: $ =>
-    seq(
-      braces(sep1($.comma, $._record_field_update)),
-      $._record_update_rhs,
-    ),
+  record_update: $ => braces(sep1($.comma, $._record_field_update)),
 }
