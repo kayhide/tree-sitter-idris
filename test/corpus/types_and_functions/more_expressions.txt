@@ -675,3 +675,66 @@ _ = let y = 94 in f !(g !(print y) !x)
             (exp_name
               (bang)
               (loname))))))))
+
+================================================================================
+Quasiquotation
+================================================================================
+
+paramConstraints params pos
+    = IVar emptyFC `{Prelude.Interfaces.Foldable}   <$ guard (pos `elem` params.asFoldables)
+  <|> IVar emptyFC `{Prelude.Interfaces.Bifoldable} <$ guard (pos `elem` params.asBifoldables)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname))
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_name
+        (caname))
+      (exp_name
+        (loname))
+      (exp_quasiquotation
+        (qualified_caname
+          (module)
+          (module)
+          (caname)))
+      (exp_op)
+      (exp_name
+        (loname))
+      (exp_parens
+        (exp_name
+          (loname))
+        (exp_ticked
+          (exp_name
+            (loname)))
+        (exp_record_access
+          (loname)))
+      (exp_op)
+      (exp_name
+        (caname))
+      (exp_name
+        (loname))
+      (exp_quasiquotation
+        (qualified_caname
+          (module)
+          (module)
+          (caname)))
+      (exp_op)
+      (exp_name
+        (loname))
+      (exp_parens
+        (exp_name
+          (loname))
+        (exp_ticked
+          (exp_name
+            (loname)))
+        (exp_record_access
+          (loname))))))

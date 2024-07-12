@@ -195,6 +195,15 @@ module.exports = {
       $.let,
     ),
 
+  // ----- Quasiquotation -----------------------------------------------------
+
+  exp_quasiquotation : $ => choice(
+    seq("`{{", $._q_name, "}}"),
+    seq("`{", $._q_name, "}"),
+    seq("`(", $._aexp, optional($._type), ")"),
+    seq("~", $._q_name),
+  ),
+
   // ----- Composite expressions ----------------------------------------------
 
   _aexp: $ => choice(
@@ -210,6 +219,7 @@ module.exports = {
     $.record_update,
     $.exp_record_access,
     $.exp_tuple,
+    $.exp_quasiquotation,
     alias($.literal, $.exp_literal),
     $.wildcard,
     $.unit,
