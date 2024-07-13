@@ -77,7 +77,7 @@ module.exports = {
   // Should be only used in `grammar.js` as a top-level declaration.
   operator_declaration: $ => seq(
     optional($.visibility),
-    choice('infixl', 'infixr', 'infix'),
+    choice('infixl', 'infixr', 'infix', 'prefix'),
     field('precedence', $.integer),
     sep1($.comma, choice($.operator, $.ticked_operator)),
   ),
