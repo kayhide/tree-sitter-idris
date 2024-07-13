@@ -97,9 +97,14 @@ module.exports = {
   alt: $ =>
     seq(
       sep1($.comma, field('pat', $._pat)),
-      $._rcarrow,
-      field('exp', $._exp),
-      optional(seq($.where, $.declarations))
+      choice(
+        seq(
+          $._rcarrow,
+          field('exp', $._exp),
+          optional(seq($.where, $.declarations))
+        ),
+        $.impossible,
+      ),
     ),
 
   alts: $ => layouted($, $.alt),
