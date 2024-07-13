@@ -851,10 +851,37 @@ uninhabited Refl @{ab} = uninhabited @{ab} Refl
       (exp_name
         (loname))
       (exp_explicit_impl
-        (implementation_name
+        (exp_name
           (loname)))
       (exp_name
         (caname)))))
+
+================================================================================
+At braces 3
+================================================================================
+
+CalcWith der = CalcSmart der @{preorderPrerequisite der}
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (caname)
+        (patterns
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_name
+        (caname))
+      (exp_name
+        (loname))
+      (exp_explicit_impl
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))))))
 
 ================================================================================
 Totality partial

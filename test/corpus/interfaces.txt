@@ -496,7 +496,7 @@ _ = sort @{myord} xs
       (exp_name
         (loname))
       (exp_explicit_impl
-        (implementation_name
+        (exp_name
           (loname)))
       (exp_name
         (loname)))))
@@ -521,7 +521,7 @@ and = force . concat @{All}
       (exp_name
         (loname))
       (exp_explicit_impl
-        (implementation_name
+        (exp_name
           (caname))))))
 
 ================================================================================

@@ -332,7 +332,7 @@ any = foldMap @{%search} @{Any}
       (exp_explicit_impl
         (pragma_search))
       (exp_explicit_impl
-        (implementation_name
+        (exp_name
           (caname))))))
 
 ================================================================================

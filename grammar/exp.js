@@ -51,11 +51,7 @@ module.exports = {
     )),
   )),
 
-  exp_explicit_impl: $ => seq(
-    '@{',
-    choice($.implementation_name, $.pragma_search),
-    '}'
-  ),
+  exp_explicit_impl: $ => seq('@{', $._aexps, '}'),
 
   // ----- Tuples or tuple secions --------------------------------------------
 
