@@ -29,9 +29,7 @@ module.exports = {
 
   // ----- Identifiers and modifiers ------------------------------------------
 
-  bang: _ =>  '!',
-
-  exp_name: $ => prefixable($.bang, $._q_name_op),
+  exp_name: $ => $._q_name_op,
 
   exp_op: $ => choice(
     $._operator,
@@ -41,7 +39,7 @@ module.exports = {
 
   exp_ticked: $ => ticked($._aexp),
 
-  exp_parens: $ => prefixable($.bang, parens($._exp)),
+  exp_parens: $ => parens($._exp),
 
   exp_idiom: $ => idiom_brackets($._exp),
 
@@ -162,6 +160,7 @@ module.exports = {
   exp_let_in: $ => seq(
     'let',
     alias($._let_in_decls, $.declarations),
+    repeat($.bind_alt),
     'in',
     alias($._exp, $.in),
   ),
@@ -203,7 +202,7 @@ module.exports = {
   bind_pattern: $ => seq(
     $._pat,
     $._larrow,
-    alias(repeat1($._aexp), $.bind_exp),
+    alias($._aexps, $.bind_exp),
     repeat($.bind_alt),
   ),
 
@@ -217,12 +216,17 @@ module.exports = {
 
   bind_alt: $ => seq('|', $._pat, $._rcarrow, $._exp),
 
+  rewrite: $ => seq(
+    'rewrite',
+    layouted($, alias($._aexps, $.rewrite_exp)),
+  ),
 
   statement: $ =>
     choice(
       $._exp,
       $.bind_pattern,
       $.let,
+      $.rewrite,
     ),
 
   // ----- Quasiquotation -----------------------------------------------------
@@ -270,9 +274,9 @@ module.exports = {
     $.exp_rewrite_in,
   )),
 
-  _exp: $ => choice(
+  _exp: $ => prec.right(choice(
     $._aexps,
     $._sexp,
     seq($._aexps, $._sexp),
-  ),
+  )),
 }

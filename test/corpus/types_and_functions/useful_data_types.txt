@@ -46,7 +46,7 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
       (funvar
         (loname)
         (patterns
-          (pat_wildcard)
+          (wildcard)
           (pat_name
             (caname)))))
     (rhs
@@ -374,7 +374,7 @@ filter p (x :: xs)
         (alts
           (alt
             (pat_parens
-              (pat_wildcard)
+              (wildcard)
               (pat_op)
               (pat_name
                 (loname)))

@@ -450,6 +450,63 @@ _ = let (a, b) = x in b
             (loname)))))))
 
 ================================================================================
+Pattern match alt
+================================================================================
+
+_=
+  let Just (l ::: ls) = List.toList1' $ mapMaybe fromColist xs
+        | Nothing => []
+  in zig (l ::: []) (fromList ls)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_let_in
+        (declarations
+          (lhs
+            (pat_name
+              (caname))
+            (pat_parens
+              (pat_name
+                (loname))
+              (pat_op)
+              (pat_name
+                (loname))))
+          (rhs
+            (exp_name
+              (qualified_loname
+                (module)
+                (loname)))
+            (exp_op)
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))))
+        (bind_alt
+          (pat_name
+            (caname))
+          (exp_list))
+        (in
+          (exp_name
+            (loname))
+          (exp_parens
+            (exp_name
+              (loname))
+            (exp_op)
+            (exp_list))
+          (exp_parens
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))))))))
+
+================================================================================
 Single line without body
 ================================================================================
 

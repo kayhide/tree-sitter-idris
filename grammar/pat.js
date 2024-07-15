@@ -2,6 +2,11 @@ const { parens } = require('./util.js')
 
 module.exports = {
 
+  pat_op: $ => choice(
+    $._operator,
+    $.ticked_operator,
+  ),
+
   pat_field: $ =>
     seq(
       $._field_name,
@@ -18,7 +23,7 @@ module.exports = {
     sep($.tuple_operator, $._pat),
   ),
 
-  pat_at_parens: $ => seq('@(', $._pat, ')'),
+  pat_at_parens: $ => seq('@', '(', $._pat, ')'),
 
   pat_list: $ => choice(
     brackets(sep($.comma, $._pat)),
@@ -31,10 +36,11 @@ module.exports = {
 
   _apat: $ => choice(
     alias($._name, $.pat_name),
-    alias($.operator, $.pat_op),
+    $.pat_op,
     $.pat_record,
     alias($.literal, $.pat_literal),
-    alias($.wildcard, $.pat_wildcard),
+    $.wildcard,
+    $.unit,
     $.pat_at_wildcard,
     $.pat_parens,
     $.pat_at_parens,
@@ -44,7 +50,7 @@ module.exports = {
     $.pragma_mkworld,
   ),
 
-  _apats: $ => prec.left(repeat1($._apat)),
+  _apats: $ => prec.right(repeat1($._apat)),
 
   _pat: $ => seq(
     optional($.quantity),

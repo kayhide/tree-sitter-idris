@@ -264,7 +264,7 @@ MkMaybeT x <+> MkMaybeT y = MkMaybeT $ do
             (pat_at_parens
               (pat_name
                 (caname))
-              (pat_wildcard))
+              (wildcard))
             (bind_exp
               (exp_name
                 (loname)))
@@ -278,3 +278,66 @@ MkMaybeT x <+> MkMaybeT y = MkMaybeT $ do
             (loname))
           (exp_name
             (loname)))))))
+
+================================================================================
+rewrite statements
+================================================================================
+
+_ = do
+  rewrite chipsAsListAppend sx (x :: ys)
+  rewrite chipsAsListAppend sx [x]
+  rewrite sym $ appendAssociative (cast sx) [x] ys
+  Refl
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_do
+        (statement
+          (rewrite
+            (rewrite_exp
+              (exp_name
+                (loname))
+              (exp_name
+                (loname))
+              (exp_parens
+                (exp_name
+                  (loname))
+                (exp_op)
+                (exp_name
+                  (loname))))))
+        (statement
+          (rewrite
+            (rewrite_exp
+              (exp_name
+                (loname))
+              (exp_name
+                (loname))
+              (exp_list
+                (exp_name
+                  (loname))))))
+        (statement
+          (rewrite
+            (rewrite_exp
+              (exp_name
+                (loname))
+              (exp_op)
+              (exp_name
+                (loname))
+              (exp_parens
+                (exp_name
+                  (loname))
+                (exp_name
+                  (loname)))
+              (exp_list
+                (exp_name
+                  (loname)))
+              (exp_name
+                (loname)))))
+        (statement
+          (exp_name
+            (caname)))))))

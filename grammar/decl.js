@@ -21,7 +21,7 @@ module.exports = {
 
   _funrhs: $ => seq(
     choice(':=', '='),
-    $._exp,
+    choice($._exp, $._type),
   ),
 
   _fun_patterns: $ => prec(1, repeat1($._apat)),
@@ -31,25 +31,12 @@ module.exports = {
     field('patterns', optional(alias($._fun_patterns, $.patterns))),
   ),
 
-  _funop: $ => choice(
-    seq(
-      field('patterns', alias($._pat, $.patterns)),
-      field('subject', choice($.operator, $.tuple_operator, $.ticked_operator)),
-      field('patterns', alias($._pat, $.patterns)),
-    ),
-    seq(
-      parens($._funop),
-      field('patterns', optional(alias($._fun_patterns, $.patterns))),
-    ),
-  ),
-
   _with_res: $ => seq('|', alias($._apats, $.with_pat)),
 
   _funlhs: $ => seq(
     choice(
-      prec.dynamic(1, alias($._funop, $.funop)),
-      prec.dynamic(2, alias($._funvar, $.funvar)),
-      $.wildcard
+      prec.dynamic(1, alias($._funvar, $.funvar)),
+      prec.dynamic(0, $._apats),
     ),
   ),
 
@@ -88,6 +75,7 @@ module.exports = {
         $.visibility,
         $.totality,
         $.quantity,
+        $.pragma_foreign,
       )
     ),
     choice(

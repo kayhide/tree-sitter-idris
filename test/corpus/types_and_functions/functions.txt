@@ -608,7 +608,7 @@ reflexive {x = S _} = LTESucc $ reflexive
             (loname)
             (pat_name
               (caname))
-            (pat_wildcard)))))
+            (wildcard)))))
     (rhs
       (exp_name
         (caname))
@@ -864,11 +864,11 @@ uninhabited (x, _) @{Left  _} = uninhabited x
             (pat_name
               (loname))
             (tuple_operator)
-            (pat_wildcard))
+            (wildcard))
           (pat_at_braces
             (pat_name
               (caname))
-            (pat_wildcard)))))
+            (wildcard)))))
     (rhs
       (exp_name
         (loname))
@@ -1299,17 +1299,14 @@ Operator 4
 (idris
   (function
     (lhs
-      (funop
-        (patterns
-          (pat_name
-            (loname)))
-        (operator)
-        (patterns
-          (pat_name
-            (loname)))
-        (patterns
-          (pat_name
-            (loname)))))
+      (pat_parens
+        (pat_name
+          (loname))
+        (pat_op)
+        (pat_name
+          (loname)))
+      (pat_name
+        (loname)))
     (rhs
       (exp_name
         (loname))
@@ -1332,12 +1329,9 @@ _ == _ impossible
 (idris
   (function
     (lhs
-      (funop
-        (patterns
-          (pat_wildcard))
-        (operator)
-        (patterns
-          (pat_wildcard))))
+      (wildcard)
+      (pat_op)
+      (wildcard))
     (impossible)))
 
 ================================================================================

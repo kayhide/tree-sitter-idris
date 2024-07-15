@@ -342,20 +342,30 @@ any = foldMap @{%search} @{Any}
 Pragma foreign
 ================================================================================
 
-%foreign "C:idris2_isNull, libidris2_support, idris_support.h"
-         "javascript:lambda:x=>x===undefined||x===null?1:0"
+export
+%foreign "scheme:blodwen-stringbytelen"
+         "C:strlen, libc 6"
+         "javascript:lambda:(string)=>new TextEncoder().encode(string).length"
+stringByteLength : String -> Int
 
 --------------------------------------------------------------------------------
 
 (idris
-  (pragma
-    (pragma_name)
-    (pragma_arg
+  (signature
+    (visibility)
+    (pragma_foreign
+      (literal
+        (string))
+      (literal
+        (string))
       (literal
         (string)))
-    (pragma_arg
-      (literal
-        (string)))))
+    (loname)
+    (type_name
+      (caname))
+    (arrow_separator)
+    (type_name
+      (caname))))
 
 ================================================================================
 Pragma allow_overloads

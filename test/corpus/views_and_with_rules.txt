@@ -44,7 +44,7 @@ filter p (x :: xs) with (filter p xs)
                   (loname))))))
         (with_pat
           (pat_parens
-            (pat_wildcard)
+            (wildcard)
             (pat_op)
             (pat_name
               (loname))))
@@ -87,7 +87,7 @@ filter p (x :: xs) with (filter p xs)
           (wildcard))
         (with_pat
           (pat_parens
-            (pat_wildcard)
+            (wildcard)
             (pat_op)
             (pat_name
               (loname))))
@@ -128,7 +128,7 @@ foo n m with (n + 1)
           (funvar
             (loname)
             (patterns
-              (pat_wildcard)
+              (wildcard)
               (pat_name
                 (loname)))))
         (with_pat
@@ -146,8 +146,8 @@ foo n m with (n + 1)
               (funvar
                 (loname)
                 (patterns
-                  (pat_wildcard)
-                  (pat_wildcard))))
+                  (wildcard)
+                  (wildcard))))
             (with_pat
               (pat_literal
                 (integer)))
@@ -162,13 +162,13 @@ foo n m with (n + 1)
               (funvar
                 (loname)
                 (patterns
-                  (pat_wildcard)
-                  (pat_wildcard))))
+                  (wildcard)
+                  (wildcard))))
             (with_pat
               (pat_literal
                 (integer)))
             (with_pat
-              (pat_wildcard))
+              (wildcard))
             (rhs
               (exp_name
                 (caname))))))
@@ -177,10 +177,10 @@ foo n m with (n + 1)
           (funvar
             (loname)
             (patterns
-              (pat_wildcard)
-              (pat_wildcard))))
+              (wildcard)
+              (wildcard))))
         (with_pat
-          (pat_wildcard))
+          (wildcard))
         (rhs
           (exp_name
             (caname)))))))
@@ -234,9 +234,9 @@ foo n m with (n + 1) | (m + 1)
         (lhs
           (wildcard))
         (with_pat
-          (pat_wildcard))
+          (wildcard))
         (with_pat
-          (pat_wildcard))
+          (wildcard))
         (rhs
           (exp_name
             (caname)))))))

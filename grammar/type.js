@@ -104,6 +104,7 @@ module.exports = {
       $.type_braces,
       $.pragma_world,
       $.exp_braces,
+      $.exp_let_in,
     ),
 
   _type: $ => sep1(

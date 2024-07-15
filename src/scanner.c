@@ -966,6 +966,16 @@ static Result minus(State *state) {
 }
 
 /**
+ * Same to minus but bar.
+ */
+static Result bar(State *state) {
+  if (!seq("|||", state)) return res_cont;
+  while (PEEK == '|')  S_ADVANCE;
+  if (symbolic(PEEK)) return res_fail;
+  return inline_comment(state);
+}
+
+/**
  * Succeed for a comment.
  */
 static Result multiline_comment_success(State *state) {
@@ -1030,6 +1040,11 @@ static Result comment(State *state) {
   switch (PEEK) {
     case '-': {
       Result res = minus(state);
+      SHORT_SCANNER;
+      return res_fail;
+    }
+    case '|': {
+      Result res = bar(state);
       SHORT_SCANNER;
       return res_fail;
     }

@@ -413,8 +413,8 @@ Implementation with implicit arguments inside constraint tuples
           (funvar
             (operator)))
         (rhs
-          (exp_parens
-            (exp_op))
+          (exp_name
+            (operator))
           (exp_ticked
             (exp_name
               (loname)))

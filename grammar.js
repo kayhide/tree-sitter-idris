@@ -99,11 +99,12 @@ module.exports = grammar({
     [$._type_variables, $.loname],
     [$._name, $.interface_name],
     [$._name, $._name_op, $.interface_name],
-    [$._name_op, $.interface_name],
     [$._apat, $._implementation_name],
     [$._name, $._q_name],
     [$._name, $._name_op],
     [$._name, $._field_name],
+    [$._q_name, $._name_op],
+    [$._q_name, $._q_name_op],
 
     /**
      * Visibilities conflict.
@@ -114,11 +115,6 @@ module.exports = grammar({
      * Braces
      */
     [$._q_name, $._field_name],
-
-    /**
-     * Parens perator
-     */
-    [$._parens_operator, $._apat],
 
     /**
      * Type operators of `->` or `=>` in exp.
@@ -152,7 +148,17 @@ module.exports = grammar({
     [$._type,],
 
     // Misc
-    [$.pat_parens, $._funop],
+    [$.operator, $.exp_op, $.pat_op],
+    [$.operator, $.pat_op],
+    [$.exp_op, $.pat_op],
+    [$.exp_op, $.pat_op],
+    [$.type_op, $.exp_op],
+    [$.operator, $.type_op, $.exp_op],
+    [$._equal, $.type_op],
+    [$._atype, $._aexp],
+    [$._atype, $.exp_name],
+    [$._atype, $._sexp],
+    [$.type_list, $.exp_list],
   ],
 
   rules: {
