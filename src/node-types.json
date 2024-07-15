@@ -35,6 +35,10 @@
         "required": false,
         "types": [
           {
+            "type": "exp_braces",
+            "named": true
+          },
+          {
             "type": "exp_case",
             "named": true
           },
@@ -52,10 +56,6 @@
           },
           {
             "type": "exp_if",
-            "named": true
-          },
-          {
-            "type": "exp_implicit_arg",
             "named": true
           },
           {
@@ -238,7 +238,7 @@
       "required": true,
       "types": [
         {
-          "type": "exp_implicit_arg",
+          "type": "exp_braces",
           "named": true
         },
         {
@@ -301,6 +301,10 @@
       "required": true,
       "types": [
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_case",
           "named": true
         },
@@ -318,10 +322,6 @@
         },
         {
           "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -460,15 +460,15 @@
       "required": true,
       "types": [
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_explicit_impl",
           "named": true
         },
         {
           "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -623,7 +623,7 @@
           "named": true
         },
         {
-          "type": "exp_implicit_arg",
+          "type": "exp_braces",
           "named": true
         },
         {
@@ -774,7 +774,7 @@
           "named": true
         },
         {
-          "type": "exp_implicit_arg",
+          "type": "exp_braces",
           "named": true
         },
         {
@@ -912,15 +912,15 @@
       "required": true,
       "types": [
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_explicit_impl",
           "named": true
         },
         {
           "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -1011,6 +1011,25 @@
     "fields": {}
   },
   {
+    "type": "exp_braces",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comma",
+          "named": true
+        },
+        {
+          "type": "explicit_arg",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "exp_case",
     "named": true,
     "fields": {
@@ -1018,6 +1037,10 @@
         "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "exp_braces",
+            "named": true
+          },
           {
             "type": "exp_case",
             "named": true
@@ -1036,10 +1059,6 @@
           },
           {
             "type": "exp_if",
-            "named": true
-          },
-          {
-            "type": "exp_implicit_arg",
             "named": true
           },
           {
@@ -1164,6 +1183,10 @@
       "required": false,
       "types": [
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_case",
           "named": true
         },
@@ -1181,10 +1204,6 @@
         },
         {
           "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -1275,15 +1294,15 @@
       "required": false,
       "types": [
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_explicit_impl",
           "named": true
         },
         {
           "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -1358,6 +1377,10 @@
       "required": false,
       "types": [
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_case",
           "named": true
         },
@@ -1375,10 +1398,6 @@
         },
         {
           "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -1479,6 +1498,10 @@
         "required": true,
         "types": [
           {
+            "type": "exp_braces",
+            "named": true
+          },
+          {
             "type": "exp_case",
             "named": true
           },
@@ -1496,10 +1519,6 @@
           },
           {
             "type": "exp_if",
-            "named": true
-          },
-          {
-            "type": "exp_implicit_arg",
             "named": true
           },
           {
@@ -1593,132 +1612,6 @@
     }
   },
   {
-    "type": "exp_implicit_arg",
-    "named": true,
-    "fields": {
-      "object": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "exp_case",
-            "named": true
-          },
-          {
-            "type": "exp_do",
-            "named": true
-          },
-          {
-            "type": "exp_explicit_impl",
-            "named": true
-          },
-          {
-            "type": "exp_idiom",
-            "named": true
-          },
-          {
-            "type": "exp_if",
-            "named": true
-          },
-          {
-            "type": "exp_implicit_arg",
-            "named": true
-          },
-          {
-            "type": "exp_lambda",
-            "named": true
-          },
-          {
-            "type": "exp_lambda_case",
-            "named": true
-          },
-          {
-            "type": "exp_let_in",
-            "named": true
-          },
-          {
-            "type": "exp_list",
-            "named": true
-          },
-          {
-            "type": "exp_literal",
-            "named": true
-          },
-          {
-            "type": "exp_name",
-            "named": true
-          },
-          {
-            "type": "exp_op",
-            "named": true
-          },
-          {
-            "type": "exp_parens",
-            "named": true
-          },
-          {
-            "type": "exp_quasiquotation",
-            "named": true
-          },
-          {
-            "type": "exp_record_access",
-            "named": true
-          },
-          {
-            "type": "exp_rewrite_in",
-            "named": true
-          },
-          {
-            "type": "exp_ticked",
-            "named": true
-          },
-          {
-            "type": "exp_tuple",
-            "named": true
-          },
-          {
-            "type": "hole",
-            "named": true
-          },
-          {
-            "type": "pragma_mkworld",
-            "named": true
-          },
-          {
-            "type": "pragma_search",
-            "named": true
-          },
-          {
-            "type": "record_update",
-            "named": true
-          },
-          {
-            "type": "unit",
-            "named": true
-          },
-          {
-            "type": "wildcard",
-            "named": true
-          }
-        ]
-      },
-      "subject": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "caname",
-            "named": true
-          },
-          {
-            "type": "loname",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "exp_lambda",
     "named": true,
     "fields": {},
@@ -1784,6 +1677,10 @@
           "named": true
         },
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_case",
           "named": true
         },
@@ -1801,10 +1698,6 @@
         },
         {
           "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -1982,6 +1875,10 @@
           "named": true
         },
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_case",
           "named": true
         },
@@ -1999,10 +1896,6 @@
         },
         {
           "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -2097,15 +1990,15 @@
           "named": true
         },
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_explicit_impl",
           "named": true
         },
         {
           "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -2270,6 +2163,10 @@
       "required": false,
       "types": [
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_case",
           "named": true
         },
@@ -2287,10 +2184,6 @@
         },
         {
           "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -2381,15 +2274,15 @@
       "required": true,
       "types": [
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_explicit_impl",
           "named": true
         },
         {
           "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -2464,6 +2357,10 @@
       "required": true,
       "types": [
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_case",
           "named": true
         },
@@ -2481,10 +2378,6 @@
         },
         {
           "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -2568,6 +2461,132 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "explicit_arg",
+    "named": true,
+    "fields": {
+      "object": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "exp_braces",
+            "named": true
+          },
+          {
+            "type": "exp_case",
+            "named": true
+          },
+          {
+            "type": "exp_do",
+            "named": true
+          },
+          {
+            "type": "exp_explicit_impl",
+            "named": true
+          },
+          {
+            "type": "exp_idiom",
+            "named": true
+          },
+          {
+            "type": "exp_if",
+            "named": true
+          },
+          {
+            "type": "exp_lambda",
+            "named": true
+          },
+          {
+            "type": "exp_lambda_case",
+            "named": true
+          },
+          {
+            "type": "exp_let_in",
+            "named": true
+          },
+          {
+            "type": "exp_list",
+            "named": true
+          },
+          {
+            "type": "exp_literal",
+            "named": true
+          },
+          {
+            "type": "exp_name",
+            "named": true
+          },
+          {
+            "type": "exp_op",
+            "named": true
+          },
+          {
+            "type": "exp_parens",
+            "named": true
+          },
+          {
+            "type": "exp_quasiquotation",
+            "named": true
+          },
+          {
+            "type": "exp_record_access",
+            "named": true
+          },
+          {
+            "type": "exp_rewrite_in",
+            "named": true
+          },
+          {
+            "type": "exp_ticked",
+            "named": true
+          },
+          {
+            "type": "exp_tuple",
+            "named": true
+          },
+          {
+            "type": "hole",
+            "named": true
+          },
+          {
+            "type": "pragma_mkworld",
+            "named": true
+          },
+          {
+            "type": "pragma_search",
+            "named": true
+          },
+          {
+            "type": "record_update",
+            "named": true
+          },
+          {
+            "type": "unit",
+            "named": true
+          },
+          {
+            "type": "wildcard",
+            "named": true
+          }
+        ]
+      },
+      "subject": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "caname",
+            "named": true
+          },
+          {
+            "type": "loname",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -2866,7 +2885,7 @@
           "named": true
         },
         {
-          "type": "exp_implicit_arg",
+          "type": "exp_braces",
           "named": true
         },
         {
@@ -2991,7 +3010,7 @@
           "named": true
         },
         {
-          "type": "exp_implicit_arg",
+          "type": "exp_braces",
           "named": true
         },
         {
@@ -3088,6 +3107,10 @@
       "required": false,
       "types": [
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_case",
           "named": true
         },
@@ -3105,10 +3128,6 @@
         },
         {
           "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -3368,6 +3387,10 @@
           "named": true
         },
         {
+          "type": "pat_typed",
+          "named": true
+        },
+        {
           "type": "pat_wildcard",
           "named": true
         },
@@ -3387,6 +3410,10 @@
       "required": false,
       "types": [
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_case",
           "named": true
         },
@@ -3404,10 +3431,6 @@
         },
         {
           "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -3887,7 +3910,7 @@
           "named": true
         },
         {
-          "type": "exp_implicit_arg",
+          "type": "exp_braces",
           "named": true
         },
         {
@@ -3912,6 +3935,10 @@
         },
         {
           "type": "pragma_world",
+          "named": true
+        },
+        {
+          "type": "quantity",
           "named": true
         },
         {
@@ -4551,7 +4578,7 @@
       "required": false,
       "types": [
         {
-          "type": "exp_implicit_arg",
+          "type": "exp_braces",
           "named": true
         },
         {
@@ -4572,6 +4599,10 @@
         },
         {
           "type": "pragma_world",
+          "named": true
+        },
+        {
+          "type": "quantity",
           "named": true
         },
         {
@@ -4744,15 +4775,15 @@
       "required": true,
       "types": [
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_explicit_impl",
           "named": true
         },
         {
           "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -4942,7 +4973,7 @@
       "required": true,
       "types": [
         {
-          "type": "exp_implicit_arg",
+          "type": "exp_braces",
           "named": true
         },
         {
@@ -5055,7 +5086,7 @@
           "named": true
         },
         {
-          "type": "exp_implicit_arg",
+          "type": "exp_braces",
           "named": true
         },
         {
@@ -5131,6 +5162,10 @@
           "named": true
         },
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_case",
           "named": true
         },
@@ -5148,10 +5183,6 @@
         },
         {
           "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -5246,15 +5277,15 @@
       "required": true,
       "types": [
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_explicit_impl",
           "named": true
         },
         {
           "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -5329,6 +5360,10 @@
       "required": false,
       "types": [
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_case",
           "named": true
         },
@@ -5346,10 +5381,6 @@
         },
         {
           "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -5494,7 +5525,7 @@
       "required": false,
       "types": [
         {
-          "type": "exp_implicit_arg",
+          "type": "exp_braces",
           "named": true
         },
         {
@@ -5565,6 +5596,10 @@
           "named": true
         },
         {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
           "type": "exp_case",
           "named": true
         },
@@ -5582,10 +5617,6 @@
         },
         {
           "type": "exp_if",
-          "named": true
-        },
-        {
-          "type": "exp_implicit_arg",
           "named": true
         },
         {
@@ -5699,7 +5730,7 @@
           "named": true
         },
         {
-          "type": "exp_implicit_arg",
+          "type": "exp_braces",
           "named": true
         },
         {
@@ -5762,7 +5793,7 @@
           "named": true
         },
         {
-          "type": "exp_implicit_arg",
+          "type": "exp_braces",
           "named": true
         },
         {
@@ -5864,7 +5895,7 @@
           "named": true
         },
         {
-          "type": "exp_implicit_arg",
+          "type": "exp_braces",
           "named": true
         },
         {
@@ -5919,7 +5950,7 @@
       "required": true,
       "types": [
         {
-          "type": "exp_implicit_arg",
+          "type": "exp_braces",
           "named": true
         },
         {
@@ -6313,11 +6344,11 @@
   },
   {
     "type": "module",
-    "named": true
+    "named": false
   },
   {
     "type": "module",
-    "named": false
+    "named": true
   },
   {
     "type": "mutual",
