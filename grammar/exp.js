@@ -152,7 +152,7 @@ module.exports = {
   _let_decl: $ => choice(
     $._gendecl,
     seq(
-      alias($._typed_pat, $.lhs),
+      alias($._pat, $.lhs),
       alias($._funrhs, $.rhs),
     ),
   ),
@@ -184,7 +184,7 @@ module.exports = {
     alias($._exp, $.lambda_exp),
   ),
 
-  lambda_args: $ => sep1($.comma, $._typed_pat),
+  lambda_args: $ => sep1($.comma, $._pat),
 
   // ----- Lambda case  -------------------------------------------------------
 
@@ -201,7 +201,7 @@ module.exports = {
   ),
 
   bind_pattern: $ => seq(
-    $._typed_pat,
+    $._pat,
     $._larrow,
     alias(repeat1($._aexp), $.bind_exp),
     repeat($.bind_alt),
@@ -215,7 +215,7 @@ module.exports = {
     repeat($.bind_alt),
   ),
 
-  bind_alt: $ => seq('|', $._typed_pat, $._rcarrow, $._exp),
+  bind_alt: $ => seq('|', $._pat, $._rcarrow, $._exp),
 
 
   statement: $ =>

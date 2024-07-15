@@ -27,6 +27,7 @@ module.exports = {
 
   type_op: $ => choice(
     $._operator,
+    $.ticked_operator,
     '=',
   ),
 

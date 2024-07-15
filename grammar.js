@@ -134,8 +134,8 @@ module.exports = grammar({
      * Signature `:` and let in typed pattern.
      * let prf : Type := a = b in ...
      */
+    [$._pat, $.signature],
     [$._apat, $.signature],
-    [$.pat_typed, $.signature],
 
     /**
      * What a `forall` binds to is ambiguous from the parser's POV:
@@ -151,6 +151,8 @@ module.exports = grammar({
      */
     [$._type,],
 
+    // Misc
+    [$.pat_parens, $._funop],
   ],
 
   rules: {

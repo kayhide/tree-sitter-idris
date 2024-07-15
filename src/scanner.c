@@ -525,12 +525,8 @@ static Symbolic s_symop(wchar_vec s, State *state) {
         case '@':
         case '\\':
           return S_INVALID;
-        case '.': // '.' operator cannot be followed by char except ')' for "(.)"
-          if (!(isws(PEEK) || PEEK == ')')) return S_INVALID;
-          break;
-        case '%': // '%' operator cannot be followed by char
-          S_ADVANCE;
-          if (iswalnum(PEEK)) return S_INVALID;
+        case '%': 
+          if (iswalnum(PEEK)) return S_INVALID; // expect a pragma
           break;
         default: return S_OP;
       }
@@ -733,29 +729,6 @@ static Result initialize_init(State *state) {
 }
 
 /**
- * If a dot is neither preceded nor succeeded by whitespace, it may be parsed as a qualified module dot or a field
- * projection.
- *
- * The preceding space is ensured by sequencing this parser before `skipspace` in `init`.
- * Since this parser cannot look back to see whether the preceding name is a conid, this has to be ensured by the
- * grammar, represented here by the requirement of a valid symbol `DOT`.
- *
- * Since the dot is consumed here, the alternative interpretation, a `VARSYM`, has to be emitted here.
- */
-static Result dot(State *state) {
-  if (SYM(DOT) && '.' == PEEK) {
-    S_ADVANCE;
-    if (SYM(VARSYM)) {
-      if (iswspace(PEEK) || ')' == PEEK) return finish(VARSYM, "dot");
-    }
-    MARK("dot", false, state);
-    return finish(DOT, "dot");
-  }
-  return res_cont;
-}
-
-
-/**
  * Consume the body of a cpp directive.
  *
  * Since they can contain escaped newlines, they have to be consumed, after which the parser recurses.
@@ -954,10 +927,8 @@ static Result symop_marked(Symbolic type, State *state) {
  *  - Star, tilde and minus are only valid as type operators
  *  - Implicit `?` with immediate varid is always invalid, to be parsed by the grammar
  *  - `%` can be a modifier TODO currently only checked for types
- *  - /--+/ is a comment
- *  - Leadering `:` is a `CONSYM`
  *
- * Otherwise succeed with `TYCONSYM` or `VARSYM` if they are valid.
+ * Otherwise succeed with `VARSYM` if they are valid.
  */
 
 static Result symop(Symbolic type, State *state) {
@@ -1113,7 +1084,6 @@ static Result close_layout_in_list(State *state) {
  *   - `)` can end the layout of an `of`
  *   - symbolic operators are complicated to implement with regex
  *   - '[' can be a list or a quasiquote
- *   - '|' in a quasiquote, since it can be followed by symbolic operator characters, which would be consumed
  */
 static Result inline_tokens(State *state) {
   uint32_t c = PEEK;
@@ -1288,6 +1258,31 @@ static Result immediate(uint32_t column, State *state) {
   return inline_tokens(state);
 }
 
+
+/**
+ * If a dot is neither preceded nor succeeded by whitespace, it may be parsed as a qualified module dot or a field
+ * projection.
+ *
+ * The preceding space is ensured by sequencing this parser before `skipspace` in `init`.
+ * Since this parser cannot look back to see whether the preceding name is a conid, this has to be ensured by the
+ * grammar, represented here by the requirement of a valid symbol `DOT`.
+ *
+ * Since the dot is consumed here, the alternative interpretation, a `VARSYM`, has to be emitted here.
+ */
+static Result dot(State *state) {
+  if (SYM(DOT) && '.' == PEEK) {
+    S_ADVANCE;
+    MARK("dot", false, state);
+    if (iswalpha(PEEK) || '(' == PEEK) return finish(DOT, "dot");
+    if (SYM(VARSYM)) {
+      Symbolic s = read_symop(state);
+      MARK("symop", false, state);
+      return finish(VARSYM, "symop");
+    }
+  }
+  return res_cont;
+}
+
 /**
  * Parsers that have to run _before_ parsing whitespace:
  *
@@ -1295,7 +1290,6 @@ static Result immediate(uint32_t column, State *state) {
  *   - Indent stack initialization
  *   - Qualified module dot (leading whitespace would mean it would be `(.)`)
  *   - cpp
- *   - quasiquote body, which overrides everything
  */
 static Result init(State *state) {
   Result res = eof(state);

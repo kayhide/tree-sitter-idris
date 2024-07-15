@@ -136,11 +136,10 @@ Diag v = let ty : Type := v = v in ty
       (exp_let_in
         (declarations
           (lhs
-            (pat_typed
-              (pat_name
-                (loname))
-              (type_name
-                (caname))))
+            (pat_name
+              (loname))
+            (type_name
+              (caname)))
           (rhs
             (exp_name
               (loname))
@@ -480,12 +479,11 @@ _ = believe_me (\ 0 i : Int => ())
       (exp_parens
         (exp_lambda
           (lambda_args
-            (pat_typed
-              (quantity)
-              (pat_name
-                (loname))
-              (type_name
-                (caname))))
+            (quantity)
+            (pat_name
+              (loname))
+            (type_name
+              (caname)))
           (lambda_exp
             (unit)))))))
 
@@ -757,7 +755,10 @@ paramConstraints params pos
         (exp_ticked
           (exp_name
             (loname)))
-        (exp_record_access
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_name
           (loname)))
       (exp_op)
       (exp_name
@@ -778,5 +779,8 @@ paramConstraints params pos
         (exp_ticked
           (exp_name
             (loname)))
-        (exp_record_access
+        (exp_name
+          (loname))
+        (exp_op)
+        (exp_name
           (loname))))))

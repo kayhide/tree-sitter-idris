@@ -5,7 +5,7 @@ module.exports = {
   pat_field: $ =>
     seq(
       $._field_name,
-      optional(seq(':', $._typed_pat))
+      optional(seq(':', $._pat))
     ),
 
   pat_fields: $ => braces(sep($.comma, $.pat_field)),
@@ -15,14 +15,14 @@ module.exports = {
   pat_at_wildcard: _ => '@_',
 
   pat_parens: $ => parens(
-    sep($.tuple_operator, $._typed_pat),
+    sep($.tuple_operator, $._pat),
   ),
 
   pat_at_parens: $ => seq('@(', $._pat, ')'),
 
   pat_list: $ => choice(
-    brackets(sep($.comma, $._typed_pat)),
-    snoc_brackets(sep($.comma, $._typed_pat)),
+    brackets(sep($.comma, $._pat)),
+    snoc_brackets(sep($.comma, $._pat)),
   ),
 
   pat_braces: $ => seq('{', $._name, '=', $._pat, '}'),
@@ -44,19 +44,11 @@ module.exports = {
     $.pragma_mkworld,
   ),
 
-  _apats: $ => repeat1($._apat),
+  _apats: $ => prec.left(repeat1($._apat)),
 
-  _pat: $ => prec.left($._apats),
-
-  pat_typed: $ => seq(
+  _pat: $ => seq(
     optional($.quantity),
-    field('pattern', $._pat),
-    $._type_annotation,
+    $._apats,
+    optional($._type_annotation),
   ),
-
-  _typed_pat: $ => prec.right(choice(
-    $._pat,
-    $.pat_typed,
-  )),
-
 }
