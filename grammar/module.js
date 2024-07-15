@@ -29,7 +29,11 @@ module.exports = {
     ),
     parens(sep1(
       $.comma, 
-      seq(field('name', $._loname_op), $._type_annotation),
+      seq(
+        optional($.quantity),
+        field('name', $._loname_op),
+        $._type_annotation,
+      ),
     )),
     optional(alias($._top_declarations, $.parameters_body)),
   ),
