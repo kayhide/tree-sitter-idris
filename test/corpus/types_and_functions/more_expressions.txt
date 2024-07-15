@@ -104,7 +104,7 @@ mirror xs = let xs' : List a = reverse xs in
               (caname))
             (type_name
               (loname))
-            (operator)
+            (type_op)
             (type_name
               (loname))
             (type_name
@@ -135,15 +135,17 @@ Diag v = let ty : Type := v = v in ty
     (rhs
       (exp_let_in
         (declarations
-          (signature
-            (loname)
-            (type_name
-              (caname))
-            (operator)
-            (type_name
+          (lhs
+            (pat_typed
+              (pat_name
+                (loname))
+              (type_name
+                (caname))))
+          (rhs
+            (exp_name
               (loname))
-            (operator)
-            (type_name
+            (exp_op)
+            (exp_name
               (loname))))
         (in
           (exp_name
@@ -174,8 +176,10 @@ foldMap f = let fo : m -> a -> m
             (loname)
             (type_name
               (loname))
+            (arrow_separator)
             (type_name
               (loname))
+            (arrow_separator)
             (type_name
               (loname)))
           (lhs
@@ -227,8 +231,10 @@ foldMap f = let fo : m -> a -> m
             (loname)
             (type_name
               (loname))
+            (arrow_separator)
             (type_name
               (loname))
+            (arrow_separator)
             (type_name
               (loname)))
           (lhs
@@ -278,7 +284,7 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
           (pat_name
             (loname)))))
     (rhs
-      (exp_list
+      (exp_list_comprehension
         (exp_tuple
           (exp_name
             (loname))
@@ -288,10 +294,6 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
           (tuple_operator)
           (exp_name
             (loname)))
-        (exp_op)
-        (exp_name
-          (loname))
-        (exp_op)
         (exp_list
           (exp_literal
             (integer))
@@ -299,9 +301,6 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
           (exp_name
             (loname)))
         (comma)
-        (exp_name
-          (loname))
-        (exp_op)
         (exp_list
           (exp_literal
             (integer))
@@ -309,9 +308,6 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
           (exp_name
             (loname)))
         (comma)
-        (exp_name
-          (loname))
-        (exp_op)
         (exp_list
           (exp_literal
             (integer))
@@ -676,12 +672,12 @@ m_add x y = pure (!x + !y)
       (exp_name
         (loname))
       (exp_parens
-        (exp_name
-          (bang)
-          (loname))
         (exp_op)
         (exp_name
-          (bang)
+          (loname))
+        (exp_op)
+        (exp_op)
+        (exp_name
           (loname))))))
 
 ================================================================================
@@ -708,18 +704,18 @@ _ = let y = 94 in f !(g !(print y) !x)
         (in
           (exp_name
             (loname))
+          (exp_op)
           (exp_parens
-            (bang)
             (exp_name
               (loname))
+            (exp_op)
             (exp_parens
-              (bang)
               (exp_name
                 (loname))
               (exp_name
                 (loname)))
+            (exp_op)
             (exp_name
-              (bang)
               (loname))))))))
 
 ================================================================================

@@ -23,15 +23,18 @@ module.exports = {
       $.annotated_type_variable,
     ),
 
+  // ----- Operators arrows ---------------------------------------------------
+
+  type_op: $ => choice(
+    $._operator,
+    '=',
+  ),
+
+  arrow_separator: $ => choice($._arrow, $._rcarrow),
+
   // ----- Quantifiers --------------------------------------------------------
 
-  _forall_kw: _ => choice('forall', '∀'),
-
-  _quantifiers: $ => seq($._forall_kw, sep1($.comma, $._tyvar), '.'),
-
-  // This could be simply `$._quantifiers` but we also handle
-  // the edge case of `f :: forall a. forall b. Unit`
-  forall: $ => prec.left(repeat1($._quantifiers)),
+  _quantifiers: $ => seq($._forall, sep1($.comma, $._tyvar), '.'),
 
   // ----- Misc ---------------------------------------------------------------
 
@@ -57,8 +60,10 @@ module.exports = {
 
   // ----- Aggregation --------------------------------------------------------
 
-  // Parens or tuples
-  type_parens: $ => parens(sep($.comma, $._type)),
+  type_parens: $ => parens(
+    sep($.comma, $._type),
+    optional($._type_annotation),
+  ),
 
   type_list: $ => choice(
     brackets(sep($.comma, $._type)),
@@ -92,7 +97,7 @@ module.exports = {
       $.wildcard,
       $.literal,
       alias($._q_name_op, $.type_name),
-      $.operator,
+      $.type_op,
       $.type_parens,
       $.type_list,
       $.type_braces,
@@ -101,9 +106,9 @@ module.exports = {
     ),
 
   _type: $ => sep1(
-    choice($._arrow, $._lcarrow),
+    $.arrow_separator,
     seq(
-      optional($.forall),
+      optional($._quantifiers),
       repeat1($._atype),
     ),
   ),

@@ -20,6 +20,7 @@ mutual
         (loname)
         (type_name
           (caname))
+        (arrow_separator)
         (type_name
           (caname)))
       (function
@@ -51,6 +52,7 @@ mutual
         (loname)
         (type_name
           (caname))
+        (arrow_separator)
         (type_name
           (caname)))
       (function

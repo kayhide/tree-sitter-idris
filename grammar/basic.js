@@ -83,6 +83,10 @@ module.exports = {
 
   _colon2: _ => choice('∷', '::'),
 
+  _forall: _ => choice('forall', '∀'),
+
+  _equal: _ => '=',
+
   wildcard: _ => '_',
 
   unit: _ => '()',

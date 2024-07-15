@@ -13,9 +13,9 @@ mkSingle False = []
     (type_parens
       (type_name
         (loname))
-      (operator)
       (type_name
         (caname)))
+    (arrow_separator)
     (type_name
       (loname))
     (type_name
@@ -41,20 +41,21 @@ index : forall a, n. Fin n -> Vect n a -> a
 (idris
   (signature
     (loname)
-    (forall
-      (type_variable)
-      (comma)
-      (type_variable))
+    (type_variable)
+    (comma)
+    (type_variable)
+    (type_name
+      (caname))
+    (type_name
+      (loname))
+    (arrow_separator)
     (type_name
       (caname))
     (type_name
       (loname))
     (type_name
-      (caname))
-    (type_name
       (loname))
-    (type_name
-      (loname))
+    (arrow_separator)
     (type_name
       (loname))))
 
@@ -75,22 +76,26 @@ index : {a : Type} -> {n : Nat} -> Fin n -> Vect n a -> a
           (loname)))
       (type_name
         (caname)))
+    (arrow_separator)
     (type_braces
       (implicit_arg
         (type_name
           (loname)))
       (type_name
         (caname)))
+    (arrow_separator)
+    (type_name
+      (caname))
+    (type_name
+      (loname))
+    (arrow_separator)
     (type_name
       (caname))
     (type_name
       (loname))
     (type_name
-      (caname))
-    (type_name
       (loname))
-    (type_name
-      (loname))
+    (arrow_separator)
     (type_name
       (loname))))
 
@@ -145,21 +150,21 @@ index : (i : Fin n) -> (xs : Vect n a) -> a
     (type_parens
       (type_name
         (loname))
-      (operator)
       (type_name
         (caname))
       (type_name
         (loname)))
+    (arrow_separator)
     (type_parens
       (type_name
         (loname))
-      (operator)
       (type_name
         (caname))
       (type_name
         (loname))
       (type_name
         (loname)))
+    (arrow_separator)
     (type_name
       (loname))))
 
@@ -177,11 +182,11 @@ head : (xs : List a) -> {auto p : isCons xs = True} -> a
     (type_parens
       (type_name
         (loname))
-      (operator)
       (type_name
         (caname))
       (type_name
         (loname)))
+    (arrow_separator)
     (type_braces
       (implicit_arg
         (auto)
@@ -191,9 +196,10 @@ head : (xs : List a) -> {auto p : isCons xs = True} -> a
         (loname))
       (type_name
         (loname))
-      (operator)
+      (type_op)
       (type_name
         (caname)))
+    (arrow_separator)
     (type_name
       (loname))))
 
@@ -217,6 +223,7 @@ fibonacci : {default 0 lag : Nat} -> {default 1 lead : Nat} -> (n : Nat) -> Nat
           (loname)))
       (type_name
         (caname)))
+    (arrow_separator)
     (type_braces
       (implicit_arg
         (default
@@ -226,11 +233,12 @@ fibonacci : {default 0 lag : Nat} -> {default 1 lead : Nat} -> (n : Nat) -> Nat
           (loname)))
       (type_name
         (caname)))
+    (arrow_separator)
     (type_parens
       (type_name
         (loname))
-      (operator)
       (type_name
         (caname)))
+    (arrow_separator)
     (type_name
       (caname))))

@@ -41,7 +41,7 @@ module.exports = grammar({
     $._layout_end,
     $._dot,
     $.where,
-    $._varsym,
+    $._operator,
     $._consym,
     $._tyconsym,
     $.comment,
@@ -99,6 +99,7 @@ module.exports = grammar({
     [$._type_variables, $.loname],
     [$._name, $.interface_name],
     [$._name, $._name_op, $.interface_name],
+    [$._name_op, $.interface_name],
     [$._apat, $._implementation_name],
     [$._name, $._q_name],
     [$._name, $._name_op],
@@ -117,10 +118,24 @@ module.exports = grammar({
     /**
      * Parens perator
      */
-    [$._parens_operator, $._atype],
-    [$._parens_operator, $._aexp],
     [$._parens_operator, $._apat],
-    [$._parens_operator, $._aexp, $._apat],
+
+    /**
+     * Type operators of `->` or `=>` in exp.
+     */
+    [$.operator, $.exp_op],
+
+    /**
+     * Type operators including `=`.
+     */
+    [$.operator, $.type_op],
+
+    /**
+     * Signature `:` and let in typed pattern.
+     * let prf : Type := a = b in ...
+     */
+    [$._apat, $.signature],
+    [$.pat_typed, $.signature],
 
     /**
      * What a `forall` binds to is ambiguous from the parser's POV:

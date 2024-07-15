@@ -486,94 +486,63 @@ static bool valid_symop_two_chars(uint32_t first_char, uint32_t second_char) {
       return second_char != '>';
     case '<':
       return second_char != '-';
-    case '.':
-      return second_char != '.';
     case ':':
-      return second_char != ':';
+      return second_char != '=';
+    case '$':
+      return second_char != '=';
     default:
       return true;
   }
 }
 
 typedef enum {
-  S_CON,
   S_OP,
-  S_STAR,
-  S_TILDE,
   S_IMPLICIT,
   S_MODIFIER,
-  S_MINUS,
   S_BAR,
   S_COMMENT,
   S_INVALID,
 } Symbolic;
 
-static Symbolic con_or_var(uint32_t c) { return c == ':' ? S_CON : S_OP; }
-
-/**
- * Symbolic operators that are eligible to close a layout when they are on a newline with less/eq indent.
- *
- * Very crude heuristic. Layouts bad.
- */
-static bool expression_op(Symbolic type) {
-  switch (type) {
-    case S_OP:
-    case S_CON:
-    case S_STAR:
-      return true;
-    default:
-      return false;
-  }
-}
 
 /**
  * Check all conditions for symbolic expression operators and return a variant of the enum `Symbolic`.
  *
- *  - The `single` predicate is used for single-character symops
  *  - does not match a reserved operator
  *  - is not a comment
  *
- * Even if one of those conditions is unmet, it might still be parsed as a varsym, e.g. if a strictness annotation is
- * not valid at the current position.
- *
- * This only explicitly excludes `(!)` from being strictness; It could test for `varid` plus opening
- * parens/bracket, but strictness is only valid in patterns and that makes it ambiguous anyway.
- * Needs something better, but seems unlikely to be deterministic.
- *
- * Hashes followed by a varid start character `#foo` are labels.
  */
 static Symbolic s_symop(wchar_vec s, State *state) {
   if (s.data == NULL || s.data[0] == 0) return S_INVALID;
   int32_t c = s.data[0];
-  if (s.len == 1) {
-    if (c == '#' && varid_start_char(PEEK)) return S_INVALID;
-    if (c == '?' && varid_start_char(PEEK)) return S_IMPLICIT;
-    if (c == '%' && !(isws(PEEK) || PEEK == ')')) return S_MODIFIER;
-    if (c == '|') return S_BAR;
-    if (c == '.' &&  !(isws(PEEK) || PEEK == ')')) return S_INVALID;
-    switch (c) {
-      case '*':
-        return S_STAR;
-      case '~':
-        return S_TILDE;
-      case '-':
-        return S_MINUS;
-      case '=':
-      case '@':
-      case '\\':
-        return S_INVALID;
-      default: return con_or_var(c);
-    }
-  } else {
-    bool is_comment = 
-      ((s.data[0] == '-') && (s.data[1] == '-')) ||
-      (s.len == 3 && (s.data[0] == '|') && (s.data[1] == '|') && (s.data[2] == '|'));
-    if (is_comment) return S_COMMENT;
-    if (s.len == 2) {
-      if (!valid_symop_two_chars(s.data[0], s.data[1])) return S_INVALID;
-    }
+  switch (s.len) {
+    case 1:
+      switch (c) {
+        case '|':
+          return S_BAR;
+        case ':':
+        case '=':
+        case '@':
+        case '\\':
+          return S_INVALID;
+        case '.': // '.' operator cannot be followed by char except ')' for "(.)"
+          if (!(isws(PEEK) || PEEK == ')')) return S_INVALID;
+          break;
+        case '%': // '%' operator cannot be followed by char
+          S_ADVANCE;
+          if (iswalnum(PEEK)) return S_INVALID;
+          break;
+        default: return S_OP;
+      }
+    case 2:
+      if ((s.data[0] == '-') && (s.data[1] == '-')) return S_COMMENT;
+      if (valid_symop_two_chars(s.data[0], s.data[1])) return S_OP;
+      return S_INVALID;
+    case 3:
+      if ((s.data[0] == '|') && (s.data[1] == '|') && (s.data[2] == '|')) return S_COMMENT;
+      return S_OP;
   }
-  return con_or_var(c);
+  return S_OP;
 }
 
 // --------------------------------------------------------------------------------------------------------
@@ -772,16 +741,15 @@ static Result initialize_init(State *state) {
  * grammar, represented here by the requirement of a valid symbol `DOT`.
  *
  * Since the dot is consumed here, the alternative interpretation, a `VARSYM`, has to be emitted here.
- * A `TYCONSYM` is invalid here, because the dot is only expected in expressions.
  */
 static Result dot(State *state) {
-  if (SYM(DOT)) {
-    if (PEEK == '.') {
-      S_ADVANCE;
-      if (SYM(VARSYM) && (iswspace(PEEK))) return finish(VARSYM, "dot");
-      MARK("dot", false, state);
-      return finish(DOT, "dot");
+  if (SYM(DOT) && '.' == PEEK) {
+    S_ADVANCE;
+    if (SYM(VARSYM)) {
+      if (iswspace(PEEK) || ')' == PEEK) return finish(VARSYM, "dot");
     }
+    MARK("dot", false, state);
+    return finish(DOT, "dot");
   }
   return res_cont;
 }
@@ -886,7 +854,7 @@ static Result newline_semicolon(uint32_t indent, State *state) {
  * The same applies for `infix` functions.
  */
 static bool end_on_infix(uint32_t indent, Symbolic type, State *state) {
-  return indent_lesseq(indent, state) && (expression_op(type) || PEEK == '`');
+  return indent_lesseq(indent, state) && (S_OP == type || PEEK == '`');
 }
 
 /**
@@ -971,24 +939,10 @@ static Result symop_marked(Symbolic type, State *state) {
   switch (type) {
     case S_INVALID:
       return res_fail;
-    case S_STAR:
-    case S_MODIFIER:
-      return SYM(TYCONSYM) ? res_fail : res_cont;
-    case S_TILDE:
-    case S_MINUS: {
-      Result res = finish_if_valid(TYCONSYM, "symop", state);
-      SHORT_SCANNER;
-      return res_fail;
-    }
     case S_IMPLICIT:
       return res_fail;
     case S_COMMENT:
       return inline_comment(state);
-    case S_CON: {
-      Result res = finish_if_valid(CONSYM, "symop", state);
-      SHORT_SCANNER;
-      return res_fail;
-    }
     default:
       return res_cont;
   }
@@ -1018,8 +972,6 @@ static Result symop(Symbolic type, State *state) {
   }
   MARK("symop", false, state);
   Result res = symop_marked(type, state);
-  SHORT_SCANNER;
-  res = finish_if_valid(TYCONSYM, "symop", state);
   SHORT_SCANNER;
   res = finish_if_valid(VARSYM, "symop", state);
   SHORT_SCANNER;
@@ -1187,22 +1139,15 @@ static Result inline_tokens(State *state) {
       SHORT_SCANNER;
       return res_fail;
     }
-    // TODO(414owen) does this clash with inline comments '--'?
-    // I'm not sure why there's a `symbolic::comment` and a `COMMENT`...
-    SYMBOLICS_WITHOUT_BAR: {
-      is_symbolic = true;
-    }
-    case '|': {
-      Symbolic s = read_symop(state);
-      return symop(s, state);
-    }
     case '[': {
       return res_cont;
     }
-    // '-' case covered by symop
     case '{': {
       Result res = comment(state);
       SHORT_SCANNER;
+    }
+    SYMBOLIC_CASES: {
+      is_symbolic = true;
     }
   }
   if (is_symbolic || unicode_symbol(c)) {

@@ -45,19 +45,20 @@ assert_linear : (1 f : a -> b) -> (1 val : a) -> b
         (integer))
       (type_name
         (loname))
-      (operator)
       (type_name
         (loname))
+      (arrow_separator)
       (type_name
         (loname)))
+    (arrow_separator)
     (type_parens
       (literal
         (integer))
       (type_name
         (loname))
-      (operator)
       (type_name
         (loname)))
+    (arrow_separator)
     (type_name
       (loname))))
 
@@ -79,15 +80,20 @@ public export %inline %tcinline
     (type_parens
       (type_name
         (loname))
+      (arrow_separator)
       (type_name
         (loname)))
+    (arrow_separator)
     (type_parens
       (type_name
         (loname))
+      (arrow_separator)
       (type_name
         (loname)))
+    (arrow_separator)
     (type_name
       (loname))
+    (arrow_separator)
     (type_name
       (loname))))
 
@@ -101,16 +107,14 @@ SnocBiinjective : Biinjective (:<)
 --------------------------------------------------------------------------------
 
 (idris
-  (implementation
-    (implementation_head
-      (visibility)
-      (pragma_hint)
-      (interface_name)
-      (operator)
-      (type_name
-        (caname))
-      (type_name
-        (operator)))))
+  (signature
+    (visibility)
+    (pragma_hint)
+    (caname)
+    (type_name
+      (caname))
+    (type_parens
+      (type_op))))
 
 ================================================================================
 Pragma extern
@@ -129,8 +133,8 @@ Pragma extern
         (integer))
       (type_name
         (loname))
-      (operator)
       (pragma_world))
+    (arrow_separator)
     (type_name
       (caname))
     (type_name
@@ -151,6 +155,7 @@ Pragma transform 1
     (exp_name
       (qualified_operator
         (module)))
+    (exp_op)
     (exp_name
       (qualified_loname
         (module)
@@ -180,6 +185,7 @@ Pragma transform 2
         (loname)
         (exp_name
           (caname))))
+    (exp_op)
     (exp_name
       (loname))))
 
@@ -199,6 +205,7 @@ Pragma transform 3
       (qualified_loname
         (module)
         (loname)))
+    (exp_op)
     (exp_name
       (qualified_loname
         (module)
@@ -230,6 +237,7 @@ Pragma transform 4
         (loname)
         (exp_name
           (caname))))
+    (exp_op)
     (exp_name
       (loname))
     (exp_op)
@@ -387,16 +395,16 @@ MkIORes : (result : a) -> (1 x : %World) -> IORes a
     (type_parens
       (type_name
         (loname))
-      (operator)
       (type_name
         (loname)))
+    (arrow_separator)
     (type_parens
       (literal
         (integer))
       (type_name
         (loname))
-      (operator)
       (pragma_world))
+    (arrow_separator)
     (type_name
       (caname))
     (type_name

@@ -82,9 +82,11 @@ x : a {- comment 1 -} -> a {- comment 2 -} -> a
     (type_name
       (loname))
     (comment)
+    (arrow_separator)
     (type_name
       (loname))
     (comment)
+    (arrow_separator)
     (type_name
       (loname))))
 

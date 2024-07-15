@@ -14,9 +14,9 @@ duplicate : (1 x : a) -> (a, a)
         (integer))
       (type_name
         (loname))
-      (operator)
       (type_name
         (loname)))
+    (arrow_separator)
     (type_parens
       (type_name
         (loname))
@@ -39,9 +39,9 @@ duplicate : (1 _ : a) -> (a, a)
       (literal
         (integer))
       (wildcard)
-      (operator)
       (type_name
         (loname)))
+    (arrow_separator)
     (type_parens
       (type_name
         (loname))

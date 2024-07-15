@@ -18,6 +18,7 @@ interface Show a where
         (loname)
         (type_name
           (loname))
+        (arrow_separator)
         (type_name
           (caname))))))
 
@@ -108,8 +109,10 @@ interface Eq a => Ord a where
         (loname)
         (type_name
           (loname))
+        (arrow_separator)
         (type_name
           (loname))
+        (arrow_separator)
         (type_name
           (caname))))))
 
@@ -156,6 +159,7 @@ interface Functor (0 f : Type -> Type) where
         (type_variable)
         (type_name
           (caname))
+        (arrow_separator)
         (type_name
           (caname))))
     (interface_body
@@ -183,6 +187,7 @@ interface Functor f => Applicative (0 f : Type -> Type) where
         (type_variable)
         (type_name
           (caname))
+        (arrow_separator)
         (type_name
           (caname))))
     (interface_body
@@ -281,38 +286,38 @@ Uninhabited (x::xs = y::ys) where
           (caname))
         (type_name
           (loname)))
-      (constraints
-        (constraint
-          (interface_name)
-          (type_parens
-            (type_name
-              (caname))
-            (operator)
-            (type_name
-              (loname))
-            (operator)
-            (type_name
-              (loname)))
-          (type_parens
-            (type_name
-              (caname))
-            (operator)
-            (type_name
-              (loname))
-            (operator)
-            (type_name
-              (loname)))))
       (interface_name)
       (type_parens
         (type_name
-          (loname))
-        (operator)
+          (caname))
+        (type_op)
         (type_name
           (loname))
-        (operator)
+        (type_op)
+        (type_name
+          (loname)))
+      (type_parens
+        (type_name
+          (caname))
+        (type_op)
         (type_name
           (loname))
-        (operator)
+        (type_op)
+        (type_name
+          (loname)))
+      (arrow_separator)
+      (type_name
+        (caname))
+      (type_parens
+        (type_name
+          (loname))
+        (type_op)
+        (type_name
+          (loname))
+        (type_op)
+        (type_name
+          (loname))
+        (type_op)
         (type_name
           (loname))))
     (implementation_body
@@ -408,8 +413,8 @@ Implementation with implicit arguments inside constraint tuples
           (funvar
             (operator)))
         (rhs
-          (exp_name
-            (operator))
+          (exp_parens
+            (exp_op))
           (exp_ticked
             (exp_name
               (loname)))
@@ -679,7 +684,7 @@ public export
       (type_parens
         (type_name
           (loname))
-        (operator)
+        (type_op)
         (type_name
           (loname)))
       (using
@@ -735,6 +740,7 @@ interface Monad m => MonadState s (0 m : Type -> Type) | m where
         (type_variable)
         (type_name
           (caname))
+        (arrow_separator)
         (type_name
           (caname)))
       (determining_params

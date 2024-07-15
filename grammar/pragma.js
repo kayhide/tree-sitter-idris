@@ -20,8 +20,6 @@ module.exports = {
     '%transform',
     $.literal,
     $._aexps,
-    '=',
-    $._aexps,
   ),
 
   pragma_arg: $ => choice(

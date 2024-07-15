@@ -17,9 +17,7 @@ module.exports = {
 
   // ------------------------------------------------------------------------
   // Operators
-  // Because of scanner, some chars are not captured by regex
-  _operator: _ => choice(/(?:[:!#$%&*+./<=>?@\\^|~-]|\p{S})+/, '-', '|~', '.', '**'),
-  operator: $ => $._operator,
+  operator: $ => $._operator, // Defined by the scanner
   qualified_operator: $ => qualified($, parens($._operator)),
 
   // Tuple operator, only available inside parens
@@ -27,7 +25,7 @@ module.exports = {
 
   // ------------------------------------------------------------------------
   // Postfix projection operators
-  _dot_operator: $ => seq(".", $._immediate_loname),
+  _dot_operator: $ => seq($._dot, $._immediate_loname),
   dot_operator: $ => $._dot_operator,
   qualified_dot_operator: $ => qualified($, parens($._dot_operator)),
 

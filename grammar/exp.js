@@ -33,6 +33,12 @@ module.exports = {
 
   exp_name: $ => prefixable($.bang, $._q_name_op),
 
+  exp_op: $ => choice(
+    $._operator,
+    $.arrow_separator,
+    $._equal,
+  ),
+
   exp_ticked: $ => ticked($._aexp),
 
   exp_parens: $ => prefixable($.bang, parens($._exp)),
@@ -42,6 +48,24 @@ module.exports = {
   exp_list: $ => choice(
     brackets(sep($.comma, $._exp)),
     snoc_brackets(sep($.comma, $._exp)),
+  ),
+
+  exp_list_comprehension: $ => brackets(
+    seq(
+      $._aexps,
+      '|',
+      sep1(
+        $.comma,
+        choice(
+          seq(
+            $._loname,
+            $._larrow,
+            $._aexps
+          ),
+          $._aexps,
+        ),
+      )
+    ),
   ),
 
   exp_braces: $ => braces(sep1(
@@ -128,7 +152,7 @@ module.exports = {
   _let_decl: $ => choice(
     $._gendecl,
     seq(
-      alias($._pat, $.lhs),
+      alias($._typed_pat, $.lhs),
       alias($._funrhs, $.rhs),
     ),
   ),
@@ -215,11 +239,12 @@ module.exports = {
   _aexp: $ => choice(
     $.hole,
     $.exp_name,
-    alias($.operator, $.exp_op),
+    $.exp_op,
     $.exp_ticked,
     $.exp_parens,
     $.exp_idiom,
     $.exp_list,
+    $.exp_list_comprehension,
     $.exp_braces,
     $.exp_explicit_impl,
     $.record_update,

@@ -52,6 +52,7 @@ data List : Type -> Type where
     (type_signature
       (type_name
         (caname))
+      (arrow_separator)
       (type_name
         (caname)))
     (where)
@@ -68,10 +69,12 @@ data List : Type -> Type where
         (type_signature
           (type_name
             (loname))
+          (arrow_separator)
           (type_name
             (caname))
           (type_name
             (loname))
+          (arrow_separator)
           (type_name
             (caname))
           (type_name
@@ -93,17 +96,17 @@ data Elem : (x : a) -> (xs : List a) -> Type where
       (type_parens
         (type_name
           (loname))
-        (operator)
         (type_name
           (loname)))
+      (arrow_separator)
       (type_parens
         (type_name
           (loname))
-        (operator)
         (type_name
           (caname))
         (type_name
           (loname)))
+      (arrow_separator)
       (type_name
         (caname)))
     (where)
@@ -126,14 +129,15 @@ data Equal : forall a, b . a -> b -> Type where
     (visibility)
     (data_name)
     (type_signature
-      (forall
-        (type_variable)
-        (comma)
-        (type_variable))
+      (type_variable)
+      (comma)
+      (type_variable)
       (type_name
         (loname))
+      (arrow_separator)
       (type_name
         (loname))
+      (arrow_separator)
       (type_name
         (caname)))
     (where)
@@ -158,6 +162,7 @@ data MyShow : Type -> Type where
     (type_signature
       (type_name
         (caname))
+      (arrow_separator)
       (type_name
         (caname)))
     (where)
@@ -170,11 +175,12 @@ data MyShow : Type -> Type where
           (type_parens
             (type_name
               (loname))
-            (operator)
             (type_name
               (loname))
+            (arrow_separator)
             (type_name
               (caname)))
+          (arrow_separator)
           (type_name
             (caname))
           (type_name
@@ -194,6 +200,7 @@ data Ptr : Type -> Type where [external]
     (type_signature
       (type_name
         (caname))
+      (arrow_separator)
       (type_name
         (caname)))
     (where)
