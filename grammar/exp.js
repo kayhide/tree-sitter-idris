@@ -44,12 +44,17 @@ module.exports = {
     snoc_brackets(sep($.comma, $._exp)),
   ),
 
-  exp_implicit_arg: $ => braces(seq(
+  exp_braces: $ => braces(sep1(
+    $.comma,
+    $.explicit_arg,
+  )),
+
+  explicit_arg: $ => seq(
     field('subject', $._name),
     optional(seq('=',
       field('object', $._exp)
     )),
-  )),
+  ),
 
   exp_explicit_impl: $ => seq('@{', $._aexps, '}'),
 
@@ -215,7 +220,7 @@ module.exports = {
     $.exp_parens,
     $.exp_idiom,
     $.exp_list,
-    $.exp_implicit_arg,
+    $.exp_braces,
     $.exp_explicit_impl,
     $.record_update,
     $.exp_record_access,

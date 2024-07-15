@@ -170,14 +170,16 @@ Pragma transform 2
       (string))
     (exp_name
       (loname))
-    (exp_implicit_arg
-      (loname)
-      (exp_name
-        (caname)))
-    (exp_implicit_arg
-      (loname)
-      (exp_name
-        (caname)))
+    (exp_braces
+      (explicit_arg
+        (loname)
+        (exp_name
+          (caname))))
+    (exp_braces
+      (explicit_arg
+        (loname)
+        (exp_name
+          (caname))))
     (exp_name
       (loname))))
 
@@ -218,14 +220,16 @@ Pragma transform 4
       (string))
     (exp_name
       (loname))
-    (exp_implicit_arg
-      (loname)
-      (exp_name
-        (caname)))
-    (exp_implicit_arg
-      (loname)
-      (exp_name
-        (caname)))
+    (exp_braces
+      (explicit_arg
+        (loname)
+        (exp_name
+          (caname))))
+    (exp_braces
+      (explicit_arg
+        (loname)
+        (exp_name
+          (caname))))
     (exp_name
       (loname))
     (exp_op)

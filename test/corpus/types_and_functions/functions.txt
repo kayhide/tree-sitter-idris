@@ -632,8 +632,9 @@ lteAddRight (S k) {m} = LTESucc (lteAddRight {m} k)
       (exp_parens
         (exp_name
           (loname))
-        (exp_implicit_arg
-          (loname))
+        (exp_braces
+          (explicit_arg
+            (loname)))
         (exp_name
           (loname))))))
 
@@ -770,10 +771,11 @@ Type signature with apply exp
     (type_parens
       (type_name
         (loname))
-      (exp_implicit_arg
-        (loname)
-        (exp_name
-          (caname)))
+      (exp_braces
+        (explicit_arg
+          (loname)
+          (exp_name
+            (caname))))
       (type_name
         (loname))
       (operator)
@@ -908,6 +910,46 @@ CalcWith der = CalcSmart der @{preorderPrerequisite der}
           (loname))
         (exp_name
           (loname))))))
+
+================================================================================
+Explicit args
+================================================================================
+
+foldrVectHomomorphism = ShowVectHomomorphismProperty
+  { nil  = Refl
+  , cons = \x, xs => Calc $ _
+  }
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)))
+    (rhs
+      (exp_name
+        (caname))
+      (exp_braces
+        (explicit_arg
+          (loname)
+          (exp_name
+            (caname)))
+        (comma)
+        (explicit_arg
+          (loname)
+          (exp_lambda
+            (lambda_args
+              (pat_name
+                (loname))
+              (comma)
+              (pat_name
+                (loname)))
+            (lambda_exp
+              (exp_name
+                (caname))
+              (exp_op)
+              (wildcard))))))))
 
 ================================================================================
 Totality partial
