@@ -40,7 +40,6 @@ module.exports = grammar({
     $._layout_start,
     $._layout_end,
     $._dot,
-    $._arith_dotdot,
     $.where,
     $._varsym,
     $._consym,
