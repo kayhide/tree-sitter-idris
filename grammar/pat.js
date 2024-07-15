@@ -48,7 +48,11 @@ module.exports = {
 
   _pat: $ => prec.left($._apats),
 
-  pat_typed: $ => seq(field('pattern', $._pat), $._type_annotation),
+  pat_typed: $ => seq(
+    optional($.quantity),
+    field('pattern', $._pat),
+    $._type_annotation,
+  ),
 
   _typed_pat: $ => prec.right(choice(
     $._pat,

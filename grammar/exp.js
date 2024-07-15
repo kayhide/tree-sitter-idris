@@ -155,7 +155,7 @@ module.exports = {
     alias($._exp, $.lambda_exp),
   ),
 
-  lambda_args: $ => sep1($.comma, $._apat),
+  lambda_args: $ => sep1($.comma, $._typed_pat),
 
   // ----- Lambda case  -------------------------------------------------------
 
