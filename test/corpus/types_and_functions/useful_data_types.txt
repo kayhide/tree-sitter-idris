@@ -31,12 +31,10 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
     (loname)
     (type_name
       (caname))
-    (operator)
     (type_name
       (caname))
     (type_name
       (loname))
-    (operator)
     (type_name
       (caname))
     (type_name
@@ -109,21 +107,17 @@ maybe : Lazy b -> Lazy (a -> b) -> Maybe a -> b
       (caname))
     (type_name
       (loname))
-    (operator)
     (type_name
       (caname))
     (type_parens
       (type_name
         (loname))
-      (operator)
       (type_name
         (loname)))
-    (operator)
     (type_name
       (caname))
     (type_name
       (loname))
-    (operator)
     (type_name
       (loname))))
 
@@ -212,17 +206,14 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
         (operator)
         (type_name
           (caname)))
-      (operator)
       (type_parens
         (type_name
           (loname))
         (operator)
         (type_name
           (loname))
-        (operator)
         (type_name
           (caname)))
-      (operator)
       (type_name
         (caname)))
     (where)
@@ -236,22 +227,18 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
                 (loname)))
             (type_name
               (loname))
-            (operator)
             (type_name
               (caname)))
-          (operator)
           (type_parens
             (type_name
               (loname))
             (operator)
             (type_name
               (loname)))
-          (operator)
           (type_name
             (loname))
           (type_name
             (loname))
-          (operator)
           (type_name
             (caname))
           (type_name
@@ -319,17 +306,14 @@ filter p (x :: xs)
     (type_parens
       (type_name
         (loname))
-      (operator)
       (type_name
         (caname)))
-    (operator)
     (type_name
       (caname))
     (type_name
       (loname))
     (type_name
       (loname))
-    (operator)
     (type_parens
       (type_name
         (loname))
@@ -507,10 +491,8 @@ addStudent p c = { students := p :: students c } c
     (loname)
     (type_name
       (caname))
-    (operator)
     (type_name
       (caname))
-    (operator)
     (type_name
       (caname)))
   (function
@@ -549,10 +531,8 @@ addStudent' p c = { students $= (p ::) } c
     (loname)
     (type_name
       (caname))
-    (operator)
     (type_name
       (caname))
-    (operator)
     (type_name
       (caname)))
   (function
@@ -596,7 +576,6 @@ record DPair a (p : a -> Type) where
       (operator)
       (type_name
         (loname))
-      (operator)
       (type_name
         (caname)))
     (where)
@@ -728,7 +707,6 @@ record Split {a : Type} (p : a -> Type) (xys : List a) where
       (operator)
       (type_name
         (loname))
-      (operator)
       (type_name
         (caname)))
     (type_parens

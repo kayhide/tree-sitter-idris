@@ -234,7 +234,6 @@ namespace X
         (loname)
         (type_name
           (caname))
-        (operator)
         (type_name
           (caname))))))
 
@@ -292,7 +291,6 @@ parameters (x : Nat, y : Nat)
         (loname)
         (type_name
           (caname))
-        (operator)
         (type_name
           (caname))))))
 
@@ -327,7 +325,6 @@ parameters (y : Nat, xs : Vect x a)
         (type_signature
           (type_name
             (caname))
-          (operator)
           (type_name
             (caname)))
         (where)
@@ -341,7 +338,6 @@ parameters (y : Nat, xs : Vect x a)
                 (loname))
               (type_name
                 (loname))
-              (operator)
               (type_name
                 (caname))
               (type_name
@@ -352,7 +348,6 @@ parameters (y : Nat, xs : Vect x a)
           (caname))
         (type_name
           (loname))
-        (operator)
         (type_name
           (caname))
         (type_parens

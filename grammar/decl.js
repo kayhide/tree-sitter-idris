@@ -90,7 +90,10 @@ module.exports = {
         $.quantity,
       )
     ),
-    field('name', $._fun_name),
+    choice(
+      field('name', $._fun_name),
+      $.wildcard,
+    ),
     $._type_annotation,
   ),
 

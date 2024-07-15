@@ -17,7 +17,6 @@ duplicate : (1 x : a) -> (a, a)
       (operator)
       (type_name
         (loname)))
-    (operator)
     (type_parens
       (type_name
         (loname))
@@ -43,7 +42,6 @@ duplicate : (1 _ : a) -> (a, a)
       (operator)
       (type_name
         (loname)))
-    (operator)
     (type_parens
       (type_name
         (loname))

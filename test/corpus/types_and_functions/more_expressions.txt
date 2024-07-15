@@ -174,10 +174,8 @@ foldMap f = let fo : m -> a -> m
             (loname)
             (type_name
               (loname))
-            (operator)
             (type_name
               (loname))
-            (operator)
             (type_name
               (loname)))
           (lhs
@@ -229,10 +227,8 @@ foldMap f = let fo : m -> a -> m
             (loname)
             (type_name
               (loname))
-            (operator)
             (type_name
               (loname))
-            (operator)
             (type_name
               (loname)))
           (lhs

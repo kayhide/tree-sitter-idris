@@ -48,10 +48,8 @@ assert_linear : (1 f : a -> b) -> (1 val : a) -> b
       (operator)
       (type_name
         (loname))
-      (operator)
       (type_name
         (loname)))
-    (operator)
     (type_parens
       (literal
         (integer))
@@ -60,7 +58,6 @@ assert_linear : (1 f : a -> b) -> (1 val : a) -> b
       (operator)
       (type_name
         (loname)))
-    (operator)
     (type_name
       (loname))))
 
@@ -82,20 +79,15 @@ public export %inline %tcinline
     (type_parens
       (type_name
         (loname))
-      (operator)
       (type_name
         (loname)))
-    (operator)
     (type_parens
       (type_name
         (loname))
-      (operator)
       (type_name
         (loname)))
-    (operator)
     (type_name
       (loname))
-    (operator)
     (type_name
       (loname))))
 
@@ -139,7 +131,6 @@ Pragma extern
         (loname))
       (operator)
       (pragma_world))
-    (operator)
     (type_name
       (caname))
     (type_name
@@ -395,7 +386,6 @@ MkIORes : (result : a) -> (1 x : %World) -> IORes a
       (operator)
       (type_name
         (loname)))
-    (operator)
     (type_parens
       (literal
         (integer))
@@ -403,7 +393,6 @@ MkIORes : (result : a) -> (1 x : %World) -> IORes a
         (loname))
       (operator)
       (pragma_world))
-    (operator)
     (type_name
       (caname))
     (type_name

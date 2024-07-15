@@ -13,10 +13,8 @@ plus (S k) y = S (plus k y)
     (loname)
     (type_name
       (caname))
-    (operator)
     (type_name
       (caname))
-    (operator)
     (type_name
       (caname)))
   (function
@@ -69,10 +67,8 @@ mult (S k) y = plus y (mult k y)
     (loname)
     (type_name
       (caname))
-    (operator)
     (type_name
       (caname))
-    (operator)
     (type_name
       (caname)))
   (function
@@ -131,7 +127,6 @@ reverse xs = revAcc [] xs where
       (caname))
     (type_name
       (loname))
-    (operator)
     (type_name
       (caname))
     (type_name
@@ -157,12 +152,10 @@ reverse xs = revAcc [] xs where
           (caname))
         (type_name
           (loname))
-        (operator)
         (type_name
           (caname))
         (type_name
           (loname))
-        (operator)
         (type_name
           (caname))
         (type_name
@@ -223,7 +216,6 @@ foo x = case isLT of
     (loname)
     (type_name
       (caname))
-    (operator)
     (type_name
       (caname)))
   (function
@@ -300,7 +292,6 @@ even (S k) = odd k where
     (loname)
     (type_name
       (caname))
-    (operator)
     (type_name
       (caname)))
   (function
@@ -334,7 +325,6 @@ even (S k) = odd k where
         (loname)
         (type_name
           (caname))
-        (operator)
         (type_name
           (caname)))
       (function
@@ -418,7 +408,6 @@ test = [c (S 1), c Z, d (S Z)]
         (loname)
         (type_name
           (caname))
-        (operator)
         (type_name
           (caname)))
       (function
@@ -438,7 +427,6 @@ test = [c (S 1), c Z, d (S Z)]
         (loname)
         (type_name
           (caname))
-        (operator)
         (type_name
           (caname)))
       (function
@@ -468,7 +456,6 @@ test = [c (S 1), c Z, d (S Z)]
             (loname)
             (type_name
               (caname))
-            (operator)
             (type_name
               (caname)))
           (function
@@ -667,14 +654,12 @@ gcd : (a: Nat) -> (b: Nat) -> {auto 0 ok: NotBothZero a b} -> Nat
       (operator)
       (type_name
         (caname)))
-    (operator)
     (type_parens
       (type_name
         (loname))
       (operator)
       (type_name
         (caname)))
-    (operator)
     (type_braces
       (implicit_arg
         (auto)
@@ -687,7 +672,6 @@ gcd : (a: Nat) -> (b: Nat) -> {auto 0 ok: NotBothZero a b} -> Nat
         (loname))
       (type_name
         (loname)))
-    (operator)
     (type_name
       (caname))))
 
@@ -742,7 +726,6 @@ asBitVector : FiniteBits a => a -> Vect (bitSize {a}) Bool
     (operator)
     (type_name
       (loname))
-    (operator)
     (type_name
       (caname))
     (type_parens
@@ -773,7 +756,6 @@ Type signature with apply exp
           (loname)))
       (type_name
         (caname)))
-    (operator)
     (type_name
       (caname))
     (type_parens
@@ -783,7 +765,6 @@ Type signature with apply exp
         (loname))
       (type_name
         (loname)))
-    (operator)
     (type_name
       (caname))
     (type_parens
@@ -798,6 +779,51 @@ Type signature with apply exp
       (operator)
       (type_name
         (loname)))))
+
+================================================================================
+Type signature with forall
+================================================================================
+
+_ : {s : _} -> forall fs, ty .
+  Struct s fs -> (n : String) ->
+  FieldType n ty fs -> ty
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (wildcard)
+    (type_braces
+      (implicit_arg
+        (type_name
+          (loname)))
+      (wildcard))
+    (forall
+      (type_variable)
+      (comma)
+      (type_variable))
+    (type_name
+      (caname))
+    (type_name
+      (loname))
+    (type_name
+      (loname))
+    (type_parens
+      (type_name
+        (loname))
+      (operator)
+      (type_name
+        (caname)))
+    (type_name
+      (caname))
+    (type_name
+      (loname))
+    (type_name
+      (loname))
+    (type_name
+      (loname))
+    (type_name
+      (loname))))
 
 ================================================================================
 At braces 1
@@ -900,7 +926,6 @@ fromMaybe : Maybe a -> a
       (caname))
     (type_name
       (loname))
-    (operator)
     (type_name
       (loname))))
 
@@ -926,7 +951,6 @@ qsort : Ord a => List a -> List a
       (caname))
     (type_name
       (loname))
-    (operator)
     (type_name
       (caname))
     (type_name
@@ -948,15 +972,12 @@ takeUntil : (n -> Bool) -> Stream n -> List n
     (type_parens
       (type_name
         (loname))
-      (operator)
       (type_name
         (caname)))
-    (operator)
     (type_name
       (caname))
     (type_name
       (loname))
-    (operator)
     (type_name
       (caname))
     (type_name
@@ -983,19 +1004,16 @@ iterate : (f : a -> Maybe a) -> (x : a) -> List a
       (operator)
       (type_name
         (loname))
-      (operator)
       (type_name
         (caname))
       (type_name
         (loname)))
-    (operator)
     (type_parens
       (type_name
         (loname))
       (operator)
       (type_name
         (loname)))
-    (operator)
     (type_name
       (caname))
     (type_name
@@ -1015,7 +1033,6 @@ Quantity
     (caname)
     (type_name
       (caname))
-    (operator)
     (type_name
       (caname))))
 
@@ -1087,7 +1104,6 @@ Foo : a -> Type
     (caname)
     (type_name
       (loname))
-    (operator)
     (type_name
       (caname))))
 
@@ -1152,10 +1168,8 @@ Operator 1
     (operator)
     (type_name
       (loname))
-    (operator)
     (type_name
       (loname))
-    (operator)
     (type_name
       (loname))))
 
@@ -1172,10 +1186,8 @@ Operator 2
     (operator)
     (type_name
       (loname))
-    (operator)
     (type_name
       (loname))
-    (operator)
     (type_name
       (loname))))
 
@@ -1343,7 +1355,6 @@ Dot operator
           (loname))))
     (type_name
       (loname))
-    (operator)
     (type_name
       (loname)))
   (function

@@ -100,9 +100,12 @@ module.exports = {
       $.exp_implicit_arg,
     ),
 
-  _type: $ => seq(
-    optional($.forall),
-    repeat1($._atype),
+  _type: $ => sep1(
+    choice($._arrow, $._lcarrow),
+    seq(
+      optional($.forall),
+      repeat1($._atype),
+    ),
   ),
 
   _simpletype: $ =>

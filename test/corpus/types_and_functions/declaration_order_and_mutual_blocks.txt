@@ -20,7 +20,6 @@ mutual
         (loname)
         (type_name
           (caname))
-        (operator)
         (type_name
           (caname)))
       (function
@@ -52,7 +51,6 @@ mutual
         (loname)
         (type_name
           (caname))
-        (operator)
         (type_name
           (caname)))
       (function

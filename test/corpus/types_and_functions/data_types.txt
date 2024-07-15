@@ -52,7 +52,6 @@ data List : Type -> Type where
     (type_signature
       (type_name
         (caname))
-      (operator)
       (type_name
         (caname)))
     (where)
@@ -69,12 +68,10 @@ data List : Type -> Type where
         (type_signature
           (type_name
             (loname))
-          (operator)
           (type_name
             (caname))
           (type_name
             (loname))
-          (operator)
           (type_name
             (caname))
           (type_name
@@ -99,7 +96,6 @@ data Elem : (x : a) -> (xs : List a) -> Type where
         (operator)
         (type_name
           (loname)))
-      (operator)
       (type_parens
         (type_name
           (loname))
@@ -108,7 +104,6 @@ data Elem : (x : a) -> (xs : List a) -> Type where
           (caname))
         (type_name
           (loname)))
-      (operator)
       (type_name
         (caname)))
     (where)
@@ -137,10 +132,8 @@ data Equal : forall a, b . a -> b -> Type where
         (type_variable))
       (type_name
         (loname))
-      (operator)
       (type_name
         (loname))
-      (operator)
       (type_name
         (caname)))
     (where)
@@ -165,7 +158,6 @@ data MyShow : Type -> Type where
     (type_signature
       (type_name
         (caname))
-      (operator)
       (type_name
         (caname)))
     (where)
@@ -181,10 +173,8 @@ data MyShow : Type -> Type where
             (operator)
             (type_name
               (loname))
-            (operator)
             (type_name
               (caname)))
-          (operator)
           (type_name
             (caname))
           (type_name
@@ -204,7 +194,6 @@ data Ptr : Type -> Type where [external]
     (type_signature
       (type_name
         (caname))
-      (operator)
       (type_name
         (caname)))
     (where)

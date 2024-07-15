@@ -18,7 +18,6 @@ interface Show a where
         (loname)
         (type_name
           (loname))
-        (operator)
         (type_name
           (caname))))))
 
@@ -109,10 +108,8 @@ interface Eq a => Ord a where
         (loname)
         (type_name
           (loname))
-        (operator)
         (type_name
           (loname))
-        (operator)
         (type_name
           (caname))))))
 
@@ -159,7 +156,6 @@ interface Functor (0 f : Type -> Type) where
         (type_variable)
         (type_name
           (caname))
-        (operator)
         (type_name
           (caname))))
     (interface_body
@@ -187,7 +183,6 @@ interface Functor f => Applicative (0 f : Type -> Type) where
         (type_variable)
         (type_name
           (caname))
-        (operator)
         (type_name
           (caname))))
     (interface_body
@@ -740,7 +735,6 @@ interface Monad m => MonadState s (0 m : Type -> Type) | m where
         (type_variable)
         (type_name
           (caname))
-        (operator)
         (type_name
           (caname)))
       (determining_params
