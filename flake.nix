@@ -15,6 +15,7 @@
               yarn
               python3
               tree-sitter
+              clang-tools # clangd
             ];
           };
         };
