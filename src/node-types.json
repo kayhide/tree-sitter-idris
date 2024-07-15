@@ -32,7 +32,7 @@
     "fields": {
       "exp": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "exp_case",
@@ -201,6 +201,10 @@
         },
         {
           "type": "declarations",
+          "named": true
+        },
+        {
+          "type": "impossible",
           "named": true
         },
         {
@@ -1267,15 +1271,79 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": true,
+      "multiple": true,
+      "required": false,
       "types": [
         {
-          "type": "implementation_name",
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
+          "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_implicit_arg",
+          "named": true
+        },
+        {
+          "type": "exp_list",
+          "named": true
+        },
+        {
+          "type": "exp_literal",
+          "named": true
+        },
+        {
+          "type": "exp_name",
+          "named": true
+        },
+        {
+          "type": "exp_op",
+          "named": true
+        },
+        {
+          "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
+          "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_ticked",
+          "named": true
+        },
+        {
+          "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "hole",
+          "named": true
+        },
+        {
+          "type": "pragma_mkworld",
           "named": true
         },
         {
           "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "unit",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -5392,7 +5460,7 @@
     "fields": {
       "name": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "(",
@@ -6314,6 +6382,10 @@
   {
     "type": "pragma_world",
     "named": true
+  },
+  {
+    "type": "prefix",
+    "named": false
   },
   {
     "type": "private",
