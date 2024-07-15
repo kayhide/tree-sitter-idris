@@ -18,7 +18,7 @@ generate() {
 test() {
   echo testing...
   if grep -qr FOCUS test/corpus; then
-    tree-sitter test --filter FOCUS && echo test ok
+    tree-sitter test --debug --filter FOCUS && echo test ok
   else
     tree-sitter test && echo test ok
   fi
