@@ -42,8 +42,6 @@ module.exports = grammar({
     $._dot,
     $._arith_dotdot,
     $.where,
-    // TODO: Splices were removed from the JS grammar but not from the scanner yet.
-    $._splice_dollar,
     $._varsym,
     $._consym,
     $._tyconsym,

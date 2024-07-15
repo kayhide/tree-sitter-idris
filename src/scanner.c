@@ -77,7 +77,6 @@
  *   - arith_dotdot: The two dots in an arithmetic sequence, since both module dots and projection dots are valid here.
  *   - where: Parse an inline `where` token. This is necessary because `where` tokens can end layouts and it's necesary
  *     to know whether it is valid at that position, which can mean that it belongs to the last statement of the layout
- *   - splice: A TH splice starting with a `$`, to disambiguate from the operator
  *   - varsym: A symbolic operator
  *   - consym: A symbolic constructor
  *   - tyconsym: A symbolic type operator
@@ -99,7 +98,6 @@ typedef enum {
   DOT,
   ARITH_DOTDOT,
   WHERE,
-  SPLICE,
   VARSYM,
   CONSYM,
   TYCONSYM,
@@ -122,7 +120,6 @@ static char *sym_names[] = {
   "dot",
   "arith_dot",
   "where",
-  "splice",
   "varsym",
   "consym",
   "tyconsym",
@@ -504,14 +501,9 @@ static bool valid_symop_two_chars(uint32_t first_char, uint32_t second_char) {
   }
 }
 
-static  bool valid_splice(State *state) {
-  return varid_start_char(PEEK) || PEEK == '(';
-}
-
 typedef enum {
   S_CON,
   S_OP,
-  S_SPLICE,
   S_STAR,
   S_TILDE,
   S_IMPLICIT,
@@ -563,7 +555,6 @@ static Symbolic s_symop(wchar_vec s, State *state) {
   if (s.len == 1) {
     if (c == '#' && PEEK == ')') return S_UNBOXED_TUPLE_CLOSE;
     if (c == '#' && varid_start_char(PEEK)) return S_INVALID;
-    if (c == '$' && valid_splice(state)) return S_SPLICE;
     if (c == '?' && varid_start_char(PEEK)) return S_IMPLICIT;
     if (c == '%' && !(isws(PEEK) || PEEK == ')')) return S_MODIFIER;
     if (c == '|') return S_BAR;
@@ -587,7 +578,6 @@ static Symbolic s_symop(wchar_vec s, State *state) {
       (s.len == 3 && (s.data[0] == '|') && (s.data[1] == '|') && (s.data[2] == '|'));
     if (is_comment) return S_COMMENT;
     if (s.len == 2) {
-      if (s.data[0] == '$' && s.data[1] == '$' && valid_splice(state)) return S_SPLICE;
       if (!valid_symop_two_chars(s.data[0], s.data[1])) return S_INVALID;
     }
   }
@@ -962,18 +952,6 @@ static Result else_(State *state) {
   return !token("else instance", state) && token("else", state) ? end_or_semicolon("else", state) : res_cont;
 }
 
-/**
- * When a dollar is followed by a varid or opening paren, parse a splice.
- */
-static Result splice(State *state) {
-  uint32_t c = PEEK;
-  if ((varid_start_char(c) || c == '(') && state->symbols[SPLICE]) {
-    MARK("splice", false, state);
-    return finish(SPLICE, "splice");
-  }
-  return res_cont;
-}
-
 static Result unboxed_close(State *state) {
   if (state->symbols[UNBOXED_TUPLE_CLOSE]) {
     if (PEEK == ')') {
@@ -1033,8 +1011,6 @@ static Result symop_marked(Symbolic type, State *state) {
     }
     case S_IMPLICIT:
       return res_fail;
-    case S_SPLICE:
-      return splice(state);
     case S_COMMENT:
       return inline_comment(state);
     case S_CON: {
@@ -1054,7 +1030,6 @@ static Result symop_marked(Symbolic type, State *state) {
  *
  *  - Star, tilde and minus are only valid as type operators
  *  - Implicit `?` with immediate varid is always invalid, to be parsed by the grammar
- *  - `$` with immediate varid or parens is a splice
  *  - `%` can be a modifier TODO currently only checked for types
  *  - /--+/ is a comment
  *  - `#)` is an unboxed tuple terminator
@@ -1217,7 +1192,6 @@ static Result close_layout_in_list(State *state) {
  *   - `in` closes a layout when inline
  *   - `)` can end the layout of an `of`
  *   - symbolic operators are complicated to implement with regex
- *   - `$` can be a splice if not followed by whitespace
  *   - '[' can be a list or a quasiquote
  *   - '|' in a quasiquote, since it can be followed by symbolic operator characters, which would be consumed
  */
