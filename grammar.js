@@ -50,8 +50,6 @@ module.exports = grammar({
     $.comment,
     $.cpp,
     $.comma,
-    $._strict,
-    $._lazy,
     // TODO: Unboxed types were removed from the JS grammar but not from the scanner yet.
     $._unboxed_close,
     '|',

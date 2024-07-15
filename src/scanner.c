@@ -84,8 +84,6 @@
  *   - comment: A line or block comment, because they interfere with operators
  *   - cpp: A preprocessor directive. Needs to push and pop indent stacks
  *   - comma: Needed to terminate inline layouts like `of`, `do`
- *   - strict: Disambiguate strictness annotation `!` from symbolic operators
- *   - lazy: Disambiguate laziness annotation `~` from symbolic operators
  *   - unboxed_close: Disambiguate the closing parens for unboxed tuples/sums `#)` from symbolic operators
  *   - bar: The vertical bar `|`, used for guards and list comprehension
  *   - in: Closes the layout of a `let` and consumes the token `in`
@@ -108,8 +106,6 @@ typedef enum {
   COMMENT,
   CPP,
   COMMA,
-  STRICT,
-  LAZY,
   UNBOXED_TUPLE_CLOSE,
   BAR,
   IN,
@@ -133,8 +129,6 @@ static char *sym_names[] = {
   "comment",
   "cpp",
   "comma",
-  "strict",
-  "lazy",
   "unboxed_close",
   "bar",
   "in",
@@ -518,8 +512,6 @@ typedef enum {
   S_CON,
   S_OP,
   S_SPLICE,
-  S_STRICT,
-  S_LAZY,
   S_STAR,
   S_TILDE,
   S_IMPLICIT,
@@ -569,8 +561,6 @@ static Symbolic s_symop(wchar_vec s, State *state) {
   if (s.data == NULL || s.data[0] == 0) return S_INVALID;
   int32_t c = s.data[0];
   if (s.len == 1) {
-    if (c == '!' && !(isws(PEEK) || PEEK == ')')) return S_STRICT;
-    if (c == '~' && !(isws(PEEK) || PEEK == ')')) return S_LAZY;
     if (c == '#' && PEEK == ')') return S_UNBOXED_TUPLE_CLOSE;
     if (c == '#' && varid_start_char(PEEK)) return S_INVALID;
     if (c == '$' && valid_splice(state)) return S_SPLICE;
@@ -1045,10 +1035,6 @@ static Result symop_marked(Symbolic type, State *state) {
       return res_fail;
     case S_SPLICE:
       return splice(state);
-    case S_LAZY:
-      return finish_if_valid(LAZY, "lazy", state);
-    case S_STRICT:
-      return finish_if_valid(STRICT, "strict", state);
     case S_COMMENT:
       return inline_comment(state);
     case S_CON: {
@@ -1069,7 +1055,6 @@ static Result symop_marked(Symbolic type, State *state) {
  *  - Star, tilde and minus are only valid as type operators
  *  - Implicit `?` with immediate varid is always invalid, to be parsed by the grammar
  *  - `$` with immediate varid or parens is a splice
- *  - `!` can be a strictness annotation
  *  - `%` can be a modifier TODO currently only checked for types
  *  - /--+/ is a comment
  *  - `#)` is an unboxed tuple terminator
