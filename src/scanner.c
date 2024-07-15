@@ -83,7 +83,6 @@
  *   - comment: A line or block comment, because they interfere with operators
  *   - cpp: A preprocessor directive. Needs to push and pop indent stacks
  *   - comma: Needed to terminate inline layouts like `of`, `do`
- *   - unboxed_close: Disambiguate the closing parens for unboxed tuples/sums `#)` from symbolic operators
  *   - bar: The vertical bar `|`, used for guards and list comprehension
  *   - in: Closes the layout of a `let` and consumes the token `in`
  *   - indent: Used as a dummy symbol for initialization; uses newline in the grammar to ensure the scanner is called
@@ -104,7 +103,6 @@ typedef enum {
   COMMENT,
   CPP,
   COMMA,
-  UNBOXED_TUPLE_CLOSE,
   BAR,
   IN,
   INDENT,
@@ -126,7 +124,6 @@ static char *sym_names[] = {
   "comment",
   "cpp",
   "comma",
-  "unboxed_close",
   "bar",
   "in",
   "indent",
@@ -509,7 +506,6 @@ typedef enum {
   S_IMPLICIT,
   S_MODIFIER,
   S_MINUS,
-  S_UNBOXED_TUPLE_CLOSE,
   S_BAR,
   S_COMMENT,
   S_INVALID,
@@ -553,7 +549,6 @@ static Symbolic s_symop(wchar_vec s, State *state) {
   if (s.data == NULL || s.data[0] == 0) return S_INVALID;
   int32_t c = s.data[0];
   if (s.len == 1) {
-    if (c == '#' && PEEK == ')') return S_UNBOXED_TUPLE_CLOSE;
     if (c == '#' && varid_start_char(PEEK)) return S_INVALID;
     if (c == '?' && varid_start_char(PEEK)) return S_IMPLICIT;
     if (c == '%' && !(isws(PEEK) || PEEK == ')')) return S_MODIFIER;
@@ -952,17 +947,6 @@ static Result else_(State *state) {
   return !token("else instance", state) && token("else", state) ? end_or_semicolon("else", state) : res_cont;
 }
 
-static Result unboxed_close(State *state) {
-  if (state->symbols[UNBOXED_TUPLE_CLOSE]) {
-    if (PEEK == ')') {
-      S_ADVANCE;
-      MARK("unboxed_close", false, state);
-      return finish(UNBOXED_TUPLE_CLOSE, "unboxed_close");
-    }
-  }
-  return res_cont;
-}
-
 
 /**
  * Consume all characters up to the end of line and succeed with `syms::commment`.
@@ -1018,8 +1002,6 @@ static Result symop_marked(Symbolic type, State *state) {
       SHORT_SCANNER;
       return res_fail;
     }
-    case S_UNBOXED_TUPLE_CLOSE:
-      return unboxed_close(state);
     default:
       return res_cont;
   }
@@ -1032,7 +1014,6 @@ static Result symop_marked(Symbolic type, State *state) {
  *  - Implicit `?` with immediate varid is always invalid, to be parsed by the grammar
  *  - `%` can be a modifier TODO currently only checked for types
  *  - /--+/ is a comment
- *  - `#)` is an unboxed tuple terminator
  *  - Leadering `:` is a `CONSYM`
  *
  * Otherwise succeed with `TYCONSYM` or `VARSYM` if they are valid.
