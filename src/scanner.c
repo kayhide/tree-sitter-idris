@@ -81,13 +81,9 @@
  *   - varsym: A symbolic operator
  *   - consym: A symbolic constructor
  *   - tyconsym: A symbolic type operator
- *   - comment: A line or block comment, because they interfere with operators, especially in QQs
+ *   - comment: A line or block comment, because they interfere with operators
  *   - cpp: A preprocessor directive. Needs to push and pop indent stacks
  *   - comma: Needed to terminate inline layouts like `of`, `do`
- *   - qq_start: Disambiguate the opening oxford bracket from list comprehension
- *   - qq_bar: Disambiguate the vertical bar `|` after the quasiquoter from symbolic operators, which may be a problem
- *     when the quasiquote body starts with an operator character.
- *   - qq_body: Prevent extras, like comments, from breaking quasiquotes
  *   - strict: Disambiguate strictness annotation `!` from symbolic operators
  *   - lazy: Disambiguate laziness annotation `~` from symbolic operators
  *   - unboxed_close: Disambiguate the closing parens for unboxed tuples/sums `#)` from symbolic operators
@@ -112,9 +108,6 @@ typedef enum {
   COMMENT,
   CPP,
   COMMA,
-  QQ_START,
-  QQ_BAR,
-  QQ_BODY,
   STRICT,
   LAZY,
   UNBOXED_TUPLE_CLOSE,
@@ -140,9 +133,6 @@ static char *sym_names[] = {
   "comment",
   "cpp",
   "comma",
-  "qq_start",
-  "qq_bar",
-  "qq_body",
   "strict",
   "lazy",
   "unboxed_close",
@@ -983,45 +973,6 @@ static Result else_(State *state) {
 }
 
 /**
- * Detect the start of a quasiquote: An opening bracket followed by an optional varid and a vertical bar, all without
- * whitespace in between
- */
-static Result qq_start(State *state) {
-  MARK("qq_start", false, state);
-  while (quoter_char(PEEK)) S_ADVANCE;
-  if (PEEK == '|') return finish(QQ_START, "qq_start");
-  return res_cont;
-}
-
-static Result qq_body(State *state) {
-  for (;;) {
-    if (PEEK == 0) {
-      Result res = eof(state);
-      SHORT_SCANNER;
-      return res_fail;
-    }
-    MARK("qq_body", false, state);
-    if (PEEK == '\\') {
-      S_ADVANCE;
-      S_ADVANCE;
-    } else {
-      if (PEEK == 0x27e7) {
-        S_ADVANCE;
-        return finish(QQ_BODY, "qq_body");
-      }
-      if (PEEK == '|') {
-        S_ADVANCE;
-        if (PEEK == ']') {
-          S_ADVANCE;
-          return finish(QQ_BODY, "qq_body");
-        }
-      }
-      S_ADVANCE;
-    }
-  }
-}
-
-/**
  * When a dollar is followed by a varid or opening paren, parse a splice.
  */
 static Result splice(State *state) {
@@ -1315,21 +1266,11 @@ static Result inline_tokens(State *state) {
       is_symbolic = true;
     }
     case '|': {
-      if (state->symbols[QQ_BAR]) {
-        S_ADVANCE;
-        MARK("qq_bar", false, state);
-        return res_finish(QQ_BAR);
-      }
       Symbolic s = read_symop(state);
       return symop(s, state);
     }
     case '[': {
-      if (state->symbols[QQ_START]) {
-        S_ADVANCE;
-        Result res = qq_start(state);
-        SHORT_SCANNER;
-      }
-      return res_fail;
+      return res_cont;
     }
     // '-' case covered by symop
     case '{': {
@@ -1495,9 +1436,6 @@ static Result init(State *state) {
   SHORT_SCANNER;
   res = cpp(state);
   SHORT_SCANNER;
-  if (state->symbols[QQ_BODY]) {
-    return qq_body(state);
-  }
   return res_cont;
 }
 

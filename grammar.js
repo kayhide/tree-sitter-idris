@@ -50,10 +50,6 @@ module.exports = grammar({
     $.comment,
     $.cpp,
     $.comma,
-    // TODO: Quasiquotes were removed from the JS grammar but not from the scanner yet.
-    $.quasiquote_start,
-    $.quasiquote_bar,
-    $.quasiquote_body,
     $._strict,
     $._lazy,
     // TODO: Unboxed types were removed from the JS grammar but not from the scanner yet.
