@@ -79,13 +79,13 @@ module.exports = {
 
   _larrow: _ => choice('←', '<-'),
 
-  _colon: _ => ':',
+  colon: _ => ':',
 
-  _colon2: _ => choice('∷', '::'),
+  forall: _ => choice('forall', '∀'),
 
-  _forall: _ => choice('forall', '∀'),
+  _def_equal: _ => choice( ':=', '='),
 
-  _equal: _ => '=',
+  equal: _ => '=',
 
   wildcard: _ => '_',
 

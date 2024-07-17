@@ -29,7 +29,7 @@ mirror xs = let xs' = reverse xs in
         (in
           (exp_name
             (loname))
-          (exp_op)
+          (operator)
           (exp_name
             (loname)))))))
 
@@ -66,16 +66,16 @@ showPerson p = let MkPerson name age = p in
         (in
           (exp_name
             (loname))
-          (exp_op)
-          (exp_literal
+          (operator)
+          (literal
             (string))
-          (exp_op)
+          (operator)
           (exp_name
             (loname))
           (exp_name
             (loname))
-          (exp_op)
-          (exp_literal
+          (operator)
+          (literal
             (string)))))))
 
 ================================================================================
@@ -100,19 +100,20 @@ mirror xs = let xs' : List a = reverse xs in
         (declarations
           (signature
             (loname)
-            (type_name
+            (colon)
+            (exp_name
               (caname))
-            (type_name
+            (exp_name
               (loname))
-            (type_op)
-            (type_name
+            (equal)
+            (exp_name
               (loname))
-            (type_name
+            (exp_name
               (loname))))
         (in
           (exp_name
             (loname))
-          (exp_op)
+          (operator)
           (exp_name
             (loname)))))))
 
@@ -138,14 +139,16 @@ Diag v = let ty : Type := v = v in ty
           (lhs
             (pat_name
               (loname))
-            (type_name
+            (colon)
+            (exp_name
               (caname)))
           (rhs
-            (exp_name
-              (loname))
-            (exp_op)
-            (exp_name
-              (loname))))
+            (exp_type
+              (exp_name
+                (loname))
+              (equal)
+              (exp_name
+                (loname)))))
         (in
           (exp_name
             (loname)))))))
@@ -173,13 +176,14 @@ foldMap f = let fo : m -> a -> m
         (declarations
           (signature
             (loname)
-            (type_name
+            (colon)
+            (exp_name
               (loname))
             (arrow_separator)
-            (type_name
+            (exp_name
               (loname))
             (arrow_separator)
-            (type_name
+            (exp_name
               (loname)))
           (lhs
             (pat_name
@@ -191,7 +195,7 @@ foldMap f = let fo : m -> a -> m
           (rhs
             (exp_name
               (loname))
-            (exp_op)
+            (operator)
             (exp_name
               (loname))
             (exp_name
@@ -228,13 +232,14 @@ foldMap f = let fo : m -> a -> m
         (declarations
           (signature
             (loname)
-            (type_name
+            (colon)
+            (exp_name
               (loname))
             (arrow_separator)
-            (type_name
+            (exp_name
               (loname))
             (arrow_separator)
-            (type_name
+            (exp_name
               (loname)))
           (lhs
             (pat_name
@@ -246,7 +251,7 @@ foldMap f = let fo : m -> a -> m
           (rhs
             (exp_name
               (loname))
-            (exp_op)
+            (operator)
             (exp_name
               (loname))
             (exp_name
@@ -285,8 +290,9 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
     (rhs
       (exp_list_comprehension
         (exp_tuple
-          (exp_name
-            (loname))
+          (exp_type
+            (exp_name
+              (loname)))
           (tuple_operator)
           (exp_name
             (loname))
@@ -294,41 +300,41 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
           (exp_name
             (loname)))
         (exp_list
-          (exp_literal
+          (literal
             (integer))
-          (exp_op)
+          (operator)
           (exp_name
             (loname)))
         (comma)
         (exp_list
-          (exp_literal
+          (literal
             (integer))
-          (exp_op)
+          (operator)
           (exp_name
             (loname)))
         (comma)
         (exp_list
-          (exp_literal
+          (literal
             (integer))
-          (exp_op)
+          (operator)
           (exp_name
             (loname)))
         (comma)
         (exp_name
           (loname))
-        (exp_op)
+        (operator)
         (exp_name
           (loname))
-        (exp_op)
+        (operator)
         (exp_name
           (loname))
-        (exp_op)
+        (operator)
         (exp_name
           (loname))
-        (exp_op)
+        (operator)
         (exp_name
           (loname))
-        (exp_op)
+        (operator)
         (exp_name
           (loname))))))
 
@@ -356,7 +362,7 @@ splitAt c x = case break (== c) x of
         (exp_name
           (loname))
         (exp_parens
-          (exp_op)
+          (operator)
           (exp_name
             (loname)))
         (exp_name
@@ -370,8 +376,9 @@ splitAt c x = case break (== c) x of
               (pat_name
                 (loname)))
             (exp_tuple
-              (exp_name
-                (loname))
+              (exp_type
+                (exp_name
+                  (loname)))
               (tuple_operator)
               (exp_name
                 (loname))
@@ -482,7 +489,8 @@ _ = believe_me (\ 0 i : Int => ())
             (quantity)
             (pat_name
               (loname))
-            (type_name
+            (colon)
+            (exp_name
               (caname)))
           (lambda_exp
             (unit)))))))
@@ -505,7 +513,7 @@ decompress = concatMap $ \case
     (rhs
       (exp_name
         (loname))
-      (exp_op)
+      (operator)
       (exp_lambda_case
         (alts
           (alt
@@ -517,7 +525,7 @@ decompress = concatMap $ \case
               (loname))
             (exp_name
               (caname))
-            (exp_op)
+            (operator)
             (exp_name
               (loname))
             (exp_name
@@ -531,7 +539,7 @@ decompress = concatMap $ \case
               (loname))
             (exp_name
               (caname))
-            (exp_op)
+            (operator)
             (exp_name
               (loname))
             (exp_name
@@ -576,7 +584,7 @@ _ = MkRWST $ \r,s,w => let (a, s', w') = f r s
     (rhs
       (exp_name
         (caname))
-      (exp_op)
+      (operator)
       (exp_lambda
         (lambda_args
           (pat_name
@@ -619,7 +627,7 @@ _ = MkRWST $ \r,s,w => let (a, s', w') = f r s
                 (tuple_operator)
                 (exp_name
                   (loname))
-                (exp_op)
+                (operator)
                 (exp_name
                   (loname))))))))))
 
@@ -644,7 +652,7 @@ fun <*> x = [| fun <*> x |]
       (exp_idiom
         (exp_name
           (loname))
-        (exp_op)
+        (operator)
         (exp_name
           (loname))))))
 
@@ -670,11 +678,11 @@ m_add x y = pure (!x + !y)
       (exp_name
         (loname))
       (exp_parens
-        (exp_op)
+        (operator)
         (exp_name
           (loname))
-        (exp_op)
-        (exp_op)
+        (operator)
+        (operator)
         (exp_name
           (loname))))))
 
@@ -697,22 +705,22 @@ _ = let y = 94 in f !(g !(print y) !x)
             (pat_name
               (loname)))
           (rhs
-            (exp_literal
+            (literal
               (integer))))
         (in
           (exp_name
             (loname))
-          (exp_op)
+          (operator)
           (exp_parens
             (exp_name
               (loname))
-            (exp_op)
+            (operator)
             (exp_parens
               (exp_name
                 (loname))
               (exp_name
                 (loname)))
-            (exp_op)
+            (operator)
             (exp_name
               (loname))))))))
 
@@ -746,7 +754,7 @@ paramConstraints params pos
           (module)
           (module)
           (caname)))
-      (exp_op)
+      (operator)
       (exp_name
         (loname))
       (exp_parens
@@ -757,10 +765,10 @@ paramConstraints params pos
             (loname)))
         (exp_name
           (loname))
-        (exp_op)
+        (operator)
         (exp_name
           (loname)))
-      (exp_op)
+      (operator)
       (exp_name
         (caname))
       (exp_name
@@ -770,7 +778,7 @@ paramConstraints params pos
           (module)
           (module)
           (caname)))
-      (exp_op)
+      (operator)
       (exp_name
         (loname))
       (exp_parens
@@ -781,6 +789,6 @@ paramConstraints params pos
             (loname)))
         (exp_name
           (loname))
-        (exp_op)
+        (operator)
         (exp_name
           (loname))))))

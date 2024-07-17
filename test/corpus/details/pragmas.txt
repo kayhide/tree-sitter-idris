@@ -40,26 +40,27 @@ assert_linear : (1 f : a -> b) -> (1 val : a) -> b
     (pragma_inline)
     (comment)
     (loname)
+    (colon)
     (type_parens
-      (literal
-        (integer))
-      (type_name
+      (quantity)
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (loname))
       (arrow_separator)
-      (type_name
+      (exp_name
         (loname)))
     (arrow_separator)
     (type_parens
-      (literal
-        (integer))
-      (type_name
+      (quantity)
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (loname)))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================
@@ -77,24 +78,27 @@ public export %inline %tcinline
     (pragma_inline)
     (pragma_tcinline)
     (operator)
-    (type_parens
-      (type_name
-        (loname))
-      (arrow_separator)
-      (type_name
-        (loname)))
+    (colon)
+    (exp_parens
+      (exp_type
+        (exp_name
+          (loname))
+        (arrow_separator)
+        (exp_name
+          (loname))))
     (arrow_separator)
-    (type_parens
-      (type_name
-        (loname))
-      (arrow_separator)
-      (type_name
-        (loname)))
+    (exp_parens
+      (exp_type
+        (exp_name
+          (loname))
+        (arrow_separator)
+        (exp_name
+          (loname))))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================
@@ -111,10 +115,11 @@ SnocBiinjective : Biinjective (:<)
     (visibility)
     (pragma_hint)
     (caname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
-    (type_parens
-      (type_op))))
+    (exp_name
+      (operator))))
 
 ================================================================================
 Pragma extern
@@ -128,16 +133,17 @@ Pragma extern
   (pragma_extern)
   (signature
     (loname)
+    (colon)
     (type_parens
-      (literal
-        (integer))
-      (type_name
+      (quantity)
+      (exp_name
         (loname))
+      (colon)
       (pragma_world))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (caname))))
 
 ================================================================================
@@ -155,7 +161,7 @@ Pragma transform 1
     (exp_name
       (qualified_operator
         (module)))
-    (exp_op)
+    (equal)
     (exp_name
       (qualified_loname
         (module)
@@ -178,14 +184,16 @@ Pragma transform 2
     (exp_braces
       (explicit_arg
         (loname)
+        (equal)
         (exp_name
           (caname))))
     (exp_braces
       (explicit_arg
         (loname)
+        (equal)
         (exp_name
           (caname))))
-    (exp_op)
+    (equal)
     (exp_name
       (loname))))
 
@@ -205,7 +213,7 @@ Pragma transform 3
       (qualified_loname
         (module)
         (loname)))
-    (exp_op)
+    (equal)
     (exp_name
       (qualified_loname
         (module)
@@ -230,17 +238,19 @@ Pragma transform 4
     (exp_braces
       (explicit_arg
         (loname)
+        (equal)
         (exp_name
           (caname))))
     (exp_braces
       (explicit_arg
         (loname)
+        (equal)
         (exp_name
           (caname))))
-    (exp_op)
+    (equal)
     (exp_name
       (loname))
-    (exp_op)
+    (operator)
     (exp_name
       (loname))))
 
@@ -361,10 +371,11 @@ stringByteLength : String -> Int
       (literal
         (string)))
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))))
 
 ================================================================================
@@ -402,22 +413,24 @@ MkIORes : (result : a) -> (1 x : %World) -> IORes a
 (idris
   (signature
     (caname)
+    (colon)
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (loname)))
     (arrow_separator)
     (type_parens
-      (literal
-        (integer))
-      (type_name
+      (quantity)
+      (exp_name
         (loname))
+      (colon)
       (pragma_world))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================

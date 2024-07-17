@@ -113,7 +113,8 @@ f x = y
     (declarations
       (signature
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname)))
       (function
         (lhs
@@ -149,7 +150,8 @@ f x = y
     (declarations
       (signature
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname)))
       (function
         (lhs
@@ -263,7 +265,8 @@ f x = z
     (declarations
       (signature
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname)))
       (function
         (lhs

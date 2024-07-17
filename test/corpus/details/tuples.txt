@@ -27,8 +27,9 @@ _ = (x, y)
       (wildcard))
     (rhs
       (exp_tuple
-        (exp_name
-          (loname))
+        (exp_type
+          (exp_name
+            (loname)))
         (tuple_operator)
         (exp_name
           (loname))))))
@@ -47,8 +48,9 @@ _ = (x,)
       (wildcard))
     (rhs
       (exp_tuple
-        (exp_name
-          (loname))
+        (exp_type
+          (exp_name
+            (loname)))
         (tuple_operator)))))
 
 ================================================================================
@@ -83,8 +85,9 @@ _ = (x, y, z)
       (wildcard))
     (rhs
       (exp_tuple
-        (exp_name
-          (loname))
+        (exp_type
+          (exp_name
+            (loname)))
         (tuple_operator)
         (exp_name
           (loname))
@@ -106,8 +109,9 @@ _ = (x, y,)
       (wildcard))
     (rhs
       (exp_tuple
-        (exp_name
-          (loname))
+        (exp_type
+          (exp_name
+            (loname)))
         (tuple_operator)
         (exp_name
           (loname))
@@ -127,8 +131,9 @@ _ = (x, , z)
       (wildcard))
     (rhs
       (exp_tuple
-        (exp_name
-          (loname))
+        (exp_type
+          (exp_name
+            (loname)))
         (tuple_operator)
         (tuple_operator)
         (exp_name
@@ -169,8 +174,9 @@ _ = (x,,)
       (wildcard))
     (rhs
       (exp_tuple
-        (exp_name
-          (loname))
+        (exp_type
+          (exp_name
+            (loname)))
         (tuple_operator)
         (tuple_operator)))))
 
@@ -225,6 +231,7 @@ _ = (,,)
     (lhs
       (wildcard))
     (rhs
-      (exp_tuple
-        (tuple_operator)
-        (tuple_operator)))))
+      (exp_type
+        (exp_tuple
+          (tuple_operator)
+          (tuple_operator))))))

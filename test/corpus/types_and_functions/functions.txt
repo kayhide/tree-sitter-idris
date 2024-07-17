@@ -11,13 +11,14 @@ plus (S k) y = S (plus k y)
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname)))
   (function
     (lhs
@@ -67,13 +68,14 @@ mult (S k) y = plus y (mult k y)
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname)))
   (function
     (lhs
@@ -127,14 +129,15 @@ reverse xs = revAcc [] xs where
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname)))
   (function
     (lhs
@@ -153,19 +156,20 @@ reverse xs = revAcc [] xs where
     (declarations
       (signature
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))
-        (type_name
+        (exp_name
           (loname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname))
-        (type_name
+        (exp_name
           (loname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname))
-        (type_name
+        (exp_name
           (loname)))
       (function
         (lhs
@@ -197,7 +201,7 @@ reverse xs = revAcc [] xs where
           (exp_parens
             (exp_name
               (loname))
-            (exp_op)
+            (operator)
             (exp_name
               (loname)))
           (exp_name
@@ -221,10 +225,11 @@ foo x = case isLT of
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname)))
   (function
     (lhs
@@ -243,22 +248,23 @@ foo x = case isLT of
               (caname))
             (exp_name
               (loname))
-            (exp_op)
-            (exp_literal
+            (operator)
+            (literal
               (integer)))
           (alt
             (pat_name
               (caname))
             (exp_name
               (loname))
-            (exp_op)
-            (exp_literal
+            (operator)
+            (literal
               (integer))))))
     (where)
     (declarations
       (signature
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname)))
       (function
         (lhs
@@ -268,8 +274,8 @@ foo x = case isLT of
           (exp_if
             (exp_name
               (loname))
-            (exp_op)
-            (exp_literal
+            (operator)
+            (literal
               (integer))
             (exp_then
               (exp_name
@@ -279,8 +285,10 @@ foo x = case isLT of
                 (caname))))))
       (data
         (data_name)
-        (caname)
-        (caname)))))
+        (exp_name
+          (caname))
+        (exp_name
+          (caname))))))
 
 ================================================================================
 where clauses 3
@@ -298,10 +306,11 @@ even (S k) = odd k where
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname)))
   (function
     (lhs
@@ -332,10 +341,11 @@ even (S k) = odd k where
     (declarations
       (signature
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname)))
       (function
         (lhs
@@ -382,9 +392,10 @@ test = [c (S 1), c Z, d (S Z)]
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (caname)))
   (function
     (lhs
@@ -397,7 +408,7 @@ test = [c (S 1), c Z, d (S Z)]
         (exp_parens
           (exp_name
             (caname))
-          (exp_literal
+          (literal
             (integer)))
         (comma)
         (exp_name
@@ -416,10 +427,11 @@ test = [c (S 1), c Z, d (S Z)]
     (declarations
       (signature
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname)))
       (function
         (lhs
@@ -429,17 +441,18 @@ test = [c (S 1), c Z, d (S Z)]
               (pat_name
                 (loname)))))
         (rhs
-          (exp_literal
+          (literal
             (integer))
-          (exp_op)
+          (operator)
           (exp_name
             (loname))))
       (signature
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname)))
       (function
         (lhs
@@ -454,10 +467,10 @@ test = [c (S 1), c Z, d (S Z)]
           (exp_parens
             (exp_name
               (loname))
-            (exp_op)
-            (exp_literal
+            (operator)
+            (literal
               (integer))
-            (exp_op)
+            (operator)
             (exp_name
               (loname))
             (exp_name
@@ -466,10 +479,11 @@ test = [c (S 1), c Z, d (S Z)]
         (declarations
           (signature
             (loname)
-            (type_name
+            (colon)
+            (exp_name
               (caname))
             (arrow_separator)
-            (type_name
+            (exp_name
               (caname)))
           (function
             (lhs
@@ -481,7 +495,7 @@ test = [c (S 1), c Z, d (S Z)]
             (rhs
               (exp_name
                 (loname))
-              (exp_op)
+              (operator)
               (exp_name
                 (loname)))))))))
 
@@ -564,7 +578,7 @@ asList str@(strCons x xs) = x :: xs
     (rhs
       (exp_name
         (loname))
-      (exp_op)
+      (operator)
       (exp_name
         (loname)))))
 
@@ -612,7 +626,7 @@ reflexive {x = S _} = LTESucc $ reflexive
     (rhs
       (exp_name
         (caname))
-      (exp_op)
+      (operator)
       (exp_name
         (loname)))))
 
@@ -662,32 +676,35 @@ gcd : (a: Nat) -> (b: Nat) -> {auto 0 ok: NotBothZero a b} -> Nat
 (idris
   (signature
     (loname)
+    (colon)
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (caname)))
     (arrow_separator)
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (caname)))
     (arrow_separator)
     (type_braces
       (implicit_arg
         (auto)
         (quantity)
-        (type_name
-          (loname)))
-      (type_name
-        (caname))
-      (type_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
+        (caname))
+      (exp_name
+        (loname))
+      (exp_name
         (loname)))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))))
 
 ================================================================================
@@ -734,24 +751,24 @@ asBitVector : FiniteBits a => a -> Vect (bitSize {a}) Bool
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_parens
-      (type_name
+    (exp_parens
+      (exp_name
         (loname))
-      (type_braces
-        (implicit_arg
-          (type_name
-            (loname)))))
-    (type_name
+      (exp_braces
+        (explicit_arg
+          (loname))))
+    (exp_name
       (caname))))
 
 ================================================================================
@@ -766,37 +783,39 @@ Type signature with apply exp
   (signature
     (quantity)
     (loname)
+    (colon)
     (type_braces
       (implicit_arg
-        (type_name
-          (loname)))
-      (type_name
+        (loname))
+      (colon)
+      (exp_name
         (caname)))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_parens
-      (type_name
+    (exp_parens
+      (exp_name
         (loname))
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (exp_name
         (loname)))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_parens
-      (type_name
+    (exp_parens
+      (exp_name
         (loname))
       (exp_braces
         (explicit_arg
           (loname)
+          (equal)
           (exp_name
             (caname))))
-      (type_name
+      (exp_name
         (loname))
-      (type_op)
-      (type_name
+      (operator)
+      (exp_name
         (loname)))))
 
 ================================================================================
@@ -812,38 +831,39 @@ _ : {s : _} -> forall fs, ty .
 (idris
   (signature
     (wildcard)
+    (colon)
     (type_braces
       (implicit_arg
-        (type_name
-          (loname)))
+        (loname))
+      (colon)
       (wildcard))
     (arrow_separator)
-    (type_variable)
+    (forall)
     (comma)
-    (type_variable)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (caname)))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
-    (type_name
+    (exp_name
       (loname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================
@@ -952,11 +972,13 @@ foldrVectHomomorphism = ShowVectHomomorphismProperty
       (exp_braces
         (explicit_arg
           (loname)
+          (equal)
           (exp_name
             (caname)))
         (comma)
         (explicit_arg
           (loname)
+          (equal)
           (exp_lambda
             (lambda_args
               (pat_name
@@ -967,7 +989,7 @@ foldrVectHomomorphism = ShowVectHomomorphismProperty
             (lambda_exp
               (exp_name
                 (caname))
-              (exp_op)
+              (operator)
               (wildcard))))))))
 
 ================================================================================
@@ -983,12 +1005,13 @@ fromMaybe : Maybe a -> a
   (signature
     (totality)
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================
@@ -1004,19 +1027,20 @@ qsort : Ord a => List a -> List a
   (signature
     (totality)
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================
@@ -1032,21 +1056,23 @@ takeUntil : (n -> Bool) -> Stream n -> List n
   (signature
     (totality)
     (loname)
-    (type_parens
-      (type_name
-        (loname))
-      (arrow_separator)
-      (type_name
-        (caname)))
+    (colon)
+    (exp_parens
+      (exp_type
+        (exp_name
+          (loname))
+        (arrow_separator)
+        (exp_name
+          (caname))))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================
@@ -1064,26 +1090,29 @@ iterate : (f : a -> Maybe a) -> (x : a) -> List a
     (totality)
     (visibility)
     (loname)
+    (colon)
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (loname))
       (arrow_separator)
-      (type_name
+      (exp_name
         (caname))
-      (type_name
+      (exp_name
         (loname)))
     (arrow_separator)
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (loname)))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================
@@ -1098,10 +1127,11 @@ Quantity
   (signature
     (quantity)
     (caname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))))
 
 ================================================================================
@@ -1116,9 +1146,10 @@ main = putStrLn ?greeting
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
-    (type_parens))
+    (unit))
   (function
     (lhs
       (funvar
@@ -1126,7 +1157,7 @@ main = putStrLn ?greeting
     (rhs
       (exp_name
         (loname))
-      (exp_op)
+      (operator)
       (exp_name
         (loname)))))
 
@@ -1172,10 +1203,11 @@ Foo : a -> Type
 (idris
   (signature
     (caname)
-    (type_name
+    (colon)
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))))
 
 ================================================================================
@@ -1195,7 +1227,7 @@ Foo a = 3
           (pat_name
             (loname)))))
     (rhs
-      (exp_literal
+      (literal
         (integer)))))
 
 ================================================================================
@@ -1210,7 +1242,8 @@ Not p = p -> Void
 (idris
   (signature
     (caname)
-    (type_name
+    (colon)
+    (exp_name
       (caname)))
   (function
     (lhs
@@ -1220,12 +1253,12 @@ Not p = p -> Void
           (pat_name
             (loname)))))
     (rhs
-      (exp_name
-        (loname))
-      (exp_op
-        (arrow_separator))
-      (exp_name
-        (caname)))))
+      (exp_type
+        (exp_name
+          (loname))
+        (arrow_separator)
+        (exp_name
+          (caname))))))
 
 ================================================================================
 Operator 1
@@ -1238,13 +1271,14 @@ Operator 1
 (idris
   (signature
     (operator)
-    (type_name
+    (colon)
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================
@@ -1258,13 +1292,14 @@ Operator 2
 (idris
   (signature
     (operator)
-    (type_name
+    (colon)
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================
@@ -1312,7 +1347,7 @@ Operator 4
         (loname))
       (exp_name
         (loname))
-      (exp_op)
+      (operator)
       (exp_name
         (loname))
       (exp_name
@@ -1369,7 +1404,7 @@ infix 6 ===, ~=~
 --------------------------------------------------------------------------------
 
 (idris
-  (operator_declaration
+  (fixity
     (integer)
     (operator)
     (comma)
@@ -1384,7 +1419,7 @@ infixl 9 `div`, `mod`
 --------------------------------------------------------------------------------
 
 (idris
-  (operator_declaration
+  (fixity
     (integer)
     (ticked_operator
       (loname))
@@ -1401,7 +1436,7 @@ prefix 1  |~
 --------------------------------------------------------------------------------
 
 (idris
-  (operator_declaration
+  (fixity
     (integer)
     (operator)))
 
@@ -1417,16 +1452,16 @@ Dot operator
 (idris
   (signature
     (dot_operator)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
     (type_braces
       (implicit_arg
-        (type_name
-          (loname))))
-    (type_name
+        (loname)))
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname)))
   (function
     (lhs

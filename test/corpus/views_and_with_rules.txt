@@ -120,8 +120,8 @@ foo n m with (n + 1)
       (exp_parens
         (exp_name
           (loname))
-        (exp_op)
-        (exp_literal
+        (operator)
+        (literal
           (integer)))
       (function
         (lhs
@@ -138,8 +138,8 @@ foo n m with (n + 1)
           (exp_parens
             (exp_name
               (loname))
-            (exp_op)
-            (exp_literal
+            (operator)
+            (literal
               (integer)))
           (function
             (lhs
@@ -209,14 +209,14 @@ foo n m with (n + 1) | (m + 1)
       (exp_parens
         (exp_name
           (loname))
-        (exp_op)
-        (exp_literal
+        (operator)
+        (literal
           (integer)))
       (exp_parens
         (exp_name
           (loname))
-        (exp_op)
-        (exp_literal
+        (operator)
+        (literal
           (integer)))
       (function
         (lhs

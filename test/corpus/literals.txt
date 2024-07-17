@@ -27,7 +27,7 @@ _ = [1]
       (wildcard))
     (rhs
       (exp_list
-        (exp_literal
+        (literal
           (integer))))))
 
 ================================================================================
@@ -44,13 +44,13 @@ _ = [1, 2, 3]
       (wildcard))
     (rhs
       (exp_list
-        (exp_literal
+        (literal
           (integer))
         (comma)
-        (exp_literal
+        (literal
           (integer))
         (comma)
-        (exp_literal
+        (literal
           (integer))))))
 
 ================================================================================
@@ -74,8 +74,8 @@ _ = [f x, y + 1, let z = f x in z]
         (comma)
         (exp_name
           (loname))
-        (exp_op)
-        (exp_literal
+        (operator)
+        (literal
           (integer))
         (comma)
         (exp_let_in
@@ -121,11 +121,11 @@ _ = [< 1, 2, 3]
       (wildcard))
     (rhs
       (exp_list
-        (exp_literal
+        (literal
           (integer))
         (comma)
-        (exp_literal
+        (literal
           (integer))
         (comma)
-        (exp_literal
+        (literal
           (integer))))))

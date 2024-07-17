@@ -55,6 +55,6 @@ module.exports = {
   _pat: $ => seq(
     optional($.quantity),
     $._apats,
-    optional($._type_annotation),
+    optional($._nullary_type_annotation),
   ),
 }

@@ -10,16 +10,19 @@ interface Show a where
 (idris
   (interface
     (interface_head
-      (interface_name)
-      (type_variable))
+      (interface_name
+        (caname))
+      (exp_name
+        (loname)))
     (interface_body
       (where)
       (signature
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (loname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname))))))
 
 ================================================================================
@@ -34,8 +37,9 @@ Show Nat where
 (idris
   (implementation
     (implementation_head
-      (interface_name)
-      (type_name
+      (interface_name
+        (caname))
+      (exp_name
         (caname)))
     (implementation_body
       (where)
@@ -47,7 +51,7 @@ Show Nat where
               (pat_name
                 (caname)))))
         (rhs
-          (exp_literal
+          (literal
             (string)))))))
 
 ================================================================================
@@ -62,8 +66,10 @@ interface Eq a where
 (idris
   (interface
     (interface_head
-      (interface_name)
-      (type_variable))
+      (interface_name
+        (caname))
+      (exp_name
+        (loname)))
     (interface_body
       (where)
       (function
@@ -80,7 +86,7 @@ interface Eq a where
           (exp_parens
             (exp_name
               (loname))
-            (exp_op)
+            (operator)
             (exp_name
               (loname))))))))
 
@@ -97,23 +103,27 @@ interface Eq a => Ord a where
   (interface
     (interface_head
       (constraints
-        (constraint
-          (interface_name)
-          (type_name
-            (loname))))
-      (interface_name)
-      (type_variable))
+        (exp_name
+          (caname))
+        (exp_name
+          (loname))
+        (arrow_separator))
+      (interface_name
+        (caname))
+      (exp_name
+        (loname)))
     (interface_body
       (where)
       (signature
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (loname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (loname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname))))))
 
 ================================================================================
@@ -128,17 +138,21 @@ interface (Ord a, Show a) => OrdShow a where
   (interface
     (interface_head
       (constraints
-        (constraint
-          (interface_name)
-          (type_name
+        (exp_tuple
+          (exp_name
+            (caname))
+          (exp_name
+            (loname))
+          (tuple_operator)
+          (exp_name
+            (caname))
+          (exp_name
             (loname)))
-        (comma)
-        (constraint
-          (interface_name)
-          (type_name
-            (loname))))
-      (interface_name)
-      (type_variable))
+        (arrow_separator))
+      (interface_name
+        (caname))
+      (exp_name
+        (loname)))
     (interface_body
       (where))))
 
@@ -153,14 +167,17 @@ interface Functor (0 f : Type -> Type) where
 (idris
   (interface
     (interface_head
-      (interface_name)
-      (annotated_type_variable
+      (interface_name
+        (caname))
+      (type_parens
         (quantity)
-        (type_variable)
-        (type_name
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
           (caname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname))))
     (interface_body
       (where))))
@@ -177,18 +194,22 @@ interface Functor f => Applicative (0 f : Type -> Type) where
   (interface
     (interface_head
       (constraints
-        (constraint
-          (interface_name)
-          (type_name
-            (loname))))
-      (interface_name)
-      (annotated_type_variable
+        (exp_name
+          (caname))
+        (exp_name
+          (loname))
+        (arrow_separator))
+      (interface_name
+        (caname))
+      (type_parens
         (quantity)
-        (type_variable)
-        (type_name
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
           (caname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname))))
     (interface_body
       (where))))
@@ -204,11 +225,12 @@ implementation Functor (SortedMap k) where
 (idris
   (implementation
     (implementation_head
-      (interface_name)
-      (type_parens
-        (type_name
+      (interface_name
+        (caname))
+      (exp_parens
+        (exp_name
           (caname))
-        (type_name
+        (exp_name
           (loname))))
     (implementation_body
       (where))))
@@ -224,18 +246,21 @@ Implimentation with qualified op in parens
 (idris
   (implementation
     (implementation_head
-      (type_braces
-        (implicit_arg
-          (type_name
+      (constraints
+        (type_braces
+          (implicit_arg
+            (loname))
+          (colon)
+          (exp_name
             (loname)))
-        (type_name
-          (loname)))
-      (interface_name)
-      (type_parens
-        (type_name
+        (arrow_separator))
+      (interface_name
+        (caname))
+      (exp_parens
+        (exp_name
           (qualified_operator
             (module)))
-        (type_name
+        (exp_name
           (loname))))
     (implementation_body
       (where))))
@@ -251,16 +276,17 @@ Uninhabited (Data.Colist.InBounds k []) where
 (idris
   (implementation
     (implementation_head
-      (interface_name)
-      (type_parens
-        (type_name
+      (interface_name
+        (caname))
+      (exp_parens
+        (exp_name
           (qualified_caname
             (module)
             (module)
             (caname)))
-        (type_name
+        (exp_name
           (loname))
-        (type_list)))
+        (exp_list)))
     (implementation_body
       (where))))
 
@@ -277,49 +303,53 @@ Uninhabited (x::xs = y::ys) where
 (idris
   (implementation
     (implementation_head
-      (type_braces
-        (implicit_arg
-          (quantity)
-          (type_name
+      (constraints
+        (type_braces
+          (implicit_arg
+            (quantity)
+            (loname))
+          (colon)
+          (exp_name
+            (caname))
+          (exp_name
             (loname)))
-        (type_name
+        (arrow_separator)
+        (exp_name
           (caname))
-        (type_name
-          (loname)))
-      (interface_name)
-      (type_parens
-        (type_name
-          (caname))
-        (type_op)
-        (type_name
-          (loname))
-        (type_op)
-        (type_name
-          (loname)))
-      (type_parens
-        (type_name
-          (caname))
-        (type_op)
-        (type_name
-          (loname))
-        (type_op)
-        (type_name
-          (loname)))
-      (arrow_separator)
-      (type_name
+        (exp_parens
+          (exp_name
+            (caname))
+          (operator)
+          (exp_name
+            (loname))
+          (operator)
+          (exp_name
+            (loname)))
+        (exp_parens
+          (exp_name
+            (caname))
+          (operator)
+          (exp_name
+            (loname))
+          (operator)
+          (exp_name
+            (loname)))
+        (arrow_separator))
+      (interface_name
         (caname))
-      (type_parens
-        (type_name
-          (loname))
-        (type_op)
-        (type_name
-          (loname))
-        (type_op)
-        (type_name
-          (loname))
-        (type_op)
-        (type_name
-          (loname))))
+      (exp_parens
+        (exp_type
+          (exp_name
+            (loname))
+          (operator)
+          (exp_name
+            (loname))
+          (equal)
+          (exp_name
+            (loname))
+          (operator)
+          (exp_name
+            (loname)))))
     (implementation_body
       (where))))
 
@@ -336,26 +366,31 @@ Implementation with implicit arguments inside constraints
   (implementation
     (implementation_head
       (constraints
-        (type_braces
-          (implicit_arg
-            (type_name
-              (loname)))
-          (type_name
-            (loname)))
-        (constraint
-          (interface_name)
-          (type_parens
-            (type_name
-              (loname))
-            (type_name
-              (loname)))))
-      (interface_name)
-      (type_parens
-        (type_name
+        (exp_parens
+          (exp_type
+            (type_braces
+              (implicit_arg
+                (loname))
+              (colon)
+              (exp_name
+                (loname)))
+            (arrow_separator)
+            (exp_name
+              (caname))
+            (exp_parens
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))))
+        (arrow_separator))
+      (interface_name
+        (caname))
+      (exp_parens
+        (exp_name
           (caname))
-        (type_name
+        (exp_name
           (loname))
-        (type_name
+        (exp_name
           (loname))))
     (implementation_body
       (where)
@@ -380,31 +415,36 @@ Implementation with implicit arguments inside constraint tuples
   (implementation
     (implementation_head
       (constraints
-        (constraint
-          (interface_name)
-          (type_name
-            (loname)))
-        (comma)
-        (type_braces
-          (implicit_arg
-            (type_name
-              (loname)))
-          (type_name
-            (loname)))
-        (constraint
-          (interface_name)
-          (type_parens
-            (type_name
-              (loname))
-            (type_name
-              (loname)))))
-      (interface_name)
-      (type_parens
-        (type_name
+        (exp_tuple
+          (exp_name
+            (caname))
+          (exp_name
+            (loname))
+          (tuple_operator)
+          (exp_type
+            (type_braces
+              (implicit_arg
+                (loname))
+              (colon)
+              (exp_name
+                (loname)))
+            (arrow_separator)
+            (exp_name
+              (caname))
+            (exp_parens
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))))
+        (arrow_separator))
+      (interface_name
+        (caname))
+      (exp_parens
+        (exp_name
           (caname))
-        (type_name
+        (exp_name
           (loname))
-        (type_name
+        (exp_name
           (loname))))
     (implementation_body
       (where)
@@ -432,8 +472,9 @@ Biinjective Prelude.(::) where
 (idris
   (implementation
     (implementation_head
-      (interface_name)
-      (type_name
+      (interface_name
+        (caname))
+      (exp_name
         (qualified_operator
           (module))))
     (implementation_body
@@ -452,8 +493,9 @@ Named Implementations 1
     (implementation_head
       (implementation_name
         (loname))
-      (interface_name)
-      (type_name
+      (interface_name
+        (caname))
+      (exp_name
         (caname)))
     (implementation_body
       (where))))
@@ -471,8 +513,9 @@ Named Implementations 2
     (implementation_head
       (implementation_name
         (caname))
-      (interface_name)
-      (type_name
+      (interface_name
+        (caname))
+      (exp_name
         (caname))
       (using
         (implementation_name
@@ -517,7 +560,7 @@ and = force . concat @{All}
     (rhs
       (exp_name
         (loname))
-      (exp_op)
+      (operator)
       (exp_name
         (loname))
       (exp_explicit_impl
@@ -535,8 +578,9 @@ Num Foo
 (idris
   (implementation
     (implementation_head
-      (interface_name)
-      (type_name
+      (interface_name
+        (caname))
+      (exp_name
         (caname)))))
 
 ================================================================================
@@ -553,8 +597,9 @@ FiniteBits Bits16 where
 (idris
   (implementation
     (implementation_head
-      (interface_name)
-      (type_name
+      (interface_name
+        (caname))
+      (exp_name
         (caname)))
     (implementation_body
       (where)
@@ -575,10 +620,10 @@ FiniteBits Bits16 where
                 (exp_parens
                   (exp_name
                     (loname))
-                  (exp_op)
-                  (exp_literal
+                  (operator)
+                  (literal
                     (integer)))
-                (exp_op)
+                (operator)
                 (exp_parens
                   (exp_parens
                     (exp_name
@@ -586,10 +631,10 @@ FiniteBits Bits16 where
                     (exp_ticked
                       (exp_name
                         (loname)))
-                    (exp_literal
+                    (literal
                       (integer)))
-                  (exp_op)
-                  (exp_literal
+                  (operator)
+                  (literal
                     (integer)))))
             (in
               (exp_name
@@ -611,10 +656,11 @@ Cast Char Nat where
     (implementation_head
       (visibility)
       (pragma_inline)
-      (interface_name)
-      (type_name
+      (interface_name
         (caname))
-      (type_name
+      (exp_name
+        (caname))
+      (exp_name
         (caname)))
     (implementation_body
       (where))))
@@ -632,18 +678,22 @@ public export
   (implementation
     (implementation_head
       (visibility)
-      (implementation_name
-        (caname))
       (constraints
-        (constraint
-          (annotated_type_variable
-            (type_variable)
-            (type_name
-              (caname))
-            (type_name
-              (loname)))))
-      (interface_name)
-      (type_name
+        (exp_list
+          (exp_name
+            (caname)))
+        (type_parens
+          (exp_name
+            (loname))
+          (colon)
+          (exp_name
+            (caname))
+          (exp_name
+            (loname)))
+        (arrow_separator))
+      (interface_name
+        (caname))
+      (exp_name
         (loname)))
     (implementation_body
       (where))))
@@ -662,30 +712,35 @@ public export
   (implementation
     (implementation_head
       (visibility)
-      (implementation_name
+      (constraints
+        (exp_list
+          (exp_name
+            (caname)))
+        (type_parens
+          (exp_name
+            (loname))
+          (colon)
+          (exp_name
+            (caname))
+          (exp_name
+            (loname)))
+        (arrow_separator)
+        (type_parens
+          (exp_name
+            (loname))
+          (colon)
+          (exp_name
+            (caname))
+          (exp_name
+            (loname)))
+        (arrow_separator))
+      (interface_name
         (caname))
-      (constraints
-        (constraint
-          (annotated_type_variable
-            (type_variable)
-            (type_name
-              (caname))
-            (type_name
-              (loname)))))
-      (constraints
-        (constraint
-          (annotated_type_variable
-            (type_variable)
-            (type_name
-              (caname))
-            (type_name
-              (loname)))))
-      (interface_name)
-      (type_parens
-        (type_name
+      (exp_parens
+        (exp_name
           (loname))
-        (type_op)
-        (type_name
+        (operator)
+        (exp_name
           (loname)))
       (using
         (implementation_name
@@ -707,12 +762,15 @@ interface A t => B t where
   (interface
     (interface_head
       (constraints
-        (constraint
-          (interface_name)
-          (type_name
-            (loname))))
-      (interface_name)
-      (type_variable))
+        (exp_name
+          (caname))
+        (exp_name
+          (loname))
+        (arrow_separator))
+      (interface_name
+        (caname))
+      (exp_name
+        (loname)))
     (interface_body
       (where)
       (caname))))
@@ -729,19 +787,24 @@ interface Monad m => MonadState s (0 m : Type -> Type) | m where
   (interface
     (interface_head
       (constraints
-        (constraint
-          (interface_name)
-          (type_name
-            (loname))))
-      (interface_name)
-      (type_variable)
-      (annotated_type_variable
+        (exp_name
+          (caname))
+        (exp_name
+          (loname))
+        (arrow_separator))
+      (interface_name
+        (caname))
+      (exp_name
+        (loname))
+      (type_parens
         (quantity)
-        (type_variable)
-        (type_name
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
           (caname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname)))
       (determining_params
         (loname)))

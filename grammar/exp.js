@@ -1,41 +1,10 @@
 const { brackets, layouted, layouted_without_end, parens, prefixable, qualified, sep, sep1, ticked, terminated } = require('./util.js')
 
-/* ----- Composite expressions shared between do/ado and regular notation -----
-
-The point of these is that we want them exactly the same for regular
-notation and `do`/`ado` notation, except the let-in expressions.
-These are not allowed in `do`/`ado` blocks, and are tricky to parse in
-`ado` blocks specifically due to ambiguity stemming from `ado` block
-terminator being `in`:
-
-f = ado
-  let a = []
-  in a
-
-But `do` and `ado` blocks have mutual dependency with all other expressions
-so they would have to be defined in the same module.
-*/
-
-const __lexp = ($, ...rule) =>
-  choice(
-    $.exp_if,
-    $.exp_case,
-    $.exp_lambda,
-    $._fexp,
-    ...rule
-  )
-
 module.exports = {
 
   // ----- Identifiers and modifiers ------------------------------------------
 
   exp_name: $ => $._q_name_op,
-
-  exp_op: $ => choice(
-    $._operator,
-    $.arrow_separator,
-    $._equal,
-  ),
 
   exp_ticked: $ => ticked($._aexp),
 
@@ -73,7 +42,7 @@ module.exports = {
 
   explicit_arg: $ => seq(
     field('subject', $._name),
-    optional(seq('=',
+    optional(seq($.equal,
       field('object', $._exp)
     )),
   ),
@@ -234,30 +203,33 @@ module.exports = {
   exp_quasiquotation : $ => choice(
     seq("`{{", $._q_name, "}}"),
     seq("`{", $._q_name, "}"),
-    seq("`(", $._aexp, optional($._type), ")"),
+    seq("`(", $._aexps, ")"),
     seq("~", $._q_name),
   ),
+
+  // ----- Types --------------------------------------------------------------
 
   // ----- Composite expressions ----------------------------------------------
 
   _aexp: $ => choice(
     $.hole,
     $.exp_name,
-    $.exp_op,
     $.exp_ticked,
     $.exp_parens,
+    $.exp_braces,
     $.exp_idiom,
     $.exp_list,
     $.exp_list_comprehension,
-    $.exp_braces,
     $.exp_explicit_impl,
     $.record_update,
     $.exp_record_access,
     $.exp_tuple,
     $.exp_quasiquotation,
-    alias($.literal, $.exp_literal),
+    $.operator,
+    $.literal,
     $.wildcard,
     $.unit,
+    $.pragma_world,
     $.pragma_mkworld,
     $.pragma_search,
   ),
@@ -278,5 +250,6 @@ module.exports = {
     $._aexps,
     $._sexp,
     seq($._aexps, $._sexp),
+    alias($._type, $.exp_type),
   )),
 }

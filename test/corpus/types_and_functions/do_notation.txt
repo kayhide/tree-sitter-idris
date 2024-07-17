@@ -13,9 +13,10 @@ greet = do
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
-    (type_parens))
+    (unit))
   (function
     (lhs
       (funvar
@@ -25,7 +26,7 @@ greet = do
         (statement
           (exp_name
             (loname))
-          (exp_literal
+          (literal
             (string)))
         (statement
           (bind_pattern
@@ -38,9 +39,9 @@ greet = do
           (exp_name
             (loname))
           (exp_parens
-            (exp_literal
+            (literal
               (string))
-            (exp_op)
+            (operator)
             (exp_name
               (loname))))))))
 
@@ -76,16 +77,16 @@ _ = do len <- getInt64 buf offset
           (exp_parens
             (exp_name
               (loname))
-            (exp_op)
-            (exp_literal
+            (operator)
+            (literal
               (integer)))
-          (exp_op)
+          (operator)
           (exp_name
             (loname))
-          (exp_op)
+          (operator)
           (exp_name
             (loname))
-          (exp_literal
+          (literal
             (string)))))))
 
 ================================================================================
@@ -255,7 +256,7 @@ MkMaybeT x <+> MkMaybeT y = MkMaybeT $ do
     (rhs
       (exp_name
         (caname))
-      (exp_op)
+      (operator)
       (exp_do
         (statement
           (bind_pattern
@@ -307,7 +308,7 @@ _ = do
               (exp_parens
                 (exp_name
                   (loname))
-                (exp_op)
+                (operator)
                 (exp_name
                   (loname))))))
         (statement
@@ -325,7 +326,7 @@ _ = do
             (rewrite_exp
               (exp_name
                 (loname))
-              (exp_op)
+              (operator)
               (exp_name
                 (loname))
               (exp_parens

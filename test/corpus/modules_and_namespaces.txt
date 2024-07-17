@@ -36,6 +36,7 @@ f : _
   (signature
     (visibility)
     (loname)
+    (colon)
     (wildcard)))
 
 ================================================================================
@@ -51,6 +52,7 @@ f : _
   (signature
     (visibility)
     (loname)
+    (colon)
     (wildcard)))
 
 ================================================================================
@@ -66,7 +68,7 @@ data X = _
   (data
     (visibility)
     (data_name)
-    (caname)))
+    (wildcard)))
 
 ================================================================================
 Public export data
@@ -81,7 +83,7 @@ data X = _
   (data
     (visibility)
     (data_name)
-    (caname)))
+    (wildcard)))
 
 ================================================================================
 Export interface
@@ -96,7 +98,8 @@ interface I
   (interface
     (visibility)
     (interface_head
-      (interface_name))))
+      (interface_name
+        (caname)))))
 
 ================================================================================
 Public export interface
@@ -111,7 +114,8 @@ interface I
   (interface
     (visibility)
     (interface_head
-      (interface_name))))
+      (interface_name
+        (caname)))))
 
 ================================================================================
 Private fixity
@@ -123,7 +127,7 @@ infix 5 +
 --------------------------------------------------------------------------------
 
 (idris
-  (operator_declaration
+  (fixity
     (visibility)
     (integer)
     (operator)))
@@ -138,7 +142,7 @@ infix 6 *
 --------------------------------------------------------------------------------
 
 (idris
-  (operator_declaration
+  (fixity
     (visibility)
     (integer)
     (operator)))
@@ -153,7 +157,7 @@ infix 7 ^
 --------------------------------------------------------------------------------
 
 (idris
-  (operator_declaration
+  (fixity
     (visibility)
     (integer)
     (operator)))
@@ -232,10 +236,11 @@ namespace X
       (signature
         (visibility)
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname))))))
 
 ================================================================================
@@ -266,7 +271,8 @@ withNSInside = g where
           (signature
             (visibility)
             (loname)
-            (type_name
+            (colon)
+            (exp_name
               (caname))))))))
 
 ================================================================================
@@ -281,19 +287,22 @@ parameters (x : Nat, y : Nat)
 (idris
   (parameters
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
     (comma)
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
     (parameters_body
       (signature
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname))))))
 
 ================================================================================
@@ -311,57 +320,62 @@ parameters (y : Nat, xs : Vect x a)
 (idris
   (parameters
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
     (comma)
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
-    (type_name
+    (exp_name
       (loname))
     (parameters_body
       (data
         (data_name)
         (type_signature
-          (type_name
+          (colon)
+          (exp_name
             (caname))
           (arrow_separator)
-          (type_name
+          (exp_name
             (caname)))
         (where)
         (data_body
           (constructor_signature
             (caname)
             (type_signature
-              (type_name
+              (colon)
+              (exp_name
                 (caname))
-              (type_name
+              (exp_name
                 (loname))
-              (type_name
+              (exp_name
                 (loname))
               (arrow_separator)
-              (type_name
+              (exp_name
                 (caname))
-              (type_name
+              (exp_name
                 (loname))))))
       (signature
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))
-        (type_name
+        (exp_name
           (loname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname))
-        (type_parens
-          (type_name
+        (exp_parens
+          (exp_name
             (loname))
-          (type_op)
-          (type_name
+          (operator)
+          (exp_name
             (loname)))
-        (type_name
+        (exp_name
           (loname))))))
 
 ================================================================================
@@ -376,10 +390,11 @@ parameters (0 f : Type -> Type)
   (parameters
     (quantity)
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))))
 
 ================================================================================
@@ -393,5 +408,6 @@ using (k : Nat)
 (idris
   (parameters
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))))

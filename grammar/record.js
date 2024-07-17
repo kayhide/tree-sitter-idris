@@ -3,13 +3,13 @@ const { parens, braces } = require('./util.js')
 module.exports = {
   // ----- Record -------------------------------------------------------------
 
-  record_name: $ => alias($._q_caname, ''),
+  record_name: $ => $._q_caname,
 
   _decl_record: $ => seq(
     optional($.visibility),
     'record',
     field('name', choice($.record_name, parens($.operator))),
-    repeat($._atype),
+    optional($._atypes),
     $.where,
     optional($.record_body),
   ),

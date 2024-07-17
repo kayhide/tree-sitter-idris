@@ -14,9 +14,10 @@ main = putStrLn "Hello world"
     (module))
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
-    (type_parens))
+    (unit))
   (function
     (lhs
       (funvar
@@ -24,5 +25,5 @@ main = putStrLn "Hello world"
     (rhs
       (exp_name
         (loname))
-      (exp_literal
+      (literal
         (string)))))

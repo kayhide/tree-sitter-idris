@@ -10,15 +10,17 @@ mkSingle False = []
 (idris
   (signature
     (loname)
+    (colon)
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (caname)))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))
-    (type_name
+    (exp_name
       (loname)))
   (function
     (lhs
@@ -41,22 +43,22 @@ index : forall a, n. Fin n -> Vect n a -> a
 (idris
   (signature
     (loname)
-    (type_variable)
+    (colon)
+    (forall)
     (comma)
-    (type_variable)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================
@@ -70,33 +72,34 @@ index : {a : Type} -> {n : Nat} -> Fin n -> Vect n a -> a
 (idris
   (signature
     (loname)
+    (colon)
     (type_braces
       (implicit_arg
-        (type_name
-          (loname)))
-      (type_name
+        (loname))
+      (colon)
+      (exp_name
         (caname)))
     (arrow_separator)
     (type_braces
       (implicit_arg
-        (type_name
-          (loname)))
-      (type_name
+        (loname))
+      (colon)
+      (exp_name
         (caname)))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================
@@ -117,22 +120,24 @@ _ = index {a=Int} {n=2} FZ (2 :: 3 :: Nil)
       (exp_braces
         (explicit_arg
           (loname)
+          (equal)
           (exp_name
             (caname))))
       (exp_braces
         (explicit_arg
           (loname)
-          (exp_literal
+          (equal)
+          (literal
             (integer))))
       (exp_name
         (caname))
       (exp_parens
-        (exp_literal
+        (literal
           (integer))
-        (exp_op)
-        (exp_literal
+        (operator)
+        (literal
           (integer))
-        (exp_op)
+        (operator)
         (exp_name
           (caname))))))
 
@@ -147,25 +152,28 @@ index : (i : Fin n) -> (xs : Vect n a) -> a
 (idris
   (signature
     (loname)
+    (colon)
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (caname))
-      (type_name
+      (exp_name
         (loname)))
     (arrow_separator)
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (caname))
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (exp_name
         (loname)))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================
@@ -179,28 +187,30 @@ head : (xs : List a) -> {auto p : isCons xs = True} -> a
 (idris
   (signature
     (loname)
+    (colon)
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (caname))
-      (type_name
+      (exp_name
         (loname)))
     (arrow_separator)
     (type_braces
       (implicit_arg
         (auto)
-        (type_name
-          (loname)))
-      (type_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (loname))
-      (type_op)
-      (type_name
+      (exp_name
+        (loname))
+      (equal)
+      (exp_name
         (caname)))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================
@@ -214,31 +224,33 @@ fibonacci : {default 0 lag : Nat} -> {default 1 lead : Nat} -> (n : Nat) -> Nat
 (idris
   (signature
     (loname)
+    (colon)
     (type_braces
       (implicit_arg
         (default
-          (exp_literal
+          (literal
             (integer)))
-        (type_name
-          (loname)))
-      (type_name
+        (loname))
+      (colon)
+      (exp_name
         (caname)))
     (arrow_separator)
     (type_braces
       (implicit_arg
         (default
-          (exp_literal
+          (literal
             (integer)))
-        (type_name
-          (loname)))
-      (type_name
+        (loname))
+      (colon)
+      (exp_name
         (caname)))
     (arrow_separator)
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (caname)))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))))

@@ -18,10 +18,11 @@ mutual
     (mutual_body
       (signature
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname)))
       (function
         (lhs
@@ -50,10 +51,11 @@ mutual
             (loname))))
       (signature
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname)))
       (function
         (lhs

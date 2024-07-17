@@ -30,6 +30,8 @@ module.exports = {
     '%transform',
     $.literal,
     $._aexps,
+    $.equal,
+    $._aexps,
   ),
 
   pragma_arg: $ => choice(

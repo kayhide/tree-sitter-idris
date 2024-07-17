@@ -481,7 +481,7 @@ _=
               (qualified_loname
                 (module)
                 (loname)))
-            (exp_op)
+            (operator)
             (exp_name
               (loname))
             (exp_name
@@ -498,7 +498,7 @@ _=
           (exp_parens
             (exp_name
               (loname))
-            (exp_op)
+            (operator)
             (exp_list))
           (exp_parens
             (exp_name

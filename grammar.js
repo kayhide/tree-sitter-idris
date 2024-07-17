@@ -96,13 +96,12 @@ module.exports = grammar({
     /**
      * Names.
      */
-    [$._type_variables, $.loname],
-    [$._name, $.interface_name],
     [$._name, $._name_op, $.interface_name],
     [$._apat, $._implementation_name],
     [$._name, $._q_name],
     [$._name, $._name_op],
     [$._name, $._field_name],
+    [$._name, $._q_name, $._field_name],
     [$._q_name, $._name_op],
     [$._q_name, $._q_name_op],
 
@@ -117,48 +116,27 @@ module.exports = grammar({
     [$._q_name, $._field_name],
 
     /**
-     * Type operators of `->` or `=>` in exp.
-     */
-    [$.operator, $.exp_op],
-
-    /**
-     * Type operators including `=`.
-     */
-    [$.operator, $.type_op],
-
-    /**
      * Signature `:` and let in typed pattern.
      * let prf : Type := a = b in ...
      */
     [$._pat, $.signature],
     [$._apat, $.signature],
 
-    /**
-     * What a `forall` binds to is ambiguous from the parser's POV:
-     *
-     * `t :: forall a. Unit`         ← binds to the single type name
-     * `t :: forall a. Unit → Unit`  ← binds to the whole expression
-     *
-     * This is solvable in theory but likely not under the current
-     * implementation of `type.js`. Although, the costs of a more naive
-     * implementation are small; it'd work fine unless someone decided
-     * to write `t :: forall a. forall b. ...`, in which case it wouldn't
-     * parse the second `forall` correctly.
-     */
-    [$._type,],
-
     // Misc
-    [$.operator, $.exp_op, $.pat_op],
     [$.operator, $.pat_op],
-    [$.exp_op, $.pat_op],
-    [$.exp_op, $.pat_op],
-    [$.type_op, $.exp_op],
-    [$.operator, $.type_op, $.exp_op],
-    [$._equal, $.type_op],
-    [$._atype, $._aexp],
-    [$._atype, $.exp_name],
-    [$._atype, $._sexp],
-    [$.type_list, $.exp_list],
+    [$.operator, $.pat_op],
+    [$._parens_operator, $._aexp],
+    [$.equal, $.pat_braces],
+    [$._q_name_op, $._funvar],
+    [$.qualified_loname, $._name],
+    [$.qualified_caname, $._name],
+
+    // Types
+    [$.constraints],
+    [$.type_parens, $._atype, $._aexps],
+    [$._atype, $._aexps],
+    [$._name_op, $.interface_name],
+    [$._q_name_op, $.interface_name],
   ],
 
   rules: {

@@ -4,28 +4,11 @@ module.exports = {
 
   // ----- Shared -------------------------------------------------------------
 
-  interface_name: $ => alias($._q_caname, ''),
+  interface_name: $ => $._q_caname,
 
-  constraint: $ => choice(
-    seq(
-      $.interface_name, 
-      repeat($._type)
-    ),
-    $.annotated_type_variable,
+  constraints: $ => repeat1(
+    seq($._atypes, $.arrow_separator)
   ),
-
-  constraints: $ =>
-    choice(
-      $.constraint,
-      parens(
-        sep1($.comma, 
-          seq(
-            repeat(seq($.type_braces, $._arrow)),
-            $.constraint
-          ),
-        ),
-      ),
-    ),
 
   // ----- Interface ----------------------------------------------------------
 
@@ -37,15 +20,12 @@ module.exports = {
       optional($.interface_body)
     ),
 
-  interface_head: $ =>
-    seq(
-      repeat(
-        seq($.constraints, $._rcarrow),
-      ),
-      field('name', $.interface_name),
-      repeat($._tyvar),
-      optional($.determining_params)
-    ),
+  interface_head: $ => seq(
+    optional($.constraints),
+    field('name', $.interface_name),
+    optional($._atypes),
+    optional($.determining_params)
+  ),
 
   determining_params: $ => seq('|', sep1($.comma, $.loname)),
 
@@ -64,21 +44,15 @@ module.exports = {
     $.signature,
   ),
 
-  implementation_head: $ =>
-    seq(
-      optional($.visibility),
-      optional('implementation'),
-      optional(brackets($.implementation_name)),
-      repeat(
-        choice(
-          seq($.constraints, $._rcarrow),
-          seq($.type_braces, $._arrow),
-        ),
-      ),
-      field('subject', $.interface_name),
-      repeat($._type),
-      optional($.using),
-    ),
+  implementation_head: $ => seq(
+    optional($.visibility),
+    optional('implementation'),
+    optional(brackets($.implementation_name)),
+    optional($.constraints),
+    field('subject', $.interface_name),
+    optional($._atypes),
+    optional($.using),
+  ),
 
   using: $ => seq('using', repeat1($.implementation_name)),
 

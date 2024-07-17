@@ -15,9 +15,9 @@ module.exports = {
     optional($.visibility),
     'data',
     field('name', $.data_name),
-    repeat($._tyvar),
+    repeat($._q_loname),
     '=',
-    sep1('|', seq($._caname_op, repeat($._type))),
+    sep1('|', $._aexps),
   ),
 
   _decl_data_block: $ => seq(

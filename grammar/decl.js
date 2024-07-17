@@ -17,11 +17,9 @@ module.exports = {
     'covering',
   ),
 
-  _fun_name: $ => field('name', $._name_op),
-
   _funrhs: $ => seq(
-    choice(':=', '='),
-    choice($._exp, $._type),
+    $._def_equal,
+    $._exp,
   ),
 
   _fun_patterns: $ => prec(1, repeat1($._apat)),
@@ -60,9 +58,7 @@ module.exports = {
     optional(seq($.where, $.declarations)),
   ),
 
-  // TODO: I don't see what it has to do with functions.
-  // Should be only used in `grammar.js` as a top-level declaration.
-  operator_declaration: $ => seq(
+  fixity: $ => seq(
     optional($.visibility),
     choice('infixl', 'infixr', 'infix', 'prefix'),
     field('precedence', $.integer),
@@ -79,7 +75,7 @@ module.exports = {
       )
     ),
     choice(
-      field('name', $._fun_name),
+      field('name', $._name_op),
       $.wildcard,
     ),
     $._type_annotation,
@@ -87,7 +83,7 @@ module.exports = {
 
   _gendecl: $ => choice(
     $.signature,
-    $.operator_declaration,
+    $.fixity,
   ),
 
   _decl_fun: $ => $.function,

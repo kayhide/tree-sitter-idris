@@ -10,14 +10,15 @@ x = 94
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname)))
   (function
     (lhs
       (funvar
         (loname)))
     (rhs
-      (exp_literal
+      (literal
         (integer)))))
 
 ================================================================================
@@ -32,14 +33,15 @@ foo = "Sausage machine"
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname)))
   (function
     (lhs
       (funvar
         (loname)))
     (rhs
-      (exp_literal
+      (literal
         (string)))))
 
 ================================================================================
@@ -54,14 +56,15 @@ bar = 'Z'
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname)))
   (function
     (lhs
       (funvar
         (loname)))
     (rhs
-      (exp_literal
+      (literal
         (char)))))
 
 ================================================================================
@@ -76,7 +79,8 @@ quux = False
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname)))
   (function
     (lhs

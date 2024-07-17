@@ -9,11 +9,13 @@ data Maybe a = Just a | Nothing
 (idris
   (data
     (data_name)
-    (type_variable)
-    (caname)
-    (type_name
+    (loname)
+    (exp_name
+      (caname))
+    (exp_name
       (loname))
-    (caname)))
+    (exp_name
+      (caname))))
 
 ================================================================================
 Maybe 2
@@ -29,17 +31,18 @@ list_lookup (S k) (x :: xs) = list_lookup k xs
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname)))
   (function
     (lhs
@@ -105,26 +108,28 @@ maybe : Lazy b -> Lazy (a -> b) -> Maybe a -> b
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_parens
-      (type_name
-        (loname))
-      (arrow_separator)
-      (type_name
-        (loname)))
+    (exp_parens
+      (exp_type
+        (exp_name
+          (loname))
+        (arrow_separator)
+        (exp_name
+          (loname))))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (loname))))
 
 ================================================================================
@@ -139,11 +144,13 @@ fred = ("Fred", 42)
 (idris
   (signature
     (loname)
-    (type_parens
-      (type_name
-        (caname))
-      (comma)
-      (type_name
+    (colon)
+    (exp_tuple
+      (exp_type
+        (exp_name
+          (caname)))
+      (tuple_operator)
+      (exp_name
         (caname))))
   (function
     (lhs
@@ -151,10 +158,11 @@ fred = ("Fred", 42)
         (loname)))
     (rhs
       (exp_tuple
-        (exp_literal
-          (string))
+        (exp_type
+          (literal
+            (string)))
         (tuple_operator)
-        (exp_literal
+        (literal
           (integer))))))
 
 ================================================================================
@@ -169,14 +177,16 @@ jim = ("Jim", 25, "Cambridge")
 (idris
   (signature
     (loname)
-    (type_parens
-      (type_name
+    (colon)
+    (exp_tuple
+      (exp_type
+        (exp_name
+          (caname)))
+      (tuple_operator)
+      (exp_name
         (caname))
-      (comma)
-      (type_name
-        (caname))
-      (comma)
-      (type_name
+      (tuple_operator)
+      (exp_name
         (caname))))
   (function
     (lhs
@@ -184,13 +194,14 @@ jim = ("Jim", 25, "Cambridge")
         (loname)))
     (rhs
       (exp_tuple
-        (exp_literal
-          (string))
+        (exp_type
+          (literal
+            (string)))
         (tuple_operator)
-        (exp_literal
+        (literal
           (integer))
         (tuple_operator)
-        (exp_literal
+        (literal
           (string))))))
 
 ================================================================================
@@ -206,54 +217,59 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
   (data
     (data_name)
     (type_signature
+      (colon)
       (type_parens
-        (type_name
+        (exp_name
           (loname))
-        (type_name
+        (colon)
+        (exp_name
           (caname)))
       (arrow_separator)
       (type_parens
-        (type_name
+        (exp_name
           (loname))
-        (type_name
+        (colon)
+        (exp_name
           (loname))
         (arrow_separator)
-        (type_name
+        (exp_name
           (caname)))
       (arrow_separator)
-      (type_name
+      (exp_name
         (caname)))
     (where)
     (data_body
       (constructor_signature
         (caname)
         (type_signature
+          (colon)
           (type_braces
             (implicit_arg
-              (type_name
-                (loname)))
-            (type_name
+              (loname))
+            (colon)
+            (exp_name
               (loname))
             (arrow_separator)
-            (type_name
+            (exp_name
               (caname)))
           (arrow_separator)
           (type_parens
-            (type_name
+            (exp_name
               (loname))
-            (type_name
+            (colon)
+            (exp_name
               (loname)))
           (arrow_separator)
-          (type_name
+          (exp_name
             (loname))
-          (type_name
+          (exp_name
             (loname))
           (arrow_separator)
-          (type_name
+          (exp_name
             (caname))
-          (type_name
+          (exp_name
             (loname))
-          (type_name
+          (exp_name
             (loname)))))))
 
 ================================================================================
@@ -268,17 +284,19 @@ vec = (2 ** [3, 4])
 (idris
   (signature
     (loname)
+    (colon)
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (caname))
-      (type_op)
-      (type_name
+      (operator)
+      (exp_name
         (caname))
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (exp_name
         (caname))))
   (function
     (lhs
@@ -286,14 +304,14 @@ vec = (2 ** [3, 4])
         (loname)))
     (rhs
       (exp_parens
-        (exp_literal
+        (literal
           (integer))
-        (exp_op)
+        (operator)
         (exp_list
-          (exp_literal
+          (literal
             (integer))
           (comma)
-          (exp_literal
+          (literal
             (integer)))))))
 
 ================================================================================
@@ -312,29 +330,31 @@ filter p (x :: xs)
 (idris
   (signature
     (loname)
-    (type_parens
-      (type_name
-        (loname))
-      (arrow_separator)
-      (type_name
-        (caname)))
+    (colon)
+    (exp_parens
+      (exp_type
+        (exp_name
+          (loname))
+        (arrow_separator)
+        (exp_name
+          (caname))))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
-    (type_name
+    (exp_name
       (loname))
-    (type_name
+    (exp_name
       (loname))
     (arrow_separator)
-    (type_parens
-      (type_name
+    (exp_parens
+      (exp_name
         (loname))
-      (type_op)
-      (type_name
+      (operator)
+      (exp_name
         (caname))
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (exp_name
         (loname))))
   (function
     (lhs
@@ -348,7 +368,7 @@ filter p (x :: xs)
     (rhs
       (exp_parens
         (wildcard)
-        (exp_op)
+        (operator)
         (exp_list))))
   (function
     (lhs
@@ -386,16 +406,16 @@ filter p (x :: xs)
               (exp_then
                 (exp_parens
                   (wildcard)
-                  (exp_op)
+                  (operator)
                   (exp_name
                     (loname))
-                  (exp_op)
+                  (operator)
                   (exp_name
                     (loname))))
               (exp_else
                 (exp_parens
                   (wildcard)
-                  (exp_op)
+                  (operator)
                   (exp_name
                     (loname)))))))))))
 
@@ -412,7 +432,8 @@ record Person where
 
 (idris
   (record
-    (record_name)
+    (record_name
+      (caname))
     (where)
     (record_body
       (caname)
@@ -422,11 +443,13 @@ record Person where
         (loname)
         (comma)
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname)))
       (record_field
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))))))
 
 ================================================================================
@@ -441,7 +464,8 @@ fred = MkPerson "Fred" "Joe" "Bloggs" 30
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname)))
   (function
     (lhs
@@ -450,13 +474,13 @@ fred = MkPerson "Fred" "Joe" "Bloggs" 30
     (rhs
       (exp_name
         (caname))
-      (exp_literal
+      (literal
         (string))
-      (exp_literal
+      (literal
         (string))
-      (exp_literal
+      (literal
         (string))
-      (exp_literal
+      (literal
         (integer)))))
 
 ================================================================================
@@ -472,21 +496,24 @@ record Class where
 
 (idris
   (record
-    (record_name)
+    (record_name
+      (caname))
     (where)
     (record_body
       (caname)
       (record_field
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))
-        (type_name
+        (exp_name
           (loname))
-        (type_name
+        (exp_name
           (caname)))
       (record_field
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))))))
 
 ================================================================================
@@ -501,13 +528,14 @@ addStudent p c = { students := p :: students c } c
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname)))
   (function
     (lhs
@@ -523,7 +551,7 @@ addStudent p c = { students := p :: students c } c
         (field_name)
         (exp_name
           (loname))
-        (exp_op)
+        (operator)
         (exp_name
           (loname))
         (exp_name
@@ -543,13 +571,14 @@ addStudent' p c = { students $= (p ::) } c
 (idris
   (signature
     (loname)
-    (type_name
+    (colon)
+    (exp_name
       (caname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname))
     (arrow_separator)
-    (type_name
+    (exp_name
       (caname)))
   (function
     (lhs
@@ -566,7 +595,7 @@ addStudent' p c = { students $= (p ::) } c
         (exp_parens
           (exp_name
             (loname))
-          (exp_op)))
+          (operator)))
       (exp_name
         (loname)))))
 
@@ -583,29 +612,33 @@ record DPair a (p : a -> Type) where
 
 (idris
   (record
-    (record_name)
-    (type_name
+    (record_name
+      (caname))
+    (exp_name
       (loname))
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (loname))
       (arrow_separator)
-      (type_name
+      (exp_name
         (caname)))
     (where)
     (record_body
       (caname)
       (record_field
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (loname)))
       (record_field
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (loname))
-        (type_name
+        (exp_name
           (loname))))))
 
 ================================================================================
@@ -620,12 +653,13 @@ record (<=>) (a, b : Type) where
   (record
     (operator)
     (type_parens
-      (type_name
+      (exp_name
         (loname))
       (comma)
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (caname)))
     (where)))
 
@@ -642,15 +676,16 @@ record Exists {0 type : Type} this where
 
 (idris
   (record
-    (record_name)
+    (record_name
+      (caname))
     (type_braces
       (implicit_arg
         (quantity)
-        (type_name
-          (loname)))
-      (type_name
+        (loname))
+      (colon)
+      (exp_name
         (caname)))
-    (type_name
+    (exp_name
       (loname))
     (where)
     (record_body
@@ -658,13 +693,15 @@ record Exists {0 type : Type} this where
       (record_field
         (quantity)
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (loname)))
       (record_field
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (loname))
-        (type_name
+        (exp_name
           (loname))))))
 
 ================================================================================
@@ -680,21 +717,24 @@ record List1 a where
 
 (idris
   (record
-    (record_name)
-    (type_name
+    (record_name
+      (caname))
+    (exp_name
       (loname))
     (where)
     (record_body
       (operator)
       (record_field
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (loname)))
       (record_field
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))
-        (type_name
+        (exp_name
           (loname))))))
 
 ================================================================================
@@ -709,27 +749,30 @@ record Split {a : Type} (p : a -> Type) (xys : List a) where
 
 (idris
   (record
-    (record_name)
+    (record_name
+      (caname))
     (type_braces
       (implicit_arg
-        (type_name
-          (loname)))
-      (type_name
+        (loname))
+      (colon)
+      (exp_name
         (caname)))
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (loname))
       (arrow_separator)
-      (type_name
+      (exp_name
         (caname)))
     (type_parens
-      (type_name
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (caname))
-      (type_name
+      (exp_name
         (loname)))
     (where)
     (record_body
@@ -737,20 +780,22 @@ record Split {a : Type} (p : a -> Type) (xys : List a) where
         (loname)
         (comma)
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))
-        (type_name
+        (exp_name
           (loname)))
       (implicit_record_field
         (auto)
         (loname)
-        (type_name
+        (colon)
+        (exp_name
           (caname))
-        (type_name
+        (exp_name
           (loname))
-        (type_name
+        (exp_name
           (loname))
-        (type_name
+        (exp_name
           (loname))))))
 
 ================================================================================
@@ -770,13 +815,14 @@ _ = { conArgTypes $= ((rig, arg) ::) } <$> constructorView b
         (field_name)
         (exp_parens
           (exp_tuple
-            (exp_name
-              (loname))
+            (exp_type
+              (exp_name
+                (loname)))
             (tuple_operator)
             (exp_name
               (loname)))
-          (exp_op)))
-      (exp_op)
+          (operator)))
+      (operator)
       (exp_name
         (loname))
       (exp_name

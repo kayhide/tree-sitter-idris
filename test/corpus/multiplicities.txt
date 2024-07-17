@@ -9,19 +9,21 @@ duplicate : (1 x : a) -> (a, a)
 (idris
   (signature
     (loname)
+    (colon)
     (type_parens
-      (literal
-        (integer))
-      (type_name
+      (quantity)
+      (exp_name
         (loname))
-      (type_name
+      (colon)
+      (exp_name
         (loname)))
     (arrow_separator)
-    (type_parens
-      (type_name
-        (loname))
-      (comma)
-      (type_name
+    (exp_tuple
+      (exp_type
+        (exp_name
+          (loname)))
+      (tuple_operator)
+      (exp_name
         (loname)))))
 
 ================================================================================
@@ -35,16 +37,18 @@ duplicate : (1 _ : a) -> (a, a)
 (idris
   (signature
     (loname)
+    (colon)
     (type_parens
-      (literal
-        (integer))
+      (quantity)
       (wildcard)
-      (type_name
+      (colon)
+      (exp_name
         (loname)))
     (arrow_separator)
-    (type_parens
-      (type_name
-        (loname))
-      (comma)
-      (type_name
+    (exp_tuple
+      (exp_type
+        (exp_name
+          (loname)))
+      (tuple_operator)
+      (exp_name
         (loname)))))
