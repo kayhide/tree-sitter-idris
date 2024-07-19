@@ -16,6 +16,7 @@
               python3
               tree-sitter
               clang-tools # clangd
+              graphviz # dot
             ];
           };
         };
