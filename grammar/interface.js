@@ -7,7 +7,7 @@ module.exports = {
   interface_name: $ => $._q_caname,
 
   constraints: $ => repeat1(
-    seq($._atypes, $.arrow_separator)
+    seq($._aexps, $.arrow_separator)
   ),
 
   // ----- Interface ----------------------------------------------------------
@@ -23,7 +23,7 @@ module.exports = {
   interface_head: $ => seq(
     optional($.constraints),
     field('name', $.interface_name),
-    optional($._atypes),
+    optional($._aexps),
     optional($.determining_params)
   ),
 
@@ -50,7 +50,7 @@ module.exports = {
     optional(brackets($.implementation_name)),
     optional($.constraints),
     field('subject', $.interface_name),
-    optional($._atypes),
+    optional($._aexps),
     optional($.using),
   ),
 

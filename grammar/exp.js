@@ -69,7 +69,7 @@ module.exports = {
 
   exp_record_access: $ =>
     prec(1, seq(
-      choice($.hole, $.exp_parens, $._q_loname),
+      choice($.hole, $._parens, $._q_loname),
       repeat1(seq($._immediate_dot, field('field', $._record_access_field)))
     )),
 
@@ -209,14 +209,24 @@ module.exports = {
 
   // ----- Types --------------------------------------------------------------
 
+  _parens: $ => parens(
+    choice(
+      alias($._exp, $.exp_parens),
+      alias($._type_parens, $.type_parens),
+    ),
+  ),
+
+  _braces: $ => choice(
+    $.exp_braces,
+    $.type_braces,
+  ),
+
   // ----- Composite expressions ----------------------------------------------
 
   _aexp: $ => choice(
     $.hole,
     $.exp_name,
     $.exp_ticked,
-    $.exp_parens,
-    $.exp_braces,
     $.exp_idiom,
     $.exp_list,
     $.exp_list_comprehension,
@@ -232,6 +242,9 @@ module.exports = {
     $.pragma_world,
     $.pragma_mkworld,
     $.pragma_search,
+    $._parens,
+    $._braces,
+    $.equal,
   ),
 
   _aexps: $ => prec.right(repeat1($._aexp)),
@@ -246,10 +259,9 @@ module.exports = {
     $.exp_rewrite_in,
   )),
 
-  _exp: $ => prec.right(choice(
+  _exp: $ => choice(
     $._aexps,
     $._sexp,
     seq($._aexps, $._sexp),
-    alias($._type, $.exp_type),
-  )),
+  ),
 }

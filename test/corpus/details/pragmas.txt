@@ -79,21 +79,19 @@ public export %inline %tcinline
     (pragma_tcinline)
     (operator)
     (colon)
-    (exp_parens
-      (exp_type
-        (exp_name
-          (loname))
-        (arrow_separator)
-        (exp_name
-          (loname))))
+    (type_parens
+      (exp_name
+        (loname))
+      (arrow_separator)
+      (exp_name
+        (loname)))
     (arrow_separator)
-    (exp_parens
-      (exp_type
-        (exp_name
-          (loname))
-        (arrow_separator)
-        (exp_name
-          (loname))))
+    (type_parens
+      (exp_name
+        (loname))
+      (arrow_separator)
+      (exp_name
+        (loname)))
     (arrow_separator)
     (exp_name
       (loname))

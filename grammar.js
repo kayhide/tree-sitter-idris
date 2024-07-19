@@ -97,7 +97,6 @@ module.exports = grammar({
     [$._apat, $._implementation_name],
     [$._name, $._q_name],
     [$._name, $._name_op],
-    [$._name, $._field_name],
     [$._name, $._q_name, $._field_name],
     [$._q_name, $._name_op],
     [$._q_name, $._q_name_op],
@@ -130,10 +129,11 @@ module.exports = grammar({
 
     // Types
     [$.constraints],
-    [$.type_parens, $._atype, $._aexps],
-    [$._atype, $._aexps],
     [$._name_op, $.interface_name],
     [$._q_name_op, $.interface_name],
+    [$._type, $._exp],
+    [$._numeric, $.quantity],
+    [$._type_parens, $._aexps],
   ],
 
   rules: {

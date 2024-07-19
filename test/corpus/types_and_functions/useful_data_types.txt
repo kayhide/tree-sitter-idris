@@ -116,13 +116,12 @@ maybe : Lazy b -> Lazy (a -> b) -> Maybe a -> b
     (arrow_separator)
     (exp_name
       (caname))
-    (exp_parens
-      (exp_type
-        (exp_name
-          (loname))
-        (arrow_separator)
-        (exp_name
-          (loname))))
+    (type_parens
+      (exp_name
+        (loname))
+      (arrow_separator)
+      (exp_name
+        (loname)))
     (arrow_separator)
     (exp_name
       (caname))
@@ -146,9 +145,8 @@ fred = ("Fred", 42)
     (loname)
     (colon)
     (exp_tuple
-      (exp_type
-        (exp_name
-          (caname)))
+      (exp_name
+        (caname))
       (tuple_operator)
       (exp_name
         (caname))))
@@ -158,9 +156,8 @@ fred = ("Fred", 42)
         (loname)))
     (rhs
       (exp_tuple
-        (exp_type
-          (literal
-            (string)))
+        (literal
+          (string))
         (tuple_operator)
         (literal
           (integer))))))
@@ -179,9 +176,8 @@ jim = ("Jim", 25, "Cambridge")
     (loname)
     (colon)
     (exp_tuple
-      (exp_type
-        (exp_name
-          (caname)))
+      (exp_name
+        (caname))
       (tuple_operator)
       (exp_name
         (caname))
@@ -194,9 +190,8 @@ jim = ("Jim", 25, "Cambridge")
         (loname)))
     (rhs
       (exp_tuple
-        (exp_type
-          (literal
-            (string)))
+        (literal
+          (string))
         (tuple_operator)
         (literal
           (integer))
@@ -331,13 +326,12 @@ filter p (x :: xs)
   (signature
     (loname)
     (colon)
-    (exp_parens
-      (exp_type
-        (exp_name
-          (loname))
-        (arrow_separator)
-        (exp_name
-          (caname))))
+    (type_parens
+      (exp_name
+        (loname))
+      (arrow_separator)
+      (exp_name
+        (caname)))
     (arrow_separator)
     (exp_name
       (caname))
@@ -815,9 +809,8 @@ _ = { conArgTypes $= ((rig, arg) ::) } <$> constructorView b
         (field_name)
         (exp_parens
           (exp_tuple
-            (exp_type
-              (exp_name
-                (loname)))
+            (exp_name
+              (loname))
             (tuple_operator)
             (exp_name
               (loname)))

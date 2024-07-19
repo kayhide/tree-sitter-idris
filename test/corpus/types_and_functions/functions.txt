@@ -659,8 +659,8 @@ lteAddRight (S k) {m} = LTESucc (lteAddRight {m} k)
       (exp_parens
         (exp_name
           (loname))
-        (exp_braces
-          (explicit_arg
+        (type_braces
+          (implicit_arg
             (loname)))
         (exp_name
           (loname))))))
@@ -765,8 +765,8 @@ asBitVector : FiniteBits a => a -> Vect (bitSize {a}) Bool
     (exp_parens
       (exp_name
         (loname))
-      (exp_braces
-        (explicit_arg
+      (type_braces
+        (implicit_arg
           (loname))))
     (exp_name
       (caname))))
@@ -1057,13 +1057,12 @@ takeUntil : (n -> Bool) -> Stream n -> List n
     (totality)
     (loname)
     (colon)
-    (exp_parens
-      (exp_type
-        (exp_name
-          (loname))
-        (arrow_separator)
-        (exp_name
-          (caname))))
+    (type_parens
+      (exp_name
+        (loname))
+      (arrow_separator)
+      (exp_name
+        (caname)))
     (arrow_separator)
     (exp_name
       (caname))
@@ -1245,20 +1244,19 @@ Not p = p -> Void
     (colon)
     (exp_name
       (caname)))
-  (function
-    (lhs
-      (funvar
-        (caname)
-        (patterns
-          (pat_name
-            (loname)))))
-    (rhs
-      (exp_type
+  (implementation
+    (implementation_head
+      (constraints
+        (exp_name
+          (caname))
         (exp_name
           (loname))
-        (arrow_separator)
+        (equal)
         (exp_name
-          (caname))))))
+          (loname))
+        (arrow_separator))
+      (interface_name
+        (caname)))))
 
 ================================================================================
 Operator 1

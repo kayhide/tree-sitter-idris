@@ -143,12 +143,11 @@ Diag v = let ty : Type := v = v in ty
             (exp_name
               (caname)))
           (rhs
-            (exp_type
-              (exp_name
-                (loname))
-              (equal)
-              (exp_name
-                (loname)))))
+            (exp_name
+              (loname))
+            (equal)
+            (exp_name
+              (loname))))
         (in
           (exp_name
             (loname)))))))
@@ -290,9 +289,8 @@ pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
     (rhs
       (exp_list_comprehension
         (exp_tuple
-          (exp_type
-            (exp_name
-              (loname)))
+          (exp_name
+            (loname))
           (tuple_operator)
           (exp_name
             (loname))
@@ -376,9 +374,8 @@ splitAt c x = case break (== c) x of
               (pat_name
                 (loname)))
             (exp_tuple
-              (exp_type
-                (exp_name
-                  (loname)))
+              (exp_name
+                (loname))
               (tuple_operator)
               (exp_name
                 (loname))
@@ -792,3 +789,24 @@ paramConstraints params pos
         (operator)
         (exp_name
           (loname))))))
+
+================================================================================
+Leading literal 1 (not a quantity)
+================================================================================
+
+bit = (1 `shiftL`)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)))
+    (rhs
+      (exp_parens
+        (literal
+          (integer))
+        (exp_ticked
+          (exp_name
+            (loname)))))))

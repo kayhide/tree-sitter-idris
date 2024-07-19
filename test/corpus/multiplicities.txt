@@ -19,9 +19,8 @@ duplicate : (1 x : a) -> (a, a)
         (loname)))
     (arrow_separator)
     (exp_tuple
-      (exp_type
-        (exp_name
-          (loname)))
+      (exp_name
+        (loname))
       (tuple_operator)
       (exp_name
         (loname)))))
@@ -46,9 +45,8 @@ duplicate : (1 _ : a) -> (a, a)
         (loname)))
     (arrow_separator)
     (exp_tuple
-      (exp_type
-        (exp_name
-          (loname)))
+      (exp_name
+        (loname))
       (tuple_operator)
       (exp_name
         (loname)))))

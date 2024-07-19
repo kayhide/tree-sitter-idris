@@ -338,18 +338,17 @@ Uninhabited (x::xs = y::ys) where
       (interface_name
         (caname))
       (exp_parens
-        (exp_type
-          (exp_name
-            (loname))
-          (operator)
-          (exp_name
-            (loname))
-          (equal)
-          (exp_name
-            (loname))
-          (operator)
-          (exp_name
-            (loname)))))
+        (exp_name
+          (loname))
+        (operator)
+        (exp_name
+          (loname))
+        (equal)
+        (exp_name
+          (loname))
+        (operator)
+        (exp_name
+          (loname))))
     (implementation_body
       (where))))
 
@@ -366,22 +365,21 @@ Implementation with implicit arguments inside constraints
   (implementation
     (implementation_head
       (constraints
-        (exp_parens
-          (exp_type
-            (type_braces
-              (implicit_arg
-                (loname))
-              (colon)
-              (exp_name
-                (loname)))
-            (arrow_separator)
+        (type_parens
+          (type_braces
+            (implicit_arg
+              (loname))
+            (colon)
             (exp_name
-              (caname))
-            (exp_parens
-              (exp_name
-                (loname))
-              (exp_name
-                (loname)))))
+              (loname)))
+          (arrow_separator)
+          (exp_name
+            (caname))
+          (exp_parens
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))))
         (arrow_separator))
       (interface_name
         (caname))
@@ -415,27 +413,26 @@ Implementation with implicit arguments inside constraint tuples
   (implementation
     (implementation_head
       (constraints
-        (exp_tuple
+        (type_parens
           (exp_name
             (caname))
           (exp_name
             (loname))
-          (tuple_operator)
-          (exp_type
-            (type_braces
-              (implicit_arg
-                (loname))
-              (colon)
-              (exp_name
-                (loname)))
-            (arrow_separator)
+          (comma)
+          (type_braces
+            (implicit_arg
+              (loname))
+            (colon)
             (exp_name
-              (caname))
-            (exp_parens
-              (exp_name
-                (loname))
-              (exp_name
-                (loname)))))
+              (loname)))
+          (arrow_separator)
+          (exp_name
+            (caname))
+          (exp_parens
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))))
         (arrow_separator))
       (interface_name
         (caname))
