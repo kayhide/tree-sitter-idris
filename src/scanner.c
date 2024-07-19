@@ -507,10 +507,13 @@ typedef enum {
  */
 static Symbolic s_symop(wchar_vec s, State *state) {
   if (s.data == NULL || s.data[0] == 0) return S_INVALID;
-  int32_t c = s.data[0];
+  if (
+    (2 <= s.len && (s.data[0] == '-') && (s.data[1] == '-')) ||
+    (3 <= s.len && (s.data[0] == '|') && (s.data[1] == '|') && (s.data[2] == '|'))
+  ) return S_COMMENT;
   switch (s.len) {
     case 1:
-      switch (c) {
+      switch (s.data[0]) {
         case '|':
         case ':':
         case '=':
@@ -519,16 +522,12 @@ static Symbolic s_symop(wchar_vec s, State *state) {
           return S_INVALID;
         case '%': 
           if (iswalnum(PEEK)) return S_INVALID; // expect a pragma
-          break;
+          return S_OP;
         default: return S_OP;
       }
     case 2:
-      if ((s.data[0] == '-') && (s.data[1] == '-')) return S_COMMENT;
       if (valid_symop_two_chars(s.data[0], s.data[1])) return S_OP;
       return S_INVALID;
-    case 3:
-      if ((s.data[0] == '|') && (s.data[1] == '|') && (s.data[2] == '|')) return S_COMMENT;
-      return S_OP;
   }
   return S_OP;
 }
