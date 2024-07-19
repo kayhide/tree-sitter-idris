@@ -96,12 +96,9 @@ typedef enum {
   DOT,
   WHERE,
   VARSYM,
-  CONSYM,
-  TYCONSYM,
   COMMENT,
   CPP,
   COMMA,
-  BAR,
   IN,
   INDENT,
   EMPTY,
@@ -116,12 +113,9 @@ static char *sym_names[] = {
   "dot",
   "where",
   "varsym",
-  "consym",
-  "tyconsym",
   "comment",
   "cpp",
   "comma",
-  "bar",
   "in",
   "indent",
   "empty",
@@ -499,7 +493,6 @@ typedef enum {
   S_OP,
   S_IMPLICIT,
   S_MODIFIER,
-  S_BAR,
   S_COMMENT,
   S_INVALID,
 } Symbolic;
@@ -519,7 +512,6 @@ static Symbolic s_symop(wchar_vec s, State *state) {
     case 1:
       switch (c) {
         case '|':
-          return S_BAR;
         case ':':
         case '=':
         case '@':
@@ -932,15 +924,6 @@ static Result symop_marked(Symbolic type, State *state) {
  */
 
 static Result symop(Symbolic type, State *state) {
-  if (type == S_BAR) {
-    if (SYM(BAR)) {
-      MARK("bar", false, state);
-      return finish(BAR, "bar");
-    }
-    Result res = layout_end("bar", state);
-    SHORT_SCANNER;
-    return res_fail;
-  }
   MARK("symop", false, state);
   Result res = symop_marked(type, state);
   SHORT_SCANNER;
