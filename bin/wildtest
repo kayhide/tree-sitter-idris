@@ -44,7 +44,7 @@ if [[ -n ${1:-} && -n ${2:-} ]]; then
   fetch "$repo" "$ref" "$repo_dir"
   find "$target_dir" -name "*.idr" | while read -r src; do
     file="$(realpath -m --relative-to="$target_dir" "$src")"
-    dst="$results_dir/$file.txt"
+    dst="$results_dir/$file.scm"
 
     if run "$src" "$dst"; then
       echo "  ✔️ $file"
@@ -52,12 +52,12 @@ if [[ -n ${1:-} && -n ${2:-} ]]; then
       echo "  ❌ $file"
       mkdir -p "$(dirname "$fails_dir/$file")"
       ln -rs "$src" "$fails_dir/$file"
-      ln -rs "$dst" "$fails_dir/$file.txt"
+      ln -rs "$dst" "$fails_dir/$file.scm"
     fi
   done
   if [[ -d $fails_dir ]]; then
-    total="$(find "$results_dir" -name "*.txt"| wc -l)"
-    fails="$(find "$fails_dir" -name "*.txt" | wc -l)"
+    total="$(find "$results_dir" -name "*.scm"| wc -l)"
+    fails="$(find "$fails_dir" -name "*.scm" | wc -l)"
     die "Fails: $fails / $total"
   fi
 else
@@ -72,8 +72,8 @@ else
   "$0" prelude-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/prelude || true
   "$0" test-0.7.0 "https://github.com/idris-lang/Idris2#v0.7.0" libs/test || true
 
-  total="$(find "$results_dir" -name "*.txt"| wc -l)"
-  fails="$(find "$fails_dir" -name "*.txt" | wc -l)"
+  total="$(find "$results_dir" -name "*.scm"| wc -l)"
+  fails="$(find "$fails_dir" -name "*.scm" | wc -l)"
   if [[ $fails == 0 ]]; then
     echo "Total: $total"
   else
