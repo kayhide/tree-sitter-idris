@@ -95,9 +95,9 @@ module.exports = grammar({
      */
     [$._name, $._name_op, $.interface_name],
     [$._apat, $._implementation_name],
-    [$._name, $._q_name],
     [$._name, $._name_op],
-    [$._name, $._q_name, $._field_name],
+    [$._name_op, $._field_name],
+    [$._name, $._name_op, $._field_name],
     [$._q_name, $._name_op],
     [$._q_name, $._q_name_op],
 
@@ -105,11 +105,6 @@ module.exports = grammar({
      * Visibilities conflict.
      */
     [$.implementation_head, $.signature],
-
-    /**
-     * Braces
-     */
-    [$._q_name, $._field_name],
 
     /**
      * Signature `:` and let in typed pattern.

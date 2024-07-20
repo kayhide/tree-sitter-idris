@@ -27,13 +27,9 @@ module.exports = {
       'parameters',
       'using',
     ),
-    parens(sep1(
-      $.comma, 
-      seq(
-        optional($.quantity),
-        field('name', $._loname_op),
-        $._type_annotation,
-      ),
+    repeat1(choice(
+      $.type_parens,
+      $.type_braces
     )),
     optional(alias($._top_declarations, $.parameters_body)),
   ),

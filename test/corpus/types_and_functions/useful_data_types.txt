@@ -239,7 +239,7 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
         (type_signature
           (colon)
           (type_braces
-            (implicit_arg
+            (exp_name
               (loname))
             (colon)
             (exp_name
@@ -673,8 +673,8 @@ record Exists {0 type : Type} this where
     (record_name
       (caname))
     (type_braces
-      (implicit_arg
-        (quantity)
+      (quantity)
+      (exp_name
         (loname))
       (colon)
       (exp_name
@@ -746,7 +746,7 @@ record Split {a : Type} (p : a -> Type) (xys : List a) where
     (record_name
       (caname))
     (type_braces
-      (implicit_arg
+      (exp_name
         (loname))
       (colon)
       (exp_name

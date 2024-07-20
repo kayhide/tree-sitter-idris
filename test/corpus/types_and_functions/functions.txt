@@ -660,7 +660,7 @@ lteAddRight (S k) {m} = LTESucc (lteAddRight {m} k)
         (exp_name
           (loname))
         (type_braces
-          (implicit_arg
+          (exp_name
             (loname)))
         (exp_name
           (loname))))))
@@ -692,9 +692,9 @@ gcd : (a: Nat) -> (b: Nat) -> {auto 0 ok: NotBothZero a b} -> Nat
         (caname)))
     (arrow_separator)
     (type_braces
-      (implicit_arg
-        (auto)
-        (quantity)
+      (auto)
+      (quantity)
+      (exp_name
         (loname))
       (colon)
       (exp_name
@@ -766,7 +766,7 @@ asBitVector : FiniteBits a => a -> Vect (bitSize {a}) Bool
       (exp_name
         (loname))
       (type_braces
-        (implicit_arg
+        (exp_name
           (loname))))
     (exp_name
       (caname))))
@@ -785,7 +785,7 @@ Type signature with apply exp
     (loname)
     (colon)
     (type_braces
-      (implicit_arg
+      (exp_name
         (loname))
       (colon)
       (exp_name
@@ -833,7 +833,7 @@ _ : {s : _} -> forall fs, ty .
     (wildcard)
     (colon)
     (type_braces
-      (implicit_arg
+      (exp_name
         (loname))
       (colon)
       (wildcard))
@@ -1490,7 +1490,7 @@ Dot operator
     (exp_name
       (caname))
     (type_braces
-      (implicit_arg
+      (exp_name
         (loname)))
     (exp_name
       (loname))

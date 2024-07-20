@@ -74,14 +74,14 @@ index : {a : Type} -> {n : Nat} -> Fin n -> Vect n a -> a
     (loname)
     (colon)
     (type_braces
-      (implicit_arg
+      (exp_name
         (loname))
       (colon)
       (exp_name
         (caname)))
     (arrow_separator)
     (type_braces
-      (implicit_arg
+      (exp_name
         (loname))
       (colon)
       (exp_name
@@ -198,8 +198,8 @@ head : (xs : List a) -> {auto p : isCons xs = True} -> a
         (loname)))
     (arrow_separator)
     (type_braces
-      (implicit_arg
-        (auto)
+      (auto)
+      (exp_name
         (loname))
       (colon)
       (exp_name
@@ -226,20 +226,20 @@ fibonacci : {default 0 lag : Nat} -> {default 1 lead : Nat} -> (n : Nat) -> Nat
     (loname)
     (colon)
     (type_braces
-      (implicit_arg
-        (default
-          (literal
-            (integer)))
+      (default
+        (literal
+          (integer)))
+      (exp_name
         (loname))
       (colon)
       (exp_name
         (caname)))
     (arrow_separator)
     (type_braces
-      (implicit_arg
-        (default
-          (literal
-            (integer)))
+      (default
+        (literal
+          (integer)))
+      (exp_name
         (loname))
       (colon)
       (exp_name

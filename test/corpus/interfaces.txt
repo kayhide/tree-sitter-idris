@@ -248,7 +248,7 @@ Implimentation with qualified op in parens
     (implementation_head
       (constraints
         (type_braces
-          (implicit_arg
+          (exp_name
             (loname))
           (colon)
           (exp_name
@@ -305,8 +305,8 @@ Uninhabited (x::xs = y::ys) where
     (implementation_head
       (constraints
         (type_braces
-          (implicit_arg
-            (quantity)
+          (quantity)
+          (exp_name
             (loname))
           (colon)
           (exp_name
@@ -367,7 +367,7 @@ Implementation with implicit arguments inside constraints
       (constraints
         (type_parens
           (type_braces
-            (implicit_arg
+            (exp_name
               (loname))
             (colon)
             (exp_name
@@ -420,7 +420,7 @@ Implementation with implicit arguments inside constraint tuples
             (loname))
           (comma)
           (type_braces
-            (implicit_arg
+            (exp_name
               (loname))
             (colon)
             (exp_name

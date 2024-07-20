@@ -13,22 +13,25 @@ module.exports = {
   type_parens: $ => parens($._type_parens),
 
   _type_parens: $ => choice(
-    seq(
-      optional($.quantity),
-      sep1($.comma, $._aexp),
-      $._type_annotation,
+    sep1(
+      $.comma,
+      seq(
+        optional($.quantity),
+        sep1($.comma, $._aexp),
+        $._type_annotation,
+      ),
     ),
     sep1($.comma, $._type),
   ),
 
   type_braces: $ => braces(
     seq(
-      sep1($.comma, $.implicit_arg), 
+      sep1($.comma, $._implicit_arg), 
       optional($._type_annotation),
     ),
   ),
 
-  implicit_arg: $ => seq(
+  _implicit_arg: $ => seq(
     repeat(
       choice( 
         $.quantity,
@@ -36,7 +39,7 @@ module.exports = {
         $.default,
       ),
     ),
-    $._q_name,
+    $._aexp,
   ),
 
   _quantifiers: $ => seq($.forall, sep1($.comma, $._loname), '.'),
