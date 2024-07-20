@@ -43,7 +43,7 @@
             "named": false
           },
           {
-            "type": "equal",
+            "type": "exp_bar_arg",
             "named": true
           },
           {
@@ -178,10 +178,6 @@
           },
           {
             "type": "colon",
-            "named": true
-          },
-          {
-            "type": "equal",
             "named": true
           },
           {
@@ -375,7 +371,7 @@
           "named": true
         },
         {
-          "type": "equal",
+          "type": "exp_bar_arg",
           "named": true
         },
         {
@@ -547,14 +543,22 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "equal",
+          "type": "exp_bar_arg",
           "named": true
         },
         {
           "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_case",
+          "named": true
+        },
+        {
+          "type": "exp_do",
           "named": true
         },
         {
@@ -563,6 +567,22 @@
         },
         {
           "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_if",
+          "named": true
+        },
+        {
+          "type": "exp_lambda",
+          "named": true
+        },
+        {
+          "type": "exp_lambda_case",
+          "named": true
+        },
+        {
+          "type": "exp_let_in",
           "named": true
         },
         {
@@ -587,6 +607,10 @@
         },
         {
           "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_rewrite_in",
           "named": true
         },
         {
@@ -662,10 +686,6 @@
         },
         {
           "type": "colon",
-          "named": true
-        },
-        {
-          "type": "equal",
           "named": true
         },
         {
@@ -826,10 +846,6 @@
           "named": true
         },
         {
-          "type": "equal",
-          "named": true
-        },
-        {
           "type": "exp_braces",
           "named": true
         },
@@ -983,10 +999,6 @@
       "types": [
         {
           "type": "data_body",
-          "named": true
-        },
-        {
-          "type": "equal",
           "named": true
         },
         {
@@ -1176,10 +1188,6 @@
       "required": true,
       "types": [
         {
-          "type": "equal",
-          "named": true
-        },
-        {
           "type": "exp_braces",
           "named": true
         },
@@ -1300,6 +1308,105 @@
     "fields": {}
   },
   {
+    "type": "exp_bar_arg",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
+          "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_list",
+          "named": true
+        },
+        {
+          "type": "exp_list_comprehension",
+          "named": true
+        },
+        {
+          "type": "exp_name",
+          "named": true
+        },
+        {
+          "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
+          "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_ticked",
+          "named": true
+        },
+        {
+          "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "hole",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "pragma_mkworld",
+          "named": true
+        },
+        {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
+          "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "type_braces",
+          "named": true
+        },
+        {
+          "type": "type_parens",
+          "named": true
+        },
+        {
+          "type": "unit",
+          "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "exp_braces",
     "named": true,
     "fields": {},
@@ -1335,7 +1442,7 @@
             "named": false
           },
           {
-            "type": "equal",
+            "type": "exp_bar_arg",
             "named": true
           },
           {
@@ -1500,7 +1607,7 @@
       "required": false,
       "types": [
         {
-          "type": "equal",
+          "type": "exp_bar_arg",
           "named": true
         },
         {
@@ -1631,10 +1738,6 @@
       "required": false,
       "types": [
         {
-          "type": "equal",
-          "named": true
-        },
-        {
           "type": "exp_braces",
           "named": true
         },
@@ -1734,7 +1837,7 @@
       "required": false,
       "types": [
         {
-          "type": "equal",
+          "type": "exp_bar_arg",
           "named": true
         },
         {
@@ -1883,7 +1986,7 @@
             "named": false
           },
           {
-            "type": "equal",
+            "type": "exp_bar_arg",
             "named": true
           },
           {
@@ -2086,7 +2189,7 @@
           "named": true
         },
         {
-          "type": "equal",
+          "type": "exp_bar_arg",
           "named": true
         },
         {
@@ -2218,10 +2321,6 @@
       "types": [
         {
           "type": "comma",
-          "named": true
-        },
-        {
-          "type": "equal",
           "named": true
         },
         {
@@ -2367,7 +2466,7 @@
       "required": false,
       "types": [
         {
-          "type": "equal",
+          "type": "exp_bar_arg",
           "named": true
         },
         {
@@ -2499,10 +2598,6 @@
       "types": [
         {
           "type": "caname",
-          "named": true
-        },
-        {
-          "type": "equal",
           "named": true
         },
         {
@@ -2667,7 +2762,7 @@
       "required": false,
       "types": [
         {
-          "type": "equal",
+          "type": "exp_bar_arg",
           "named": true
         },
         {
@@ -2798,10 +2893,6 @@
       "required": true,
       "types": [
         {
-          "type": "equal",
-          "named": true
-        },
-        {
           "type": "exp_braces",
           "named": true
         },
@@ -2901,7 +2992,7 @@
       "required": true,
       "types": [
         {
-          "type": "equal",
+          "type": "exp_bar_arg",
           "named": true
         },
         {
@@ -3044,7 +3135,7 @@
             "named": false
           },
           {
-            "type": "equal",
+            "type": "exp_bar_arg",
             "named": true
           },
           {
@@ -3477,10 +3568,6 @@
           "named": true
         },
         {
-          "type": "equal",
-          "named": true
-        },
-        {
           "type": "exp_braces",
           "named": true
         },
@@ -3607,45 +3694,6 @@
     }
   },
   {
-    "type": "implicit_arg",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "auto",
-          "named": true
-        },
-        {
-          "type": "caname",
-          "named": true
-        },
-        {
-          "type": "default",
-          "named": true
-        },
-        {
-          "type": "loname",
-          "named": true
-        },
-        {
-          "type": "qualified_caname",
-          "named": true
-        },
-        {
-          "type": "qualified_loname",
-          "named": true
-        },
-        {
-          "type": "quantity",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "implicit_record_field",
     "named": true,
     "fields": {},
@@ -3674,7 +3722,19 @@
           "named": true
         },
         {
+          "type": "exp_bar_arg",
+          "named": true
+        },
+        {
           "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_case",
+          "named": true
+        },
+        {
+          "type": "exp_do",
           "named": true
         },
         {
@@ -3683,6 +3743,22 @@
         },
         {
           "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_if",
+          "named": true
+        },
+        {
+          "type": "exp_lambda",
+          "named": true
+        },
+        {
+          "type": "exp_lambda_case",
+          "named": true
+        },
+        {
+          "type": "exp_let_in",
           "named": true
         },
         {
@@ -3707,6 +3783,10 @@
         },
         {
           "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_rewrite_in",
           "named": true
         },
         {
@@ -3819,7 +3899,7 @@
       "required": false,
       "types": [
         {
-          "type": "equal",
+          "type": "exp_bar_arg",
           "named": true
         },
         {
@@ -4051,10 +4131,6 @@
           "named": true
         },
         {
-          "type": "equal",
-          "named": true
-        },
-        {
           "type": "exp_braces",
           "named": true
         },
@@ -4178,10 +4254,6 @@
         },
         {
           "type": "comma",
-          "named": true
-        },
-        {
-          "type": "equal",
           "named": true
         },
         {
@@ -4328,7 +4400,7 @@
       "required": false,
       "types": [
         {
-          "type": "equal",
+          "type": "exp_bar_arg",
           "named": true
         },
         {
@@ -4479,10 +4551,6 @@
       "types": [
         {
           "type": "colon",
-          "named": true
-        },
-        {
-          "type": "equal",
           "named": true
         },
         {
@@ -4857,136 +4925,13 @@
   {
     "type": "parameters",
     "named": true,
-    "fields": {
-      "name": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": "dot_operator",
-            "named": true
-          },
-          {
-            "type": "loname",
-            "named": true
-          },
-          {
-            "type": "operator",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "arrow_separator",
-          "named": true
-        },
-        {
-          "type": "colon",
-          "named": true
-        },
-        {
-          "type": "comma",
-          "named": true
-        },
-        {
-          "type": "equal",
-          "named": true
-        },
-        {
-          "type": "exp_braces",
-          "named": true
-        },
-        {
-          "type": "exp_explicit_impl",
-          "named": true
-        },
-        {
-          "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_list",
-          "named": true
-        },
-        {
-          "type": "exp_list_comprehension",
-          "named": true
-        },
-        {
-          "type": "exp_name",
-          "named": true
-        },
-        {
-          "type": "exp_parens",
-          "named": true
-        },
-        {
-          "type": "exp_quasiquotation",
-          "named": true
-        },
-        {
-          "type": "exp_record_access",
-          "named": true
-        },
-        {
-          "type": "exp_ticked",
-          "named": true
-        },
-        {
-          "type": "exp_tuple",
-          "named": true
-        },
-        {
-          "type": "forall",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "operator",
-          "named": true
-        },
-        {
           "type": "parameters_body",
-          "named": true
-        },
-        {
-          "type": "pragma_mkworld",
-          "named": true
-        },
-        {
-          "type": "pragma_search",
-          "named": true
-        },
-        {
-          "type": "pragma_world",
-          "named": true
-        },
-        {
-          "type": "quantity",
-          "named": true
-        },
-        {
-          "type": "record_update",
           "named": true
         },
         {
@@ -4995,14 +4940,6 @@
         },
         {
           "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "wildcard",
           "named": true
         }
       ]
@@ -5092,10 +5029,6 @@
       "types": [
         {
           "type": "colon",
-          "named": true
-        },
-        {
-          "type": "equal",
           "named": true
         },
         {
@@ -5243,10 +5176,6 @@
       "types": [
         {
           "type": "colon",
-          "named": true
-        },
-        {
-          "type": "equal",
           "named": true
         },
         {
@@ -5401,10 +5330,6 @@
           "named": true
         },
         {
-          "type": "equal",
-          "named": true
-        },
-        {
           "type": "exp_braces",
           "named": true
         },
@@ -5553,10 +5478,6 @@
       "types": [
         {
           "type": "colon",
-          "named": true
-        },
-        {
-          "type": "equal",
           "named": true
         },
         {
@@ -5731,10 +5652,6 @@
         },
         {
           "type": "comma",
-          "named": true
-        },
-        {
-          "type": "equal",
           "named": true
         },
         {
@@ -5947,10 +5864,6 @@
       "types": [
         {
           "type": "colon",
-          "named": true
-        },
-        {
-          "type": "equal",
           "named": true
         },
         {
@@ -6496,10 +6409,6 @@
       "required": true,
       "types": [
         {
-          "type": "equal",
-          "named": true
-        },
-        {
           "type": "exp_braces",
           "named": true
         },
@@ -6673,7 +6582,19 @@
           "named": true
         },
         {
+          "type": "exp_bar_arg",
+          "named": true
+        },
+        {
           "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_case",
+          "named": true
+        },
+        {
+          "type": "exp_do",
           "named": true
         },
         {
@@ -6682,6 +6603,22 @@
         },
         {
           "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_if",
+          "named": true
+        },
+        {
+          "type": "exp_lambda",
+          "named": true
+        },
+        {
+          "type": "exp_lambda_case",
+          "named": true
+        },
+        {
+          "type": "exp_let_in",
           "named": true
         },
         {
@@ -6706,6 +6643,10 @@
         },
         {
           "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_rewrite_in",
           "named": true
         },
         {
@@ -6811,7 +6752,7 @@
           "named": true
         },
         {
-          "type": "equal",
+          "type": "exp_bar_arg",
           "named": true
         },
         {
@@ -6961,10 +6902,6 @@
       "required": true,
       "types": [
         {
-          "type": "equal",
-          "named": true
-        },
-        {
           "type": "exp_braces",
           "named": true
         },
@@ -7064,7 +7001,19 @@
       "required": false,
       "types": [
         {
+          "type": "arrow_separator",
+          "named": true
+        },
+        {
+          "type": "comma",
+          "named": true
+        },
+        {
           "type": "equal",
+          "named": true
+        },
+        {
+          "type": "exp_bar_arg",
           "named": true
         },
         {
@@ -7137,6 +7086,10 @@
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "forall",
           "named": true
         },
         {
@@ -7265,7 +7218,19 @@
           "named": true
         },
         {
+          "type": "exp_bar_arg",
+          "named": true
+        },
+        {
           "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_case",
+          "named": true
+        },
+        {
+          "type": "exp_do",
           "named": true
         },
         {
@@ -7274,6 +7239,22 @@
         },
         {
           "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_if",
+          "named": true
+        },
+        {
+          "type": "exp_lambda",
+          "named": true
+        },
+        {
+          "type": "exp_lambda_case",
+          "named": true
+        },
+        {
+          "type": "exp_let_in",
           "named": true
         },
         {
@@ -7298,6 +7279,10 @@
         },
         {
           "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_rewrite_in",
           "named": true
         },
         {
@@ -7388,7 +7373,7 @@
           "named": true
         },
         {
-          "type": "equal",
+          "type": "exp_bar_arg",
           "named": true
         },
         {
@@ -7539,10 +7524,14 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "arrow_separator",
+          "named": true
+        },
+        {
+          "type": "auto",
           "named": true
         },
         {
@@ -7554,11 +7543,27 @@
           "named": true
         },
         {
+          "type": "default",
+          "named": true
+        },
+        {
           "type": "equal",
           "named": true
         },
         {
+          "type": "exp_bar_arg",
+          "named": true
+        },
+        {
           "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_case",
+          "named": true
+        },
+        {
+          "type": "exp_do",
           "named": true
         },
         {
@@ -7567,6 +7572,22 @@
         },
         {
           "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_if",
+          "named": true
+        },
+        {
+          "type": "exp_lambda",
+          "named": true
+        },
+        {
+          "type": "exp_lambda_case",
+          "named": true
+        },
+        {
+          "type": "exp_let_in",
           "named": true
         },
         {
@@ -7594,6 +7615,10 @@
           "named": true
         },
         {
+          "type": "exp_rewrite_in",
+          "named": true
+        },
+        {
           "type": "exp_ticked",
           "named": true
         },
@@ -7607,10 +7632,6 @@
         },
         {
           "type": "hole",
-          "named": true
-        },
-        {
-          "type": "implicit_arg",
           "named": true
         },
         {
@@ -7631,6 +7652,10 @@
         },
         {
           "type": "pragma_world",
+          "named": true
+        },
+        {
+          "type": "quantity",
           "named": true
         },
         {
@@ -7681,7 +7706,19 @@
           "named": true
         },
         {
+          "type": "exp_bar_arg",
+          "named": true
+        },
+        {
           "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_case",
+          "named": true
+        },
+        {
+          "type": "exp_do",
           "named": true
         },
         {
@@ -7690,6 +7727,22 @@
         },
         {
           "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_if",
+          "named": true
+        },
+        {
+          "type": "exp_lambda",
+          "named": true
+        },
+        {
+          "type": "exp_lambda_case",
+          "named": true
+        },
+        {
+          "type": "exp_let_in",
           "named": true
         },
         {
@@ -7714,6 +7767,10 @@
         },
         {
           "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_rewrite_in",
           "named": true
         },
         {
@@ -7804,7 +7861,19 @@
           "named": true
         },
         {
+          "type": "exp_bar_arg",
+          "named": true
+        },
+        {
           "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_case",
+          "named": true
+        },
+        {
+          "type": "exp_do",
           "named": true
         },
         {
@@ -7813,6 +7882,22 @@
         },
         {
           "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_if",
+          "named": true
+        },
+        {
+          "type": "exp_lambda",
+          "named": true
+        },
+        {
+          "type": "exp_lambda_case",
+          "named": true
+        },
+        {
+          "type": "exp_let_in",
           "named": true
         },
         {
@@ -7837,6 +7922,10 @@
         },
         {
           "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_rewrite_in",
           "named": true
         },
         {
