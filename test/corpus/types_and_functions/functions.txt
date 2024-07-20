@@ -1280,18 +1280,18 @@ Not p = p -> Void
     (colon)
     (exp_name
       (caname)))
-  (implementation
-    (implementation_head
-      (constraints
-        (exp_name
-          (caname))
-        (exp_name
-          (loname))
-        (equal)
-        (exp_name
-          (loname))
-        (arrow_separator))
-      (interface_name
+  (function
+    (lhs
+      (funvar
+        (caname)
+        (patterns
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_name
+        (loname))
+      (arrow_separator)
+      (exp_name
         (caname)))))
 
 ================================================================================

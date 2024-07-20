@@ -136,6 +136,7 @@ module.exports = grammar({
     [$._type_parens, $._aexps],
     [$._type, $._parens],
     [$._type, $.exp_tuple],
+    [$._type, $._funrhs],
   ],
 
   rules: {

@@ -249,7 +249,6 @@ module.exports = {
     $.pragma_search,
     $._parens,
     $._braces,
-    $.equal,
   ),
 
   _aexps: $ => prec.right(repeat1($._aexp)),

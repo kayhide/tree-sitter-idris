@@ -19,7 +19,7 @@ module.exports = {
 
   _funrhs: $ => seq(
     $._def_equal,
-    $._exp,
+    choice($._exp, $._type),
   ),
 
   _fun_patterns: $ => prec(1, repeat1($._apat)),

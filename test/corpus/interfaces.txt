@@ -337,7 +337,7 @@ Uninhabited (x::xs = y::ys) where
         (arrow_separator))
       (interface_name
         (caname))
-      (exp_parens
+      (type_parens
         (exp_name
           (loname))
         (operator)

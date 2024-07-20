@@ -50,6 +50,7 @@ module.exports = {
     seq(
       optional($._quantifiers),
       $._exp,
+      optional(seq($.equal, $._exp)),
     ),
   ),
 }

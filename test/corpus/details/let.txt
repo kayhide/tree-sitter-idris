@@ -450,7 +450,10 @@ _ = let (a, b) = x in b
             (loname)))))))
 
 ================================================================================
-Pattern match alt
+FIXME Pattern match alt
+      let X = f x | Y => Z
+      wrong   let X = ((f x | Y) => Z)
+      correct let (X = f x) (| Y => Z)
 ================================================================================
 
 _=
@@ -487,11 +490,12 @@ _=
             (exp_name
               (loname))
             (exp_name
-              (loname))))
-        (bind_alt
-          (pat_name
-            (caname))
-          (exp_list))
+              (loname))
+            (exp_bar_arg
+              (exp_name
+                (caname)))
+            (arrow_separator)
+            (exp_list)))
         (in
           (exp_name
             (loname))
