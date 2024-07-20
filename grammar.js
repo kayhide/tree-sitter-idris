@@ -126,6 +126,7 @@ module.exports = grammar({
     [$._q_name_op, $._funvar],
     [$.qualified_loname, $._name],
     [$.qualified_caname, $._name],
+    [$._exp],
 
     // Types
     [$.constraints],

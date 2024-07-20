@@ -207,6 +207,11 @@ module.exports = {
     seq("~", $._q_name),
   ),
 
+
+  // ----- Bar arguments ------------------------------------------------------
+
+  exp_bar_arg: $ => prec(-1, seq('|', $._aexps)),
+
   // ----- Types --------------------------------------------------------------
 
   _parens: $ => parens(
@@ -260,7 +265,7 @@ module.exports = {
   )),
 
   _exp: $ => choice(
-    $._aexps,
+    seq($._aexps, optional($.exp_bar_arg)),
     $._sexp,
     seq($._aexps, $._sexp),
   ),

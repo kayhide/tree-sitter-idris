@@ -810,3 +810,70 @@ bit = (1 `shiftL`)
         (exp_ticked
           (exp_name
             (loname)))))))
+
+================================================================================
+Function call with bar argument
+================================================================================
+
+ltrim str with (asList str)
+  ltrim ""  | [] = ""
+  ltrim str@_ | x :: xs = if isSpace x then ltrim _ | xs else str
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname)))))
+    (with
+      (exp_parens
+        (exp_name
+          (loname))
+        (exp_name
+          (loname)))
+      (function
+        (lhs
+          (funvar
+            (loname)
+            (patterns
+              (pat_literal
+                (string)))))
+        (with_pat
+          (pat_list))
+        (rhs
+          (literal
+            (string))))
+      (function
+        (lhs
+          (funvar
+            (loname)
+            (patterns
+              (pat_name
+                (loname))
+              (pat_at_wildcard))))
+        (with_pat
+          (pat_name
+            (loname))
+          (pat_op)
+          (pat_name
+            (loname)))
+        (rhs
+          (exp_if
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))
+            (exp_then
+              (exp_name
+                (loname))
+              (wildcard)
+              (exp_bar_arg
+                (exp_name
+                  (loname))))
+            (exp_else
+              (exp_name
+                (loname)))))))))
