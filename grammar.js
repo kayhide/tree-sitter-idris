@@ -131,9 +131,10 @@ module.exports = grammar({
     [$.constraints],
     [$._name_op, $.interface_name],
     [$._q_name_op, $.interface_name],
-    [$._type, $._exp],
     [$._numeric, $.quantity],
     [$._type_parens, $._aexps],
+    [$._type, $._parens],
+    [$._type, $.exp_tuple],
   ],
 
   rules: {

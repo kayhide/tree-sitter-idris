@@ -49,7 +49,7 @@ module.exports = {
     $.arrow_separator,
     seq(
       optional($._quantifiers),
-      $._aexps,
+      $._exp,
     ),
   ),
 }

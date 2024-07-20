@@ -867,6 +867,42 @@ _ : {s : _} -> forall fs, ty .
       (loname))))
 
 ================================================================================
+Type signature with let-in
+================================================================================
+
+example :
+  let nats : Colist Nat; nats = fromStream Stream.nats in x
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (loname)
+    (colon)
+    (exp_let_in
+      (declarations
+        (signature
+          (loname)
+          (colon)
+          (exp_name
+            (caname))
+          (exp_name
+            (caname)))
+        (lhs
+          (pat_name
+            (loname)))
+        (rhs
+          (exp_name
+            (loname))
+          (exp_name
+            (qualified_loname
+              (module)
+              (loname)))))
+      (in
+        (exp_name
+          (loname))))))
+
+================================================================================
 At braces 1
 ================================================================================
 
