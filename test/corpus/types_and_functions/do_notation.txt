@@ -342,3 +342,74 @@ _ = do
         (statement
           (exp_name
             (caname)))))))
+
+================================================================================
+Bind pattern with lambda cases
+================================================================================
+
+isFreeOf x ty
+  = do isOk <- flip mapMTTImp ty $ \case
+         t@(IVar _ v) => t <$ guard (v /= x)
+         t => pure t
+       pure TrustMeFO
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname))
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_do
+        (statement
+          (bind_pattern
+            (pat_name
+              (loname))
+            (bind_exp
+              (exp_name
+                (loname))
+              (exp_name
+                (loname))
+              (exp_name
+                (loname))
+              (operator)
+              (exp_lambda_case
+                (alts
+                  (alt
+                    (pat_name
+                      (loname))
+                    (pat_at_parens
+                      (pat_name
+                        (caname))
+                      (wildcard)
+                      (pat_name
+                        (loname)))
+                    (exp_name
+                      (loname))
+                    (operator)
+                    (exp_name
+                      (loname))
+                    (exp_parens
+                      (exp_name
+                        (loname))
+                      (operator)
+                      (exp_name
+                        (loname))))
+                  (alt
+                    (pat_name
+                      (loname))
+                    (exp_name
+                      (loname))
+                    (exp_name
+                      (loname))))))))
+        (statement
+          (exp_name
+            (loname))
+          (exp_name
+            (caname)))))))

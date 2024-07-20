@@ -171,7 +171,7 @@ module.exports = {
   bind_pattern: $ => seq(
     $._pat,
     $._larrow,
-    alias($._aexps, $.bind_exp),
+    alias($._exp, $.bind_exp),
     repeat($.bind_alt),
   ),
 
