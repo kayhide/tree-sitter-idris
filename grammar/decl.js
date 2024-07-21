@@ -38,9 +38,16 @@ module.exports = {
     ),
   ),
 
+  proof: $ => seq('proof', $._aexp),
+
   with: $ => seq(
     'with',
-    sep1('|', $.exp_parens),
+    sep1('|', 
+      seq(
+        $.exp_parens, 
+        optional($.proof)
+      ),
+    ),
     '\n',
     layouted($, $.function),
   ),

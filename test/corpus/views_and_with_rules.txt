@@ -360,3 +360,112 @@ mapMaybeAppend f (x::xs) ys with (f x)
             (in
               (exp_name
                 (caname)))))))))
+
+================================================================================
+with rule and proof
+================================================================================
+
+fromListAppend (x::xs) ys with (fromList ys) proof prf
+  fromListAppend (x::xs) []      | Nothing         =
+    rewrite appendNilRightNeutral xs in Refl
+  fromListAppend (x::xs) (y::ys) | (Just $ l:::ls) =
+    let (Refl, Refl) = biinjective $ injective prf in Refl
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_parens
+            (pat_name
+              (loname))
+            (pat_op)
+            (pat_name
+              (loname)))
+          (pat_name
+            (loname)))))
+    (with
+      (exp_parens
+        (exp_name
+          (loname))
+        (exp_name
+          (loname)))
+      (proof
+        (exp_name
+          (loname)))
+      (function
+        (lhs
+          (funvar
+            (loname)
+            (patterns
+              (pat_parens
+                (pat_name
+                  (loname))
+                (pat_op)
+                (pat_name
+                  (loname)))
+              (pat_list))))
+        (with_pat
+          (pat_name
+            (caname)))
+        (rhs
+          (exp_rewrite_in
+            (rewrite_exp
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))
+            (in
+              (exp_name
+                (caname))))))
+      (function
+        (lhs
+          (funvar
+            (loname)
+            (patterns
+              (pat_parens
+                (pat_name
+                  (loname))
+                (pat_op)
+                (pat_name
+                  (loname)))
+              (pat_parens
+                (pat_name
+                  (loname))
+                (pat_op)
+                (pat_name
+                  (loname))))))
+        (with_pat
+          (pat_parens
+            (pat_name
+              (caname))
+            (pat_op)
+            (pat_name
+              (loname))
+            (pat_op)
+            (pat_name
+              (loname))))
+        (rhs
+          (exp_let_in
+            (declarations
+              (lhs
+                (pat_parens
+                  (pat_name
+                    (caname))
+                  (tuple_operator)
+                  (pat_name
+                    (caname))))
+              (rhs
+                (exp_name
+                  (loname))
+                (operator)
+                (exp_name
+                  (loname))
+                (exp_name
+                  (loname))))
+            (in
+              (exp_name
+                (caname)))))))))
