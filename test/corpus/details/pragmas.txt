@@ -377,6 +377,35 @@ stringByteLength : String -> Int
       (caname))))
 
 ================================================================================
+Pragma foreign with multiple support labels
+================================================================================
+
+%foreign supportC "idris2_changeDir"
+         supportNode "changeDir"
+prim__changeDir : String -> PrimIO Int
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (pragma_foreign
+      (loname)
+      (literal
+        (string))
+      (loname)
+      (literal
+        (string)))
+    (loname)
+    (colon)
+    (exp_name
+      (caname))
+    (arrow_separator)
+    (exp_name
+      (caname))
+    (exp_name
+      (caname))))
+
+================================================================================
 Pragma allow_overloads
 ================================================================================
 

@@ -122,6 +122,7 @@ module.exports = grammar({
     [$.qualified_loname, $._name],
     [$.qualified_caname, $._name],
     [$._exp],
+    [$.pragma_foreign],
 
     // Types
     [$.constraints],

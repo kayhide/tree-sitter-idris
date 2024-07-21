@@ -16,15 +16,15 @@ module.exports = {
     repeat(choice($.pragma_arg, $.comma)),
   ),
 
-  pragma_foreign: $ => prec.left(seq(
+  pragma_foreign: $ => seq(
     '%foreign',
     repeat1(
       seq(
-        optional($. _name),
+        optional($._name),
         $.literal,
       ),
     ),
-  )),
+  ),
 
   pragma_transform: $ => seq(
     '%transform',
