@@ -27,28 +27,31 @@ module.exports = {
   // Postfix projection operators
   _dot_operator: $ => seq($._dot, $._immediate_loname),
   dot_operator: $ => $._dot_operator,
-  qualified_dot_operator: $ => qualified($, parens($._dot_operator)),
+
+  _dot_operators: $ => repeat1($.dot_operator),
+
+  qualified_dot_operators: $ => qualified($, parens($._dot_operators)),
 
   // ------------------------------------------------------------------------
   // Aggregates
   _parens_operator: $ => parens(
     choice(
       $.operator, 
-      $.dot_operator,
+      $._dot_operators,
     )
   ),
   _q_loname: $ => choice($.qualified_loname, $.loname),
   _loname_op: $ => choice($.loname, $._parens_operator),
-  _q_loname_op: $ => choice($._loname_op, $.qualified_loname, $.qualified_operator, $.qualified_dot_operator),
+  _q_loname_op: $ => choice($._loname_op, $.qualified_loname, $.qualified_operator, $.qualified_dot_operators),
 
   _q_caname: $ => choice($.qualified_caname, $.caname),
   _caname_op: $ => choice($.caname, $._parens_operator),
-  _q_caname_op: $ => choice($._caname_op, $.qualified_caname, $.qualified_operator, $.qualified_dot_operator),
+  _q_caname_op: $ => choice($._caname_op, $.qualified_caname, $.qualified_operator, $.qualified_dot_operators),
 
   _name: $ => choice($.loname, $.caname),
   _q_name: $ => choice($._q_loname, $._q_caname),
   _name_op: $ => choice($.loname, $.caname, $._parens_operator),
-  _q_name_op: $ => choice($._name_op, $.qualified_loname, $.qualified_caname, $.qualified_operator, $.qualified_dot_operator),
+  _q_name_op: $ => choice($._name_op, $.qualified_loname, $.qualified_caname, $.qualified_operator, $.qualified_dot_operators),
 
   // Ticked operator
   ticked_operator: $=> ticked(alias($._q_name, '')),

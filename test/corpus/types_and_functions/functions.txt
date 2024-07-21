@@ -1504,3 +1504,29 @@ Dot operator
     (rhs
       (exp_name
         (loname)))))
+
+================================================================================
+Dot operators chained
+================================================================================
+
+_ = (fileTime h <&> (.atime.sec)) @{Compose}
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_parens
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))
+        (operator)
+        (exp_name
+          (dot_operator)
+          (dot_operator)))
+      (exp_explicit_impl
+        (exp_name
+          (caname))))))
