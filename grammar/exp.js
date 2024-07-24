@@ -209,19 +209,17 @@ module.exports = {
 
   // ----- Strings ------------------------------------------------------------
 
-  _string_content: $ => prec.left(repeat1(choice(
-    /[^\\"\n]/,
-    /\\[^{]/,
-    /\\\n\s*\\/,
-  ))),
-
-  interpolation: $ => seq('\\{', $._exp, '}'),
-
   string: $ => seq(
     '"',
     repeat(choice(
-      $._string_content,
-      $.interpolation,
+      /[^\\"\n]/,
+      /\\\n\s*\\/,
+      /\\[^{]/,
+      seq(
+        '\\{', 
+        alias($._exp, $.interpolation),
+        '}'
+      ),
     )),
     '"',
   ),
@@ -230,14 +228,35 @@ module.exports = {
     '"""',
     repeat1(choice(
       /"{0,2}([^"]+"{1,2})*[^"]*/,
-      $.interpolation,
+      seq(
+        '\\{', 
+        alias($._exp, $.interpolation),
+        '}'
+      ),
     )),
     '"""'
+  ),
+  
+  raw_string: $ => seq(
+    $._raw_string_start,
+    repeat(choice(
+      /[^\\\n]/,
+      /\\\n\s*\\/,
+      /\\[^#]/,
+      /\\#[^{]/,
+      seq(
+        '\\#{', 
+        alias($._exp, $.interpolation),
+        '}'
+      ),
+    )),
+    $._raw_string_end,
   ),
   
   _string: $ => choice(
     $.string,
     $.triple_quote_string,
+    $.raw_string,
   ),
 
   // ----- Bar arguments ------------------------------------------------------

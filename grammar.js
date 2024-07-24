@@ -43,6 +43,8 @@ module.exports = grammar({
     $.where,
     $._operator,
     $.comment,
+    $._raw_string_start,
+    $._raw_string_end,
     $.cpp,
     $.comma,
     'in',
