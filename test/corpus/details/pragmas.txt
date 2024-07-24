@@ -154,8 +154,7 @@ Pragma transform 1
 
 (idris
   (pragma_transform
-    (literal
-      (string))
+    (string)
     (exp_name
       (qualified_operator
         (module)))
@@ -175,8 +174,7 @@ Pragma transform 2
 
 (idris
   (pragma_transform
-    (literal
-      (string))
+    (string)
     (exp_name
       (loname))
     (exp_braces
@@ -205,8 +203,7 @@ Pragma transform 3
 
 (idris
   (pragma_transform
-    (literal
-      (string))
+    (string)
     (exp_name
       (qualified_loname
         (module)
@@ -229,8 +226,7 @@ Pragma transform 4
 
 (idris
   (pragma_transform
-    (literal
-      (string))
+    (string)
     (exp_name
       (loname))
     (exp_braces
@@ -362,12 +358,9 @@ stringByteLength : String -> Int
   (signature
     (visibility)
     (pragma_foreign
-      (literal
-        (string))
-      (literal
-        (string))
-      (literal
-        (string)))
+      (string)
+      (string)
+      (string))
     (loname)
     (colon)
     (exp_name
@@ -390,11 +383,9 @@ prim__changeDir : String -> PrimIO Int
   (signature
     (pragma_foreign
       (loname)
-      (literal
-        (string))
+      (string)
       (loname)
-      (literal
-        (string)))
+      (string))
     (loname)
     (colon)
     (exp_name

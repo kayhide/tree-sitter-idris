@@ -26,8 +26,7 @@ greet = do
         (statement
           (exp_name
             (loname))
-          (literal
-            (string)))
+          (string))
         (statement
           (bind_pattern
             (pat_name
@@ -39,8 +38,7 @@ greet = do
           (exp_name
             (loname))
           (exp_parens
-            (literal
-              (string))
+            (string)
             (operator)
             (exp_name
               (loname))))))))
@@ -86,8 +84,7 @@ _ = do len <- getInt64 buf offset
           (operator)
           (exp_name
             (loname))
-          (literal
-            (string)))))))
+          (string))))))
 
 ================================================================================
 Bind pattern 2

@@ -67,16 +67,14 @@ showPerson p = let MkPerson name age = p in
           (exp_name
             (loname))
           (operator)
-          (literal
-            (string))
+          (string)
           (operator)
           (exp_name
             (loname))
           (exp_name
             (loname))
           (operator)
-          (literal
-            (string)))))))
+          (string))))))
 
 ================================================================================
 let bindings 3
@@ -840,13 +838,11 @@ ltrim str with (asList str)
           (funvar
             (loname)
             (patterns
-              (pat_literal
-                (string)))))
+              (pat_string))))
         (with_pat
           (pat_list))
         (rhs
-          (literal
-            (string))))
+          (string)))
       (function
         (lhs
           (funvar

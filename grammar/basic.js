@@ -24,18 +24,6 @@ module.exports = {
     ),
   ),
 
-  string: _ => token(
-    seq(
-      '"',
-      repeat(choice(
-        /[^\\"\n]/,
-        /\\(\^)?./,
-        /\\\n\s*\\/,
-      )),
-      '"',
-    ),
-  ),
-
   // https://github.com/natefaubion/purescript-language-cst-parser/blob/bf5623e08e1f43f923d4ff3c29cafbda25128768/src/PureScript/CST/Lexer.purs#L595
   triple_quote_string: _ => token(
     seq(
@@ -53,19 +41,13 @@ module.exports = {
     $._hex_literal,
   ),
 
-  _stringly: $ => choice(
-    $.string,
-    $.triple_quote_string,
-    $.char,
-  ),
-
   _numeric: $ => choice(
     $.integer,
     $.number,
   ),
 
   _literal: $ => choice(
-    $._stringly,
+    $.char,
     $._numeric,
   ),
 

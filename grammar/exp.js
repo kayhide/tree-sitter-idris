@@ -207,6 +207,38 @@ module.exports = {
     seq("~", $._q_name),
   ),
 
+  // ----- Strings ------------------------------------------------------------
+
+  _string_content: $ => prec.left(repeat1(choice(
+    /[^\\"\n]/,
+    /\\[^{]/,
+    /\\\n\s*\\/,
+  ))),
+
+  interpolation: $ => seq('\\{', $._exp, '}'),
+
+  string: $ => seq(
+    '"',
+    repeat(choice(
+      $._string_content,
+      $.interpolation,
+    )),
+    '"',
+  ),
+
+  triple_quote_string: $ => seq(
+    '"""',
+    repeat1(choice(
+      /"{0,2}([^"]+"{1,2})*[^"]*/,
+      $.interpolation,
+    )),
+    '"""'
+  ),
+  
+  _string: $ => choice(
+    $.string,
+    $.triple_quote_string,
+  ),
 
   // ----- Bar arguments ------------------------------------------------------
 
@@ -241,6 +273,7 @@ module.exports = {
     $.exp_tuple,
     $.exp_quasiquotation,
     $.operator,
+    $._string,
     $.literal,
     $.wildcard,
     $.unit,

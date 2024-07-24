@@ -156,8 +156,7 @@ fred = ("Fred", 42)
         (loname)))
     (rhs
       (exp_tuple
-        (literal
-          (string))
+        (string)
         (tuple_operator)
         (literal
           (integer))))))
@@ -190,14 +189,12 @@ jim = ("Jim", 25, "Cambridge")
         (loname)))
     (rhs
       (exp_tuple
-        (literal
-          (string))
+        (string)
         (tuple_operator)
         (literal
           (integer))
         (tuple_operator)
-        (literal
-          (string))))))
+        (string)))))
 
 ================================================================================
 Dependent Pairs 1
@@ -468,12 +465,9 @@ fred = MkPerson "Fred" "Joe" "Bloggs" 30
     (rhs
       (exp_name
         (caname))
-      (literal
-        (string))
-      (literal
-        (string))
-      (literal
-        (string))
+      (string)
+      (string)
+      (string)
       (literal
         (integer)))))
 

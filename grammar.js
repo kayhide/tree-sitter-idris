@@ -51,7 +51,6 @@ module.exports = grammar({
   ],
 
   inline: $ => [
-    $._stringly,
     $._loname_op,
     $._q_loname,
     $._q_loname_op,
@@ -112,6 +111,9 @@ module.exports = grammar({
      */
     [$._pat, $.signature],
     [$._apat, $.signature],
+
+    // String
+    [$._string, $._apat],
 
     // Misc
     [$.operator, $.pat_op],

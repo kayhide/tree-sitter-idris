@@ -39,6 +39,7 @@ module.exports = {
     $.pat_op,
     $.pat_record,
     alias($.literal, $.pat_literal),
+    alias($.string, $.pat_string),
     $.wildcard,
     $.unit,
     $.pat_at_wildcard,

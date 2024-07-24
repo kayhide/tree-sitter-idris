@@ -51,8 +51,7 @@ Show Nat where
               (pat_name
                 (caname)))))
         (rhs
-          (literal
-            (string)))))))
+          (string))))))
 
 ================================================================================
 Default Definitions

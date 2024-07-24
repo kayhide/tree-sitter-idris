@@ -21,14 +21,14 @@ module.exports = {
     repeat1(
       seq(
         optional($._name),
-        $.literal,
+        $.string,
       ),
     ),
   ),
 
   pragma_transform: $ => seq(
     '%transform',
-    $.literal,
+    $.string,
     $._aexps,
     $.equal,
     $._aexps,

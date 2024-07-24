@@ -25,5 +25,4 @@ main = putStrLn "Hello world"
     (rhs
       (exp_name
         (loname))
-      (literal
-        (string)))))
+      (string))))
