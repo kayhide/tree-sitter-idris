@@ -143,7 +143,19 @@
             "named": true
           },
           {
+            "type": "raw_string",
+            "named": true
+          },
+          {
             "type": "record_update",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "triple_quote_string",
             "named": true
           },
           {
@@ -277,6 +289,10 @@
             "named": true
           },
           {
+            "type": "pat_string",
+            "named": true
+          },
+          {
             "type": "pragma_mkworld",
             "named": true
           },
@@ -293,7 +309,19 @@
             "named": true
           },
           {
+            "type": "raw_string",
+            "named": true
+          },
+          {
             "type": "record_update",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "triple_quote_string",
             "named": true
           },
           {
@@ -499,6 +527,10 @@
           "named": true
         },
         {
+          "type": "pat_string",
+          "named": true
+        },
+        {
           "type": "pragma_mkworld",
           "named": true
         },
@@ -515,7 +547,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -646,7 +690,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -785,6 +841,10 @@
           "named": true
         },
         {
+          "type": "pat_string",
+          "named": true
+        },
+        {
           "type": "pragma_mkworld",
           "named": true
         },
@@ -801,7 +861,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -914,7 +986,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -1078,7 +1162,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -1256,7 +1352,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -1384,7 +1492,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -1542,7 +1662,19 @@
             "named": true
           },
           {
+            "type": "raw_string",
+            "named": true
+          },
+          {
             "type": "record_update",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "triple_quote_string",
             "named": true
           },
           {
@@ -1707,7 +1839,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -1806,7 +1950,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -1937,7 +2093,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -2086,7 +2254,19 @@
             "named": true
           },
           {
+            "type": "raw_string",
+            "named": true
+          },
+          {
             "type": "record_update",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "triple_quote_string",
             "named": true
           },
           {
@@ -2289,7 +2469,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -2392,7 +2584,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -2566,7 +2770,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -2681,7 +2897,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -2862,7 +3090,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -2961,7 +3201,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -3092,7 +3344,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -3235,7 +3499,19 @@
             "named": true
           },
           {
+            "type": "raw_string",
+            "named": true
+          },
+          {
             "type": "record_update",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "triple_quote_string",
             "named": true
           },
           {
@@ -3640,7 +3916,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -3838,7 +4126,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -3999,7 +4299,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -4199,7 +4511,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -4235,6 +4559,149 @@
         },
         {
           "type": "qualified_caname",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "interpolation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "exp_bar_arg",
+          "named": true
+        },
+        {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_case",
+          "named": true
+        },
+        {
+          "type": "exp_do",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
+          "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_if",
+          "named": true
+        },
+        {
+          "type": "exp_lambda",
+          "named": true
+        },
+        {
+          "type": "exp_lambda_case",
+          "named": true
+        },
+        {
+          "type": "exp_let_in",
+          "named": true
+        },
+        {
+          "type": "exp_list",
+          "named": true
+        },
+        {
+          "type": "exp_list_comprehension",
+          "named": true
+        },
+        {
+          "type": "exp_name",
+          "named": true
+        },
+        {
+          "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
+          "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_rewrite_in",
+          "named": true
+        },
+        {
+          "type": "exp_ticked",
+          "named": true
+        },
+        {
+          "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "hole",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "pragma_mkworld",
+          "named": true
+        },
+        {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_world",
+          "named": true
+        },
+        {
+          "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
+          "named": true
+        },
+        {
+          "type": "type_braces",
+          "named": true
+        },
+        {
+          "type": "type_parens",
+          "named": true
+        },
+        {
+          "type": "unit",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -4353,6 +4820,10 @@
           "named": true
         },
         {
+          "type": "pat_string",
+          "named": true
+        },
+        {
           "type": "pragma_mkworld",
           "named": true
         },
@@ -4369,7 +4840,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -4500,7 +4983,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -4654,6 +5149,10 @@
           "named": true
         },
         {
+          "type": "pat_string",
+          "named": true
+        },
+        {
           "type": "pragma_mkworld",
           "named": true
         },
@@ -4670,7 +5169,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -4710,14 +5221,6 @@
         },
         {
           "type": "number",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "triple_quote_string",
           "named": true
         }
       ]
@@ -5128,6 +5631,10 @@
           "named": true
         },
         {
+          "type": "pat_string",
+          "named": true
+        },
+        {
           "type": "pragma_mkworld",
           "named": true
         },
@@ -5144,7 +5651,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -5275,6 +5794,10 @@
           "named": true
         },
         {
+          "type": "pat_string",
+          "named": true
+        },
+        {
           "type": "pragma_mkworld",
           "named": true
         },
@@ -5291,7 +5814,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -5430,6 +5965,10 @@
           "named": true
         },
         {
+          "type": "pat_string",
+          "named": true
+        },
+        {
           "type": "pragma_mkworld",
           "named": true
         },
@@ -5446,7 +5985,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -5581,6 +6132,10 @@
           "named": true
         },
         {
+          "type": "pat_string",
+          "named": true
+        },
+        {
           "type": "pragma_mkworld",
           "named": true
         },
@@ -5597,7 +6152,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -5751,6 +6318,10 @@
           "named": true
         },
         {
+          "type": "pat_string",
+          "named": true
+        },
+        {
           "type": "pragma_mkworld",
           "named": true
         },
@@ -5767,7 +6338,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -5807,14 +6390,6 @@
         },
         {
           "type": "number",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "triple_quote_string",
           "named": true
         }
       ]
@@ -5963,6 +6538,10 @@
           "named": true
         },
         {
+          "type": "pat_string",
+          "named": true
+        },
+        {
           "type": "pragma_mkworld",
           "named": true
         },
@@ -5979,7 +6558,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -6019,6 +6610,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "pat_string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "interpolation",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -6067,6 +6673,10 @@
         },
         {
           "type": "pat_record",
+          "named": true
+        },
+        {
+          "type": "pat_string",
           "named": true
         },
         {
@@ -6171,11 +6781,11 @@
           "named": true
         },
         {
-          "type": "literal",
+          "type": "loname",
           "named": true
         },
         {
-          "type": "loname",
+          "type": "string",
           "named": true
         }
       ]
@@ -6267,7 +6877,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -6366,7 +6988,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -6481,6 +7115,21 @@
     "fields": {}
   },
   {
+    "type": "raw_string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "interpolation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "record",
     "named": true,
     "fields": {
@@ -6580,11 +7229,23 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_body",
           "named": true
         },
         {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -6801,7 +7462,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -6959,7 +7632,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -7073,7 +7758,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -7220,7 +7917,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -7433,11 +8142,23 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "totality",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -7580,11 +8301,23 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
           "named": true
         },
         {
           "type": "rewrite",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -7607,6 +8340,21 @@
     }
   },
   {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "interpolation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "ticked_operator",
     "named": true,
     "fields": {}
@@ -7615,6 +8363,21 @@
     "type": "totality",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "triple_quote_string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "interpolation",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "tuple_operator",
@@ -7762,7 +8525,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -7917,7 +8692,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -8068,7 +8855,19 @@
           "named": true
         },
         {
+          "type": "raw_string",
+          "named": true
+        },
+        {
           "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -8182,6 +8981,10 @@
           "named": true
         },
         {
+          "type": "pat_string",
+          "named": true
+        },
+        {
           "type": "pragma_mkworld",
           "named": true
         },
@@ -8202,6 +9005,14 @@
   },
   {
     "type": "\n",
+    "named": false
+  },
+  {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "\"\"\"",
     "named": false
   },
   {
@@ -8289,7 +9100,15 @@
     "named": false
   },
   {
+    "type": "\\#{",
+    "named": false
+  },
+  {
     "type": "\\case",
+    "named": false
+  },
+  {
+    "type": "\\{",
     "named": false
   },
   {
@@ -8521,20 +9340,12 @@
     "named": false
   },
   {
-    "type": "string",
-    "named": true
-  },
-  {
     "type": "then",
     "named": false
   },
   {
     "type": "total",
     "named": false
-  },
-  {
-    "type": "triple_quote_string",
-    "named": true
   },
   {
     "type": "unit",
