@@ -231,10 +231,7 @@ f x = z where z = y
   (function
     (lhs
       (funvar
-        (loname)
-        (patterns
-          (pat_name
-            (loname)))))
+        (loname)))
     (rhs
       (exp_name
         (loname)))))
@@ -278,10 +275,7 @@ f x = z
   (function
     (lhs
       (funvar
-        (loname)
-        (patterns
-          (pat_name
-            (loname)))))
+        (loname)))
     (rhs
       (exp_name
         (loname)))))

@@ -3,7 +3,7 @@ const { parens, varid_pattern } = require('./util.js')
 module.exports = {
   // ------------------------------------------------------------------------
   // Lowercase names
-  _loname: _ => varid_pattern,
+  _loname: $ => $._varid,
   loname: $ => $._loname,
   qualified_loname: $ => qualified($, $.loname),
 

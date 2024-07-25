@@ -41,6 +41,7 @@ module.exports = grammar({
     $._layout_end,
     $._dot,
     $.where,
+    $._varid,
     $._operator,
     $.comment,
     $._raw_string_start,
@@ -156,6 +157,7 @@ module.exports = grammar({
       alias($._decl_interface, $.interface),
       alias($._decl_implementation, $.implementation),
       $._decl,
+      $.pragma_default,
       $._pragma,
     ),
 

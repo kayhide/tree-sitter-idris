@@ -769,7 +769,8 @@ interface A t => B t where
         (loname)))
     (interface_body
       (where)
-      (caname))))
+      (constructor
+        (caname)))))
 
 ================================================================================
 Determining Parameters

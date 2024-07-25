@@ -427,7 +427,8 @@ record Person where
       (caname))
     (where)
     (record_body
-      (caname)
+      (constructor
+        (caname))
       (record_field
         (loname)
         (comma)
@@ -488,7 +489,8 @@ record Class where
       (caname))
     (where)
     (record_body
-      (caname)
+      (constructor
+        (caname))
       (record_field
         (loname)
         (colon)
@@ -615,7 +617,8 @@ record DPair a (p : a -> Type) where
         (caname)))
     (where)
     (record_body
-      (caname)
+      (constructor
+        (caname))
       (record_field
         (loname)
         (colon)
@@ -677,7 +680,8 @@ record Exists {0 type : Type} this where
       (loname))
     (where)
     (record_body
-      (caname)
+      (constructor
+        (caname))
       (record_field
         (quantity)
         (loname)
@@ -711,7 +715,8 @@ record List1 a where
       (loname))
     (where)
     (record_body
-      (operator)
+      (constructor
+        (operator))
       (record_field
         (loname)
         (colon)

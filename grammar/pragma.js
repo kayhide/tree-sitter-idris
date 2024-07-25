@@ -16,6 +16,11 @@ module.exports = {
     repeat(choice($.pragma_arg, $.comma)),
   ),
 
+  pragma_default: $ => seq(
+    '%default',
+    $.totality,
+  ),
+
   pragma_foreign: $ => seq(
     '%foreign',
     repeat1(

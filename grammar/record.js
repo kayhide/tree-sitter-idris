@@ -17,12 +17,12 @@ module.exports = {
   record_body: $ => layouted($, $._record_decl),
 
   _record_decl: $ => choice(
-    $._constructor,
+    $.constructor,
     alias($._record_field, $.record_field),
     alias($._implicit_record_field, $.implicit_record_field),
   ),
 
-  _constructor: $ => seq(
+  constructor: $ => seq(
     'constructor',
     field('name', $._caname_op), 
   ),
