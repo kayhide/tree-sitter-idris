@@ -1021,6 +1021,38 @@
     }
   },
   {
+    "type": "constructor",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "caname",
+            "named": true
+          },
+          {
+            "type": "dot_operator",
+            "named": true
+          },
+          {
+            "type": "operator",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "constructor_signature",
     "named": true,
     "fields": {
@@ -3760,6 +3792,10 @@
           "named": true
         },
         {
+          "type": "pragma_default",
+          "named": true
+        },
+        {
           "type": "pragma_transform",
           "named": true
         },
@@ -4364,38 +4400,15 @@
   {
     "type": "interface_body",
     "named": true,
-    "fields": {
-      "name": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": "caname",
-            "named": true
-          },
-          {
-            "type": "dot_operator",
-            "named": true
-          },
-          {
-            "type": "operator",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "constructor",
+          "named": true
+        },
         {
           "type": "fixity",
           "named": true
@@ -5306,6 +5319,10 @@
           "named": true
         },
         {
+          "type": "pragma_default",
+          "named": true
+        },
+        {
           "type": "pragma_transform",
           "named": true
         },
@@ -5403,6 +5420,10 @@
         },
         {
           "type": "pragma",
+          "named": true
+        },
+        {
+          "type": "pragma_default",
           "named": true
         },
         {
@@ -5505,6 +5526,10 @@
         },
         {
           "type": "pragma",
+          "named": true
+        },
+        {
+          "type": "pragma_default",
           "named": true
         },
         {
@@ -6769,6 +6794,21 @@
     }
   },
   {
+    "type": "pragma_default",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "totality",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "pragma_foreign",
     "named": true,
     "fields": {},
@@ -7278,38 +7318,15 @@
   {
     "type": "record_body",
     "named": true,
-    "fields": {
-      "name": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": "caname",
-            "named": true
-          },
-          {
-            "type": "dot_operator",
-            "named": true
-          },
-          {
-            "type": "operator",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "constructor",
+          "named": true
+        },
         {
           "type": "implicit_record_field",
           "named": true
@@ -9024,6 +9041,10 @@
     "named": false
   },
   {
+    "type": "%default",
+    "named": false
+  },
+  {
     "type": "%foreign",
     "named": false
   },
@@ -9245,11 +9266,11 @@
   },
   {
     "type": "module",
-    "named": false
+    "named": true
   },
   {
     "type": "module",
-    "named": true
+    "named": false
   },
   {
     "type": "mutual",

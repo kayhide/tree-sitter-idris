@@ -159,6 +159,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "pragma_default"
+        },
+        {
+          "type": "SYMBOL",
           "name": "_pragma"
         }
       ]
@@ -449,8 +453,8 @@
       }
     },
     "_loname": {
-      "type": "PATTERN",
-      "value": "[\\p{Ll}_][\\p{L}0-9_']*"
+      "type": "SYMBOL",
+      "name": "_varid"
     },
     "loname": {
       "type": "SYMBOL",
@@ -978,7 +982,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_constructor"
+          "name": "constructor"
         },
         {
           "type": "ALIAS",
@@ -1000,7 +1004,7 @@
         }
       ]
     },
-    "_constructor": {
+    "constructor": {
       "type": "SEQ",
       "members": [
         {
@@ -4954,7 +4958,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_constructor"
+          "name": "constructor"
         },
         {
           "type": "SYMBOL",
@@ -6000,6 +6004,19 @@
         }
       ]
     },
+    "pragma_default": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "%default"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "totality"
+        }
+      ]
+    },
     "pragma_foreign": {
       "type": "SEQ",
       "members": [
@@ -6295,6 +6312,10 @@
     {
       "type": "SYMBOL",
       "name": "where"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_varid"
     },
     {
       "type": "SYMBOL",
