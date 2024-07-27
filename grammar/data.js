@@ -12,7 +12,12 @@ module.exports = {
   ),
 
   _decl_data_inline: $ => seq(
-    optional($.visibility),
+    repeat(
+      choice(
+        $.visibility,
+        $._pragma_decl,
+      )
+    ),
     'data',
     field('name', $.data_name),
     repeat($._q_loname),

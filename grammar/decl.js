@@ -78,7 +78,7 @@ module.exports = {
         $.visibility,
         $.totality,
         $.quantity,
-        $.pragma_foreign,
+        $._pragma_decl,
       )
     ),
     choice(

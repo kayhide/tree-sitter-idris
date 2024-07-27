@@ -48,7 +48,7 @@ module.exports = {
     $.pat_list,
     $.pat_braces,
     $.pat_at_braces,
-    $.pragma_mkworld,
+    $._pragma_exp,
   ),
 
   _apats: $ => prec.right(repeat1($._apat)),

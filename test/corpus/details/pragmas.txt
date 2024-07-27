@@ -15,13 +15,21 @@ Pragma inline 1
 ================================================================================
 
 %inline -- %unsafe
+f : a -> a
 
 --------------------------------------------------------------------------------
 
 (idris
-  (pragma_inline)
-  (comment)
-  (empty_file))
+  (signature
+    (pragma_inline)
+    (comment)
+    (loname)
+    (colon)
+    (exp_name
+      (loname))
+    (arrow_separator)
+    (exp_name
+      (loname))))
 
 ================================================================================
 Pragma inline 2
@@ -126,8 +134,8 @@ Pragma extern
 --------------------------------------------------------------------------------
 
 (idris
-  (pragma_extern)
   (signature
+    (pragma_extern)
     (loname)
     (colon)
     (type_parens
@@ -135,7 +143,7 @@ Pragma extern
       (exp_name
         (loname))
       (colon)
-      (pragma_world))
+      (pragma_World))
     (arrow_separator)
     (exp_name
       (caname))
@@ -255,14 +263,10 @@ Pragma pair
 --------------------------------------------------------------------------------
 
 (idris
-  (pragma
-    (pragma_name)
-    (pragma_arg
-      (caname))
-    (pragma_arg
-      (loname))
-    (pragma_arg
-      (loname))))
+  (pragma_pair
+    (caname)
+    (loname)
+    (loname)))
 
 ================================================================================
 Pragma name 1
@@ -273,12 +277,9 @@ Pragma name 1
 --------------------------------------------------------------------------------
 
 (idris
-  (pragma
-    (pragma_name)
-    (pragma_arg
-      (caname))
-    (pragma_arg
-      (loname))))
+  (pragma_name
+    (caname)
+    (loname)))
 
 ================================================================================
 Pragma name 2
@@ -289,18 +290,13 @@ Pragma name 2
 --------------------------------------------------------------------------------
 
 (idris
-  (pragma
-    (pragma_name)
-    (pragma_arg
-      (caname))
-    (pragma_arg
-      (loname))
+  (pragma_name
+    (caname)
+    (loname)
     (comma)
-    (pragma_arg
-      (loname))
+    (loname)
     (comma)
-    (pragma_arg
-      (loname))))
+    (loname)))
 
 ================================================================================
 Pragma search 1
@@ -405,18 +401,12 @@ Pragma allow_overloads
 --------------------------------------------------------------------------------
 
 (idris
-  (pragma
-    (pragma_name)
-    (pragma_arg
-      (loname)))
-  (pragma
-    (pragma_name)
-    (pragma_arg
-      (operator)))
-  (pragma
-    (pragma_name)
-    (pragma_arg
-      (operator))))
+  (pragma_allow_overloads
+    (loname))
+  (pragma_allow_overloads
+    (operator))
+  (pragma_allow_overloads
+    (operator)))
 
 ================================================================================
 Pragma World 1
@@ -442,7 +432,7 @@ MkIORes : (result : a) -> (1 x : %World) -> IORes a
       (exp_name
         (loname))
       (colon)
-      (pragma_world))
+      (pragma_World))
     (arrow_separator)
     (exp_name
       (caname))
@@ -468,7 +458,7 @@ unsafeCreateWorld f = f %MkWorld
     (rhs
       (exp_name
         (loname))
-      (pragma_mkworld))))
+      (pragma_MkWorld))))
 
 ================================================================================
 Pragma World 3
@@ -484,7 +474,7 @@ unsafeDestroyWorld %MkWorld x = x
       (funvar
         (loname)
         (patterns
-          (pragma_mkworld)
+          (pragma_MkWorld)
           (pat_name
             (loname)))))
     (rhs

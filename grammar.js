@@ -23,10 +23,6 @@ module.exports = grammar({
     /\r/,
     $.cpp,
     $.comment,
-    $.pragma_hint,
-    $.pragma_inline,
-    $.pragma_tcinline,
-    $.pragma_extern,
   ],
 
   /**
@@ -92,9 +88,7 @@ module.exports = grammar({
     [$.exp_list, $.pat_list],
     [$._aexp, $._apat],
 
-    /**
-     * Names.
-     */
+    // Names
     [$._name, $._name_op, $.interface_name],
     [$._apat, $._implementation_name],
     [$._name, $._name_op],
@@ -102,11 +96,6 @@ module.exports = grammar({
     [$._name, $._name_op, $._field_name],
     [$._q_name, $._name_op],
     [$._q_name, $._q_name_op],
-
-    /**
-     * Visibilities conflict.
-     */
-    [$.implementation_head, $.signature],
 
     /**
      * Signature `:` and let in typed pattern.
@@ -118,16 +107,11 @@ module.exports = grammar({
     // String
     [$._string, $._apat],
 
-    // Misc
-    [$.operator, $.pat_op],
-    [$.operator, $.pat_op],
-    [$._parens_operator, $._aexp],
-    [$.equal, $.pat_braces],
-    [$._q_name_op, $._funvar],
-    [$.qualified_loname, $._name],
-    [$.qualified_caname, $._name],
-    [$._exp],
-    [$.pragma_foreign],
+    // Decl
+    [$._decl_data_inline, $.signature],
+    [$._decl_data_inline, $._decl_interface, $.implementation_head, $.signature],
+    [$._decl_data_inline, $._decl_data_block, $._decl_interface, $.implementation_head],
+    [$._decl_data_inline, $._decl_data_block],
 
     // Types
     [$.constraints],
@@ -138,6 +122,17 @@ module.exports = grammar({
     [$._type, $._parens],
     [$._type, $.exp_tuple],
     [$._type, $._funrhs],
+
+    // Misc
+    [$.operator, $.pat_op],
+    [$.operator, $.pat_op],
+    [$._parens_operator, $._aexp],
+    [$.equal, $.pat_braces],
+    [$._q_name_op, $._funvar],
+    [$.qualified_loname, $._name],
+    [$.qualified_caname, $._name],
+    [$._exp],
+    [$.pragma_foreign],
   ],
 
   rules: {
@@ -157,8 +152,9 @@ module.exports = grammar({
       alias($._decl_interface, $.interface),
       alias($._decl_implementation, $.implementation),
       $._decl,
-      $.pragma_default,
-      $._pragma,
+      $._pragma_global,
+      $._pragma_internal,
+      $._pragma_reflection,
     ),
 
     ...basic,
