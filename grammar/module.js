@@ -5,20 +5,21 @@ module.exports = {
   // module
   // ------------------------------------------------------------------------
 
-  _modid: $ => alias($._caname, $.module),
+  _qualifying_module: $ => repeat1(seq(
+    field('module_name', $.caname),
+    $._dot
+  )),
 
-  _qualifying_module: $ => repeat1(seq($._modid, $._dot)),
-
-  qualified_module: $ => choice($._modid, qualified($, $._modid)),
+  _q_module: $ => $._q_caname,
 
   _decl_module: $ => seq(
     'module',
-    field('name', $.qualified_module),
+    field('name', $._q_module),
   ),
 
   _decl_namespace: $ => seq(
     'namespace',
-    field('name', $.qualified_module),
+    field('name', $._q_module),
     optional(alias($._top_declarations, $.namespace_body)),
   ),
 

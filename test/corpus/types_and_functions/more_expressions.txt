@@ -746,8 +746,8 @@ paramConstraints params pos
         (loname))
       (exp_quasiquotation
         (qualified_caname
-          (module)
-          (module)
+          (caname)
+          (caname)
           (caname)))
       (operator)
       (exp_name
@@ -770,8 +770,8 @@ paramConstraints params pos
         (loname))
       (exp_quasiquotation
         (qualified_caname
-          (module)
-          (module)
+          (caname)
+          (caname)
           (caname)))
       (operator)
       (exp_name

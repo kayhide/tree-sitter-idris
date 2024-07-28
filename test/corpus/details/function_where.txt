@@ -279,3 +279,60 @@ f x = z
     (rhs
       (exp_name
         (loname)))))
+
+================================================================================
+Function where including imeplementation
+================================================================================
+
+ForRef ref = MS where
+  %inline
+  [MS] MonadState a m where
+    get = readRef ref
+    put = writeRef ref
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (caname)
+        (patterns
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_name
+        (caname)))
+    (where)
+    (declarations
+      (implementation
+        (implementation_head
+          (pragma_inline)
+          (implementation_name
+            (caname))
+          (interface_name
+            (caname))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))
+        (implementation_body
+          (where)
+          (function
+            (lhs
+              (funvar
+                (loname)))
+            (rhs
+              (exp_name
+                (loname))
+              (exp_name
+                (loname))))
+          (function
+            (lhs
+              (funvar
+                (loname)))
+            (rhs
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))))))))

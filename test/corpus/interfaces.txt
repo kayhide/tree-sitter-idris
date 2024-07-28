@@ -258,7 +258,7 @@ Implimentation with qualified op in parens
       (exp_parens
         (exp_name
           (qualified_operator
-            (module)))
+            (caname)))
         (exp_name
           (loname))))
     (implementation_body
@@ -280,8 +280,8 @@ Uninhabited (Data.Colist.InBounds k []) where
       (exp_parens
         (exp_name
           (qualified_caname
-            (module)
-            (module)
+            (caname)
+            (caname)
             (caname)))
         (exp_name
           (loname))
@@ -472,7 +472,7 @@ Biinjective Prelude.(::) where
         (caname))
       (exp_name
         (qualified_operator
-          (module))))
+          (caname))))
     (implementation_body
       (where))))
 
@@ -740,7 +740,7 @@ public export
           (loname)))
       (using
         (implementation_name
-          (module)
+          (caname)
           (caname))))
     (implementation_body
       (where))))

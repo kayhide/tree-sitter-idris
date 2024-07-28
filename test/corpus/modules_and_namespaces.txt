@@ -7,8 +7,8 @@ module Foo
 --------------------------------------------------------------------------------
 
 (idris
-  (qualified_module
-    (module)))
+  (module
+    (caname)))
 
 ================================================================================
 Module 2
@@ -19,9 +19,10 @@ module Foo.Bar
 --------------------------------------------------------------------------------
 
 (idris
-  (qualified_module
-    (module)
-    (module)))
+  (module
+    (qualified_caname
+      (caname)
+      (caname))))
 
 ================================================================================
 Export function
@@ -172,8 +173,7 @@ import B
 
 (idris
   (import
-    (qualified_module
-      (module))))
+    (caname)))
 
 ================================================================================
 Re-export
@@ -185,8 +185,7 @@ import public C
 
 (idris
   (import
-    (qualified_module
-      (module))))
+    (caname)))
 
 ================================================================================
 Renaming imports 1
@@ -198,10 +197,10 @@ import Data.List as L
 
 (idris
   (import
-    (qualified_module
-      (module)
-      (module))
-    (module)))
+    (qualified_caname
+      (caname)
+      (caname))
+    (caname)))
 
 ================================================================================
 Renaming imports 2
@@ -213,10 +212,10 @@ import public Books.Hardback as Books
 
 (idris
   (import
-    (qualified_module
-      (module)
-      (module))
-    (module)))
+    (qualified_caname
+      (caname)
+      (caname))
+    (caname)))
 
 ================================================================================
 Explicit Namespaces
@@ -230,8 +229,7 @@ namespace X
 
 (idris
   (namespace
-    (qualified_module
-      (module))
+    (caname)
     (namespace_body
       (signature
         (visibility)
@@ -265,8 +263,7 @@ withNSInside = g where
     (where)
     (declarations
       (namespace
-        (qualified_module
-          (module))
+        (caname)
         (namespace_body
           (signature
             (visibility)

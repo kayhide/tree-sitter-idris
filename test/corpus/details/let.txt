@@ -482,7 +482,7 @@ _=
           (rhs
             (exp_name
               (qualified_loname
-                (module)
+                (caname)
                 (loname)))
             (operator)
             (exp_name

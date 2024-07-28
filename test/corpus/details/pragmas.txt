@@ -163,11 +163,11 @@ Pragma transform 1
     (string)
     (exp_name
       (qualified_operator
-        (module)))
+        (caname)))
     (equal)
     (exp_name
       (qualified_loname
-        (module)
+        (caname)
         (loname)))))
 
 ================================================================================
@@ -212,12 +212,12 @@ Pragma transform 3
     (string)
     (exp_name
       (qualified_loname
-        (module)
+        (caname)
         (loname)))
     (equal)
     (exp_name
       (qualified_loname
-        (module)
+        (caname)
         (loname)))
     (exp_name
       (caname))))

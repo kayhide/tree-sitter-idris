@@ -896,7 +896,7 @@ example :
             (loname))
           (exp_name
             (qualified_loname
-              (module)
+              (caname)
               (loname)))))
       (in
         (exp_name

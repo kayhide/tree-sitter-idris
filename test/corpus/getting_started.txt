@@ -10,8 +10,8 @@ main = putStrLn "Hello world"
 --------------------------------------------------------------------------------
 
 (idris
-  (qualified_module
-    (module))
+  (module
+    (caname))
   (signature
     (loname)
     (colon)
