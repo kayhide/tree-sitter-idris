@@ -227,14 +227,16 @@ f x = z where z = y
             (loname)))
         (rhs
           (exp_name
-            (loname))))))
-  (function
-    (lhs
-      (funvar
-        (loname)))
-    (rhs
-      (exp_name
-        (loname)))))
+            (loname)))
+        (where)
+        (declarations
+          (function
+            (lhs
+              (funvar
+                (loname)))
+            (rhs
+              (exp_name
+                (loname)))))))))
 
 ================================================================================
 Telescope multi line I
@@ -271,14 +273,44 @@ f x = z
             (loname)))
         (rhs
           (exp_name
-            (loname))))))
+            (loname)))
+        (where)
+        (declarations
+          (function
+            (lhs
+              (funvar
+                (loname)))
+            (rhs
+              (exp_name
+                (loname)))))))))
+
+================================================================================
+Same indent in do-notation
+================================================================================
+
+_ = do
+  x
+  where
+    x : a
+
+--------------------------------------------------------------------------------
+
+(idris
   (function
     (lhs
-      (funvar
-        (loname)))
+      (wildcard))
     (rhs
-      (exp_name
-        (loname)))))
+      (exp_do
+        (statement
+          (exp_name
+            (loname)))))
+    (where)
+    (declarations
+      (signature
+        (loname)
+        (colon)
+        (exp_name
+          (loname))))))
 
 ================================================================================
 Function where including imeplementation

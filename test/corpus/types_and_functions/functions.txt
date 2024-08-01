@@ -258,37 +258,37 @@ foo x = case isLT of
               (loname))
             (operator)
             (literal
-              (integer))))))
-    (where)
-    (declarations
-      (signature
-        (loname)
-        (colon)
-        (exp_name
-          (caname)))
-      (function
-        (lhs
-          (funvar
-            (loname)))
-        (rhs
-          (exp_if
-            (exp_name
-              (loname))
-            (operator)
-            (literal
               (integer))
-            (exp_then
-              (exp_name
-                (caname)))
-            (exp_else
-              (exp_name
-                (caname))))))
-      (data
-        (data_name)
-        (exp_name
-          (caname))
-        (exp_name
-          (caname))))))
+            (where)
+            (declarations
+              (signature
+                (loname)
+                (colon)
+                (exp_name
+                  (caname)))
+              (function
+                (lhs
+                  (funvar
+                    (loname)))
+                (rhs
+                  (exp_if
+                    (exp_name
+                      (loname))
+                    (operator)
+                    (literal
+                      (integer))
+                    (exp_then
+                      (exp_name
+                        (caname)))
+                    (exp_else
+                      (exp_name
+                        (caname))))))
+              (data
+                (data_name)
+                (exp_name
+                  (caname))
+                (exp_name
+                  (caname))))))))))
 
 ================================================================================
 where clauses 3
