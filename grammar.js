@@ -108,9 +108,7 @@ module.exports = grammar({
     [$._string, $._apat],
 
     // Decl
-    [$._decl_data_inline, $._decl_data_block, $.implementation_head],
     [$._decl_data_inline, $._decl_data_block, $._decl_interface, $.implementation_head],
-    [$._decl_data_inline, $.implementation_head, $.signature],
     [$._decl_data_inline, $._decl_interface, $.implementation_head, $.signature],
 
     // Types
