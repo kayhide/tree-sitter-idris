@@ -43,6 +43,10 @@ module.exports = {
 
   pragma_cg: $ => seq('%cg', $._pragma_arg, $._varid, $.equal, $._aexp),
 
+  pragma_hide: $ => seq('%hide', $._pragma_arg),
+
+  pragma_unhide: $ => seq('%unhide', $._pragma_arg),
+
   pragma_allow_overloads: $ => seq('%allow_overloads', $._pragma_arg),
 
   _pragma_global: $ => choice(
@@ -60,6 +64,8 @@ module.exports = {
     $.pragma_search_timeout,
     $.pragma_nf_metavar_threshold,
     $.pragma_cg,
+    $.pragma_hide,
+    $.pragma_unhide,
     $.pragma_allow_overloads,
   ),
 
@@ -73,10 +79,6 @@ module.exports = {
   pragma_noinline: _ => '%noinline',
 
   pragma_tcinline: _ => '%tcinline',
-
-  pragma_hide: _ => '%hide',
-
-  pragma_unhide: _ => '%unhide',
 
   pragma_unsafe: _ => '%unsafe',
 
@@ -111,8 +113,6 @@ module.exports = {
     $.pragma_inline,
     $.pragma_noinline,
     $.pragma_tcinline,
-    $.pragma_hide,
-    $.pragma_unhide,
     $.pragma_unsafe,
     $.pragma_spec,
     $.pragma_foreign,
