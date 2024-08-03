@@ -558,7 +558,9 @@ typedef enum {
  */
 static Symbolic s_symop(String s, State *state) {
   if (s.size == 0 || s.contents[0] == 0) return S_INVALID;
-  if (streq("--", s.contents) || streq("|||", s.contents)) return S_COMMENT;
+
+  if (2 <= s.size && s.contents[0] == '-' && s.contents[1] == '-') return S_COMMENT;
+  if (3 <= s.size && s.contents[0] == '|' && s.contents[1] == '|' && s.contents[2] == '|') return S_COMMENT;
 
   for (int i = 0; i < sizeof(invalid_varops)/sizeof(invalid_varops[0]); ++i) {
     if (streq(invalid_varops[i], s.contents)) return S_INVALID;
