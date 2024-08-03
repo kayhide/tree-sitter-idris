@@ -246,9 +246,20 @@ static void debug_indents(Payload *payload) {
   DEBUG_PRINTF("]");
 }
 
+static void debug_sharps(Payload *payload) {
+  DEBUG_PRINTF("[");
+  for (size_t i = 0; i < payload->raw_string_sharp_counts.size; i++) {
+    if (0 < i) DEBUG_PRINTF(",");
+    DEBUG_PRINTF("%d", payload->raw_string_sharp_counts.contents[i]);
+  }
+  DEBUG_PRINTF("]");
+}
+
 static void debug_payload(Payload *payload) {
   DEBUG_PRINTF("{ indents = ");
   debug_indents(payload);
+  DEBUG_PRINTF(", sharps = ");
+  debug_sharps(payload);
   DEBUG_PRINTF(" }");
 
 }
@@ -375,6 +386,11 @@ static void consume_until(char *target, State *state) {
 
 static bool streq(const char* s, const char* t) {
   return 0 == strcmp(s, t);
+}
+
+static bool strall(const char c, const char* s) {
+  while (c == *s) { ++s; }
+  return 0 == *s;
 }
 
 static String read_string(bool (*cond)(uint32_t), State *state) {
@@ -929,9 +945,7 @@ inline_comment_after_skip:
  */
 static Symbolic read_symop(State *state) {
   String s = read_string(symbolic, state);
-  Symbolic res = s_symop(s, state);
-  // free(s.data);
-  return res;
+  return s_symop(s, state);
 }
 
 
@@ -993,29 +1007,22 @@ static Result bar(State *state) {
   return inline_comment(state);
 }
 
-static Result raw_string_start(State *state) {
-  if (state->symbols[RAW_STRING_START]) {
-    if (!seq("#", state)) return res_cont;
-    int32_t n = 1;
-    while (PEEK == '#') {
-      n += 1;
-      S_ADVANCE;
-    }
-    if ('"' == PEEK) {
-      S_ADVANCE;
-      array_push(&state->payload->raw_string_sharp_counts, n);
-      MARK("raw_string_start", false, state);
-      return finish(RAW_STRING_START, "raw_string_start");
-    }
-    return res_fail;
+static Result raw_string_start(String s, State *state) {
+  if (
+    SYM(RAW_STRING_START) && 
+    strall('#', s.contents) &&
+    '"' == PEEK) {
+    S_ADVANCE;
+    array_push(&state->payload->raw_string_sharp_counts, strlen(s.contents));
+    MARK("raw_string_start", false, state);
+    return finish(RAW_STRING_START, "raw_string_start");
   }
   return res_cont;
 }
 
 static Result raw_string_end(State *state) {
-  if (state->symbols[RAW_STRING_END]) {
+  if (SYM(RAW_STRING_END)) {
     if (!seq("\"", state)) return res_cont;
-    if (PEEK != '#') return res_fail;
     uint32_t i = *array_back(&state->payload->raw_string_sharp_counts);
     for (; 0 < i; --i) {
       if (PEEK != '#') return res_fail;
@@ -1186,10 +1193,10 @@ static Result inline_tokens(State *state) {
       return res_cont;
     }
     case '#': {
-      Result res = raw_string_start(state);
+      String s = read_string(symbolic, state);
+      Result res = raw_string_start(s, state);
       SHORT_SCANNER;
-      is_symbolic = true;
-      break;
+      return symop(s_symop(s,state), state);
     }
     case '"': {
       Result res = raw_string_end(state);
