@@ -203,7 +203,7 @@ module.exports = {
   exp_quasiquotation : $ => choice(
     seq("`{{", $._q_name, "}}"),
     seq("`{", $._q_name, "}"),
-    seq("`(", $._aexps, ")"),
+    seq("`(", $._type_parens, ")"),
     seq("~", $._q_name),
   ),
 

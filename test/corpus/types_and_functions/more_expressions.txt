@@ -720,7 +720,7 @@ _ = let y = 94 in f !(g !(print y) !x)
               (loname))))))))
 
 ================================================================================
-Quasiquotation
+Quasiquotation 1
 ================================================================================
 
 paramConstraints params pos
@@ -787,6 +787,52 @@ paramConstraints params pos
         (operator)
         (exp_name
           (loname))))))
+
+================================================================================
+Quasiquotation 2
+================================================================================
+
+_ = `(Monoid ~(vb) => (~(va) -> ~(vb)) -> ~(t) ~(va) -> ~(vb))
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_quasiquotation
+        (exp_name
+          (caname))
+        (operator)
+        (exp_parens
+          (exp_name
+            (loname)))
+        (arrow_separator)
+        (type_parens
+          (operator)
+          (exp_parens
+            (exp_name
+              (loname)))
+          (arrow_separator)
+          (operator)
+          (exp_parens
+            (exp_name
+              (loname))))
+        (arrow_separator)
+        (operator)
+        (exp_parens
+          (exp_name
+            (loname)))
+        (operator)
+        (exp_parens
+          (exp_name
+            (loname)))
+        (arrow_separator)
+        (operator)
+        (exp_parens
+          (exp_name
+            (loname)))))))
 
 ================================================================================
 Leading literal 1 (not a quantity)
