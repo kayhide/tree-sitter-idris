@@ -2746,8 +2746,26 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "\\case"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "\\case"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "\\"
+                },
+                {
+                  "type": "STRING",
+                  "value": "case"
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "SYMBOL",
@@ -3213,7 +3231,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_aexps"
+              "name": "_type_parens"
             },
             {
               "type": "STRING",
@@ -6215,6 +6233,32 @@
         }
       ]
     },
+    "pragma_hide": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "%hide"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_pragma_arg"
+        }
+      ]
+    },
+    "pragma_unhide": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "%unhide"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_pragma_arg"
+        }
+      ]
+    },
     "pragma_allow_overloads": {
       "type": "SEQ",
       "members": [
@@ -6289,6 +6333,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "pragma_hide"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pragma_unhide"
+        },
+        {
+          "type": "SYMBOL",
           "name": "pragma_allow_overloads"
         }
       ]
@@ -6308,14 +6360,6 @@
     "pragma_tcinline": {
       "type": "STRING",
       "value": "%tcinline"
-    },
-    "pragma_hide": {
-      "type": "STRING",
-      "value": "%hide"
-    },
-    "pragma_unhide": {
-      "type": "STRING",
-      "value": "%unhide"
     },
     "pragma_unsafe": {
       "type": "STRING",
@@ -6443,14 +6487,6 @@
         {
           "type": "SYMBOL",
           "name": "pragma_tcinline"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "pragma_hide"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "pragma_unhide"
         },
         {
           "type": "SYMBOL",
@@ -6799,18 +6835,8 @@
     [
       "_decl_data_inline",
       "_decl_data_block",
-      "implementation_head"
-    ],
-    [
-      "_decl_data_inline",
-      "_decl_data_block",
       "_decl_interface",
       "implementation_head"
-    ],
-    [
-      "_decl_data_inline",
-      "implementation_head",
-      "signature"
     ],
     [
       "_decl_data_inline",

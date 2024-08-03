@@ -1262,10 +1262,6 @@
           "named": true
         },
         {
-          "type": "pragma_hide",
-          "named": true
-        },
-        {
           "type": "pragma_hint",
           "named": true
         },
@@ -1307,10 +1303,6 @@
         },
         {
           "type": "pragma_tcinline",
-          "named": true
-        },
-        {
-          "type": "pragma_unhide",
           "named": true
         },
         {
@@ -3080,11 +3072,39 @@
       "required": false,
       "types": [
         {
+          "type": "arrow_separator",
+          "named": true
+        },
+        {
           "type": "caname",
           "named": true
         },
         {
+          "type": "colon",
+          "named": true
+        },
+        {
+          "type": "comma",
+          "named": true
+        },
+        {
+          "type": "equal",
+          "named": true
+        },
+        {
+          "type": "exp_bar_arg",
+          "named": true
+        },
+        {
           "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_case",
+          "named": true
+        },
+        {
+          "type": "exp_do",
           "named": true
         },
         {
@@ -3093,6 +3113,22 @@
         },
         {
           "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_if",
+          "named": true
+        },
+        {
+          "type": "exp_lambda",
+          "named": true
+        },
+        {
+          "type": "exp_lambda_case",
+          "named": true
+        },
+        {
+          "type": "exp_let_in",
           "named": true
         },
         {
@@ -3120,11 +3156,19 @@
           "named": true
         },
         {
+          "type": "exp_rewrite_in",
+          "named": true
+        },
+        {
           "type": "exp_ticked",
           "named": true
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "forall",
           "named": true
         },
         {
@@ -3169,6 +3213,10 @@
         },
         {
           "type": "qualified_loname",
+          "named": true
+        },
+        {
+          "type": "quantity",
           "named": true
         },
         {
@@ -4100,6 +4148,10 @@
           "named": true
         },
         {
+          "type": "pragma_hide",
+          "named": true
+        },
+        {
           "type": "pragma_integerLit",
           "named": true
         },
@@ -4149,6 +4201,10 @@
         },
         {
           "type": "pragma_unbound_implicits",
+          "named": true
+        },
+        {
+          "type": "pragma_unhide",
           "named": true
         },
         {
@@ -4328,10 +4384,6 @@
           "named": true
         },
         {
-          "type": "pragma_hide",
-          "named": true
-        },
-        {
           "type": "pragma_hint",
           "named": true
         },
@@ -4373,10 +4425,6 @@
         },
         {
           "type": "pragma_tcinline",
-          "named": true
-        },
-        {
-          "type": "pragma_unhide",
           "named": true
         },
         {
@@ -4882,10 +4930,6 @@
           "named": true
         },
         {
-          "type": "pragma_hide",
-          "named": true
-        },
-        {
           "type": "pragma_hint",
           "named": true
         },
@@ -4915,10 +4959,6 @@
         },
         {
           "type": "pragma_tcinline",
-          "named": true
-        },
-        {
-          "type": "pragma_unhide",
           "named": true
         },
         {
@@ -5947,6 +5987,10 @@
           "named": true
         },
         {
+          "type": "pragma_hide",
+          "named": true
+        },
+        {
           "type": "pragma_integerLit",
           "named": true
         },
@@ -5996,6 +6040,10 @@
         },
         {
           "type": "pragma_unbound_implicits",
+          "named": true
+        },
+        {
+          "type": "pragma_unhide",
           "named": true
         },
         {
@@ -6132,6 +6180,10 @@
           "named": true
         },
         {
+          "type": "pragma_hide",
+          "named": true
+        },
+        {
           "type": "pragma_integerLit",
           "named": true
         },
@@ -6181,6 +6233,10 @@
         },
         {
           "type": "pragma_unbound_implicits",
+          "named": true
+        },
+        {
+          "type": "pragma_unhide",
           "named": true
         },
         {
@@ -6315,6 +6371,10 @@
           "named": true
         },
         {
+          "type": "pragma_hide",
+          "named": true
+        },
+        {
           "type": "pragma_integerLit",
           "named": true
         },
@@ -6364,6 +6424,10 @@
         },
         {
           "type": "pragma_unbound_implicits",
+          "named": true
+        },
+        {
+          "type": "pragma_unhide",
           "named": true
         },
         {
@@ -8500,6 +8564,65 @@
     }
   },
   {
+    "type": "pragma_hide",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "caname",
+          "named": true
+        },
+        {
+          "type": "dot_operator",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "loname",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "qualified_caname",
+          "named": true
+        },
+        {
+          "type": "qualified_dot_operators",
+          "named": true
+        },
+        {
+          "type": "qualified_loname",
+          "named": true
+        },
+        {
+          "type": "qualified_operator",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "totality",
+          "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "pragma_integerLit",
     "named": true,
     "fields": {},
@@ -9336,6 +9459,65 @@
   },
   {
     "type": "pragma_unbound_implicits",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "caname",
+          "named": true
+        },
+        {
+          "type": "dot_operator",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "loname",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "qualified_caname",
+          "named": true
+        },
+        {
+          "type": "qualified_dot_operators",
+          "named": true
+        },
+        {
+          "type": "qualified_loname",
+          "named": true
+        },
+        {
+          "type": "qualified_operator",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "totality",
+          "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pragma_unhide",
     "named": true,
     "fields": {},
     "children": {
@@ -10672,10 +10854,6 @@
           "named": true
         },
         {
-          "type": "pragma_hide",
-          "named": true
-        },
-        {
           "type": "pragma_hint",
           "named": true
         },
@@ -10717,10 +10895,6 @@
         },
         {
           "type": "pragma_tcinline",
-          "named": true
-        },
-        {
-          "type": "pragma_unhide",
           "named": true
         },
         {
@@ -11714,6 +11888,10 @@
     "named": false
   },
   {
+    "type": "%hide",
+    "named": false
+  },
+  {
     "type": "%integerLit",
     "named": false
   },
@@ -11767,6 +11945,10 @@
   },
   {
     "type": "%unbound_implicits",
+    "named": false
+  },
+  {
+    "type": "%unhide",
     "named": false
   },
   {
@@ -12042,10 +12224,6 @@
     "named": true
   },
   {
-    "type": "pragma_hide",
-    "named": true
-  },
-  {
     "type": "pragma_hint",
     "named": true
   },
@@ -12083,10 +12261,6 @@
   },
   {
     "type": "pragma_tcinline",
-    "named": true
-  },
-  {
-    "type": "pragma_unhide",
     "named": true
   },
   {
