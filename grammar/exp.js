@@ -157,7 +157,10 @@ module.exports = {
   // ----- Lambda case  -------------------------------------------------------
 
   exp_lambda_case: $ => seq(
-    '\\case',
+    choice(
+      '\\case',
+      seq('\\', 'case'),
+    ),
     $.alts
   ),
 

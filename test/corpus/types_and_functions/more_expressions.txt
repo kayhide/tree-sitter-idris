@@ -541,6 +541,38 @@ decompress = concatMap $ \case
               (loname))))))))
 
 ================================================================================
+Lambda case with space
+================================================================================
+
+_ = No $ \ case
+  MkLT p => notLT (mkLT p)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_name
+        (caname))
+      (operator)
+      (exp_lambda_case
+        (alts
+          (alt
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
+            (exp_name
+              (loname))
+            (exp_parens
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))))))))
+
+================================================================================
 Lambda case with impossible path
 ================================================================================
 
