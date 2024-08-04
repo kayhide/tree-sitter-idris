@@ -149,7 +149,7 @@ module.exports = {
     '\\',
     $.lambda_args,
     $._rcarrow,
-    alias($._exp, $.lambda_exp),
+    alias($._type, $.lambda_exp),
   ),
 
   lambda_args: $ => sep1($.comma, $._pat),

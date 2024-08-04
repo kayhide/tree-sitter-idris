@@ -112,6 +112,7 @@ module.exports = grammar({
     [$._decl_data_inline, $._decl_interface, $.implementation_head, $.signature],
 
     // Types
+    [$._type],
     [$.constraints],
     [$._name_op, $.interface_name],
     [$._q_name_op, $.interface_name],

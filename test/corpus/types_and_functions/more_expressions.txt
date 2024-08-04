@@ -491,6 +491,39 @@ _ = believe_me (\ 0 i : Int => ())
             (unit)))))))
 
 ================================================================================
+Lambda function of type expression
+================================================================================
+
+_ = replace {p = \x => b = f x} _
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_name
+        (loname))
+      (exp_braces
+        (explicit_arg
+          (loname)
+          (equal)
+          (exp_lambda
+            (lambda_args
+              (pat_name
+                (loname)))
+            (lambda_exp
+              (exp_name
+                (loname))
+              (equal)
+              (exp_name
+                (loname))
+              (exp_name
+                (loname))))))
+      (wildcard))))
+
+================================================================================
 Lambda cases
 ================================================================================
 
