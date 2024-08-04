@@ -120,7 +120,14 @@ module.exports = grammar({
     [$._type, $._parens],
     [$._type, $.exp_tuple],
     [$._type, $._funrhs],
-    [$.type_var, $._aexps],
+
+    // Variable names
+    [$._name, $.var_name],
+    [$._name, $._name_op, $.var_name],
+    [$._name_op, $.var_name],
+    [$._avar, $._apat],
+    [$._avar, $._aexp, $._apat],
+    [$._avar, $._aexp],
 
     // Misc
     [$.operator, $.pat_op],

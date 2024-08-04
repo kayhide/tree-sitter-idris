@@ -103,7 +103,7 @@ data Elem : (x : a) -> (xs : List a) -> Type where
       (colon)
       (type_parens
         (type_var
-          (exp_name
+          (var_name
             (loname))
           (colon)
           (exp_name
@@ -111,7 +111,7 @@ data Elem : (x : a) -> (xs : List a) -> Type where
       (arrow_separator)
       (type_parens
         (type_var
-          (exp_name
+          (var_name
             (loname))
           (colon)
           (exp_name
@@ -188,7 +188,7 @@ data MyShow : Type -> Type where
           (colon)
           (type_parens
             (type_var
-              (exp_name
+              (var_name
                 (loname))
               (colon)
               (exp_name

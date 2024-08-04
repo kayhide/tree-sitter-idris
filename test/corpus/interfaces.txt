@@ -171,7 +171,7 @@ interface Functor (0 f : Type -> Type) where
       (type_parens
         (type_var
           (quantity)
-          (exp_name
+          (var_name
             (loname))
           (colon)
           (exp_name
@@ -204,7 +204,7 @@ interface Functor f => Applicative (0 f : Type -> Type) where
       (type_parens
         (type_var
           (quantity)
-          (exp_name
+          (var_name
             (loname))
           (colon)
           (exp_name
@@ -682,7 +682,7 @@ public export
             (caname)))
         (type_parens
           (type_var
-            (exp_name
+            (var_name
               (loname))
             (colon)
             (exp_name
@@ -717,7 +717,7 @@ public export
             (caname)))
         (type_parens
           (type_var
-            (exp_name
+            (var_name
               (loname))
             (colon)
             (exp_name
@@ -727,7 +727,7 @@ public export
         (arrow_separator)
         (type_parens
           (type_var
-            (exp_name
+            (var_name
               (loname))
             (colon)
             (exp_name
@@ -801,7 +801,7 @@ interface Monad m => MonadState s (0 m : Type -> Type) | m where
       (type_parens
         (type_var
           (quantity)
-          (exp_name
+          (var_name
             (loname))
           (colon)
           (exp_name

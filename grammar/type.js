@@ -22,9 +22,18 @@ module.exports = {
 
   type_var: $ => seq(
     optional($.quantity),
-    sep1($.comma, $._aexp),
+    sep1($.comma, $._avar),
     $._type_annotation,
   ),
+
+  _avar: $ => choice(
+    $.var_name,
+    $.literal,
+    $.wildcard,
+    $.unit,
+  ),
+
+  var_name: $ => $.loname,
 
   type_braces: $ => braces(
     seq(
