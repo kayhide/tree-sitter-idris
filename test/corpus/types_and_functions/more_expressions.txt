@@ -906,7 +906,7 @@ ltrim str with (asList str)
           (pat_name
             (loname)))))
     (with
-      (exp_parens
+      (with_arg
         (exp_name
           (loname))
         (exp_name

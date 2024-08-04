@@ -22,7 +22,7 @@ filter p (x :: xs) with (filter p xs)
             (pat_name
               (loname))))))
     (with
-      (exp_parens
+      (with_arg
         (exp_name
           (loname))
         (exp_name
@@ -75,7 +75,7 @@ filter p (x :: xs) with (filter p xs)
             (pat_name
               (loname))))))
     (with
-      (exp_parens
+      (with_arg
         (exp_name
           (loname))
         (exp_name
@@ -117,7 +117,7 @@ foo n m with (n + 1)
           (pat_name
             (loname)))))
     (with
-      (exp_parens
+      (with_arg
         (exp_name
           (loname))
         (operator)
@@ -135,7 +135,7 @@ foo n m with (n + 1)
           (pat_literal
             (integer)))
         (with
-          (exp_parens
+          (with_arg
             (exp_name
               (loname))
             (operator)
@@ -206,13 +206,13 @@ foo n m with (n + 1) | (m + 1)
           (pat_name
             (loname)))))
     (with
-      (exp_parens
+      (with_arg
         (exp_name
           (loname))
         (operator)
         (literal
           (integer)))
-      (exp_parens
+      (with_arg
         (exp_name
           (loname))
         (operator)
@@ -286,6 +286,75 @@ pushOutInInverse (Element x p :: xs) | subprf | Element ss ps =
             (caname)))))))
 
 ================================================================================
+with rule and tuple
+================================================================================
+
+span_aux_ext p (x::xs) acc with (@@(p x), @@(List.span p xs))
+ _ | ((True ** px_tru), ((pre, rest)**dl_pf)) = _
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname))
+          (pat_parens
+            (pat_name
+              (loname))
+            (pat_op)
+            (pat_name
+              (loname)))
+          (pat_name
+            (loname)))))
+    (with
+      (with_arg
+        (operator)
+        (exp_parens
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))
+        (tuple_operator)
+        (operator)
+        (exp_parens
+          (exp_name
+            (qualified_loname
+              (caname)
+              (loname)))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))))
+      (function
+        (lhs
+          (wildcard))
+        (with_pat
+          (pat_parens
+            (pat_parens
+              (pat_name
+                (caname))
+              (pat_op)
+              (pat_name
+                (loname)))
+            (tuple_operator)
+            (pat_parens
+              (pat_parens
+                (pat_name
+                  (loname))
+                (tuple_operator)
+                (pat_name
+                  (loname)))
+              (pat_op)
+              (pat_name
+                (loname)))))
+        (rhs
+          (wildcard))))))
+
+================================================================================
 with rule and rewrite
 ================================================================================
 
@@ -312,7 +381,7 @@ mapMaybeAppend f (x::xs) ys with (f x)
           (pat_name
             (loname)))))
     (with
-      (exp_parens
+      (with_arg
         (exp_name
           (loname))
         (exp_name
@@ -388,14 +457,14 @@ fromListAppend (x::xs) ys with (fromList ys) proof prf
           (pat_name
             (loname)))))
     (with
-      (exp_parens
+      (with_arg
         (exp_name
           (loname))
         (exp_name
-          (loname)))
-      (proof
-        (exp_name
-          (loname)))
+          (loname))
+        (proof
+          (exp_name
+            (loname))))
       (function
         (lhs
           (funvar

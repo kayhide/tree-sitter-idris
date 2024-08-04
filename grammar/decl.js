@@ -40,14 +40,14 @@ module.exports = {
 
   proof: $ => seq('proof', $._aexp),
 
+  with_arg: $ => seq(
+    parens(sep($.tuple_operator, $._exp)),
+    optional($.proof)
+  ),
+
   with: $ => seq(
     'with',
-    sep1('|', 
-      seq(
-        $.exp_parens, 
-        optional($.proof)
-      ),
-    ),
+    sep1('|', $.with_arg),
     '\n',
     layouted($, $.function),
   ),
