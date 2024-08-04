@@ -45,7 +45,7 @@ filter p (x :: xs) with (filter p xs)
         (with_pat
           (pat_parens
             (wildcard)
-            (pat_op)
+            (tuple_operator)
             (pat_name
               (loname))))
         (rhs
@@ -88,7 +88,7 @@ filter p (x :: xs) with (filter p xs)
         (with_pat
           (pat_parens
             (wildcard)
-            (pat_op)
+            (tuple_operator)
             (pat_name
               (loname))))
         (rhs
@@ -337,7 +337,7 @@ span_aux_ext p (x::xs) acc with (@@(p x), @@(List.span p xs))
             (pat_parens
               (pat_name
                 (caname))
-              (pat_op)
+              (tuple_operator)
               (pat_name
                 (loname)))
             (tuple_operator)
@@ -348,7 +348,7 @@ span_aux_ext p (x::xs) acc with (@@(p x), @@(List.span p xs))
                 (tuple_operator)
                 (pat_name
                   (loname)))
-              (pat_op)
+              (tuple_operator)
               (pat_name
                 (loname)))))
         (rhs

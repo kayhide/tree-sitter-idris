@@ -102,20 +102,22 @@ data Elem : (x : a) -> (xs : List a) -> Type where
     (type_signature
       (colon)
       (type_parens
-        (exp_name
-          (loname))
-        (colon)
-        (exp_name
-          (loname)))
+        (type_var
+          (exp_name
+            (loname))
+          (colon)
+          (exp_name
+            (loname))))
       (arrow_separator)
       (type_parens
-        (exp_name
-          (loname))
-        (colon)
-        (exp_name
-          (caname))
-        (exp_name
-          (loname)))
+        (type_var
+          (exp_name
+            (loname))
+          (colon)
+          (exp_name
+            (caname))
+          (exp_name
+            (loname))))
       (arrow_separator)
       (exp_name
         (caname)))
@@ -185,14 +187,15 @@ data MyShow : Type -> Type where
         (type_signature
           (colon)
           (type_parens
-            (exp_name
-              (loname))
-            (colon)
-            (exp_name
-              (loname))
-            (arrow_separator)
-            (exp_name
-              (caname)))
+            (type_var
+              (exp_name
+                (loname))
+              (colon)
+              (exp_name
+                (loname))
+              (arrow_separator)
+              (exp_name
+                (caname))))
           (arrow_separator)
           (exp_name
             (caname))

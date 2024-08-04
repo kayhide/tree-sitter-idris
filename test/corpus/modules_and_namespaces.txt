@@ -284,17 +284,19 @@ parameters (x : Nat, y : Nat)
 (idris
   (parameters
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname)))
       (comma)
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname))))
     (parameters_body
       (signature
         (loname)
@@ -320,21 +322,23 @@ parameters (y : Nat, xs : Vect x a)
 (idris
   (parameters
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname)))
       (comma)
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname))
-      (exp_name
-        (loname))
-      (exp_name
-        (loname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))))
     (parameters_body
       (data
         (data_name)
@@ -392,15 +396,16 @@ parameters (0 f : Type -> Type)
 (idris
   (parameters
     (type_parens
-      (quantity)
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname))
-      (arrow_separator)
-      (exp_name
-        (caname)))))
+      (type_var
+        (quantity)
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname))
+        (arrow_separator)
+        (exp_name
+          (caname))))))
 
 ================================================================================
 Parameterised block with implicit args
@@ -440,8 +445,9 @@ using (k : Nat)
 (idris
   (parameters
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname)))))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname))))))

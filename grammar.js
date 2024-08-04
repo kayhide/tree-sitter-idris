@@ -117,10 +117,10 @@ module.exports = grammar({
     [$._name_op, $.interface_name],
     [$._q_name_op, $.interface_name],
     [$._numeric, $.quantity],
-    [$._type_parens, $._aexps],
     [$._type, $._parens],
     [$._type, $.exp_tuple],
     [$._type, $._funrhs],
+    [$.type_var, $._aexps],
 
     // Misc
     [$.operator, $.pat_op],

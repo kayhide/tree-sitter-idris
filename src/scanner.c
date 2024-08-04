@@ -157,6 +157,7 @@ static char *invalid_varops[] = {
   "<-",
   ":=",
   "$=",
+  "**",
 };
 
 /**

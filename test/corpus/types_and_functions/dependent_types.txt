@@ -12,11 +12,12 @@ mkSingle False = []
     (loname)
     (colon)
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname))))
     (arrow_separator)
     (exp_name
       (loname))
@@ -154,24 +155,26 @@ index : (i : Fin n) -> (xs : Vect n a) -> a
     (loname)
     (colon)
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname))
-      (exp_name
-        (loname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname))
+        (exp_name
+          (loname))))
     (arrow_separator)
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname))
-      (exp_name
-        (loname))
-      (exp_name
-        (loname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))))
     (arrow_separator)
     (exp_name
       (loname))))
@@ -189,13 +192,14 @@ head : (xs : List a) -> {auto p : isCons xs = True} -> a
     (loname)
     (colon)
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname))
-      (exp_name
-        (loname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname))
+        (exp_name
+          (loname))))
     (arrow_separator)
     (type_braces
       (auto)
@@ -246,11 +250,12 @@ fibonacci : {default 0 lag : Nat} -> {default 1 lead : Nat} -> (n : Nat) -> Nat
         (caname)))
     (arrow_separator)
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname))))
     (arrow_separator)
     (exp_name
       (caname))))

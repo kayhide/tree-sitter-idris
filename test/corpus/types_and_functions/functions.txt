@@ -678,18 +678,20 @@ gcd : (a: Nat) -> (b: Nat) -> {auto 0 ok: NotBothZero a b} -> Nat
     (loname)
     (colon)
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname))))
     (arrow_separator)
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname))))
     (arrow_separator)
     (type_braces
       (auto)
@@ -848,11 +850,12 @@ _ : {s : _} -> forall fs, ty .
       (loname))
     (arrow_separator)
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname))))
     (arrow_separator)
     (exp_name
       (caname))
@@ -901,6 +904,62 @@ example :
       (in
         (exp_name
           (loname))))))
+
+================================================================================
+Type signature with dependent pairs
+================================================================================
+
+_ : (ty : Type
+    ** delta : (ty -> Telescope k)
+    ** (v : ty) -> Environment (delta v) -> Environment gamma)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (signature
+    (wildcard)
+    (colon)
+    (type_parens
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname)))
+      (double_star)
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (type_parens
+          (exp_name
+            (loname))
+          (arrow_separator)
+          (exp_name
+            (caname))
+          (exp_name
+            (loname))))
+      (double_star)
+      (type_parens
+        (type_var
+          (exp_name
+            (loname))
+          (colon)
+          (exp_name
+            (loname))))
+      (arrow_separator)
+      (exp_name
+        (caname))
+      (exp_parens
+        (exp_name
+          (loname))
+        (exp_name
+          (loname)))
+      (arrow_separator)
+      (exp_name
+        (caname))
+      (exp_name
+        (loname)))))
 
 ================================================================================
 At braces 1
@@ -1127,23 +1186,25 @@ iterate : (f : a -> Maybe a) -> (x : a) -> List a
     (loname)
     (colon)
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (loname))
-      (arrow_separator)
-      (exp_name
-        (caname))
-      (exp_name
-        (loname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (loname))
+        (arrow_separator)
+        (exp_name
+          (caname))
+        (exp_name
+          (loname))))
     (arrow_separator)
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (loname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (loname))))
     (arrow_separator)
     (exp_name
       (caname))

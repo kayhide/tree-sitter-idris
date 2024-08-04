@@ -48,23 +48,25 @@ assert_linear : (1 f : a -> b) -> (1 val : a) -> b
     (loname)
     (colon)
     (type_parens
-      (quantity)
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (loname))
-      (arrow_separator)
-      (exp_name
-        (loname)))
+      (type_var
+        (quantity)
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (loname))
+        (arrow_separator)
+        (exp_name
+          (loname))))
     (arrow_separator)
     (type_parens
-      (quantity)
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (loname)))
+      (type_var
+        (quantity)
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (loname))))
     (arrow_separator)
     (exp_name
       (loname))))
@@ -139,11 +141,12 @@ Pragma extern
     (loname)
     (colon)
     (type_parens
-      (quantity)
-      (exp_name
-        (loname))
-      (colon)
-      (pragma_World))
+      (type_var
+        (quantity)
+        (exp_name
+          (loname))
+        (colon)
+        (pragma_World)))
     (arrow_separator)
     (exp_name
       (caname))
@@ -421,18 +424,20 @@ MkIORes : (result : a) -> (1 x : %World) -> IORes a
     (caname)
     (colon)
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (loname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (loname))))
     (arrow_separator)
     (type_parens
-      (quantity)
-      (exp_name
-        (loname))
-      (colon)
-      (pragma_World))
+      (type_var
+        (quantity)
+        (exp_name
+          (loname))
+        (colon)
+        (pragma_World)))
     (arrow_separator)
     (exp_name
       (caname))

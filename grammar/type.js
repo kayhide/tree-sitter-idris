@@ -13,15 +13,17 @@ module.exports = {
   type_parens: $ => parens($._type_parens),
 
   _type_parens: $ => choice(
-    sep1(
-      $.comma,
-      seq(
-        optional($.quantity),
-        sep1($.comma, $._aexp),
-        $._type_annotation,
-      ),
-    ),
-    sep1($.comma, $._type),
+    $._type,
+    $.type_var,
+    sep2($.comma, $._type),
+    sep2($.comma, $.type_var),
+    sep2($.double_star, choice($._type, $.type_var)),
+  ),
+
+  type_var: $ => seq(
+    optional($.quantity),
+    sep1($.comma, $._aexp),
+    $._type_annotation,
   ),
 
   type_braces: $ => braces(

@@ -21,7 +21,10 @@ module.exports = {
   qualified_operator: $ => qualified($, parens($._operator)),
 
   // Tuple operator, only available inside parens
-  tuple_operator: $ => prec.right(alias($.comma, '')),
+  tuple_operator: $ => prec.right(choice(
+    alias($.comma, ''),
+    alias($.double_star, ''),
+  )),
 
   // ------------------------------------------------------------------------
   // Postfix projection operators

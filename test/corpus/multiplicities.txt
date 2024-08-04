@@ -11,12 +11,13 @@ duplicate : (1 x : a) -> (a, a)
     (loname)
     (colon)
     (type_parens
-      (quantity)
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (loname)))
+      (type_var
+        (quantity)
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (loname))))
     (arrow_separator)
     (exp_tuple
       (exp_name
@@ -38,11 +39,12 @@ duplicate : (1 _ : a) -> (a, a)
     (loname)
     (colon)
     (type_parens
-      (quantity)
-      (wildcard)
-      (colon)
-      (exp_name
-        (loname)))
+      (type_var
+        (quantity)
+        (wildcard)
+        (colon)
+        (exp_name
+          (loname))))
     (arrow_separator)
     (exp_tuple
       (exp_name

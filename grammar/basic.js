@@ -63,6 +63,8 @@ module.exports = {
 
   colon: _ => ':',
 
+  double_star: _ => '**',
+
   forall: _ => choice('forall', '∀'),
 
   _def_equal: _ => choice( ':=', '='),

@@ -211,21 +211,23 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
     (type_signature
       (colon)
       (type_parens
-        (exp_name
-          (loname))
-        (colon)
-        (exp_name
-          (caname)))
+        (type_var
+          (exp_name
+            (loname))
+          (colon)
+          (exp_name
+            (caname))))
       (arrow_separator)
       (type_parens
-        (exp_name
-          (loname))
-        (colon)
-        (exp_name
-          (loname))
-        (arrow_separator)
-        (exp_name
-          (caname)))
+        (type_var
+          (exp_name
+            (loname))
+          (colon)
+          (exp_name
+            (loname))
+          (arrow_separator)
+          (exp_name
+            (caname))))
       (arrow_separator)
       (exp_name
         (caname)))
@@ -246,11 +248,12 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
               (caname)))
           (arrow_separator)
           (type_parens
-            (exp_name
-              (loname))
-            (colon)
-            (exp_name
-              (loname)))
+            (type_var
+              (exp_name
+                (loname))
+              (colon)
+              (exp_name
+                (loname))))
           (arrow_separator)
           (exp_name
             (loname))
@@ -278,12 +281,13 @@ vec = (2 ** [3, 4])
     (loname)
     (colon)
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname))
-      (operator)
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname)))
+      (double_star)
       (exp_name
         (caname))
       (exp_name
@@ -295,10 +299,10 @@ vec = (2 ** [3, 4])
       (funvar
         (loname)))
     (rhs
-      (exp_parens
+      (exp_tuple
         (literal
           (integer))
-        (operator)
+        (tuple_operator)
         (exp_list
           (literal
             (integer))
@@ -337,10 +341,10 @@ filter p (x :: xs)
     (exp_name
       (loname))
     (arrow_separator)
-    (exp_parens
+    (exp_tuple
       (exp_name
         (loname))
-      (operator)
+      (tuple_operator)
       (exp_name
         (caname))
       (exp_name
@@ -357,9 +361,9 @@ filter p (x :: xs)
           (pat_name
             (caname)))))
     (rhs
-      (exp_parens
+      (exp_tuple
         (wildcard)
-        (operator)
+        (tuple_operator)
         (exp_list))))
   (function
     (lhs
@@ -386,7 +390,7 @@ filter p (x :: xs)
           (alt
             (pat_parens
               (wildcard)
-              (pat_op)
+              (tuple_operator)
               (pat_name
                 (loname)))
             (exp_if
@@ -395,18 +399,18 @@ filter p (x :: xs)
               (exp_name
                 (loname))
               (exp_then
-                (exp_parens
+                (exp_tuple
                   (wildcard)
-                  (operator)
+                  (tuple_operator)
                   (exp_name
                     (loname))
                   (operator)
                   (exp_name
                     (loname))))
               (exp_else
-                (exp_parens
+                (exp_tuple
                   (wildcard)
-                  (operator)
+                  (tuple_operator)
                   (exp_name
                     (loname)))))))))))
 
@@ -607,14 +611,15 @@ record DPair a (p : a -> Type) where
     (exp_name
       (loname))
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (loname))
-      (arrow_separator)
-      (exp_name
-        (caname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (loname))
+        (arrow_separator)
+        (exp_name
+          (caname))))
     (where)
     (record_body
       (constructor
@@ -644,14 +649,15 @@ record (<=>) (a, b : Type) where
   (record
     (operator)
     (type_parens
-      (exp_name
-        (loname))
-      (comma)
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname)))
+      (type_var
+        (exp_name
+          (loname))
+        (comma)
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname))))
     (where)))
 
 ================================================================================
@@ -751,22 +757,24 @@ record Split {a : Type} (p : a -> Type) (xys : List a) where
       (exp_name
         (caname)))
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (loname))
-      (arrow_separator)
-      (exp_name
-        (caname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (loname))
+        (arrow_separator)
+        (exp_name
+          (caname))))
     (type_parens
-      (exp_name
-        (loname))
-      (colon)
-      (exp_name
-        (caname))
-      (exp_name
-        (loname)))
+      (type_var
+        (exp_name
+          (loname))
+        (colon)
+        (exp_name
+          (caname))
+        (exp_name
+          (loname))))
     (where)
     (record_body
       (implicit_record_field
