@@ -3080,11 +3080,11 @@
           "named": true
         },
         {
-          "type": "colon",
+          "type": "comma",
           "named": true
         },
         {
-          "type": "comma",
+          "type": "double_star",
           "named": true
         },
         {
@@ -3216,10 +3216,6 @@
           "named": true
         },
         {
-          "type": "quantity",
-          "named": true
-        },
-        {
           "type": "raw_string",
           "named": true
         },
@@ -3241,6 +3237,10 @@
         },
         {
           "type": "type_parens",
+          "named": true
+        },
+        {
+          "type": "type_var",
           "named": true
         },
         {
@@ -5495,6 +5495,18 @@
       "required": false,
       "types": [
         {
+          "type": "arrow_separator",
+          "named": true
+        },
+        {
+          "type": "comma",
+          "named": true
+        },
+        {
+          "type": "equal",
+          "named": true
+        },
+        {
           "type": "exp_bar_arg",
           "named": true
         },
@@ -5568,6 +5580,10 @@
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "forall",
           "named": true
         },
         {
@@ -9840,7 +9856,31 @@
       "required": true,
       "types": [
         {
+          "type": "arrow_separator",
+          "named": true
+        },
+        {
+          "type": "comma",
+          "named": true
+        },
+        {
+          "type": "equal",
+          "named": true
+        },
+        {
+          "type": "exp_bar_arg",
+          "named": true
+        },
+        {
           "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_case",
+          "named": true
+        },
+        {
+          "type": "exp_do",
           "named": true
         },
         {
@@ -9849,6 +9889,22 @@
         },
         {
           "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_if",
+          "named": true
+        },
+        {
+          "type": "exp_lambda",
+          "named": true
+        },
+        {
+          "type": "exp_lambda_case",
+          "named": true
+        },
+        {
+          "type": "exp_let_in",
           "named": true
         },
         {
@@ -9876,11 +9932,19 @@
           "named": true
         },
         {
+          "type": "exp_rewrite_in",
+          "named": true
+        },
+        {
           "type": "exp_ticked",
           "named": true
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "forall",
           "named": true
         },
         {
@@ -11352,11 +11416,11 @@
           "named": true
         },
         {
-          "type": "colon",
+          "type": "comma",
           "named": true
         },
         {
-          "type": "comma",
+          "type": "double_star",
           "named": true
         },
         {
@@ -11476,10 +11540,6 @@
           "named": true
         },
         {
-          "type": "quantity",
-          "named": true
-        },
-        {
           "type": "raw_string",
           "named": true
         },
@@ -11501,6 +11561,10 @@
         },
         {
           "type": "type_parens",
+          "named": true
+        },
+        {
+          "type": "type_var",
           "named": true
         },
         {
@@ -11686,6 +11750,189 @@
     }
   },
   {
+    "type": "type_var",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arrow_separator",
+          "named": true
+        },
+        {
+          "type": "caname",
+          "named": true
+        },
+        {
+          "type": "colon",
+          "named": true
+        },
+        {
+          "type": "comma",
+          "named": true
+        },
+        {
+          "type": "equal",
+          "named": true
+        },
+        {
+          "type": "exp_bar_arg",
+          "named": true
+        },
+        {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_case",
+          "named": true
+        },
+        {
+          "type": "exp_do",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
+          "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_if",
+          "named": true
+        },
+        {
+          "type": "exp_lambda",
+          "named": true
+        },
+        {
+          "type": "exp_lambda_case",
+          "named": true
+        },
+        {
+          "type": "exp_let_in",
+          "named": true
+        },
+        {
+          "type": "exp_list",
+          "named": true
+        },
+        {
+          "type": "exp_list_comprehension",
+          "named": true
+        },
+        {
+          "type": "exp_name",
+          "named": true
+        },
+        {
+          "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
+          "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_rewrite_in",
+          "named": true
+        },
+        {
+          "type": "exp_ticked",
+          "named": true
+        },
+        {
+          "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "forall",
+          "named": true
+        },
+        {
+          "type": "hole",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "loname",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "pragma_MkWorld",
+          "named": true
+        },
+        {
+          "type": "pragma_World",
+          "named": true
+        },
+        {
+          "type": "pragma_runElab",
+          "named": true
+        },
+        {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_syntactic",
+          "named": true
+        },
+        {
+          "type": "quantity",
+          "named": true
+        },
+        {
+          "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
+          "named": true
+        },
+        {
+          "type": "type_braces",
+          "named": true
+        },
+        {
+          "type": "type_parens",
+          "named": true
+        },
+        {
+          "type": "unit",
+          "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "using",
     "named": true,
     "fields": {},
@@ -11714,15 +11961,170 @@
       "required": true,
       "types": [
         {
-          "type": "exp_parens",
-          "named": true
-        },
-        {
           "type": "function",
           "named": true
         },
         {
+          "type": "with_arg",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "with_arg",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "exp_bar_arg",
+          "named": true
+        },
+        {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_case",
+          "named": true
+        },
+        {
+          "type": "exp_do",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
+          "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_if",
+          "named": true
+        },
+        {
+          "type": "exp_lambda",
+          "named": true
+        },
+        {
+          "type": "exp_lambda_case",
+          "named": true
+        },
+        {
+          "type": "exp_let_in",
+          "named": true
+        },
+        {
+          "type": "exp_list",
+          "named": true
+        },
+        {
+          "type": "exp_list_comprehension",
+          "named": true
+        },
+        {
+          "type": "exp_name",
+          "named": true
+        },
+        {
+          "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
+          "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_rewrite_in",
+          "named": true
+        },
+        {
+          "type": "exp_ticked",
+          "named": true
+        },
+        {
+          "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "hole",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "pragma_MkWorld",
+          "named": true
+        },
+        {
+          "type": "pragma_World",
+          "named": true
+        },
+        {
+          "type": "pragma_runElab",
+          "named": true
+        },
+        {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_syntactic",
+          "named": true
+        },
+        {
           "type": "proof",
+          "named": true
+        },
+        {
+          "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
+          "named": true
+        },
+        {
+          "type": "tuple_operator",
+          "named": true
+        },
+        {
+          "type": "type_braces",
+          "named": true
+        },
+        {
+          "type": "type_parens",
+          "named": true
+        },
+        {
+          "type": "unit",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -12098,6 +12500,10 @@
   {
     "type": "do",
     "named": false
+  },
+  {
+    "type": "double_star",
+    "named": true
   },
   {
     "type": "else",
