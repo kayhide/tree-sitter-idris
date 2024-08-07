@@ -215,6 +215,7 @@ module.exports = {
   string: $ => seq(
     '"',
     repeat(choice(
+      $._in_string,
       /[^\\"\n]/,
       /\\\n\s*\\/,
       /\\[^{]/,
@@ -230,6 +231,7 @@ module.exports = {
   triple_quote_string: $ => seq(
     '"""',
     repeat1(choice(
+      $._in_string,
       /"{0,2}([^"]+"{1,2})*[^"]*/,
       seq(
         '\\{', 
@@ -243,6 +245,7 @@ module.exports = {
   raw_string: $ => seq(
     $._raw_string_start,
     repeat(choice(
+      $._in_string,
       /[^\\\n]/,
       /\\\n\s*\\/,
       /\\[^#]/,

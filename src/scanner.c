@@ -78,6 +78,7 @@ typedef enum {
   VARID,
   VARSYM,
   COMMENT,
+  IN_STRING,
   RAW_STRING_START,
   RAW_STRING_END,
   CPP,
@@ -98,6 +99,7 @@ static char *sym_names[] = {
   "varid",
   "varsym",
   "comment",
+  "in_string",
   "raw_string_start",
   "raw_string_end",
   "cpp",
@@ -198,6 +200,7 @@ typedef Array(char) String;
 typedef struct {
   Array(uint32_t) indents;
   Array(uint32_t) raw_string_sharp_counts;
+  uint32_t in_string;
 } Payload;
 
 // --------------------------------------------------------------------------------------------------------
@@ -924,6 +927,7 @@ static Result else_(State *state) {
  * Consume all characters up to the end of line and succeed with `syms::commment`.
  */
 static Result inline_comment(State *state) {
+  if (SYM(IN_STRING)) return res_cont;
   for (;;) {
     switch (PEEK) {
       NEWLINE_CASES:
@@ -1099,6 +1103,7 @@ static Result brace(State *state) {
  * Parse either inline or block comments.
  */
 static Result comment(State *state) {
+  if (SYM(IN_STRING)) return res_cont;
   switch (PEEK) {
     case '-': {
       Result res = minus(state);

@@ -40,6 +40,7 @@ module.exports = grammar({
     $._varid,
     $._operator,
     $.comment,
+    $._in_string,
     $._raw_string_start,
     $._raw_string_end,
     $.cpp,
