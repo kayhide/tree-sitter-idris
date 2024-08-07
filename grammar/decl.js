@@ -81,9 +81,12 @@ module.exports = {
         $._pragma_decl,
       )
     ),
-    choice(
-      field('name', $._name_op),
-      $.wildcard,
+    sep1(
+      $.comma,
+      choice(
+        field('name', $._name_op),
+        $.wildcard,
+      ),
     ),
     $._type_annotation,
   ),
