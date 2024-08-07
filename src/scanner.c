@@ -1267,8 +1267,14 @@ static Result layout_start(uint32_t column, State *state) {
  *
  * Here, when the inner `do`'s  layout is ended, the next step is started at `f`, but the outer `do`'s layout expects a
  * semicolon. Since `f` is on the same indent as the outer `do`'s layout, this parser matches.
+ *
+ * `|` needs special care because an alternative pattern match does not finish the statement.
+ * _ = do
+ *   Just a <- b
+ *   | Nothing => ...
  */
 static Result post_end_semicolon(uint32_t column, State *state) {
+  if ('|' == PEEK) return res_cont;
   return SYM(SEMICOLON) && indent_lesseq(column, state)
     ? finish(SEMICOLON, "post_end_semicolon")
     : res_cont;
