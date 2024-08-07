@@ -9,7 +9,7 @@ module.exports = {
     optional($.visibility),
     'record',
     field('name', choice($.record_name, parens($.operator))),
-    optional($._aexps),
+    repeat($._type),
     $.where,
     optional($.record_body),
   ),

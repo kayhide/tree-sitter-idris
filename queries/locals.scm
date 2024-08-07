@@ -14,7 +14,7 @@
     (funvar
       subject: (caname)))) @local.definition
 
-(var_name
+(type_var
   (loname)) @local.definition
 
 (pat_name

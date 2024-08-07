@@ -50,8 +50,7 @@ assert_linear : (1 f : a -> b) -> (1 val : a) -> b
     (type_parens
       (type_var
         (quantity)
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (loname))
@@ -62,8 +61,7 @@ assert_linear : (1 f : a -> b) -> (1 val : a) -> b
     (type_parens
       (type_var
         (quantity)
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (loname))))
@@ -143,8 +141,7 @@ Pragma extern
     (type_parens
       (type_var
         (quantity)
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (pragma_World)))
     (arrow_separator)
@@ -425,8 +422,7 @@ MkIORes : (result : a) -> (1 x : %World) -> IORes a
     (colon)
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (loname))))
@@ -434,8 +430,7 @@ MkIORes : (result : a) -> (1 x : %World) -> IORes a
     (type_parens
       (type_var
         (quantity)
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (pragma_World)))
     (arrow_separator)

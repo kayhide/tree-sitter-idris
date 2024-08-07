@@ -285,15 +285,13 @@ parameters (x : Nat, y : Nat)
   (parameters
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname)))
       (comma)
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname))))
@@ -323,15 +321,13 @@ parameters (y : Nat, xs : Vect x a)
   (parameters
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname)))
       (comma)
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname))
@@ -398,8 +394,7 @@ parameters (0 f : Type -> Type)
     (type_parens
       (type_var
         (quantity)
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname))
@@ -446,8 +441,7 @@ using (k : Nat)
   (parameters
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname))))))

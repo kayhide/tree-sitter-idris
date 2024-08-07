@@ -13,8 +13,7 @@ duplicate : (1 x : a) -> (a, a)
     (type_parens
       (type_var
         (quantity)
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (loname))))

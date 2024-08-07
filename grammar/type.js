@@ -27,13 +27,11 @@ module.exports = {
   ),
 
   _avar: $ => choice(
-    $.var_name,
+    $._name,
     $.literal,
     $.wildcard,
     $.unit,
   ),
-
-  var_name: $ => $.loname,
 
   type_braces: $ => braces(
     seq(

@@ -212,16 +212,14 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
       (colon)
       (type_parens
         (type_var
-          (var_name
-            (loname))
+          (loname)
           (colon)
           (exp_name
             (caname))))
       (arrow_separator)
       (type_parens
         (type_var
-          (var_name
-            (loname))
+          (loname)
           (colon)
           (exp_name
             (loname))
@@ -249,8 +247,7 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
           (arrow_separator)
           (type_parens
             (type_var
-              (var_name
-                (loname))
+              (loname)
               (colon)
               (exp_name
                 (loname))))
@@ -282,8 +279,7 @@ vec = (2 ** [3, 4])
     (colon)
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname)))
@@ -612,8 +608,7 @@ record DPair a (p : a -> Type) where
       (loname))
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (loname))
@@ -650,11 +645,9 @@ record (<=>) (a, b : Type) where
     (operator)
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (comma)
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname))))
@@ -758,8 +751,7 @@ record Split {a : Type} (p : a -> Type) (xys : List a) where
         (caname)))
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (loname))
@@ -768,8 +760,7 @@ record Split {a : Type} (p : a -> Type) (xys : List a) where
           (caname))))
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname))

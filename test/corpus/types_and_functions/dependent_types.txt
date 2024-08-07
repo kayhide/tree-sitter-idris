@@ -13,8 +13,7 @@ mkSingle False = []
     (colon)
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname))))
@@ -156,8 +155,7 @@ index : (i : Fin n) -> (xs : Vect n a) -> a
     (colon)
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname))
@@ -166,8 +164,7 @@ index : (i : Fin n) -> (xs : Vect n a) -> a
     (arrow_separator)
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname))
@@ -193,8 +190,7 @@ head : (xs : List a) -> {auto p : isCons xs = True} -> a
     (colon)
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname))
@@ -251,8 +247,7 @@ fibonacci : {default 0 lag : Nat} -> {default 1 lead : Nat} -> (n : Nat) -> Nat
     (arrow_separator)
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname))))

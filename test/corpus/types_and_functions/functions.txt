@@ -679,16 +679,14 @@ gcd : (a: Nat) -> (b: Nat) -> {auto 0 ok: NotBothZero a b} -> Nat
     (colon)
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname))))
     (arrow_separator)
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname))))
@@ -851,8 +849,7 @@ _ : {s : _} -> forall fs, ty .
     (arrow_separator)
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname))))
@@ -921,15 +918,13 @@ _ : (ty : Type
     (colon)
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (caname)))
       (double_star)
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (type_parens
           (exp_name
@@ -942,8 +937,7 @@ _ : (ty : Type
       (double_star)
       (type_parens
         (type_var
-          (var_name
-            (loname))
+          (loname)
           (colon)
           (exp_name
             (loname))))
@@ -1187,8 +1181,7 @@ iterate : (f : a -> Maybe a) -> (x : a) -> List a
     (colon)
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (loname))
@@ -1200,8 +1193,7 @@ iterate : (f : a -> Maybe a) -> (x : a) -> List a
     (arrow_separator)
     (type_parens
       (type_var
-        (var_name
-          (loname))
+        (loname)
         (colon)
         (exp_name
           (loname))))
