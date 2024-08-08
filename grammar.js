@@ -48,6 +48,8 @@ module.exports = grammar({
     'in',
     /\n/,
     $.empty_file,
+    $._fail,
+    $._error_sentinel,
   ],
 
   inline: $ => [

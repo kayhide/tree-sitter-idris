@@ -87,6 +87,7 @@ typedef enum {
   INDENT,
   EMPTY,
   FAIL,
+  ERROR_SENTINEL,
 } Sym;
 
 #ifdef DEBUG
@@ -107,6 +108,7 @@ static char *sym_names[] = {
   "in",
   "indent",
   "empty",
+  "fail",
 };
 #endif
 
@@ -162,29 +164,18 @@ static char *invalid_varops[] = {
   "**",
 };
 
-/**
- * The parser appears to call `scan` with all symbols declared as valid directly after it encountered an error, so
- * this function is used to detect them.
- */
-static bool all_syms(const bool *syms) {
-  for (int i = 0; i <= EMPTY; i++) {
-    if (!syms[i]) return false;
-  }
-  return true;
-}
-
 #ifdef DEBUG
 /**
  * Produce a comma-separated string of valid symbols.
  */
 static void debug_valid(const bool *syms) {
-  if (all_syms(syms)) {
+  if (syms[ERROR_SENTINEL]) {
     DEBUG_PRINTF("all");
     return;
   }
   bool fst = true;
   DEBUG_PRINTF("\"");
-  for (Sym i = SEMICOLON; i <= EMPTY; i++) {
+  for (Sym i = SEMICOLON; i <= ERROR_SENTINEL; i++) {
     if (syms[i]) {
       if (!fst) DEBUG_PRINTF(",");
       DEBUG_PRINTF("%s", sym_names[i]);
@@ -200,7 +191,6 @@ typedef Array(char) String;
 typedef struct {
   Array(uint32_t) indents;
   Array(uint32_t) raw_string_sharp_counts;
-  uint32_t in_string;
 } Payload;
 
 // --------------------------------------------------------------------------------------------------------
@@ -245,7 +235,7 @@ static void debug_indents(Payload *payload) {
   DEBUG_PRINTF("[");
   for (size_t i = 0; i < payload->indents.size; i++) {
     if (0 < i) DEBUG_PRINTF(",");
-    DEBUG_PRINTF("%d", payload->indents.contents[i]);
+    DEBUG_PRINTF("%d", *array_get(&payload->indents, i));
   }
   DEBUG_PRINTF("]");
 }
@@ -254,7 +244,7 @@ static void debug_sharps(Payload *payload) {
   DEBUG_PRINTF("[");
   for (size_t i = 0; i < payload->raw_string_sharp_counts.size; i++) {
     if (0 < i) DEBUG_PRINTF(",");
-    DEBUG_PRINTF("%d", payload->raw_string_sharp_counts.contents[i]);
+    DEBUG_PRINTF("%d", *array_get(&payload->raw_string_sharp_counts, i));
   }
   DEBUG_PRINTF("]");
 }
@@ -523,9 +513,10 @@ static bool is_newline(uint32_t c) {
 static bool uninitialized(State *state) { return !indent_exists(state); }
 
 /**
- * Require that the parser determined an error in the previous step (see `all_syms`).
+ * When recovering from an error, it sets all token valid, including unexposed token.
+ * Use ERROR_SENTINEL for this purpose.
  */
-static bool after_error(State *state) { return all_syms(state->symbols); }
+static bool after_error(State *state) { return SYM(ERROR_SENTINEL); }
 
 #define SYMBOLIC_CASES \
     case '!': \
