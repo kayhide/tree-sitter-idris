@@ -204,10 +204,10 @@ module.exports = {
   // ----- Quasiquotation -----------------------------------------------------
 
   exp_quasiquotation : $ => choice(
-    seq("`{{", $._q_name, "}}"),
-    seq("`{", $._q_name, "}"),
+    seq("`{{", $._q_name_op, "}}"),
+    seq("`{", $._q_name_op, "}"),
     seq("`(", $._type_parens, ")"),
-    seq("~", $._q_name),
+    seq("~", $._q_name_op),
   ),
 
   // ----- Strings ------------------------------------------------------------
