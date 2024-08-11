@@ -71,8 +71,8 @@
  */
 typedef enum {
   SEMICOLON,
-  START,
-  END,
+  LAYOUT_START,
+  LAYOUT_END,
   DOT,
   WHERE,
   VARID,
@@ -487,7 +487,7 @@ static bool more_indent(uint32_t indent, State *state) {
  */
 static bool is_newline_where(uint32_t indent, State *state) {
   return keep_layout(indent, state)
-    && (SYM(SEMICOLON) || SYM(END))
+    && (SYM(SEMICOLON) || SYM(LAYOUT_END))
     && !SYM(WHERE);
 }
 
@@ -674,9 +674,9 @@ static void skipspace(State *state) {
  * If a layout end is valid at this position, remove one indentation layer and succeed with layout end.
  */
 static Result layout_end(char *desc, State *state) {
-  if (SYM(END)) {
+  if (SYM(LAYOUT_END)) {
     pop_indent(state);
-    return finish(END, desc);
+    return finish(LAYOUT_END, desc);
   }
   return res_cont;
 }
@@ -983,7 +983,7 @@ static Result symop(Symbolic type, State *state) {
  *
  * To be called when it is certain that two minuses cannot succeed as a symbolic operator.
  * Those cases are:
- *   - `START` is valid
+ *   - `LAYOUT_START` is valid
  *   - Operator matching was done already
  */
 static Result minus(State *state) {
@@ -1130,15 +1130,15 @@ static Result close_layout_in_list(State *state) {
   if (0 < state->token.size) return res_cont;
   switch (PEEK) {
     case ']': {
-      if (state->symbols[END]) {
+      if (SYM(LAYOUT_END)) {
         pop_indent(state);
-        return finish(END, "bracket");
+        return finish(LAYOUT_END, "bracket");
       }
       break;
     }
     case ',': {
       S_ADVANCE;
-      if (state->symbols[COMMA]) {
+      if (SYM(COMMA)) {
         MARK("comma", false, state);
         return finish(COMMA, "comma");
       }
@@ -1216,7 +1216,7 @@ static Result inline_tokens(State *state) {
 }
 
 /**
- * If the symbol `START` is valid, starting a new layout is almost always indicated.
+ * If the symbol `LAYOUT_START` is valid, starting a new layout is almost always indicated.
  *
  * If the next character is a left brace, it is either a comment, pragma or an explicit layout. In the comment case, the
  * it must be parsed here.
@@ -1228,7 +1228,7 @@ static Result inline_tokens(State *state) {
  * This pushes the indentation of the first non-whitespace character onto the stack.
  */
 static Result layout_start(uint32_t column, State *state) {
-  if (state->symbols[START]) {
+  if (SYM(LAYOUT_START)) {
     switch (PEEK) {
       case '-': {
         Result res = minus(state);
@@ -1239,7 +1239,7 @@ static Result layout_start(uint32_t column, State *state) {
         break;
     }
     push_indent(column, state);
-    return finish(START, "layout_start");
+    return finish(LAYOUT_START, "layout_start");
   }
   return res_cont;
 }
@@ -1275,7 +1275,7 @@ static Result post_end_semicolon(uint32_t column, State *state) {
  * Like `post_end_semicolon`, but for layout end.
  */
 static Result repeat_end(uint32_t column, State *state) {
-  if (state->symbols[END] && less_indent(column, state)) {
+  if (SYM(LAYOUT_END) && less_indent(column, state)) {
     return layout_end("repeat_end", state);
   }
   return res_cont;
