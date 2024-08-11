@@ -56,6 +56,7 @@ module.exports = {
 
   with: $ => seq(
     'with',
+    optional($.quantity),
     sep1('|', $.with_arg),
     '\n',
     layouted($, $.function),

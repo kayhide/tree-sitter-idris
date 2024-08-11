@@ -7,6 +7,8 @@ module.exports = {
     $.ticked_operator,
   ),
 
+  pat_at: $ => '@',
+
   pat_field: $ =>
     seq(
       $._field_name,
@@ -17,13 +19,9 @@ module.exports = {
 
   pat_record: $ => field('fields', $.pat_fields),
 
-  pat_at_wildcard: _ => '@_',
-
   pat_parens: $ => parens(
     sep($.tuple_operator, $._pat),
   ),
-
-  pat_at_parens: $ => seq('@', '(', $._pat, ')'),
 
   pat_list: $ => choice(
     brackets(sep($.comma, $._pat)),
@@ -37,14 +35,13 @@ module.exports = {
   _apat: $ => choice(
     alias($._name, $.pat_name),
     $.pat_op,
+    $.pat_at,
     $.pat_record,
     alias($.literal, $.pat_literal),
     alias($.string, $.pat_string),
     $.wildcard,
     $.unit,
-    $.pat_at_wildcard,
     $.pat_parens,
-    $.pat_at_parens,
     $.pat_list,
     $.pat_braces,
     $.pat_at_braces,

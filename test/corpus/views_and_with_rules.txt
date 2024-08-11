@@ -538,3 +538,31 @@ fromListAppend (x::xs) ys with (fromList ys) proof prf
             (in
               (exp_name
                 (caname)))))))))
+
+================================================================================
+with rule and quantity
+================================================================================
+
+f with 0 (x)
+  _ | X = _
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)))
+    (with
+      (quantity)
+      (with_arg
+        (exp_name
+          (loname)))
+      (function
+        (lhs
+          (wildcard))
+        (with_pat
+          (pat_name
+            (caname)))
+        (rhs
+          (wildcard))))))
