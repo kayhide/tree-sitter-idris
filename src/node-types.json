@@ -257,15 +257,11 @@
             "named": true
           },
           {
+            "type": "pat_at",
+            "named": true
+          },
+          {
             "type": "pat_at_braces",
-            "named": true
-          },
-          {
-            "type": "pat_at_parens",
-            "named": true
-          },
-          {
-            "type": "pat_at_wildcard",
             "named": true
           },
           {
@@ -503,15 +499,11 @@
           "named": true
         },
         {
+          "type": "pat_at",
+          "named": true
+        },
+        {
           "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_at_parens",
-          "named": true
-        },
-        {
-          "type": "pat_at_wildcard",
           "named": true
         },
         {
@@ -833,15 +825,11 @@
           "named": true
         },
         {
+          "type": "pat_at",
+          "named": true
+        },
+        {
           "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_at_parens",
-          "named": true
-        },
-        {
-          "type": "pat_at_wildcard",
           "named": true
         },
         {
@@ -1101,48 +1089,6 @@
     }
   },
   {
-    "type": "constructor_signature",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": "caname",
-            "named": true
-          },
-          {
-            "type": "dot_operator",
-            "named": true
-          },
-          {
-            "type": "operator",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "type_signature",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "data",
     "named": true,
     "fields": {
@@ -1314,6 +1260,10 @@
           "named": true
         },
         {
+          "type": "quantity",
+          "named": true
+        },
+        {
           "type": "raw_string",
           "named": true
         },
@@ -1323,6 +1273,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "totality",
           "named": true
         },
         {
@@ -1369,15 +1323,15 @@
       "required": false,
       "types": [
         {
-          "type": "constructor_signature",
-          "named": true
-        },
-        {
           "type": "external",
           "named": true
         },
         {
           "type": "search_options",
+          "named": true
+        },
+        {
+          "type": "signature",
           "named": true
         }
       ]
@@ -2093,7 +2047,19 @@
       "required": false,
       "types": [
         {
+          "type": "exp_bar_arg",
+          "named": true
+        },
+        {
           "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_case",
+          "named": true
+        },
+        {
+          "type": "exp_do",
           "named": true
         },
         {
@@ -2102,6 +2068,22 @@
         },
         {
           "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_if",
+          "named": true
+        },
+        {
+          "type": "exp_lambda",
+          "named": true
+        },
+        {
+          "type": "exp_lambda_case",
+          "named": true
+        },
+        {
+          "type": "exp_let_in",
           "named": true
         },
         {
@@ -2126,6 +2108,10 @@
         },
         {
           "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_rewrite_in",
           "named": true
         },
         {
@@ -3084,6 +3070,10 @@
           "named": true
         },
         {
+          "type": "dot_operator",
+          "named": true
+        },
+        {
           "type": "double_star",
           "named": true
         },
@@ -3212,7 +3202,15 @@
           "named": true
         },
         {
+          "type": "qualified_dot_operators",
+          "named": true
+        },
+        {
           "type": "qualified_loname",
+          "named": true
+        },
+        {
+          "type": "qualified_operator",
           "named": true
         },
         {
@@ -4432,6 +4430,10 @@
           "named": true
         },
         {
+          "type": "quantity",
+          "named": true
+        },
+        {
           "type": "raw_string",
           "named": true
         },
@@ -4441,6 +4443,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "totality",
           "named": true
         },
         {
@@ -4521,11 +4527,19 @@
           "named": true
         },
         {
+          "type": "caname",
+          "named": true
+        },
+        {
           "type": "colon",
           "named": true
         },
         {
           "type": "comma",
+          "named": true
+        },
+        {
+          "type": "dot_operator",
           "named": true
         },
         {
@@ -4649,7 +4663,19 @@
           "named": true
         },
         {
+          "type": "qualified_caname",
+          "named": true
+        },
+        {
+          "type": "qualified_dot_operators",
+          "named": true
+        },
+        {
           "type": "qualified_loname",
+          "named": true
+        },
+        {
+          "type": "qualified_operator",
           "named": true
         },
         {
@@ -4966,6 +4992,14 @@
           "named": true
         },
         {
+          "type": "quantity",
+          "named": true
+        },
+        {
+          "type": "totality",
+          "named": true
+        },
+        {
           "type": "visibility",
           "named": true
         }
@@ -4994,6 +5028,10 @@
         },
         {
           "type": "signature",
+          "named": true
+        },
+        {
+          "type": "using",
           "named": true
         },
         {
@@ -5384,15 +5422,11 @@
           "named": true
         },
         {
+          "type": "pat_at",
+          "named": true
+        },
+        {
           "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_at_parens",
-          "named": true
-        },
-        {
-          "type": "pat_at_wildcard",
           "named": true
         },
         {
@@ -5745,15 +5779,11 @@
           "named": true
         },
         {
+          "type": "pat_at",
+          "named": true
+        },
+        {
           "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_at_parens",
-          "named": true
-        },
-        {
-          "type": "pat_at_wildcard",
           "named": true
         },
         {
@@ -6526,186 +6556,11 @@
           "named": true
         },
         {
-          "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_at_parens",
-          "named": true
-        },
-        {
-          "type": "pat_at_wildcard",
-          "named": true
-        },
-        {
-          "type": "pat_braces",
-          "named": true
-        },
-        {
-          "type": "pat_list",
-          "named": true
-        },
-        {
-          "type": "pat_literal",
-          "named": true
-        },
-        {
-          "type": "pat_name",
-          "named": true
-        },
-        {
-          "type": "pat_op",
-          "named": true
-        },
-        {
-          "type": "pat_parens",
-          "named": true
-        },
-        {
-          "type": "pat_record",
-          "named": true
-        },
-        {
-          "type": "pat_string",
-          "named": true
-        },
-        {
-          "type": "pragma_MkWorld",
-          "named": true
-        },
-        {
-          "type": "pragma_World",
-          "named": true
-        },
-        {
-          "type": "pragma_runElab",
-          "named": true
-        },
-        {
-          "type": "pragma_search",
-          "named": true
-        },
-        {
-          "type": "pragma_syntactic",
-          "named": true
-        },
-        {
-          "type": "quantity",
-          "named": true
-        },
-        {
-          "type": "raw_string",
-          "named": true
-        },
-        {
-          "type": "record_update",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "triple_quote_string",
-          "named": true
-        },
-        {
-          "type": "type_braces",
-          "named": true
-        },
-        {
-          "type": "type_parens",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "pat_at_parens",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "colon",
-          "named": true
-        },
-        {
-          "type": "exp_braces",
-          "named": true
-        },
-        {
-          "type": "exp_explicit_impl",
-          "named": true
-        },
-        {
-          "type": "exp_idiom",
-          "named": true
-        },
-        {
-          "type": "exp_list",
-          "named": true
-        },
-        {
-          "type": "exp_list_comprehension",
-          "named": true
-        },
-        {
-          "type": "exp_name",
-          "named": true
-        },
-        {
-          "type": "exp_parens",
-          "named": true
-        },
-        {
-          "type": "exp_quasiquotation",
-          "named": true
-        },
-        {
-          "type": "exp_record_access",
-          "named": true
-        },
-        {
-          "type": "exp_ticked",
-          "named": true
-        },
-        {
-          "type": "exp_tuple",
-          "named": true
-        },
-        {
-          "type": "hole",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "operator",
+          "type": "pat_at",
           "named": true
         },
         {
           "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_at_parens",
-          "named": true
-        },
-        {
-          "type": "pat_at_wildcard",
           "named": true
         },
         {
@@ -6876,15 +6731,11 @@
           "named": true
         },
         {
+          "type": "pat_at",
+          "named": true
+        },
+        {
           "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_at_parens",
-          "named": true
-        },
-        {
-          "type": "pat_at_wildcard",
           "named": true
         },
         {
@@ -7051,15 +6902,11 @@
           "named": true
         },
         {
+          "type": "pat_at",
+          "named": true
+        },
+        {
           "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_at_parens",
-          "named": true
-        },
-        {
-          "type": "pat_at_wildcard",
           "named": true
         },
         {
@@ -7245,15 +7092,11 @@
           "named": true
         },
         {
+          "type": "pat_at",
+          "named": true
+        },
+        {
           "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_at_parens",
-          "named": true
-        },
-        {
-          "type": "pat_at_wildcard",
           "named": true
         },
         {
@@ -7473,15 +7316,11 @@
           "named": true
         },
         {
+          "type": "pat_at",
+          "named": true
+        },
+        {
           "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_at_parens",
-          "named": true
-        },
-        {
-          "type": "pat_at_wildcard",
           "named": true
         },
         {
@@ -7619,15 +7458,11 @@
       "required": true,
       "types": [
         {
+          "type": "pat_at",
+          "named": true
+        },
+        {
           "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_at_parens",
-          "named": true
-        },
-        {
-          "type": "pat_at_wildcard",
           "named": true
         },
         {
@@ -10062,11 +9897,19 @@
           "named": true
         },
         {
+          "type": "caname",
+          "named": true
+        },
+        {
           "type": "colon",
           "named": true
         },
         {
           "type": "comma",
+          "named": true
+        },
+        {
+          "type": "dot_operator",
           "named": true
         },
         {
@@ -10190,7 +10033,19 @@
           "named": true
         },
         {
+          "type": "qualified_caname",
+          "named": true
+        },
+        {
+          "type": "qualified_dot_operators",
+          "named": true
+        },
+        {
           "type": "qualified_loname",
+          "named": true
+        },
+        {
+          "type": "qualified_operator",
           "named": true
         },
         {
@@ -11938,10 +11793,22 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "implementation_name",
+          "named": true
+        },
+        {
+          "type": "parameters_body",
+          "named": true
+        },
+        {
+          "type": "type_braces",
+          "named": true
+        },
+        {
+          "type": "type_parens",
           "named": true
         }
       ]
@@ -11962,6 +11829,10 @@
       "types": [
         {
           "type": "function",
+          "named": true
+        },
+        {
+          "type": "quantity",
           "named": true
         },
         {
@@ -12139,15 +12010,11 @@
       "required": true,
       "types": [
         {
+          "type": "pat_at",
+          "named": true
+        },
+        {
           "type": "pat_at_braces",
-          "named": true
-        },
-        {
-          "type": "pat_at_parens",
-          "named": true
-        },
-        {
-          "type": "pat_at_wildcard",
           "named": true
         },
         {
@@ -12398,10 +12265,6 @@
     "named": false
   },
   {
-    "type": "@",
-    "named": false
-  },
-  {
     "type": "@{",
     "named": false
   },
@@ -12602,7 +12465,7 @@
     "named": false
   },
   {
-    "type": "pat_at_wildcard",
+    "type": "pat_at",
     "named": true
   },
   {
