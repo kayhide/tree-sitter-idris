@@ -30,8 +30,10 @@ module.exports = {
     'data',
     field('name', $.data_name),
     optional(alias($._type_annotation, $.type_signature)),
-    $.where,
-    optional($.data_body),
+    optional(seq(
+      $.where,
+      optional($.data_body),
+    )),
   ),
 
   data_body: $ => layouted($, $._data_decl),
