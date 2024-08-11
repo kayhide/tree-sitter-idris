@@ -12,18 +12,12 @@ module.exports = {
 
   // ----- Interface ----------------------------------------------------------
 
-  _decl_interface: $ =>
-    seq(
-      repeat(
-        choice(
-          $.visibility,
-          $._pragma_decl,
-        )
-      ),
-      'interface',
-      $.interface_head,
-      optional($.interface_body)
-    ),
+  _decl_interface: $ => seq(
+    optional($._decl_prefix),
+    'interface',
+    $.interface_head,
+    optional($.interface_body)
+  ),
 
   interface_head: $ => seq(
     optional($.constraints),
@@ -50,12 +44,7 @@ module.exports = {
   ),
 
   implementation_head: $ => seq(
-    repeat(
-      choice(
-        $.visibility,
-        $._pragma_decl,
-      )
-    ),
+    optional($._decl_prefix),
     optional('implementation'),
     optional(brackets($.implementation_name)),
     optional($.constraints),

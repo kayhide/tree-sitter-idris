@@ -88,6 +88,61 @@ data List : Type -> Type where
             (loname)))))))
 
 ================================================================================
+Data type with totality
+================================================================================
+
+total
+data Infer : Scoped where
+  Ann : (t, ty : Check f g) -> Infer f g
+  Star : Infer f g
+
+--------------------------------------------------------------------------------
+
+(idris
+  (data
+    (totality)
+    (data_name)
+    (type_signature
+      (colon)
+      (exp_name
+        (caname)))
+    (where)
+    (data_body
+      (constructor_signature
+        (caname)
+        (type_signature
+          (colon)
+          (type_parens
+            (type_var
+              (loname)
+              (comma)
+              (loname)
+              (colon)
+              (exp_name
+                (caname))
+              (exp_name
+                (loname))
+              (exp_name
+                (loname))))
+          (arrow_separator)
+          (exp_name
+            (caname))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))))
+      (constructor_signature
+        (caname)
+        (type_signature
+          (colon)
+          (exp_name
+            (caname))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))))))
+
+================================================================================
 Search options
 ================================================================================
 

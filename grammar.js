@@ -111,10 +111,6 @@ module.exports = grammar({
     // String
     [$._string, $._apat],
 
-    // Decl
-    [$._decl_data_inline, $._decl_data_block, $._decl_interface, $.implementation_head],
-    [$._decl_data_inline, $._decl_interface, $.implementation_head, $.signature],
-
     // Parameters block
     [$._parameters_body],
     [$._braces, $._parameter],
@@ -136,7 +132,6 @@ module.exports = grammar({
     [$._avar, $._aexp],
 
     // Misc
-    [$.operator, $.pat_op],
     [$.operator, $.pat_op],
     [$._parens_operator, $._aexp],
     [$.equal, $.pat_braces],

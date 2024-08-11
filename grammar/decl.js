@@ -17,6 +17,15 @@ module.exports = {
     'covering',
   ),
 
+  _decl_prefix: $ => repeat1(
+    choice(
+      $.visibility,
+      $.totality,
+      $.quantity,
+      $._pragma_decl,
+    ),
+  ),
+
   _funrhs: $ => seq(
     $._def_equal,
     choice($._exp, $._type),
@@ -73,14 +82,7 @@ module.exports = {
   ),
 
   signature: $ => seq(
-    repeat(
-      choice(
-        $.visibility,
-        $.totality,
-        $.quantity,
-        $._pragma_decl,
-      )
-    ),
+    optional($._decl_prefix),
     sep1(
       $.comma,
       choice(

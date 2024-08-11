@@ -6,18 +6,15 @@ module.exports = {
 
   data_name: $ => alias($._q_caname_op, ''),
 
-  _decl_data: $ => choice(
-    $._decl_data_inline,
-    $._decl_data_block,
+  _decl_data: $ => seq(
+    choice(
+      $._decl_data_inline,
+      $._decl_data_block,
+    ),
   ),
 
   _decl_data_inline: $ => seq(
-    repeat(
-      choice(
-        $.visibility,
-        $._pragma_decl,
-      )
-    ),
+    optional($._decl_prefix),
     'data',
     field('name', $.data_name),
     repeat($._q_loname),
@@ -26,7 +23,7 @@ module.exports = {
   ),
 
   _decl_data_block: $ => seq(
-    optional($.visibility),
+    optional($._decl_prefix),
     'data',
     field('name', $.data_name),
     optional(alias($._type_annotation, $.type_signature)),
