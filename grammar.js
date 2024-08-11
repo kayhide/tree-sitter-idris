@@ -114,6 +114,10 @@ module.exports = grammar({
     [$._decl_data_inline, $._decl_data_block, $._decl_interface, $.implementation_head],
     [$._decl_data_inline, $._decl_interface, $.implementation_head, $.signature],
 
+    // Parameters block
+    [$._braces, $._parameter],
+    [$.type_parens, $._parens],
+
     // Types
     [$._type],
     [$.constraints],

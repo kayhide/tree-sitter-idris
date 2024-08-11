@@ -361,7 +361,8 @@ parameters (y : Nat, xs : Vect x a)
               (exp_name
                 (caname))
               (exp_name
-                (loname))))))
+                (loname)))))))
+    (parameters_body
       (signature
         (loname)
         (colon)
@@ -428,6 +429,85 @@ parameters {auto eqTTImp : Eq TTImp}
           (wildcard))
         (rhs
           (wildcard))))))
+
+================================================================================
+Parameters with line break
+================================================================================
+
+parameters {a : A} (b : B)
+  (c : C)
+  x : X
+
+--------------------------------------------------------------------------------
+
+(idris
+  (parameters
+    (type_braces
+      (exp_name
+        (loname))
+      (colon)
+      (exp_name
+        (caname)))
+    (type_parens
+      (type_var
+        (loname)
+        (colon)
+        (exp_name
+          (caname))))
+    (type_parens
+      (type_var
+        (loname)
+        (colon)
+        (exp_name
+          (caname))))
+    (parameters_body
+      (signature
+        (loname)
+        (colon)
+        (exp_name
+          (caname))))))
+
+================================================================================
+Parameters with line break and implementation
+================================================================================
+
+parameters {a : A} 
+  {b : B}
+  {x : X} -> Y x where
+
+--------------------------------------------------------------------------------
+
+(idris
+  (parameters
+    (type_braces
+      (exp_name
+        (loname))
+      (colon)
+      (exp_name
+        (caname)))
+    (type_braces
+      (exp_name
+        (loname))
+      (colon)
+      (exp_name
+        (caname)))
+    (parameters_body
+      (implementation
+        (implementation_head
+          (constraints
+            (type_braces
+              (exp_name
+                (loname))
+              (colon)
+              (exp_name
+                (caname)))
+            (arrow_separator))
+          (interface_name
+            (caname))
+          (exp_name
+            (loname)))
+        (implementation_body
+          (where))))))
 
 ================================================================================
 Parameterised blocks with using

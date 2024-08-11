@@ -23,22 +23,41 @@ module.exports = {
     optional(alias($._top_declarations, $.namespace_body)),
   ),
 
-  _decl_parameters: $ => seq(
-    choice(
-      'parameters',
-      'using',
-    ),
-    repeat1(choice(
-      $.type_parens,
-      $.type_braces
-    )),
-    optional(alias($._top_declarations, $.parameters_body)),
-  ),
-
   _decl_mutual: $ => seq(
     'mutual',
     optional(alias($._top_declarations, $.mutual_body)),
   ),
 
   _top_declarations: $ => layouted($, $._topdecl),
+
+  // Parameters block starts with parameter lists, which can be placed
+  // at the same indent level of the body.
+  //
+  // parameters (a : A) (b : B)
+  //   (c : C)
+  //   f : a -> b
+  //
+  _decl_parameters: $ => seq(
+    choice(
+      'parameters',
+      'using',
+    ),
+    repeat($._parameter),
+    '\n',
+    optional($._parameters_body),
+  ),
+
+  _parameter: $ => choice(
+    $.type_parens,
+    $.type_braces,
+  ),
+
+  _parameters_body: $ => seq( 
+    $._layout_start,
+    optional(terminated($, $._parameter)),
+    optional(
+      alias(terminated($, $._topdecl), $.parameters_body),
+    ),
+    $._layout_end,
+  ),
 }
