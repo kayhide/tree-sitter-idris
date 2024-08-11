@@ -1007,7 +1007,8 @@ ltrim str with (asList str)
             (patterns
               (pat_name
                 (loname))
-              (pat_at_wildcard))))
+              (pat_at)
+              (wildcard))))
         (with_pat
           (pat_name
             (loname))

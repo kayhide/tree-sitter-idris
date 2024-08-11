@@ -259,7 +259,8 @@ MkMaybeT x <+> MkMaybeT y = MkMaybeT $ do
           (bind_pattern
             (pat_name
               (loname))
-            (pat_at_parens
+            (pat_at)
+            (pat_parens
               (pat_name
                 (caname))
               (wildcard))
@@ -381,7 +382,8 @@ isFreeOf x ty
                   (alt
                     (pat_name
                       (loname))
-                    (pat_at_parens
+                    (pat_at)
+                    (pat_parens
                       (pat_name
                         (caname))
                       (wildcard)

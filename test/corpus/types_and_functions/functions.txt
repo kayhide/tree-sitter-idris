@@ -500,6 +500,31 @@ test = [c (S 1), c Z, d (S Z)]
                 (loname)))))))))
 
 ================================================================================
+Function arg with data constructor
+================================================================================
+
+f (FS x@FZ) = _
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_parens
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
+            (pat_at)
+            (pat_name
+              (caname))))))
+    (rhs
+      (wildcard))))
+
+================================================================================
 Function arg with at wildcard
 ================================================================================
 
@@ -515,7 +540,8 @@ ltrim str@_ = str
         (patterns
           (pat_name
             (loname))
-          (pat_at_wildcard))))
+          (pat_at)
+          (wildcard))))
     (rhs
       (exp_name
         (loname)))))
@@ -568,7 +594,8 @@ asList str@(strCons x xs) = x :: xs
         (patterns
           (pat_name
             (loname))
-          (pat_at_parens
+          (pat_at)
+          (pat_parens
             (pat_name
               (loname))
             (pat_name
