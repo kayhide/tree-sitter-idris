@@ -33,6 +33,7 @@ module.exports = {
   _interface_decl: $ => choice(
     $.constructor,
     $._decl,
+    alias($._decl_parameters, $.using),
   ),
     
 

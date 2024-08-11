@@ -90,6 +90,58 @@ interface Eq a where
               (loname))))))))
 
 ================================================================================
+Interface with parameters
+================================================================================
+
+interface X where
+  using (ctx : context)
+    int : Int -> inter ctx Int
+    add : BinaryOp (inter ctx Int)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (interface
+    (interface_head
+      (interface_name
+        (caname)))
+    (interface_body
+      (where)
+      (using
+        (type_parens
+          (type_var
+            (loname)
+            (colon)
+            (exp_name
+              (loname))))
+        (parameters_body
+          (signature
+            (loname)
+            (colon)
+            (exp_name
+              (caname))
+            (arrow_separator)
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))
+            (exp_name
+              (caname))))
+        (parameters_body
+          (signature
+            (loname)
+            (colon)
+            (exp_name
+              (caname))
+            (exp_parens
+              (exp_name
+                (loname))
+              (exp_name
+                (loname))
+              (exp_name
+                (caname)))))))))
+
+================================================================================
 Extending Interfaces 1
 ================================================================================
 
