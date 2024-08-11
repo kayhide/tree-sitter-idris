@@ -347,21 +347,20 @@ parameters (y : Nat, xs : Vect x a)
             (caname)))
         (where)
         (data_body
-          (constructor_signature
+          (signature
             (caname)
-            (type_signature
-              (colon)
-              (exp_name
-                (caname))
-              (exp_name
-                (loname))
-              (exp_name
-                (loname))
-              (arrow_separator)
-              (exp_name
-                (caname))
-              (exp_name
-                (loname)))))))
+            (colon)
+            (exp_name
+              (caname))
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))
+            (arrow_separator)
+            (exp_name
+              (caname))
+            (exp_name
+              (loname))))))
     (parameters_body
       (signature
         (loname)

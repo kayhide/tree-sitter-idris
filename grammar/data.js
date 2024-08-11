@@ -38,7 +38,7 @@ module.exports = {
   _data_decl: $ => choice(
     $.search_options,
     $.external,
-    $.constructor_signature,
+    $.signature,
   ),
 
   search_options: $ => brackets(
@@ -49,9 +49,4 @@ module.exports = {
   ),
 
   external: _ => brackets('external'),
-
-  constructor_signature: $ => seq(
-    field('name', $._caname_op), 
-    alias($._type_annotation, $.type_signature),
-  ),
 }

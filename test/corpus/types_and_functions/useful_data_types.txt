@@ -231,38 +231,37 @@ data DPair : (a : Type) -> (p : a -> Type) -> Type where
         (caname)))
     (where)
     (data_body
-      (constructor_signature
+      (signature
         (caname)
-        (type_signature
+        (colon)
+        (type_braces
+          (exp_name
+            (loname))
           (colon)
-          (type_braces
-            (exp_name
-              (loname))
+          (exp_name
+            (loname))
+          (arrow_separator)
+          (exp_name
+            (caname)))
+        (arrow_separator)
+        (type_parens
+          (type_var
+            (loname)
             (colon)
             (exp_name
-              (loname))
-            (arrow_separator)
-            (exp_name
-              (caname)))
-          (arrow_separator)
-          (type_parens
-            (type_var
-              (loname)
-              (colon)
-              (exp_name
-                (loname))))
-          (arrow_separator)
-          (exp_name
-            (loname))
-          (exp_name
-            (loname))
-          (arrow_separator)
-          (exp_name
-            (caname))
-          (exp_name
-            (loname))
-          (exp_name
-            (loname)))))))
+              (loname))))
+        (arrow_separator)
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))
+        (arrow_separator)
+        (exp_name
+          (caname))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))))))
 
 ================================================================================
 Dependent Pairs 2
