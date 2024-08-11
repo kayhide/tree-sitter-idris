@@ -654,7 +654,7 @@ record (<=>) (a, b : Type) where
     (where)))
 
 ================================================================================
-Record with operator constructor
+Record with implicit type arguments
 ================================================================================
 
 record Exists {0 type : Type} this where
@@ -728,6 +728,39 @@ record List1 a where
           (caname))
         (exp_name
           (loname))))))
+
+================================================================================
+Record with capitalized fields
+================================================================================
+
+record Container where
+  constructor MkContainer
+  Shape : Type
+  Position : Shape -> Type
+
+--------------------------------------------------------------------------------
+
+(idris
+  (record
+    (record_name
+      (caname))
+    (where)
+    (record_body
+      (constructor
+        (caname))
+      (record_field
+        (caname)
+        (colon)
+        (exp_name
+          (caname)))
+      (record_field
+        (caname)
+        (colon)
+        (exp_name
+          (caname))
+        (arrow_separator)
+        (exp_name
+          (caname))))))
 
 ================================================================================
 Recrod with implicit fields
