@@ -510,6 +510,54 @@ parameters {a : A}
           (where))))))
 
 ================================================================================
+Parameters with ill-aligned lines
+================================================================================
+
+parameters
+      {a : A} {b : B}
+    {c : C}
+      {d : D}
+  f : a -> b
+
+--------------------------------------------------------------------------------
+
+(idris
+  (parameters
+    (type_braces
+      (exp_name
+        (loname))
+      (colon)
+      (exp_name
+        (caname)))
+    (type_braces
+      (exp_name
+        (loname))
+      (colon)
+      (exp_name
+        (caname)))
+    (type_braces
+      (exp_name
+        (loname))
+      (colon)
+      (exp_name
+        (caname)))
+    (type_braces
+      (exp_name
+        (loname))
+      (colon)
+      (exp_name
+        (caname)))
+    (parameters_body
+      (signature
+        (loname)
+        (colon)
+        (exp_name
+          (loname))
+        (arrow_separator)
+        (exp_name
+          (loname))))))
+
+================================================================================
 Parameterised blocks with using
 ================================================================================
 

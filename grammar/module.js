@@ -54,10 +54,14 @@ module.exports = {
 
   _parameters_body: $ => seq( 
     $._layout_start,
-    optional(terminated($, $._parameter)),
-    optional(
+    repeat(seq(
+      optional($._layout_restart),
+      terminated($, $._parameter),
+    )),
+    optional(seq(
+      optional($._layout_restart),
       alias(terminated($, $._topdecl), $.parameters_body),
-    ),
+    )),
     $._layout_end,
   ),
 }

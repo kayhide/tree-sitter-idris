@@ -35,6 +35,7 @@ module.exports = grammar({
     $._layout_semicolon,
     $._layout_start,
     $._layout_end,
+    $._layout_restart,
     $._dot,
     $.where,
     $._varid,
@@ -115,6 +116,7 @@ module.exports = grammar({
     [$._decl_data_inline, $._decl_interface, $.implementation_head, $.signature],
 
     // Parameters block
+    [$._parameters_body],
     [$._braces, $._parameter],
     [$.type_parens, $._parens],
 

@@ -73,6 +73,7 @@ typedef enum {
   SEMICOLON,
   LAYOUT_START,
   LAYOUT_END,
+  LAYOUT_RESTART,
   DOT,
   WHERE,
   VARID,
@@ -95,6 +96,7 @@ static char *sym_names[] = {
   "semicolon",
   "start",
   "end",
+  "layout_restart",
   "dot",
   "where",
   "varid",
@@ -468,6 +470,19 @@ static bool less_indent(uint32_t indent, State *state) {
   return indent_exists(state) && indent < *array_back(&state->payload->indents);
 }
 
+/**
+ * Dedented but still indented in outer scope. Needed to detect the following layout.
+ * 
+ * parent
+ *     foo
+ *   bar
+ */
+static bool less_and_more_indent(uint32_t indent, State *state) {
+  return 2 <= state->payload->indents.size && 
+    indent < *array_back(&state->payload->indents) &&
+    indent > *array_get(&state->payload->indents, state->payload->indents.size - 2);
+}
+
 static bool indent_lesseq(uint32_t indent, State *state) {
    return indent_exists(state) && indent <= *array_back(&state->payload->indents);
 }
@@ -475,6 +490,7 @@ static bool indent_lesseq(uint32_t indent, State *state) {
 static bool more_indent(uint32_t indent, State *state) {
   return indent_exists(state) && indent > *array_back(&state->payload->indents);
 }
+
 
 /**
  * Composite condition examining whether the current layout can be terminated if the line after the position where the
@@ -671,6 +687,18 @@ static void skipspace(State *state) {
 }
 
 /**
+ * If the indent meets the condition, it updates the indents.
+ */
+static Result layout_restart(uint32_t indent, State *state) {
+  if (SYM(LAYOUT_RESTART) && less_and_more_indent(indent, state)) {
+    pop_indent(state);
+    push_indent(indent, state);
+    return finish(LAYOUT_RESTART, "layout_restart");
+  }
+  return res_cont;
+}
+
+/**
  * If a layout end is valid at this position, remove one indentation layer and succeed with layout end.
  */
 static Result layout_end(char *desc, State *state) {
@@ -831,7 +859,9 @@ static Result cpp(State *state) {
  * line after skipping whitespace) is smaller than the layout indent.
  */
 static Result dedent(uint32_t indent, State *state) {
-  if (less_indent(indent, state)) return layout_end("dedent", state);
+  if (less_indent(indent, state)) {
+    return layout_end("dedent", state);
+  }
   return res_cont;
 }
 
@@ -1323,6 +1353,8 @@ static Result newline(uint32_t indent, State *state) {
   Result res = eof(state);
   SHORT_SCANNER;
   res = initialize(indent, state);
+  SHORT_SCANNER;
+  res = layout_restart(indent, state);
   SHORT_SCANNER;
   res = cpp(state);
   SHORT_SCANNER;
