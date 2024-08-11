@@ -131,6 +131,11 @@ module.exports = grammar({
     [$._avar, $._aexp, $._apat],
     [$._avar, $._aexp],
 
+    // Case alts
+    [$.alts],
+    [$.alt],
+    [$._name, $._field_name],
+
     // Misc
     [$.operator, $.pat_op],
     [$._parens_operator, $._aexp],

@@ -99,7 +99,11 @@ module.exports = {
       ),
     ),
 
-  alts: $ => layouted($, $.alt),
+  alts: $ => choice(
+    seq('\n', layouted($, $.alt)),
+    braces(sep1(';', $.alt)),
+    sep1(';', $.alt),
+  ),
 
   _exp_case_slots: $ =>
     sep1(
