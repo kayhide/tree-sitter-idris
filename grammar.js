@@ -136,6 +136,9 @@ module.exports = grammar({
     [$.alt],
     [$._name, $._field_name],
 
+    // Patterns
+    [$.pat_fields, $.pat_braces],
+
     // Misc
     [$.operator, $.pat_op],
     [$._parens_operator, $._aexp],

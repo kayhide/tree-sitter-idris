@@ -1115,7 +1115,39 @@ partr sfo = sfo @{MkFunctor $ \ f, p, x => bimap f f (p x)} PartSAlg
         (caname)))))
 
 ================================================================================
-Explicit args
+Explicit args in patterns
+================================================================================
+
+f (X {a = Just a, b = Nothing} x) = _
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_parens
+            (pat_name
+              (caname))
+            (pat_braces
+              (loname)
+              (pat_name
+                (caname))
+              (pat_name
+                (loname))
+              (comma)
+              (loname)
+              (pat_name
+                (caname)))
+            (pat_name
+              (loname))))))
+    (rhs
+      (wildcard))))
+
+================================================================================
+Explicit args in function call
 ================================================================================
 
 foldrVectHomomorphism = ShowVectHomomorphismProperty

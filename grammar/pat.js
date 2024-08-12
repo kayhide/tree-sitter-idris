@@ -28,7 +28,11 @@ module.exports = {
     snoc_brackets(sep($.comma, $._pat)),
   ),
 
-  pat_braces: $ => seq('{', $._name, '=', $._pat, '}'),
+  pat_braces: $ => seq(
+    '{',
+    sep($.comma, seq($._name, '=', $._pat)), 
+    '}',
+   ),
 
   pat_at_braces: $ => seq('@{', $._pat, '}'),
 
