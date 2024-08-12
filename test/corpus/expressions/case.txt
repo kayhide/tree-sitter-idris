@@ -1,4 +1,63 @@
 ================================================================================
+Case split
+================================================================================
+
+_ = case x of
+      Nothing => z
+      Just y => y
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_case
+        (exp_name
+          (loname))
+        (alts
+          (alt
+            (pat_name
+              (caname))
+            (exp_name
+              (loname)))
+          (alt
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
+            (exp_name
+              (loname))))))))
+
+================================================================================
+Decomposition
+================================================================================
+
+_ = case x of
+      (l, r) => _
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_case
+        (exp_name
+          (loname))
+        (alts
+          (alt
+            (pat_parens
+              (pat_name
+                (loname))
+              (tuple_operator)
+              (pat_name
+                (loname)))
+            (wildcard)))))))
+
+================================================================================
 Case alts with braces
 ================================================================================
 
@@ -19,94 +78,3 @@ _ = case eq of { Refl impossible }
             (pat_name
               (caname))
             (impossible)))))))
-
-================================================================================
-Real example 1
-================================================================================
-
-splitAt c x = case break (== c) x of
-                  (l, r) => (l, strTail r)
-
---------------------------------------------------------------------------------
-
-(idris
-  (function
-    (lhs
-      (funvar
-        (loname)
-        (patterns
-          (pat_name
-            (loname))
-          (pat_name
-            (loname)))))
-    (rhs
-      (exp_case
-        (exp_name
-          (loname))
-        (exp_parens
-          (operator)
-          (exp_name
-            (loname)))
-        (exp_name
-          (loname))
-        (alts
-          (alt
-            (pat_parens
-              (pat_name
-                (loname))
-              (tuple_operator)
-              (pat_name
-                (loname)))
-            (exp_tuple
-              (exp_name
-                (loname))
-              (tuple_operator)
-              (exp_name
-                (loname))
-              (exp_name
-                (loname)))))))))
-
-================================================================================
-Real example 2
-================================================================================
-
-lookup_default i xs def = case list_lookup i xs of
-                              Nothing => def
-                              Just x => x
-
---------------------------------------------------------------------------------
-
-(idris
-  (function
-    (lhs
-      (funvar
-        (loname)
-        (patterns
-          (pat_name
-            (loname))
-          (pat_name
-            (loname))
-          (pat_name
-            (loname)))))
-    (rhs
-      (exp_case
-        (exp_name
-          (loname))
-        (exp_name
-          (loname))
-        (exp_name
-          (loname))
-        (alts
-          (alt
-            (pat_name
-              (caname))
-            (exp_name
-              (loname)))
-          (alt
-            (pat_name
-              (caname))
-            (pat_name
-              (loname))
-            (exp_name
-              (loname))))))))
-

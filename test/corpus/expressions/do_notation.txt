@@ -1,9 +1,8 @@
 ================================================================================
-do notation
+do-notation
 ================================================================================
 
-greet : IO ()
-greet = do
+_ = do
   putStr "What is your name? "
   name <- getLine
   putStrLn ("Hello " ++ name)
@@ -11,16 +10,9 @@ greet = do
 --------------------------------------------------------------------------------
 
 (idris
-  (signature
-    (loname)
-    (colon)
-    (exp_name
-      (caname))
-    (unit))
   (function
     (lhs
-      (funvar
-        (loname)))
+      (wildcard))
     (rhs
       (exp_do
         (statement
@@ -228,7 +220,47 @@ _ = do
             (loname)))))))
 
 ================================================================================
-Pattern matching bind 3
+Pattern matching bind with the same indent level
+================================================================================
+
+_ = do
+  Just buffer <- newBuffer max_size
+  | Nothing => pure $ Left (-1)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_do
+        (statement
+          (bind_pattern
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
+            (bind_exp
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))
+            (bind_alt
+              (pat_name
+                (caname))
+              (exp_name
+                (loname))
+              (operator)
+              (exp_name
+                (caname))
+              (exp_parens
+                (operator)
+                (literal
+                  (integer))))))))))
+
+================================================================================
+Pattern matching bind in one line
 ================================================================================
 
 MkMaybeT x <+> MkMaybeT y = MkMaybeT $ do
@@ -279,7 +311,7 @@ MkMaybeT x <+> MkMaybeT y = MkMaybeT $ do
             (loname)))))))
 
 ================================================================================
-rewrite statements
+With rewrite statements
 ================================================================================
 
 _ = do

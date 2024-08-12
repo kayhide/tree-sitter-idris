@@ -54,7 +54,7 @@ Show Nat where
           (string))))))
 
 ================================================================================
-Default Definitions
+Default definitions
 ================================================================================
 
 interface Eq a where
@@ -142,7 +142,7 @@ interface X where
                 (caname)))))))))
 
 ================================================================================
-Extending Interfaces 1
+Extending interfaces 1
 ================================================================================
 
 interface Eq a => Ord a where
@@ -178,7 +178,7 @@ interface Eq a => Ord a where
           (caname))))))
 
 ================================================================================
-Extending Interfaces 2
+Extending interfaces 2
 ================================================================================
 
 interface (Ord a, Show a) => OrdShow a where
@@ -208,7 +208,7 @@ interface (Ord a, Show a) => OrdShow a where
       (where))))
 
 ================================================================================
-Quantities for Parameters 1
+Quantities for parameters 1
 ================================================================================
 
 interface Functor (0 f : Type -> Type) where
@@ -234,7 +234,7 @@ interface Functor (0 f : Type -> Type) where
       (where))))
 
 ================================================================================
-Quantities for Parameters 2
+Quantities for parameters 2
 ================================================================================
 
 interface Functor f => Applicative (0 f : Type -> Type) where
@@ -529,7 +529,7 @@ Biinjective Prelude.(::) where
       (where))))
 
 ================================================================================
-Named Implementations 1
+Named implementation 1
 ================================================================================
 
 [myord] Ord Nat where
@@ -549,7 +549,7 @@ Named Implementations 1
       (where))))
 
 ================================================================================
-Named Implementations 2
+Named implementation 2
 ================================================================================
 
 [PlusNatMonoid] Monoid Nat using PlusNatSemi where
@@ -572,7 +572,7 @@ Named Implementations 2
       (where))))
 
 ================================================================================
-Explicit arguments 1
+Explicit args 1
 ================================================================================
 
 _ = sort @{myord} xs
@@ -593,7 +593,7 @@ _ = sort @{myord} xs
         (loname)))))
 
 ================================================================================
-Explicit arguments 2
+Explicit args 2
 ================================================================================
 
 and = force . concat @{All}
@@ -798,7 +798,7 @@ public export
       (where))))
 
 ================================================================================
-Interface Constructors
+Interface constructor
 ================================================================================
 
 interface A t => B t where
@@ -825,7 +825,7 @@ interface A t => B t where
         (caname)))))
 
 ================================================================================
-Determining Parameters
+Determining parameters
 ================================================================================
 
 interface Monad m => MonadState s (0 m : Type -> Type) | m where
