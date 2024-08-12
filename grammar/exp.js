@@ -205,6 +205,17 @@ module.exports = {
       $.rewrite,
     ),
 
+  // ----- Disambiguation with ------------------------------------------------
+
+  exp_with: $ => seq(
+    'with',
+    choice(
+      $._q_name_op,
+      brackets(sep($.comma, $._q_name_op)),
+    ),
+    $._exp,
+  ),
+
   // ----- Quasiquotation -----------------------------------------------------
 
   exp_quasiquotation : $ => choice(
@@ -321,6 +332,7 @@ module.exports = {
     $.exp_let_in,
     $.exp_do,
     $.exp_rewrite_in,
+    $.exp_with,
   )),
 
   _exp: $ => choice(

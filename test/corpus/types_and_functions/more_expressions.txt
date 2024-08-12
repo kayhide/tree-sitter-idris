@@ -1031,3 +1031,57 @@ ltrim str with (asList str)
             (exp_else
               (exp_name
                 (loname)))))))))
+
+================================================================================
+Disambiguation with - single
+================================================================================
+
+_ = with BTree.insert (insert x empty)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_with
+        (qualified_loname
+          (caname)
+          (loname))
+        (exp_parens
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))))))
+
+================================================================================
+Disambiguation with - multiple
+================================================================================
+
+_ = with [BTree.insert, BTree.empty] (insert x empty)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_with
+        (qualified_loname
+          (caname)
+          (loname))
+        (comma)
+        (qualified_loname
+          (caname)
+          (loname))
+        (exp_parens
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))))))
