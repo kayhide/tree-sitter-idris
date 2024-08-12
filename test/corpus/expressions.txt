@@ -1,0 +1,850 @@
+================================================================================
+List comprehensions
+================================================================================
+
+pythag n = [ (x, y, z) | z <- [1..n], y <- [1..z], x <- [1..y],
+                         x*x + y*y == z*z ]
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_list_comprehension
+        (exp_tuple
+          (exp_name
+            (loname))
+          (tuple_operator)
+          (exp_name
+            (loname))
+          (tuple_operator)
+          (exp_name
+            (loname)))
+        (exp_list
+          (literal
+            (integer))
+          (operator)
+          (exp_name
+            (loname)))
+        (comma)
+        (exp_list
+          (literal
+            (integer))
+          (operator)
+          (exp_name
+            (loname)))
+        (comma)
+        (exp_list
+          (literal
+            (integer))
+          (operator)
+          (exp_name
+            (loname)))
+        (comma)
+        (exp_name
+          (loname))
+        (operator)
+        (exp_name
+          (loname))
+        (operator)
+        (exp_name
+          (loname))
+        (operator)
+        (exp_name
+          (loname))
+        (operator)
+        (exp_name
+          (loname))
+        (operator)
+        (exp_name
+          (loname))))))
+
+================================================================================
+case expressions 1
+================================================================================
+
+splitAt c x = case break (== c) x of
+                  (l, r) => (l, strTail r)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname))
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_case
+        (exp_name
+          (loname))
+        (exp_parens
+          (operator)
+          (exp_name
+            (loname)))
+        (exp_name
+          (loname))
+        (alts
+          (alt
+            (pat_parens
+              (pat_name
+                (loname))
+              (tuple_operator)
+              (pat_name
+                (loname)))
+            (exp_tuple
+              (exp_name
+                (loname))
+              (tuple_operator)
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))))))))
+
+================================================================================
+case expressions 2
+================================================================================
+
+lookup_default i xs def = case list_lookup i xs of
+                              Nothing => def
+                              Just x => x
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname))
+          (pat_name
+            (loname))
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_case
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))
+        (exp_name
+          (loname))
+        (alts
+          (alt
+            (pat_name
+              (caname))
+            (exp_name
+              (loname)))
+          (alt
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
+            (exp_name
+              (loname))))))))
+
+================================================================================
+Case alts with braces
+================================================================================
+
+_ = case eq of { Refl impossible }
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_case
+        (exp_name
+          (loname))
+        (alts
+          (alt
+            (pat_name
+              (caname))
+            (impossible)))))))
+
+================================================================================
+Lambda functions
+================================================================================
+
+on f g = \x, y => g x `f` g y
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname))
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_lambda
+        (lambda_args
+          (pat_name
+            (loname))
+          (comma)
+          (pat_name
+            (loname)))
+        (lambda_exp
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))
+          (exp_ticked
+            (exp_name
+              (loname)))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))))))
+
+================================================================================
+Lambda function with typed pattern
+================================================================================
+
+_ = believe_me (\ 0 i : Int => ())
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_name
+        (loname))
+      (exp_parens
+        (exp_lambda
+          (lambda_args
+            (quantity)
+            (pat_name
+              (loname))
+            (colon)
+            (exp_name
+              (caname)))
+          (lambda_exp
+            (unit)))))))
+
+================================================================================
+Lambda function of type expression
+================================================================================
+
+_ = replace {p = \x => b = f x} _
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_name
+        (loname))
+      (exp_braces
+        (explicit_arg
+          (loname)
+          (equal)
+          (exp_lambda
+            (lambda_args
+              (pat_name
+                (loname)))
+            (lambda_exp
+              (exp_name
+                (loname))
+              (equal)
+              (exp_name
+                (loname))
+              (exp_name
+                (loname))))))
+      (wildcard))))
+
+================================================================================
+Lambda cases
+================================================================================
+
+decompress = concatMap $ \case
+  Left  as => map Left  $ forget as
+  Right bs => map Right $ forget bs
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)))
+    (rhs
+      (exp_name
+        (loname))
+      (operator)
+      (exp_lambda_case
+        (alts
+          (alt
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
+            (exp_name
+              (loname))
+            (exp_name
+              (caname))
+            (operator)
+            (exp_name
+              (loname))
+            (exp_name
+              (loname)))
+          (alt
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
+            (exp_name
+              (loname))
+            (exp_name
+              (caname))
+            (operator)
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))))))))
+
+================================================================================
+Lambda case with space
+================================================================================
+
+_ = No $ \ case
+  MkLT p => notLT (mkLT p)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_name
+        (caname))
+      (operator)
+      (exp_lambda_case
+        (alts
+          (alt
+            (pat_name
+              (caname))
+            (pat_name
+              (loname))
+            (exp_name
+              (loname))
+            (exp_parens
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))))))))
+
+================================================================================
+Lambda case with impossible path
+================================================================================
+
+_ = No (\case Refl impossible)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_name
+        (caname))
+      (exp_parens
+        (exp_lambda_case
+          (alts
+            (alt
+              (pat_name
+                (caname))
+              (impossible))))))))
+
+================================================================================
+Lambda and let in
+================================================================================
+
+_ = MkRWST $ \r,s,w => let (a, s', w') = f r s
+                         in Id (a, s', w <+> w')
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_name
+        (caname))
+      (operator)
+      (exp_lambda
+        (lambda_args
+          (pat_name
+            (loname))
+          (comma)
+          (pat_name
+            (loname))
+          (comma)
+          (pat_name
+            (loname)))
+        (lambda_exp
+          (exp_let_in
+            (declarations
+              (lhs
+                (pat_parens
+                  (pat_name
+                    (loname))
+                  (tuple_operator)
+                  (pat_name
+                    (loname))
+                  (tuple_operator)
+                  (pat_name
+                    (loname))))
+              (rhs
+                (exp_name
+                  (loname))
+                (exp_name
+                  (loname))
+                (exp_name
+                  (loname))))
+            (in
+              (exp_name
+                (caname))
+              (exp_tuple
+                (exp_name
+                  (loname))
+                (tuple_operator)
+                (exp_name
+                  (loname))
+                (tuple_operator)
+                (exp_name
+                  (loname))
+                (operator)
+                (exp_name
+                  (loname))))))))))
+
+================================================================================
+Idiom brackets
+================================================================================
+
+fun <*> x = [| fun <*> x |]
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_op)
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_idiom
+        (exp_name
+          (loname))
+        (operator)
+        (exp_name
+          (loname))))))
+
+================================================================================
+!-notation 1
+================================================================================
+
+m_add x y = pure (!x + !y)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname))
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_name
+        (loname))
+      (exp_parens
+        (operator)
+        (exp_name
+          (loname))
+        (operator)
+        (operator)
+        (exp_name
+          (loname))))))
+
+================================================================================
+!-notation 2
+================================================================================
+
+_ = let y = 94 in f !(g !(print y) !x)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_let_in
+        (declarations
+          (lhs
+            (pat_name
+              (loname)))
+          (rhs
+            (literal
+              (integer))))
+        (in
+          (exp_name
+            (loname))
+          (operator)
+          (exp_parens
+            (exp_name
+              (loname))
+            (operator)
+            (exp_parens
+              (exp_name
+                (loname))
+              (exp_name
+                (loname)))
+            (operator)
+            (exp_name
+              (loname))))))))
+
+================================================================================
+Quasiquotations 1
+================================================================================
+
+paramConstraints params pos
+    = IVar emptyFC `{Prelude.Interfaces.Foldable}   <$ guard (pos `elem` params.asFoldables)
+  <|> IVar emptyFC `{Prelude.Interfaces.Bifoldable} <$ guard (pos `elem` params.asBifoldables)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname))
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_name
+        (caname))
+      (exp_name
+        (loname))
+      (exp_quasiquotation
+        (qualified_caname
+          (caname)
+          (caname)
+          (caname)))
+      (operator)
+      (exp_name
+        (loname))
+      (exp_parens
+        (exp_name
+          (loname))
+        (exp_ticked
+          (exp_name
+            (loname)))
+        (exp_name
+          (loname))
+        (operator)
+        (exp_name
+          (loname)))
+      (operator)
+      (exp_name
+        (caname))
+      (exp_name
+        (loname))
+      (exp_quasiquotation
+        (qualified_caname
+          (caname)
+          (caname)
+          (caname)))
+      (operator)
+      (exp_name
+        (loname))
+      (exp_parens
+        (exp_name
+          (loname))
+        (exp_ticked
+          (exp_name
+            (loname)))
+        (exp_name
+          (loname))
+        (operator)
+        (exp_name
+          (loname))))))
+
+================================================================================
+Quasiquotations 2
+================================================================================
+
+_ = `(Monoid ~(vb) => (~(va) -> ~(vb)) -> ~(t) ~(va) -> ~(vb))
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_quasiquotation
+        (exp_name
+          (caname))
+        (operator)
+        (exp_parens
+          (exp_name
+            (loname)))
+        (arrow_separator)
+        (type_parens
+          (operator)
+          (exp_parens
+            (exp_name
+              (loname)))
+          (arrow_separator)
+          (operator)
+          (exp_parens
+            (exp_name
+              (loname))))
+        (arrow_separator)
+        (operator)
+        (exp_parens
+          (exp_name
+            (loname)))
+        (operator)
+        (exp_parens
+          (exp_name
+            (loname)))
+        (arrow_separator)
+        (operator)
+        (exp_parens
+          (exp_name
+            (loname)))))))
+
+================================================================================
+Quasiquotations 3
+================================================================================
+
+_ = f `{Prelude.(::)} `(Prelude.Nil)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_name
+        (loname))
+      (exp_quasiquotation
+        (qualified_operator
+          (caname)))
+      (exp_quasiquotation
+        (exp_name
+          (qualified_caname
+            (caname)
+            (caname)))))))
+
+================================================================================
+Leading literal 1 (not a quantity)
+================================================================================
+
+bit = (1 `shiftL`)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)))
+    (rhs
+      (exp_parens
+        (literal
+          (integer))
+        (exp_ticked
+          (exp_name
+            (loname)))))))
+
+================================================================================
+Function call with bar argument
+================================================================================
+
+ltrim str with (asList str)
+  ltrim ""  | [] = ""
+  ltrim str@_ | x :: xs = if isSpace x then ltrim _ | xs else str
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname)))))
+    (with
+      (with_arg
+        (exp_name
+          (loname))
+        (exp_name
+          (loname)))
+      (function
+        (lhs
+          (funvar
+            (loname)
+            (patterns
+              (pat_string))))
+        (with_pat
+          (pat_list))
+        (rhs
+          (string)))
+      (function
+        (lhs
+          (funvar
+            (loname)
+            (patterns
+              (pat_name
+                (loname))
+              (pat_at)
+              (wildcard))))
+        (with_pat
+          (pat_name
+            (loname))
+          (pat_op)
+          (pat_name
+            (loname)))
+        (rhs
+          (exp_if
+            (exp_name
+              (loname))
+            (exp_name
+              (loname))
+            (exp_then
+              (exp_name
+                (loname))
+              (wildcard)
+              (exp_bar_arg
+                (exp_name
+                  (loname))))
+            (exp_else
+              (exp_name
+                (loname)))))))))
+
+================================================================================
+Disambiguation with - single
+================================================================================
+
+_ = with BTree.insert (insert x empty)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_with
+        (qualified_loname
+          (caname)
+          (loname))
+        (exp_parens
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))))))
+
+================================================================================
+Disambiguation with - multiple
+================================================================================
+
+_ = with [BTree.insert, BTree.empty] (insert x empty)
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (wildcard))
+    (rhs
+      (exp_with
+        (qualified_loname
+          (caname)
+          (loname))
+        (comma)
+        (qualified_loname
+          (caname)
+          (loname))
+        (exp_parens
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))))))
+
+================================================================================
+Rewrite rule
+================================================================================
+
+helpEven j p = rewrite plusSuccRightSucc j j in p
+
+--------------------------------------------------------------------------------
+
+(idris
+  (function
+    (lhs
+      (funvar
+        (loname)
+        (patterns
+          (pat_name
+            (loname))
+          (pat_name
+            (loname)))))
+    (rhs
+      (exp_rewrite_in
+        (rewrite_exp
+          (exp_name
+            (loname))
+          (exp_name
+            (loname))
+          (exp_name
+            (loname)))
+        (in
+          (exp_name
+            (loname)))))))
+

@@ -119,6 +119,10 @@
             "named": true
           },
           {
+            "type": "exp_with",
+            "named": true
+          },
+          {
             "type": "hole",
             "named": true
           },
@@ -487,6 +491,10 @@
           "named": true
         },
         {
+          "type": "exp_with",
+          "named": true
+        },
+        {
           "type": "hole",
           "named": true
         },
@@ -679,6 +687,10 @@
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "exp_with",
           "named": true
         },
         {
@@ -1780,6 +1792,10 @@
             "named": true
           },
           {
+            "type": "exp_with",
+            "named": true
+          },
+          {
             "type": "hole",
             "named": true
           },
@@ -1972,6 +1988,10 @@
           "named": true
         },
         {
+          "type": "exp_with",
+          "named": true
+        },
+        {
           "type": "hole",
           "named": true
         },
@@ -2123,6 +2143,10 @@
           "named": true
         },
         {
+          "type": "exp_with",
+          "named": true
+        },
+        {
           "type": "hole",
           "named": true
         },
@@ -2271,6 +2295,10 @@
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "exp_with",
           "named": true
         },
         {
@@ -2440,6 +2468,10 @@
           },
           {
             "type": "exp_tuple",
+            "named": true
+          },
+          {
+            "type": "exp_with",
             "named": true
           },
           {
@@ -2663,6 +2695,10 @@
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "exp_with",
           "named": true
         },
         {
@@ -2983,6 +3019,10 @@
           "named": true
         },
         {
+          "type": "exp_with",
+          "named": true
+        },
+        {
           "type": "hole",
           "named": true
         },
@@ -3155,6 +3195,10 @@
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "exp_with",
           "named": true
         },
         {
@@ -3384,6 +3428,10 @@
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "exp_with",
           "named": true
         },
         {
@@ -3657,6 +3705,10 @@
           "named": true
         },
         {
+          "type": "exp_with",
+          "named": true
+        },
+        {
           "type": "hole",
           "named": true
         },
@@ -3706,6 +3758,193 @@
         },
         {
           "type": "tuple_operator",
+          "named": true
+        },
+        {
+          "type": "type_braces",
+          "named": true
+        },
+        {
+          "type": "type_parens",
+          "named": true
+        },
+        {
+          "type": "unit",
+          "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "exp_with",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "caname",
+          "named": true
+        },
+        {
+          "type": "comma",
+          "named": true
+        },
+        {
+          "type": "dot_operator",
+          "named": true
+        },
+        {
+          "type": "exp_bar_arg",
+          "named": true
+        },
+        {
+          "type": "exp_braces",
+          "named": true
+        },
+        {
+          "type": "exp_case",
+          "named": true
+        },
+        {
+          "type": "exp_do",
+          "named": true
+        },
+        {
+          "type": "exp_explicit_impl",
+          "named": true
+        },
+        {
+          "type": "exp_idiom",
+          "named": true
+        },
+        {
+          "type": "exp_if",
+          "named": true
+        },
+        {
+          "type": "exp_lambda",
+          "named": true
+        },
+        {
+          "type": "exp_lambda_case",
+          "named": true
+        },
+        {
+          "type": "exp_let_in",
+          "named": true
+        },
+        {
+          "type": "exp_list",
+          "named": true
+        },
+        {
+          "type": "exp_list_comprehension",
+          "named": true
+        },
+        {
+          "type": "exp_name",
+          "named": true
+        },
+        {
+          "type": "exp_parens",
+          "named": true
+        },
+        {
+          "type": "exp_quasiquotation",
+          "named": true
+        },
+        {
+          "type": "exp_record_access",
+          "named": true
+        },
+        {
+          "type": "exp_rewrite_in",
+          "named": true
+        },
+        {
+          "type": "exp_ticked",
+          "named": true
+        },
+        {
+          "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "exp_with",
+          "named": true
+        },
+        {
+          "type": "hole",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "loname",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "pragma_MkWorld",
+          "named": true
+        },
+        {
+          "type": "pragma_World",
+          "named": true
+        },
+        {
+          "type": "pragma_runElab",
+          "named": true
+        },
+        {
+          "type": "pragma_search",
+          "named": true
+        },
+        {
+          "type": "pragma_syntactic",
+          "named": true
+        },
+        {
+          "type": "qualified_caname",
+          "named": true
+        },
+        {
+          "type": "qualified_dot_operators",
+          "named": true
+        },
+        {
+          "type": "qualified_loname",
+          "named": true
+        },
+        {
+          "type": "qualified_operator",
+          "named": true
+        },
+        {
+          "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "triple_quote_string",
           "named": true
         },
         {
@@ -3817,6 +4056,10 @@
           },
           {
             "type": "exp_tuple",
+            "named": true
+          },
+          {
+            "type": "exp_with",
             "named": true
           },
           {
@@ -4623,6 +4866,10 @@
           "named": true
         },
         {
+          "type": "exp_with",
+          "named": true
+        },
+        {
           "type": "forall",
           "named": true
         },
@@ -4837,6 +5084,10 @@
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "exp_with",
           "named": true
         },
         {
@@ -5283,6 +5534,10 @@
           "named": true
         },
         {
+          "type": "exp_with",
+          "named": true
+        },
+        {
           "type": "hole",
           "named": true
         },
@@ -5614,6 +5869,10 @@
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "exp_with",
           "named": true
         },
         {
@@ -6660,7 +6919,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "caname",
@@ -6668,6 +6927,10 @@
         },
         {
           "type": "colon",
+          "named": true
+        },
+        {
+          "type": "comma",
           "named": true
         },
         {
@@ -9779,6 +10042,10 @@
           "named": true
         },
         {
+          "type": "exp_with",
+          "named": true
+        },
+        {
           "type": "forall",
           "named": true
         },
@@ -9993,6 +10260,10 @@
           "named": true
         },
         {
+          "type": "exp_with",
+          "named": true
+        },
+        {
           "type": "forall",
           "named": true
         },
@@ -10192,6 +10463,10 @@
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "exp_with",
           "named": true
         },
         {
@@ -10496,6 +10771,10 @@
           "named": true
         },
         {
+          "type": "exp_with",
+          "named": true
+        },
+        {
           "type": "forall",
           "named": true
         },
@@ -10718,6 +10997,10 @@
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "exp_with",
           "named": true
         },
         {
@@ -10956,6 +11239,10 @@
           "named": true
         },
         {
+          "type": "exp_with",
+          "named": true
+        },
+        {
           "type": "hole",
           "named": true
         },
@@ -11184,6 +11471,10 @@
           "named": true
         },
         {
+          "type": "exp_with",
+          "named": true
+        },
+        {
           "type": "forall",
           "named": true
         },
@@ -11356,6 +11647,10 @@
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "exp_with",
           "named": true
         },
         {
@@ -11534,6 +11829,10 @@
           "named": true
         },
         {
+          "type": "exp_with",
+          "named": true
+        },
+        {
           "type": "forall",
           "named": true
         },
@@ -11706,6 +12005,10 @@
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "exp_with",
           "named": true
         },
         {
@@ -11924,6 +12227,10 @@
         },
         {
           "type": "exp_tuple",
+          "named": true
+        },
+        {
+          "type": "exp_with",
           "named": true
         },
         {
