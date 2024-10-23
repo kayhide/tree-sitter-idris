@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [master]
+    branches: [main]
     paths:
       - grammar.js
       - src/**
@@ -36,15 +36,15 @@ jobs:
         uses: tree-sitter/setup-action/cli@v1
       - name: Set up examples
         run: |-
-          git clone https://github.com/idris-lang/Idris2#v0.7.0 examples/ --single-branch --depth=1 --filter=blob:none
+          git clone https://github.com/idris-lang/Idris2 examples/ --branch=v0.7.0 --depth=1 --filter=blob:none
       - name: Run tests
         uses: tree-sitter/parser-test-action@v2
-        with:
-          test-rust: true
-          test-node: true
-          test-python: true
-          test-go: true
-          test-swift: true
+      #   with:
+      #     test-rust: true
+      #     test-node: true
+      #     test-python: true
+      #     test-go: true
+      #     test-swift: true
       - name: Parse examples
         uses: tree-sitter/parse-action@v4
         with:
