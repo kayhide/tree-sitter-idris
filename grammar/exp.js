@@ -257,9 +257,10 @@ export default {
 
   triple_quote_string: $ => seq(
     '"""',
-    repeat1(choice(
+    repeat(choice(
       $._in_string,
-      /"{0,2}([^"]+"{1,2})*[^"]*/,
+      /[^"\\]+/,          // Match any non-quote, non-backslash characters
+      /"[^"]|""/,         // Match single quotes or double quotes that aren't triple
       seq(
         '\\{',
         alias($._exp, $.interpolation),
@@ -287,8 +288,8 @@ export default {
   ),
 
   _string: $ => choice(
-    $.string,
     $.triple_quote_string,
+    $.string,
     $.raw_string,
   ),
 

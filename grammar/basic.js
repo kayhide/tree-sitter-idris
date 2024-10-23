@@ -24,15 +24,6 @@ export default {
     ),
   ),
 
-  // https://github.com/natefaubion/purescript-language-cst-parser/blob/bf5623e08e1f43f923d4ff3c29cafbda25128768/src/PureScript/CST/Lexer.purs#L595
-  triple_quote_string: _ => token(
-    seq(
-      '"""',
-      /"{0,2}([^"]+"{1,2})*[^"]*/,
-      '"""'
-    )
-  ),
-
   _integer_literal: _ => token(choice('0', decimals1)),
   _hex_literal: _ => token(/0x[0-9a-fA-F_]+/),
 
