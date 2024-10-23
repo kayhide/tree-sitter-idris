@@ -1,6 +1,6 @@
-const { parens, layouted } = require('./util')
+import { sep, sep1, parens, layouted } from './util.js';
 
-module.exports = {
+export default {
   // ------------------------------------------------------------------------
   // Declarations
   // ------------------------------------------------------------------------
@@ -118,4 +118,4 @@ module.exports = {
   ),
 
   declarations: $ => layouted($, $._where_decl),
-}
+};

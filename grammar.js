@@ -1,17 +1,19 @@
-const basic = require('./grammar/basic.js')
-const id = require('./grammar/id.js')
-const record = require('./grammar/record.js')
-const type = require('./grammar/type.js')
-const exp = require('./grammar/exp.js')
-const pat = require('./grammar/pat.js')
-const import_ = require('./grammar/import.js')
-const module_ = require('./grammar/module.js')
-const data = require('./grammar/data.js')
-const interface = require('./grammar/interface.js')
-const decl = require('./grammar/decl.js')
-const pragma = require('./grammar/pragma.js')
+import basic from './grammar/basic.js'
+import id from './grammar/id.js'
+import record from './grammar/record.js'
+import type_ from './grammar/type.js'
+import exp from './grammar/exp.js'
+import pat from './grammar/pat.js'
+import import_ from './grammar/import.js'
+import module_ from './grammar/module.js'
+import data from './grammar/data.js'
+import interface_ from './grammar/interface.js'
+import decl from './grammar/decl.js'
+import pragma from './grammar/pragma.js'
+import { terminated } from './grammar/util.js';
 
-module.exports = grammar({
+
+export default grammar({
   name: 'idris',
 
   /**
@@ -175,13 +177,13 @@ module.exports = grammar({
     ...basic,
     ...id,
     ...record,
-    ...type,
+    ...type_,
     ...exp,
     ...pat,
     ...import_,
     ...module_,
     ...data,
-    ...interface,
+    ...interface_,
     ...decl,
     ...pragma,
   }

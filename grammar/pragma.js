@@ -1,11 +1,11 @@
-const { parens } = require('./util.js')
+import { sep1 } from './util.js';
 
-module.exports = {
+export default {
   // ------------------------------------------------------------------------
   // pragma
 
   _pragma_arg: $ => choice(
-    $. _q_name_op,
+    $._q_name_op,
     $.literal,
     $.string,
     $.wildcard,
@@ -92,15 +92,15 @@ module.exports = {
 
   pragma_foreign_impl: $ => seq('%foreign_impl', $._pragma_arg, $._pragma_arg),
 
-  pragma_export : $ => seq('%export', $._pragma_arg),
+  pragma_export: $ => seq('%export', $._pragma_arg),
 
-  pragma_nomangle : _ => '%nomangle',
+  pragma_nomangle: _ => '%nomangle',
 
-  pragma_hint : _ => '%hint',
+  pragma_hint: _ => '%hint',
 
-  pragma_defaulthint : _ => '%defaulthint',
+  pragma_defaulthint: _ => '%defaulthint',
 
-  pragma_globalhint : _ => '%globalhint',
+  pragma_globalhint: _ => '%globalhint',
 
   pragma_extern: _ => '%extern',
 
@@ -117,11 +117,11 @@ module.exports = {
     $.pragma_spec,
     $.pragma_foreign,
     $.pragma_foreign_impl,
-    $.pragma_export ,
-    $.pragma_nomangle ,
-    $.pragma_hint ,
-    $.pragma_defaulthint ,
-    $.pragma_globalhint ,
+    $.pragma_export,
+    $.pragma_nomangle,
+    $.pragma_hint,
+    $.pragma_defaulthint,
+    $.pragma_globalhint,
     $.pragma_extern,
     $.pragma_macro,
     $.pragma_start,
@@ -186,4 +186,4 @@ module.exports = {
     $.pragma_MkWorld,
     $.pragma_syntactic,
   ),
-}
+};

@@ -1,6 +1,6 @@
-const { parens, braces } = require('./util.js')
+import { layouted, sep1, sep, parens, braces } from './util.js';
 
-module.exports = {
+export default {
   // ----- Record -------------------------------------------------------------
 
   record_name: $ => $._q_caname,
@@ -24,9 +24,9 @@ module.exports = {
 
   constructor: $ => seq(
     'constructor',
-    field('name', $._caname_op), 
+    field('name', $._caname_op),
   ),
-    
+
   _record_field: $ => seq(
     optional($.quantity),
     sep1($.comma, $._q_name_op), $._type_annotation
@@ -38,14 +38,14 @@ module.exports = {
       $._record_field,
     )
   ),
-  
+
   // -----------------------------------------------------------------
   // Value-level
 
   _field_name: $ => alias($.loname, $.field_name),
 
   _record_field_update: $ => seq(
-    $._field_name, 
+    $._field_name,
     choice(
       seq(choice(':=', '$='), $._exp),
       braces(sep($.comma,
@@ -55,4 +55,4 @@ module.exports = {
   ),
 
   record_update: $ => braces(sep1($.comma, $._record_field_update)),
-}
+};

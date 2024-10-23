@@ -6,6 +6,7 @@
   "license": "MIT",
   "main": "bindings/node",
   "types": "bindings/node",
+  "type": "module",
   "keywords": [
     "incremental",
     "parsing",

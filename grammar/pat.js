@@ -1,6 +1,6 @@
-const { parens } = require('./util.js')
+import { parens, braces, sep, brackets, snoc_brackets } from './util.js';
 
-module.exports = {
+export default {
 
   pat_op: $ => choice(
     $._operator,
@@ -30,9 +30,9 @@ module.exports = {
 
   pat_braces: $ => seq(
     '{',
-    sep($.comma, seq($._name, '=', $._pat)), 
+    sep($.comma, seq($._name, '=', $._pat)),
     '}',
-   ),
+  ),
 
   pat_at_braces: $ => seq('@{', $._pat, '}'),
 
@@ -59,4 +59,4 @@ module.exports = {
     $._apats,
     optional($._nullary_type_annotation),
   ),
-}
+};

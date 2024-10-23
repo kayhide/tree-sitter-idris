@@ -1,6 +1,6 @@
-const {parens} = require('./util.js')
+import { layouted, terminated } from './util.js';
 
-module.exports = {
+export default {
   // ------------------------------------------------------------------------
   // module
   // ------------------------------------------------------------------------
@@ -52,7 +52,7 @@ module.exports = {
     $.type_braces,
   ),
 
-  _parameters_body: $ => seq( 
+  _parameters_body: $ => seq(
     $._layout_start,
     repeat(seq(
       optional($._layout_restart),
@@ -64,4 +64,4 @@ module.exports = {
     )),
     $._layout_end,
   ),
-}
+};

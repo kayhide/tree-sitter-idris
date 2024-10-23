@@ -1,6 +1,18 @@
-const { brackets, layouted, layouted_without_end, parens, prefixable, qualified, sep, sep1, ticked, terminated } = require('./util.js')
+import {
+  brackets,
+  layouted,
+  layouted_without_end,
+  parens,
+  idiom_brackets,
+  snoc_brackets,
+  braces,
+  qualified,
+  sep,
+  sep1,
+  ticked,
+} from './util.js';
 
-module.exports = {
+export default {
 
   // ----- Identifiers and modifiers ------------------------------------------
 
@@ -340,4 +352,4 @@ module.exports = {
     $._sexp,
     seq($._aexps, $._sexp),
   ),
-}
+};
