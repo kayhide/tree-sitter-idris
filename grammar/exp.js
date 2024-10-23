@@ -218,7 +218,7 @@ module.exports = {
 
   // ----- Quasiquotation -----------------------------------------------------
 
-  exp_quasiquotation : $ => choice(
+  exp_quasiquotation: $ => choice(
     seq("`{{", $._q_name_op, "}}"),
     seq("`{", $._q_name_op, "}"),
     seq("`(", $._type_parens, ")"),
@@ -235,7 +235,7 @@ module.exports = {
       /\\\n\s*\\/,
       /\\[^{]/,
       seq(
-        '\\{', 
+        '\\{',
         alias($._exp, $.interpolation),
         '}'
       ),
@@ -249,14 +249,14 @@ module.exports = {
       $._in_string,
       /"{0,2}([^"]+"{1,2})*[^"]*/,
       seq(
-        '\\{', 
+        '\\{',
         alias($._exp, $.interpolation),
         '}'
       ),
     )),
     '"""'
   ),
-  
+
   raw_string: $ => seq(
     $._raw_string_start,
     repeat(choice(
@@ -266,14 +266,14 @@ module.exports = {
       /\\[^#]/,
       /\\#[^{]/,
       seq(
-        '\\#{', 
+        '\\#{',
         alias($._exp, $.interpolation),
         '}'
       ),
     )),
     $._raw_string_end,
   ),
-  
+
   _string: $ => choice(
     $.string,
     $.triple_quote_string,

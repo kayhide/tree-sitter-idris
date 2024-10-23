@@ -67,7 +67,7 @@ module.exports = {
 
   forall: _ => choice('forall', '∀'),
 
-  _def_equal: _ => choice( ':=', '='),
+  _def_equal: _ => choice(':=', '='),
 
   equal: _ => '=',
 
