@@ -1,14 +1,11 @@
 ; ------------------------------------------------------------------------------
 ; Literals and comments
-
-[
-  (integer)
-] @constant.numeric.integer
+(integer) @number
 
 (literal
-  (number)) @constant.numeric.float
+  (number)) @number.float
 
-(char) @constant.character
+(char) @character
 
 [
   (string)
@@ -19,7 +16,6 @@
 
 ; ------------------------------------------------------------------------------
 ; Punctuation
-
 [
   "("
   ")"
@@ -35,7 +31,6 @@
 
 ; ------------------------------------------------------------------------------
 ; Types
-
 (signature
   (loname) @type)
 
@@ -46,23 +41,22 @@
 
 ; ------------------------------------------------------------------------------
 ; Keywords, operators, imports
-
 [
   "if"
   "then"
   "else"
   "case"
   "of"
-] @keyword.control.conditional
+] @keyword.conditional
 
-(module) @namespace
+(module) @module
 
 [
   "import"
   "module"
   "namespace"
   "parameters"
-] @keyword.control.import
+] @keyword.import
 
 [
   (operator)
@@ -83,16 +77,16 @@
 ] @operator
 
 (qualified_loname
-  (caname) @namespace)
+  (caname) @module)
 
 (qualified_caname
-  (caname) @namespace)
+  (caname) @constructor)
 
 (qualified_operator
-  (caname) @namespace)
+  (caname) @module)
 
 (import
-  (caname) @namespace)
+  (caname) @module)
 
 [
   (where)
@@ -146,11 +140,11 @@
   (pragma_spec)
   (pragma_foreign)
   (pragma_foreign_impl)
-  (pragma_export )
-  (pragma_nomangle )
-  (pragma_hint )
-  (pragma_defaulthint )
-  (pragma_globalhint )
+  (pragma_export)
+  (pragma_nomangle)
+  (pragma_hint)
+  (pragma_defaulthint)
+  (pragma_globalhint)
   (pragma_extern)
   (pragma_macro)
   (pragma_start)
@@ -170,10 +164,8 @@
   (pragma_syntactic)
 ] @label
 
-
 ; ------------------------------------------------------------------------------
 ; Functions and variables
-
 (exp_name
   (loname) @function)
 
@@ -181,15 +173,21 @@
   (caname) @constructor)
 
 (exp_record_access
-  field: (_) @variable.other.member)
+  field: (_) @variable.member)
 
 (signature
-  name: [(loname) (caname)] @function)
+  name: [
+    (loname)
+    (caname)
+  ] @function)
 
 (function
   (lhs
     (funvar
-      subject: [(loname) (caname)] @function)))
+      subject: [
+        (loname)
+        (caname)
+      ] @function)))
 
 (data
   name: (data_name) @type)
