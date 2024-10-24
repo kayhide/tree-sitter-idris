@@ -1,15 +1,17 @@
 ; ------------------------------------------------------------------------------
 ; Literals and comments
-(integer) @number
+
+[
+  (integer)
+] @constant.numeric.integer
 
 (literal
-  (number)) @number.float
+  (number)) @constant.numeric.float
 
-(char) @character
+(char) @constant.character
 
 [
   (string)
-  (pat_string)
   (triple_quote_string)
 ] @string
 
@@ -17,6 +19,7 @@
 
 ; ------------------------------------------------------------------------------
 ; Punctuation
+
 [
   "("
   ")"
@@ -32,6 +35,7 @@
 
 ; ------------------------------------------------------------------------------
 ; Types
+
 (signature
   (loname) @type)
 
@@ -42,22 +46,23 @@
 
 ; ------------------------------------------------------------------------------
 ; Keywords, operators, imports
+
 [
   "if"
   "then"
   "else"
   "case"
   "of"
-] @keyword.conditional
+] @keyword.control.conditional
 
-(module) @module
+(module) @namespace
 
 [
   "import"
   "module"
   "namespace"
   "parameters"
-] @keyword.import
+] @keyword.control.import
 
 [
   (operator)
@@ -67,8 +72,8 @@
   "|"
   "=>"
   "⇒"
-  ; "<=" ; comment out bc throws error "Query error at 69:4. Invalid node type"
-  ; "⇐"  ; comment out bc throws error "Query error at 70:4. Invalid node type"
+  "<="
+  "⇐"
   "->"
   "→"
   "<-"
@@ -78,16 +83,16 @@
 ] @operator
 
 (qualified_loname
-  (caname) @module)
+  (caname) @namespace)
 
 (qualified_caname
-  (caname) @constructor)
+  (caname) @namespace)
 
 (qualified_operator
-  (caname) @module)
+  (caname) @namespace)
 
 (import
-  (caname) @module)
+  (caname) @namespace)
 
 [
   (where)
@@ -141,11 +146,11 @@
   (pragma_spec)
   (pragma_foreign)
   (pragma_foreign_impl)
-  (pragma_export)
-  (pragma_nomangle)
-  (pragma_hint)
-  (pragma_defaulthint)
-  (pragma_globalhint)
+  (pragma_export )
+  (pragma_nomangle )
+  (pragma_hint )
+  (pragma_defaulthint )
+  (pragma_globalhint )
   (pragma_extern)
   (pragma_macro)
   (pragma_start)
@@ -165,8 +170,10 @@
   (pragma_syntactic)
 ] @label
 
+
 ; ------------------------------------------------------------------------------
 ; Functions and variables
+
 (exp_name
   (loname) @function)
 
@@ -174,21 +181,15 @@
   (caname) @constructor)
 
 (exp_record_access
-  field: (_) @variable.member)
+  field: (_) @variable.other.member)
 
 (signature
-  name: [
-    (loname)
-    (caname)
-  ] @function)
+  name: [(loname) (caname)] @function)
 
 (function
   (lhs
     (funvar
-      subject: [
-        (loname)
-        (caname)
-      ] @function)))
+      subject: [(loname) (caname)] @function)))
 
 (data
   name: (data_name) @type)
