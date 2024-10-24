@@ -172,6 +172,7 @@ export default grammar({
       $._pragma_global,
       $._pragma_internal,
       $._pragma_reflection,
+      $._lcarrow, // fixes https://github.com/nvim-treesitter/nvim-treesitter/pull/7274#issuecomment-2435421390
     ),
 
     ...basic,
