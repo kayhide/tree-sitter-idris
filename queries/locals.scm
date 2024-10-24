@@ -28,4 +28,3 @@
 
 (exp_name
   (caname)) @local.reference
-

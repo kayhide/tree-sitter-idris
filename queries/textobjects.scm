@@ -9,7 +9,7 @@
 
 ((signature)?
  (function
-   (rhs (_)) @function.inside)) @function.around 
+   (rhs (_)) @function.inside)) @function.around
 
 (exp_lambda) @function.around
 
