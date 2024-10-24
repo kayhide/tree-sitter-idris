@@ -14,7 +14,6 @@
             nodejs_22
             yarn
             python3
-            tree-sitter
             clang-tools # clangd
             graphviz # dot
           ];
@@ -31,6 +30,10 @@
         in
         {
           devShell = pkgs.mkShell {
+            shellHook = ''
+              export PATH=$PWD/node_modules/.bin:$PATH
+            '';
+
             buildInputs = with pkgs; [
               app-env
 
