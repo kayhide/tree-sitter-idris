@@ -5,7 +5,9 @@
       "camelcase": "Idris",
       "scope": "source.idris",
       "path": ".",
-      "file-types": null,
+      "file-types": [
+        "idr"
+      ],
       "injection-regex": "^idris$"
     }
   ],
