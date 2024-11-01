@@ -1,6 +1,11 @@
-const { parens, qualified } = require('./util.js')
+import {
+  parens,
+  braces,
+  sep1,
+  sep2
+} from './util.js';
 
-module.exports = {
+export default {
 
   arrow_separator: $ => choice($._arrow, $._rcarrow),
 
@@ -35,14 +40,14 @@ module.exports = {
 
   type_braces: $ => braces(
     seq(
-      sep1($.comma, $._implicit_arg), 
+      sep1($.comma, $._implicit_arg),
       optional($._type_annotation),
     ),
   ),
 
   _implicit_arg: $ => seq(
     repeat(
-      choice( 
+      choice(
         $.quantity,
         $.auto,
         $.default,
@@ -65,4 +70,4 @@ module.exports = {
       optional(seq($.equal, $._exp)),
     ),
   ),
-}
+};

@@ -1,6 +1,18 @@
-const { brackets, layouted, layouted_without_end, parens, prefixable, qualified, sep, sep1, ticked, terminated } = require('./util.js')
+import {
+  brackets,
+  layouted,
+  layouted_without_end,
+  parens,
+  idiom_brackets,
+  snoc_brackets,
+  braces,
+  qualified,
+  sep,
+  sep1,
+  ticked,
+} from './util.js';
 
-module.exports = {
+export default {
 
   // ----- Identifiers and modifiers ------------------------------------------
 
@@ -218,7 +230,7 @@ module.exports = {
 
   // ----- Quasiquotation -----------------------------------------------------
 
-  exp_quasiquotation : $ => choice(
+  exp_quasiquotation: $ => choice(
     seq("`{{", $._q_name_op, "}}"),
     seq("`{", $._q_name_op, "}"),
     seq("`(", $._type_parens, ")"),
@@ -235,7 +247,7 @@ module.exports = {
       /\\\n\s*\\/,
       /\\[^{]/,
       seq(
-        '\\{', 
+        '\\{',
         alias($._exp, $.interpolation),
         '}'
       ),
@@ -245,18 +257,19 @@ module.exports = {
 
   triple_quote_string: $ => seq(
     '"""',
-    repeat1(choice(
+    repeat(choice(
       $._in_string,
-      /"{0,2}([^"]+"{1,2})*[^"]*/,
+      /[^"\\]+/,          // Match any non-quote, non-backslash characters
+      /"[^"]|""/,         // Match single quotes or double quotes that aren't triple
       seq(
-        '\\{', 
+        '\\{',
         alias($._exp, $.interpolation),
         '}'
       ),
     )),
     '"""'
   ),
-  
+
   raw_string: $ => seq(
     $._raw_string_start,
     repeat(choice(
@@ -266,17 +279,17 @@ module.exports = {
       /\\[^#]/,
       /\\#[^{]/,
       seq(
-        '\\#{', 
+        '\\#{',
         alias($._exp, $.interpolation),
         '}'
       ),
     )),
     $._raw_string_end,
   ),
-  
+
   _string: $ => choice(
-    $.string,
     $.triple_quote_string,
+    $.string,
     $.raw_string,
   ),
 
@@ -340,4 +353,4 @@ module.exports = {
     $._sexp,
     seq($._aexps, $._sexp),
   ),
-}
+};

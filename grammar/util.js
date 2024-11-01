@@ -1,28 +1,26 @@
-const
+export const parens = (...rule) => seq('(', ...rule, ')')
 
-parens = (...rule) => seq('(', ...rule, ')')
+export const braces = (...rule) => seq('{', ...rule, '}')
 
-braces = (...rule) => seq('{', ...rule, '}')
+export const brackets = (...rule) => seq('[', ...rule, ']')
 
-brackets = (...rule) => seq('[', ...rule, ']')
+export const snoc_brackets = (...rule) => seq('[<', ...rule, ']')
 
-snoc_brackets = (...rule) => seq('[<', ...rule, ']')
+export const idiom_brackets = (...rule) => seq('[|', ...rule, '|]')
 
-idiom_brackets = (...rule) => seq('[|', ...rule, '|]')
+export const ticked = (...rule) => seq('`', ...rule, '`')
 
-ticked = (...rule) => seq('`', ...rule, '`')
+export const prefixable = (pre, ...rule) => seq(optional(pre), ...rule)
 
-prefixable = (pre, ...rule) => seq(optional(pre), ...rule)
+export const quote = '\''
 
-quote = '\''
+export const qualified = ($, id) => seq($._qualifying_module, id)
 
-qualified = ($, id) => seq($._qualifying_module, id)
+export const sep = (sep, rule) => optional(seq(rule, repeat(seq(sep, rule))))
 
-sep = (sep, rule) => optional(seq(rule, repeat(seq(sep, rule))))
+export const sep1 = (sep, rule) => seq(rule, repeat(seq(sep, rule)))
 
-sep1 = (sep, rule) => seq(rule, repeat(seq(sep, rule)))
-
-sep2 = (sep, rule) => seq(rule, repeat1(seq(sep, rule)))
+export const sep2 = (sep, rule) => seq(rule, repeat1(seq(sep, rule)))
 
 /**
   * Wrap a repeated rule with semicolon rules.
@@ -32,7 +30,7 @@ sep2 = (sep, rule) => seq(rule, repeat1(seq(sep, rule)))
   * The dynamic precision is needed because of some irregularities with standalone deriving decls and data deriving
   * clauses.
   */
-terminated = ($, rule) => seq(
+export const terminated = ($, rule) => seq(
   sep1(prec.dynamic(1, choice(';', $._layout_semicolon)), rule),
   optional(choice(';', $._layout_semicolon)),
 )
@@ -52,38 +50,20 @@ terminated = ($, rule) => seq(
   * current one to make a decision.
   * If explicit braces are provided, the scanner isn't relevant.
   */
-layouted = ($, rule) => choice(
+export const layouted = ($, rule) => choice(
   // layouted_braces(rule),
   seq($._layout_start, optional(terminated($, rule)), $._layout_end),
 )
 
-layouted_without_end = ($, rule) => choice(
+export const layouted_without_end = ($, rule) => choice(
   // layouted_braces(rule),
   seq($._layout_start, optional(terminated($, rule))),
 )
 
-where = ($, rule) => seq(
+export const where = ($, rule) => seq(
   $.where,
   optional(layouted($, rule)),
 )
 
 // see the documentation references in `./id.js`
-varid_pattern = /[\p{Ll}_][\p{L}0-9_']*/
-
-module.exports = {
-  braces,
-  brackets,
-  layouted,
-  layouted_without_end,
-  parens,
-  prefixable,
-  qualified,
-  quote,
-  sep,
-  sep1,
-  sep2,
-  terminated,
-  ticked,
-  varid_pattern,
-  where,
-}
+export const varid_pattern = /[\p{Ll}_][\p{L}0-9_']*/

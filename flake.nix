@@ -1,32 +1,39 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = inputs:
+  outputs =
+    inputs:
     let
-      overlay = final: prev:
-        {
-          app-env = prev.buildEnv {
-            name = "app-env";
-            paths = with final; [
-              nodejs-18_x
-              yarn
-              python3
-              tree-sitter
-              clang-tools # clangd
-              graphviz # dot
-            ];
-          };
+      overlay = final: prev: {
+        app-env = prev.buildEnv {
+          name = "app-env";
+          paths = with final; [
+            nodejs_22
+            yarn
+            python3
+            clang-tools # clangd
+            graphviz # dot
+          ];
         };
+      };
 
-      perSystem = system:
+      perSystem =
+        system:
         let
-          pkgs = import inputs.nixpkgs { inherit system; overlays = [ overlay ]; };
+          pkgs = import inputs.nixpkgs {
+            inherit system;
+            overlays = [ overlay ];
+          };
         in
         {
           devShell = pkgs.mkShell {
+            shellHook = ''
+              export PATH=$PWD/node_modules/.bin:$PATH
+            '';
+
             buildInputs = with pkgs; [
               app-env
 

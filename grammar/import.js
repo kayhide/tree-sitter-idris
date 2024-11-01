@@ -1,6 +1,6 @@
-const {parens} = require('./util.js')
+import { parens } from './util.js';
 
-module.exports = {
+export default {
   // ------------------------------------------------------------------------
   // import
   // ------------------------------------------------------------------------
@@ -14,4 +14,4 @@ module.exports = {
       optional(seq('as', $._q_module))
     ),
   ),
-}
+};

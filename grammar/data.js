@@ -1,6 +1,6 @@
-const { parens } = require('./util.js')
+import { brackets, layouted, sep1 } from './util.js';
 
-module.exports = {
+export default {
 
   // ----- Data ---------------------------------------------------------------
 
@@ -49,4 +49,4 @@ module.exports = {
   ),
 
   external: _ => brackets('external'),
-}
+};

@@ -1,7 +1,7 @@
-decimals1 = /[1-9][0-9_]*/
-exponent = /e[+-]?[1-9_]+/
+const decimals1 = /[1-9][0-9_]*/
+const exponent = /e[+-]?[1-9_]+/
 
-module.exports = {
+export default {
   // ------------------------------------------------------------------------
   // literals
   // ------------------------------------------------------------------------
@@ -22,15 +22,6 @@ module.exports = {
       /'[^']'/,
       /'\\[^ ]*'/,
     ),
-  ),
-
-  // https://github.com/natefaubion/purescript-language-cst-parser/blob/bf5623e08e1f43f923d4ff3c29cafbda25128768/src/PureScript/CST/Lexer.purs#L595
-  triple_quote_string: _ => token(
-    seq(
-      '"""',
-      /"{0,2}([^"]+"{1,2})*[^"]*/,
-      '"""'
-    )
   ),
 
   _integer_literal: _ => token(choice('0', decimals1)),
@@ -67,7 +58,7 @@ module.exports = {
 
   forall: _ => choice('forall', '∀'),
 
-  _def_equal: _ => choice( ':=', '='),
+  _def_equal: _ => choice(':=', '='),
 
   equal: _ => '=',
 
@@ -85,4 +76,4 @@ module.exports = {
    * Field projection dot-syntax requires the dot to follow a varid without any whitespace.
    */
   _immediate_dot: _ => token.immediate('.'),
-}
+};

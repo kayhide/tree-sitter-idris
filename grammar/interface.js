@@ -1,6 +1,6 @@
-const { parens, bracket, sep1 } = require("./util");
+import { brackets, qualified, where, sep1 } from "./util.js";
 
-module.exports = {
+export default {
 
   // ----- Shared -------------------------------------------------------------
 
@@ -35,7 +35,7 @@ module.exports = {
     $._decl,
     alias($._decl_parameters, $.using),
   ),
-    
+
 
   // ----- Implementation -----------------------------------------------------
 
@@ -61,7 +61,7 @@ module.exports = {
     $._implementation_name,
   ),
 
-  _implementation_name: $ => $._name, 
+  _implementation_name: $ => $._name,
 
   _qualified_implementation_name: $ => qualified($, $._implementation_name),
 
@@ -72,4 +72,4 @@ module.exports = {
       $.implementation_head,
       optional($.implementation_body),
     ),
-}
+};

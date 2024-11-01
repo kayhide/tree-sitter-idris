@@ -1,6 +1,6 @@
-const { parens, varid_pattern } = require('./util.js')
+import { qualified, ticked, parens, varid_pattern } from './util.js';
 
-module.exports = {
+export default {
   // ------------------------------------------------------------------------
   // Lowercase names
   _loname: $ => $._varid,
@@ -39,7 +39,7 @@ module.exports = {
   // Aggregates
   _parens_operator: $ => parens(
     choice(
-      $.operator, 
+      $.operator,
       $._dot_operators,
     )
   ),
@@ -57,5 +57,5 @@ module.exports = {
   _q_name_op: $ => choice($._name_op, $.qualified_loname, $.qualified_caname, $.qualified_operator, $.qualified_dot_operators),
 
   // Ticked operator
-  ticked_operator: $=> ticked(alias($._q_name, '')),
-}
+  ticked_operator: $ => ticked(alias($._q_name, '')),
+};
