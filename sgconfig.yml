@@ -1,0 +1,11 @@
+ruleDirs:
+- /home/shortf/gitProj/tree-sitter-idris/rules
+testConfigs:
+- testDir: /home/shortf/gitProj/tree-sitter-idris/rule-tests
+utilDirs:
+- /home/shortf/gitProj/tree-sitter-idris/utils
+
+custom-languages:
+  idris: 
+    libraryPath: libtree-sitter-idris.so 
+    extensions: [".idr", ".lidr"]
