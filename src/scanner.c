@@ -1603,5 +1603,11 @@ void tree_sitter_idris_external_scanner_deserialize(Payload *payload, char *buff
  * Destroy the state.
  */
 void tree_sitter_idris_external_scanner_destroy(Payload *payload) {
+  if (payload != NULL) {
+    // Free the backing buffers of the arrays before freeing the payload itself,
+    // otherwise their heap allocations (grown by push_indent / array_push) leak.
+    array_delete(&payload->indents);
+    array_delete(&payload->raw_string_sharp_counts);
+  }
   free(payload);
 }
