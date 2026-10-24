@@ -7553,5 +7553,6 @@
     "_quantifiers",
     "_qualifying_module"
   ],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
