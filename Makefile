@@ -1,5 +1,5 @@
 LANGUAGE_NAME := tree-sitter-idris
-HOMEPAGE_URL := https://github.com/tree-sitter/tree-sitter-idris
+HOMEPAGE_URL := https://github.com/kayhide/tree-sitter-idris
 VERSION := 0.0.1
 DESCRIPTION := Idris grammar for tree-sitter
 

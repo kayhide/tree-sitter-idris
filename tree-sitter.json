@@ -16,8 +16,13 @@
     "version": "0.0.1",
     "license": "MIT",
     "description": "Idris grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Hideaki Kawai"
+      }
+    ],
     "links": {
-      "repository": "https://github.com/tree-sitter/tree-sitter-idris"
+      "repository": "https://github.com/kayhide/tree-sitter-idris"
     }
   },
   "bindings": {

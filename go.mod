@@ -1,4 +1,4 @@
-module github.com/tree-sitter/tree-sitter-idris
+module github.com/kayhide/tree-sitter-idris
 
 go 1.23
 
