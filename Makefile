@@ -1,6 +1,6 @@
 LANGUAGE_NAME := tree-sitter-idris
 HOMEPAGE_URL := https://github.com/kayhide/tree-sitter-idris
-VERSION := 0.0.1
+VERSION := 0.1.0
 DESCRIPTION := Idris grammar for tree-sitter
 
 # repository
