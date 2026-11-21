@@ -1,6 +1,7 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "idris",
+  "word": "_immediate_loname",
   "rules": {
     "idris": {
       "type": "CHOICE",

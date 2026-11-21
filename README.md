@@ -7,6 +7,18 @@ Tested with the [official libs](https://github.com/idris-lang/Idris2/tree/main/l
 
 This has not been tested with Idris 1.
 
+Identifiers containing keywords, such as `mainLoop` and `shutdown`, stay intact
+during error recovery in incomplete declarations. The grammar declares an
+identifier word token so recovery does not scan keywords from inside a name.
+
+Run the parser corpus with `tree-sitter test`. The Python binding regressions
+also cover keyword fragments and standalone `do` / `in` tokens:
+
+```sh
+python -m pip install '.[core]'
+python -m unittest discover -s bindings/python/tests -v
+```
+
 ## How to Use with [Helix Editor](https://helix-editor.com/)
 
 ### Language configuration

@@ -16,6 +16,9 @@ import { terminated } from './grammar/util.js';
 export default grammar({
   name: 'idris',
 
+  // Keep keywords from matching identifier fragments during error recovery.
+  word: $ => $._immediate_loname,
+
   /**
    * These rules may occur anywhere in the grammar and don't have to be specified.
    */
