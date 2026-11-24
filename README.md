@@ -7,9 +7,10 @@ Tested with the [official libs](https://github.com/idris-lang/Idris2/tree/main/l
 
 This has not been tested with Idris 1.
 
-Identifiers containing keywords, such as `mainLoop` and `shutdown`, stay intact
-during error recovery in incomplete declarations. The grammar declares an
-identifier word token so recovery does not scan keywords from inside a name.
+Identifiers containing keyword prefixes or fragments, such as `interpret`,
+`mainLoop`, and `shutdown`, stay intact during error recovery in incomplete
+declarations. A non-immediate recovery word enables whole-word keyword extraction
+without changing the external scanner or field-projection whitespace rules.
 
 Run the parser corpus with `tree-sitter test`. The Python binding regressions
 also cover keyword fragments and standalone `do` / `in` tokens:
