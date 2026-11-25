@@ -3,9 +3,7 @@ import { qualified, ticked, parens, varid_pattern } from './util.js';
 export default {
   // ------------------------------------------------------------------------
   // Lowercase names
-  // A non-immediate recovery word, separate from the scanner's _varid.
-  // Leading underscores are already covered by _caname during recovery;
-  // including them here would prevent keyword extraction due to that overlap.
+  // Exclude leading underscores to avoid _caname conflicts in keyword extraction.
   _keyword_identifier: _ => /[\p{Ll}][\p{L}0-9_']*/,
   _loname: $ => $._varid,
   loname: $ => $._loname,
