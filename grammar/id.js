@@ -3,6 +3,8 @@ import { qualified, ticked, parens, varid_pattern } from './util.js';
 export default {
   // ------------------------------------------------------------------------
   // Lowercase names
+  // Exclude leading underscores to avoid _caname conflicts in keyword extraction.
+  _keyword_identifier: _ => /[\p{Ll}][\p{L}0-9_']*/,
   _loname: $ => $._varid,
   loname: $ => $._loname,
   qualified_loname: $ => qualified($, $.loname),

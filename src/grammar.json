@@ -1,6 +1,7 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "idris",
+  "word": "_keyword_identifier",
   "rules": {
     "idris": {
       "type": "CHOICE",
@@ -422,6 +423,10 @@
         "type": "STRING",
         "value": "."
       }
+    },
+    "_keyword_identifier": {
+      "type": "PATTERN",
+      "value": "[\\p{Ll}][\\p{L}0-9_']*"
     },
     "_loname": {
       "type": "SYMBOL",
